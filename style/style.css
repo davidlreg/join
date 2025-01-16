@@ -1,0 +1,24 @@
+body, html {
+    margin: 0 auto;
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+*{
+    box-sizing: border-box;
+}
+
+.display-flex-center-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+a:hover {
+    background-color: rgb(62, 74, 91)
+}

@@ -1,21 +1,75 @@
-* {
+body {
     background-color: RGB(246, 247, 248);
+}
+
+.content-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .head-wrapper {
     display: flex;
     justify-content: space-between;
+    padding: 50px 50px 0px 50px;
 }
 
 .icon {
     height: 100px;
 }
 
-.sign-up-wrapper {
+.sign-up {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
     width: 280px;
     gap: 35px;
+}
+
+.main-div {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-wrapper, .sign-up-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-wrapper {
+    padding-top: 50px;
+}
+
+.login-form, .sign-up-form{
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form {
+    width: 550px;
+    height: 350px;
+}
+
+.sign-up-form {
+    width: 450px;
+    height: 500px;
+}
+
+.foot-wrapper {
+    width: 100vw;
+    align-self: flex-end;
+    padding-bottom: 30px;
+}
+
+.foot-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }

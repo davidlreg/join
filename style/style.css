@@ -26,6 +26,7 @@ a:hover {
 
 .btn-dark {
   background-color: rgba(42, 54, 70);
+  border: 1px solid rgba(42, 54, 70);
   border-radius: 5px;
   color: white;
   font-weight: bold;
@@ -35,6 +36,7 @@ a:hover {
 .btn-dark:hover {
   cursor: pointer;
   background-color: rgba(42, 170, 226);
+  border: 1px solid rgba(42, 170, 226);
   box-shadow: 0px 3px 5px 0px rgba(180, 180, 180);
   transition-duration: 0.2s;
 }

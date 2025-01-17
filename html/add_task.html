@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/join/style/add_task.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <h3>Kanban Project Management Tool</h3>
+
+        <div class="topBarIcons">
+            <div onclick=""> ?
+                <img id="questionIcon" class="questionIcon" src="">
+            </div>
+
+            <div onclick="" class="userIcon">
+                <a>GU</a>
+            </div>
+
+        </div>
+    </header>
+
+    <form id="taskForm">
+        <div class="taskHeadline">
+            <h1> Add task</h1>
+
+        </div>
+
+
+        <div class="taskInputLeft">
+
+            <div class="taskInput">
+                <p>Title</p>
+                <span>*</span>
+                <input required type="text" placeholder="Enter a title" class="addTaskInput">
+            </div>
+
+
+            <div class="taskInput">
+                <p>Description</p>
+                <input required type="text" placeholder="Enter a Description" class="addTaskInput">
+            </div>
+
+
+            <div class="taskInput">
+                <p>Assigned to</p>
+                <div>
+                    <p>Select contacts to assign</p>
+                    <span>↓</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr class="taskSeparator">
+        <div class="taskiInputRight">
+            <div class="taskInput">
+                <p>Due Date</p>
+                <span>*</span>
+                <input required type="text" placeholder="tt.mm.jjjj" class="addTaskInput">
+            </div>
+
+            <div class="taskInput">
+                <p>Prio</p>
+                <div class="priorityButton">
+                    <button> Urgent</button>
+                    <button> Medium</button>
+                    <button> Low</button>
+                </div>
+
+                <div class="taskInput">
+                    <p>Category</p>
+                    <span>*</span>
+                    <div onclick="" class="dropdownOptions">
+                        <p>Select task category</p>
+                        <span>↓</span>
+                    </div>
+                </div>
+
+                <div class="taskInput">
+                    <p>Subtasks</p>
+                    <div>
+                        <input required type="text" placeholder="Add new subtask" class="addTaskInput">
+                        <span>+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="required">
+                    <p>This field is required</p>
+                    <span>*</span>
+                </div>
+
+                <div class="actions">
+                    <button onclick="">Clear</button>
+                    <button onclick="">Create Task</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.topBarIcons {
+    display: flex;
+    gap: 20px;
+    
+}

@@ -1,0 +1,12 @@
+* {
+    background-color: RGB(246, 247, 248);
+}
+
+.head-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon {
+    height: 100px;
+}

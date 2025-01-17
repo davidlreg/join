@@ -1,0 +1,25 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0 solid transparent;
+  background-color: #f6f7f8;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.d_none {
+  display: none !important;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

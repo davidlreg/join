@@ -9,39 +9,30 @@
     <link rel="stylesheet" href="../style/login.css">
     <script src="../script/script.js"></script>
 </head>
-<body class="content-wrapper">
-    <div class="head-wrapper">
-        <img class="icon" src="../assets/img/join_icon_dark.svg">
-        <div class="sign-up">
-            <p>Not a Join user?</p>
-            <button class="btn-dark">Sign Up</button>
+<body>
+    <img class="icon" src="../assets/img/join_icon_dark.svg" alt="Join Logo">
+    
+    <div class="sign-up-form">
+        <button class="arrow-back" onclick="location.href='./login.html'"><img src="../assets/img/vector.svg"></button>
+        <h1 class="header">Sign up</h1>
+        <div class="input-container">
+            <input type="text" name="name" placeholder="Name" class="input-name" required>
+            <input type="text" name="email" placeholder="Email" class="input-email" required>
+            <input type="password" name="password" placeholder="Password" class="input-password" required>
+            <input type="password" name="password" placeholder="Confirm password" class="input-password" required>
+        </div>
+        <div class="checkbox">
+            <input class="custom-box" type="checkbox" required>
+            <label for="custom-box">I accept the <a href="../html/privacy_policy.html">Privacy Policy</a></label>
+        </div>
+        <div class="buttons">
+            <button class="btn-dark">Sign up</button>
         </div>
     </div>
-    
-    <div class="main-div">
-        <div class="sign-up-wrapper">
-            <div class="sign-up-form">
-                <h1 class="header">Sign Up</h1>
-                <p class="underline"></p>
-                <div class="input">
-                    <input type="text" name="name" required>
-                    <input type="text" name="email" required>
-                    <input type="password" name="password" required>
-                    <input type="password" name="password" required>
-                </div>
-                <div class="buttons">
-                    <button class="btn-dark">Log in</button>
-                    <button class="btn-light">Guest Log in</button>
-                </div>
-            </div>
-        </div>
 
-        <div class="foot-wrapper">
-            <div class="foot-links">
-                <a href="../html/privacy_policy.html">Privacy Policy</a>
-                <a href="../html/legal_notice.html">Legal Notice</a>
-            </div>
-        </div>
+    <div class="footer">
+        <a href="../html/privacy_policy.html">Privacy Policy</a>
+        <a href="../html/legal_notice.html">Legal Notice</a>
     </div>
 </body>
 </html>

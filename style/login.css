@@ -39,20 +39,53 @@ body {
     padding: 10px 20px;
 }
 
-.login-form h1 {
+.sign-up-form {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 500px;
+    padding: 10px 20px;
+}
+
+.login-form h1, .sign-up-form h1 {
     background-color: white;
     margin-bottom: 20px;
     font-size: 42px;
     color: black;
 }
 
-.login-form h1::after {
+.login-form h1::after, .sign-up-form h1::after {
     content: "";
     display: block;
     margin: 10px auto 0;
     width: 100px;
     height: 2px;
     background-color: rgba(42, 170, 226);
+}
+
+.arrow-back, .arrow-back img {
+    background-color: white;
+    padding: 5px;
+    height: 15px;
+}
+
+.arrow-back {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+}
+
+.arrow-back img:hover {
+    cursor: pointer;
+    background-color: rgb(222, 222, 222);
+    border-radius: 50px;
+    transition-duration: 0.2s;
 }
 
 .input-container {
@@ -76,6 +109,52 @@ body {
 .input-container input:focus {
     outline: none;
     border-color: rgba(42, 170, 226);
+}
+
+.input-email, .input-password, .input-name {
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+.input-email {
+    background-image: url(../assets/img/mail.svg);
+}
+
+.input-password {
+    background-image: url(../assets/img/lock.svg);
+}
+
+.input-name {
+    background-image: url(../assets/img/person.svg);
+}
+
+.checkbox {
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+label, label span, label a {
+    background-color: white;
+}
+
+label a {
+    color: rgba(42, 170, 226);
+}
+
+label a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+    transition-duration: 0.2s;
+}
+
+.box:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 0px rgba(42, 170, 226, 0.5);
+    background-color: rgba(42, 170, 226, 0.5);
 }
 
 .buttons {
@@ -102,5 +181,6 @@ body {
 
 .footer a:hover {
     color: rgba(42, 170, 226);
+    font-weight: bolder;
     transition-duration: 0.2s;
 }

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -12,6 +17,10 @@ html {
 
 .d_none {
   display: none !important;
+}
+
+::placeholder {
+  color: rgba(209, 209, 209);
 }
 
 a {

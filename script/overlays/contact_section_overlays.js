@@ -21,9 +21,9 @@ function showEditContactOverlay() {
               <div class="contactForm">
                 <a class="closeButton"><span class="material-symbols-outlined"> close </span></a>
                 <div class="formSection">
-                  <input type="text" placeholder="Name" class="formInput" />
-                  <input type="email" placeholder="Email" class="formInput" />
-                  <input type="tel" placeholder="Phone" class="formInput" />
+                  <input type="text" placeholder="Name" class="formInput" requiered/>
+                  <input type="email" placeholder="Email" class="formInput" requiered/>
+                  <input type="tel" placeholder="Phone" class="formInput" requiered/>
                 </div>
                 <div class="formButtons">
                   <button type="button" class="deleteButton">Delete</button>
@@ -61,9 +61,9 @@ function showAddContactOverlay() {
               <div class="contactForm">
                 <a class="closeButton"><span class="material-symbols-outlined"> close </span></a>
                 <div class="formSection">
-                  <input type="text" placeholder="Name" class="formInput" />
-                  <input type="email" placeholder="Email" class="formInput" />
-                  <input type="tel" placeholder="Phone" class="formInput" />
+                  <input type="text" placeholder="Name" class="formInput" requiered/>
+                  <input type="email" placeholder="Email" class="formInput" requiered/>
+                  <input type="tel" placeholder="Phone" class="formInput" requiered/>
                 </div>
                 <div class="formButtons">
                   <button type="button" class="cancelButton">Cancel</button>

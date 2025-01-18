@@ -1,0 +1,9 @@
+body {
+  display: flex;
+  height: 100vh;
+}
+
+.impressum {
+  padding: 64px;
+  overflow-y: scroll;
+}

@@ -14,7 +14,7 @@ body {
     height: 100px;
 }
 
-.sign-up {
+.signUp {
     position: absolute;
     top: 50px;
     right: 50px;
@@ -26,7 +26,7 @@ body {
     gap: 35px;
 }
 
-.login-form {
+.loginForm {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@ body {
     padding: 10px 20px;
 }
 
-.sign-up-form {
+.signUpForm {
     position: relative;
     background-color: white;
     border-radius: 20px;
@@ -53,14 +53,14 @@ body {
     padding: 10px 20px;
 }
 
-.login-form h1, .sign-up-form h1 {
+.loginForm h1, .signUpForm h1 {
     background-color: white;
     margin-bottom: 20px;
     font-size: 42px;
     color: black;
 }
 
-.login-form h1::after, .sign-up-form h1::after {
+.loginForm h1::after, .signUpForm h1::after {
     content: "";
     display: block;
     margin: 10px auto 0;
@@ -69,26 +69,26 @@ body {
     background-color: rgba(42, 170, 226);
 }
 
-.arrow-back, .arrow-back img {
+.arrowBack, .arrowBack img {
     background-color: white;
     padding: 5px;
     height: 15px;
 }
 
-.arrow-back {
+.arrowBack {
     position: absolute;
     top: 50px;
     left: 40px;
 }
 
-.arrow-back img:hover {
+.arrowBack img:hover {
     cursor: pointer;
     background-color: rgb(222, 222, 222);
     border-radius: 50px;
     transition-duration: 0.2s;
 }
 
-.input-container {
+.inputContainer {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -96,7 +96,7 @@ body {
     gap: 15px;
 }
 
-.input-container input {
+.inputContainer input {
     cursor: pointer;
     background-color: white;
     width: 280px;
@@ -106,26 +106,26 @@ body {
     padding: 8px;
 }
 
-.input-container input:focus {
+.inputContainer input:focus {
     outline: none;
     border-color: rgba(42, 170, 226);
 }
 
-.input-email, .input-password, .input-name {
+.inputEmail, .inputPassword, .inputName {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 15px;
 }
 
-.input-email {
+.inputEmail {
     background-image: url(../assets/img/mail.svg);
 }
 
-.input-password {
+.inputPassword {
     background-image: url(../assets/img/lock.svg);
 }
 
-.input-name {
+.inputName {
     background-image: url(../assets/img/person.svg);
 }
 

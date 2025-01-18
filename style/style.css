@@ -15,7 +15,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.d_none {
+.dNone {
   display: none !important;
 }
 
@@ -32,7 +32,7 @@ a:hover {
   cursor: pointer;
 }
 
-.btn-dark {
+.btnDark {
   background-color: rgba(42, 54, 70);
   border: 1px solid rgba(42, 54, 70);
   border-radius: 5px;
@@ -41,7 +41,7 @@ a:hover {
   padding: 10px;
 }
 
-.btn-dark:hover {
+.btnDark:hover {
   cursor: pointer;
   background-color: rgba(42, 170, 226);
   border: 1px solid rgba(42, 170, 226);
@@ -49,7 +49,7 @@ a:hover {
   transition-duration: 0.2s;
 }
 
-.btn-light {
+.btnLight {
   background-color: white;
   border: 1px solid rgba(42, 54, 70);
   border-radius: 5px;
@@ -58,7 +58,7 @@ a:hover {
   padding: 10px;
 }
 
-.btn-light:hover {
+.btnLight:hover {
   cursor: pointer;
   border: 1px solid rgba(42, 170, 226);
   color: rgba(42, 170, 226);

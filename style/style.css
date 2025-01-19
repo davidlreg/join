@@ -191,26 +191,41 @@ header h3 {
 }
 
 .sidebar__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
   gap: 10px;
-  color: rgb(160, 161, 162);
   font-size: 12px;
   background-color: rgb(42, 54, 71);
 }
 
+.sidebar__footer a > p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #cdcdcd;
+}
+
 .sidebar__footer a:hover {
-  color: rgb(41, 171, 226);
   background-color: rgb(42, 54, 71);
   text-decoration: none;
+}
+
+.text {
+  transition: transform 0.05s ease-in-out; /* Übergangseffekt hinzufügen */
+}
+
+.text:hover {
+  color: #29abe2;
+  transform: scale(1.05); /* Vergrößert den Text leicht */
 }
 
 .privacy-policy,
 .legal-notice {
   background-color: rgb(42, 54, 71);
   color: white;
+  display: inline-block; /* Dadurch bleibt der Container unverändert */
+  overflow: hidden; /* Verhindert, dass der Hintergrund mit dem Text skaliert */
 }
 
 .nav-link.active {

@@ -6,9 +6,42 @@
     <title>Board</title>
     <link rel="icon" href="../assets/img/join_logo_small.png" />
     <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/board.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
   </head>
   <body onload="init()">
+    <div class="sidebar__container" id="sidebar-nav">
+      <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+      <div class="nav__container" id="navbar">
+        <a class="nav-link" href="/html/summary.html?active=summary"> <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary </a>
+        <a class="nav-link" href="/html/add_task.html?active=add-task"> <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task </a>
+        <a class="nav-link" href="/html/board.html?active=board"> <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />Board </a>
+        <a class="nav-link" href="/html/contacts.html?active=contacts"> <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact </a>
+      </div>
+      <div class="sidebar__footer">
+        <a class="privacy-policy" id="privacy-policy"><p class="text">Privacy Policy</p></a>
+        <a class="legal-notice" id="legal-notice" href="/html/legal_notice.html"><p class="text">Legal Notice</p></a>
+      </div>
+    </div>
+
+    <div class="rightSideWrapper">
+      <header>
+        <h3>Kanban Project Management Tool</h3>
+
+        <div class="topBarIcons">
+          <div onclick="">
+            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" />
+          </div>
+
+          <div onclick="" class="userIcon">
+            <a>XX</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+      </main>
+    </div>
     <script src="/script/script.js"></script>
   </body>
 </html>

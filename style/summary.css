@@ -1,0 +1,12 @@
+body {
+  display: flex;
+  flex-direction: row;
+}
+
+.rightSideWrapper {
+  width: 100%;
+}
+
+.main-div {
+  display: flex;
+}

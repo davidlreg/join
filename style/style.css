@@ -183,11 +183,6 @@ header h3 {
   align-items: center;
 }
 
-.nav__container a:hover {
-  background-color: rgb(41, 171, 226);
-  text-decoration: none;
-}
-
 .icon {
   width: 30px;
   height: 30px;
@@ -219,13 +214,27 @@ header h3 {
   color: white;
 }
 
-/* TEST SECTION */
-
-.nav-link {
-  transition: background-color 0.1s ease; /* Animation bei Farbwechsel */
+.nav-link.active {
+  background-color: #091931;
+  color: #ffffff;
+  pointer-events: none;
 }
 
-.nav-link.active {
-  background-color: #091931; /* Dunkelblauer Hintergrund */
-  color: #ffffff; /* Weißer Text für bessere Lesbarkeit */
+.nav-link.active:hover {
+  background-color: #091931;
+  cursor: default;
+}
+
+.nav-link.active img {
+  background-color: #091931;
+}
+
+.nav-link:hover {
+  background-color: #2a3d59;
+  text-decoration: none;
+}
+
+.nav-link:hover img {
+  background-color: #2a3d59;
+  text-decoration: none;
 }

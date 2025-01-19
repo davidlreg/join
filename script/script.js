@@ -1,19 +1,17 @@
 function init() {
-  checkNavigationLinksColor();
+  setActiveLinkFromURL();
 }
 
-function checkNavigationLinksColor() {
-  // Wähle alle Links in der Navigation aus
+function setActiveLinkFromURL() {
   const navLinks = document.querySelectorAll(".nav-link");
+  const urlParams = new URLSearchParams(window.location.search);
+  const activeParam = urlParams.get("active");
 
-  // Füge Event-Listener zu jedem Link hinzu
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      // Entferne die Klasse 'active' von allen Links
-      navLinks.forEach((nav) => nav.classList.remove("active"));
-
-      // Füge die Klasse 'active' nur dem geklickten Link hinzu
-      this.classList.add("active");
+  if (activeParam) {
+    navLinks.forEach((link) => {
+      if (link.href.includes(`?active=${activeParam}`)) {
+        link.classList.add("active");
+      }
     });
-  });
+  }
 }

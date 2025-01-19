@@ -5,5 +5,8 @@ body {
 
 .impressum {
   padding: 64px;
+}
+
+.privacyWrapper {
   overflow-y: scroll;
 }

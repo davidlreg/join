@@ -7,7 +7,13 @@
 }
 
 body {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #a8a8a8;
+  --sb-size: 8px;
   margin: 0;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 html {
@@ -123,8 +129,17 @@ header h3 {
   text-decoration: none;
 }
 
+.userIcon:hover,
+.userIcon:hover * {
+  background-color: #f6f7f8;
+}
+
 .questionIcon {
   background-color: #ffffff;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+}
+
+.questionIcon:hover {
+  transform: scale(1.2);
 }

@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="../style/style.css" />
     <link rel="stylesheet" href="../style/login.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
-    <script src="../script/script.js"></script>
+    <script src="../script/login.js"></script>
 </head>
 <body>
-    <img class="icon" src="../assets/img/join_icon_dark.svg" alt="Join Logo">
+    <div id="logoContainer" class="logoContainer animationBackground">
+        <img id="logo" class="logo animationLogo" src="../assets/img/join_icon_dark.svg" alt="Join Logo Dark">
+        <img id="logoMobile" class="logoMobile animationLogoMobile" src="../assets/img/Join_icon.svg" alt="Join Logo Light">
+    </div>
+    
     <div class="signUp">
         <p>Not a Join user?</p>
         <button class="btnDark" onclick="location.href='./sign_up.html'">Sign Up</button>
     </div>
     
-    <div class="loginForm">
+    <div class="logInForm">
         <h1 class="header">Log in</h1>
         <div class="inputContainer">
             <input type="text" name="email" placeholder="Email" class="inputEmail" required>

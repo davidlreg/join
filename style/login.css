@@ -7,15 +7,73 @@ body {
     height: 100vh;
 }
 
-.icon {
+.logoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.animationBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(246, 247, 248);
+    animation: fadeOut 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+    z-index: 1;
+}
+
+.logo {
     position: absolute;
     top: 50px;
     left: 50px;
     height: 80px;
 }
 
-.signUp {
+.logoMobile {
+    opacity: 0;
+}
+
+.animationLogo {
+    width: auto;
+    height: 250px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: flyToCorner 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes flyToCorner {
+    0% {
+        transform: translate(-50%, -50%);
+        height: 250px;
+        top: 50%;
+        left: 50%;
+    }
+    100% {
+        transform: translate(0, 0);
+        height: 80px;
+        top: 50px;
+        left: 50px;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        background-color: rgba(246, 247, 248);
+    }
+    100% {
+        background: none;
+    }
+}
+
+.signUp, .footer {
+    position: absolute;
+    z-index: 0;
+}
+
+.signUp {
     top: 50px;
     right: 50px;
     display: flex;
@@ -26,21 +84,18 @@ body {
     gap: 35px;
 }
 
-.loginForm {
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.logInForm {
     width: 400px;
     height: 300px;
-    padding: 10px 20px;
 }
 
 .signUpForm {
-    position: relative;
+    width: 400px;
+    height: 450px;
+}
+
+.logInForm, .signUpForm {
+    position: absolute;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -48,19 +103,18 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 450px;
     padding: 10px 20px;
+    z-index: 0;
 }
 
-.loginForm h1, .signUpForm h1 {
+.logInForm h1, .signUpForm h1 {
     background-color: white;
     margin-bottom: 20px;
     font-size: 42px;
     color: black;
 }
 
-.loginForm h1::after, .signUpForm h1::after {
+.logInForm h1::after, .signUpForm h1::after {
     content: "";
     display: block;
     margin: 10px auto 0;
@@ -191,7 +245,6 @@ span a:hover {
 }
 
 .footer {
-    position: absolute;
     bottom: 40px;
     font-size: 12px;
     color: rgba(180, 180, 180);
@@ -211,8 +264,66 @@ span a:hover {
 }
 
 @media (max-width: 600px) {
-    .icon {
+    .logo {
         height: 60px;
+    }
+    
+    .animationBackground {
+        background-color: rgba(42, 54, 70);
+    }
+
+    .animationLogo {
+        height: 200px;
+        opacity: 1;
+    }
+
+    .animationLogoMobile {
+        opacity: 1;
+    }
+
+    .animationLogoMobile {
+        width: auto;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: flyToCorner 0.5s ease-out forwards, loseOpacity 0.5s ease-out forwards;
+        animation-delay: 0.5s;
+    }
+    
+    @keyframes flyToCorner {
+        0% {
+            transform: translate(-50%, -50%);
+            height: 200px;
+            top: 50%;
+            left: 50%;
+        }
+        100% {
+            transform: translate(0, 0);
+            height: 60px;
+            top: 50px;
+            left: 50px;
+        }
+    }
+    
+    @keyframes fadeOut {
+        0% {
+            background-color: rgba(42, 54, 70);
+        }
+        100% {
+            background: none;
+        }
+    }
+
+    @keyframes loseOpacity {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+        
     }
 
     .signUp {
@@ -222,7 +333,7 @@ span a:hover {
         transform: translateX(-50%);
     }
 
-    .loginForm {
+    .logInForm {
         width: 250px;
         height: 350px;
     }
@@ -232,11 +343,11 @@ span a:hover {
         height: 400px;
     }
 
-    .loginForm h1, .signUpForm h1 {
+    .logInForm h1, .signUpForm h1 {
         font-size: 36px;
     }
     
-    .loginForm h1::after, .signUpForm h1::after {
+    .logInForm h1::after, .signUpForm h1::after {
         width: 80px;
     }
 

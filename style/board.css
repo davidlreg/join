@@ -1,0 +1,202 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+}
+
+header h3 {
+    font-weight: 520;
+    background-color: #FFFFFF;
+}
+
+.layoutContainer {
+    display: flex;
+    height: 100vh;
+}
+
+.mainContent {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.topBarIcons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #FFFFFF;
+}
+
+.topBarIcons div {
+    cursor: pointer;
+    background-color: #FFFFFF;
+}
+
+.questionIcon {
+    width: 30px;
+    height: 30px;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userIcon {
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userIcon a {
+    text-decoration: none;
+}
+
+/* Board CSS */
+
+.boardContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.boardContainer h2 {
+    font-size: 60px;
+}
+
+.boardControls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.boardInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boardInputContainer input[type="text"] {
+    border: none;
+    flex: 1;
+    outline: none;
+}
+
+.boardInputContainer button {
+    background-image: url("./../assets/icon/search_Button.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.boardInputContainer .separator {
+    padding: 0 10px;
+    color: #888;
+}
+
+.boardAddTask {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: rgba(42, 54, 70);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addTaskPlus {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("./../assets/icon/plus_button-add-task.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba(42, 54, 70);
+    transition: background-color 0.3s ease;
+}
+
+.boardAddTask:hover .addTaskPlus {
+    background-color: rgba(42, 170, 226); 
+}
+
+.addTaskPluss:hover {
+    background-color: rgba(42, 170, 226);
+}
+
+.addTaskPlus:hover ~ .boardAddTask {
+    background-color: rgba(42, 170, 226);
+}
+
+.boardAddTask:hover {
+    background-color: rgba(42, 170, 226);
+}
+
+.boardSectionsContainer {
+    display: flex;
+    padding: 20px 40px;
+    gap: 20px;
+}
+
+.boardSectionsSubContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+  
+.boardSection {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 50%;
+}
+
+.boardSection .sectionPlus {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("./../assets/icon/plus_button-section-black.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: background-image 0.3s ease;
+}
+
+.boardSection .sectionPlus:hover {
+    background-image: url("./../assets/icon/plus_button-section-blue.svg");
+}
+
+
+.boardButton {
+    background-color: rgb(231, 231, 231);
+    color: rgb(183, 183, 183);
+    border: 1px dashed rgb(199, 199, 199);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boardButton:hover {
+    background-color: rgb(220, 220, 220);
+    color: rgb(163, 163, 163);
+}

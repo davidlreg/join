@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/add_task.css">
+    <link rel="stylesheet" href="/style/sidebar.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="layoutContainer">
+        <div class="sidebar__container" id="sidebar-nav">
+            <img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo">
+            <div class="nav__container" id="navbar">
+                <a><img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery">Summary</a>
+                <a><img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task">Add_Task</a>
+                <a><img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board">Board</a>
+                <a><img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts">Contact</a>
+            </div>
+            <div class="sidebar__footer">
+                <a class="privacy-policy" id="privacy-policy">Privacy Policy</a>
+                <a class="legal-notice" id="legal-notice">Legal Notice</a>
+            </div>
+        </div>
+
+
+
+        <!-- Main Content -->
+        <div class="mainContent">
+            <header>
+                <h3>Kanban Project Management Tool</h3>
+
+                <div class="topBarIcons">
+                    <div onclick=""> ?
+                        <img id="questionIcon" class="questionIcon" src="">
+                    </div>
+
+                    <div onclick="" class="userIcon">
+                        <a>GU</a>
+                    </div>
+                </div>
+            </header>
+
+            <form id="taskForm">
+                <h1> Add task</h1>
+
+                <!-- Left Column -->
+
+                <div class="taskInputContainer">
+                    <div class="taskInputLeft">
+                        <div class="taskInput">
+                            <p>Title<span>*</span></p>
+                            <input required type="text" placeholder="Enter a title" class="addTaskInput">
+                        </div>
+                        <div class="taskInput">
+                            <p>Description</p>
+                            <input required type="text" placeholder="Enter a Description" class="addDescriptionInput">
+                        </div>
+                        <div class="taskInput">
+                            <p>Assigned to</p>
+                            <div onclick="" id="dropdown" class="dropdown">
+                                <p>Select contacts to assign</p>
+                                <div class="dropdownIcon">
+                                    <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="taskSeparator">
+
+                    <!-- Right Column -->
+                    <div class="taskiInputRight">
+                        <div class="taskInput">
+                            <p>Due Date <span>*</span></p>
+                            <input required type="text" placeholder="tt.mm.jjjj" class="addTaskInput">
+                        </div>
+                        <div class="taskInput">
+                            <p>Prio</p>
+                            <div class="priorityButton">
+                                <button type="button"> Urgent</button>
+                                <button type="button"> Medium</button>
+                                <button type="button"> Low</button>
+                            </div>
+                        </div>
+                        <div class="taskInput">
+                            <p>Category <span>*</span></p>
+                            <div onclick="" class="dropdownOptions">
+                                <p>Select task category</p>
+                                <span>↓</span>
+                            </div>
+                        </div>
+                        <div class="taskInput">
+                            <p>Subtasks</p>
+                            <div>
+                                <input required type="text" placeholder="Add new subtask" class="addTaskInput">
+                                <span>+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Actions -->
+                <div>
+                    <div class="required">
+                        <p>This field is required</p>
+                        <span>*</span>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="">Clear</button>
+                        <button onclick="">Create Task</button>
+                    </div>
+
+                </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    </form>
+
+</body>
+
+</html>

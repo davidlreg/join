@@ -11,7 +11,7 @@ body {
     position: absolute;
     top: 50px;
     left: 50px;
-    height: 100px;
+    height: 80px;
 }
 
 .signUp {
@@ -34,7 +34,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 450px;
+    width: 400px;
     height: 300px;
     padding: 10px 20px;
 }
@@ -49,7 +49,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 400px;
-    height: 500px;
+    height: 450px;
     padding: 10px 20px;
 }
 
@@ -77,8 +77,8 @@ body {
 
 .arrowBack {
     position: absolute;
-    top: 50px;
-    left: 40px;
+    top: 40px;
+    left: 30px;
 }
 
 .arrowBack img:hover {
@@ -149,14 +149,17 @@ body {
 
 .customBox:hover {
     background-image: url('../assets/img/hover_unchecked.svg');
+    background-size: cover;
 }
 
 .box:checked + label {
     background: url('../assets/img/checked.svg');
+    background-size: cover;
 }
 
 .box:checked + label:hover {
     background-image: url('../assets/img/hover_checked.svg');
+    background-size: cover;
 }
 
 
@@ -205,4 +208,61 @@ span a:hover {
     color: rgba(42, 170, 226);
     font-weight: bolder;
     transition-duration: 0.2s;
+}
+
+@media (max-width: 600px) {
+    .icon {
+        height: 60px;
+    }
+
+    .signUp {
+        top: auto;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .loginForm {
+        width: 250px;
+        height: 350px;
+    }
+    
+    .signUpForm {
+        width: 250px;
+        height: 400px;
+    }
+
+    .loginForm h1, .signUpForm h1 {
+        font-size: 36px;
+    }
+    
+    .loginForm h1::after, .signUpForm h1::after {
+        width: 80px;
+    }
+
+    .arrowBack {
+        top: 30px;
+        left: 20px;
+    }
+
+    .inputContainer input {
+        width: 250px;
+        font-size: 12px;
+    }
+
+    .checkbox {
+        align-items: end;
+    }
+
+    .customBox {
+        width: 18px;
+        height: 18px;
+    }
+    span, span a {
+        font-size: 12px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
 }

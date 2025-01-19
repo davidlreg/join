@@ -1,75 +1,208 @@
 body {
-    background-color: RGB(246, 247, 248);
-}
-
-.content-wrapper {
-    height: 100vh;
+    background-color: rgba(246, 247, 248);
     display: flex;
     flex-direction: column;
-}
-
-.head-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 50px 50px 0px 50px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .icon {
+    position: absolute;
+    top: 50px;
+    left: 50px;
     height: 100px;
 }
 
-.sign-up {
+.signUp {
+    position: absolute;
+    top: 50px;
+    right: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 50px;
     width: 280px;
     gap: 35px;
 }
 
-.main-div {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.login-wrapper, .sign-up-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-wrapper {
-    padding-top: 50px;
-}
-
-.login-form, .sign-up-form{
+.loginForm {
     background-color: white;
-    border-radius: 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-}
-
-.login-form {
-    width: 550px;
-    height: 350px;
-}
-
-.sign-up-form {
+    align-items: center;
+    justify-content: center;
     width: 450px;
+    height: 300px;
+    padding: 10px 20px;
+}
+
+.signUpForm {
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
     height: 500px;
+    padding: 10px 20px;
 }
 
-.foot-wrapper {
-    width: 100vw;
-    align-self: flex-end;
-    padding-bottom: 30px;
+.loginForm h1, .signUpForm h1 {
+    background-color: white;
+    margin-bottom: 20px;
+    font-size: 42px;
+    color: black;
 }
 
-.foot-links {
+.loginForm h1::after, .signUpForm h1::after {
+    content: "";
+    display: block;
+    margin: 10px auto 0;
+    width: 100px;
+    height: 2px;
+    background-color: rgba(42, 170, 226);
+}
+
+.arrowBack, .arrowBack img {
+    background-color: white;
+    padding: 5px;
+    height: 15px;
+}
+
+.arrowBack {
+    position: absolute;
+    top: 50px;
+    left: 40px;
+}
+
+.arrowBack img:hover {
+    cursor: pointer;
+    background-color: rgb(222, 222, 222);
+    border-radius: 50px;
+    transition-duration: 0.2s;
+}
+
+.inputContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.inputContainer input {
+    cursor: pointer;
+    background-color: white;
+    width: 280px;
+    border: 1px solid rgba(209, 209, 209);
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.inputContainer input:focus {
+    outline: none;
+    border-color: rgba(42, 170, 226);
+}
+
+.inputEmail, .inputPassword, .inputName {
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+.inputEmail {
+    background-image: url(../assets/img/mail.svg);
+}
+
+.inputPassword {
+    background-image: url(../assets/img/lock.svg);
+}
+
+.inputName {
+    background-image: url(../assets/img/person.svg);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.customBox {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../assets/img/unchecked.svg');
+    background-size: cover;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.customBox:hover {
+    background-image: url('../assets/img/hover_unchecked.svg');
+}
+
+.box:checked + label {
+    background: url('../assets/img/checked.svg');
+}
+
+.box:checked + label:hover {
+    background-image: url('../assets/img/hover_checked.svg');
+}
+
+
+span, span a {
+    background-color: white;
+    font-size: 14px;
+}
+
+span {
+    color: rgba(209, 209, 209);
+}
+
+span a {
+    color: rgba(42, 170, 226);
+}
+
+span a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+    transition-duration: 0.2s;
+}
+
+.buttons {
+    background-color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 50px;
+    padding-top: 30px;
+    gap: 20px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 40px;
+    font-size: 12px;
+    color: rgba(180, 180, 180);
+    gap: 20px;
+}
+
+.footer a {
+    color: rgba(180, 180, 180);
+    font-size: 12px;
+    margin: 0 5px;
+}
+
+.footer a:hover {
+    color: rgba(42, 170, 226);
+    font-weight: bolder;
+    transition-duration: 0.2s;
 }

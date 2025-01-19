@@ -130,31 +130,53 @@ body {
 }
 
 .checkbox {
-    background-color: white;
     display: flex;
-    gap: 10px;
-    font-size: 12px;
+    align-items: center;
+    background-color: white;
+    gap: 8px;
     margin-top: 20px;
 }
 
-label, label span, label a {
-    background-color: white;
-}
-
-label a {
-    color: rgba(42, 170, 226);
-}
-
-label a:hover {
-    text-decoration: underline;
-    font-weight: bolder;
+.customBox {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url('../assets/img/unchecked.svg');
+    background-size: cover;
+    cursor: pointer;
     transition-duration: 0.2s;
 }
 
-.box:hover {
-    cursor: pointer;
-    box-shadow: 0px 0px 2px 0px rgba(42, 170, 226, 0.5);
-    background-color: rgba(42, 170, 226, 0.5);
+.customBox:hover {
+    background-image: url('../assets/img/hover_unchecked.svg');
+}
+
+.box:checked + label {
+    background: url('../assets/img/checked.svg');
+}
+
+.box:checked + label:hover {
+    background-image: url('../assets/img/hover_checked.svg');
+}
+
+
+span, span a {
+    background-color: white;
+    font-size: 14px;
+}
+
+span {
+    color: rgba(209, 209, 209);
+}
+
+span a {
+    color: rgba(42, 170, 226);
+}
+
+span a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+    transition-duration: 0.2s;
 }
 
 .buttons {

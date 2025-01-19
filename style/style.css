@@ -2,7 +2,6 @@
   margin: 0px;
   padding: 0px;
   border: 0 solid transparent;
-  background-color: #f6f7f8;
   font-family: "Inter", sans-serif;
 }
 
@@ -20,8 +19,12 @@ html {
   scroll-behavior: smooth;
 }
 
-.d_none {
+.dNone {
   display: none !important;
+}
+
+::placeholder {
+  color: rgba(209, 209, 209);
 }
 
 a {
@@ -34,7 +37,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.btn-dark {
+.btnDark {
   background-color: rgba(42, 54, 70);
   border: 1px solid rgba(42, 54, 70);
   border-radius: 5px;
@@ -43,7 +46,7 @@ a:hover {
   padding: 10px;
 }
 
-.btn-dark:hover {
+.btnDark:hover {
   cursor: pointer;
   background-color: rgba(42, 170, 226);
   border: 1px solid rgba(42, 170, 226);
@@ -51,7 +54,8 @@ a:hover {
   transition-duration: 0.2s;
 }
 
-.btn-light {
+.btnLight {
+  background-color: white;
   border: 1px solid rgba(42, 54, 70);
   border-radius: 5px;
   color: rgba(42, 54, 70);
@@ -59,7 +63,7 @@ a:hover {
   padding: 10px;
 }
 
-.btn-light:hover {
+.btnLight:hover {
   cursor: pointer;
   border: 1px solid rgba(42, 170, 226);
   color: rgba(42, 170, 226);

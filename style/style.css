@@ -6,6 +6,10 @@
   font-family: "Inter", sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -55,4 +59,41 @@ a:hover {
   color: rgba(42, 170, 226);
   box-shadow: 0px 3px 5px 0px rgba(180, 180, 180);
   transition-duration: 0.2s;
+}
+
+/* Header Styling */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+header h3 {
+  font-weight: 520;
+}
+
+.topBarIcons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topBarIcons div {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.layoutContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  background-color: #f8f9fa;
+  overflow-y: auto;
 }

@@ -234,3 +234,46 @@ P {
 .rightSideWrapper {
   width: 100%;
 }
+
+/* Contact List Sytling */
+
+.contactList {
+  background-color: #ffffff;
+  width: 450px;
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0px;
+}
+
+.addContactButton {
+  width: 352px;
+  height: 56px;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-decoration: none !important;
+}
+
+.addContactButton:hover,
+.addContactButton:hover * {
+  background-color: #29abe2;
+}
+
+.addContactButton > p {
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #2a3647;
+}
+
+.addPersonIcon {
+  background-color: #2a3647;
+}

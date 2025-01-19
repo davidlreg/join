@@ -153,7 +153,7 @@ header h3 {
   justify-content: space-between;
   padding: 64px 0px;
   background-color: rgb(42, 54, 71);
-  width: 232px;
+  min-width: 232px;
 }
 
 .joinLogoBig {
@@ -217,4 +217,15 @@ header h3 {
 .legal-notice {
   background-color: rgb(42, 54, 71);
   color: white;
+}
+
+/* TEST SECTION */
+
+.nav-link {
+  transition: background-color 0.1s ease; /* Animation bei Farbwechsel */
+}
+
+.nav-link.active {
+  background-color: #091931; /* Dunkelblauer Hintergrund */
+  color: #ffffff; /* Weißer Text für bessere Lesbarkeit */
 }

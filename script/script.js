@@ -11,7 +11,6 @@ function setActiveLinkFromURL() {
     navLinks.forEach((link) => {
       if (new URL(link.href).searchParams.get("active") === activeParam) {
         link.classList.add("active");
-        nk.classList.add("active");
       }
     });
   }

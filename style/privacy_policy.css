@@ -4,10 +4,10 @@ body {
   background-color: #f8f9fa;
 }
 
-.impressum {
+main {
   padding: 64px;
 }
 
-.privacyWrapper {
+.rightSideWrapper {
   overflow-y: scroll;
 }

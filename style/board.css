@@ -1,7 +1,10 @@
 /* Board CSS */
+
 .mainContent {
-    background-color: #f6f7f8 !important;
-}
+    flex: 1;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+  }
 
 .boardContainer {
     display: flex;

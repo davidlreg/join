@@ -3,7 +3,6 @@
   padding: 0px;
   border: 0 solid transparent;
   font-family: "Inter", sans-serif;
-  background-color: #f6f7f8;
 }
 
 body {
@@ -108,12 +107,6 @@ header h3 {
   width: 100%;
 }
 
-.mainContent {
-  flex: 1;
-  background-color: #f8f9fa;
-  overflow-y: auto;
-}
-
 .userIcon {
   background-color: #ffffff;
   border: 2px solid black;
@@ -214,13 +207,14 @@ header h3 {
 
 .sidebar__footer > a {
   overflow: hidden;
+  padding: 6px 0px;
 }
 
 .sidebar__footer a > p {
   font-size: 16px;
   font-weight: 400;
   color: #cdcdcd;
-  background-color: #2a3647;
+  /* background-color: #2a3647; */
 }
 
 .sidebar__footer a:hover {
@@ -240,6 +234,10 @@ header h3 {
 .privacy-policy,
 .legal-notice {
   overflow: hidden;
+}
+
+.sidebar__footer.active a > p {
+  background-color: red;
 }
 
 .nav-link.active {

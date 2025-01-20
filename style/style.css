@@ -190,6 +190,11 @@ header h3 {
   align-items: center;
 }
 
+.nav__container p {
+  color: #d9d9d9;
+  align-items: center;
+}
+
 .icon {
   width: 30px;
   height: 30px;
@@ -207,6 +212,10 @@ header h3 {
   background-color: rgb(42, 54, 71);
 }
 
+.sidebar__footer > a {
+  overflow: hidden;
+}
+
 .sidebar__footer a > p {
   font-size: 16px;
   font-weight: 400;
@@ -219,11 +228,11 @@ header h3 {
   text-decoration: none;
 }
 
-.text {
+.zoom {
   transition: transform 0.05s ease-in-out;
 }
 
-.text:hover {
+.zoom:hover {
   color: #29abe2;
   transform: scale(1.05);
 }

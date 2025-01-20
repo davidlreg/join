@@ -77,7 +77,7 @@ function showAddContactOverlay() {
     `;
 }
 
-function showFloatingContact() {
+function showFloatingContactOverlay() {
   return `
   
   <div class="profileHeadSection">

@@ -4,70 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/fonts.css" />
     <link rel="stylesheet" href="/style/add_task.css">
-    <title>Add Task</title>
-    <link rel="icon" href="../assets/img/join_logo_small.png" />
+    <link rel="stylesheet" href="/style/style.css">
+    <title>Document</title>
 </head>
 
-<body onload="init()">
+<body>
     <!-- Sidebar -->
     <div class="layoutContainer">
-        <div class="layoutContainer">
-            <div class="sidebar__container" id="sidebar-nav">
-                <a class="joinLogoBig"
-                  ><img
-                    class="sidebar__join-image"
-                    src="/assets/img/Join_icon.svg"
-                    id="logo"
-                /></a>
-                <div class="nav__container" id="navbar">
-                  <a class="nav-link" href="/html/summary.html?active=summary">
-                    <img
-                      class="icon"
-                      src="/assets/icon/Summary_icon_grey.svg"
-                      id="summery"
-                    />Summary
-                  </a>
-                  <a class="nav-link" href="/html/add_task.html?active=add-task">
-                    <img
-                      class="icon"
-                      src="/assets/icon/Add_task_icon_grey.svg"
-                      id="add-task"
-                    />Add Task
-                  </a>
-                  <a class="nav-link" href="/html/board.html?active=board">
-                    <img
-                      class="icon"
-                      src="/assets/icon/Board_icon_grey.svg"
-                      id="board"
-                    />Board
-                  </a>
-                  <a class="nav-link" href="/html/contacts.html?active=contacts">
-                    <img
-                      class="icon"
-                      src="/assets/icon/Contacts_icon_grey.svg"
-                      id="contacts"
-                    />Contact
-                  </a>
-                </div>
-                <div class="sidebar__footer">
-                  <a
-                    class="privacy-policy"
-                    id="privacy-policy"
-                    href="/html/privacy_policy.html?active=privacy_policy"
-                    ><p class="text">Privacy Policy</p></a
-                  >
-                  <a
-                    class="legal-notice"
-                    id="legal-notice"
-                    href="/html/legal_notice.html?active=legal_notice"
-                    ><p class="text">Legal Notice</p></a
-                  >
-                </div>
-              </div>
-
+        <div class="sidebar__container" id="sidebar-nav">
+            <img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo">
+            <div class="nav__container" id="navbar">
+                <a><img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery">Summary</a>
+                <a><img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task">Add_Task</a>
+                <a><img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board">Board</a>
+                <a><img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts">Contact</a>
+            </div>
+            <div class="sidebar__footer">
+                <a class="privacy-policy" id="privacy-policy">Privacy Policy</a>
+                <a class="legal-notice" id="legal-notice">Legal Notice</a>
+            </div>
+        </div>
 
 
 
@@ -75,17 +32,17 @@
         <div class="mainContent">
             <header>
                 <h3>Kanban Project Management Tool</h3>
-        
+
                 <div class="topBarIcons">
-                  <div onclick="">
-                    <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" />
-                  </div>
-        
-                  <div onclick="" class="userIcon">
-                    <a>XX</a>
-                  </div>
+                    <div onclick=""> 
+                        <img id="questionIcon" class="questionIcon" src="/assets/img/help.png">
+                    </div>
+
+                    <div onclick="" class="userIcon">
+                        <a style="color: rgb(41, 171, 226);">GU</a>
+                    </div>
                 </div>
-              </header>
+            </header>
 
             <form id="taskForm">
                 <h1> Add task</h1>
@@ -105,7 +62,7 @@
                         <div class="taskInput">
                             <p>Assigned to</p>
                             <div onclick="" id="dropdown" class="dropdown">
-                                <p>Select contacts to assign</p>
+                                <div class="selectContainer">Select contacts to assign</div>
                                 <div class="dropdownIcon">
                                     <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
                                 </div>
@@ -116,45 +73,67 @@
                     <hr class="taskSeparator">
 
                     <!-- Right Column -->
-                    <div class="taskiInputRight">
+                    <div class="taskInputRight">
                         <div class="taskInput">
                             <p>Due Date <span>*</span></p>
-                            <input required type="text" placeholder="tt.mm.jjjj" class="addTaskInput">
+                            <input required type="date" placeholder="tt.mm.jjjj" class="addTaskInput">
                         </div>
                         <div class="taskInput">
                             <p>Prio</p>
                             <div class="priorityButton">
-                                <button type="button"> Urgent</button>
-                                <button type="button"> Medium</button>
-                                <button type="button"> Low</button>
+                                <button type="button"> Urgent
+                                    <img src="/assets/img/Prio alta.png">
+                                </button>
+                                <button type="button"> Medium
+                                    <img src="/assets/img/equal-sign.png">
+                                </button>
+                                <button type="button"> Low
+                                    <img src="/assets/img/Prio baja.png">
+                                </button>
                             </div>
                         </div>
                         <div class="taskInput">
                             <p>Category <span>*</span></p>
-                            <div onclick="" class="dropdownOptions">
-                                <p>Select task category</p>
-                                <span>↓</span>
+                            <div onclick="" class="dropdown">
+                                <div class="selectContainer">Select task category</div>
+                                <div class="dropdownIcon">
+                                    <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                                </div>
                             </div>
                         </div>
                         <div class="taskInput">
                             <p>Subtasks</p>
-                            <div>
+                            <div class="subtaskWrapper">
                                 <input required type="text" placeholder="Add new subtask" class="addTaskInput">
-                                <span>+</span>
+                                <div class="iconWrapper">
+                                    <div class="addSubtask">
+                                        <img src="/assets/img/Subtasks icons11.png">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
                 </div>
                 <!-- Footer Actions -->
-                <div>
-                    <div class="required">
-                        <p>This field is required</p>
+                <div class="requiredAction">
+                    <div class="requiredText">
                         <span>*</span>
+                        This field is require
+                        
                     </div>
 
                     <div class="actions">
-                        <button onclick="">Clear</button>
-                        <button onclick="">Create Task</button>
+                        <button class="clearButton" onclick="">Clear
+                            <img src="/assets/img/iconoir_cancel.png">
+                        </button>
+                        <button class="createButton" onclick="">Create Task
+                            <img src="/assets/img/check.png">
+                        </button>
                     </div>
 
                 </div>
@@ -167,7 +146,7 @@
 
 
     </form>
-    <script src="/script/script.js"></script>
+
 </body>
 
 </html>

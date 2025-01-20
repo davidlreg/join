@@ -1,4 +1,7 @@
 /* Board CSS */
+.mainContent {
+    background-color: #f6f7f8 !important;
+}
 
 .boardContainer {
     display: flex;
@@ -26,12 +29,14 @@
     border-radius: 10px;
     padding: 5px;
     border: 1px solid rgb(168, 168, 168);
+    
 }
 
 .boardInputContainer input[type="text"] {
     border: none;
     flex: 1;
     outline: none;
+    background-color: #ffffff;
 }
 
 .boardInputContainer button {
@@ -52,6 +57,7 @@
 .boardInputContainer .separator {
     padding: 0 10px;
     color: #888;
+    background-color: #ffffff;
 }
 
 .boardAddTask {
@@ -65,34 +71,18 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+    text-decoration: none !important;
+}  
 
-.addTaskPlus {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-image: url("./../assets/icon/plus_button-add-task.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+.boardAddTask p, 
+.boardAddTask img {
     background-color: rgba(42, 54, 70);
-    transition: background-color 0.3s ease;
 }
 
-.boardAddTask:hover .addTaskPlus {
-    background-color: rgba(42, 170, 226); 
-}
-
-.addTaskPluss:hover {
-    background-color: rgba(42, 170, 226);
-}
-
-.addTaskPlus:hover ~ .boardAddTask {
-    background-color: rgba(42, 170, 226);
-}
-
-.boardAddTask:hover {
-    background-color: rgba(42, 170, 226);
+.boardAddTask:hover,
+.boardAddTask:hover * {
+  background-color: #29abe2;
+  transition: inherit;
 }
 
 .boardSectionsContainer {

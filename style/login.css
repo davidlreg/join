@@ -1,5 +1,4 @@
 body {
-    background-color: rgba(246, 247, 248);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -278,6 +277,7 @@ span a:hover {
     }
 
     .animationLogoMobile {
+        background: transparent !important;
         opacity: 1;
     }
 

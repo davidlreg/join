@@ -1,82 +1,3 @@
-<<<<<<< HEAD
-body {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .rightSideWrapper {
-    width: 100%;
-  }
-  
-  .main-div {
-    display: flex;
-  }
-  
-=======
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    background-color: #FFFFFF;
-}
-
-header h3 {
-    font-weight: 520;
-    background-color: #FFFFFF;
-}
-
-.layoutContainer {
-    display: flex;
-    height: 100vh;
-}
-
-.mainContent {
-    flex: 1;
-    overflow-y: auto;
-}
-
-.topBarIcons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: #FFFFFF;
-}
-
-.topBarIcons div {
-    cursor: pointer;
-    background-color: #FFFFFF;
-}
-
-.questionIcon {
-    width: 30px;
-    height: 30px;
-    background-color: #FFFFFF;
-    color: #FFFFFF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.userIcon {
-    width: 40px;
-    height: 40px;
-    background-color: #FFFFFF;
-    border: 2px solid black;
-    color: #000000;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.userIcon a {
-    text-decoration: none;
-}
-
 /* Board CSS */
 
 .boardContainer {
@@ -102,6 +23,9 @@ header h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid rgb(168, 168, 168);
 }
 
 .boardInputContainer input[type="text"] {
@@ -115,8 +39,14 @@ header h3 {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 10px 15px;
+    padding: 15px 15px;
+    background-color: white;
+}
+
+.boardInputContainer button:hover {
+    background-color: #f6f7f8;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .boardInputContainer .separator {
@@ -200,7 +130,6 @@ header h3 {
     background-image: url("./../assets/icon/plus_button-section-blue.svg");
 }
 
-
 .boardButton {
     background-color: rgb(231, 231, 231);
     color: rgb(183, 183, 183);
@@ -215,4 +144,3 @@ header h3 {
     background-color: rgb(220, 220, 220);
     color: rgb(163, 163, 163);
 }
->>>>>>> stefan/board

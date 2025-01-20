@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,4 +91,103 @@
     </div>
     <script src="/script/script.js"></script>
   </body>
+=======
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Board</title>
+        <link rel="icon" href="../assets/img/join_logo_small.png" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../style/style.css" />
+        <link rel="stylesheet" href="./../style/sidebar.css" />
+        <link rel="stylesheet" href="./../style/board.css" />
+        <link rel="icon" href="/assets/img/join_logo_small.png" />
+
+        <!-- JavaScript -->
+        <script src="../script/script.js" defer></script>
+        <script src="./../script/board.js" defer></script>
+  
+    </head>
+    <body>
+        <div class="layoutContainer">
+            <div class="sidebarContainer" id="sidebar-nav">
+                <img class="sidebarJoinImage" src="/assets/img/Join_icon.svg" id="logo">
+                <div class="navContainer" id="navbar">
+                    <a><img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery">Summary</a>
+                    <a><img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task">Add_Task</a>
+                    <a><img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board">Board</a>
+                    <a><img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts">Contact</a>
+                </div>
+                <div class="sidebarFooter">
+                    <a class="privacyPolicy" id="privacy-policy">Privacy Policy</a>
+                    <a class="legalNotice" id="legal-notice">Legal Notice</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mainContent">
+                <header>
+                    <h3>Kanban Project Management Tool</h3>
+
+                    <div class="topBarIcons">
+                        <div onclick="">
+                            <img id="questionIcon" class="questionIcon" src="./../assets/icon/help.svg">
+                        </div>
+                        <div onclick="" >
+                            <a id="userIcon" class="userIcon">GU</a>
+                        </div>
+                    </div>
+                </header>
+                <div class="boardContainer">
+                    <h2>Board</h2>
+                    <div class="boardControls">
+                        <div class="boardInputContainer btn-light">
+                        <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
+                        <span class="separator">|</span>
+                        <button></button>
+                        </div>
+                        <div>
+                        <button class="boardAddTask btn-dark">
+                            Add Task
+                            <span class="addTaskPlus"></span> 
+                        </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="boardSectionsContainer">
+                    <div class="boardSectionsSubContainer">
+                        <div class="boardSection">To do
+                            <div class="sectionPlus"></div>
+                        </div>
+                        <button class="boardButton">No tasks To Do</button>
+                    </div>
+                    <div class="boardSectionsSubContainer">
+                        <div class="boardSection">In progress
+                            <div class="sectionPlus"></div>
+                        </div>
+                        <button class="boardButton">No tasks In Progress</button>
+                    </div>
+                    <div class="boardSectionsSubContainer">
+                        <div class="boardSection">Await
+                            <div class="sectionPlus"></div>
+                        </div>
+                        <button class="boardButton">No tasks Awaiting</button>
+                    </div>
+                    <div class="boardSectionsSubContainer">
+                        <div class="boardSection">Done
+                            <div class="sectionPlus"></div>
+                        </div>
+                        <button class="boardButton">No tasks Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+>>>>>>> stefan/board
 </html>

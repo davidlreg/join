@@ -450,3 +450,26 @@ main {
 .blue {
   color: #70c5ea !important;
 }
+
+/* Contact Template Styling */
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.contact > img {
+  width: 42px;
+  height: 42px;
+}
+
+.personalInformationShort > p {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 24px;
+}
+
+.small {
+  font-size: 16px !important;
+}

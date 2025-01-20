@@ -128,3 +128,11 @@ function showFloatingContactOverlay() {
   
   `;
 }
+
+function renderContactTemplate() {
+  return `
+  
+  
+  
+  `;
+}

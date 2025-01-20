@@ -5,8 +5,10 @@ body {
   background-color: #f8f9fa;
 }
 
+.privacyWrapper {
+  overflow-y: scroll;
+}
+
 .impressum {
   padding: 64px;
 }
-
-

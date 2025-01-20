@@ -11,3 +11,7 @@ body {
 .main-div {
   display: flex;
 }
+
+main {
+  padding: 64px;
+}

@@ -159,6 +159,10 @@ form#taskForm h1 {
   transition: background-color 0.1s ease;
 }
 
+.dropdownIcon img {
+  background-color: transparent;
+}
+
 .dropdownIcon:hover {
   background-color: #D9D9D9;
   display: flex;
@@ -192,11 +196,24 @@ form#taskForm h1 {
   cursor: pointer;
 }
 
+button img {
+  background-color: transparent;
+}
+
+
 .subtaskWrapper {
   display: flex;
   align-items: center;
   position: relative;
   width: 102%;
+}
+
+.addSubtask {
+  background-color: #fff;
+}
+
+.addSubtask img {
+  background-color: #fff;
 }
 
 .addSubtask img:hover{

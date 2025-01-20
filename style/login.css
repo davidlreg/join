@@ -6,8 +6,19 @@ body {
     height: 100vh;
 }
 
-.logoContainer {
+.logoContainer, .logo, .signUp, .footer, .animationLogo, .logInForm, .signUpForm, .arrowBack {
     position: absolute;
+}
+
+.signUp, .logInForm {
+    z-index: 0;
+}
+
+.logoContainer, .logo, .logoMobile, .animationLogo {
+    background-color: transparent;
+}
+
+.logoContainer {
     top: 0;
     left: 0;
 }
@@ -22,7 +33,6 @@ body {
 }
 
 .logo {
-    position: absolute;
     top: 50px;
     left: 50px;
     height: 80px;
@@ -35,7 +45,6 @@ body {
 .animationLogo {
     width: auto;
     height: 250px;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -67,11 +76,6 @@ body {
     }
 }
 
-.signUp, .footer {
-    position: absolute;
-    z-index: 0;
-}
-
 .signUp {
     top: 50px;
     right: 50px;
@@ -94,7 +98,6 @@ body {
 }
 
 .logInForm, .signUpForm {
-    position: absolute;
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -129,7 +132,6 @@ body {
 }
 
 .arrowBack {
-    position: absolute;
     top: 40px;
     left: 30px;
 }
@@ -271,19 +273,14 @@ span a:hover {
         background-color: rgba(42, 54, 70);
     }
 
-    .animationLogo {
+    .animationLogo, .animationLogoMobile {
         height: 200px;
         opacity: 1;
     }
 
     .animationLogoMobile {
-        background: transparent !important;
-        opacity: 1;
-    }
-
-    .animationLogoMobile {
+        background-color: transparent;
         width: auto;
-        height: 200px;
         position: absolute;
         top: 50%;
         left: 50%;

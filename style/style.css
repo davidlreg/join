@@ -204,7 +204,6 @@ header h3 {
   text-align: center;
   flex-direction: column;
   gap: 10px;
-  font-size: 12px;
   background-color: rgb(42, 54, 71);
 }
 
@@ -221,20 +220,20 @@ header h3 {
 }
 
 .text {
-  transition: transform 0.05s ease-in-out; /* Übergangseffekt hinzufügen */
+  transition: transform 0.05s ease-in-out;
 }
 
 .text:hover {
   color: #29abe2;
-  transform: scale(1.05); /* Vergrößert den Text leicht */
+  transform: scale(1.05);
 }
 
 .privacy-policy,
 .legal-notice {
   background-color: rgb(42, 54, 71);
   color: white;
-  display: inline-block; /* Dadurch bleibt der Container unverändert */
-  overflow: hidden; /* Verhindert, dass der Hintergrund mit dem Text skaliert */
+  display: inline-block;
+  overflow: hidden;
 }
 
 .nav-link.active {

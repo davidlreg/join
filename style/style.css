@@ -230,14 +230,11 @@ header h3 {
 
 .privacy-policy,
 .legal-notice {
-  background-color: rgb(42, 54, 71);
-  color: white;
-  display: inline-block;
   overflow: hidden;
 }
 
 .nav-link.active {
-  background-color: #091931;
+  background-color: #091931 !important;
   color: #ffffff;
   pointer-events: none;
 }

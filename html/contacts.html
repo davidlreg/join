@@ -11,16 +11,51 @@
   </head>
   <body onload="init()">
     <div class="sidebar__container" id="sidebar-nav">
-      <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+      <a class="joinLogoBig"
+        ><img
+          class="sidebar__join-image"
+          src="/assets/img/Join_icon.svg"
+          id="logo"
+      /></a>
       <div class="nav__container" id="navbar">
-        <a class="nav-link" href="/html/summary.html?active=summary"> <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary </a>
-        <a class="nav-link" href="/html/add_task.html?active=add-task"> <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task </a>
-        <a class="nav-link" href="/html/board.html?active=board"> <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />Board </a>
-        <a class="nav-link" href="/html/contacts.html?active=contacts"> <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact </a>
+        <a class="nav-link" href="/html/summary.html?active=summary">
+          <img
+            class="icon"
+            src="/assets/icon/Summary_icon_grey.svg"
+            id="summery"
+          />Summary
+        </a>
+        <a class="nav-link" href="/html/add_task.html?active=add-task">
+          <img
+            class="icon"
+            src="/assets/icon/Add_task_icon_grey.svg"
+            id="add-task"
+          />Add Task
+        </a>
+        <a class="nav-link" href="/html/board.html?active=board">
+          <img
+            class="icon"
+            src="/assets/icon/Board_icon_grey.svg"
+            id="board"
+          />Board
+        </a>
+        <a class="nav-link" href="/html/contacts.html?active=contacts">
+          <img
+            class="icon"
+            src="/assets/icon/Contacts_icon_grey.svg"
+            id="contacts"
+          />Contact
+        </a>
       </div>
       <div class="sidebar__footer">
-        <a class="nav-link" href="/html/privacy_policy.html?active=privacy_policy"><p class="zoom">Privacy Policy</p></a>
-        <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"><p class="zoom">Legal Notice</p></a>
+        <a
+          class="nav-link"
+          href="/html/privacy_policy.html?active=privacy_policy"
+          ><p class="zoom">Privacy Policy</p></a
+        >
+        <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"
+          ><p class="zoom">Legal Notice</p></a
+        >
       </div>
     </div>
 
@@ -30,7 +65,11 @@
 
         <div class="topBarIcons">
           <div onclick="">
-            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" />
+            <img
+              id="questionIcon"
+              class="questionIcon"
+              src="/assets/icon/Help_icon_grey.svg"
+            />
           </div>
 
           <div onclick="" class="userIcon">
@@ -40,16 +79,15 @@
       </header>
       <main>
         <div class="contactList">
-          <a
-            class="addContactButton"
-            onclick="console.log('Test Log');
-          "
-          >
+          <a class="addContactButton" onclick="openAddContactOverlay()" ;>
             <p>Add new contact</p>
             <img class="addPersonIcon" src="/assets/icon/Add_person.svg" />
           </a>
-
-          <div class="contact">
+          <div id="overlayContainer"></div>
+          <div
+            class="contact"
+            onclick="console.log('Hier Funktion zum FLoating-Contact-Template öfnnen einfügen!');"
+          >
             <img src="/assets/img/default_contact_picture.png" />
             <div class="personalInformationShort">
               <p>XXXXX XXXXX</p>
@@ -64,10 +102,14 @@
             <p>Better with a team</p>
           </div>
 
-          <div class="floatingContactContainer" id="floatingContactContainer"></div>
+          <div
+            class="floatingContactContainer"
+            id="floatingContactContainer"
+          ></div>
         </div>
       </main>
     </div>
     <script src="/script/script.js"></script>
+    <script src="/script/overlays/contact_section_overlays.js"></script>
   </body>
 </html>

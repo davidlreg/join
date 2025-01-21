@@ -130,17 +130,18 @@ P {
   background-color: #ffffff;
 }
 
-.closeButton:hover {
+.closeButton:hover > a {
   text-decoration: none;
 }
 
+.closeButton a:hover svg {
+  background-color: #EEEEEE;
+  border-radius: 50%;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
 .closeButton > svg {
   width: 24px;
   height: 24px;
-}
-
-.closeButton > span {
-  background-color: #ffffff;
 }
 
 .contactPicture {

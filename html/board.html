@@ -1,78 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Board</title>
-        <link rel="icon" href="../assets/img/join_logo_small.png" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
-    
-        <!-- CSS -->
-        <link rel="stylesheet" href="./../style/style.css" />
-        <link rel="stylesheet" href="./../style/sidebar.css" />
-        <link rel="stylesheet" href="./../style/board.css" />
-        <link rel="icon" href="/assets/img/join_logo_small.png" />
 
-        <!-- JavaScript -->
-        <script src="../script/script.js" defer></script>
-        <script src="./../script/board.js" defer></script>
-  
-    </head>
-    <body>
-        <div class="layoutContainer">
-            <body onload="init()">
-                <div class="sidebar__container" id="sidebar-nav">
-                    <a class="joinLogoBig"
-                        ><img
-                        class="sidebar__join-image"
-                        src="/assets/img/Join_icon.svg"
-                        id="logo"
-                    /></a>
-                    <div class="nav__container" id="navbar">
-                        <a class="nav-link" href="/html/summary.html?active=summary">
-                            <img
-                                class="icon"
-                                src="/assets/icon/Summary_icon_grey.svg"
-                                id="summery"
-                                />Summary
-                        </a>
-                        <a class="nav-link" href="/html/add_task.html?active=add-task">
-                            <img
-                                class="icon"
-                                src="/assets/icon/Add_task_icon_grey.svg"
-                                id="add-task"
-                                />Add Task
-                        </a>
-                        <a class="nav-link" href="/html/board.html?active=board">
-                            <img
-                                class="icon"
-                                src="/assets/icon/Board_icon_grey.svg"
-                                id="board"
-                                />Board
-                        </a>
-                        <a class="nav-link" href="/html/contacts.html?active=contacts">
-                            <img
-                                class="icon"
-                                src="/assets/icon/Contacts_icon_grey.svg"
-                                id="contacts"
-                                />Contact
-                        </a>
-                    </div>
-                    <div class="sidebar__footer">
-                        <a
-                            class="privacy-policy"
-                            id="privacy-policy"
-                            href="/html/privacy_policy.html?active=privacy_policy">
-                            <p class="text">Privacy Policy</p>
-                        </a>
-                        <a
-                            class="legal-notice"
-                            id="legal-notice"
-                            href="/html/legal_notice.html?active=legal_notice">
-                            <p class="text">Legal Notice</p>
-                        </a>
-                    </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board</title>
+    <link rel="icon" href="../assets/img/join_logo_small.png" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./../style/style.css" />
+    <link rel="stylesheet" href="./../style/sidebar.css" />
+    <link rel="stylesheet" href="./../style/board.css" />
+    <link rel="stylesheet" href="/style/add_task.css">
+    <link rel="stylesheet" href="/assets/img/join_logo_small.png" />
+
+    <!-- JavaScript -->
+    <script src="../script/script.js" defer></script>
+    <script src="./../script/board.js" defer></script>
+    <script src="/script/overlays/add_task_overlay.js"></script>
+    <script src="/script/templates.js"></script>
+
+</head>
+
+<body>
+    <div class="layoutContainer">
+
+        <body onload="init()">
+            <div class="sidebar__container" id="sidebar-nav">
+                <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+                <div class="nav__container" id="navbar">
+                    <a class="nav-link" href="/html/summary.html?active=summary">
+                        <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary
+                    </a>
+                    <a class="nav-link" href="/html/add_task.html?active=add-task">
+                        <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task
+                    </a>
+                    <a class="nav-link" href="/html/board.html?active=board">
+                        <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />Board
+                    </a>
+                    <a class="nav-link" href="/html/contacts.html?active=contacts">
+                        <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact
+                    </a>
                 </div>
+                <div class="sidebar__footer">
+                    <a class="privacy-policy" id="privacy-policy"
+                        href="/html/privacy_policy.html?active=privacy_policy">
+                        <p class="text">Privacy Policy</p>
+                    </a>
+                    <a class="legal-notice" id="legal-notice" href="/html/legal_notice.html?active=legal_notice">
+                        <p class="text">Legal Notice</p>
+                    </a>
+                </div>
+            </div>
 
             <!-- Main Content -->
             <div class="mainContent">
@@ -83,28 +64,37 @@
                         <div onclick="">
                             <img id="questionIcon" class="questionIcon" src="./../assets/icon/help.svg">
                         </div>
-                        <div onclick="" >
+                        <div onclick="">
                             <a id="userIcon" class="userIcon">GU</a>
                         </div>
                     </div>
                 </header>
+
+                <!--Add Task Overlay-->
+                <div id="addTaskOverlay" class="addTaskOverlay hidden">
+                    <div class="overlayTaskContent">
+
+                        <button class="closeTaskOverlay" onclick="closeTaskOverlay()">X</button>
+                    </div>
+                </div>
+
                 <div class="boardContainer">
                     <h2>Board</h2>
                     <div class="boardControls">
                         <div class="boardInputContainer btnLight">
-                        <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
-                        <span class="separator">|</span>
-                        <button></button>
+                            <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
+                            <span class="separator">|</span>
+                            <button></button>
                         </div>
                         <div>
-                        <button class="boardAddTask btnDark">
-                            Add Task
-                            <span class="addTaskPlus"></span> 
-                        </button>
+                            <button onclick="addTaskOverlay()" class="boardAddTask btnDark">
+                                Add Task
+                                <span class="addTaskPlus"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="boardSectionsContainer">
                     <div class="boardSectionsSubContainer">
                         <div class="boardSection">To do
@@ -132,9 +122,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
 
 
 
-    </body>
+</body>
+
 </html>

@@ -1,0 +1,154 @@
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Background-Overlay */
+.overlayBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Main Content Page Styling */
+.rightSideWrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #f6f7f8;
+}
+
+/* Floating Contact Styling*/
+.floatingContactContainer {
+  padding: 32px 0px 0px 64px;
+}
+
+.profileInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.profileInformation > p {
+  font-size: 46px;
+  background-color: #f6f7f8;
+  color: #000000;
+}
+
+.profileHeadSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 22px;
+}
+
+.profileWrapper {
+  display: flex;
+  gap: 54px;
+}
+
+.editIcon,
+.deleteIcon {
+  display: flex;
+  flex-direction: row;
+}
+
+.editIcon > a:hover,
+.deleteIcon > a:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.editIcon > a {
+  display: flex;
+  gap: 8px;
+}
+
+.editIcon > a:hover * {
+  color: #70c5ea !important;
+}
+
+.deleteIcon > a {
+  display: flex;
+  gap: 8px;
+}
+
+.editIcon > a > p {
+  color: #000000;
+  font-size: 16px;
+  background-color: #f6f7f8;
+}
+
+.deleteIcon > a > p {
+  color: #000000;
+  font-size: 16px;
+  background-color: #f6f7f8;
+}
+
+.editIcon > a:hover p {
+  color: #70c5ea !important;
+  fill: #70c5ea;
+}
+
+.deleteIcon > a:hover p {
+  color: #70c5ea !important;
+  fill: #70c5ea;
+}
+
+.editIcon > a:hover svg {
+  fill: #70c5ea;
+}
+
+.deleteIcon svg path {
+  fill: #2a3647;
+}
+
+.deleteIcon > a:hover svg path {
+  fill: #29abe2;
+}
+
+.symbols {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.contactInformation {
+  padding: 26px 0px;
+}
+
+.contactInformation > p {
+  font-size: 20px;
+  font-weight: 400;
+  background-color: #f6f7f8;
+  color: #000000;
+}
+
+.bottomPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 22px;
+}
+
+.bottomPart > p {
+  font-size: 16px;
+  background-color: #f6f7f8;
+  color: #000000;
+}
+
+.blue {
+  color: #70c5ea !important;
+  fill: #70c5ea !important;
+}

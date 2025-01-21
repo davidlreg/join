@@ -1,0 +1,189 @@
+/* Edit Contact Section */
+.editContactOverlay {
+  width: 1200px;
+  height: 600px;
+  background-color: #ffffff;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.editContactLeftSide {
+  width: 450px;
+  height: 100%;
+  background-color: #2a3647;
+  border-radius: 32px 0px 0px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftSideContentWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #2a3647;
+  gap: 24px;
+  padding: 0px 32px;
+}
+
+.editContactRightSide {
+  /* width: 800px; */
+  height: 100%;
+}
+
+.logoContainer {
+  width: 100%;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.joinLogoSmall {
+  background-color: #2a3647;
+}
+
+h1 {
+  color: #ffffff;
+  background-color: #2a3647;
+  font-weight: 700;
+  font-size: 60px;
+}
+
+P {
+  color: #ffffff;
+  background-color: #2a3647;
+  font-size: 28px;
+}
+
+.editContactHeadline {
+  width: 100%;
+  background-color: #2a3647;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.blueUnderline {
+  width: 26%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #29abe2;
+}
+
+.rightSideContentWrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0px 32px 32px 0px;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formInput {
+  border: 1px solid gray;
+  width: 422px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 0px 8px;
+  font-size: 18px;
+}
+
+.formInput:focus {
+  outline-color: #29abe2;
+}
+
+.contactForm {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 64px;
+  gap: 64px;
+}
+
+.closeButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #ffffff;
+}
+
+.closeButton:hover > a {
+  text-decoration: none;
+}
+
+.closeButton a:hover svg {
+  background-color: #eeeeee;
+  border-radius: 50%;
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+.closeButton > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contactPicture {
+  background-color: #ffffff;
+  margin: 0px 0px 0px 64px;
+}
+
+.contactPicture > img {
+  background-color: #ffffff;
+  width: 120px;
+  height: 120px;
+}
+
+.formSection {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  background-color: #ffffff;
+}
+
+.formButtons > button {
+  padding: 18px;
+  border: 1px solid #2a3647;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.deleteButton {
+  color: #2a3647;
+  font-weight: bold;
+  background-color: #ffffff;
+}
+
+.saveButton {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #2a3647;
+}
+
+.deleteButton,
+.saveButton,
+.cancelButton,
+.createContactButton {
+  cursor: pointer;
+}

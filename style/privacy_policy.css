@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+main {
+  padding: 64px;
+}
+
+.rightSideWrapper {
+  overflow-y: scroll;
+}

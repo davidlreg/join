@@ -5,6 +5,7 @@ html {
 
 body {
   margin: 0;
+  display: flex;
 }
 
 header {
@@ -43,7 +44,6 @@ header h3 {
   justify-content: center;
   align-items: center;
   border-width: 3px;
-  font-size: 20px;
 }
 
 .userIcon:hover {
@@ -65,7 +65,7 @@ header h3 {
 /* Task Form*/
 form#taskForm {
 
-  padding: 60px 20px 0 70px;
+  padding: 64px;
 
 
 }

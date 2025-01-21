@@ -3,7 +3,6 @@
   padding: 0px;
   border: 0 solid transparent;
   font-family: "Inter", sans-serif;
-  background-color: #f6f7f8;
 }
 
 body {
@@ -108,12 +107,6 @@ header h3 {
   width: 100%;
 }
 
-.mainContent {
-  flex: 1;
-  background-color: #f8f9fa;
-  overflow-y: auto;
-}
-
 .userIcon {
   background-color: #ffffff;
   border: 2px solid black;
@@ -190,6 +183,11 @@ header h3 {
   align-items: center;
 }
 
+.nav__container p {
+  color: #d9d9d9;
+  align-items: center;
+}
+
 .icon {
   width: 30px;
   height: 30px;
@@ -207,11 +205,16 @@ header h3 {
   background-color: rgb(42, 54, 71);
 }
 
+.sidebar__footer > a {
+  overflow: hidden;
+  padding: 6px 0px;
+}
+
 .sidebar__footer a > p {
   font-size: 16px;
   font-weight: 400;
   color: #cdcdcd;
-  background-color: #2a3647;
+  /* background-color: #2a3647; */
 }
 
 .sidebar__footer a:hover {
@@ -219,25 +222,26 @@ header h3 {
   text-decoration: none;
 }
 
-.text {
+.zoom {
   transition: transform 0.05s ease-in-out;
 }
 
-.text:hover {
+.zoom:hover {
   color: #29abe2;
   transform: scale(1.05);
 }
 
 .privacy-policy,
 .legal-notice {
-  background-color: rgb(42, 54, 71);
-  color: white;
-  display: inline-block;
   overflow: hidden;
 }
 
+.sidebar__footer.active a > p {
+  background-color: red;
+}
+
 .nav-link.active {
-  background-color: #091931;
+  background-color: #091931 !important;
   color: #ffffff;
   pointer-events: none;
 }

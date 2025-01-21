@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join 413 Summary</title>
     <link rel="icon" href="../assets/img/join_logo_small.png" />
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
     <link rel="stylesheet" href="/style/summary.css" />
+
+    <!-- JavaScript -->
+    <script src="/script/script.js" defer></script>
   </head>
   <body onload="init()">
     <div class="sidebar__container" id="sidebar-nav">
@@ -40,14 +45,64 @@
       </header>
 
       <main>
-        <div id="main-header">
-          <p>Join 413</p>
-          <div></div>
+        <div class="summaryHeadline">
+          <h2>Join 413</h2>
+          <span class="separatorBlue"></span>
           <p>Key Metrics at a Glance</p>
         </div>
-        <div id="content"></div>
       </main>
+      <div class="summaryMainContent">
+        <div class="summaryLeftContainer">
+          <div class="summeryTopContent">
+            <div class="topTable">
+              <div class="summaryToDo">
+                <img src="/assets/icon/edit_white.svg">
+                <div class="countToDo">
+                  <span id="countToDo">0</span> 
+                  <p>To-do</p>
+                </div>
+              </div>
+            </div>
+            <div class="topTable">
+              <div class="summaryDone">
+                <img src="/assets/icon/done_white.svg">
+                <div class="countDone">
+                  <span id="countDone">0</span> 
+                  <p>Done</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="middleTable ">
+            <div class="summeryUrgent">
+              <img src="/assets/icon/urgent.svg">
+              <div class="countUrgent">
+                <span id="countUrgent">0</span> 
+                <p>Urgent</p>
+              </div>
+              <div class="separatorGrey"></div>
+              <div class="summaryDeadline">
+                <p>Januar 22, 2025</p>
+                <span>Upcoming Deadline</span>
+              </div>
+            </div>
+          </div>
+          <div class="summeryBottomContent">
+            <div class="summaryTasksInBoard bottomTable">
+            </div>
+            <div class="summaryTasksInProgress bottomTable">
+            </div>
+            <div class="summaryAwaitingFeedBack bottomTable">
+            </div>
+          </div>
+        </div>
+        <div class="summaryRightContainer">
+          <h2>Good Morning,</h2>
+          <p class="userName" id="userName">XX</p>
+        </div>
+
+      </div>
+      
     </div>
-    <script src="/script/script.js"></script>
   </body>
 </html>

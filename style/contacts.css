@@ -284,6 +284,39 @@ P {
   font-size: 20px;
 }
 
+/* TEST SECTION */
+
+.contactForm {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nameIcon {
+  position: absolute;
+  right: 30px;
+  top: 175px;
+  pointer-events: none;
+}
+
+.mailIcon {
+  position: absolute;
+  right: 30px;
+  top: 260px;
+  pointer-events: none;
+}
+
+.phoneIcon {
+  position: absolute;
+  right: 30px;
+  top: 343px;
+  pointer-events: none;
+}
+
+.formInput:focus {
+  outline-color: #29abe2;
+}
+
 /* Main Content Page Styling */
 
 .rightSideWrapper {

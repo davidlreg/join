@@ -152,3 +152,12 @@ body {
   color: #70c5ea !important;
   fill: #70c5ea !important;
 }
+
+/* Successfully created contact */
+
+.contactSucessfullyCretaed > p {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 28px;
+  border-radius: 20px
+}

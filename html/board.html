@@ -10,18 +10,21 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./../style/style.css" />
-    <link rel="stylesheet" href="./../style/sidebar.css" />
-    <link rel="stylesheet" href="./../style/board.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/sidebar.css" />
+    <link rel="stylesheet" href="/style/board/board.css" />
+    <link rel="stylesheet" href="/style/board/mediaQueryBoard.css">
     <link rel="stylesheet" href="/style/add task/add_task.css">
     <link rel="stylesheet" href="/style/add task/add_task_responsive.css">
+
+    <!-- Picture -->
     <link rel="stylesheet" href="/assets/img/join_logo_small.png" />
 
     <!-- JavaScript -->
-    <script src="../script/script.js" defer></script>
-    <script src="./../script/board.js" defer></script>
-    <script src="/script/add_task_overlay.js"></script>
-    <script src="/script/templates.js"></script>
+    <script src="/script/script.js" defer></script>
+    <script src="/script/board/board.js" defer></script>
+    <script src="/script/add_task_overlay.js" defer></script>
+    <script src="/script/templates.js" defer></script>
 
 </head>
 
@@ -63,7 +66,7 @@
 
                     <div class="topBarIcons">
                         <div onclick="">
-                            <img id="questionIcon" class="questionIcon" src="./../assets/icon/help.svg">
+                            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg">
                         </div>
                         <div onclick="">
                             <a id="userIcon" class="userIcon">GU</a>
@@ -101,12 +104,12 @@
                         <div class="boardInputContainer btnLight">
                             <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
                             <span class="separator">|</span>
-                            <button></button>
+                            <button id="searchButton"></button>
                         </div>
                         <div>
                             <button onclick="addTaskOverlay()" class="boardAddTask btnDark">
                                 Add Task
-                                <span class="addTaskPlus"></span>
+                                <img src="/assets/icon/plus_button-add-task.svg" />
                             </button>
                         </div>
                     </div>
@@ -126,7 +129,7 @@
                         <button class="boardButton">No tasks In Progress</button>
                     </div>
                     <div class="boardSectionsSubContainer">
-                        <div class="boardSection">Await
+                        <div class="boardSection">Await Feedback
                             <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                         </div>
                         <button class="boardButton">No tasks Awaiting</button>

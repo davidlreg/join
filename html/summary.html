@@ -13,6 +13,8 @@
 
     <!-- JavaScript -->
     <script src="/script/script.js" defer></script>
+    <script src="/script/summary/summary.js" defer></script>
+
   </head>
   <body onload="init()">
     <div class="sidebar__container" id="sidebar-nav">
@@ -54,7 +56,7 @@
       <div class="summaryMainContent">
         <div class="summaryLeftContainer">
           <div class="summeryTopContent">
-            <div class="summaryTable">
+            <div onclick="fromSummaryToBoard()" class="summaryTable">
               <div class="summaryToDo">
                 <img src="/assets/icon/summary/edit_white.svg">
                 <div class="count">
@@ -63,7 +65,7 @@
                 </div>
               </div>
             </div>
-            <div class="summaryTable">
+            <div onclick="fromSummaryToBoard()" class="summaryTable">
               <div class="summaryDone">
                 <img src="/assets/icon/summary/done_white.svg">
                 <div class="count">
@@ -73,7 +75,7 @@
               </div>
             </div>
           </div>
-          <div class="summaryTable mgBottom-20px">
+          <div onclick="fromSummaryToBoard()" class="summaryTable mgBottom-20px">
             <div class="summeryUrgent">
               <img src="/assets/icon/summary/urgent.svg">
               <div class="count">
@@ -88,19 +90,19 @@
             </div>
           </div>
           <div class="summeryBottomContent">
-            <div class="summaryTable">
+            <div onclick="fromSummaryToBoard()" class="summaryTable">
               <div class="count">
                 <span id="countTasksInBoard">0</span> 
                 <p>Tasks in Board</p>
               </div>
             </div>
-            <div class="summaryTable">
+            <div onclick="fromSummaryToBoard()" class="summaryTable">
               <div class="count">
                 <span id="countTasksInProgress">0</span> 
                 <p>Tasks in Process</p>
               </div>
             </div>
-            <div class="summaryTable">
+            <div onclick="fromSummaryToBoard()" class="summaryTable">
               <div class="count">
                 <span id="countAwaitingFeedBack">0</span> 
                 <p>Awaiting Feedback</p>

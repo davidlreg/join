@@ -1,0 +1,11 @@
+@media screen and (max-width: 1150px) {
+    .boardSectionsContainer {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .boardInputContainer {
+        margin: 20px 40px;
+    }
+}

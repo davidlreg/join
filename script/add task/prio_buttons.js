@@ -1,0 +1,26 @@
+function setPriority(priority) {
+    resetButtons();
+
+    const activeButton = document.getElementById(`${priority}Button`);
+    const activeImg = activeButton.querySelector(`img`);
+
+    activeButton.classList.add(priority);
+    activeImg.src = `/assets/icon/add task/${priority}_white.png`;
+}
+
+function resetButtons() {
+    const buttons = document.querySelectorAll('.priorityButton button');
+    buttons.forEach(button => {
+        button.classList.remove('urgent', 'medium', 'low');
+        const img = button.querySelector('img');
+
+        if (button.id === 'urgentButton') {
+            img.src = '/assets/img/Prio alta.png';
+        } else if (button.id === 'mediumButton') {
+            img.src = '/assets/img/equal-sign.png'
+        } else if (button.id === 'lowButton') {
+            img.src = '/assets/img/Prio baja.png'
+        }
+    });
+
+}

@@ -78,6 +78,12 @@ form#taskForm h1 {
   background: #fff;
 }
 
+.addTaskInput:focus {
+  border-color: rgba(42, 170, 226, 1); 
+  outline: none; 
+
+}
+
 .addDescriptionInput {
   width: 92%;
   height: 100px;
@@ -86,6 +92,12 @@ form#taskForm h1 {
   border-radius: 10px;
   margin-top: 5px;
   background: #fff;
+}
+
+.addDescriptionInput:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+
 }
 
 .dropdown {
@@ -99,6 +111,11 @@ form#taskForm h1 {
   max-width: 440px;
   width: 92%;
   background: #fff;
+}
+
+.dropdown:focus{
+  border-color: rgba(42, 170, 226, 1); 
+  outline: none; 
 }
 
 .selectContainer {
@@ -152,6 +169,24 @@ form#taskForm h1 {
 .priorityButton button:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.priorityButton button.urgent {
+  background-color: #ff3d00; 
+  color: #fff;
+  font-weight: 600;
+}
+
+.priorityButton button.medium {
+  background-color: #ffa800; 
+  color: #fff; 
+  font-weight: 600;
+}
+
+.priorityButton button.low {
+  background-color: #7ae229; 
+  color: #fff;
+  font-weight: 600; 
 }
 
 button img {
@@ -268,8 +303,8 @@ button img {
   background-color: #FFFFFF;
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
- 
+
+
 }
 
 .hidden {
@@ -281,21 +316,21 @@ button img {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px; 
-  right: 40px; 
+  top: 20px;
+  right: 40px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: transparent; 
-  color: #2A3647;  
+  background-color: transparent;
+  color: #2A3647;
   cursor: pointer;
 }
 
 .closeTaskOverlay:hover {
   background-color: #eeeeee;
   border-radius: 50%;
-  
-  
+
+
 }
 
 form#taskFormOverlay {

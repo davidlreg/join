@@ -23,8 +23,9 @@
     <!-- JavaScript -->
     <script src="/script/script.js" defer></script>
     <script src="/script/board/board.js" defer></script>
-    <script src="/script/add_task_overlay.js" defer></script>
-    <script src="/script/templates.js" defer></script>
+    <script src="/script/add task/add_task_templates.js"></script>
+    <script src="/script/add task/add_task_overlay.js"></script>
+    
 
 </head>
 
@@ -63,16 +64,17 @@
             <div class="mainContent">
                 <header>
                     <h3>Kanban Project Management Tool</h3>
-
+            
                     <div class="topBarIcons">
                         <div onclick="">
                             <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg">
                         </div>
-                        <div onclick="">
-                            <a id="userIcon" class="userIcon">GU</a>
+    
+                        <div onclick="" class="userIcon">
+                            <a style="color: rgb(41, 171, 226);">XX</a>
                         </div>
                     </div>
-                </header>
+                  </header>
 
                 <!--Add Task Overlay-->
                 <div id="addTaskOverlay" class="addTaskOverlay hidden">

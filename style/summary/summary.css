@@ -72,7 +72,7 @@ main {
   gap: 20px;
 }
 
-.topTable {
+.summaryTable {
   width: 100%;
   height: 150px;
   background-color: #fff;
@@ -80,24 +80,25 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
 
-.middleTable {
-  width: 100%;
-  height: 150px;
-  background-color: #fff;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.summaryTable:hover {
+  background-color: #2a3647;
+  color: white !important;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
-.bottomTable {
-  width: 100%;
-  height: 150px;
-  background-color: #fff;
-  border-radius: 20px;
+.summaryTable:hover .summaryToDo img {
+  background-color: white !important;
+  content: url("/assets/icon/summary/edit_blue.svg")
+}
+
+.summaryTable:hover .summaryDone img {
+  background-color: white !important;
+  content: url("/assets/icon/summary/done_blue.svg")
 }
 
 .summaryToDo,
@@ -115,9 +116,7 @@ main {
   padding: 10px;
 }
 
-.countToDo,
-.countDone,
-.countUrgent {
+.count {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -125,21 +124,16 @@ main {
   font-size: 24px;
 }
 
-.countToDo p,
-.countDone p,
-.countUrgent p {
+.count p {
   font-size: 16px;
 }
 
-.countToDo span,
-.countDone span,
-.countUrgent span {
+.count span {
   font-size: 48px;
+  font-weight: 700;
 }
 
-.countToDo #text,
-.countDone #text,
-.countUrgent #text {
+.count #text {
   font-size: 16px;
 }
 

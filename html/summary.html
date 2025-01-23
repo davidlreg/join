@@ -9,7 +9,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
-    <link rel="stylesheet" href="/style/summary.css" />
+    <link rel="stylesheet" href="/style/summary/summary.css" />
 
     <!-- JavaScript -->
     <script src="/script/script.js" defer></script>
@@ -54,29 +54,29 @@
       <div class="summaryMainContent">
         <div class="summaryLeftContainer">
           <div class="summeryTopContent">
-            <div class="topTable">
+            <div class="summaryTable">
               <div class="summaryToDo">
-                <img src="/assets/icon/edit_white.svg">
-                <div class="countToDo">
+                <img src="/assets/icon/summary/edit_white.svg">
+                <div class="count">
                   <span id="countToDo">0</span> 
                   <p>To-do</p>
                 </div>
               </div>
             </div>
-            <div class="topTable">
+            <div class="summaryTable">
               <div class="summaryDone">
-                <img src="/assets/icon/done_white.svg">
-                <div class="countDone">
+                <img src="/assets/icon/summary/done_white.svg">
+                <div class="count">
                   <span id="countDone">0</span> 
                   <p>Done</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="middleTable ">
+          <div class="summaryTable mgBottom-20px">
             <div class="summeryUrgent">
-              <img src="/assets/icon/urgent.svg">
-              <div class="countUrgent">
+              <img src="/assets/icon/summary/urgent.svg">
+              <div class="count">
                 <span id="countUrgent">0</span> 
                 <p>Urgent</p>
               </div>
@@ -88,11 +88,23 @@
             </div>
           </div>
           <div class="summeryBottomContent">
-            <div class="summaryTasksInBoard bottomTable">
+            <div class="summaryTable">
+              <div class="count">
+                <span id="countTasksInBoard">0</span> 
+                <p>Tasks in Board</p>
+              </div>
             </div>
-            <div class="summaryTasksInProgress bottomTable">
+            <div class="summaryTable">
+              <div class="count">
+                <span id="countTasksInProgress">0</span> 
+                <p>Tasks in Process</p>
+              </div>
             </div>
-            <div class="summaryAwaitingFeedBack bottomTable">
+            <div class="summaryTable">
+              <div class="count">
+                <span id="countAwaitingFeedBack">0</span> 
+                <p>Awaiting Feedback</p>
+              </div>
             </div>
           </div>
         </div>
@@ -100,9 +112,7 @@
           <h2>Good Morning,</h2>
           <p class="userName" id="userName">XX</p>
         </div>
-
       </div>
-      
     </div>
   </body>
 </html>

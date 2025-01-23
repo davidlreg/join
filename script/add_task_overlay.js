@@ -1,10 +1,10 @@
 function addTaskOverlay() {
     let overlay = document.getElementById('addTaskOverlay');
-    let overlayContent = overlay.querySelector('.overlayTaskContent');
+    let dynamicContent = document.getElementById('overlayDynamicContent');
 
     let addTaskHtml = addTaskHtmlTemplate();
 
-    overlayContent.innerHTML = addTaskHtml;
+    dynamicContent.innerHTML = addTaskHtml;
 
     overlay.classList.remove('hidden');
 }

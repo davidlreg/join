@@ -12,7 +12,7 @@ function addTaskHtmlTemplate(){
                         </div>
                         <div class="taskInputOverlay">
                             <p>Description</p>
-                            <input required type="text" placeholder="Enter a Description" class="addDescriptionInputOverlay">
+                            <textarea required type="text" placeholder="Enter a Description" class="addDescriptionInputOverlay"></textarea>
                         </div>
                         <div class="taskInputOverlay">
                             <p>Assigned to</p>
@@ -31,7 +31,7 @@ function addTaskHtmlTemplate(){
                     <div class="taskInputRight">
                         <div class="taskInputOverlay">
                             <p>Due Date <span>*</span></p>
-                            <input required type="date" placeholder="tt.mm.jjjj" class="addTaskInput">
+                            <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput">
                         </div>
                         <div class="taskInputOverlay">
                             <p>Prio</p>
@@ -79,7 +79,7 @@ function addTaskHtmlTemplate(){
                     </div>
 
                     <div class="actions">
-                        <button class="clearButton" onclick="">Clear
+                        <button class="clearButton" onclick="closeTaskOverlay()">Clear
                             <img src="/assets/img/iconoir_cancel.png">
                         </button>
                         <button class="createButton" onclick="">Create Task

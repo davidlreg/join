@@ -1,0 +1,63 @@
+@media (max-width: 1350px) {
+    .taskInputContainer {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .taskInputLeft,
+    .taskInputRight {
+        width: 100%;
+    }
+
+    .taskInput p {
+        font-size: 24px;
+    }
+
+    .addTaskInput {
+        padding: 16px 22px;
+        font-size: 18px;
+    }
+
+    .addDescriptionInput {
+        padding: 12px 22px 2px 20px;
+        font-size: 18px;
+    }
+
+    .dropdown {
+        max-width: 100%;
+    }
+
+    .priorityButton {
+        margin-right: 35px;
+    }
+
+    .priorityButton button {
+        width: calc(30% - 10px);
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .subtaskWrapper {
+        width: 100%;
+    }
+
+    .iconWrapper {
+        right: 50px;
+        bottom: 10px;
+    }
+
+    .requiredAction {
+        margin-top: 80px;
+        display: flex;
+        align-items: center;
+        gap: calc(10vw + 30px); 
+        margin-bottom: 30px;
+        flex-wrap: nowrap; 
+        justify-content: space-between; 
+      }
+
+    .requiredText {
+        flex-shrink: 1;
+        white-space: nowrap;
+    }
+}

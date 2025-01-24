@@ -323,6 +323,10 @@ header h3 {
     text-align: center;
   }
 
+  .nav-link:hover {
+    border-radius: 18px;
+  }
+
   .nav-link.active {
     border-radius: 18px;
   }

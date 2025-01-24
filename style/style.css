@@ -20,6 +20,12 @@ html {
   display: none !important;
 }
 
+.text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 ::placeholder {
   color: rgba(209, 209, 209);
 }
@@ -189,13 +195,14 @@ header h3 {
 .nav__container p {
   color: #d9d9d9;
   align-items: center;
-  font-size: 19px;
+  font-size: 16px;
+  font-weight: 400;
   background-color: transparent;
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-right: 10px;
   color: #d9d9d9;
   background-color: rgb(42, 54, 71);
@@ -268,4 +275,102 @@ header h3 {
 .nav-link:hover img {
   background-color: #2a3d59;
   text-decoration: none;
+}
+
+/* Responsive Sidebar & Header Styling */
+
+@media (max-width: 1350px) {
+  .layoutContainer {
+    flex-direction: column-reverse;
+  }
+
+  .joinLogoBig {
+    display: none;
+  }
+
+  .sidebar__footer {
+    display: none;
+  }
+
+  .nav__container {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .nav__container > a {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 0px 0px;
+  }
+
+  .icon {
+    margin-right: 0;
+    width: 21px;
+    height: 24px;
+  }
+
+  a.nav-link {
+    width: 76px;
+    height: 76px;
+    text-align: center;
+  }
+
+  .nav-link.active {
+    border-radius: 18px;
+  }
+
+  .sidebar__container {
+    height: 80px;
+    max-height: 80px;
+    padding: 0px;
+  }
+
+  .nav__container p {
+    background-color: transparent;
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  header {
+    height: 80px;
+    padding: 0px;
+    justify-content: space-between;
+    padding: 0px 32px;
+  }
+
+  header > h3 {
+    display: none;
+  }
+
+  .questionIcon {
+    display: none;
+  }
+
+  .joinLogoMedium {
+    display: block !important;
+  }
+
+  .userIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .nav__container p {
+    font-size: 14px !important;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+  }
+
+  header {
+    padding: 0px 12px;
+  }
 }

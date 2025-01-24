@@ -173,85 +173,8 @@ body {
     flex-direction: column-reverse;
   }
 
-  .joinLogoBig {
-    display: none;
-  }
-
-  .sidebar__footer {
-    display: none;
-  }
-
-  .nav__container {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-
-  .nav__container > a {
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-    padding: 0px 0px;
-  }
-
-  .icon {
-    margin-right: 0;
-    width: 21px;
-    height: 24px;
-  }
-
-  a.nav-link {
-    width: 76px;
-    height: 76px;
-    text-align: center;
-  }
-
-  .nav-link.active {
-    border-radius: 18px;
-  }
-
-  .sidebar__container {
-    height: 80px;
-    max-height: 80px;
-    padding: 0px;
-  }
-
   .headline {
     margin-top: 128px !important;
-  }
-
-  .nav__container p {
-    background-color: transparent;
-  }
-
-  .text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  }
-
-  header {
-    height: 80px;
-    padding: 0px;
-    justify-content: space-between;
-    padding: 0px 12px;
-  }
-
-  header > h3 {
-    display: none;
-  }
-
-  .questionIcon {
-    display: none;
-  }
-
-  .joinLogoMedium {
-    display: block;
-  }
-
-  .userIcon {
-    width: 40px;
-    height: 40px;
   }
 
   .addContactButton {
@@ -280,13 +203,6 @@ body {
     height: 124px;
   }
 
-  .nav__container p {
-    font-size: 14px !important;
-    font-weight: 400;
-    font-family: "Open Sans", sans-serif;
-    text-align: center;
-  }
-
   .personalInformationShort > p {
     font-size: 20px !important;
   }
@@ -294,5 +210,9 @@ body {
   .email {
     font-size: 14px !important;
     font-weight: 400;
+  }
+
+  .contactList {
+    min-width: 100%;
   }
 }

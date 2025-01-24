@@ -31,14 +31,14 @@ main {
 }
 
 .separatorBlue {
-  width: 2px; 
-  height: 50px; 
+  width: 2px;
+  height: 50px;
   background-color: #29abe2;
 }
 
 .separatorGrey {
-  width: 2px; 
-  height: 80px; 
+  width: 2px;
+  height: 80px;
   background-color: rgb(224, 221, 221);
   margin: 20px;
 }
@@ -56,7 +56,6 @@ main {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  
 }
 
 .summeryTopContent {
@@ -93,16 +92,16 @@ main {
 
 .summaryTable:hover .summaryToDo img {
   background-color: white !important;
-  content: url("/assets/icon/summary/edit_blue.svg")
+  content: url("/assets/icon/summary/edit_blue.svg");
 }
 
 .summaryTable:hover .summaryDone img {
   background-color: white !important;
-  content: url("/assets/icon/summary/done_blue.svg")
+  content: url("/assets/icon/summary/done_blue.svg");
 }
 
 .summaryToDo,
-.summaryDone, 
+.summaryDone,
 .summeryUrgent {
   display: flex;
   align-items: center;
@@ -110,7 +109,7 @@ main {
 }
 
 .summaryToDo img,
-.summaryDone img{
+.summaryDone img {
   background-color: #2a3647;
   border-radius: 50%;
   padding: 10px;
@@ -161,4 +160,16 @@ main {
 .userName {
   font-size: 24px;
   color: #29abe2;
+}
+
+@media (max-width: 1350px) {
+  body {
+    flex-direction: column-reverse;
+  }
+
+  .rightSideWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -7,49 +7,6 @@ body {
   margin: 0;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 96px;
-  padding-left: 120px;
-  padding-right: 50px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  background-color: #FFFFFF;
-}
-
-header h3 {
-  font-weight: 520;
-}
-
-.topBarIcons {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.topBarIcons div {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.userIcon {
-  height: 56px;
-  width: 56px;
-  border-radius: 50px;
-  border-style: solid;
-  border-color: #2A3647;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-width: 3px;
-  font-size: 20px;
-}
-
-.userIcon:hover {
-  background-color: rgba(12, 46, 98, 0.12);
-}
-
 .layoutContainer {
   display: flex;
   height: 100vh;
@@ -64,10 +21,7 @@ header h3 {
 
 /* Task Form*/
 form#taskForm {
-
   padding: 60px 20px 0 70px;
-
-
 }
 
 form#taskForm h1 {
@@ -124,14 +78,28 @@ form#taskForm h1 {
   background: #fff;
 }
 
+.addTaskInput:focus {
+  border-color: rgba(42, 170, 226, 1); 
+  outline: none; 
+
+}
+
 .addDescriptionInput {
   width: 92%;
+  max-width: 92%;
+  min-width: 92%;
   height: 100px;
   padding: 12px 20px 2px 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-top: 5px;
   background: #fff;
+}
+
+.addDescriptionInput:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+
 }
 
 .dropdown {
@@ -145,6 +113,11 @@ form#taskForm h1 {
   max-width: 440px;
   width: 92%;
   background: #fff;
+}
+
+.dropdown:focus{
+  border-color: rgba(42, 170, 226, 1); 
+  outline: none; 
 }
 
 .selectContainer {
@@ -193,11 +166,30 @@ form#taskForm h1 {
   cursor: pointer;
   font-size: 22px;
   background-color: #fff;
+  box-shadow: 0px 0px 4px 0px #0000001a;
 }
 
 .priorityButton button:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.priorityButton button.urgent {
+  background-color: #ff3d00; 
+  color: #fff;
+  font-weight: 600;
+}
+
+.priorityButton button.medium {
+  background-color: #ffa800; 
+  color: #fff; 
+  font-weight: 600;
+}
+
+.priorityButton button.low {
+  background-color: #7ae229; 
+  color: #fff;
+  font-weight: 600; 
 }
 
 button img {
@@ -314,8 +306,8 @@ button img {
   background-color: #FFFFFF;
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
- 
+
+
 }
 
 .hidden {
@@ -327,21 +319,21 @@ button img {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px; 
-  right: 40px; 
+  top: 20px;
+  right: 40px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: transparent; 
-  color: #2A3647;  
+  background-color: transparent;
+  color: #2A3647;
   cursor: pointer;
 }
 
 .closeTaskOverlay:hover {
   background-color: #eeeeee;
   border-radius: 50%;
-  
-  
+
+
 }
 
 form#taskFormOverlay {
@@ -394,7 +386,7 @@ form#taskFormOverlay {
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  gap: 16px;
+  gap: 10px;
   width: 110px;
   height: 50px;
   border: none;
@@ -407,6 +399,24 @@ form#taskFormOverlay {
 .priorityButtonOverlay button:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.priorityButtonOverlay button.urgent {
+  background-color: #ff3d00; 
+  color: #fff;
+  font-weight: 600;
+}
+
+.priorityButtonOverlay button.medium {
+  background-color: #ffa800; 
+  color: #fff; 
+  font-weight: 600;
+}
+
+.priorityButtonOverlay button.low {
+  background-color: #7ae229; 
+  color: #fff;
+  font-weight: 600; 
 }
 
 .requiredActionOverlay {

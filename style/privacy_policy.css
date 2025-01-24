@@ -1,7 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   height: 100vh;
   background-color: #f8f9fa;
+}
+
+:target {
+  scroll-margin-top: 96px; 
 }
 
 main {
@@ -10,4 +18,35 @@ main {
 
 .rightSideWrapper {
   overflow-y: scroll;
+}
+
+main {
+
+  margin: 0 auto;
+  padding-bottom: 32px;
+}
+
+main h1 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+main p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+main ul {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+main ul li {
+  margin-bottom: 8px;
 }

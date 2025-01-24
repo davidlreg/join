@@ -1,77 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
-    <link rel="icon" href="../assets/img/join_logo_small.png" />
-    <link rel="stylesheet" href="/style/add task/add_task.css">
-    <link rel="stylesheet" href="/style/add task/add_task_responsive.css">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/fonts.css" />
-</head>
-
-<body onload="init()">
-    <!-- Sidebar -->
-    <div class="layoutContainer">
-        <div class="sidebar__container" id="sidebar-nav">
-            <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
-            <div class="nav__container" id="navbar">
-                <a class="nav-link" href="/html/summary.html?active=summary"> <img class="icon"
-                        src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary </a>
-                <a class="nav-link" href="/html/add_task.html?active=add-task"> <img class="icon"
-                        src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task </a>
-                <a class="nav-link" href="/html/board.html?active=board"> <img class="icon"
-                        src="/assets/icon/Board_icon_grey.svg" id="board" />Board </a>
-                <a class="nav-link" href="/html/contacts.html?active=contacts"> <img class="icon"
-                        src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact </a>
-            </div>
-            <div class="sidebar__footer">
-                <a class="privacy-policy nav-link" id="privacy-policy"
-                    href="/html/privacy_policy.html?active=privacy_policy">
-                    <p class="text">Privacy Policy</p>
-                </a>
-                <a class="legal-notice nav-link" id="legal-notice" href="/html/legal_notice.html?active=legal_notice">
-                    <p class="text">Legal Notice</p>
-                </a>
-            </div>
-        </div>
-
-
-
-        <!-- Main Content -->
-        <div class="mainContent">
-            <header>
-                <h3>Kanban Project Management Tool</h3>
-        
-                <div class="topBarIcons">
-                    <div onclick="">
-                        <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg">
-                    </div>
-
-                    <div onclick="" class="userIcon">
-                        <a style="color: rgb(41, 171, 226);">XX</a>
-                    </div>
-                </div>
-              </header>
-
-            <form id="taskForm">
+function addTaskHtmlTemplate(){
+    return `<form id="taskFormOverlay">
                 <h1> Add task</h1>
 
                 <!-- Left Column -->
 
                 <div class="taskInputContainer">
                     <div class="taskInputLeft">
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Title<span>*</span></p>
                             <input required type="text" placeholder="Enter a title" class="addTaskInput">
                         </div>
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Description</p>
-                            <textarea required type="text" placeholder="Enter a Description" class="addDescriptionInput"></textarea>
+                            <textarea required type="text" placeholder="Enter a Description" class="addDescriptionInputOverlay"></textarea>
                         </div>
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Assigned to</p>
                             <div onclick="" id="dropdown" class="dropdown">
                                 <div class="selectContainer">Select contacts to assign</div>
@@ -86,13 +29,13 @@
 
                     <!-- Right Column -->
                     <div class="taskInputRight">
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Due Date <span>*</span></p>
                             <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput">
                         </div>
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Prio</p>
-                            <div class="priorityButton">
+                            <div class="priorityButtonOverlay">
                                 <button id="urgentButton" type="button" onclick="setPriority('urgent')"> Urgent
                                     <img src="/assets/img/Prio alta.png" alt="Urgent">
                                 </button>
@@ -104,7 +47,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Category <span>*</span></p>
                             <div onclick="" class="dropdown">
                                 <div class="selectContainer">Select task category</div>
@@ -113,7 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="taskInput">
+                        <div class="taskInputOverlay">
                             <p>Subtasks</p>
                             <div class="subtaskWrapper">
                                 <input required type="text" placeholder="Add new subtask" class="addTaskInput">
@@ -125,22 +68,18 @@
                             </div>
                         </div>
 
-
-
-
-
                     </div>
                 </div>
                 <!-- Footer Actions -->
-                <div class="requiredAction">
+                <div class="requiredActionOverlay">
                     <div class="requiredText">
                         <span>*</span>
                         This field is require
-
+                        
                     </div>
 
                     <div class="actions">
-                        <button class="clearButton" onclick="">Clear
+                        <button class="clearButton" onclick="closeTaskOverlay()">Clear
                             <img src="/assets/img/iconoir_cancel.png">
                         </button>
                         <button class="createButton" onclick="">Create Task
@@ -151,10 +90,5 @@
             </div>
         </div>
     </form>
-
-    <script src="/script/add task/add_task_templates.js"></script>
-    <script src="/script/add task/add_task_overlay.js"></script>
-    <script src="/script/add task/prio_buttons.js"></script>
-</body>
-
-</html>
+    `;
+}

@@ -11,6 +11,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/fonts.css" />
     <link rel="stylesheet" href="/style/sidebar.css" />
     <link rel="stylesheet" href="/style/board/board.css" />
     <link rel="stylesheet" href="/style/board/mediaQueryBoard.css">
@@ -32,33 +33,19 @@
 
 <body>
     <div class="layoutContainer">
-
         <body onload="init()">
             <div class="sidebar__container" id="sidebar-nav">
-                <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
-                <div class="nav__container" id="navbar">
-                    <a class="nav-link" href="/html/summary.html?active=summary">
-                        <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary
-                    </a>
-                    <a class="nav-link" href="/html/add_task.html?active=add-task">
-                        <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task
-                    </a>
-                    <a class="nav-link" href="/html/board.html?active=board">
-                        <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />Board
-                    </a>
-                    <a class="nav-link" href="/html/contacts.html?active=contacts">
-                        <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact
-                    </a>
-                </div>
-                <div class="sidebar__footer">
-                    <a class="privacy-policy" id="privacy-policy"
-                        href="/html/privacy_policy.html?active=privacy_policy">
-                        <p class="text">Privacy Policy</p>
-                    </a>
-                    <a class="legal-notice" id="legal-notice" href="/html/legal_notice.html?active=legal_notice">
-                        <p class="text">Legal Notice</p>
-                    </a>
-                </div>
+              <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+              <div class="nav__container" id="navbar">
+                <a class="nav-link" href="/html/summary.html?active=summary"> <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />Summary </a>
+                <a class="nav-link" href="/html/add_task.html?active=add-task"> <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />Add Task </a>
+                <a class="nav-link" href="/html/board.html?active=board"> <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />Board </a>
+                <a class="nav-link" href="/html/contacts.html?active=contacts"> <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />Contact </a>
+              </div>
+              <div class="sidebar__footer">
+                <a class="nav-link" href="/html/privacy_policy.html?active=privacy_policy"><p class="zoom">Privacy Policy</p></a>
+                <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"><p class="zoom">Legal Notice</p></a>
+              </div>
             </div>
 
             <!-- Main Content -->
@@ -100,50 +87,51 @@
                     </div>
 
                 </div>
+                <main>
+                    <div class="boardContainer">
+                        <h2>Board</h2>
+                        <div class="boardControls">
+                            <div class="boardInputContainer btnLight">
+                                <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
+                                <span class="separator">|</span>
+                                <button id="searchButton"></button>
+                            </div>
+                            <div>
+                                <button onclick="addTaskOverlay()" class="boardAddTask btnDark" >
+                                    <p id="boardAddTask">Add Task</p>
+                                    <img src="/assets/icon/board/plus_button-add-task.svg" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="boardContainer">
-                    <h2>Board</h2>
-                    <div class="boardControls">
-                        <div class="boardInputContainer btnLight">
-                            <input type="text" id="find-task" name="find-task" placeholder="Find Task" />
-                            <span class="separator">|</span>
-                            <button id="searchButton"></button>
+                    <div class="boardSectionsContainer">
+                        <div class="boardSectionsSubContainer">
+                            <div class="boardSection">To do
+                                <div class="sectionPlus" onclick="addTaskOverlay()"></div>
+                            </div>
+                            <button class="boardButton">No tasks To Do</button>
                         </div>
-                        <div>
-                            <button onclick="addTaskOverlay()" class="boardAddTask btnDark">
-                                Add Task
-                                <img src="/assets/icon/plus_button-add-task.svg" />
-                            </button>
+                        <div class="boardSectionsSubContainer">
+                            <div class="boardSection">In progress
+                                <div class="sectionPlus" onclick="addTaskOverlay()"></div>
+                            </div>
+                            <button class="boardButton">No tasks In Progress</button>
+                        </div>
+                        <div class="boardSectionsSubContainer">
+                            <div class="boardSection">Await Feedback
+                                <div class="sectionPlus" onclick="addTaskOverlay()"></div>
+                            </div>
+                            <button class="boardButton">No tasks Awaiting</button>
+                        </div>
+                        <div class="boardSectionsSubContainer">
+                            <div class="boardSection">Done
+                                <div class="sectionPlus" onclick="addTaskOverlay()"></div>
+                            </div>
+                            <button class="boardButton">No tasks Done</button>
                         </div>
                     </div>
-                </div>
-
-                <div class="boardSectionsContainer">
-                    <div class="boardSectionsSubContainer">
-                        <div class="boardSection">To do
-                            <div class="sectionPlus" onclick="addTaskOverlay()"></div>
-                        </div>
-                        <button class="boardButton">No tasks To Do</button>
-                    </div>
-                    <div class="boardSectionsSubContainer">
-                        <div class="boardSection">In progress
-                            <div class="sectionPlus" onclick="addTaskOverlay()"></div>
-                        </div>
-                        <button class="boardButton">No tasks In Progress</button>
-                    </div>
-                    <div class="boardSectionsSubContainer">
-                        <div class="boardSection">Await Feedback
-                            <div class="sectionPlus" onclick="addTaskOverlay()"></div>
-                        </div>
-                        <button class="boardButton">No tasks Awaiting</button>
-                    </div>
-                    <div class="boardSectionsSubContainer">
-                        <div class="boardSection">Done
-                            <div class="sectionPlus" onclick="addTaskOverlay()"></div>
-                        </div>
-                        <button class="boardButton">No tasks Done</button>
-                    </div>
-                </div>
+                </main>
             </div>
     </div>
 

@@ -1,18 +1,13 @@
 /* Board CSS */
-
-.mainContent {
-    flex: 1;
-    background-color: #f8f9fa;
-    overflow-y: auto;
-  }
+main {
+    padding: 64px 64px 48px 64px;
+}
 
 .boardContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
-    margin-top: 64px;
-    margin-bottom: 32px;
+    margin-bottom: 64px;
 }
 
 .boardContainer h2 {
@@ -66,19 +61,18 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 15px;
     background-color: rgba(42, 54, 70);
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     text-decoration: none !important;
-}  
+}
 
 .boardAddTask p, 
 .boardAddTask img {
     background-color: rgba(42, 54, 70);
+    text-align: center;
 }
 
 .boardAddTask:hover,
@@ -89,7 +83,6 @@
 
 .boardSectionsContainer {
     display: flex;
-    padding: 20px 40px;
     gap: 20px;
 }
 

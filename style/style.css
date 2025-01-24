@@ -190,6 +190,8 @@ header h3 {
 .nav__container p {
   color: #d9d9d9;
   align-items: center;
+  font-size: 19px;
+  background-color: transparent;
 }
 
 .icon {

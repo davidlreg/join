@@ -36,14 +36,14 @@ function addTaskHtmlTemplate(){
                         <div class="taskInputOverlay">
                             <p>Prio</p>
                             <div class="priorityButtonOverlay">
-                                <button type="button"> Urgent
-                                    <img src="/assets/img/Prio alta.png">
+                                <button id="urgentButton" type="button" onclick="setPriority('urgent')"> Urgent
+                                    <img src="/assets/img/Prio alta.png" alt="Urgent">
                                 </button>
-                                <button type="button"> Medium
-                                    <img src="/assets/img/equal-sign.png">
+                                <button id="mediumButton" type="button" onclick="setPriority('medium')"> Medium
+                                    <img src="/assets/img/Prio medium.png" alt="Medium">
                                 </button>
-                                <button type="button"> Low
-                                    <img src="/assets/img/Prio baja.png">
+                                <button id="lowButton" type="button" onclick="setPriority('low')"> Low
+                                    <img src="/assets/img/Prio baja.png" alt="Low">
                                 </button>
                             </div>
                         </div>

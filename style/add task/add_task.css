@@ -166,6 +166,7 @@ form#taskForm h1 {
   cursor: pointer;
   font-size: 22px;
   background-color: #fff;
+  box-shadow: 0px 0px 4px 0px #0000001a;
 }
 
 .priorityButton button:hover {
@@ -385,7 +386,7 @@ form#taskFormOverlay {
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  gap: 16px;
+  gap: 10px;
   width: 110px;
   height: 50px;
   border: none;
@@ -398,6 +399,24 @@ form#taskFormOverlay {
 .priorityButtonOverlay button:hover {
   background-color: #ddd;
   cursor: pointer;
+}
+
+.priorityButtonOverlay button.urgent {
+  background-color: #ff3d00; 
+  color: #fff;
+  font-weight: 600;
+}
+
+.priorityButtonOverlay button.medium {
+  background-color: #ffa800; 
+  color: #fff; 
+  font-weight: 600;
+}
+
+.priorityButtonOverlay button.low {
+  background-color: #7ae229; 
+  color: #fff;
+  font-weight: 600; 
 }
 
 .requiredActionOverlay {

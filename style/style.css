@@ -7,6 +7,7 @@
 
 body {
   margin: 0;
+  padding: 0;
   width: 100%;
   height: 100vh;
   overflow-y: hidden;
@@ -81,7 +82,9 @@ a:hover {
 /* Global Header Styling */
 
 header {
-  height: 96px;
+  min-height: 96px;
+  max-height: 96px;
+  height: 100%;
   position: sticky;
   top: 0;
   display: flex;
@@ -147,6 +150,10 @@ header h3 {
 
 .questionIcon:hover {
   transform: scale(1.2);
+}
+
+.joinLogoMedium {
+  display: none;
 }
 
 /* Global Sidebar Styling */
@@ -338,7 +345,9 @@ header h3 {
   }
 
   header {
-    height: 80px;
+    min-height: 80px !important;
+    max-height: 80px;
+    height: 100%;
     padding: 0px;
     justify-content: space-between;
     padding: 0px 32px;

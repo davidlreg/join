@@ -17,7 +17,7 @@ function resetButtons() {
         if (button.id === 'urgentButton') {
             img.src = '/assets/img/Prio alta.png';
         } else if (button.id === 'mediumButton') {
-            img.src = '/assets/img/equal-sign.png'
+            img.src = '/assets/img/Prio medium.png'
         } else if (button.id === 'lowButton') {
             img.src = '/assets/img/Prio baja.png'
         }

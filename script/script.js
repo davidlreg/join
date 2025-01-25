@@ -1,6 +1,6 @@
 function init() {
   setActiveLinkFromURL();
-  changeInputBoardLocation()
+  changeInputBoardLocation();
 }
 
 /**

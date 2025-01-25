@@ -6,6 +6,7 @@ body {
 .rightSideWrapper {
   width: 100%;
   background-color: #f6f7f8;
+  height: 100vh;
 }
 
 .main-div {
@@ -28,12 +29,14 @@ main {
 
 .summaryHeadline p {
   font-size: 20px;
+  order: 3;
 }
 
 .separatorBlue {
   width: 2px;
   height: 50px;
   background-color: #29abe2;
+  order: 2;
 }
 
 .separatorGrey {
@@ -102,7 +105,7 @@ main {
 
 .summaryToDo,
 .summaryDone,
-.summeryUrgent {
+.summaryUrgent {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -113,6 +116,10 @@ main {
   background-color: #2a3647;
   border-radius: 50%;
   padding: 10px;
+}
+
+.summaryUrgent img {
+  margin-left: 10px;
 }
 
 .count {
@@ -140,7 +147,12 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+}
+
+.summaryDeadline p, 
+.summaryDeadline span {
+  padding: 10px;
 }
 
 /* Content Right */
@@ -160,16 +172,4 @@ main {
 .userName {
   font-size: 24px;
   color: #29abe2;
-}
-
-@media (max-width: 1350px) {
-  body {
-    flex-direction: column-reverse;
-  }
-
-  .rightSideWrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
 }

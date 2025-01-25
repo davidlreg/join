@@ -1,11 +1,12 @@
 @media screen and (max-width: 1350px) {
-
-    .summaryRightContainer {
-        display: none;
+    body {
+        flex-direction: column-reverse;
     }
 
-    .summaryLeftContainer {
+    .rightSideWrapper {
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -17,6 +18,28 @@
     .summaryMainContent {
         padding: 0px 32px 0px 32px;
     }
+
+    .summaryUrgent {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .summaryHeadline {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .summaryHeadline p {
+        order: 2;
+      }
+      
+    .separatorBlue {
+        order: 3;
+        width: 100px;
+        height: 2px;
+        margin-bottom: 20px;
+      }
 }
 
 @media screen and (max-width: 500px) {
@@ -28,3 +51,5 @@
         padding: 0px 16px 0px 16px;
     }
 }
+
+  

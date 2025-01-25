@@ -18,3 +18,10 @@
         padding: 5px !important;
     }
 }
+
+@media screen and (max-width: 500px) {
+    main {
+        padding: 32px 16px 16px 16px;
+    }
+    
+}

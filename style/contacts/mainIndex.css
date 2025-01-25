@@ -166,6 +166,28 @@ body {
   border-radius: 20px;
 }
 
+.contactSucessfullyCretaed {
+  padding: 132px 0px 0px 64px;
+}
+
+.floatingAddContactContainer {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  bottom: 104px;
+  right: 32px;
+  border-radius: 50%;
+  background-color: #2a3647;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.floatingAddContactContainer:hover {
+  cursor: pointer;
+}
+
 /* Responsive Design */
 
 @media (max-width: 1350px) {
@@ -214,5 +236,9 @@ body {
 
   .contactList {
     min-width: 100%;
+  }
+
+  .floatingAddContactContainer {
+    display: flex;
   }
 }

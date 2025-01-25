@@ -116,3 +116,70 @@
 .formInput:focus {
   outline-color: #29abe2;
 }
+
+.closeContainer {
+  display: none;
+  position: absolute;
+  right: 24px;
+  top: -118px;
+  flex-direction: row-reverse;
+}
+
+.closeContainer > a > svg > g > path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+@media (max-width: 1350px) {
+  .joinLogoSmall {
+    display: none;
+  }
+
+  .addContactOverlay {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addContactLeftSide {
+    width: 396px;
+    min-height: 351px;
+    border-radius: 32px 32px 0px 0px;
+    align-items: flex-start;
+  }
+
+  .editContactRightSide {
+    width: 396px;
+    height: 100%;
+  }
+
+  h1 {
+    font-size: 46px !important;
+  }
+
+  P {
+    font-size: 20px !important;
+  }
+
+  .cancelButton {
+    display: none;
+  }
+
+  .closeButton > a {
+    display: none;
+  }
+
+  .closeContainer {
+    display: flex;
+  }
+
+  .contactPicture > svg {
+    position: absolute;
+    background-color: transparent;
+    z-index: 50;
+    top: 125px;
+    right: 125px;
+  }
+}
+
+@media (max-width: 1080px) {
+}

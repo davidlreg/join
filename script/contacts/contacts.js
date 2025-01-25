@@ -41,8 +41,12 @@ function openOverlay(overlay) {
 function addEventListenersToAddContactOverlay(overlay) {
   const closeButton = overlay.querySelector(".closeButton");
   const cancelButton = overlay.querySelector(".cancelButton");
+  const createButton = overlay.querySelector(".createContactButton");
+  const createButtonResponsive = overlay.querySelector(".closeContainer");
   closeButton.addEventListener("click", closeAddContactOverlay);
   cancelButton.addEventListener("click", closeAddContactOverlay);
+  createButton.addEventListener("click", createContact);
+  createButtonResponsive.addEventListener("click", closeAddContactOverlay);
 }
 
 /**
@@ -136,4 +140,14 @@ function closeEditContactOverlay() {
   const overlay = document.querySelector(".editContactOverlay");
   closeOverlay(overlay);
   removeOverlayContent();
+}
+
+function createContact() {
+  closeAddContactOverlay();
+  showContactCreatedMessage();
+}
+
+function showContactCreatedMessage() {
+  const createdContactContainer = document.getElementById("createdContactContainer");
+  createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
 }

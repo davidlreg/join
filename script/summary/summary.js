@@ -32,10 +32,6 @@ function setupRightContainerAnimation() {
   }
 }
 
-/**
- * Disables the right container and immediately switches to the post-animation state.
- * Used when the animation has already been played.
- */
 function disableRightContainer() {
   const { rightContainer, leftContainer, mainContent, headline } = getSummaryElements();
 
@@ -43,7 +39,16 @@ function disableRightContainer() {
     hideRightContainer(rightContainer);
     showLeftContainer(leftContainer, headline);
     setFullHeight(mainContent);
+  } else {
+    setContentToNormal(rightContainer, leftContainer);
   }
+}
+
+function setContentToNormal() {
+  const { rightContainer, leftContainer} = getSummaryElements();
+  rightContainer.style.width = '40%';
+  rightContainer.style.display = 'flex';
+  leftContainer.style.width = '60%';
 }
 
 /**
@@ -117,6 +122,12 @@ function setFullHeight(mainContent) {
 }
 
 /**
+ * Disables the full height of the main content container.
+ *
+ * @param {HTMLElement} mainContent - The main content container element.
+ */
+
+/**
  * Retrieves and returns all the required DOM elements for the summary animation.
  *
  * @returns {Object} An object containing the rightContainer, leftContainer, mainContent, and headline elements.
@@ -133,6 +144,14 @@ function getSummaryElements() {
 /**
  * Adds an event listener to initialize the animation when the DOM content is fully loaded.
  */
+/**
+ * Adds an event listener to initialize the animation and handle window resizing dynamically.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   showSummaryStartAnimation();
+
+  // Add a resize event listener to dynamically handle layout changes
+  window.addEventListener('resize', () => {
+    disableRightContainer();
+  });
 });

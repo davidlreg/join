@@ -1,4 +1,7 @@
-// removes animated logos and background when the animation is over
+/**
+ * Removes animated logos and background when the animation is over.
+ *
+ */
 document.addEventListener("DOMContentLoaded", () => {
     let logoContainer = document.getElementById('logoContainer');
     let logo = document.getElementById('logo');

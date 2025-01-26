@@ -86,11 +86,28 @@ function removeOverlayContent() {
  * Inserts the floating contact template into the div provided for this purpose
  *
  */
+/*
 function openContact() {
   const floatingConntactContainer = document.getElementById("floatingContactContainer");
   floatingConntactContainer.innerHTML = showFloatingContactOverlay();
   const overlay = floatingContactContainer.querySelector(".profileHeadSection");
   openFloatingContactOverlay(overlay);
+}
+*/
+
+function openContact() {
+  const screenWidth = window.innerWidth; // Bildschirmbreite abrufen
+
+  if (screenWidth > 1080) {
+    const floatingConntactContainer = document.getElementById("floatingContactContainer");
+    floatingConntactContainer.innerHTML = showFloatingContactOverlay();
+    const overlay = floatingConntactContainer.querySelector(".profileHeadSection");
+    openFloatingContactOverlay(overlay);
+  } else {
+    const floatingConntactContainer = document.getElementById("contactList");
+    floatingConntactContainer.innerHTML = "";
+    floatingConntactContainer.innerHTML = showFloatingContactOverlayMobile();
+  }
 }
 
 /**

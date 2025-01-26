@@ -83,6 +83,13 @@ main {
   background-color: #29abe2;
 }
 
+.dividerMobile {
+  height: 3px;
+  width: 60px;
+  border-radius: 3px;
+  background-color: #29abe2 !important;
+}
+
 .headline > p {
   font-size: 26px;
   font-weight: 400;

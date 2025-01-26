@@ -263,6 +263,23 @@ P {
   pointer-events: none;
 }
 
+.mobileFloatingContactWrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #f6f7f8;
+}
+
+.headlineMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px !important;
+}
+
+.headlineMobile * {
+  color: #000000;
+  background-color: transparent;
+}
+
 @media (max-width: 1350px) {
   .joinLogoSmall {
     display: none;
@@ -345,6 +362,27 @@ P {
     right: 60px;
     top: 172px;
   }
+
+  .detailedContactSectionMobile {
+    width: 100%;
+    height: 100%;
+    padding: 64px;
+    margin-left: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    background-color: #f6f7f8;
+  }
+
+  .profileWrapper {
+    gap: 20px;
+  }
+
+  #surname,
+  #lastname {
+    font-size: 36px;
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -355,7 +393,7 @@ P {
 
 @media (max-width: 500px) {
   .editContactLeftSide {
-    width: 310px ;
+    width: 310px;
   }
 
   h1 {
@@ -382,5 +420,5 @@ P {
 
   .editContactOverlay {
     width: 310px;
-}
+  }
 }

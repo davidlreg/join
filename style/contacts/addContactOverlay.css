@@ -179,7 +179,86 @@
     top: 125px;
     right: 125px;
   }
+
+  .rightSideContentWrapper {
+    flex-direction: column;
+  }
+
+  .formInput {
+    width: 364px !important;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .contactForm {
+    height: 800px !important;
+    background-color: transparent !important;
+    gap: 0px !important;
+    justify-content: flex-start !important;
+    padding: 48px;
+  }
+
+  .formSection {
+    background-color: transparent !important;
+    gap: 14px !important;
+  }
+
+  .formButtons {
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .nameIcon {
+    right: 60px;
+    top: 60px;
+  }
+
+  .mailIcon {
+    right: 60px;
+    top: 128px;
+  }
+
+  .phoneIcon {
+    right: 60px;
+    top: 195px;
+  }
 }
 
 @media (max-width: 1080px) {
+  .overlayBackground {
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .addContactLeftSide {
+    width: 310px;
+  }
+
+  h1 {
+    font-size: 36px !important;
+  }
+
+  P {
+    font-size: 18px !important;
+  }
+
+  .contactPicture > svg {
+    top: 110px;
+    right: 85px;
+  }
+
+  .editContactRightSide {
+    width: 310px;
+  }
+
+  .formInput {
+    border: 1px solid gray;
+    width: 280px !important;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 0px 8px;
+    font-size: 18px;
+  }
 }

@@ -173,15 +173,15 @@ body {
 }
 
 .inputEmail {
-    background-image: url(../assets/img/mail.svg);
+    background-image: url(../../assets/icon/login/mail.svg);
 }
 
 .inputPassword {
-    background-image: url(../assets/img/lock.svg);
+    background-image: url(../../assets/icon/login/lock.svg);
 }
 
 .inputName {
-    background-image: url(../assets/img/person.svg);
+    background-image: url(../../assets/icon/login/person.svg);
 }
 
 .checkbox {
@@ -196,24 +196,24 @@ body {
     display: block;
     width: 24px;
     height: 24px;
-    background: url('../assets/img/unchecked.svg');
+    background: url('../../assets/icon/login/unchecked.svg');
     background-size: cover;
     cursor: pointer;
     transition-duration: 0.2s;
 }
 
 .customBox:hover {
-    background-image: url('../assets/img/hover_unchecked.svg');
+    background-image: url('../../assets/icon/login/hover_unchecked.svg');
     background-size: cover;
 }
 
 .box:checked + label {
-    background: url('../assets/img/checked.svg');
+    background: url('../../assets/icon/login/checked.svg');
     background-size: cover;
 }
 
 .box:checked + label:hover {
-    background-image: url('../assets/img/hover_checked.svg');
+    background-image: url('../../assets/icon/login/hover_checked.svg');
     background-size: cover;
 }
 

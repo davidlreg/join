@@ -48,3 +48,13 @@ function setActiveClassForLink(links, param) {
     }
   });
 }
+
+/**
+ * Adds the 'active' class to the link matching the provided 'param'.
+ *
+ * @param {NodeListOf<Element>} links The list of links to search through.
+ * @param {string} param The 'active' parameter value to match against the links.
+ */
+function historyBack() {
+  window.history.back();
+} 

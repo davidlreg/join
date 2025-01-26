@@ -54,15 +54,6 @@ a:hover {
   padding: 10px;
 }
 
-.btnUnabledLight {
-  background-color: white;
-  border: 1px solid rgba(239, 239, 239);
-  border-radius: 5px;
-  color: rgba(42, 54, 70);
-  font-weight: bold;
-  padding: 10px;
-}
-
 .btnDark {
   background-color: rgba(42, 54, 70);
   border: 1px solid rgba(42, 54, 70);

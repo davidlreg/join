@@ -130,7 +130,7 @@ header h3 {
   align-items: center;
 }
 
-.userIcon > a {
+.userIcon>a {
   background-color: #ffffff;
   color: #29abe2;
   font-weight: bold;
@@ -224,12 +224,12 @@ header h3 {
   background-color: rgb(42, 54, 71);
 }
 
-.sidebar__footer > a {
+.sidebar__footer>a {
   overflow: hidden;
   padding: 6px 0px;
 }
 
-.sidebar__footer a > p {
+.sidebar__footer a>p {
   font-size: 16px;
   font-weight: 400;
   color: #cdcdcd;
@@ -255,7 +255,7 @@ header h3 {
   overflow: hidden;
 }
 
-.sidebar__footer.active a > p {
+.sidebar__footer.active a>p {
   background-color: red;
 }
 
@@ -304,7 +304,7 @@ header h3 {
     justify-content: space-evenly;
   }
 
-  .nav__container > a {
+  .nav__container>a {
     flex-direction: column;
     justify-content: center;
     gap: 4px;
@@ -335,6 +335,11 @@ header h3 {
     height: 80px;
     max-height: 80px;
     padding: 0px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
   }
 
   .nav__container p {
@@ -357,7 +362,7 @@ header h3 {
     padding: 0px 32px;
   }
 
-  header > h3 {
+  header>h3 {
     display: none;
   }
 

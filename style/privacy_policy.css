@@ -37,6 +37,10 @@ main h2 {
   margin-bottom: 16px;
 }
 
+main h3 {
+  margin-bottom: 8px;
+}
+
 main p {
   margin-bottom: 16px;
   line-height: 1.6;
@@ -50,3 +54,109 @@ main ul {
 main ul li {
   margin-bottom: 8px;
 }
+
+/*Responsive*/
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    overflow-y: auto; 
+  }
+
+  main {
+    padding: 16px; 
+    font-size: 0.95rem; 
+  }
+
+  main h1 {
+    font-size: 1.75rem;
+  }
+
+  main h2 {
+    font-size: 1.25rem;
+  }
+
+  main h3 {
+    font-size: 1.1rem;
+  }
+
+  main ul {
+    margin-left: 16px;
+  }
+
+  main ul li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+
+  main {
+    padding: 16px;
+    font-size: 0.9rem; 
+  }
+
+  main h1 {
+    font-size: 1.5rem; 
+    margin-bottom: 12px;
+  }
+
+  main h2 {
+    font-size: 1.1rem;
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  main h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  main p {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  main ul {
+    margin-left: 12px;
+    margin-bottom: 12px;
+  }
+
+  main ul li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 319px) {
+  main {
+    padding: 8px;
+    font-size: 0.85rem; 
+  }
+
+  main h1 {
+    font-size: 1.25rem;
+  }
+
+  main h2 {
+    font-size: 1rem;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  main h3 {
+    font-size: 0.95rem;
+  }
+
+  main p, main ul li {
+    font-size: 0.85rem;
+  }
+
+  main ul {
+    margin-left: 8px;
+  }
+}
+
+

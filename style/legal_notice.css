@@ -12,3 +12,73 @@ body {
 .impressum {
   padding: 64px;
 }
+
+@media (max-width: 768px) {
+  .impressum {
+    padding: 32px; 
+    font-size: 0.95rem;
+  }
+
+  .impressum h1 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .impressum h2, .impressum h3 {
+    font-size: 1.25rem;
+  }
+
+  .impressum p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .impressum {
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+
+  .impressum h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .impressum h2, .impressum h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .impressum p {
+    font-size: 0.85rem;
+  }
+
+  .impressum a {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .impressum {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .impressum h1 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  .impressum h2, .impressum h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .impressum p {
+    font-size: 0.8rem;
+  }
+
+  .impressum a {
+    font-size: 0.8rem;
+  }
+}

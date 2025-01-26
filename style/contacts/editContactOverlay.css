@@ -262,3 +262,125 @@ P {
   top: 355px;
   pointer-events: none;
 }
+
+@media (max-width: 1350px) {
+  .joinLogoSmall {
+    display: none;
+  }
+
+  .editContactOverlay {
+    width: 396px;
+    height: 600px;
+    background-color: #ffffff;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .editContactLeftSide {
+    width: 396px;
+    min-height: 351px;
+    border-radius: 32px 32px 0px 0px;
+    align-items: flex-start;
+  }
+
+  .editContactRightSide {
+    width: 396px;
+    height: 100%;
+  }
+
+  .closeContainer {
+    display: flex;
+  }
+
+  .contactPicture > svg {
+    position: absolute;
+    background-color: transparent;
+    z-index: 50;
+    top: 105px;
+    right: 125px;
+  }
+
+  .rightSideContentWrapper {
+    flex-direction: column;
+  }
+
+  .formInput {
+    width: 364px !important;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .contactForm {
+    height: 800px !important;
+    background-color: transparent !important;
+    gap: 0px !important;
+    justify-content: flex-start !important;
+    padding: 48px;
+  }
+
+  .formSection {
+    background-color: transparent !important;
+    gap: 14px !important;
+  }
+
+  .formButtons {
+    justify-content: center;
+    margin-top: 24px;
+  }
+
+  .nameIconEditOverlay {
+    right: 60px;
+    top: 60px;
+  }
+
+  .mailIconEditOverlay {
+    right: 60px;
+    top: 118px;
+  }
+
+  .phoneIconEditOverlay {
+    right: 60px;
+    top: 172px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .overlayBackground {
+    height: 100% !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .editContactLeftSide {
+    width: 310px ;
+  }
+
+  h1 {
+    font-size: 36px !important;
+  }
+
+  P {
+    font-size: 18px !important;
+  }
+
+  .contactPicture > svg {
+    top: 110px;
+    right: 85px;
+  }
+
+  .editContactLeftSide {
+    width: 310px;
+  }
+
+  .formInput {
+    width: 280px !important;
+    height: 42px;
+  }
+
+  .editContactOverlay {
+    width: 310px;
+}
+}

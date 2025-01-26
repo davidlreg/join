@@ -127,7 +127,7 @@ function openEditContact() {
  */
 function addEventListenersToEditContactOverlay(overlay) {
   const deleteButton = overlay.querySelector(".deleteButton");
-  const closeButton = overlay.querySelector(".closeButton");
+  const closeButton = overlay.querySelector(".closeContainer");
   deleteButton.addEventListener("click", closeEditContactOverlay);
   closeButton.addEventListener("click", closeEditContactOverlay);
 }

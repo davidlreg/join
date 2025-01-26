@@ -200,7 +200,7 @@ body {
   }
 
   .addContactButton {
-    margin: 128px 0px 24px 0px !important;
+    margin: 32px 0px 24px 0px !important;
   }
 }
 
@@ -213,16 +213,16 @@ body {
     min-width: 100% !important;
   }
 
+  .contact {
+    padding: 64px 48px !important;
+  }
+
   .detailedContactSection {
     display: none !important;
   }
 
   .addContactButton {
     display: none !important;
-  }
-
-  #overlayContainer {
-    height: 124px;
   }
 
   .personalInformationShort > p {

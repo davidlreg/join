@@ -253,12 +253,7 @@
   }
 
   .formInput {
-    border: 1px solid gray;
     width: 280px !important;
     height: 50px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    padding: 0px 8px;
-    font-size: 18px;
   }
 }

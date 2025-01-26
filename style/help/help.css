@@ -1,7 +1,53 @@
+body {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+}
+
+.rightSideWrapper {
+    width: 100%;
+    background-color: #f6f7f8;
+    height: auto;
+}
+
+main {
+    margin: 100px;
+}
+
+h1 {
+    font-size: 52px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.list {
+    display: flex;
+    gap: 30px;
+}
+
+.number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+span {
+    color: rgba(42, 170, 226);
+}
+
 .arrowBack, .arrowBack img {
-    background-color: white;
+    background: transparent;
     padding: 5px;
     height: 15px;
+    position: fixed;
+    top: 200px;
+    right: 50px;
 }
 
 .arrowBack {
@@ -14,4 +60,25 @@
     background-color: rgb(222, 222, 222);
     border-radius: 50px;
     transition-duration: 0.2s;
+}
+
+@media screen and (max-width: 1350px) {
+    body {
+        flex-direction: column-reverse;
+    }
+
+    .rightSideWrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        margin: 50px;
+    }
+
+    .arrowBack, .arrowBack img {
+        top: 150px;
+        right: 30px;
+    }
 }

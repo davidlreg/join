@@ -1,6 +1,7 @@
 body {
     height: 100vh;
     display: flex;
+    background-color: rgba(248, 249, 250);
 }
 
 .mainContent {
@@ -9,7 +10,7 @@ body {
 }
 
 .helpInstructions {
-    margin: 100px;
+    margin: 80px;
 }
 
 h1 {
@@ -44,7 +45,7 @@ span {
     height: 15px;
     position: fixed;
     top: 200px;
-    right: 50px;
+    right: 80px;
 }
 
 .arrowBack {
@@ -65,7 +66,7 @@ span {
     }
 
     .helpInstructions {
-        margin: 50px;
+        margin: 30px;
     }
 
     .arrowBack, .arrowBack img {

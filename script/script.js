@@ -1,6 +1,5 @@
 function init() {
   setActiveLinkFromURL();
-  // changeInputBoardLocation();
   fetchDataJSON();
 }
 

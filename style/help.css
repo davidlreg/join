@@ -1,17 +1,14 @@
 body {
-    height: auto;
+    height: 100vh;
     display: flex;
-    flex-direction: row;
+}
+
+.mainContent {
+    flex: 1;
     overflow-y: auto;
 }
 
-.rightSideWrapper {
-    width: 100%;
-    background-color: #f6f7f8;
-    height: auto;
-}
-
-main {
+.helpInstructions {
     margin: 100px;
 }
 
@@ -67,13 +64,7 @@ span {
         flex-direction: column-reverse;
     }
 
-    .rightSideWrapper {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    main {
+    .helpInstructions {
         margin: 50px;
     }
 

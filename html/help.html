@@ -7,13 +7,14 @@
         <link rel="icon" href="../assets/img/join_logo_small.png" />
         <link rel="stylesheet" href="../style/style.css" />
         <link rel="stylesheet" href="../style/fonts.css" />
-        <link rel="stylesheet" href="../style/help/help.css" />
+        <link rel="stylesheet" href="../style/help.css" />
         <script src="../script/script.js"></script>
     </head>
 
     <body>
         <div class="sidebar__container" id="sidebar-nav">
             <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+            
             <div class="nav__container" id="navbar">
                 <a class="nav-link" href="/html/summary.html?active=summary">
                     <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />
@@ -32,13 +33,14 @@
                   <p>Contact</p> 
                 </a>
             </div>
+
             <div class="sidebar__footer">
                 <a class="nav-link" href="/html/privacy_policy.html?active=privacy_policy"><p class="zoom">Privacy Policy</p></a>
                 <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"><p class="zoom">Legal Notice</p></a>
             </div>
         </div>
         
-        <div class="rightSideWrapper">
+        <div class="mainContent">
             <header>
                 <div class="joinLogoMedium">
                     <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +70,7 @@
                 </div>
             </header>
 
-            <main>
+            <div class="helpInstructions">
                 <button class="arrowBack"
                 onClick="historyBack()"
                 >
@@ -144,7 +146,7 @@
                 </section>
                 <br><br>
                 <h2>Enjoy using Join!</h2>
-            </main>
+            </div>
         </div>
     </body>
 </html>

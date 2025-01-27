@@ -63,7 +63,7 @@ function setTimeForRightContent(leftContainer, headline) {
     hideRightContainer();
     showLeftContainer(leftContainer, headline);
     localStorage.setItem('animationPlayed', 'true');
-  }, 5000);
+  }, 3000);
 }
 
 /**
@@ -118,7 +118,7 @@ function showLeftContainer(leftContainer, headline) {
  * @param {HTMLElement} mainContent - The main content container element.
  */
 function setFullHeight(mainContent) {
-  mainContent.style.height = '100%';
+  mainContent.style.height = '50%';
 }
 
 /**

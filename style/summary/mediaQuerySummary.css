@@ -1,11 +1,3 @@
-@media screen and (min-width: 1351px) {
-
-  .summaryMainContent {
-    height: auto !important;
-  }
-    
-}
-
 @media screen and (max-width: 1350px) {
     body {
         flex-direction: column-reverse;

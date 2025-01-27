@@ -56,3 +56,7 @@ function innerWidthAboveThreshold(inputContainer, boardControls, boardContainer,
     boardAddTask.style.display = 'block';
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  changeInputBoardLocation()
+});

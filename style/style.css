@@ -1,22 +1,29 @@
+/* Global Reset */
 * {
-  margin: 0px;
-  padding: 0px;
-  border: 0 solid transparent;
-  font-family: "Inter", sans-serif;
-}
-
-body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100vh;
-  overflow-y: hidden;
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* Body Styling */
+body {
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+/* Placeholder Styling */
+::placeholder {
+  color: rgba(209, 209, 209);
+}
+
+/* Utility Classes */
 .dNone {
   display: none !important;
 }
@@ -27,10 +34,11 @@ html {
   gap: 6px;
 }
 
-::placeholder {
-  color: rgba(209, 209, 209);
+.mgBottom-20px {
+  margin-bottom: 20px;
 }
 
+/* Link Styling */
 a {
   color: black;
   text-decoration: none;
@@ -41,26 +49,25 @@ a:hover {
   text-decoration: underline;
 }
 
-.mgBottom-20px {
-  margin-bottom: 20px;
+/* Button Styling */
+.btnUnabledDark,
+.btnDark,
+.btnLight {
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .btnUnabledDark {
   background-color: rgba(239, 239, 239);
   border: 1px solid rgba(239, 239, 239);
-  border-radius: 5px;
   color: rgba(42, 54, 70);
-  font-weight: bold;
-  padding: 10px;
 }
 
 .btnDark {
   background-color: rgba(42, 54, 70);
   border: 1px solid rgba(42, 54, 70);
-  border-radius: 5px;
   color: white;
-  font-weight: bold;
-  padding: 10px;
 }
 
 .btnDark:hover {
@@ -68,16 +75,13 @@ a:hover {
   background-color: rgba(42, 170, 226);
   border: 1px solid rgba(42, 170, 226);
   box-shadow: 0px 3px 5px 0px rgba(180, 180, 180);
-  transition-duration: 0.2s;
+  transition: background-color 0.2s, border 0.2s, box-shadow 0.2s;
 }
 
 .btnLight {
   background-color: white;
   border: 1px solid rgba(42, 54, 70);
-  border-radius: 5px;
   color: rgba(42, 54, 70);
-  font-weight: bold;
-  padding: 10px;
 }
 
 .btnLight:hover {
@@ -85,11 +89,10 @@ a:hover {
   border: 1px solid rgba(42, 170, 226);
   color: rgba(42, 170, 226);
   box-shadow: 0px 3px 5px 0px rgba(180, 180, 180);
-  transition-duration: 0.2s;
+  transition: border 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 /* Global Header Styling */
-
 header {
   min-height: 96px;
   max-height: 96px;
@@ -100,34 +103,26 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0px 80px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 header h3 {
   font-size: 20px;
   font-weight: 400;
-  background-color: #ffffff;
 }
 
 .topBarIcons {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
 }
 
 .topBarIcons div {
   margin-left: 10px;
   cursor: pointer;
-  background-color: #ffffff;
 }
 
-.layoutContainer {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-}
-
+/* User Icon Styling */
 .userIcon {
   background-color: #ffffff;
   border: 2px solid black;
@@ -139,15 +134,14 @@ header h3 {
   align-items: center;
 }
 
-.userIcon>a {
+.userIcon > a {
   background-color: #ffffff;
   color: #29abe2;
   font-weight: bold;
   text-decoration: none;
 }
 
-.userIcon:hover,
-.userIcon:hover * {
+.userIcon:hover {
   background-color: #f6f7f8;
 }
 
@@ -166,51 +160,41 @@ header h3 {
 }
 
 /* Global Sidebar Styling */
-
 .sidebar__container {
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  padding: 64px 0px;
+  align-items: center;
+  padding: 64px 0;
   background-color: rgb(42, 54, 71);
   min-width: 232px;
 }
 
-.joinLogoBig {
-  text-decoration: none;
-  background-color: rgb(42, 54, 71);
-  cursor: default;
-}
-
-.joinLogoBig:hover {
-  cursor: default;
-}
-
+.joinLogoBig,
 .sidebar__join-image {
   cursor: default;
   background-color: rgb(42, 54, 71);
+  text-decoration: none;
 }
 
 .nav__container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(42, 54, 71);
   gap: 10px;
   width: 100%;
+  background-color: rgb(42, 54, 71);
 }
 
 .nav__container a {
   display: flex;
+  align-items: center;
+  padding: 5px 50px;
   color: #d9d9d9;
   background-color: rgb(42, 54, 71);
-  padding: 5px 50px;
-  align-items: center;
 }
 
 .nav__container p {
   color: #d9d9d9;
-  align-items: center;
   font-size: 16px;
   font-weight: 400;
   background-color: transparent;
@@ -221,28 +205,25 @@ header h3 {
   height: 25px;
   margin-right: 10px;
   color: #d9d9d9;
-  background-color: rgb(42, 54, 71);
 }
 
 .sidebar__footer {
-  width: 100%;
   display: flex;
-  text-align: center;
   flex-direction: column;
   gap: 10px;
+  text-align: center;
   background-color: rgb(42, 54, 71);
 }
 
-.sidebar__footer>a {
+.sidebar__footer > a {
+  padding: 6px 0;
   overflow: hidden;
-  padding: 6px 0px;
 }
 
-.sidebar__footer a>p {
+.sidebar__footer a > p {
   font-size: 16px;
   font-weight: 400;
   color: #cdcdcd;
-  /* background-color: #2a3647; */
 }
 
 .sidebar__footer a:hover {
@@ -264,18 +245,18 @@ header h3 {
   overflow: hidden;
 }
 
-.sidebar__footer.active a>p {
+.sidebar__footer.active a > p {
   background-color: red;
 }
 
+/* Navigation Link Active and Hover States */
 .nav-link.active {
   background-color: #091931 !important;
-  color: #ffffff;
+  color: white;
   pointer-events: none;
 }
 
 .nav-link.active:hover {
-  background-color: #091931;
   cursor: default;
 }
 
@@ -290,10 +271,14 @@ header h3 {
 
 .nav-link:hover img {
   background-color: #2a3d59;
-  text-decoration: none;
 }
 
-/* Responsive Sidebar & Header Styling */
+.sidebar__join-image {
+  cursor: default;
+  background-color: rgb(42, 54, 71);
+}
+
+/* Responsive Styles for Screen Sizes */
 
 @media (max-width: 1350px) {
   .layoutContainer {
@@ -313,17 +298,17 @@ header h3 {
     justify-content: space-evenly;
   }
 
-  .nav__container>a {
+  .nav__container > a {
     flex-direction: column;
     justify-content: center;
     gap: 4px;
-    padding: 0px 0px;
+    padding: 0;
   }
 
   .icon {
-    margin-right: 0;
     width: 21px;
     height: 24px;
+    margin-right: 0;
   }
 
   a.nav-link {
@@ -336,42 +321,24 @@ header h3 {
     border-radius: 18px;
   }
 
-  .nav-link.active {
-    border-radius: 18px;
-  }
-
   .sidebar__container {
     height: 80px;
     max-height: 80px;
-    padding: 0px;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-  }
-
-  .nav__container p {
-    background-color: transparent;
-  }
-
-  .text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
+    padding: 0;
   }
 
   header {
-    min-height: 80px !important;
-    max-height: 80px;
-    height: 100%;
-    padding: 0px;
+    min-height: 80px;
+    padding: 0 32px;
     justify-content: space-between;
-    padding: 0px 32px;
   }
 
-  header>h3 {
+  header h3 {
     display: none;
   }
 
@@ -380,7 +347,7 @@ header h3 {
   }
 
   .joinLogoMedium {
-    display: block !important;
+    display: block;
   }
 
   .userIcon {
@@ -391,13 +358,13 @@ header h3 {
 
 @media (max-width: 1080px) {
   .nav__container p {
-    font-size: 14px !important;
+    font-size: 14px;
     font-weight: 400;
     font-family: "Open Sans", sans-serif;
     text-align: center;
   }
 
   header {
-    padding: 0px 12px;
+    padding: 0 12px;
   }
 }

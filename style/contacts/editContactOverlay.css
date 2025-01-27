@@ -47,6 +47,7 @@
   background-color: #2a3647;
 }
 
+/* Text Styling */
 h1 {
   color: #ffffff;
   background-color: #2a3647;
@@ -54,12 +55,13 @@ h1 {
   font-size: 60px;
 }
 
-P {
+p {
   color: #ffffff;
   background-color: #2a3647;
   font-size: 28px;
 }
 
+/* Header Section */
 .editContactHeadline {
   width: 100%;
   background-color: #2a3647;
@@ -75,6 +77,7 @@ P {
   background-color: #29abe2;
 }
 
+/* Right Side Content */
 .rightSideContentWrapper {
   height: 100%;
   display: flex;
@@ -89,6 +92,7 @@ P {
   width: 100%;
 }
 
+/* Form Input */
 .formInput {
   border: 1px solid gray;
   width: 422px;
@@ -103,6 +107,7 @@ P {
   outline-color: #29abe2;
 }
 
+/* Contact Form */
 .contactForm {
   height: 100%;
   background-color: #ffffff;
@@ -115,6 +120,7 @@ P {
   gap: 64px;
 }
 
+/* Close Button */
 .closeButton {
   width: 100%;
   display: flex;
@@ -131,11 +137,13 @@ P {
   border-radius: 50%;
   transition: background-color 0.1s ease, transform 0.1s ease;
 }
+
 .closeButton > svg {
   width: 24px;
   height: 24px;
 }
 
+/* Contact Picture */
 .contactPicture {
   background-color: #ffffff;
   margin: 0px 0px 0px 64px;
@@ -147,6 +155,7 @@ P {
   height: 120px;
 }
 
+/* Form Section */
 .formSection {
   background-color: #ffffff;
   display: flex;
@@ -154,6 +163,7 @@ P {
   gap: 32px;
 }
 
+/* Form Buttons */
 .formButtons {
   width: 100%;
   display: flex;
@@ -169,6 +179,7 @@ P {
   font-size: 18px;
 }
 
+/* Button Styling */
 .deleteButton {
   color: #2a3647;
   font-weight: bold;
@@ -242,6 +253,7 @@ P {
   transition: outline-color 0.25s ease;
 }
 
+/* Icon Overlays */
 .nameIconEditOverlay {
   position: absolute;
   right: 25px;
@@ -263,6 +275,7 @@ P {
   pointer-events: none;
 }
 
+/* Mobile View */
 .mobileFloatingContactWrapper {
   width: 100%;
   height: 100%;
@@ -280,6 +293,7 @@ P {
   background-color: transparent;
 }
 
+/* Media Queries */
 @media (max-width: 1350px) {
   .joinLogoSmall {
     display: none;
@@ -402,17 +416,13 @@ P {
     font-size: 36px !important;
   }
 
-  P {
+  p {
     font-size: 18px !important;
   }
 
   .contactPicture > svg {
     top: 110px;
     right: 85px;
-  }
-
-  .editContactLeftSide {
-    width: 310px;
   }
 
   .formInput {

@@ -1,11 +1,5 @@
-let backendData = {}; // Anstelle eines Arrays ein Objekt für die Kontakte.
-let currentContactIndex = 0;
-
-async function init() {
+function init() {
   setActiveLinkFromURL();
-  // changeInputBoardLocation();
-  await fetchDataJSON();
-  renderContactsInContactList();
 }
 
 /**
@@ -60,19 +54,4 @@ function setActiveClassForLink(links, param) {
  */
 function historyBack() {
   window.history.back();
-}
-
-async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
-  let responseAsJSON = await response.json();
-  backendData = responseAsJSON;
-}
-
-function renderContactsInContactList() {
-  const contacts = backendData.Data.Contacts;
-  for (let contactId in contacts) {
-    const contact = contacts[contactId];
-    const contactList = document.getElementById("contactList");
-    contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
-  }
 }

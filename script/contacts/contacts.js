@@ -1,3 +1,15 @@
+let backendData = {};
+
+async function init() {
+  setActiveLinkFromURL();
+  await prepareData();
+}
+
+async function prepareData() {
+  await fetchDataJSON();
+  renderContactsInContactList();
+}
+
 // Add new contact logic
 
 /**
@@ -175,4 +187,50 @@ function createContact() {
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
+}
+
+async function fetchDataJSON() {
+  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let responseAsJSON = await response.json();
+  backendData = responseAsJSON;
+}
+
+function renderContactsInContactList() {
+  const contacts = getContacts();
+  const sortedContacts = sortContactsByName(contacts);
+  const groupedContacts = groupContactsByFirstLetter(sortedContacts);
+  renderGroupedContacts(groupedContacts);
+}
+
+function getContacts() {
+  return Object.values(backendData.Data.Contacts);
+}
+
+function sortContactsByName(contacts) {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function groupContactsByFirstLetter(contacts) {
+  return contacts.reduce((groups, contact) => {
+    const firstLetter = contact.name[0].toUpperCase();
+    if (!groups[firstLetter]) {
+      groups[firstLetter] = [];
+    }
+    groups[firstLetter].push(contact);
+    return groups;
+  }, {});
+}
+
+function renderGroupedContacts(groupedContacts) {
+  const contactList = document.getElementById("contactListInner");
+  for (const letter in groupedContacts) {
+    renderSectionHeader(contactList, letter);
+    groupedContacts[letter].forEach((contact) => {
+      contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
+    });
+  }
+}
+
+function renderSectionHeader(contactList, letter) {
+  contactList.innerHTML += `<div class="letterDividerBox"><h2 class="contactListLetter">${letter}</h2><div class="dividerBottom"></div></div>`;
 }

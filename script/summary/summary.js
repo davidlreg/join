@@ -1,9 +1,13 @@
+function init() {
+  setActiveLinkFromURL();
+}
+
 /**
  * If the user clicks on the areas, he will be linked to the board page
  */
 
 function fromSummaryToBoard() {
-  window.location.href = "http://127.0.0.1:5500/html/board.html?active=board"
+  window.location.href = "http://127.0.0.1:5500/html/board.html?active=board";
 }
 
 /**
@@ -11,7 +15,7 @@ function fromSummaryToBoard() {
  * skips to the post-animation state.
  */
 function showSummaryStartAnimation() {
-  if (localStorage.getItem('animationPlayed')) {
+  if (localStorage.getItem("animationPlayed")) {
     return disableRightContainer();
   }
 
@@ -45,10 +49,10 @@ function disableRightContainer() {
 }
 
 function setContentToNormal() {
-  const { rightContainer, leftContainer} = getSummaryElements();
-  rightContainer.style.width = '40%';
-  rightContainer.style.display = 'flex';
-  leftContainer.style.width = '60%';
+  const { rightContainer, leftContainer } = getSummaryElements();
+  rightContainer.style.width = "40%";
+  rightContainer.style.display = "flex";
+  leftContainer.style.width = "60%";
 }
 
 /**
@@ -62,7 +66,7 @@ function setTimeForRightContent(leftContainer, headline) {
   setTimeout(() => {
     hideRightContainer();
     showLeftContainer(leftContainer, headline);
-    localStorage.setItem('animationPlayed', 'true');
+    localStorage.setItem("animationPlayed", "true");
   }, 3000);
 }
 
@@ -71,9 +75,9 @@ function setTimeForRightContent(leftContainer, headline) {
  *
  * @param {HTMLElement} [rightContainer=document.querySelector('.summaryRightContainer')] - The right container element to hide.
  */
-function hideRightContainer(rightContainer = document.querySelector('.summaryRightContainer')) {
+function hideRightContainer(rightContainer = document.querySelector(".summaryRightContainer")) {
   if (rightContainer) {
-    rightContainer.style.display = 'none';
+    rightContainer.style.display = "none";
   }
 }
 
@@ -84,8 +88,8 @@ function hideRightContainer(rightContainer = document.querySelector('.summaryRig
  * @param {HTMLElement} mainContent - The main content container to adjust its height.
  */
 function showRightContainer(rightContainer, mainContent) {
-  rightContainer.style.display = 'flex';
-  rightContainer.style.width = '100%';
+  rightContainer.style.display = "flex";
+  rightContainer.style.width = "100%";
   setFullHeight(mainContent);
 }
 
@@ -96,8 +100,8 @@ function showRightContainer(rightContainer, mainContent) {
  * @param {HTMLElement} headline - The headline element to hide.
  */
 function hideHeadlineAndLeftContainer(leftContainer, headline) {
-  leftContainer.style.display = 'none';
-  headline.style.display = 'none';
+  leftContainer.style.display = "none";
+  headline.style.display = "none";
 }
 
 /**
@@ -107,9 +111,9 @@ function hideHeadlineAndLeftContainer(leftContainer, headline) {
  * @param {HTMLElement} headline - The headline element above the mainContent.
  */
 function showLeftContainer(leftContainer, headline) {
-  leftContainer.style.display = 'flex';
-  leftContainer.style.width = '100%';
-  headline.style.display = 'flex';
+  leftContainer.style.display = "flex";
+  leftContainer.style.width = "100%";
+  headline.style.display = "flex";
 }
 
 /**
@@ -118,7 +122,7 @@ function showLeftContainer(leftContainer, headline) {
  * @param {HTMLElement} mainContent - The main content container element.
  */
 function setFullHeight(mainContent) {
-  mainContent.style.height = '50%';
+  mainContent.style.height = "50%";
 }
 
 /**
@@ -134,10 +138,10 @@ function setFullHeight(mainContent) {
  */
 function getSummaryElements() {
   return {
-    rightContainer: document.querySelector('.summaryRightContainer'),
-    leftContainer: document.querySelector('.summaryLeftContainer'),
-    mainContent: document.querySelector('.summaryMainContent'),
-    headline: document.querySelector('.summaryHeadline'),
+    rightContainer: document.querySelector(".summaryRightContainer"),
+    leftContainer: document.querySelector(".summaryLeftContainer"),
+    mainContent: document.querySelector(".summaryMainContent"),
+    headline: document.querySelector(".summaryHeadline"),
   };
 }
 
@@ -147,11 +151,11 @@ function getSummaryElements() {
 /**
  * Adds an event listener to initialize the animation and handle window resizing dynamically.
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   showSummaryStartAnimation();
 
   // Add a resize event listener to dynamically handle layout changes
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     disableRightContainer();
   });
 });

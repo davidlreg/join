@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task | Join</title>
     <link rel="icon" href="../assets/img/join_logo_small.png" />
-    <link rel="stylesheet" href="/style/add task/add_task.css">
-    <link rel="stylesheet" href="/style/add task/add_task_responsive.css">
+    <link rel="stylesheet" href="/style/add_task/add_task.css">
+    <link rel="stylesheet" href="/style/add_task/add_task_responsive.css">
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/fonts.css" />
 </head>
@@ -16,25 +16,29 @@
     <!-- Sidebar -->
     <div class="layoutContainer">
         <div class="sidebar__container" id="sidebar-nav">
-            <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" /></a>
+            <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" alt="JoinLogoBig" /></a>
             <div class="nav__container" id="navbar">
               <a class="nav-link" href="/html/summary.html?active=summary">
-                <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" />
+                <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" alt="summaryIcon" />
                 <p>Summary</p>
               </a>
               <a class="nav-link" href="/html/add_task.html?active=add-task">
-                <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" />
+                <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" alt="addTaskIcon" />
                 <div class="text">
                   <p>Add</p>
                   <p>Task</p>
                 </div>
               </a>
-              <a class="nav-link" href="/html/board.html?active=board"> <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" />
-                 <p>Board</p>
-              <a class="nav-link" href="/html/contacts.html?active=contacts"> <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" />
-                <p>Contact</p> 
+              <a class="nav-link" href="/html/board.html?active=board">
+                <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" alt="boardIcon" />
+                <p>Board</p>
+              </a>
+              <a class="nav-link" href="/html/contacts.html?active=contacts">
+                <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" alt="ContactsIcon" />
+                <p>Contact</p>
               </a>
             </div>
+      
             <div class="sidebar__footer">
               <a class="nav-link" href="/html/privacy_policy.html?active=privacy_policy"><p class="zoom">Privacy Policy</p></a>
               <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"><p class="zoom">Legal Notice</p></a>
@@ -69,7 +73,7 @@
           
                 <div class="topBarIcons">
                     <div onclick="location.href='./help.html'">
-                        <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg">
+                        <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" alt="questionIcon">
                     </div>
           
                     <div onclick="" class="userIcon">
@@ -91,7 +95,7 @@
                         </div>
                         <div class="taskInput">
                             <p>Description</p>
-                            <textarea required type="text" placeholder="Enter a Description" class="addDescriptionInput"></textarea>
+                            <textarea required placeholder="Enter a Description" class="addDescriptionInput"></textarea>
                         </div>
                         <div class="taskInput">
                             <p>Assigned to</p>
@@ -173,10 +177,13 @@
             </div>
         </div>
     </form>
+    
 
-    <script src="/script/add task/add_task_templates.js"></script>
-    <script src="/script/add task/add_task_overlay.js"></script>
-    <script src="/script/add task/prio_buttons.js"></script>
+    <script src="/script/add_task/add_task.js"></script>
+    <script src="/script/script.js"></script>
+    <script src="/script/add_task/add_task_templates.js"></script>
+    <script src="/script/add_task/add_task_overlay.js"></script>
+    <script src="/script/add_task/prio_buttons.js"></script>
 </body>
 
 </html>

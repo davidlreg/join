@@ -1,12 +1,21 @@
 /* Contact List Sytling */
 .contactList {
   background-color: #ffffff;
-  min-width: 456px;
-  height: 100vh;
+  width: 100%;
+  max-width: 456px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactListInner {
+  width: 100%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 }
 
 .addContactButton {
@@ -20,7 +29,15 @@
   gap: 16px;
   border-radius: 10px;
   text-decoration: none !important;
-  margin: 24px 0px;
+  margin: 24px;
+}
+
+.addContactButtonContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .addContactButton:hover,
@@ -46,7 +63,11 @@
 main {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .detailedContactSection {
@@ -62,10 +83,10 @@ main {
   height: 74px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: 30px;
   margin-top: 64px;
+  margin-bottom: 32px;
   margin-left: 32px;
 }
 
@@ -100,10 +121,13 @@ main {
 /* Contact Template Styling */
 .contact {
   display: flex;
+  flex-direction: row;
+  width: 90%;
   align-items: center;
+  justify-content: flex-start;
   gap: 36px;
   border-radius: 10px;
-  padding: 12px 48px;
+  padding: 8px;
 }
 
 .contact:hover {
@@ -128,4 +152,53 @@ main {
 
 .small {
   font-size: 16px !important;
+}
+
+.contactNameBig {
+  font-size: 36px !important;
+  font-weight: 700;
+}
+
+.topPart {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goBackArrow {
+  position: absolute;
+  top: 136px;
+  right: 30px;
+}
+
+.contactListLetter {
+  background-color: transparent;
+  width: 80%;
+  padding: 8px;
+  margin-top: 16px;
+}
+
+.letterDividerBox {
+  width: 85%;
+}
+
+.dividerBottom {
+  height: 1px;
+  width: 95%;
+  background-color: #dddddd;
+  border-radius: 1px;
+  margin-bottom: 12px;
+}
+
+.contactBox {
+  width: 85%;
+  padding-bottom: 32px;
+}
+
+@media (max-width: 1350px) {
+  .contactListInner {
+    padding-bottom: 146px;
+  }
 }

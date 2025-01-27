@@ -368,6 +368,8 @@ P {
     height: 100%;
     padding: 64px;
     margin-left: 64px;
+    margin-right: 0px;
+    margin-bottom: 0px;
     display: flex;
     flex-direction: column;
     gap: 64px;

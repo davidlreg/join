@@ -1,6 +1,5 @@
 function init() {
   setActiveLinkFromURL();
-  fetchDataJSON();
 }
 
 /**
@@ -55,10 +54,4 @@ function setActiveClassForLink(links, param) {
  */
 function historyBack() {
   window.history.back();
-}
-
-async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/" + ".json");
-  let responseAsJSON = await response.json();
-  console.log(responseAsJSON);
 }

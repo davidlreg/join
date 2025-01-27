@@ -1,3 +1,7 @@
+function init() {
+  setActiveLinkFromURL();
+}
+
 /**
  * The input field is moved dynamically with a window width of 950px.
  */

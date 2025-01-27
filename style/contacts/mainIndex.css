@@ -196,7 +196,7 @@ body {
   }
 
   .headline {
-    margin-top: 128px !important;
+    margin-top: 64px 32px !important;
   }
 
   .addContactButton {
@@ -211,10 +211,6 @@ body {
 
   .contactList {
     min-width: 100% !important;
-  }
-
-  .contact {
-    padding: 64px 48px !important;
   }
 
   .detailedContactSection {

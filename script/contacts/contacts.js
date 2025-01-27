@@ -1,3 +1,15 @@
+let backendData = {};
+
+async function init() {
+  setActiveLinkFromURL();
+  await prepareData();
+}
+
+async function prepareData() {
+  await fetchDataJSON();
+  renderContactsInContactList();
+}
+
 // Add new contact logic
 
 /**
@@ -83,31 +95,39 @@ function removeOverlayContent() {
 // FLoating contact logic
 
 /**
- * Inserts the floating contact template into the div provided for this purpose
- *
+ * Determines the appropriate floating contact overlay to display based on screen width.
  */
-/*
-function openContact() {
-  const floatingConntactContainer = document.getElementById("floatingContactContainer");
-  floatingConntactContainer.innerHTML = showFloatingContactOverlay();
-  const overlay = floatingContactContainer.querySelector(".profileHeadSection");
-  openFloatingContactOverlay(overlay);
-}
-*/
-
-function openContact() {
-  const screenWidth = window.innerWidth; // Bildschirmbreite abrufen
+function openContact(name, email, phone) {
+  const screenWidth = window.innerWidth; // Get screen width
 
   if (screenWidth > 1080) {
-    const floatingConntactContainer = document.getElementById("floatingContactContainer");
-    floatingConntactContainer.innerHTML = showFloatingContactOverlay();
-    const overlay = floatingConntactContainer.querySelector(".profileHeadSection");
-    openFloatingContactOverlay(overlay);
+    showDesktopContactOverlay(name, email, phone);
   } else {
-    const floatingConntactContainer = document.getElementById("contactList");
-    floatingConntactContainer.innerHTML = "";
-    floatingConntactContainer.innerHTML = showFloatingContactOverlayMobile();
+    showMobileContactOverlay(name, email, phone);
   }
+}
+
+/**
+ * Displays the desktop version of the floating contact overlay.
+ */
+function showDesktopContactOverlay(name, email, phone) {
+  const floatingContactContainer = document.getElementById("floatingContactContainer");
+  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
+
+  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone); // Insert desktop overlay content
+  const overlay = floatingContactContainer.querySelector(".profileHeadSection");
+  openFloatingContactOverlay(overlay); // Open or process the overlay
+}
+
+/**
+ * Displays the mobile version of the floating contact overlay.
+ */
+function showMobileContactOverlay(name, email, phone) {
+  const floatingContactContainer = document.getElementById("contactList");
+  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
+
+  floatingContactContainer.innerHTML = ""; // Clear previous content
+  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone); // Insert mobile overlay content
 }
 
 /**
@@ -167,4 +187,50 @@ function createContact() {
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
+}
+
+async function fetchDataJSON() {
+  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let responseAsJSON = await response.json();
+  backendData = responseAsJSON;
+}
+
+function renderContactsInContactList() {
+  const contacts = getContacts();
+  const sortedContacts = sortContactsByName(contacts);
+  const groupedContacts = groupContactsByFirstLetter(sortedContacts);
+  renderGroupedContacts(groupedContacts);
+}
+
+function getContacts() {
+  return Object.values(backendData.Data.Contacts);
+}
+
+function sortContactsByName(contacts) {
+  return contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function groupContactsByFirstLetter(contacts) {
+  return contacts.reduce((groups, contact) => {
+    const firstLetter = contact.name[0].toUpperCase();
+    if (!groups[firstLetter]) {
+      groups[firstLetter] = [];
+    }
+    groups[firstLetter].push(contact);
+    return groups;
+  }, {});
+}
+
+function renderGroupedContacts(groupedContacts) {
+  const contactList = document.getElementById("contactListInner");
+  for (const letter in groupedContacts) {
+    renderSectionHeader(contactList, letter);
+    groupedContacts[letter].forEach((contact) => {
+      contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
+    });
+  }
+}
+
+function renderSectionHeader(contactList, letter) {
+  contactList.innerHTML += `<div class="letterDividerBox"><h2 class="contactListLetter">${letter}</h2><div class="dividerBottom"></div></div>`;
 }

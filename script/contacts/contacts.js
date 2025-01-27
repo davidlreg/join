@@ -176,29 +176,3 @@ function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
 }
-
-
-
-
-// Test Section
-
-let backendData = {}; // Anstelle eines Arrays ein Objekt für die Kontakte.
-let currentContactIndex = 0;
-
-async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
-  let responseAsJSON = await response.json();
-  backendData = responseAsJSON; // Speichern der gesamten JSON-Daten (einschließlich Kontakte)
-  console.log(backendData); // Zeigt die gesamte JSON-Struktur im Log an
-}
-
-// Funktion, um Kontakte anzuzeigen, nachdem die Daten erfolgreich geladen wurden
-function renderContactsInContactList() {
-  const contacts = backendData.Data.Contacts;
-  // Über alle Kontakte iterieren und den Namen jedes Kontakts ausloggen
-  for (let contactId in contacts) {
-    const contact = contacts[contactId];
-    const contactList = document.getElementById("contactList");
-    contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
-  }
-}

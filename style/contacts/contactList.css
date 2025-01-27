@@ -2,7 +2,7 @@
 .contactList {
   background-color: #ffffff;
   min-width: 456px;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -46,7 +46,10 @@
 main {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .detailedContactSection {
@@ -62,7 +65,6 @@ main {
   height: 74px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: 30px;
   margin-top: 64px;
@@ -100,7 +102,10 @@ main {
 /* Contact Template Styling */
 .contact {
   display: flex;
+  flex-direction: row;
+  width: 400px;
   align-items: center;
+  justify-content: flex-start;
   gap: 36px;
   border-radius: 10px;
   padding: 12px 48px;
@@ -128,4 +133,32 @@ main {
 
 .small {
   font-size: 16px !important;
+}
+
+.contactNameBig {
+  font-size: 36px !important;
+  font-weight: 700;
+}
+
+.topPart {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goBackArrow {
+  position: absolute;
+  top: 136px;
+  right: 30px;
+}
+
+@media (max-width: 1350px) {
+}
+
+@media (max-width: 1080px) {
+}
+
+@media (max-width: 500px) {
 }

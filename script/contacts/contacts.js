@@ -83,31 +83,39 @@ function removeOverlayContent() {
 // FLoating contact logic
 
 /**
- * Inserts the floating contact template into the div provided for this purpose
- *
+ * Determines the appropriate floating contact overlay to display based on screen width.
  */
-/*
-function openContact() {
-  const floatingConntactContainer = document.getElementById("floatingContactContainer");
-  floatingConntactContainer.innerHTML = showFloatingContactOverlay();
-  const overlay = floatingContactContainer.querySelector(".profileHeadSection");
-  openFloatingContactOverlay(overlay);
-}
-*/
-
-function openContact() {
-  const screenWidth = window.innerWidth; // Bildschirmbreite abrufen
+function openContact(name, email, phone) {
+  const screenWidth = window.innerWidth; // Get screen width
 
   if (screenWidth > 1080) {
-    const floatingConntactContainer = document.getElementById("floatingContactContainer");
-    floatingConntactContainer.innerHTML = showFloatingContactOverlay();
-    const overlay = floatingConntactContainer.querySelector(".profileHeadSection");
-    openFloatingContactOverlay(overlay);
+    showDesktopContactOverlay(name, email, phone);
   } else {
-    const floatingConntactContainer = document.getElementById("contactList");
-    floatingConntactContainer.innerHTML = "";
-    floatingConntactContainer.innerHTML = showFloatingContactOverlayMobile();
+    showMobileContactOverlay(name, email, phone);
   }
+}
+
+/**
+ * Displays the desktop version of the floating contact overlay.
+ */
+function showDesktopContactOverlay(name, email, phone) {
+  const floatingContactContainer = document.getElementById("floatingContactContainer");
+  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
+
+  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone); // Insert desktop overlay content
+  const overlay = floatingContactContainer.querySelector(".profileHeadSection");
+  openFloatingContactOverlay(overlay); // Open or process the overlay
+}
+
+/**
+ * Displays the mobile version of the floating contact overlay.
+ */
+function showMobileContactOverlay(name, email, phone) {
+  const floatingContactContainer = document.getElementById("contactList");
+  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
+
+  floatingContactContainer.innerHTML = ""; // Clear previous content
+  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone); // Insert mobile overlay content
 }
 
 /**
@@ -167,4 +175,30 @@ function createContact() {
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
+}
+
+
+
+
+// Test Section
+
+let backendData = {}; // Anstelle eines Arrays ein Objekt für die Kontakte.
+let currentContactIndex = 0;
+
+async function fetchDataJSON() {
+  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let responseAsJSON = await response.json();
+  backendData = responseAsJSON; // Speichern der gesamten JSON-Daten (einschließlich Kontakte)
+  console.log(backendData); // Zeigt die gesamte JSON-Struktur im Log an
+}
+
+// Funktion, um Kontakte anzuzeigen, nachdem die Daten erfolgreich geladen wurden
+function renderContactsInContactList() {
+  const contacts = backendData.Data.Contacts;
+  // Über alle Kontakte iterieren und den Namen jedes Kontakts ausloggen
+  for (let contactId in contacts) {
+    const contact = contacts[contactId];
+    const contactList = document.getElementById("contactList");
+    contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
+  }
 }

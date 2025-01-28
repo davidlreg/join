@@ -1,4 +1,4 @@
-/* Contact List Sytling */
+/* Contact List Styling */
 .contactList {
   background-color: #ffffff;
   width: 100%;
@@ -15,9 +15,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
+  padding-bottom: 112px;
 }
 
+/* Add Contact Button */
 .addContactButton {
   width: 352px;
   height: 56px;
@@ -46,7 +47,7 @@
 }
 
 .addContactButton:hover {
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .addContactButton > p {
@@ -60,6 +61,7 @@
   background-color: #2a3647;
 }
 
+/* Main Section Styling */
 main {
   display: flex;
   flex-direction: row;
@@ -67,9 +69,9 @@ main {
   align-items: center;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
 }
 
+/* Detailed Contact Section */
 .detailedContactSection {
   height: 100vh;
   width: 100%;
@@ -78,16 +80,13 @@ main {
   align-items: flex-start;
 }
 
+/* Headline Styling */
 .headline {
-  width: 570px;
-  height: 74px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 30px;
-  margin-top: 64px;
-  margin-bottom: 32px;
-  margin-left: 32px;
+  padding: 64px 32px 32px 32px;
 }
 
 .headline > h1 {
@@ -97,6 +96,14 @@ main {
   background-color: #f6f7f8;
 }
 
+.headline > p {
+  font-size: 26px;
+  font-weight: 400;
+  color: #2a3647;
+  background-color: #f6f7f8;
+}
+
+/* Divider Styles */
 .divider {
   height: 60px;
   width: 3px;
@@ -106,23 +113,15 @@ main {
 
 .dividerMobile {
   height: 3px;
-  width: 60px;
+  width: 90px;
   border-radius: 3px;
   background-color: #29abe2 !important;
-}
-
-.headline > p {
-  font-size: 26px;
-  font-weight: 400;
-  color: #2a3647;
-  background-color: #f6f7f8;
 }
 
 /* Contact Template Styling */
 .contact {
   display: flex;
   flex-direction: row;
-  width: 90%;
   align-items: center;
   justify-content: flex-start;
   gap: 36px;
@@ -147,10 +146,10 @@ main {
 .personalInformationShort > p {
   background-color: #ffffff;
   color: #000000;
-  font-size: 24px;
+  font-size: 20px;
 }
 
-.small {
+.smallText {
   font-size: 16px !important;
 }
 
@@ -159,6 +158,7 @@ main {
   font-weight: 700;
 }
 
+/* Top Part of Contact */
 .topPart {
   width: 90%;
   display: flex;
@@ -167,12 +167,14 @@ main {
   align-items: center;
 }
 
+/* Go Back Arrow */
 .goBackArrow {
   position: absolute;
   top: 136px;
   right: 30px;
 }
 
+/* Contact List Letter */
 .contactListLetter {
   background-color: transparent;
   width: 80%;
@@ -184,6 +186,7 @@ main {
   width: 85%;
 }
 
+/* Divider Bottom */
 .dividerBottom {
   height: 1px;
   width: 95%;
@@ -197,8 +200,10 @@ main {
   padding-bottom: 32px;
 }
 
+/* Media Query for Smaller Screens */
 @media (max-width: 1350px) {
   .contactListInner {
-    padding-bottom: 146px;
+    padding-bottom: 164px;
   }
 }
+

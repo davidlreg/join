@@ -13,7 +13,7 @@
   width: 468px;
   height: 100%;
   background-color: #2a3647;
-  border-radius: 32px 0px 0px 32px;
+  border-radius: 32px 0 0 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +28,7 @@
   gap: 8px;
 }
 
+/* Cancel Button */
 .cancelButton {
   color: #2a3647;
   font-weight: bold;
@@ -47,32 +48,19 @@
 .cancelButton:hover {
   border: 1px solid #29abe2;
   fill: #29abe2 !important;
-  border-color: #29abe2;
   color: #29abe2;
   transition: outline-color 0.25s ease;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.cancelButton:hover > p {
-  color: #29abe2;
-  transition: outline-color 0.25s ease;
-}
-
+.cancelButton:hover > p,
 .cancelButton:hover svg path {
+  color: #29abe2;
   fill: #29abe2;
+  transition: outline-color 0.25s ease;
 }
 
-.createContactButton:hover {
-  border: 1px solid #70c5ea;
-  transition: background-color 0.25s ease;
-  background-color: #70c5ea;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
-}
-
-.createContactButton:hover * {
-  background-color: transparent;
-}
-
+/* Create Contact Button */
 .createContactButton {
   color: #ffffff;
   font-weight: bold;
@@ -86,37 +74,50 @@
   font-size: 20px;
 }
 
+.createContactButton:hover {
+  border: 1px solid #70c5ea;
+  background-color: #70c5ea;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.createContactButton:hover * {
+  background-color: transparent;
+}
+
+/* Contact Form */
 .contactForm {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.nameIcon {
-  position: absolute;
-  right: 30px;
-  top: 175px;
-  pointer-events: none;
-}
-
-.mailIcon {
-  position: absolute;
-  right: 30px;
-  top: 260px;
-  pointer-events: none;
-}
-
-.phoneIcon {
-  position: absolute;
-  right: 30px;
-  top: 343px;
-  pointer-events: none;
-}
-
 .formInput:focus {
   outline-color: #29abe2;
 }
 
+/* Form Input Icons */
+.nameIcon,
+.mailIcon,
+.phoneIcon {
+  position: absolute;
+  right: 30px;
+  pointer-events: none;
+}
+
+.nameIcon {
+  top: 175px;
+}
+
+.mailIcon {
+  top: 260px;
+}
+
+.phoneIcon {
+  top: 343px;
+}
+
+/* Close Container */
 .closeContainer {
   display: none;
   position: absolute;
@@ -130,34 +131,33 @@
   fill: #ffffff !important;
 }
 
+/* Media Queries */
 @media (max-width: 1350px) {
   .joinLogoSmall {
     display: none;
   }
 
   .addContactOverlay {
+<<<<<<< HEAD
     margin-top: 75px;
     display: flex;
+=======
+>>>>>>> 71c10cbe160fc19f522c241b7e1ae3401e2426b7
     flex-direction: column;
   }
 
   .addContactLeftSide {
     width: 396px;
     min-height: 351px;
-    border-radius: 32px 32px 0px 0px;
+    border-radius: 32px 32px 0 0;
     align-items: flex-start;
-  }
-
-  .editContactRightSide {
-    width: 396px;
-    height: 100%;
   }
 
   h1 {
     font-size: 46px !important;
   }
 
-  P {
+  p {
     font-size: 20px !important;
   }
 
@@ -194,7 +194,7 @@
   .contactForm {
     height: 800px !important;
     background-color: transparent !important;
-    gap: 0px !important;
+    gap: 0 !important;
     justify-content: flex-start !important;
     padding: 48px;
   }
@@ -240,7 +240,7 @@
     font-size: 36px !important;
   }
 
-  P {
+  p {
     font-size: 18px !important;
   }
 

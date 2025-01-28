@@ -206,8 +206,12 @@ body {
     display: none !important;
   }
 
-  .personalInformationShort > p {
+  .userName {
     font-size: 20px !important;
+  }
+
+  .smallText {
+    font-size: 16px !important;
   }
 
   .email {
@@ -221,5 +225,15 @@ body {
 
   .floatingAddContactContainer {
     display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .userName {
+    font-size: 18px !important;
+  }
+
+  .smallText {
+    font-size: 14px !important;
   }
 }

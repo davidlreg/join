@@ -517,7 +517,7 @@ function renderContactTemplate(name, email, phone) {
 
  <div class="contactBox">
   <div class="contact" onclick="openContact('${name}', '${email}', '${phone}')">
-    <svg width="42" height="42" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="42" height="42" class="contactPictureSmall" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_576_4825)">
         <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
         <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
@@ -545,8 +545,8 @@ function renderContactTemplate(name, email, phone) {
       </defs>
     </svg>
     <div class="personalInformationShort">
-      <p>${name}</p>
-      <p class="blue small">${email}</p>
+      <p class="userName">${name}</p>
+      <p class="blue smallText">${email}</p>
     </div>
   </div>
 </div>

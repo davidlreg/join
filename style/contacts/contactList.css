@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 100px;
+  padding-bottom: 112px;
 }
 
 /* Add Contact Button */
@@ -69,7 +69,6 @@ main {
   align-items: center;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
 }
 
 /* Detailed Contact Section */
@@ -123,7 +122,6 @@ main {
 .contact {
   display: flex;
   flex-direction: row;
-  width: 90%;
   align-items: center;
   justify-content: flex-start;
   gap: 36px;
@@ -148,10 +146,10 @@ main {
 .personalInformationShort > p {
   background-color: #ffffff;
   color: #000000;
-  font-size: 24px;
+  font-size: 20px;
 }
 
-.small {
+.smallText {
   font-size: 16px !important;
 }
 
@@ -205,6 +203,7 @@ main {
 /* Media Query for Smaller Screens */
 @media (max-width: 1350px) {
   .contactListInner {
-    padding-bottom: 146px;
+    padding-bottom: 164px;
   }
 }
+

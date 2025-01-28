@@ -170,8 +170,36 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
+.responsiveEditContactButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  bottom: 112px;
+  right: 24px;
+  border-radius: 50%;
+  background-color: #2a3647;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
 .floatingAddContactContainer:hover {
   cursor: pointer;
+}
+
+.responsiveEditContactButton:hover {
+  cursor: pointer;
+}
+
+.floatingAddContactContainer:hover,
+.floatingAddContactContainer:hover * {
+  background-color: #29abe2;
+}
+
+.responsiveEditContactButton:hover,
+.responsiveEditContactButton:hover * {
+  background-color: #29abe2;
 }
 
 /* Media Queries */
@@ -190,6 +218,10 @@ body {
 }
 
 @media (max-width: 1080px) {
+  header {
+    z-index: 2;
+  }
+
   .headline {
     display: none !important;
   }
@@ -200,6 +232,21 @@ body {
 
   .detailedContactSection {
     display: none !important;
+  }
+
+  .detailedContactSectionMobile {
+    padding: 32px 24px;
+    margin-left: 0px;
+    gap: 32px;
+  }
+
+  .profileHeadSection {
+    gap: 0px;
+    padding: 0px;
+  }
+
+  .profileWrapper {
+    gap: 14px;
   }
 
   .addContactButton {
@@ -219,11 +266,11 @@ body {
     font-weight: 400;
   }
 
-  .contactList {
-    min-width: 100%;
+  .floatingAddContactContainer {
+    display: flex;
   }
 
-  .floatingAddContactContainer {
+  .responsiveEditContactButton {
     display: flex;
   }
 }
@@ -238,6 +285,13 @@ body {
   }
 
   .floatingAddContactContainer {
+    width: 46px;
+    height: 46px;
+    bottom: 108px;
+    right: 18px;
+  }
+
+  .responsiveEditContactButton {
     width: 46px;
     height: 46px;
     bottom: 108px;

@@ -293,6 +293,19 @@ p {
   background-color: transparent;
 }
 
+.goBackArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 6px;
+  border-radius: 50%;
+}
+
+.goBackArrow:hover,
+.goBackArrow:hover * {
+  background-color: lightgray;
+}
+
 /* Media Queries */
 @media (max-width: 1350px) {
   .joinLogoSmall {
@@ -388,6 +401,7 @@ p {
     flex-direction: column;
     gap: 64px;
     background-color: #f6f7f8;
+    z-index: 1;
   }
 
   .profileWrapper {

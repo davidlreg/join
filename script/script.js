@@ -55,3 +55,7 @@ function setActiveClassForLink(links, param) {
 function historyBack() {
   window.history.back();
 }
+
+function toogleUser(){
+  
+}

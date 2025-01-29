@@ -76,6 +76,8 @@ emailInput.addEventListener("blur", validateEmail);
  * @example
  * Triggered when the user clicks out of the confirm password field (blur event)
  * confirmPasswordInput.addEventListener("blur", validatePasswords);
+ * 
+ * @returns {void}
  */
 
 confirmPasswordInput.insertAdjacentElement("afterend", ErrorMessage);

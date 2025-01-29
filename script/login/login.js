@@ -1,7 +1,7 @@
 const ErrorMessage = document.createElement("p");
-ErrorMessage.style.color = "red";
-ErrorMessage.style.fontSize = "10px";
-ErrorMessage.style.display = "none";
+  ErrorMessage.style.color = "red";
+  ErrorMessage.style.fontSize = "10px";
+  ErrorMessage.style.display = "none";
 
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
@@ -36,6 +36,8 @@ function removeJoinAnimation () {
   }
 };
 
+emailInput.insertAdjacentElement("afterend", ErrorMessage);
+
 /**
  * This function validates the email input field by checking if the entered value matches a typical email format.
  * If the email is invalid, it sets the input field's border to red
@@ -50,8 +52,6 @@ function removeJoinAnimation () {
  * 
  * @returns {void}
  */
-emailInput.insertAdjacentElement("afterend", ErrorMessage);
-
 function validateEmail() {
   let emailValue = emailInput.value;
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -68,6 +68,8 @@ function validateEmail() {
 
 emailInput.addEventListener("blur", validateEmail);
 
+confirmPasswordInput.insertAdjacentElement("afterend", ErrorMessage);
+
 /**
  * This function validates if the entered password and confirm password fields match.
  * If they don't match, it sets the confirm password input field's border to red
@@ -80,9 +82,6 @@ emailInput.addEventListener("blur", validateEmail);
  * 
  * @returns {void}
  */
-
-confirmPasswordInput.insertAdjacentElement("afterend", ErrorMessage);
-
 function validatePasswords() {
   if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid red";
@@ -116,7 +115,7 @@ confirmPasswordInput.addEventListener("blur", validatePasswords);
  * @returns {void}
  */
 function validateForm() {
-  let signUpButton = document.querySelector(".btnUnabledDark");
+  let signUpButton = document.getElementById("signUpBtn");
   let isFormValid =
     emailInput.value !== "" &&
     passwordInput.value !== "" &&
@@ -140,12 +139,15 @@ emailInput.addEventListener("input", function () {
   validateEmail();
   validateForm();
 });
+
 passwordInput.addEventListener("input", function () {
   validatePasswords();
   validateForm();
 });
+
 confirmPasswordInput.addEventListener("input", function () {
   validatePasswords();
   validateForm();
 });
+
 checkbox.addEventListener("change", validateForm);

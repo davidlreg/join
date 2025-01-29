@@ -6,6 +6,7 @@ ErrorMessage.style.display = "none";
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
 let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
+let checkbox = document.querySelector("#checkbox");
 
 /**
  * This function handles the removal of CSS animations from the logo elements
@@ -94,3 +95,57 @@ function validatePasswords() {
 }
 
 confirmPasswordInput.addEventListener("blur", validatePasswords);
+
+/**
+ * This function validates the sign-up form fields and enables or disables the submit button based on the form's validity.
+ * 
+ * It checks if the email, password, and confirm password fields are filled out,
+ * ensures that the email and confirm password fields do not have red borders (indicating an error)
+ * and verifies that the checkbox is checked.
+ * 
+ * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
+ * and adding the 'btnDark' class.
+ * It sets the 'onclick' attribute of the submit button to trigger the 'signUpSuccessful()' function.
+ * 
+ * If any of the conditions are not met, it disables the submit button by removing the 'btnDark' class
+ * and adding the 'btnUnabledDark' class.
+ * It removes the 'onclick' attribute from the submit button.
+ * 
+ * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
+ * 
+ * @returns {void}
+ */
+function validateForm() {
+  let signUpButton = document.querySelector(".btnUnabledDark");
+  let isFormValid =
+    emailInput.value !== "" &&
+    passwordInput.value !== "" &&
+    confirmPasswordInput.value !== "" &&
+    emailInput.style.border !== "1px solid red" &&
+    confirmPasswordInput.style.border !== "1px solid red" &&
+    checkbox.checked;
+
+  if (isFormValid) {
+    signUpButton.classList.remove("btnUnabledDark");
+    signUpButton.classList.add("btnDark");
+    signUpButton.setAttribute("onclick", "signUpSuccessful");
+  } else {
+    signUpButton.classList.remove("btnDark");
+    signUpButton.classList.add("btnUnabledDark");
+    signUpButton.removeAttribute("onclick");
+  }
+}
+
+emailInput.addEventListener("input", function () {
+  validateEmail();
+  validateForm();
+});
+passwordInput.addEventListener("input", function () {
+  validatePasswords();
+  validateForm();
+});
+confirmPasswordInput.addEventListener("input", function () {
+  validatePasswords();
+  validateForm();
+});
+checkbox.addEventListener("change", validateForm);

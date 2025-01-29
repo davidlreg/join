@@ -169,15 +169,28 @@ body {
 .inputEmail, .inputPassword, .inputName {
     background-repeat: no-repeat;
     background-position: right 10px center;
-    background-size: 15px;
+    background-size: 20px;
+}
+
+.inputPasswordWrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.lockIcon {
+    width: 20px;
+    height: 20px;
 }
 
 .inputEmail {
     background-image: url(../../assets/icon/login/mail.svg);
-}
-
-.inputPassword {
-    background-image: url(../../assets/icon/login/lock.svg);
 }
 
 .inputName {

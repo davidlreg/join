@@ -36,20 +36,30 @@
           class="inputEmail"
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          class="inputPassword"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Confirm password"
-          class="inputPassword"
-          required
-        />
+        <div class="inputPasswordWrapper">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inputPassword"
+            required
+          />
+          <span class="password-toggle" onclick="togglePasswordVisibility()">
+            <img src="../../assets/icon/login/lock.svg" alt="lock-icon" class="lockIcon">
+          </span>
+        </div>
+        <div class="inputPasswordWrapper">
+          <input
+            type="password"
+            name="password"
+            placeholder="Confirm Password"
+            class="inputPassword"
+            required
+          />
+          <span class="password-toggle" onclick="togglePasswordVisibility()">
+            <img src="../../assets/icon/login/lock.svg" alt="lock-icon" class="lockIcon">
+          </span>
+        </div>
       </div>
       <div class="checkbox">
         <input type="checkbox" id="checkbox" class="box dNone" />

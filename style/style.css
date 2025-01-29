@@ -147,9 +147,10 @@ header h3 {
 }
 
 .userOptionsFrame {
-  display: flex;
+  display: none;
   position: absolute;
-  padding: 15px 15px;
+  width: 150px;
+  height: 150px;
   background-color: rgba(42, 54, 71, 1);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   border-top-left-radius: 20px;
@@ -157,6 +158,10 @@ header h3 {
   border-bottom-right-radius: 20px;
   right: 40px;
   top: 96px;
+}
+
+.userOptionsFrame.active {
+  display: flex;
 }
 
 .userOptionsContent {
@@ -171,6 +176,21 @@ header h3 {
   color: rgba(205, 205, 205, 1);
   padding-bottom: 8px;
   padding-top: 8px;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.userOptionsContent a:hover {
+  background-color: #2a3d59;
+  text-decoration: none;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.helpLink {
+  display: none;
 }
 
 .questionIcon {
@@ -312,7 +332,6 @@ header h3 {
 }
 
 /* Responsive Styles for Screen Sizes */
-
 @media (max-width: 1350px) {
   .layoutContainer {
     flex-direction: column-reverse;
@@ -320,6 +339,16 @@ header h3 {
 
   .joinLogoBig {
     display: none;
+  }
+
+  .helpLink {
+    display: block;
+  }
+
+  .userOptionsFrame {
+    width: 150px;
+    height: 200px;
+    top: 80px;
   }
 
   .sidebar__footer {

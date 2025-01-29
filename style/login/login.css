@@ -176,7 +176,10 @@ body {
     position: relative;
 }
 
-.password-toggle {
+.passwordToggle {
+    background: transparent;
+    height: 20px;
+    width: 20px;
     position: absolute;
     right: 10px;
     top: 50%;
@@ -184,13 +187,18 @@ body {
     cursor: pointer;
 }
 
-.lockIcon {
-    width: 20px;
-    height: 20px;
+.errorMessage {
+    color: red;
+    font-size: 10px;
+    display: none;
 }
 
 .inputEmail {
     background-image: url(../../assets/icon/login/mail.svg);
+}
+
+.inputPassword {
+    background-image: url(../../assets/icon/login/lock.svg);
 }
 
 .inputName {

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/login/login.css" />
     <link rel="stylesheet" href="../style/login/mediaQueryLogin.css" />
-    <script src="../script/login/login.js"></script>
+    <script src="../script/login/login.js" defer></script>
   </head>
-  <body>
+  <body onload="removeJoinAnimation()">
     <div id="logoContainer" class="logoContainer animationBackground">
       <img id="logo" class="logo animationLogo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo Dark" />
       <img id="logoMobile" class="logoMobile animationLogoMobile" src="../assets/img/Join_icon.svg" alt="Join Logo Light" />

@@ -1,0 +1,89 @@
+.addBoardOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.hideOverlay {
+    display: none;
+}
+
+.closeBoardOverlay {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #2A3647;
+}
+
+.closeBoardOverlay:hover {
+    background-color: #eeeeee;
+    border-radius: 50%;
+}
+
+.boardOverlayContainer {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    height: 700px;
+    max-height: 700px;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.boardOverlayContent {
+    padding: 32px;
+}
+
+.boardOverlayHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.boardOverlayTaskCategory {
+    font-size: 20px;
+    display: flex; 
+    align-items: flex-start;
+    color: #FFFFFF;
+    background-color: #29abe2;
+    padding: 5px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.boardOverlayTaskTitle {
+    font-size: 56px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.boardOverlayTaskDescription {
+
+}
+
+.boardOverlayTaskDate {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.boardOverlayTaskDate span {
+    margin-left: 20px;
+}
+
+.boardOverlayAssignedTo {
+
+}

@@ -1,8 +1,4 @@
-const ErrorMessage = document.createElement("p");
-  ErrorMessage.style.color = "red";
-  ErrorMessage.style.fontSize = "10px";
-  ErrorMessage.style.display = "none";
-
+let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
 let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
@@ -21,22 +17,20 @@ let checkbox = document.querySelector("#checkbox");
  * @returns {void}
  */
 function removeJoinAnimation () {
-  let logoContainer = document.getElementById('logoContainer');
-  let logo = document.getElementById('logo');
-  let logoMobile = document.getElementById('logoMobile');
+  let logoContainer = document.getElementById("logoContainer");
+  let logo = document.getElementById("logo");
+  let logoMobile = document.getElementById("logoMobile");
 
   if (logoContainer) {
       logoContainer.addEventListener("animationend", () => {
-          logoContainer.classList.remove('animationBackground');
-          logo.classList.remove('animationLogo');        
-          logoMobile.classList.remove('animationLogoMobile');
+          logoContainer.classList.remove("animationBackground");
+          logo.classList.remove("animationLogo");        
+          logoMobile.classList.remove("animationLogoMobile");
       });
   } else {
       console.error("Element #logoContainer not found!");
   }
 };
-
-emailInput.insertAdjacentElement("afterend", ErrorMessage);
 
 /**
  * This function validates the email input field by checking if the entered value matches a typical email format.
@@ -58,17 +52,16 @@ function validateEmail() {
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
-    ErrorMessage.textContent = "Please enter a valid email address.";
-    ErrorMessage.style.display = "block";
+    errorMessage.innerHTML = `Please enter a valid email address.`;
+    errorMessage.style.display = "block";
+
   } else {
     emailInput.style.border = "";
-    ErrorMessage.style.display = "none";
+    errorMessage.style.display = "none";
   }
 }
 
 emailInput.addEventListener("blur", validateEmail);
-
-confirmPasswordInput.insertAdjacentElement("afterend", ErrorMessage);
 
 /**
  * This function validates if the entered password and confirm password fields match.
@@ -85,11 +78,11 @@ confirmPasswordInput.insertAdjacentElement("afterend", ErrorMessage);
 function validatePasswords() {
   if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid red";
-    ErrorMessage.textContent = "Your passwords don't match. Please try again.";
-    ErrorMessage.style.display = "block";
+    errorMessage.innerHTML = `Your passwords don't match. Please try again.`;
+    errorMessage.style.display = "block";
   } else {
     confirmPasswordInput.style.border = "";
-    ErrorMessage.style.display = "none";
+    errorMessage.style.display = "none";
   }
 }
 
@@ -151,3 +144,63 @@ confirmPasswordInput.addEventListener("input", function () {
 });
 
 checkbox.addEventListener("change", validateForm);
+
+/**
+ * This function dynamically updates the background icon of a password input field
+ * based on whether the field contains any text. 
+ * 
+ * When the input field has content,
+ * it displays an eye icon, to switch visibilty of the entered password.
+ * When the input field is empty, it switches back to the "lock" icon.
+ * 
+ * Additionally, the function toggles the visibility of a sibling element
+ * by adding or removing the "dNone" class to show or hide it.
+ * 
+ * Event listeners attached to all elements with the class "inputPassword", 
+ *   which will trigger on each "input" event (whenever the user types in the field).
+ * 
+ * @return {void}
+ */
+function updatePasswordIcon() {
+  if (this.value.length > 0) {
+      this.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+      this.nextElementSibling.classList.remove("dNone");
+  } else {
+      this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
+      this.nextElementSibling.classList.add("dNone");
+  }
+}
+
+document.querySelectorAll(".inputPassword").forEach(input => {
+  input.addEventListener("input", updatePasswordIcon)});
+
+/**
+ * This function toggles the visibility of password inputs and updates the associated icon.
+ *
+ * When the input type is "password", the button's background will show an crossed-out eye icon (invisible text).
+ * When the input type is "text", the button's background will show a open eye icon (visible text).
+ * 
+ * Event Listeners are attached to all elements with the class 'passwordToggle'.
+ * It triggers on a click event, invoking the toggleVisibility function for each matched element.
+ * 
+ * Assumption:
+ * The input element is the previous sibling of the element that triggers the event.
+ *
+ * @return {void}
+ */
+function toggleVisibility() {
+  let input = this.previousElementSibling;
+
+  if (input.type === "password") {
+      input.type = "text";
+      input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
+  } else {
+    if (input.type === "text") {
+        input.type = "password";
+        input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+    }
+  }
+}
+
+document.querySelectorAll('.passwordToggle').forEach(toggle => {
+  toggle.addEventListener('click', toggleVisibility)});

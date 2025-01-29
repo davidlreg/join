@@ -279,6 +279,13 @@ button img {
   background-color: #2A3647;
 }
 
+.createButton:hover,
+.createButton:hover * {
+  background-color: #29ABE2;
+  cursor: pointer;
+  transition: inherit;
+}
+
 /* Overlay */
 .addTaskOverlay {
   position: fixed;

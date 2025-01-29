@@ -74,5 +74,8 @@ function toogleUser(){
  * Logs the user out by redirecting them to the login page.
  */
 function logout() {
+  localStorage.clear();
+  sessionStorage.clear();
+  
   window.location.href = "login.html";
 }

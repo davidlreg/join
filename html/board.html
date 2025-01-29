@@ -23,9 +23,11 @@
     <!-- JavaScript -->
     <script src="/script/script.js" defer></script>
     <script src="/script/board/board.js" defer></script>
-    <script src="/script/add_task/add_task_templates.js"></script>
-    <script src="/script/add_task/add_task_overlay.js"></script>
-    <script src="/script/add_task/prio_buttons.js"></script>
+    <script src="/script/board/mediaQueryBoard.js" defer></script>
+    <script src="/script/add_task/add_task_templates.js" defer></script>
+    <script src="/script/add_task/add_task_overlay.js" defer></script>
+    <script src="/script/add_task/prio_buttons.js" defer></script>
+    <script src="/script/add_task/add_task.js" defer></script>
     
 </head>
 
@@ -147,25 +149,48 @@
                             <div class="boardSection">To do
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks To Do</button>
+                            <button class="boardTasks" id="buttonNoTasksToDo" onclick="showTask()">
+                                <p class="boardTaskCategory">User Story</p>
+                                <p class="boardTaskTitle">Kochwelt Page & Recipe Recommender</p>
+                                <p class="boardTaskDescription">Build start page with recipe recommendation</p>
+                                <div class="boardSubTasks">
+                                    <div class="boardSubtaskProgress">
+                                        <div class="boardSubtaskProgressBar"></div>        
+                                    </div>
+                                    <span>1/2 Subtasks</span>
+                                </div>
+                                <div class="boardTaskBottom">
+                                    <div class="boardTaskUsers">XX</div>
+                                    <div class="boardTaskPriority">Priority</div>
+                                </div>
+                            </button>
                         </div>
+
+
+
+
+
+
+
+
+
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">In progress
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks In Progress</button>
+                            <button class="boardButton" id="buttonNoTasksInProgress" onclick="showTask()">No tasks In Progress</button>
                         </div>
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">Await Feedback
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks Awaiting</button>
+                            <button class="boardButton" id="buttonNoTasksAwaiting" onclick="showTask()">No tasks Awaiting</button>
                         </div>
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">Done
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks Done</button>
+                            <button class="boardButton" id="buttonNoTasksDone" onclick="showTask()">No tasks Done</button>
                         </div>
                     </div>
                 </main>

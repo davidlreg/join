@@ -84,11 +84,11 @@
 
     .arrowBack {
         top: 30px;
-        left: 20px;
+        left: 15px;
     }
-
+    
     .inputContainer input {
-        width: 250px;
+        width: 230px;
         font-size: 12px;
     }
 

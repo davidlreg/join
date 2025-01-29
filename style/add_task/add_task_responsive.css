@@ -47,11 +47,11 @@
     }
 
     .requiredAction {
-        margin-top: 80px;
+        margin-top: 40px;
         display: flex;
         align-items: center;
         gap: calc(10vw + 30px);
-        margin-bottom: 30px;
+        margin-bottom: 100px;
         flex-wrap: nowrap;
         justify-content: space-between;
     }
@@ -131,7 +131,7 @@
     }
 
     .selectContainer {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .iconWrapper {

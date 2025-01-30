@@ -11,8 +11,7 @@ let checkbox = document.getElementById("checkboxSignUp");
  * and displays an error message below the input field.
  * If the email is valid, it hides the error message.
  * 
- * Triggered when the user makes changes in the input field
- * document.querySelector(".inputEmail").addEventListener("input", validateEmail);
+ * Event listener on the email input triggers this validation whenever it's modified by the user.
  * 
  * @returns {void}
  */
@@ -37,8 +36,7 @@ function validateEmail() {
  * and displays an error message below the input field.
  * If they match, it hides the error message.
  *
- * Triggered when the user makes changes in the confirm password field
- * confirmPasswordInput.addEventListener("input", validatePasswords);
+ * Event listener on the password input triggers this validation whenever it's modified by the user.
  * 
  * @returns {void}
  */

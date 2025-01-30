@@ -37,8 +37,7 @@ function removeJoinAnimation () {
  * and displays an error message below the input field.
  * If the email is valid, it hides the error message.
  * 
- * Triggered when the user makes changes in the input field
- * document.querySelector(".inputEmail").addEventListener("input", validateEmail);
+ * Event listener on the email input triggers this validation whenever it's modified by the user.
  * 
  * @returns {void}
  */

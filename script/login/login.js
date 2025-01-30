@@ -1,6 +1,7 @@
 let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelector(".inputPassword");
+let passwordToggle = document.querySelector(".passwordToggle")
 
 /**
  * This function handles the removal of CSS animations from the logo elements
@@ -56,8 +57,6 @@ function validateEmail() {
   }
 }
 
-emailInput.addEventListener("input", validateEmail);
-
 /**
  * This function validates the log-in form fields and enables or disables the log in button based on the form's validity.
  * 
@@ -94,6 +93,66 @@ function validateForm() {
   }
 }
 
-emailInput.addEventListener("input", validateForm);
+/**
+ * This function updates the password input field's background icon based on its type and value.
+ * 
+ * If the input has text, it displays a visibility icon (open or closed eye) 
+ * depending on whether the input type is "text" or "password".
+ * If the input is empty, it reverts to the default lock icon.
+ * 
+ * Event listeners attached to all elements with the class "inputPassword", 
+ * which will trigger on each "input" event (whenever the user types in the field).
+ * 
+ * @this {HTMLInputElement} The password input field triggering the event.
+ */
+function updatePasswordIcon() {
+  let inputType = this.type;
+  
+  if (this.value.length > 0) {
+      this.style.backgroundImage = inputType === "text"
+          ? "url(../../assets/icon/login/visibility.svg)"
+          : "url(../../assets/icon/login/visibility_off.svg)";
+      this.nextElementSibling.classList.remove("dNone");
+  } else {
+      this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
+      this.nextElementSibling.classList.add("dNone");
+  }
+}
 
-passwordInput.addEventListener("input", validateForm);
+/**
+ * This function toggles the visibility of password inputs and updates the associated icon.
+ *
+ * When the input type is "password", the button's background will show an crossed-out eye icon (invisible text).
+ * When the input type is "text", the button's background will show a open eye icon (visible text).
+ * 
+ * Event Listeners are attached to all elements with the class 'passwordToggle'.
+ * It triggers on a click event, invoking the toggleVisibility function for each matched element.
+ * 
+ * Assumption:
+ * The input element is the previous sibling of the element that triggers the event.
+ */
+function toggleVisibility() {
+  let input = this.previousElementSibling;
+
+  if (input.type === "password") {
+      input.type = "text";
+      input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
+  } else {
+    if (input.type === "text") {
+        input.type = "password";
+        input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+    }
+  }
+}
+
+emailInput.addEventListener("input", function () {
+  validateEmail();
+  validateForm();
+});
+
+passwordInput.addEventListener("input", function () {
+  validateForm();
+  updatePasswordIcon.call(passwordInput);
+});
+
+passwordToggle.addEventListener('click', toggleVisibility);

@@ -31,8 +31,6 @@ function validateEmail() {
   }
 }
 
-emailInput.addEventListener("input", validateEmail);
-
 /**
  * This function validates if the entered password and confirm password fields match.
  * If they don't match, it sets the confirm password input field's border to red
@@ -54,8 +52,6 @@ function validatePasswords() {
     errorMessage.style.display = "none";
   }
 }
-
-confirmPasswordInput.addEventListener("input", validatePasswords);
 
 /**
  * This function validates the sign-up form fields and enables or disables the sign up button based on the form's validity.
@@ -98,16 +94,6 @@ function validateForm() {
   }
 }
 
-nameInput.addEventListener("input", validateForm);
-
-emailInput.addEventListener("input", validateForm);
-
-passwordInput.addEventListener("input", validateForm);
-
-confirmPasswordInput.addEventListener("input", validateForm);
-
-checkbox.addEventListener("change", validateForm);
-
 /**
  * This function updates the password input field's background icon based on its type and value.
  * 
@@ -133,10 +119,6 @@ function updatePasswordIcon() {
       this.nextElementSibling.classList.add("dNone");
   }
 }
-
-document.querySelectorAll(".inputPassword").forEach(input => {
-  input.addEventListener("input", updatePasswordIcon);
-});
 
 /**
  * This function toggles the visibility of password inputs and updates the associated icon.
@@ -164,5 +146,24 @@ function toggleVisibility() {
   }
 }
 
+emailInput.addEventListener("input", function () {
+    validateEmail();
+    validateForm();    
+});
+
+confirmPasswordInput.addEventListener("input", function () {
+    validatePasswords();
+    validateForm();
+});
+
+nameInput.addEventListener("input", validateForm);
+
+passwordInput.addEventListener("input", validateForm);
+
+checkbox.addEventListener("change", validateForm);
+
+document.querySelectorAll(".inputPassword").forEach(input => {
+    input.addEventListener("input", updatePasswordIcon);});
+
 document.querySelectorAll('.passwordToggle').forEach(toggle => {
-  toggle.addEventListener('click', toggleVisibility)});
+    toggle.addEventListener('click', toggleVisibility)});

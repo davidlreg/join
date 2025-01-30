@@ -145,25 +145,26 @@ confirmPasswordInput.addEventListener("input", function () {
 
 checkbox.addEventListener("change", validateForm);
 
+
 /**
- * This function dynamically updates the background icon of a password input field
- * based on whether the field contains any text. 
+ * This function updates the password input field's background icon based on its type and value.
  * 
- * When the input field has content,
- * it displays an eye icon, to switch visibilty of the entered password.
- * When the input field is empty, it switches back to the "lock" icon.
- * 
- * Additionally, the function toggles the visibility of a sibling element
- * by adding or removing the "dNone" class to show or hide it.
+ * If the input has text, it displays a visibility icon (open or closed eye) 
+ * depending on whether the input type is "text" or "password".
+ * If the input is empty, it reverts to the default lock icon.
  * 
  * Event listeners attached to all elements with the class "inputPassword", 
- *   which will trigger on each "input" event (whenever the user types in the field).
+ * which will trigger on each "input" event (whenever the user types in the field).
  * 
- * @return {void}
+ * @this {HTMLInputElement} The password input field triggering the event.
  */
 function updatePasswordIcon() {
+  let inputType = this.type;
+  
   if (this.value.length > 0) {
-      this.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+      this.style.backgroundImage = inputType === "text"
+          ? "url(../../assets/icon/login/visibility.svg)"
+          : "url(../../assets/icon/login/visibility_off.svg)";
       this.nextElementSibling.classList.remove("dNone");
   } else {
       this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
@@ -172,7 +173,8 @@ function updatePasswordIcon() {
 }
 
 document.querySelectorAll(".inputPassword").forEach(input => {
-  input.addEventListener("input", updatePasswordIcon)});
+  input.addEventListener("input", updatePasswordIcon);
+});
 
 /**
  * This function toggles the visibility of password inputs and updates the associated icon.
@@ -185,8 +187,6 @@ document.querySelectorAll(".inputPassword").forEach(input => {
  * 
  * Assumption:
  * The input element is the previous sibling of the element that triggers the event.
- *
- * @return {void}
  */
 function toggleVisibility() {
   let input = this.previousElementSibling;

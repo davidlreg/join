@@ -88,12 +88,12 @@ body {
 }
 
 .logInForm {
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 350px;
 }
 
 .signUpForm {
-    width: 400px;
+    width: 450px;
     height: 450px;
 }
 
@@ -262,7 +262,7 @@ span a:hover {
     background-color: white;
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    margin-top: 20px;
     gap: 20px;
 }
 

@@ -1,7 +1,6 @@
 let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelector(".inputPassword");
-let checkbox = document.getElementById("checkboxLogIn");
 
 /**
  * This function handles the removal of CSS animations from the logo elements
@@ -62,9 +61,8 @@ emailInput.addEventListener("input", validateEmail);
 /**
  * This function validates the log-in form fields and enables or disables the log in button based on the form's validity.
  * 
- * It checks if the email and password fields are filled out,
- * ensures that the email field does not have red borders (indicating an error)
- * and verifies that the checkbox is checked.
+ * It checks if the email and password fields are filled out
+ * and ensures that the email field does not have red borders (indicating an error).
  * 
  * If all validation conditions are met, it enables the log in button by removing the 'btnUnabledDark' class
  * and adding the 'btnDark' class.
@@ -83,8 +81,7 @@ function validateForm() {
   let isFormValid =
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
-    passwordInput.value !== "" &&
-    checkbox.checked;
+    passwordInput.value !== "";
 
   if (isFormValid) {
     logInButton.classList.remove("btnUnabledDark");
@@ -100,5 +97,3 @@ function validateForm() {
 emailInput.addEventListener("input", validateForm);
 
 passwordInput.addEventListener("input", validateForm);
-
-checkbox.addEventListener("change", validateForm);

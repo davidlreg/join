@@ -1,35 +1,9 @@
 let errorMessage = document.querySelector(".errorMessage");
+let nameInput = document.querySelector(".inputName");
 let emailInput = document.querySelector(".inputEmail");
-let passwordInput = document.querySelector(".inputPassword");
-let passwordToggle = document.querySelector(".passwordToggle")
-
-/**
- * This function handles the removal of CSS animations from the logo elements
- * after the animation has completed.
- *
- * It listens for the "animationend" event on the #logoContainer element, 
- * and when the animation ends, it removes the animation classes from the container 
- * and logo elements (both desktop and mobile versions).
- *
- * If the #logoContainer element is not found in the DOM, an error is logged to the console.
- * 
- * @returns {void}
- */
-function removeJoinAnimation () {
-  let logoContainer = document.getElementById("logoContainer");
-  let logo = document.getElementById("logo");
-  let logoMobile = document.getElementById("logoMobile");
-
-  if (logoContainer) {
-      logoContainer.addEventListener("animationend", () => {
-          logoContainer.classList.remove("animationBackground");
-          logo.classList.remove("animationLogo");        
-          logoMobile.classList.remove("animationLogoMobile");
-      });
-  } else {
-      console.error("Element #logoContainer not found!");
-  }
-};
+let passwordInput = document.querySelectorAll(".inputPassword")[0];
+let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
+let checkbox = document.getElementById("checkboxSignUp");
 
 /**
  * This function validates the email input field by checking if the entered value matches a typical email format.
@@ -58,16 +32,39 @@ function validateEmail() {
 }
 
 /**
- * This function validates the log-in form fields and enables or disables the log in button based on the form's validity.
+ * This function validates if the entered password and confirm password fields match.
+ * If they don't match, it sets the confirm password input field's border to red
+ * and displays an error message below the input field.
+ * If they match, it hides the error message.
+ *
+ * Triggered when the user makes changes in the confirm password field
+ * confirmPasswordInput.addEventListener("input", validatePasswords);
  * 
- * It checks if the email and password fields are filled out
- * and ensures that the email field does not have red borders (indicating an error).
+ * @returns {void}
+ */
+function validatePasswords() {
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    confirmPasswordInput.style.border = "1px solid red";
+    errorMessage.innerHTML = `Your passwords don't match. Please try again.`;
+    errorMessage.style.display = "block";
+  } else {
+    confirmPasswordInput.style.border = "";
+    errorMessage.style.display = "none";
+  }
+}
+
+/**
+ * This function validates the sign-up form fields and enables or disables the sign up button based on the form's validity.
  * 
- * If all validation conditions are met, it enables the log in button by removing the 'btnUnabledDark' class
+ * It checks if the name, email, password, and confirm password fields are filled out,
+ * ensures that the email and confirm password fields do not have red borders (indicating an error)
+ * and verifies that the checkbox is checked.
+ * 
+ * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
  * and adding the 'btnDark' class.
- * It sets the 'onclick' attribute of the log in button to trigger the redirection to the summary page.
+ * It sets the 'onclick' attribute of the sign up button to trigger the 'signUpSuccessful()' function.
  * 
- * If any of the conditions are not met, it disables the log in button by removing the 'btnDark' class
+ * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class
  * and adding the 'btnUnabledDark' class.
  * It also removes the 'onclick' attribute.
  * 
@@ -76,20 +73,24 @@ function validateEmail() {
  * @returns {void}
  */
 function validateForm() {
-  let logInButton = document.getElementById("logInBtn");
+  let signUpButton = document.getElementById("signUpBtn");
   let isFormValid =
+    nameInput.value !== "" &&
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
-    passwordInput.value !== "";
+    passwordInput.value !== "" &&
+    confirmPasswordInput.value !== "" &&
+    confirmPasswordInput.style.border !== "1px solid red" &&
+    checkbox.checked;
 
   if (isFormValid) {
-    logInButton.classList.remove("btnUnabledDark");
-    logInButton.classList.add("btnDark");
-    logInButton.setAttribute("onclick", "location.href='./summary.html'");
+    signUpButton.classList.remove("btnUnabledDark");
+    signUpButton.classList.add("btnDark");
+    signUpButton.setAttribute("onclick", "signUpSuccessful");
   } else {
-    logInButton.classList.remove("btnDark");
-    logInButton.classList.add("btnUnabledDark");
-    logInButton.removeAttribute("onclick");
+    signUpButton.classList.remove("btnDark");
+    signUpButton.classList.add("btnUnabledDark");
+    signUpButton.removeAttribute("onclick");
   }
 }
 
@@ -146,13 +147,23 @@ function toggleVisibility() {
 }
 
 emailInput.addEventListener("input", function () {
-  validateEmail();
-  validateForm();
+    validateEmail();
+    validateForm();    
 });
 
-passwordInput.addEventListener("input", function () {
-  validateForm();
-  updatePasswordIcon.call(passwordInput);
+confirmPasswordInput.addEventListener("input", function () {
+    validatePasswords();
+    validateForm();
 });
 
-passwordToggle.addEventListener('click', toggleVisibility);
+nameInput.addEventListener("input", validateForm);
+
+passwordInput.addEventListener("input", validateForm);
+
+checkbox.addEventListener("change", validateForm);
+
+document.querySelectorAll(".inputPassword").forEach(input => {
+    input.addEventListener("input", updatePasswordIcon);});
+
+document.querySelectorAll('.passwordToggle').forEach(toggle => {
+    toggle.addEventListener('click', toggleVisibility)});

@@ -3,7 +3,7 @@ let nameInput = document.querySelector(".inputName");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
 let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
-let checkbox = document.querySelector("#checkbox");
+let checkbox = document.getElementById("checkboxSignUp");
 
 /**
  * This function validates the email input field by checking if the entered value matches a typical email format.
@@ -11,11 +11,8 @@ let checkbox = document.querySelector("#checkbox");
  * and displays an error message below the input field.
  * If the email is valid, it hides the error message.
  * 
- * The function is triggered when the user leaves the email input field (on "blur" event).
- * 
- * @example
- * Triggered when the user clicks out of the input field (blur event)
- * document.querySelector(".inputEmail").addEventListener("blur", validateEmail);
+ * Triggered when the user makes changes in the input field
+ * document.querySelector(".inputEmail").addEventListener("input", validateEmail);
  * 
  * @returns {void}
  */
@@ -42,9 +39,8 @@ emailInput.addEventListener("input", validateEmail);
  * and displays an error message below the input field.
  * If they match, it hides the error message.
  *
- * @example
- * Triggered when the user clicks out of the confirm password field (blur event)
- * confirmPasswordInput.addEventListener("blur", validatePasswords);
+ * Triggered when the user makes changes in the confirm password field
+ * confirmPasswordInput.addEventListener("input", validatePasswords);
  * 
  * @returns {void}
  */
@@ -62,7 +58,7 @@ function validatePasswords() {
 confirmPasswordInput.addEventListener("input", validatePasswords);
 
 /**
- * This function validates the sign-up form fields and enables or disables the submit button based on the form's validity.
+ * This function validates the sign-up form fields and enables or disables the sign up button based on the form's validity.
  * 
  * It checks if the name, email, password, and confirm password fields are filled out,
  * ensures that the email and confirm password fields do not have red borders (indicating an error)
@@ -70,11 +66,11 @@ confirmPasswordInput.addEventListener("input", validatePasswords);
  * 
  * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
  * and adding the 'btnDark' class.
- * It sets the 'onclick' attribute of the submit button to trigger the 'signUpSuccessful()' function.
+ * It sets the 'onclick' attribute of the sign up button to trigger the 'signUpSuccessful()' function.
  * 
- * If any of the conditions are not met, it disables the submit button by removing the 'btnDark' class
+ * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class
  * and adding the 'btnUnabledDark' class.
- * It removes the 'onclick' attribute from the submit button.
+ * It also removes the 'onclick' attribute.
  * 
  * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
  * 
@@ -85,9 +81,9 @@ function validateForm() {
   let isFormValid =
     nameInput.value !== "" &&
     emailInput.value !== "" &&
+    emailInput.style.border !== "1px solid red" &&
     passwordInput.value !== "" &&
     confirmPasswordInput.value !== "" &&
-    emailInput.style.border !== "1px solid red" &&
     confirmPasswordInput.style.border !== "1px solid red" &&
     checkbox.checked;
 

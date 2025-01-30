@@ -1,5 +1,7 @@
 let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
+let passwordInput = document.querySelector(".inputPassword");
+let checkbox = document.getElementById("checkboxLogIn");
 
 /**
  * This function handles the removal of CSS animations from the logo elements
@@ -35,11 +37,8 @@ function removeJoinAnimation () {
  * and displays an error message below the input field.
  * If the email is valid, it hides the error message.
  * 
- * The function is triggered when the user leaves the email input field (on "blur" event).
- * 
- * @example
- * Triggered when the user clicks out of the input field (blur event)
- * document.querySelector(".inputEmail").addEventListener("blur", validateEmail);
+ * Triggered when the user makes changes in the input field
+ * document.querySelector(".inputEmail").addEventListener("input", validateEmail);
  * 
  * @returns {void}
  */
@@ -59,3 +58,47 @@ function validateEmail() {
 }
 
 emailInput.addEventListener("input", validateEmail);
+
+/**
+ * This function validates the log-in form fields and enables or disables the log in button based on the form's validity.
+ * 
+ * It checks if the email and password fields are filled out,
+ * ensures that the email field does not have red borders (indicating an error)
+ * and verifies that the checkbox is checked.
+ * 
+ * If all validation conditions are met, it enables the log in button by removing the 'btnUnabledDark' class
+ * and adding the 'btnDark' class.
+ * It sets the 'onclick' attribute of the log in button to trigger the redirection to the summary page.
+ * 
+ * If any of the conditions are not met, it disables the log in button by removing the 'btnDark' class
+ * and adding the 'btnUnabledDark' class.
+ * It also removes the 'onclick' attribute.
+ * 
+ * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
+ * 
+ * @returns {void}
+ */
+function validateForm() {
+  let logInButton = document.getElementById("logInBtn");
+  let isFormValid =
+    emailInput.value !== "" &&
+    emailInput.style.border !== "1px solid red" &&
+    passwordInput.value !== "" &&
+    checkbox.checked;
+
+  if (isFormValid) {
+    logInButton.classList.remove("btnUnabledDark");
+    logInButton.classList.add("btnDark");
+    logInButton.setAttribute("onclick", "location.href='./summary.html'");
+  } else {
+    logInButton.classList.remove("btnDark");
+    logInButton.classList.add("btnUnabledDark");
+    logInButton.removeAttribute("onclick");
+  }
+}
+
+emailInput.addEventListener("input", validateForm);
+
+passwordInput.addEventListener("input", validateForm);
+
+checkbox.addEventListener("change", validateForm);

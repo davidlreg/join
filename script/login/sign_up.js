@@ -34,7 +34,7 @@ function validateEmail() {
   }
 }
 
-emailInput.addEventListener("blur", validateEmail);
+emailInput.addEventListener("input", validateEmail);
 
 /**
  * This function validates if the entered password and confirm password fields match.
@@ -59,7 +59,7 @@ function validatePasswords() {
   }
 }
 
-confirmPasswordInput.addEventListener("blur", validatePasswords);
+confirmPasswordInput.addEventListener("input", validatePasswords);
 
 /**
  * This function validates the sign-up form fields and enables or disables the submit button based on the form's validity.
@@ -102,24 +102,13 @@ function validateForm() {
   }
 }
 
-nameInput.addEventListener("input", function () {
-  validateForm();
-});
+nameInput.addEventListener("input", validateForm);
 
-emailInput.addEventListener("input", function () {
-  validateEmail();
-  validateForm();
-});
+emailInput.addEventListener("input", validateForm);
 
-passwordInput.addEventListener("input", function () {
-  validatePasswords();
-  validateForm();
-});
+passwordInput.addEventListener("input", validateForm);
 
-confirmPasswordInput.addEventListener("input", function () {
-  validatePasswords();
-  validateForm();
-});
+confirmPasswordInput.addEventListener("input", validateForm);
 
 checkbox.addEventListener("change", validateForm);
 

@@ -1,3 +1,6 @@
+let errorMessage = document.querySelector(".errorMessage");
+let emailInput = document.querySelector(".inputEmail");
+
 /**
  * This function handles the removal of CSS animations from the logo elements
  * after the animation has completed.
@@ -25,3 +28,34 @@ function removeJoinAnimation () {
       console.error("Element #logoContainer not found!");
   }
 };
+
+/**
+ * This function validates the email input field by checking if the entered value matches a typical email format.
+ * If the email is invalid, it sets the input field's border to red
+ * and displays an error message below the input field.
+ * If the email is valid, it hides the error message.
+ * 
+ * The function is triggered when the user leaves the email input field (on "blur" event).
+ * 
+ * @example
+ * Triggered when the user clicks out of the input field (blur event)
+ * document.querySelector(".inputEmail").addEventListener("blur", validateEmail);
+ * 
+ * @returns {void}
+ */
+function validateEmail() {
+  let emailValue = emailInput.value;
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(emailValue)) {
+    emailInput.style.border = "1px solid red";
+    errorMessage.innerHTML = `Please enter a valid email address.`;
+    errorMessage.style.display = "block";
+
+  } else {
+    emailInput.style.border = "";
+    errorMessage.style.display = "none";
+  }
+}
+
+emailInput.addEventListener("input", validateEmail);

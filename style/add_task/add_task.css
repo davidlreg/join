@@ -79,8 +79,8 @@ form#taskForm h1 {
 }
 
 .addTaskInput:focus {
-  border-color: rgba(42, 170, 226, 1); 
-  outline: none; 
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
 
 }
 
@@ -115,9 +115,9 @@ form#taskForm h1 {
   background: #fff;
 }
 
-.dropdown:focus{
-  border-color: rgba(42, 170, 226, 1); 
-  outline: none; 
+.dropdown:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
 }
 
 .selectContainer {
@@ -174,21 +174,21 @@ form#taskForm h1 {
 }
 
 .priorityButton button.urgent {
-  background-color: #ff3d00; 
+  background-color: #ff3d00;
   color: #fff;
   font-weight: 600;
 }
 
 .priorityButton button.medium {
-  background-color: #ffa800; 
-  color: #fff; 
+  background-color: #ffa800;
+  color: #fff;
   font-weight: 600;
 }
 
 .priorityButton button.low {
-  background-color: #7ae229; 
+  background-color: #7ae229;
   color: #fff;
-  font-weight: 600; 
+  font-weight: 600;
 }
 
 button img {
@@ -214,6 +214,24 @@ button img {
 .addSubtask img:hover {
   background-color: #D9D9D9;
   cursor: pointer;
+}
+
+.subtaskList {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.subtaskList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtaskList li .removeSubtask {
+  color: #ff4d4d;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .iconWrapper {
@@ -402,21 +420,21 @@ form#taskFormOverlay {
 }
 
 .priorityButtonOverlay button.urgent {
-  background-color: #ff3d00; 
+  background-color: #ff3d00;
   color: #fff;
   font-weight: 600;
 }
 
 .priorityButtonOverlay button.medium {
-  background-color: #ffa800; 
-  color: #fff; 
+  background-color: #ffa800;
+  color: #fff;
   font-weight: 600;
 }
 
 .priorityButtonOverlay button.low {
-  background-color: #7ae229; 
+  background-color: #7ae229;
   color: #fff;
-  font-weight: 600; 
+  font-weight: 600;
 }
 
 .requiredActionOverlay {
@@ -427,19 +445,19 @@ form#taskFormOverlay {
 }
 
 .taskInputContainerOverlay::-webkit-scrollbar {
-  width: 6px; 
+  width: 6px;
 }
 
 .taskInputContainerOverlay::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-  border-radius: 10px; 
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 .taskInputContainerOverlay::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 10px; 
+  background: #888;
+  border-radius: 10px;
 }
 
 .taskInputContainerOverlay::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }

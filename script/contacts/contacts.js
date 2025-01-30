@@ -22,9 +22,12 @@ function openAddContactOverlay() {
   addOverlayBackground(overlayContainer);
   const overlay = overlayContainer.querySelector(".addContactOverlay");
   openOverlay(overlay);
-  addEventListenersToAddContactOverlay(overlay);
 }
 
+/**
+ * Opens the mobile overlay for adding a new contact and applies the background styling.
+ *
+ */
 function openAddContactOverlayMobile() {
   const overlayContainer = document.getElementById("overlayContainer");
   overlayContainer.innerHTML = showAddContactOverlayMobile();
@@ -114,6 +117,18 @@ function removeOverlayContent() {
   }, 300);
 }
 
+/**
+ * Removes the content and background of the overlay after a delay.
+ *
+ */
+function removeOverlayContentEditMobile() {
+  setTimeout(() => {
+    const overlayContainer = document.getElementById("mobileOverlayContainer");
+    overlayContainer.innerHTML = "";
+    overlayContainer.classList.remove("overlayBackground");
+  }, 300);
+}
+
 // Floating contact template logic
 
 /**
@@ -166,7 +181,7 @@ function openFloatingContactOverlay(overlay) {
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
-// Edit contact logic
+// Logic for editing contacts
 
 /**
  * Opens the overlay for editing a existing contact, including setting content and event listeners.
@@ -178,19 +193,18 @@ function openEditContact() {
   addOverlayBackground(overlayContainer);
   const overlay = overlayContainer.querySelector(".editContactOverlay");
   openOverlay(overlay);
-  addEventListenersToEditContactOverlay(overlay);
 }
 
 /**
- * Adds event listeners for closing the overlay to the close and cancel buttons.
+ * Opens the mobile overlay for editing an existing contact and applies the background styling.
  *
- * @param {Element} overlay The overlay element to add event listeners to.
  */
-function addEventListenersToEditContactOverlay(overlay) {
-  const deleteButton = overlay.querySelector(".deleteButton");
-  const closeButton = overlay.querySelector(".closeButton");
-  deleteButton.addEventListener("click", closeEditContactOverlay);
-  closeButton.addEventListener("click", closeEditContactOverlay);
+function openEditContactMobile() {
+  const overlayContainer = document.getElementById("mobileOverlayContainer");
+  overlayContainer.innerHTML = showEditContactOverlayMobile();
+  editOverlayBackground(overlayContainer);
+  const overlay = overlayContainer.querySelector(".editContactMobileWrapper");
+  openOverlayMobile(overlay);
 }
 
 /**
@@ -203,7 +217,26 @@ function closeEditContactOverlay() {
   removeOverlayContent();
 }
 
-// Create contact logic
+/**
+ * Closes the mobile edit contact overlay and removes its content.
+ *
+ */
+function closeEditContactOverlayMobile() {
+  const overlay = document.querySelector(".editContactMobileWrapper");
+  closeOverlayMobile(overlay);
+  removeOverlayContentEditMobile();
+}
+
+/**
+ * Adds a background styling class to the overlay container.
+ *
+ * @param {HTMLElement} container - The container element for the overlay.
+ */
+function editOverlayBackground(container) {
+  container.classList.add("overlayBackground");
+}
+
+// Logic for creating contacts
 
 function createContact() {
   closeAddContactOverlay();
@@ -231,7 +264,7 @@ function showContactSucessfullyCreatedMessage() {
   `;
 }
 
-// Contact list logic
+// Logic for contact list
 
 /**
  * Fetches JSON data from the backend.
@@ -357,7 +390,7 @@ function renderContactList(contactList, contacts) {
   });
 }
 
-// Mobile Edit & Delete Menu Logic
+// Logic for mobile edit & delete menu
 
 /**
  * Opens the mobile contact menu by rendering the overlay and adding a close event listener.
@@ -410,12 +443,4 @@ function addCloseEventListener(overlay, menuContainer) {
       }
     });
   }, 0);
-}
-
-function editContactMobile() {
-  console.log("EDIT TEST");
-}
-
-function deleteContactMobile() {
-  console.log("DELETE TEST");
 }

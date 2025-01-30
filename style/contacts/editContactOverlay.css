@@ -323,65 +323,119 @@ p {
   background-color: lightgray;
 }
 
-.openMobileContactMenuContainer {
-  width: 110px;
-  height: 100px;
-  z-index: 60;
-  background-color: #ffffff;
+/* Mobile Add Contact Overlay Styling */
+
+.editContactMobileWrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 20px 20px 0px 20px;
-  position: absolute;
-  right: 12px;
-  bottom: 102px;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
+  width: 396px;
+  border-radius: 24px;
 }
 
-.editContainer,
-.deleteContainer {
+.editContactMobileWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.blueBackgroundEdit {
+  background-color: #2a3647;
+  width: 100%;
+  padding: 24px;
+  border-radius: 18px 18px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 98px;
+  padding-top: 64px;
+}
+
+.profilePictureMobileEdit {
+  position: absolute;
+  height: 140px;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  z-index: 10;
+}
+
+.whiteBackgroundEdit {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 24px;
+  border-radius: 0px 0px 18px 18px;
+  padding-top: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formButtonsMobile {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  width: 90%;
-  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background-color: #ffffff;
+  padding-bottom: 24px;
+}
+
+.formButtonsMobile > button {
+  padding: 18px;
+  border: 1px solid #2a3647;
   border-radius: 8px;
-  gap: 8px;
-  padding: 8px;
+  font-size: 18px;
 }
 
-.editContainer > p {
-  font-size: 16px;
-  background-color: transparent;
-  color: #000000;
+.closeButtonMobile {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.deleteContainer > p {
-  font-size: 16px;
-  background-color: transparent;
-  color: #000000;
-}
-
-.editContainer:hover {
+.closeButtonMobile > svg:hover {
   cursor: pointer;
-  background-color: #f6f7f8;
-  color: #70c5ea;
+  background-color: #29abe2;
+  border-radius: 50%;
 }
 
-.deleteContainer:hover {
-  cursor: pointer;
-  background-color: #f6f7f8;
+.closeButtonMobile * {
+  fill: #ffffff;
 }
 
-.editContainer:hover * {
-  color: #29abe2;
-  fill: #29abe2;
+.formInputMobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
-.deleteContainer:hover * {
-  color: #29abe2;
-  fill: #29abe2;
+.formInputMobile > input::placeholder {
+  font-size: 18px;
+}
+
+.formInputMobile > input:focus {
+  outline: none !important;
+  border: 2px solid #29abe2 !important;
+}
+
+.nameIconMobileEdit {
+  position: absolute;
+  top: 420px;
+  right: 32px;
+}
+
+.emailIconMobileEdit {
+  position: absolute;
+  right: 32px;
+}
+
+.phoneIconMobileEdit {
+  position: absolute;
+  top: 545px;
+  right: 32px;
 }
 
 /* Media Queries */
@@ -401,8 +455,48 @@ p {
   }
 }
 
-@media (max-width: 1080px) {
-}
+@media (max-width: 600px) {
+  .editContactMobileWrapper {
+    width: 300px;
+    border-radius: 18px;
+  }
 
-@media (max-width: 500px) {
+  .blueBackgroundEdit {
+    width: 100%;
+    padding: 18px;
+    padding-bottom: 64px;
+  }
+
+  .profilePictureMobileEdit {
+    height: 155px;
+  }
+
+  .profilePictureMobileEdit > svg {
+    width: 100px;
+    height: 100px;
+  }
+
+  .whiteBackgroundEdit {
+    padding: 24px;
+    border-radius: 0px 0px 18px 18px;
+    padding-top: 64px;
+    padding-bottom: 24px;
+  }
+
+  .nameIconMobileEdit {
+    top: 290px;
+  }
+
+  .phoneIconMobileEdit {
+    top: 405px;
+  }
+
+  .emailIconMobileEdit {
+    top: 348px;
+  }
+
+  .formButtonsMobile > button {
+    padding: 12px;
+    font-size: 16px;
+  }
 }

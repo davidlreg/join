@@ -160,7 +160,6 @@
 
 .profilePictureMobile {
   position: absolute;
-  top: calc(100% -67px);
   left: 50%;
   transform: translate(-50%, -25%);
   z-index: 10;
@@ -172,7 +171,6 @@
   padding: 24px;
   border-radius: 0px 0px 18px 18px;
   padding-top: 84px;
-  padding-bottom: 24px;
 }
 
 .closeButtonMobile {
@@ -280,29 +278,25 @@
     border-radius: 0px 0px 18px 18px;
     padding-top: 64px;
     padding-bottom: 24px;
-}
+  }
 
-.formInputMobile {
-  gap: 12px;
-}
+  .formInputMobile {
+    gap: 12px;
+  }
 
-.formInputMobile > input {
-  height: 42px;
-}
+  .formInputMobile > input {
+    height: 42px;
+  }
 
-.nameIconMobile {
-  top: 353px;
-}
+  .nameIconMobile {
+    top: 353px;
+  }
 
-.phoneIconMobile {
-  top: 460px;
-}
+  .phoneIconMobile {
+    top: 470px;
+  }
 
-.nameIconMobile {
-  top: 353px;
-}
-
-.createContactButton > p {
-  font-size: 16px;
-}
+  .createContactButton > p {
+    font-size: 16px;
+  }
 }

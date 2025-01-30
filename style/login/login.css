@@ -10,10 +10,6 @@ body {
     position: absolute;
 }
 
-.signUp, .logInForm {
-    z-index: 0;
-}
-
 .logoContainer, .logo, .logoMobile, .animationLogo {
     background-color: transparent;
 }
@@ -106,7 +102,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    z-index: 0;
 }
 
 .logInForm h1, .signUpForm h1 {
@@ -283,4 +278,37 @@ span a:hover {
     color: rgba(42, 170, 226);
     font-weight: bolder;
     transition-duration: 0.2s;
+}
+
+.overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.overlayMessage {
+    width: fit-content;
+    color: white;
+    font-weight: lighter;
+    background-color: rgba(42, 54, 70);
+    border-radius: 15px;
+    padding: 20px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flyIn 0.2s ease-out forwards;
+}
+
+@keyframes flyIn {
+    from {
+        bottom: 0;
+    }
+    to {
+        bottom: 50%;
+    }
 }

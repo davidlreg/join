@@ -19,5 +19,17 @@
     main {
         padding: 32px 16px 16px 16px;
     }
+
+    .boardOverlayTaskTitle {
+        font-size: 38px !important;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+
+    .boardOverlayTaskTitle {
+        font-size: 32px !important;
+    }
     
 }

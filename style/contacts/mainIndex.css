@@ -210,16 +210,6 @@ body {
     flex-direction: column-reverse;
   }
 
-  .headline {
-    margin-top: 64px 32px !important;
-  }
-
-  .addContactButton {
-    margin: 32px 0 24px 0 !important;
-  }
-}
-
-@media (max-width: 1080px) {
   header {
     z-index: 2;
   }
@@ -275,6 +265,9 @@ body {
   .responsiveEditContactButton {
     display: flex;
   }
+}
+
+@media (max-width: 1080px) {
 }
 
 @media (max-width: 600px) {

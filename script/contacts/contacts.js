@@ -123,7 +123,7 @@ function removeOverlayContent() {
 function openContact(name, email, phone) {
   const screenWidth = window.innerWidth; // Get screen width
 
-  if (screenWidth > 1080) {
+  if (screenWidth > 1350) {
     showDesktopContactOverlay(name, email, phone);
   } else {
     showMobileContactOverlay(name, email, phone);
@@ -355,4 +355,67 @@ function renderContactList(contactList, contacts) {
   contacts.forEach((contact) => {
     contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
   });
+}
+
+// Mobile Edit & Delete Menu Logic
+
+/**
+ * Opens the mobile contact menu by rendering the overlay and adding a close event listener.
+ */
+function openMobileContactMenu() {
+  const menuContainer = document.getElementById("mobileMenu");
+  menuContainer.innerHTML = showMobileContactMenu();
+
+  const overlay = menuContainer.querySelector(".openMobileContactMenuContainer");
+  openOverlay(overlay);
+  addCloseEventListener(overlay, menuContainer);
+}
+
+/**
+ * Closes the overlay with a sliding animation and removes it from the DOM.
+ * @param {HTMLElement} overlay - The overlay element to be closed.
+ */
+function closeOverlayWithAnimation(overlay) {
+  applyTransition(overlay, "translateX(0)", "translateX(100%)", () => overlay.remove());
+}
+
+/**
+ * Applies a smooth transition to an element.
+ * @param {HTMLElement} element - The element to animate.
+ * @param {string} startTransform - The initial transform value.
+ * @param {string} endTransform - The final transform value.
+ * @param {Function} [callback] - Optional callback function after the transition ends.
+ */
+function applyTransition(element, startTransform, endTransform, callback) {
+  element.style.transition = "transform 0.3s ease-in-out";
+  element.style.transform = startTransform;
+
+  setTimeout(() => {
+    element.style.transform = endTransform;
+    if (callback) setTimeout(callback, 300);
+  }, 10);
+}
+
+/**
+ * Adds an event listener to close the overlay when clicking outside of it.
+ * @param {HTMLElement} overlay - The overlay element.
+ * @param {HTMLElement} menuContainer - The container of the menu.
+ */
+function addCloseEventListener(overlay, menuContainer) {
+  setTimeout(() => {
+    document.addEventListener("click", function closeOverlay(event) {
+      if (!overlay.contains(event.target) && !menuContainer.contains(event.target)) {
+        closeOverlayWithAnimation(overlay);
+        document.removeEventListener("click", closeOverlay);
+      }
+    });
+  }, 0);
+}
+
+function editContactMobile() {
+  console.log("EDIT TEST");
+}
+
+function deleteContactMobile() {
+  console.log("DELETE TEST");
 }

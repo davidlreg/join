@@ -84,13 +84,23 @@
 
     .arrowBack {
         top: 30px;
-        left: 20px;
+        left: 15px;
     }
-
+    
     .inputContainer input {
-        width: 250px;
+        width: 230px;
         font-size: 12px;
     }
+
+    .inputEmail, .inputPassword, .inputName {
+        background-size: 15px;
+    }
+
+    .lockIcon {
+        width: 15px;
+        height: 15px;
+    }
+    
 
     .checkbox {
         align-items: end;
@@ -100,6 +110,7 @@
         width: 18px;
         height: 18px;
     }
+
     span, span a {
         font-size: 12px;
     }

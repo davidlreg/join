@@ -218,12 +218,13 @@ button img {
 
 .iconWrapper {
   position: absolute;
-  right: 9px;
-  bottom: 4px;
+  right: 50px;
+  bottom: 5px;
 }
 
 .requiredAction {
-  margin-top: 80px;
+  margin-top: 60px;
+  margin-bottom: 20px;
   display: flex;
   gap: 560px;
   align-items: center;
@@ -278,6 +279,13 @@ button img {
   background-color: #2A3647;
 }
 
+.createButton:hover,
+.createButton:hover * {
+  background-color: #29ABE2;
+  cursor: pointer;
+  transition: inherit;
+}
+
 /* Overlay */
 .addTaskOverlay {
   position: fixed;
@@ -326,12 +334,10 @@ button img {
 .closeTaskOverlay:hover {
   background-color: #eeeeee;
   border-radius: 50%;
-
-
 }
 
 form#taskFormOverlay {
-  width: 85%;
+  width: 100%;
   padding: 50px;
   border-radius: 10px;
 }
@@ -368,6 +374,7 @@ form#taskFormOverlay {
   border-radius: 10px;
   margin-top: 5px;
   background: #fff;
+  font-size: 14px;
 }
 
 .priorityButtonOverlay {

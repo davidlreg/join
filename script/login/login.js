@@ -1,15 +1,206 @@
-/**
- * Removes animated logos and background when the animation is over.
- *
- */
-document.addEventListener("DOMContentLoaded", () => {
-    let logoContainer = document.getElementById('logoContainer');
-    let logo = document.getElementById('logo');
-    let logoMobile = document.getElementById('logoMobile');
+let errorMessage = document.querySelector(".errorMessage");
+let emailInput = document.querySelector(".inputEmail");
+let passwordInput = document.querySelectorAll(".inputPassword")[0];
+let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
+let checkbox = document.querySelector("#checkbox");
 
-    logoContainer.addEventListener("animationend", () => {
-        logoContainer.classList.remove('animationBackground');
-        logo.classList.remove('animationLogo');        
-        logoMobile.classList.remove('animationLogoMobile');
+/**
+ * This function handles the removal of CSS animations from the logo elements
+ * after the animation has completed.
+ *
+ * It listens for the "animationend" event on the #logoContainer element, 
+ * and when the animation ends, it removes the animation classes from the container 
+ * and logo elements (both desktop and mobile versions).
+ *
+ * If the #logoContainer element is not found in the DOM, an error is logged to the console.
+ * 
+ * @returns {void}
+ */
+function removeJoinAnimation () {
+  let logoContainer = document.getElementById("logoContainer");
+  let logo = document.getElementById("logo");
+  let logoMobile = document.getElementById("logoMobile");
+
+  if (logoContainer) {
+      logoContainer.addEventListener("animationend", () => {
+          logoContainer.classList.remove("animationBackground");
+          logo.classList.remove("animationLogo");        
+          logoMobile.classList.remove("animationLogoMobile");
       });
+  } else {
+      console.error("Element #logoContainer not found!");
+  }
+};
+
+/**
+ * This function validates the email input field by checking if the entered value matches a typical email format.
+ * If the email is invalid, it sets the input field's border to red
+ * and displays an error message below the input field.
+ * If the email is valid, it hides the error message.
+ * 
+ * The function is triggered when the user leaves the email input field (on "blur" event).
+ * 
+ * @example
+ * Triggered when the user clicks out of the input field (blur event)
+ * document.querySelector(".inputEmail").addEventListener("blur", validateEmail);
+ * 
+ * @returns {void}
+ */
+function validateEmail() {
+  let emailValue = emailInput.value;
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(emailValue)) {
+    emailInput.style.border = "1px solid red";
+    errorMessage.innerHTML = `Please enter a valid email address.`;
+    errorMessage.style.display = "block";
+
+  } else {
+    emailInput.style.border = "";
+    errorMessage.style.display = "none";
+  }
+}
+
+emailInput.addEventListener("blur", validateEmail);
+
+/**
+ * This function validates if the entered password and confirm password fields match.
+ * If they don't match, it sets the confirm password input field's border to red
+ * and displays an error message below the input field.
+ * If they match, it hides the error message.
+ *
+ * @example
+ * Triggered when the user clicks out of the confirm password field (blur event)
+ * confirmPasswordInput.addEventListener("blur", validatePasswords);
+ * 
+ * @returns {void}
+ */
+function validatePasswords() {
+  if (passwordInput.value !== confirmPasswordInput.value) {
+    confirmPasswordInput.style.border = "1px solid red";
+    errorMessage.innerHTML = `Your passwords don't match. Please try again.`;
+    errorMessage.style.display = "block";
+  } else {
+    confirmPasswordInput.style.border = "";
+    errorMessage.style.display = "none";
+  }
+}
+
+confirmPasswordInput.addEventListener("blur", validatePasswords);
+
+/**
+ * This function validates the sign-up form fields and enables or disables the submit button based on the form's validity.
+ * 
+ * It checks if the email, password, and confirm password fields are filled out,
+ * ensures that the email and confirm password fields do not have red borders (indicating an error)
+ * and verifies that the checkbox is checked.
+ * 
+ * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
+ * and adding the 'btnDark' class.
+ * It sets the 'onclick' attribute of the submit button to trigger the 'signUpSuccessful()' function.
+ * 
+ * If any of the conditions are not met, it disables the submit button by removing the 'btnDark' class
+ * and adding the 'btnUnabledDark' class.
+ * It removes the 'onclick' attribute from the submit button.
+ * 
+ * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
+ * 
+ * @returns {void}
+ */
+function validateForm() {
+  let signUpButton = document.getElementById("signUpBtn");
+  let isFormValid =
+    emailInput.value !== "" &&
+    passwordInput.value !== "" &&
+    confirmPasswordInput.value !== "" &&
+    emailInput.style.border !== "1px solid red" &&
+    confirmPasswordInput.style.border !== "1px solid red" &&
+    checkbox.checked;
+
+  if (isFormValid) {
+    signUpButton.classList.remove("btnUnabledDark");
+    signUpButton.classList.add("btnDark");
+    signUpButton.setAttribute("onclick", "signUpSuccessful");
+  } else {
+    signUpButton.classList.remove("btnDark");
+    signUpButton.classList.add("btnUnabledDark");
+    signUpButton.removeAttribute("onclick");
+  }
+}
+
+emailInput.addEventListener("input", function () {
+  validateEmail();
+  validateForm();
 });
+
+passwordInput.addEventListener("input", function () {
+  validatePasswords();
+  validateForm();
+});
+
+confirmPasswordInput.addEventListener("input", function () {
+  validatePasswords();
+  validateForm();
+});
+
+checkbox.addEventListener("change", validateForm);
+
+/**
+ * This function dynamically updates the background icon of a password input field
+ * based on whether the field contains any text. 
+ * 
+ * When the input field has content,
+ * it displays an eye icon, to switch visibilty of the entered password.
+ * When the input field is empty, it switches back to the "lock" icon.
+ * 
+ * Additionally, the function toggles the visibility of a sibling element
+ * by adding or removing the "dNone" class to show or hide it.
+ * 
+ * Event listeners attached to all elements with the class "inputPassword", 
+ *   which will trigger on each "input" event (whenever the user types in the field).
+ * 
+ * @return {void}
+ */
+function updatePasswordIcon() {
+  if (this.value.length > 0) {
+      this.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+      this.nextElementSibling.classList.remove("dNone");
+  } else {
+      this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
+      this.nextElementSibling.classList.add("dNone");
+  }
+}
+
+document.querySelectorAll(".inputPassword").forEach(input => {
+  input.addEventListener("input", updatePasswordIcon)});
+
+/**
+ * This function toggles the visibility of password inputs and updates the associated icon.
+ *
+ * When the input type is "password", the button's background will show an crossed-out eye icon (invisible text).
+ * When the input type is "text", the button's background will show a open eye icon (visible text).
+ * 
+ * Event Listeners are attached to all elements with the class 'passwordToggle'.
+ * It triggers on a click event, invoking the toggleVisibility function for each matched element.
+ * 
+ * Assumption:
+ * The input element is the previous sibling of the element that triggers the event.
+ *
+ * @return {void}
+ */
+function toggleVisibility() {
+  let input = this.previousElementSibling;
+
+  if (input.type === "password") {
+      input.type = "text";
+      input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
+  } else {
+    if (input.type === "text") {
+        input.type = "password";
+        input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+    }
+  }
+}
+
+document.querySelectorAll('.passwordToggle').forEach(toggle => {
+  toggle.addEventListener('click', toggleVisibility)});

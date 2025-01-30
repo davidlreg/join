@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/login/login.css" />
     <link rel="stylesheet" href="../style/login/mediaQueryLogin.css" />
-    <script src="../script/login/login.js"></script>
+    <script src="../script/login/login.js" defer></script>
   </head>
   <body>
     <img class="logo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo" />
@@ -36,21 +36,28 @@
           class="inputEmail"
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          class="inputPassword"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Confirm password"
-          class="inputPassword"
-          required
-        />
+        <div class="inputPasswordWrapper">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inputPassword"
+            required
+          />
+          <button class="passwordToggle dNone"></button>
+        </div>
+        <div class="inputPasswordWrapper">
+          <input
+            type="password"
+            name="password"
+            placeholder="Confirm Password"
+            class="inputPassword"
+            required
+          />
+          <button class="passwordToggle dNone"></button>
+        </div>
       </div>
+      <p class="errorMessage"></p>
       <div class="checkbox">
         <input type="checkbox" id="checkbox" class="box dNone" />
         <label for="checkbox" class="customBox"></label>
@@ -60,7 +67,7 @@
         >
       </div>
       <div class="buttons">
-        <button class="btnUnabledDark">Sign up</button>
+        <button id="signUpBtn" class="btnUnabledDark">Sign up</button>
       </div>
     </div>
 

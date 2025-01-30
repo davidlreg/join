@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style/login/login.css" />
     <link rel="stylesheet" href="../style/login/mediaQueryLogin.css" />
-    <script src="../script/login/login.js"></script>
+    <script src="../script/login/login.js" defer></script>
   </head>
-  <body>
+  <body onload="removeJoinAnimation()">
     <div id="logoContainer" class="logoContainer animationBackground">
       <img id="logo" class="logo animationLogo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo Dark" />
       <img id="logoMobile" class="logoMobile animationLogoMobile" src="../assets/img/Join_icon.svg" alt="Join Logo Light" />
@@ -25,11 +25,27 @@
     <div class="logInForm">
       <h1 class="header">Log in</h1>
       <div class="inputContainer">
-        <input type="text" name="email" placeholder="Email" class="inputEmail" required />
-        <input type="password" name="password" placeholder="Password" class="inputPassword" required />
+        <input 
+          type="text" 
+          name="email" 
+          placeholder="Email" 
+          class="inputEmail"
+          required
+        />
+        <div class="inputPasswordWrapper">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inputPassword"
+            required
+          />
+          <button class="passwordToggle"></button>
+        </div>
       </div>
+      <p class="errorMessage"></p>
       <div class="buttons">
-        <button class="btnUnabledDark">Log in</button>
+        <button id="logInBtn" class="btnUnabledDark">Log in</button>
         <button class="btnLight" onclick="location.href='./summary.html?active=summary'">Guest Log in</button>
       </div>
     </div>

@@ -55,3 +55,27 @@ function setActiveClassForLink(links, param) {
 function historyBack() {
   window.history.back();
 }
+
+/**
+ * Toggles the visibility of the user options menu.
+ * If the menu is open, it will be closed; if it is closed, it will be opened.
+ */
+function toogleUser(){
+  const userOptions = document.getElementById('userIcon');
+
+  if(userOptions.classList.contains("active")) {
+    userOptions.classList.remove("active")
+  } else {
+    userOptions.classList.add("active")
+  }
+}
+
+/**
+ * Logs the user out by redirecting them to the login page.
+ */
+function logout() {
+  localStorage.clear();
+  sessionStorage.clear();
+  
+  window.location.href = "login.html";
+}

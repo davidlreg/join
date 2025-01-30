@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/style/fonts.css" />
     <link rel="stylesheet" href="/style/board/board.css" />
     <link rel="stylesheet" href="/style/board/mediaQueryBoard.css">
+    <link rel="stylesheet" href="/style/board/boardOverlay.css">
     <link rel="stylesheet" href="/style/add_task/add_task.css">
     <link rel="stylesheet" href="/style/add_task/add_task_responsive.css">
 
@@ -23,9 +24,12 @@
     <!-- JavaScript -->
     <script src="/script/script.js" defer></script>
     <script src="/script/board/board.js" defer></script>
-    <script src="/script/add_task/add_task_templates.js"></script>
-    <script src="/script/add_task/add_task_overlay.js"></script>
-    <script src="/script/add_task/prio_buttons.js"></script>
+    <script src="/script/board/mediaQueryBoard.js" defer></script>
+    <script src="/script/board/templateBoard.js" defer></script>
+    <script src="/script/add_task/add_task_templates.js" defer></script>
+    <script src="/script/add_task/add_task_overlay.js" defer></script>
+    <script src="/script/add_task/prio_buttons.js" defer></script>
+    <script src="/script/add_task/add_task.js" defer></script>
     
 </head>
 
@@ -84,11 +88,19 @@
               
                     <div class="topBarIcons">
                         <div onclick="location.href='./help.html'">
-                            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg">
+                            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" alt="questionIcon">
                         </div>
               
-                        <div onclick="" class="userIcon">
-                            <a style="color: rgb(41, 171, 226);">XX</a>
+                        <div onclick="toogleUser()" class="userIcon">
+                            <div id="userIcon" class="userOptionsFrame">
+                                <div class="userOptionsContent">
+                                    <a href="help.html" class="helpLink">Help</a>
+                                    <a href="legal_notice.html">Legal Notice</a>
+                                    <a href="privacy_policy.html">Privacy Policy</a>
+                                    <a onclick="logout()" style="cursor: pointer;">Log Out</a>
+                                </div>
+                            </div>
+                            <a style="color: rgb(41, 171, 226); background-color: transparent;">XX</a>
                         </div>
                     </div>
                   </header>
@@ -110,13 +122,18 @@
                                 </g>
                             </svg>
                         </div>
-
-
                         <div id="overlayDynamicContent"></div>
                     </div>
-
                 </div>
-                <main>
+                
+                <!--Add Board Overlay-->
+                <div id="addBoardOverlay" class="addBoardOverlay hideOverlay">
+                    <div class="boardOverlayContainer">
+                        <div id="overlayBoardContent"></div>
+                    </div>
+                </div>
+
+                <main >
                     <div class="boardContainer">
                         <h2>Board</h2>
                         <div class="boardControls">
@@ -139,25 +156,43 @@
                             <div class="boardSection">To do
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks To Do</button>
+                            <button class="boardTasks" id="buttonNoTasksToDo" onclick="addBoardOverlay()">
+                                <p class="boardTaskCategory">User Story</p>
+                                <p class="boardTaskTitle">Kochwelt Page & Recipe Recommender</p>
+                                <p class="boardTaskDescription">Build start page with recipe recommendation</p>
+                                <div class="boardSubTasks">
+                                    <div class="boardSubtaskProgress">
+                                        <div class="boardSubtaskProgressBar"></div>        
+                                    </div>
+                                    <span>1/2 Subtasks</span>
+                                </div>
+                                <div class="boardTaskBottom">
+                                    <div class="boardTaskUsers">XX</div>
+                                    <img class="boardTaskPriority" src="/assets/img/Prio medium.png">
+                                </div>
+                            </button>
                         </div>
+
+
+
+
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">In progress
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks In Progress</button>
+                            <button class="boardButton" id="buttonNoTasksInProgress" onclick="addBoardOverlay()">No tasks In Progress</button>
                         </div>
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">Await Feedback
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks Awaiting</button>
+                            <button class="boardButton" id="buttonNoTasksAwaiting" onclick="addBoardOverlay()">No tasks Awaiting</button>
                         </div>
                         <div class="boardSectionsSubContainer">
                             <div class="boardSection">Done
                                 <div class="sectionPlus" onclick="addTaskOverlay()"></div>
                             </div>
-                            <button class="boardButton">No tasks Done</button>
+                            <button class="boardButton" id="buttonNoTasksDone" onclick="addBoardOverlay()">No tasks Done</button>
                         </div>
                     </div>
                 </main>

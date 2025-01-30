@@ -4,56 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up | Join</title>
-    <link rel="icon" href="../assets/img/join_logo_small.png" />
-    <link rel="stylesheet" href="../style/style.css" />
-    <link rel="stylesheet" href="../style/fonts.css" />
-    <link rel="stylesheet" href="../style/login/login.css" />
-    <link rel="stylesheet" href="../style/login/mediaQueryLogin.css" />
-    <script src="../script/login/sign_up.js" defer></script>
+    <link rel="icon" href="/assets/img/join_logo_small.png" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/fonts.css" />
+    <link rel="stylesheet" href="/style/login/login.css" />
+    <link rel="stylesheet" href="/style/login/mediaQueryLogin.css" />
   </head>
   <body>
     <img class="logo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo" />
 
     <div class="signUpForm">
-      <button class="arrowBack"
-      onclick="location.href='./login.html'"
-      >
+      <button class="arrowBack" onclick="location.href='./login.html'">
         <img src="../../assets/icon/arrow_back.svg" />
       </button>
       <h1 class="header">Sign up</h1>
       <div class="inputContainer">
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          class="inputName"
-          required
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          class="inputEmail"
-          required
-        />
+        <input type="text" name="name" placeholder="Name" class="inputName" required />
+        <input type="text" name="email" placeholder="Email" class="inputEmail" required />
         <div class="inputPasswordWrapper">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            class="inputPassword"
-            required
-          />
+          <input type="password" name="password" placeholder="Password" class="inputPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
         <div class="inputPasswordWrapper">
-          <input
-            type="password"
-            name="password"
-            placeholder="Confirm Password"
-            class="inputPassword"
-            required
-          />
+          <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
       </div>
@@ -61,10 +35,7 @@
       <div class="checkbox">
         <input type="checkbox" id="checkboxSignUp" class="box dNone" />
         <label for="checkboxSignUp" class="customBox"></label>
-        <span
-          >I accept the
-          <a href="./privacy_policy.html">Privacy Policy</a></span
-        >
+        <span>I accept the <a href="./privacy_policy.html">Privacy Policy</a></span>
       </div>
       <div class="buttons">
         <button id="signUpBtn" class="btnUnabledDark">Sign up</button>
@@ -79,5 +50,7 @@
     <div id="overlay" class="overlay dNone">
       <p id="overlayMessage" class="overlayMessage dNone">You signed up successfully</p>
     </div>
+    <!-- JavaScript -->
+    <script src="/script/login/sign_up.js"></script>
   </body>
 </html>

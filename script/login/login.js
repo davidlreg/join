@@ -1,4 +1,5 @@
 let errorMessage = document.querySelector(".errorMessage");
+let nameInput = document.querySelector(".inputName");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
 let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
@@ -110,6 +111,7 @@ confirmPasswordInput.addEventListener("blur", validatePasswords);
 function validateForm() {
   let signUpButton = document.getElementById("signUpBtn");
   let isFormValid =
+    nameInput.value !== "" &&
     emailInput.value !== "" &&
     passwordInput.value !== "" &&
     confirmPasswordInput.value !== "" &&
@@ -127,6 +129,10 @@ function validateForm() {
     signUpButton.removeAttribute("onclick");
   }
 }
+
+nameInput.addEventListener("input", function () {
+  validateForm();
+});
 
 emailInput.addEventListener("input", function () {
   validateEmail();

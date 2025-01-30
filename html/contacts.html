@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacts | Join</title>
+    <!-- CSS -->
     <link rel="icon" href="/assets/img/join_logo_small.png" />
     <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
@@ -14,6 +15,7 @@
   </head>
 
   <body onload="init()">
+    <!-- Sidebar -->
     <div class="sidebar__container" id="sidebar-nav">
       <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" alt="JoinLogoBig" /></a>
       <div class="nav__container" id="navbar">
@@ -44,7 +46,9 @@
       </div>
     </div>
 
+    <!-- Main Content Wrapper -->
     <div class="rightSideWrapper">
+      <!-- Header -->
       <header>
         <div class="joinLogoMedium">
           <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,6 +90,7 @@
         </div>
       </header>
 
+      <!-- Main Content -->
       <main>
         <div class="contactList" id="contactList">
           <div class="addContactButtonContainer">
@@ -99,14 +104,10 @@
               </svg>
             </a>
           </div>
-
           <div id="overlayContainer"></div>
-
           <div class="createdContactContainer" id="createdContactContainer"></div>
-
           <div class="contactListInner" id="contactListInner"></div>
         </div>
-
         <div class="floatingAddContactContainer" id="floatingAddContactContainer" onclick="openAddContactOverlayMobile()">
           <svg width="30" height="22" viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -127,6 +128,7 @@
         <div id="mobileOverlayContainer"></div>
       </main>
     </div>
+    <!-- JavaScript -->
     <script src="/script/script.js"></script>
     <script src="/script/contacts/contacts.js"></script>
     <script src="/script/contacts/contact_section_overlays.js"></script>

@@ -4,6 +4,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: row;
+  overflow-x: hidden;
 }
 
 .joinLogoMedium {
@@ -40,7 +41,8 @@ body {
 }
 
 .profileInformation > p {
-  font-size: 46px;
+  font-size: 46px !important;
+  font-weight: 500;
   background-color: #f6f7f8;
   color: #000000;
 }
@@ -50,7 +52,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 22px;
-  padding: 32px;
+  padding: 0px 32px;
 }
 
 .profileWrapper {

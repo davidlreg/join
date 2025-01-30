@@ -75,7 +75,6 @@
 }
 
 .createContactButton:hover {
-  border: 1px solid #70c5ea;
   background-color: #70c5ea;
   transition: background-color 0.25s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
@@ -131,125 +130,129 @@
   fill: #ffffff !important;
 }
 
+/* Mobile Add Contact Overlay Styling */
+
+.addContactMobileWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 396px;
+  border-radius: 24px;
+}
+
+.addContactMobileWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.blueBackground {
+  background-color: #2a3647;
+  width: 100%;
+  padding: 24px;
+  border-radius: 18px 18px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 90px;
+}
+
+.profilePictureMobile {
+  position: absolute;
+  top: calc(100% -67px);
+  left: 50%;
+  transform: translate(-50%, -25%);
+  z-index: 10;
+}
+
+.whiteBackground {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 24px;
+  border-radius: 0px 0px 18px 18px;
+  padding-top: 84px;
+  padding-bottom: 24px;
+}
+
+.closeButtonMobile {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeButtonMobile > svg:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+  border-radius: 50%;
+}
+
+.closeButtonMobile * {
+  fill: #ffffff;
+}
+
+.formInputMobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.formInputMobile > input {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid lightgray;
+  padding: 13px 21px;
+}
+
+.formInputMobile > input::placeholder {
+  font-size: 18px;
+}
+
+.formInputMobile > input:focus {
+  outline: none !important;
+  border: 2px solid #29abe2 !important;
+}
+
+.createdContactContainerMobile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.createdContactContainerMobile > button {
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.nameIconMobile {
+  position: absolute;
+  top: 412px;
+  right: 32px;
+}
+
+.emailIconMobile {
+  position: absolute;
+  right: 32px;
+}
+
+.phoneIconMobile {
+  position: absolute;
+  top: 535px;
+  right: 32px;
+}
+
 /* Media Queries */
 @media (max-width: 1350px) {
-  .joinLogoSmall {
-    display: none;
-  }
-
-  .addContactOverlay {
-    flex-direction: column;
-  }
-
-  .addContactLeftSide {
-    width: 396px;
-    min-height: 351px;
-    border-radius: 32px 32px 0 0;
-    align-items: flex-start;
-  }
-
-  h1 {
-    font-size: 46px !important;
-  }
-
-  p {
-    font-size: 20px !important;
-  }
-
-  .cancelButton {
-    display: none;
-  }
-
-  .closeButton > a {
-    display: none;
-  }
-
-  .closeContainer {
-    display: flex;
-  }
-
-  .contactPicture > svg {
-    position: absolute;
-    background-color: transparent;
-    z-index: 50;
-    top: 125px;
-    right: 125px;
-  }
-
-  .rightSideContentWrapper {
-    flex-direction: column;
-  }
-
-  .formInput {
-    width: 364px !important;
-    height: 42px;
-    font-size: 18px;
-  }
-
-  .contactForm {
-    height: 800px !important;
-    background-color: transparent !important;
-    gap: 0 !important;
-    justify-content: flex-start !important;
-    padding: 48px;
-  }
-
-  .formSection {
-    background-color: transparent !important;
-    gap: 14px !important;
-  }
-
-  .formButtons {
-    justify-content: center;
-    margin-top: 24px;
-  }
-
-  .nameIcon {
-    right: 60px;
-    top: 60px;
-  }
-
-  .mailIcon {
-    right: 60px;
-    top: 128px;
-  }
-
-  .phoneIcon {
-    right: 60px;
-    top: 195px;
-  }
 }
 
 @media (max-width: 1080px) {
-  .overlayBackground {
-    height: 100% !important;
-  }
 }
 
 @media (max-width: 500px) {
-  .addContactLeftSide {
-    width: 310px;
-  }
 
-  h1 {
-    font-size: 36px !important;
-  }
-
-  p {
-    font-size: 18px !important;
-  }
-
-  .contactPicture > svg {
-    top: 110px;
-    right: 85px;
-  }
-
-  .editContactRightSide {
-    width: 310px;
-  }
-
-  .formInput {
-    width: 280px !important;
-    height: 50px;
-  }
 }

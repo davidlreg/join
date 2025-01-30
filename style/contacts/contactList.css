@@ -170,8 +170,8 @@ main {
 /* Go Back Arrow */
 .goBackArrow {
   position: absolute;
-  top: 136px;
-  right: 30px;
+  top: 124px;
+  right: 24px;
 }
 
 /* Contact List Letter */
@@ -200,7 +200,7 @@ main {
   padding-bottom: 32px;
 }
 
-/* Media Query for Smaller Screens */
+/* Media Queries */
 @media (max-width: 1350px) {
   .contactListInner {
     padding-bottom: 164px;

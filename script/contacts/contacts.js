@@ -25,6 +25,14 @@ function openAddContactOverlay() {
   addEventListenersToAddContactOverlay(overlay);
 }
 
+function openAddContactOverlayMobile() {
+  const overlayContainer = document.getElementById("overlayContainer");
+  overlayContainer.innerHTML = showAddContactOverlayMobile();
+  addOverlayBackground(overlayContainer);
+  const overlay = overlayContainer.querySelector(".addContactMobileWrapper");
+  openOverlayMobile(overlay);
+}
+
 /**
  * Adds the overlay background class to the container.
  *
@@ -46,6 +54,17 @@ function openOverlay(overlay) {
 }
 
 /**
+ * Opens the provided overlay with a smooth transition effect.
+ *
+ * @param {Element} overlay The overlay element to be opened.
+ */
+function openOverlayMobile(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateY(100%)";
+  setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
+}
+
+/**
  * Closes the add contact overlay and removes its content.
  *
  */
@@ -56,19 +75,13 @@ function closeAddContactOverlay() {
 }
 
 /**
- * Adds event listeners for closing the overlay to the close and cancel buttons.
+ * Closes the add contact overlay and removes its content.
  *
- * @param {Element} overlay The overlay element to add event listeners to.
  */
-function addEventListenersToAddContactOverlay(overlay) {
-  const closeButton = overlay.querySelector(".closeButton");
-  const cancelButton = overlay.querySelector(".cancelButton");
-  const createButton = overlay.querySelector(".createContactButton");
-  const createButtonResponsive = overlay.querySelector(".closeContainer");
-  closeButton.addEventListener("click", closeAddContactOverlay);
-  cancelButton.addEventListener("click", closeAddContactOverlay);
-  createButton.addEventListener("click", createContact);
-  createButtonResponsive.addEventListener("click", closeAddContactOverlay);
+function closeAddContactOverlayMobile() {
+  const overlay = document.querySelector(".addContactMobileWrapper");
+  closeOverlayMobile(overlay);
+  removeOverlayContent();
 }
 
 /**
@@ -78,6 +91,15 @@ function addEventListenersToAddContactOverlay(overlay) {
  */
 function closeOverlay(overlay) {
   overlay.style.transform = "translateX(100%)";
+}
+
+/**
+ * Closes the provided overlay with a sliding effect.
+ *
+ * @param {Element} overlay The overlay element to be closed.
+ */
+function closeOverlayMobile(overlay) {
+  overlay.style.transform = "translateY(100%)";
 }
 
 /**
@@ -153,7 +175,6 @@ function openFloatingContactOverlay(overlay) {
 function openEditContact() {
   const overlayContainer = document.getElementById("overlayContainer");
   overlayContainer.innerHTML = showEditContactOverlay();
-
   addOverlayBackground(overlayContainer);
   const overlay = overlayContainer.querySelector(".editContactOverlay");
   openOverlay(overlay);
@@ -167,7 +188,7 @@ function openEditContact() {
  */
 function addEventListenersToEditContactOverlay(overlay) {
   const deleteButton = overlay.querySelector(".deleteButton");
-  const closeButton = overlay.querySelector(".closeContainer");
+  const closeButton = overlay.querySelector(".closeButton");
   deleteButton.addEventListener("click", closeEditContactOverlay);
   closeButton.addEventListener("click", closeEditContactOverlay);
 }
@@ -196,7 +217,7 @@ function showContactCreatedMessage() {
 
 /**
  * Generates a message indicating that a contact has been successfully created.
- * 
+ *
  * @function showContactSucessfullyCreatedMessage
  * @returns {string} HTML markup for the success message.
  */

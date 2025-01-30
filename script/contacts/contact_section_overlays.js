@@ -51,8 +51,8 @@ function showAddContactOverlay() {
         </svg>
       </div>
       <div class="contactForm">
-        <div class="closeButton" onclick="closeAddContactOverlay()">
-          <a
+        <div class="closeButton">
+          <a onclick="closeAddContactOverlay()"
             ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9" />
@@ -173,7 +173,8 @@ function showAddContactOverlayMobile() {
     
 <div class="addContactMobileWrapper">
   <div class="blueBackground">
-    <div class="closeButtonMobile" onclick="closeAddContactOverlayMobile()">
+    <div class="closeButtonMobile">
+    <a onclick="closeAddContactOverlayMobile()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -185,6 +186,7 @@ function showAddContactOverlayMobile() {
           />
         </g>
       </svg>
+      </a>
     </div>
 
     <div class="headlineMobile">
@@ -352,8 +354,8 @@ function showEditContactOverlay() {
         </svg>
       </div>
       <div class="contactForm">
-        <div class="closeButton" onclick="closeEditContactOverlay()">
-          <a
+        <div class="closeButton">
+          <a onclick="closeEditContactOverlay()"
             ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9" />
@@ -460,7 +462,8 @@ function showEditContactOverlayMobile() {
     
  <div class="editContactMobileWrapper">
   <div class="blueBackgroundEdit">
-    <div class="closeButtonMobile" onclick="closeEditContactOverlayMobile()">
+    <div class="closeButtonMobile">
+    <a onclick="closeEditContactOverlayMobile()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -472,6 +475,7 @@ function showEditContactOverlayMobile() {
           />
         </g>
       </svg>
+      </a>
     </div>
 
     <div class="headlineMobile">

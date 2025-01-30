@@ -178,13 +178,13 @@
   justify-content: flex-end;
 }
 
-.closeButtonMobile > svg:hover {
+.closeButtonMobile > a > svg:hover {
   cursor: pointer;
   background-color: #29abe2;
   border-radius: 50%;
 }
 
-.closeButtonMobile * {
+.closeButtonMobile > a * {
   fill: #ffffff;
 }
 

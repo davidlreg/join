@@ -2,6 +2,30 @@ function init() {
   setActiveLinkFromURL();
 }
 
+function getUserType() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('user');
+}
+
+function updateGreeting() {
+  const user = getUserType();
+  const startTime = document.getElementById('startTime');
+  const userName = document.getElementById('userName');
+  const guestName = ""
+  const hour = new Date().getHours();
+  let greeting = "Good Night";
+
+  if (hour >= 5 && hour < 12) {
+    greeting = "Good Morning";
+  } else if (hour >= 12 && hour < 17) {
+    greeting = "Good Afternoon";
+  } else if (hour >= 17 && hour < 21) {
+    greeting = "Good Evening";
+  }
+  startTime.textContent = user === "loggedIn" ? `${greeting},` : greeting;
+  userName.textContent = user === "quest" ? `${guestName}` : guestName;
+}
+
 /**
  * If the user clicks on the areas, he will be linked to the board page
  */
@@ -15,7 +39,7 @@ function fromSummaryToBoard() {
  * skips to the post-animation state.
  */
 function showSummaryStartAnimation() {
-  if (localStorage.getItem("animationPlayed")) {
+  if (sessionStorage.getItem("animationPlayed")) {
     return disableRightContainer();
   }
 
@@ -57,7 +81,7 @@ function setContentToNormal() {
 
 /**
  * Schedules the right container to be hidden after a delay, then shows the left container.
- * Also marks the animation as played in localStorage.
+ * Also marks the animation as played in sessionStorage.
  *
  * @param {HTMLElement} leftContainer - The left container element from the mainContent.
  * @param {HTMLElement} headline - The headline element above the mainContent.
@@ -66,7 +90,7 @@ function setTimeForRightContent(leftContainer, headline) {
   setTimeout(() => {
     hideRightContainer();
     showLeftContainer(leftContainer, headline);
-    localStorage.setItem("animationPlayed", "true");
+    sessionStorage.setItem("animationPlayed", "true");
   }, 3000);
 }
 
@@ -153,6 +177,7 @@ function getSummaryElements() {
  */
 document.addEventListener("DOMContentLoaded", () => {
   showSummaryStartAnimation();
+  updateGreeting();
 
   // Add a resize event listener to dynamically handle layout changes
   window.addEventListener("resize", () => {

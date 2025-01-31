@@ -215,16 +215,10 @@ async function createUser() {
   const name = document.getElementById("userName").value;
   const email = document.getElementById("userEmail").value;
   const password = document.querySelectorAll(".inputPassword")[0].value;
-
-  // Generate new User ID with the proper prefix "userId"
   const newUserId = await getNextId("Data/Users", "userId");
   await saveUser(newUserId, { name, email, password });
-
-  // Generate new Contact ID with the proper prefix "contactId"
   const newContactId = await getNextId("Data/Contacts", "contactId");
   await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
-
-  // Redirect to summary.html after successful registration
   window.location.href = "summary.html";
 }
 

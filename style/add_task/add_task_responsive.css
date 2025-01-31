@@ -167,7 +167,7 @@
     }
 
     .taskInputContainerOverlay {
-        max-height: 45vh;
+        max-height: 35vh;
         overflow-y: auto;
         padding-right: 10px;
         box-sizing: border-box;
@@ -186,6 +186,12 @@
         bottom: 10px;
     }
 
+}
+
+@media (max-width: 1024px) {
+    .taskInputContainerOverlay{
+        max-height: 33vh;
+    }
 }
 
 @media (max-width:1015px) {
@@ -215,6 +221,12 @@
 
     .requiredActionOverlay {
         gap: 55px;
+    }
+}
+
+@media (max-width: 767px) {
+    .taskInputContainerOverlay{
+        max-height: 47vh;
     }
 }
 
@@ -294,14 +306,14 @@
     }
 
     .overlayTaskContent {
-        width: 300px;
-        max-width: 300px;
-        max-height: 620px;
-        height: 620px;
+        width: 370px;
+        max-width: 370px;
+        max-height: 640px;
+        height: 640px;
     }
 
     .taskInputContainerOverlay {
-        width: 30vh;
+        width: 37vh;
         padding-right: 3px;
     }
 
@@ -356,4 +368,24 @@
     .createButtonOverlay {
         width: 150px;
     }
+}
+
+@media (max-width: 375px){
+    .overlayTaskContent {
+        width: 340px;
+        max-width: 340px;
+    }
+
+    .taskInputContainerOverlay {
+        width: 285px;
+    }
+}
+
+@media (max-width: 355px){
+    .overlayTaskContent {
+        width: 320px;
+        max-width: 320px;
+    }
+
+    
 }

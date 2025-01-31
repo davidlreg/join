@@ -22,14 +22,14 @@
       <h1 class="header">Sign up</h1>
 
       <div class="inputContainer">
-        <input type="text" name="name" placeholder="Name" class="inputName" required />
-        <input type="text" name="email" placeholder="Email" class="inputEmail" required />
+        <input type="text" name="name" id="userName" placeholder="Name" class="inputName" required />
+        <input type="text" name="email" id="userEmail" placeholder="Email" class="inputEmail" required />
         <div class="inputPasswordWrapper">
           <input type="password" name="password" placeholder="Password" class="inputPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
         <div class="inputPasswordWrapper">
-          <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" required />
+          <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" id="userPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
       </div>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="buttons">
-        <button id="signUpBtn" class="btnUnabledDark">Sign up</button>
+        <button id="signUpBtn" class="btnUnabledDark" type="button">Sign up</button>
       </div>
     </div>
 
@@ -56,6 +56,6 @@
       <p id="overlayMessage" class="overlayMessage dNone">You signed up successfully</p>
     </div>
     <!-- JavaScript -->
-    <script src="/script/login/sign_up.js"></script>
+    <script type="module" src="/script/login/sign_up.js"></script>
   </body>
 </html>

@@ -44,6 +44,50 @@ function createSubtaskElement(subtaskValue) {
  *
  * @param {HTMLElement} listItem - The subtask element to be removed from the list.
  */
-function removeSubtask(listItem){
+function removeSubtask(listItem) {
   listItem.remove();
+}
+
+/**
+ * Toggles the visibility of the category dropdown.
+ */
+function toggleCategory() {
+  const categoryDropdown = document.querySelector('.selectCategory');
+  categoryDropdown.classList.toggle('show');
+}
+
+function selectCategory(category) {
+  const selectContainer = document.getElementById('selectTask');
+  const selectCategory = document.querySelector('.selectCategory');
+
+  selectContainer.textContent = category;
+
+ selectCategory.classList.remove('show');
+}
+
+/**
+ * Toggles the visibility of all the contacts.
+ */
+function toggleContact() {
+  const categoryDropdown = document.getElementById('selectContact');
+  categoryDropdown.classList.toggle('show');
+}
+
+/**
+ * Loads contact data from the Firebase database and displays it in the dropdown.
+ */
+async function loadContacts() {
+  const data = await fetchContacts();
+  if (data) populateContacts(data);
+}
+
+async function fetchContacts() {
+  try {
+    const response = await fetch ('https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json');
+    const data = await response.json();
+    return data.contacts || [];
+  } catch (error) {
+    console.error('Error fetching contacts:', error);
+    return null; 
+  }  
 }

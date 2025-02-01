@@ -1,18 +1,22 @@
 let backendData = {};
 async function fetchDataJSON() {
   let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
-  let responseAsJSON = await response.json();
-  backendData = responseAsJSON;
+  let responseJSON = await response.json();
+  backendData = responseJSON;
 }
 
 async function init() {
   setActiveLinkFromURL();
   showSummaryStartAnimation();
-  await prepareData();
+  await loadData();
+  processData();
 }
 
-async function prepareData() {
+async function loadData() {
   await fetchDataJSON();
+}
+
+function processData() {
   updateGreeting();
   headerUserName();
 }

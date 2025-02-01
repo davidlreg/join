@@ -91,9 +91,11 @@ function validateForm() {
   if (isFormValid) {
     signUpButton.classList.remove("btnUnabledDark");
     signUpButton.classList.add("btnDark");
+    signUpButton.setAttribute("onclick", "createUser()");
   } else {
     signUpButton.classList.remove("btnDark");
     signUpButton.classList.add("btnUnabledDark");
+    signUpButton.removeAttribute("onclick");
   }
 }
 
@@ -260,5 +262,3 @@ document.querySelectorAll(".inputPassword").forEach((input) => {
 document.querySelectorAll(".passwordToggle").forEach((toggle) => {
   toggle.addEventListener("click", toggleVisibility);
 });
-
-document.getElementById("signUpBtn").addEventListener("click", createUser);

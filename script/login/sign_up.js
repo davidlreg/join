@@ -193,6 +193,47 @@ async function createUser() {
   await saveUser(newUserId, { name, email, password });
   const newContactId = await getNextId("Data/Contacts", "contactId");
   await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
+  clearInput();
+  showOverlay();
+}
+
+/**
+ * This function clears the input values of the form.
+ *
+ * It resets the values of the input fields to their default empty states
+ * and unchecks the checkbox.
+ */
+function clearInput() {
+  nameInput.value = '';
+  emailInput.value = '';
+  passwordInput.value = '';
+  confirmPasswordInput.value = '';
+  checkbox.checked = false;
+}
+
+/**
+ * This function displays the overlay and hides it after a delay.
+ *
+ * It removes the 'dNone' class from the element with the ID 'overlay',
+ * making it visible. After a delay of 2000 milliseconds, the overlay is hidden
+ * by calling the `hideOverlay` function.
+ */
+function showOverlay() {
+  let overlay = document.getElementById('overlay');
+  overlay.classList.remove('dNone');
+  
+  setTimeout(() => {
+    hideOverlay();
+  }, 2000);
+}
+
+/**
+ * This function hides the overlay.
+ *
+ * It adds the 'dNone' class to the element with the ID 'overlay'.
+ */
+function hideOverlay() {
+  document.getElementById('overlay').classList.add('dNone');
 }
 
 // Event listeners

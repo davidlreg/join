@@ -67,11 +67,13 @@ function validatePasswords() {
  * ensures that the email and confirm password fields do not have red borders (indicating an error)
  * and verifies that the checkbox is checked.
  *
- * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
- * and adding the 'btnDark' class.
+ * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class,
+ * adding the 'btnDark' class
+ * and placing an EventListener that triggers the function createUser().
  *
- * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class
- * and adding the 'btnUnabledDark' class.
+ * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class,
+ * adding the 'btnUnabledDark' class
+ * and removing the EventListener.
  *
  * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
  *
@@ -204,6 +206,8 @@ async function createUser() {
  *
  * It resets the values of the input fields to their default empty states
  * and unchecks the checkbox.
+ * 
+ * Additionally it enables the sign up button by calling the function validateForm().
  */
 function clearInput() {
   nameInput.value = '';
@@ -219,7 +223,7 @@ function clearInput() {
  *
  * It removes the 'dNone' class from the element with the ID 'overlay',
  * making it visible. After a delay of 2000 milliseconds, the overlay is hidden
- * by calling the `hideOverlay` function.
+ * by calling the function hideOverlay().
  */
 function showOverlay() {
   let overlay = document.getElementById('overlay');

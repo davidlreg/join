@@ -95,7 +95,7 @@ function validateForm() {
   } else {
     signUpButton.classList.remove("btnDark");
     signUpButton.classList.add("btnUnabledDark");
-    signUpButton.addEventListener("click", createUser);
+    signUpButton.removeEventListener("click", createUser);
   }
 }
 
@@ -211,6 +211,7 @@ function clearInput() {
   passwordInput.value = '';
   confirmPasswordInput.value = '';
   checkbox.checked = false;
+  validateForm();
 }
 
 /**

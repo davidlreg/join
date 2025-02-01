@@ -69,11 +69,9 @@ function validatePasswords() {
  *
  * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class
  * and adding the 'btnDark' class.
- * It sets the 'onclick' attribute of the sign up button to trigger the 'signUpSuccessful()' function.
  *
  * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class
  * and adding the 'btnUnabledDark' class.
- * It also removes the 'onclick' attribute.
  *
  * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
  *

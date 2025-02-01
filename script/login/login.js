@@ -84,7 +84,7 @@ function validateForm() {
   if (isFormValid) {
     logInButton.classList.remove("btnUnabledDark");
     logInButton.classList.add("btnDark");
-    logInButton.setAttribute("onclick", "location.href='./summary.html'");
+    logInButton.setAttribute("onclick", "location.href='./summary.html?active=summary&user=loggedIn'");
   } else {
     logInButton.classList.remove("btnDark");
     logInButton.classList.add("btnUnabledDark");

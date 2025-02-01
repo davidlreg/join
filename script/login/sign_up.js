@@ -149,30 +149,6 @@ function toggleVisibility() {
   }
 }
 
-emailInput.addEventListener("input", function () {
-  validateEmail();
-  validateForm();
-});
-
-confirmPasswordInput.addEventListener("input", function () {
-  validatePasswords();
-  validateForm();
-});
-
-nameInput.addEventListener("input", validateForm);
-
-passwordInput.addEventListener("input", validateForm);
-
-checkbox.addEventListener("change", validateForm);
-
-document.querySelectorAll(".inputPassword").forEach((input) => {
-  input.addEventListener("input", updatePasswordIcon);
-});
-
-document.querySelectorAll(".passwordToggle").forEach((toggle) => {
-  toggle.addEventListener("click", toggleVisibility);
-});
-
 /**
  * Retrieves the next available ID based on the count of existing entries.
  *
@@ -219,8 +195,31 @@ async function createUser() {
   await saveUser(newUserId, { name, email, password });
   const newContactId = await getNextId("Data/Contacts", "contactId");
   await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
-  window.location.href = "summary.html";
 }
 
-// Event listener for the sign-up button
+// Event listeners
+emailInput.addEventListener("input", function () {
+  validateEmail();
+  validateForm();
+});
+
+confirmPasswordInput.addEventListener("input", function () {
+  validatePasswords();
+  validateForm();
+});
+
+nameInput.addEventListener("input", validateForm);
+
+passwordInput.addEventListener("input", validateForm);
+
+checkbox.addEventListener("change", validateForm);
+
+document.querySelectorAll(".inputPassword").forEach((input) => {
+  input.addEventListener("input", updatePasswordIcon);
+});
+
+document.querySelectorAll(".passwordToggle").forEach((toggle) => {
+  toggle.addEventListener("click", toggleVisibility);
+});
+
 document.getElementById("signUpBtn").addEventListener("click", createUser);

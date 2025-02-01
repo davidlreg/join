@@ -1,4 +1,5 @@
 let backendData = {};
+let currentlyViewedUser = {};
 
 async function init() {
   setActiveLinkFromURL();
@@ -136,7 +137,8 @@ function removeOverlayContentEditMobile() {
  *
  */
 function openContact(name, email, phone) {
-  const screenWidth = window.innerWidth; // Get screen width
+  const screenWidth = window.innerWidth;
+  currentlyViewedUser = { name, email, phone };
 
   if (screenWidth > 1350) {
     showDesktopContactOverlay(name, email, phone);
@@ -151,11 +153,9 @@ function openContact(name, email, phone) {
  */
 function showDesktopContactOverlay(name, email, phone) {
   const floatingContactContainer = document.getElementById("floatingContactContainer");
-  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
-
-  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone); // Insert desktop overlay content
+  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone);
   const overlay = floatingContactContainer.querySelector(".profileHeadSection");
-  openFloatingContactOverlay(overlay); // Open or process the overlay
+  openFloatingContactOverlay(overlay);
 }
 
 /**
@@ -164,10 +164,8 @@ function showDesktopContactOverlay(name, email, phone) {
  */
 function showMobileContactOverlay(name, email, phone) {
   const floatingContactContainer = document.getElementById("contactList");
-  if (!floatingContactContainer) return; // Handle case where the container doesn't exist
-
-  floatingContactContainer.innerHTML = ""; // Clear previous content
-  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone); // Insert mobile overlay content
+  floatingContactContainer.innerHTML = "";
+  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone);
 }
 
 /**

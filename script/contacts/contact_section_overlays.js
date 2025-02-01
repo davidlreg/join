@@ -428,7 +428,7 @@ function showEditContactOverlay() {
           </div>
         </div>
         <div class="formButtons">
-          <button type="button" class="deleteButton"><p>Delete</p></button>
+          <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
           <button type="button" class="saveContactButton">
             <p>Save</p>
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -555,7 +555,7 @@ function showEditContactOverlayMobile() {
     </div>
 
     <div class="formButtonsMobile">
-      <button type="button" class="deleteButton"><p>Delete</p></button>
+      <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
           <button type="button" class="saveContactButton">
             <p>Save</p>
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -628,7 +628,7 @@ function showFloatingContactOverlay(name, email, phone) {
             <p>Edit</p>
           </a>
         </div>
-        <div class="deleteIcon">
+        <div class="deleteIcon" onclick="deleteContact()">
           <a
             ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_273251_1845" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">

@@ -262,6 +262,12 @@ function showContactSucessfullyCreatedMessage() {
   `;
 }
 
+// Logic fot deleting contacts
+
+function deleteContact() {
+  console.log("DELETE CONTACT TEST");
+}
+
 // Logic for contact list
 
 /**

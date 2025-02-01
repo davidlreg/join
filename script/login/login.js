@@ -43,6 +43,7 @@ function removeJoinAnimation () {
  */
 function validateEmail() {
   let emailValue = emailInput.value;
+  localStorage.setItem("email", emailValue);
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailPattern.test(emailValue)) {

@@ -3,6 +3,7 @@ let backendData = {};
 async function init() {
   setActiveLinkFromURL();
   await prepareData();
+  headerUserName();
 }
 
 async function prepareData() {

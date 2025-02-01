@@ -84,6 +84,7 @@ main {
 .boardSectionsContainer {
     display: flex;
     gap: 20px;
+    height: 100vh;
 }
 
 .boardSectionsSubContainer {

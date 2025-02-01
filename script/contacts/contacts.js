@@ -234,9 +234,14 @@ function editOverlayBackground(container) {
   container.classList.add("overlayBackground");
 }
 
+function updateContactData() {
+  console.log("UPDATE CONTACT TEST");
+}
+
 // Logic for creating contacts
 
 function createContact() {
+  console.log("CREATE CONTACT TEST");
   closeAddContactOverlay();
   showContactCreatedMessage();
 }
@@ -262,7 +267,7 @@ function showContactSucessfullyCreatedMessage() {
   `;
 }
 
-// Logic fot deleting contacts
+// Logic for deleting contacts
 
 function deleteContact() {
   console.log("DELETE CONTACT TEST");

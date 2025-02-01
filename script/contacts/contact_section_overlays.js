@@ -266,7 +266,7 @@ function showAddContactOverlayMobile() {
       </svg>
     </div>
 
-    <div class="createdContactContainerMobile">
+    <div class="createdContactContainerMobile" onclick="createContact()">
       <button type="button" class="createContactButton">
         <p>Create contact</p>
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -429,7 +429,7 @@ function showEditContactOverlay() {
         </div>
         <div class="formButtons">
           <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
-          <button type="button" class="saveContactButton">
+          <button type="button" class="saveContactButton" onclick="updateContactData()">
             <p>Save</p>
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -556,7 +556,7 @@ function showEditContactOverlayMobile() {
 
     <div class="formButtonsMobile">
       <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
-          <button type="button" class="saveContactButton">
+          <button type="button" class="saveContactButton" onclick="updateContactData()">
             <p>Save</p>
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">

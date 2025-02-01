@@ -1,5 +1,5 @@
-function init() {
-  setActiveLinkFromURL();
+function initTask() {
+  loadContacts();
 }
 
 /**
@@ -81,13 +81,53 @@ async function loadContacts() {
   if (data) populateContacts(data);
 }
 
+/**
+ * Fetches contact data from a Firebase database.
+ *
+ * @returns {Promise<Array>} A promise that resolves to an array of contact objects if available, or an empty array if no contacts are found.
+ */
 async function fetchContacts() {
   try {
     const response = await fetch ('https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json');
     const data = await response.json();
-    return data.contacts || [];
+    return data.Data.Contacts || [];
+
   } catch (error) {
     console.error('Error fetching contacts:', error);
-    return null; 
+    return []; 
   }  
+}
+
+/**
+ * Populates the contact dropdown with contact data.
+ *
+ * @param {Object} contacts - An object containing contact data, which is converted into an array
+ *                            using Object.values() to ensure proper iteration and length checking.
+ */
+function populateContacts(contacts){
+  const contactContainer = document.getElementById('selectContact');
+  contactContainer.innerHTML = '';
+
+  const contactList = Object.values(contacts);
+  
+  if (contactList.length === 0) {
+    contactContainer.innerHTML = `<p>No contacts found</p>`;
+    return;
+  }
+
+  contactList.forEach(contact => addContactToDropdown(contact));
+}
+
+/**
+ * Adds a contact to the dropdown list.
+ *
+ * @param {Object} contact - The contact object containing the name.
+ */
+function addContactToDropdown(contact){
+  const contactContainer = document.getElementById('selectContact');
+  const contactItem = document.createElement('div');
+  contactItem.classList = 'selectContactItem';
+  contactItem.textContent = contact.name;
+  contactItem.onclick = () => selectContact(contact.name);
+  contactContainer.appendChild(contactItem);
 }

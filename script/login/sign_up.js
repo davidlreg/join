@@ -91,11 +91,11 @@ function validateForm() {
   if (isFormValid) {
     signUpButton.classList.remove("btnUnabledDark");
     signUpButton.classList.add("btnDark");
-    signUpButton.setAttribute("onclick", "createUser()");
+    signUpButton.addEventListener("click", createUser);
   } else {
     signUpButton.classList.remove("btnDark");
     signUpButton.classList.add("btnUnabledDark");
-    signUpButton.removeAttribute("onclick");
+    signUpButton.addEventListener("click", createUser);
   }
 }
 

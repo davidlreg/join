@@ -135,32 +135,70 @@ function removeOverlayContentEditMobile() {
 // Floating contact template logic
 
 /**
- * Determines the appropriate floating contact overlay to display based on screen width.
+ * Opens or closes a contact overlay and highlights the selected contact.
  *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @param {string} phone - The contact's phone number.
  */
 function openContact(name, email, phone) {
-  const screenWidth = window.innerWidth;
-  currentlyViewedUser = { name, email, phone };
-
-  // Entferne die vorherige Auswahl
-  if (selectedContact) {
-    selectedContact.classList.remove("active-contact");
+  if (selectedContact && selectedContact.innerText.includes(name) && selectedContact.innerText.includes(email)) {
+    resetSelectedContact();
+    closeContactOverlay();
+    return;
   }
 
-  // Neues Element suchen und markieren
-  const contacts = document.querySelectorAll(".contact");
-  contacts.forEach(contact => {
-    if (contact.innerText.includes(name) && contact.innerText.includes(email)) {
-      selectedContact = contact;
-      selectedContact.classList.add("active-contact"); // Klasse für aktiven Kontakt hinzufügen
-    }
-  });
+  currentlyViewedUser = { name, email, phone };
+  updateSelectedContact(name, email);
+  toggleContactOverlay(name, email, phone);
+}
 
-  // Zeige das passende Overlay basierend auf der Bildschirmbreite
-  if (screenWidth > 1350) {
+/**
+ * Updates the selected contact by removing the previous selection and adding the active class to the new selection.
+ *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ */
+function updateSelectedContact(name, email) {
+  resetSelectedContact();
+  selectedContact = [...document.querySelectorAll(".contact")].find((contact) => contact.innerText.includes(name) && contact.innerText.includes(email));
+  if (selectedContact) {
+    selectedContact.classList.add("active-contact");
+  }
+}
+
+/**
+ * Resets the selected contact to default state.
+ */
+function resetSelectedContact() {
+  if (selectedContact) {
+    selectedContact.classList.remove("active-contact");
+    selectedContact = null;
+  }
+}
+
+/**
+ * Toggles the contact overlay based on screen width.
+ *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @param {string} phone - The contact's phone number.
+ */
+function toggleContactOverlay(name, email, phone) {
+  if (window.innerWidth > 1350) {
     showDesktopContactOverlay(name, email, phone);
   } else {
     showMobileContactOverlay(name, email, phone);
+  }
+}
+
+/**
+ * Closes the contact overlay.
+ */
+function closeContactOverlay() {
+  const overlay = document.querySelector(".profileHeadSection");
+  if (overlay) {
+    closeFloatingContactOverlay(overlay);
   }
 }
 
@@ -192,8 +230,18 @@ function showMobileContactOverlay(name, email, phone) {
  */
 function openFloatingContactOverlay(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateX(100%)";
+  overlay.style.transform = "translateX(150%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
+}
+
+/**
+ * Closes the floating contact overlay with a slide-out animation.
+ *
+ * @param {HTMLElement} overlay - The overlay element to be closed.
+ */
+function closeFloatingContactOverlay(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateX(150%)";
 }
 
 // Logic for editing contacts

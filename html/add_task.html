@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/style/fonts.css" />
 </head>
 
-<body onload="init()">
+<body onload="initTask()">
     <!-- Sidebar -->
     <div class="layoutContainer">
         <div class="sidebar__container" id="sidebar-nav">
@@ -88,7 +88,7 @@
                                 <a onclick="logout()" style="cursor: pointer;">Log Out</a>
                             </div>
                         </div>
-                        <a style="color: rgb(41, 171, 226); background-color: transparent;">XX</a>
+                        <a id="headerUserName" style="color: rgb(41, 171, 226); background-color: transparent;"></a>
                     </div>
                 </div>
             </header>
@@ -196,9 +196,8 @@
     </div>
     </form>
 
-
-    <script src="/script/add_task/add_task.js"></script>
     <script src="/script/script.js"></script>
+    <script src="/script/add_task/add_task.js"></script>
     <script src="/script/add_task/add_task_templates.js"></script>
     <script src="/script/add_task/add_task_overlay.js"></script>
     <script src="/script/add_task/prio_buttons.js"></script>

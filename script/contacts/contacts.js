@@ -5,6 +5,7 @@ let selectedContact = null;
 async function init() {
   setActiveLinkFromURL();
   await prepareData();
+  headerUserName();
 }
 
 async function prepareData() {

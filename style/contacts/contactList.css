@@ -134,6 +134,11 @@ main {
   cursor: pointer;
 }
 
+.active-contact:hover {
+  background-color: #2a3647 !important;
+  background: none !important;
+}
+
 .contact:hover > .personalInformationShort > p {
   background-color: transparent;
 }
@@ -200,10 +205,23 @@ main {
   padding-bottom: 32px;
 }
 
+.active-contact {
+  background-color: #2a3647 !important;
+  color: white !important;
+}
+
+.active-contact * {
+  background-color: #2a3647 !important;
+  color: white !important;
+}
+
+.active-contact:hover {
+  background-color: #2a3647 !important;
+}
+
 /* Media Queries */
 @media (max-width: 1350px) {
   .contactListInner {
     padding-bottom: 164px;
   }
 }
-

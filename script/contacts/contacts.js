@@ -1,5 +1,6 @@
 let backendData = {};
 let currentlyViewedUser = {};
+let selectedContact = null;
 
 async function init() {
   setActiveLinkFromURL();
@@ -140,6 +141,21 @@ function openContact(name, email, phone) {
   const screenWidth = window.innerWidth;
   currentlyViewedUser = { name, email, phone };
 
+  // Entferne die vorherige Auswahl
+  if (selectedContact) {
+    selectedContact.classList.remove("active-contact");
+  }
+
+  // Neues Element suchen und markieren
+  const contacts = document.querySelectorAll(".contact");
+  contacts.forEach(contact => {
+    if (contact.innerText.includes(name) && contact.innerText.includes(email)) {
+      selectedContact = contact;
+      selectedContact.classList.add("active-contact"); // Klasse für aktiven Kontakt hinzufügen
+    }
+  });
+
+  // Zeige das passende Overlay basierend auf der Bildschirmbreite
   if (screenWidth > 1350) {
     showDesktopContactOverlay(name, email, phone);
   } else {

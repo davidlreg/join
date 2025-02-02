@@ -147,7 +147,6 @@ function openContact(name, email, phone) {
     closeContactOverlay();
     return;
   }
-
   currentlyViewedUser = { name, email, phone };
   updateSelectedContact(name, email);
   toggleContactOverlay(name, email, phone);

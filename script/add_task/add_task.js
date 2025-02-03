@@ -1,6 +1,7 @@
 function initTask() {
   loadContacts();
   headerUserName();
+  setPriority('medium');
 }
 
 /**
@@ -119,16 +120,91 @@ function populateContacts(contacts){
   contactList.forEach(contact => addContactToDropdown(contact));
 }
 
+
 /**
- * Adds a contact to the dropdown list.
+ * Adds a contact item to the dropdown menu.
  *
- * @param {Object} contact - The contact object containing the name.
+ * @param {Object} contact - The contact object containing details (e.g., name, email, etc.).
  */
 function addContactToDropdown(contact){
   const contactContainer = document.getElementById('selectContact');
-  const contactItem = document.createElement('div');
-  contactItem.classList = 'selectContactItem';
-  contactItem.textContent = contact.name;
-  contactItem.onclick = () => selectContact(contact.name);
+  const contactItem = createContentItem(contact);
   contactContainer.appendChild(contactItem);
+}
+
+
+/**
+ * Creates a contact item with a profile placeholder, name, and checkbox.
+ * 
+ * @param {Object} contact - The contact object containing the name.
+ * @returns {HTMLElement} A div element representing a contact.
+ */
+
+function createContentItem(contact){
+  const contactItem = document.createElement('div');
+  contactItem.classList.add('selectContactItem');
+
+  const profilePicture = createProfilePicture();
+  const contactName = createContactName(contact.name);
+  const checkBox = createCheckbox(contact.name);
+
+  contactItem.appendChild(profilePicture);
+  contactItem.appendChild(contactName);
+  contactItem.appendChild(checkBox);
+
+  return contactItem;
+}
+
+/**
+ * Creates a placeholder for the profile image.
+ * 
+ * @returns {HTMLElement} A div element styled as a profile placeholder.
+ */
+function createProfilePicture() {
+  const placeholder = document.createElement('div');
+  placeholder.classList.add('profilePicture');
+  return placeholder;
+}
+
+
+/**
+ * Creates a span element containing the contact's name.
+ * 
+ * @param {string} name - The name of the contact.
+ * @returns {HTMLElement} A span element displaying the contact's name.
+ */
+function createContactName(name) {
+  const contactName = document.createElement('b');
+  contactName.textContent = name;
+  contactName.classList.add('contactName');
+  return contactName;
+}
+
+/**
+ * Creates a checkbox for selecting the contact.
+ * 
+ * @param {string} name - The name of the contact, used as the checkbox value.
+ * @returns {HTMLElement} An input element of type "checkbox".
+ */
+function createCheckbox(name) {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('contactCheckbox');
+  checkbox.value = name;
+  checkbox.addEventListener('change' , updateSelectedContact);
+  return checkbox;
+}
+
+
+/**
+ * Updates the display of selected contacts under the dropdown.
+ */
+function updateSelectedContact(){
+  const selectedContacts = document.getElementById('selectedContacts');
+  selectedContacts.innerHTML = "";
+
+  document.querySelectorAll('.contactCheckbox:checked').forEach(() => {
+    const contactProfile = createProfilePicture();
+    selectedContacts.appendChild(contactProfile);
+  });
 }

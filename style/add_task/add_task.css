@@ -179,13 +179,11 @@ form#taskForm h1 {
 }
 
 .selectContactItem {
-  padding: 12px 16px;
-  font-size: 16px;
-  color: #333;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
 }
 
 .selectContactItem:last-child {
@@ -200,6 +198,33 @@ form#taskForm h1 {
   background-color: #d9d9d9; 
   transform: scale(0.98); 
   transition: transform 0.1s ease-in-out;
+}
+
+.profilePicture {
+  width: 40px;
+  height: 40px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.contactName {
+  flex-grow: 1;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.contactCheckbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.selectedContacts {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .priorityButton {

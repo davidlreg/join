@@ -1,3 +1,16 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyCHinD9iUXo-FhdnX7qBQDuuvVLIGlm90Q",
+  authDomain: "joinbackend-9bd67.firebaseapp.com",
+  databaseURL: "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "joinbackend-9bd67",
+  storageBucket: "joinbackend-9bd67.firebasestorage.app",
+  messagingSenderId: "747342236671",
+  appId: "1:747342236671:web:40858f9f3ac55f267475ca",
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
 let backendData = {};
 let currentlyViewedUser = {};
 let selectedContact = null;
@@ -135,21 +148,66 @@ function removeOverlayContentEditMobile() {
 // Floating contact template logic
 
 /**
- * Opens or closes a contact overlay and highlights the selected contact.
+ * Opens or closes the contact overlay and highlights the selected contact.
  *
  * @param {string} name - The contact's name.
  * @param {string} email - The contact's email.
  * @param {string} phone - The contact's phone number.
  */
-function openContact(name, email, phone) {
-  if (selectedContact && selectedContact.innerText.includes(name) && selectedContact.innerText.includes(email)) {
+async function openContact(name, email, phone) {
+  if (isContactAlreadySelected(name, email)) {
     resetSelectedContact();
     closeContactOverlay();
     return;
   }
-  currentlyViewedUser = { name, email, phone };
+
+  const contactId = await getContactIdByEmail(email);
+  setCurrentlyViewedUser(name, email, phone, contactId);
+
   updateSelectedContact(name, email);
   toggleContactOverlay(name, email, phone);
+}
+
+/**
+ * Checks if the selected contact is already open.
+ *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @returns {boolean} - True if the contact is already selected, otherwise false.
+ */
+function isContactAlreadySelected(name, email) {
+  return selectedContact && selectedContact.innerText.includes(name) && selectedContact.innerText.includes(email);
+}
+
+/**
+ * Retrieves the contact ID by email from the Firebase Realtime Database.
+ *
+ * @param {string} email - The contact's email.
+ * @returns {Promise<string|null>} - The contact ID if found, otherwise null.
+ */
+async function getContactIdByEmail(email) {
+  const contactsRef = database.ref("Data/Contacts");
+  const snapshot = await contactsRef.once("value");
+  const contacts = snapshot.val();
+
+  for (const contactId in contacts) {
+    if (contacts[contactId].email === email) {
+      return contactId;
+    }
+  }
+  return null;
+}
+
+/**
+ * Sets the currently viewed user.
+ *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @param {string} phone - The contact's phone number.
+ * @param {string|null} contactId - The contact's ID.
+ */
+function setCurrentlyViewedUser(name, email, phone, contactId) {
+  currentlyViewedUser = { name, email, phone, contactId };
 }
 
 /**
@@ -298,8 +356,46 @@ function editOverlayBackground(container) {
   container.classList.add("overlayBackground");
 }
 
-function updateContactData() {
-  console.log("UPDATE CONTACT TEST");
+/**
+ * Updates the contact data in Firebase Realtime Database.
+ *
+ * @param {string} currentContactId - The ID of the contact to update.
+ * @returns {Promise<void>} - A promise indicating the completion of the update.
+ */
+async function updateContactData(currentContactId) {
+  const updatedData = getUpdatedContactData();
+  await updateContactInDatabase(currentContactId, updatedData);
+  location.reload();
+}
+
+/**
+ * Retrieves the updated contact data from the form inputs.
+ *
+ * @returns {Object} - An object containing the updated name, email, and phone.
+ */
+function getUpdatedContactData() {
+  const updatedName = document.getElementById("contactName").value;
+  const updatedEmail = document.getElementById("contactEmail").value;
+  const updatedPhone = document.getElementById("contactPhone").value;
+
+  return {
+    name: updatedName,
+    email: updatedEmail,
+    phone: updatedPhone,
+  };
+}
+
+/**
+ * Updates the contact data in Firebase Realtime Database.
+ *
+ * @param {string} currentContactId - The ID of the contact to update.
+ * @param {Object} updatedData - An object containing the updated name, email, and phone.
+ * @returns {Promise<void>} - A promise indicating the completion of the update.
+ */
+async function updateContactInDatabase(currentContactId, updatedData) {
+  const databaseRef = firebase.database().ref(`Data/Contacts/${currentContactId}`);
+
+  await databaseRef.update(updatedData);
 }
 
 // Logic for creating contacts

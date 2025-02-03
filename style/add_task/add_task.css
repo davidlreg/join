@@ -146,6 +146,7 @@ form#taskForm h1 {
 .selectContainer {
   background-color: #fff;
   font-size: 18px;
+  outline: none;
 }
 
 .selectCategory, .selectContact {

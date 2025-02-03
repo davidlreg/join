@@ -1,5 +1,6 @@
 function initTask() {
   loadContacts();
+  headerUserName();
 }
 
 /**

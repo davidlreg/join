@@ -1,5 +1,45 @@
-function init() {
+let backendData = {};
+async function fetchDataJSON() {
+  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let responseJSON = await response.json();
+  backendData = responseJSON;
+}
+
+async function init() {
   setActiveLinkFromURL();
+  showSummaryStartAnimation();
+  await loadData();
+  processData();
+}
+
+async function loadData() {
+  await fetchDataJSON();
+}
+
+function processData() {
+  updateGreeting();
+  headerUserName();
+}
+
+
+function getUserName() {
+  const users = backendData.Data.Users;
+  const userKeys = Object.keys(users);
+  const localEmail = getUserByEmail();
+
+  for (let i = 0; i < userKeys.length; i++) {
+    const userId = userKeys[i];
+    if (localEmail === users[userId].email) {
+      headerName = localStorage.setItem('headerName', users[userId].name)
+      return users[userId].name;
+    }
+  }
+  return "";
+}
+
+function getUserByEmail() {
+  const localEmail = localStorage.getItem('email');
+  return localEmail;
 }
 
 function getUserType() {
@@ -8,10 +48,16 @@ function getUserType() {
 }
 
 function updateGreeting() {
-  const user = getUserType();
+  const userType = getUserType();
+  const userName = getUserName();
+  const guestName = "";
+  const summaryUserName = document.getElementById('userName');
   const startTime = document.getElementById('startTime');
-  const userName = document.getElementById('userName');
-  const guestName = ""
+
+  if (summaryUserName) {
+    summaryUserName.textContent = userType === "loggedIn" ? userName : "";
+  }
+
   const hour = new Date().getHours();
   let greeting = "Good Night";
 
@@ -22,16 +68,8 @@ function updateGreeting() {
   } else if (hour >= 17 && hour < 21) {
     greeting = "Good Evening";
   }
-  startTime.textContent = user === "loggedIn" ? `${greeting},` : greeting;
-  userName.textContent = user === "quest" ? `${guestName}` : guestName;
-}
 
-/**
- * If the user clicks on the areas, he will be linked to the board page
- */
-
-function fromSummaryToBoard() {
-  window.location.href = "http://127.0.0.1:5500/html/board.html?active=board";
+  startTime.textContent = userType === "loggedIn" ? `${greeting},` : `${greeting}!`;
 }
 
 /**
@@ -170,14 +208,16 @@ function getSummaryElements() {
 }
 
 /**
- * Adds an event listener to initialize the animation when the DOM content is fully loaded.
+ * If the user clicks on the areas, he will be linked to the board page
  */
+function fromSummaryToBoard() {
+  window.location.href = "http://127.0.0.1:5500/html/board.html?active=board";
+}
+
 /**
  * Adds an event listener to initialize the animation and handle window resizing dynamically.
  */
 document.addEventListener("DOMContentLoaded", () => {
-  showSummaryStartAnimation();
-  updateGreeting();
 
   // Add a resize event listener to dynamically handle layout changes
   window.addEventListener("resize", () => {

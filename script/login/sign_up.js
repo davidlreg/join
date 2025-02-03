@@ -206,14 +206,14 @@ async function createUser() {
  *
  * It resets the values of the input fields to their default empty states
  * and unchecks the checkbox.
- * 
+ *
  * Additionally it enables the sign up button by calling the function validateForm().
  */
 function clearInput() {
-  nameInput.value = '';
-  emailInput.value = '';
-  passwordInput.value = '';
-  confirmPasswordInput.value = '';
+  nameInput.value = "";
+  emailInput.value = "";
+  passwordInput.value = "";
+  confirmPasswordInput.value = "";
   checkbox.checked = false;
   validateForm();
 }
@@ -226,9 +226,9 @@ function clearInput() {
  * by calling the function hideOverlay().
  */
 function showOverlay() {
-  let overlay = document.getElementById('overlay');
-  overlay.classList.remove('dNone');
-  
+  let overlay = document.getElementById("overlay");
+  overlay.classList.remove("dNone");
+
   setTimeout(() => {
     hideOverlay();
   }, 2000);
@@ -240,7 +240,7 @@ function showOverlay() {
  * It adds the 'dNone' class to the element with the ID 'overlay'.
  */
 function hideOverlay() {
-  document.getElementById('overlay').classList.add('dNone');
+  document.getElementById("overlay").classList.add("dNone");
 }
 
 // Event listeners

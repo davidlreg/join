@@ -70,6 +70,16 @@ function toogleUser(){
   }
 }
 
+function headerUserName() {
+  const headerName = localStorage.getItem('headerName');
+  if(headerName) {
+    nameParts = headerName.split(" ");
+    document.getElementById('headerUserName').textContent = nameParts[0][0] + nameParts[1][0];
+  } else {
+    document.getElementById('headerUserName').textContent = "G";
+  }
+}
+
 /**
  * Logs the user out by redirecting them to the login page.
  */

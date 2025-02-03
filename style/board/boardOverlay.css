@@ -139,6 +139,7 @@
 .checkboxList {
     list-style: none;
     padding: 0;
+    margin-left: 30px;
 }
 
 .checkboxList li {
@@ -149,15 +150,32 @@
 }
 
 .checkboxList label {
-    display: flex;
-    gap: 20px;
-    margin-left: 30px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url("../../assets/icon/login/unchecked.svg");
+    background-size: cover;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.checkboxList label:hover {
+    background-image: url("../../assets/icon/login/hover_unchecked.svg");
+    background-size: cover;
 }
 
 .checkboxList input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: #ffff;
+    display: none;
+}
+
+.checkboxList input[type="checkbox"]:checked + label {
+    background-image: url("../../assets/icon/login/checked.svg");
+    background-size: cover;
+}
+
+.checkboxList input[type="checkbox"]:checked + label:hover {
+    background-image: url("../../assets/icon/login/hover_checked.svg");
+    background-size: cover;
 }
 
 .boardOverlayActionButtons {

@@ -81,7 +81,7 @@ function addTaskHtmlTemplate() {
                     <button class="clearButton clearButtonOverlay" onclick="closeTaskOverlay()">Clear
                         <img src="/assets/img/iconoir_cancel.png" alt="">
                     </button>
-                    <button class="createButton createButtonOverlay" onclick="">Create Task
+                    <button class="createButton createButtonOverlay" onclick="createTasksForBoard()">Create Task
                         <img src="/assets/img/check.png" alt="">
                     </button>
                 </div>

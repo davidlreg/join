@@ -809,11 +809,11 @@ function renderContactTemplate(name, email, phone, contactId, initials, color) {
     <div class="contactBox">
       <div class="contact" onclick="openContact('${name}', '${email}', '${phone}')" id="contact_${contactId}">
         <div class="customProfilePicture" style="background-color: ${color};">
-          <p>${initials}</p>
+          <span>${initials}</span>
         </div>
         <div class="personalInformationShort">
           <p class="userName" id="userName">${name}</p>
-          <p class="blue smallText">${email}</p>
+          <span class="blue smallText">${email}</span>
         </div>
       </div>
     </div>

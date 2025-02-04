@@ -231,9 +231,13 @@ main {
   color: white !important;
 }
 
-.active-contact * {
+.active-contact {
   background-color: #2a3647 !important;
-  color: white !important;
+}
+
+.active-contact > div > p {
+  background-color: #2a3647 !important;
+  color: #ffffff !important;
 }
 
 .active-contact:hover {

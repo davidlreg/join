@@ -472,7 +472,7 @@ function showEditContactOverlayMobile(initials, color) {
 
   <div class="whiteBackgroundEdit">
     <div class="formInputMobile">
-      <input type="text" placeholder="Name" value="${currentlyViewedUser.name}" />
+      <input type="text" placeholder="Name" value="${currentlyViewedUser.name}" id="contactName"/>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="nameIconMobileEdit">
         <mask id="mask0_274969_2511" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -484,7 +484,7 @@ function showEditContactOverlayMobile(initials, color) {
           />
         </g>
       </svg>
-      <input type="email" placeholder="Email" value="${currentlyViewedUser.email}" />
+      <input type="email" placeholder="Email" value="${currentlyViewedUser.email}" id="contactEmail"/>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="emailIconMobileEdit">
         <mask id="mask0_274969_2518" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -496,7 +496,7 @@ function showEditContactOverlayMobile(initials, color) {
           />
         </g>
       </svg>
-      <input type="phone" placeholder="Phone" value="${currentlyViewedUser.phone}" />
+      <input type="phone" placeholder="Phone" value="${currentlyViewedUser.phone}" id="contactPhone"/>
       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="phoneIconMobileEdit">
         <mask id="mask0_274969_2525" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
           <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
@@ -512,7 +512,7 @@ function showEditContactOverlayMobile(initials, color) {
 
     <div class="formButtonsMobile">
       <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
-      <button type="button" class="saveContactButton" onclick="updateContactData(${currentlyViewedUser.id})">
+      <button type="button" class="saveContactButton" onclick="updateContactData('${currentlyViewedUser.contactId}')">
         <p>Save</p>
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
           <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">

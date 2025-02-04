@@ -105,19 +105,60 @@ function renderSectionHeader(contactList, letter) {
     <div class="dividerBottom"></div>
   </div>
   
-  
     `;
   contactList.innerHTML += headerHTML;
 }
 
 /**
- * Renders a list of contacts within a group.
+ * Renders a list of contacts into the given container.
  *
- * @param {HTMLElement} contactList - The parent container for contact groups.
- * @param {Array} contacts - An array of contact objects to render.
+ * @param {HTMLElement} contactList - The container for the contact list.
+ * @param {Array<Object>} contacts - The array of contact objects.
  */
 function renderContactList(contactList, contacts) {
   contacts.forEach((contact) => {
-    contactList.innerHTML += renderContactTemplate(contact.name, contact.email, contact.phone);
+    const contactHTML = createContactHTML(contact);
+    contactList.innerHTML += contactHTML;
   });
+}
+
+/**
+ * Creates the HTML string for a contact.
+ *
+ * @param {Object} contact - The contact object.
+ * @param {string} contact.name - The full name of the contact.
+ * @param {string} contact.email - The email of the contact.
+ * @param {string} contact.phone - The phone number of the contact.
+ * @param {string} contact.contactId - The unique ID of the contact.
+ * @returns {string} The generated HTML string.
+ */
+function createContactHTML(contact) {
+  const initials = getInitials(contact.name);
+  const color = getRandomColor();
+  return renderContactTemplate(contact.name, contact.email, contact.phone, contact.contactId, initials, color);
+}
+
+/**
+ * Extracts the initials from a full name.
+ *
+ * @param {string} userName - The full name of the user.
+ * @returns {string} The initials (first letter of first and last name).
+ */
+function getInitials(userName) {
+  const nameParts = userName.split(" ");
+  return (nameParts[0]?.charAt(0).toUpperCase() || "") + (nameParts[1]?.charAt(0).toUpperCase() || "");
+}
+
+/**
+ * Generates a random hex color.
+ *
+ * @returns {string} A random hex color.
+ */
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }

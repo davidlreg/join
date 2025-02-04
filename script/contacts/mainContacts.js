@@ -107,8 +107,8 @@ async function openContact(name, email, phone) {
   }
 
   const contactId = await getContactIdByEmail(email);
-  setCurrentlyViewedUser(name, email, phone, contactId);
 
+  setCurrentlyViewedUser(name, email, phone, contactId);
   updateSelectedContact(name, email);
   toggleContactOverlay(name, email, phone);
 }

@@ -18,6 +18,27 @@
   padding-bottom: 112px;
 }
 
+.customProfilePicture {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.customProfilePicture > p {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  background-color: transparent;
+}
+
 /* Add Contact Button */
 .addContactButton {
   width: 352px;

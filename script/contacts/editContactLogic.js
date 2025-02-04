@@ -2,9 +2,9 @@
  * Opens the overlay for editing a existing contact, including setting content and event listeners.
  *
  */
-function openEditContact() {
+function openEditContact(initials, color) {
   const overlayContainer = document.getElementById("overlayContainer");
-  overlayContainer.innerHTML = showEditContactOverlay();
+  overlayContainer.innerHTML = showEditContactOverlay(initials, color);
   addOverlayBackground(overlayContainer);
   const overlay = overlayContainer.querySelector(".editContactOverlay");
   openOverlay(overlay);
@@ -14,9 +14,9 @@ function openEditContact() {
  * Opens the mobile overlay for editing an existing contact and applies the background styling.
  *
  */
-function openEditContactMobile() {
+function openEditContactMobile(initials, color) {
   const overlayContainer = document.getElementById("mobileOverlayContainer");
-  overlayContainer.innerHTML = showEditContactOverlayMobile();
+  overlayContainer.innerHTML = showEditContactOverlayMobile(initials, color);
   editOverlayBackground(overlayContainer);
   const overlay = overlayContainer.querySelector(".editContactMobileWrapper");
   openOverlayMobile(overlay);

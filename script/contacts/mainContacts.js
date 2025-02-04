@@ -99,7 +99,7 @@ function removeOverlayContentMobile() {
  * @param {string} email - The contact's email.
  * @param {string} phone - The contact's phone number.
  */
-async function openContact(name, email, phone) {
+async function openContact(name, email, phone, initials, color) {
   if (isContactAlreadySelected(name, email)) {
     resetSelectedContact();
     closeContactOverlay();
@@ -108,9 +108,9 @@ async function openContact(name, email, phone) {
 
   const contactId = await getContactIdByEmail(email);
 
-  setCurrentlyViewedUser(name, email, phone, contactId);
+  setCurrentlyViewedUser(name, email, phone, contactId, initials, color);
   updateSelectedContact(name, email);
-  toggleContactOverlay(name, email, phone);
+  toggleContactOverlay(name, email, phone, initials, color);
 }
 
 /**
@@ -151,8 +151,8 @@ async function getContactIdByEmail(email) {
  * @param {string} phone - The contact's phone number.
  * @param {string|null} contactId - The contact's ID.
  */
-function setCurrentlyViewedUser(name, email, phone, contactId) {
-  currentlyViewedUser = { name, email, phone, contactId };
+function setCurrentlyViewedUser(name, email, phone, contactId, initials, color) {
+  currentlyViewedUser = { name, email, phone, contactId, initials, color };
 }
 
 /**
@@ -185,22 +185,29 @@ function resetSelectedContact() {
  * @param {string} name - The contact's name.
  * @param {string} email - The contact's email.
  * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The contact's initials.
+ * @param {string} color - The contact's profile color.
  */
-function toggleContactOverlay(name, email, phone) {
+function toggleContactOverlay(name, email, phone, initials, color) {
   if (window.innerWidth > 1350) {
-    showDesktopContactOverlay(name, email, phone);
+    showDesktopContactOverlay(name, email, phone, initials, color);
   } else {
-    showMobileContactOverlay(name, email, phone);
+    showMobileContactOverlay(name, email, phone, initials, color);
   }
 }
 
 /**
  * Displays the desktop version of the floating contact overlay.
  *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The contact's initials.
+ * @param {string} color - The contact's profile color.
  */
-function showDesktopContactOverlay(name, email, phone) {
+function showDesktopContactOverlay(name, email, phone, initials, color) {
   const floatingContactContainer = document.getElementById("floatingContactContainer");
-  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone);
+  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone, initials, color);
   const overlay = floatingContactContainer.querySelector(".profileHeadSection");
   openFloatingContactOverlay(overlay);
 }
@@ -208,11 +215,16 @@ function showDesktopContactOverlay(name, email, phone) {
 /**
  * Displays the mobile version of the floating contact overlay.
  *
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email.
+ * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The contact's initials.
+ * @param {string} color - The contact's profile color.
  */
-function showMobileContactOverlay(name, email, phone) {
+function showMobileContactOverlay(name, email, phone, initials, color) {
   const floatingContactContainer = document.getElementById("contactList");
   floatingContactContainer.innerHTML = "";
-  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone);
+  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone, initials, color);
 }
 
 /**
@@ -231,8 +243,8 @@ function closeContactOverlay() {
  * @param {Element} overlay The overlay element to be opened.
  */
 function openFloatingContactOverlay(overlay) {
-  overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateX(150%)";
+  overlay.style.transition = "transform 0.2s ease-in-out";
+  overlay.style.transform = "translateX(600%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
@@ -242,8 +254,8 @@ function openFloatingContactOverlay(overlay) {
  * @param {HTMLElement} overlay - The overlay element to be closed.
  */
 function closeFloatingContactOverlay(overlay) {
-  overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateX(150%)";
+  overlay.style.transition = "transform 0.2s ease-in-out";
+  overlay.style.transform = "translateX(600%)";
 }
 
 // Logic for the mobile edit & delete menu
@@ -251,9 +263,9 @@ function closeFloatingContactOverlay(overlay) {
 /**
  * Opens the mobile contact menu by rendering the overlay and adding a close event listener.
  */
-function openMobileContactMenu() {
+function openMobileContactMenu(initials, color) {
   const menuContainer = document.getElementById("mobileMenu");
-  menuContainer.innerHTML = showMobileContactMenu();
+  menuContainer.innerHTML = showMobileContactMenu(initials, color);
 
   const overlay = menuContainer.querySelector(".openMobileContactMenuContainer");
   openOverlay(overlay);
@@ -265,7 +277,7 @@ function openMobileContactMenu() {
  * @param {HTMLElement} overlay - The overlay element to be closed.
  */
 function closeOverlayWithAnimation(overlay) {
-  applyTransition(overlay, "translateX(0)", "translateX(100%)", () => overlay.remove());
+  applyTransition(overlay, "translateX(0)", "translateX(200%)", () => overlay.remove());
 }
 
 /**
@@ -276,7 +288,7 @@ function closeOverlayWithAnimation(overlay) {
  * @param {Function} [callback] - Optional callback function after the transition ends.
  */
 function applyTransition(element, startTransform, endTransform, callback) {
-  element.style.transition = "transform 0.3s ease-in-out";
+  element.style.transition = "transform 0.2s ease-in-out";
   element.style.transform = startTransform;
 
   setTimeout(() => {

@@ -289,11 +289,13 @@ function showAddContactOverlayMobile() {
 }
 
 /**
- * Displays the Edit Contact Overlay on the screen.
+ * Displays the Edit Contact Overlay on the screen for desktop view.
  *
+ * @param {string} initials - The initials to be displayed in the contact's profile picture.
+ * @param {string} color - The background color for the contact's profile picture.
  * @returns {string} HTML string representing the Edit Contact Overlay.
  */
-function showEditContactOverlay() {
+function showEditContactOverlay(initials, color) {
   return `
     
  <div class="editContactOverlay">
@@ -325,33 +327,9 @@ function showEditContactOverlay() {
         ></a>
       </div>
       <div class="contactPicture">
-        <svg width="134" height="134" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g filter="url(#filter0_d_576_4825)">
-            <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
-            <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
-            <circle cx="67" cy="67" r="60" fill="#D1D1D1" />
-            <mask id="mask0_576_4825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="35" y="35" width="64" height="64">
-              <rect x="35" y="35" width="64" height="64" fill="#D9D9D9" />
-            </mask>
-            <g mask="url(#mask0_576_4825)">
-              <path
-                d="M67.0001 67.0001C64.0667 67.0001 61.5556 65.9556 59.4667 63.8667C57.3779 61.7779 56.3334 59.2667 56.3334 56.3334C56.3334 53.4001 57.3779 50.889 59.4667 48.8001C61.5556 46.7112 64.0667 45.6667 67.0001 45.6667C69.9334 45.6667 72.4445 46.7112 74.5334 48.8001C76.6223 50.889 77.6667 53.4001 77.6667 56.3334C77.6667 59.2667 76.6223 61.7779 74.5334 63.8667C72.4445 65.9556 69.9334 67.0001 67.0001 67.0001ZM83.0001 88.3334H51.0001C49.5334 88.3334 48.2779 87.8112 47.2334 86.7668C46.189 85.7223 45.6667 84.4668 45.6667 83.0001V80.8667C45.6667 79.3556 46.0556 77.9667 46.8334 76.7001C47.6112 75.4334 48.6445 74.4667 49.9334 73.8001C52.689 72.4223 55.489 71.389 58.3334 70.7001C61.1779 70.0112 64.0667 69.6667 67.0001 69.6667C69.9334 69.6667 72.8223 70.0112 75.6667 70.7001C78.5112 71.389 81.3112 72.4223 84.0667 73.8001C85.3556 74.4667 86.389 75.4334 87.1667 76.7001C87.9445 77.9667 88.3334 79.3556 88.3334 80.8667V83.0001C88.3334 84.4668 87.8112 85.7223 86.7668 86.7668C85.7223 87.8112 84.4668 88.3334 83.0001 88.3334ZM51.0001 83.0001H83.0001V80.8667C83.0001 80.3779 82.8779 79.9334 82.6334 79.5334C82.389 79.1334 82.0667 78.8223 81.6667 78.6001C79.2668 77.4001 76.8445 76.5001 74.4001 75.9001C71.9556 75.3001 69.489 75.0001 67.0001 75.0001C64.5112 75.0001 62.0445 75.3001 59.6001 75.9001C57.1556 76.5001 54.7334 77.4001 52.3334 78.6001C51.9334 78.8223 51.6112 79.1334 51.3667 79.5334C51.1223 79.9334 51.0001 80.3779 51.0001 80.8667V83.0001ZM67.0001 61.6667C68.4667 61.6667 69.7223 61.1445 70.7668 60.1001C71.8112 59.0556 72.3334 57.8001 72.3334 56.3334C72.3334 54.8667 71.8112 53.6112 70.7668 52.5667C69.7223 51.5223 68.4667 51.0001 67.0001 51.0001C65.5334 51.0001 64.2779 51.5223 63.2334 52.5667C62.189 53.6112 61.6667 54.8667 61.6667 56.3334C61.6667 57.8001 62.189 59.0556 63.2334 60.1001C64.2779 61.1445 65.5334 61.6667 67.0001 61.6667Z"
-                fill="white"
-              />
-            </g>
-          </g>
-          <defs>
-            <filter id="filter0_d_576_4825" x="0" y="0" width="134" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-              <feOffset />
-              <feGaussianBlur stdDeviation="2" />
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_576_4825" />
-              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_576_4825" result="shape" />
-            </filter>
-          </defs>
-        </svg>
+        <div class="customProfilePictureBig" style="background-color: ${color};">
+          <span>${initials}</span>
+        </div>
       </div>
       <div class="contactForm">
         <div class="closeButton">
@@ -371,7 +349,7 @@ function showEditContactOverlay() {
 
         <div class="formSection">
           <div>
-            <input type="text" placeholder="Name" class="formInput" id="contactName" requiered value="${currentlyViewedUser.name}"/>
+            <input type="text" placeholder="Name" class="formInput" id="contactName" requiered value="${currentlyViewedUser.name}" />
             <svg class="nameIconEditOverlay" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274969_2511" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9" />
@@ -386,7 +364,7 @@ function showEditContactOverlay() {
           </div>
 
           <div>
-            <input type="email" placeholder="Email" class="formInput" id="contactEmail" requiered value="${currentlyViewedUser.email}"/><svg
+            <input type="email" placeholder="Email" class="formInput" id="contactEmail" requiered value="${currentlyViewedUser.email}" /><svg
               class="mailIconEditOverlay"
               width="24"
               height="24"
@@ -407,7 +385,7 @@ function showEditContactOverlay() {
           </div>
 
           <div>
-            <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" requiered value="${currentlyViewedUser.phone}"/><svg
+            <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" requiered value="${currentlyViewedUser.phone}" /><svg
               class="phoneIconEditOverlay"
               width="24"
               height="25"
@@ -453,28 +431,30 @@ function showEditContactOverlay() {
 }
 
 /**
- * Displays the Edit Contact Overlay on the screen.
+ * Displays the Edit Contact Overlay on the screen for mobile view.
  *
- * @returns {string} HTML string representing the Edit Contact Overlay.
+ * @param {string} initials - The initials to be displayed in the contact's profile picture.
+ * @param {string} color - The background color for the contact's profile picture.
+ * @returns {string} HTML string representing the Edit Contact Overlay for mobile.
  */
-function showEditContactOverlayMobile() {
+function showEditContactOverlayMobile(initials, color) {
   return `
     
  <div class="editContactMobileWrapper">
   <div class="blueBackgroundEdit">
     <div class="closeButtonMobile">
-    <a onclick="closeEditContactOverlayMobile()">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-          <rect width="24" height="24" fill="#D9D9D9" />
-        </mask>
-        <g mask="url(#mask0_274405_5666)">
-          <path
-            d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z"
-            fill="#2A3647"
-          />
-        </g>
-      </svg>
+      <a onclick="closeEditContactOverlayMobile()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+            <rect width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_274405_5666)">
+            <path
+              d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z"
+              fill="#2A3647"
+            />
+          </g>
+        </svg>
       </a>
     </div>
 
@@ -485,33 +465,9 @@ function showEditContactOverlayMobile() {
   </div>
 
   <div class="profilePictureMobileEdit">
-    <svg width="134" height="134" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_576_4825)">
-        <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
-        <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
-        <circle cx="67" cy="67" r="60" fill="#D1D1D1" />
-        <mask id="mask0_576_4825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="35" y="35" width="64" height="64">
-          <rect x="35" y="35" width="64" height="64" fill="#D9D9D9" />
-        </mask>
-        <g mask="url(#mask0_576_4825)">
-          <path
-            d="M67.0001 67.0001C64.0667 67.0001 61.5556 65.9556 59.4667 63.8667C57.3779 61.7779 56.3334 59.2667 56.3334 56.3334C56.3334 53.4001 57.3779 50.889 59.4667 48.8001C61.5556 46.7112 64.0667 45.6667 67.0001 45.6667C69.9334 45.6667 72.4445 46.7112 74.5334 48.8001C76.6223 50.889 77.6667 53.4001 77.6667 56.3334C77.6667 59.2667 76.6223 61.7779 74.5334 63.8667C72.4445 65.9556 69.9334 67.0001 67.0001 67.0001ZM83.0001 88.3334H51.0001C49.5334 88.3334 48.2779 87.8112 47.2334 86.7668C46.189 85.7223 45.6667 84.4668 45.6667 83.0001V80.8667C45.6667 79.3556 46.0556 77.9667 46.8334 76.7001C47.6112 75.4334 48.6445 74.4667 49.9334 73.8001C52.689 72.4223 55.489 71.389 58.3334 70.7001C61.1779 70.0112 64.0667 69.6667 67.0001 69.6667C69.9334 69.6667 72.8223 70.0112 75.6667 70.7001C78.5112 71.389 81.3112 72.4223 84.0667 73.8001C85.3556 74.4667 86.389 75.4334 87.1667 76.7001C87.9445 77.9667 88.3334 79.3556 88.3334 80.8667V83.0001C88.3334 84.4668 87.8112 85.7223 86.7668 86.7668C85.7223 87.8112 84.4668 88.3334 83.0001 88.3334ZM51.0001 83.0001H83.0001V80.8667C83.0001 80.3779 82.8779 79.9334 82.6334 79.5334C82.389 79.1334 82.0667 78.8223 81.6667 78.6001C79.2668 77.4001 76.8445 76.5001 74.4001 75.9001C71.9556 75.3001 69.489 75.0001 67.0001 75.0001C64.5112 75.0001 62.0445 75.3001 59.6001 75.9001C57.1556 76.5001 54.7334 77.4001 52.3334 78.6001C51.9334 78.8223 51.6112 79.1334 51.3667 79.5334C51.1223 79.9334 51.0001 80.3779 51.0001 80.8667V83.0001ZM67.0001 61.6667C68.4667 61.6667 69.7223 61.1445 70.7668 60.1001C71.8112 59.0556 72.3334 57.8001 72.3334 56.3334C72.3334 54.8667 71.8112 53.6112 70.7668 52.5667C69.7223 51.5223 68.4667 51.0001 67.0001 51.0001C65.5334 51.0001 64.2779 51.5223 63.2334 52.5667C62.189 53.6112 61.6667 54.8667 61.6667 56.3334C61.6667 57.8001 62.189 59.0556 63.2334 60.1001C64.2779 61.1445 65.5334 61.6667 67.0001 61.6667Z"
-            fill="white"
-          />
-        </g>
-      </g>
-      <defs>
-        <filter id="filter0_d_576_4825" x="0" y="0" width="134" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset />
-          <feGaussianBlur stdDeviation="2" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_576_4825" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_576_4825" result="shape" />
-        </filter>
-      </defs>
-    </svg>
+    <div class="customProfilePictureBig" style="background-color: ${color};">
+      <span>${initials}</span>
+    </div>
   </div>
 
   <div class="whiteBackgroundEdit">
@@ -528,7 +484,7 @@ function showEditContactOverlayMobile() {
           />
         </g>
       </svg>
-      <input type="email" placeholder="Email" value="${currentlyViewedUser.email}"  />
+      <input type="email" placeholder="Email" value="${currentlyViewedUser.email}" />
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="emailIconMobileEdit">
         <mask id="mask0_274969_2518" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -556,20 +512,20 @@ function showEditContactOverlayMobile() {
 
     <div class="formButtonsMobile">
       <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
-          <button type="button" class="saveContactButton" onclick="updateContactData(${currentlyViewedUser.id})">
-            <p>Save</p>
-            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
-                <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
-              </mask>
-              <g mask="url(#mask0_274969_4267)">
-                <path
-                  d="M9.55057 15.65L18.0256 7.175C18.2256 6.975 18.4631 6.875 18.7381 6.875C19.0131 6.875 19.2506 6.975 19.4506 7.175C19.6506 7.375 19.7506 7.6125 19.7506 7.8875C19.7506 8.1625 19.6506 8.4 19.4506 8.6L10.2506 17.8C10.0506 18 9.81724 18.1 9.55057 18.1C9.28391 18.1 9.05057 18 8.85057 17.8L4.55057 13.5C4.35057 13.3 4.25474 13.0625 4.26307 12.7875C4.27141 12.5125 4.37557 12.275 4.57557 12.075C4.77557 11.875 5.01307 11.775 5.28807 11.775C5.56307 11.775 5.80057 11.875 6.00057 12.075L9.55057 15.65Z"
-                  fill="white"
-                />
-              </g>
-            </svg>
-          </button>
+      <button type="button" class="saveContactButton" onclick="updateContactData(${currentlyViewedUser.id})">
+        <p>Save</p>
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+            <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_274969_4267)">
+            <path
+              d="M9.55057 15.65L18.0256 7.175C18.2256 6.975 18.4631 6.875 18.7381 6.875C19.0131 6.875 19.2506 6.975 19.4506 7.175C19.6506 7.375 19.7506 7.6125 19.7506 7.8875C19.7506 8.1625 19.6506 8.4 19.4506 8.6L10.2506 17.8C10.0506 18 9.81724 18.1 9.55057 18.1C9.28391 18.1 9.05057 18 8.85057 17.8L4.55057 13.5C4.35057 13.3 4.25474 13.0625 4.26307 12.7875C4.27141 12.5125 4.37557 12.275 4.57557 12.075C4.77557 11.875 5.01307 11.775 5.28807 11.775C5.56307 11.775 5.80057 11.875 6.00057 12.075L9.55057 15.65Z"
+              fill="white"
+            />
+          </g>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
@@ -580,47 +536,25 @@ function showEditContactOverlayMobile() {
 /**
  * Displays a floating contact overlay with the provided contact details.
  *
- * @param {string} name - The contact's name to display.
- * @param {string} email - The contact's email address to display.
- * @param {string} phone - The contact's phone number to display.
- * @returns {string} - An HTML string for the floating contact overlay.
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email address.
+ * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The initials to display in the profile picture.
+ * @param {string} color - The background color for the profile picture.
+ * @returns {string} - The HTML string for the floating contact overlay.
  */
-function showFloatingContactOverlay(name, email, phone) {
+function showFloatingContactOverlay(name, email, phone, initials, color) {
   return `
   
  <div class="profileHeadSection">
   <div class="profileWrapper">
-    <svg width="120" height="120" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_d_576_4825)">
-        <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
-        <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
-        <circle cx="67" cy="67" r="60" fill="#D1D1D1" />
-        <mask id="mask0_576_4825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="35" y="35" width="64" height="64">
-          <rect x="35" y="35" width="64" height="64" fill="#D9D9D9" />
-        </mask>
-        <g mask="url(#mask0_576_4825)">
-          <path
-            d="M67.0001 67.0001C64.0667 67.0001 61.5556 65.9556 59.4667 63.8667C57.3779 61.7779 56.3334 59.2667 56.3334 56.3334C56.3334 53.4001 57.3779 50.889 59.4667 48.8001C61.5556 46.7112 64.0667 45.6667 67.0001 45.6667C69.9334 45.6667 72.4445 46.7112 74.5334 48.8001C76.6223 50.889 77.6667 53.4001 77.6667 56.3334C77.6667 59.2667 76.6223 61.7779 74.5334 63.8667C72.4445 65.9556 69.9334 67.0001 67.0001 67.0001ZM83.0001 88.3334H51.0001C49.5334 88.3334 48.2779 87.8112 47.2334 86.7668C46.189 85.7223 45.6667 84.4668 45.6667 83.0001V80.8667C45.6667 79.3556 46.0556 77.9667 46.8334 76.7001C47.6112 75.4334 48.6445 74.4667 49.9334 73.8001C52.689 72.4223 55.489 71.389 58.3334 70.7001C61.1779 70.0112 64.0667 69.6667 67.0001 69.6667C69.9334 69.6667 72.8223 70.0112 75.6667 70.7001C78.5112 71.389 81.3112 72.4223 84.0667 73.8001C85.3556 74.4667 86.389 75.4334 87.1667 76.7001C87.9445 77.9667 88.3334 79.3556 88.3334 80.8667V83.0001C88.3334 84.4668 87.8112 85.7223 86.7668 86.7668C85.7223 87.8112 84.4668 88.3334 83.0001 88.3334ZM51.0001 83.0001H83.0001V80.8667C83.0001 80.3779 82.8779 79.9334 82.6334 79.5334C82.389 79.1334 82.0667 78.8223 81.6667 78.6001C79.2668 77.4001 76.8445 76.5001 74.4001 75.9001C71.9556 75.3001 69.489 75.0001 67.0001 75.0001C64.5112 75.0001 62.0445 75.3001 59.6001 75.9001C57.1556 76.5001 54.7334 77.4001 52.3334 78.6001C51.9334 78.8223 51.6112 79.1334 51.3667 79.5334C51.1223 79.9334 51.0001 80.3779 51.0001 80.8667V83.0001ZM67.0001 61.6667C68.4667 61.6667 69.7223 61.1445 70.7668 60.1001C71.8112 59.0556 72.3334 57.8001 72.3334 56.3334C72.3334 54.8667 71.8112 53.6112 70.7668 52.5667C69.7223 51.5223 68.4667 51.0001 67.0001 51.0001C65.5334 51.0001 64.2779 51.5223 63.2334 52.5667C62.189 53.6112 61.6667 54.8667 61.6667 56.3334C61.6667 57.8001 62.189 59.0556 63.2334 60.1001C64.2779 61.1445 65.5334 61.6667 67.0001 61.6667Z"
-            fill="white"
-          />
-        </g>
-      </g>
-      <defs>
-        <filter id="filter0_d_576_4825" x="0" y="0" width="134" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset />
-          <feGaussianBlur stdDeviation="2" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_576_4825" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_576_4825" result="shape" />
-        </filter>
-      </defs>
-    </svg>
+    <div class="customProfilePictureBig" style="background-color: ${color};">
+      <span>${initials}</span>
+    </div>
     <div class="profileInformation">
       <p>${name}</p>
       <div class="symbols">
-        <div class="editIcon" onclick="openEditContact()">
+        <div class="editIcon" onclick="openEditContact('${initials}', '${color}')">
           <a>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 24 24">
               <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
@@ -663,14 +597,16 @@ function showFloatingContactOverlay(name, email, phone) {
 
 /**
  * Generates and returns a floating contact overlay for mobile view.
- * The overlay displays contact information including name, email, and phone number.
+ * Displays the contact's name, email, phone number, and includes a back button.
  *
- * @param {string} name - The name of the contact person.
- * @param {string} email - The email address of the contact person.
- * @param {string} phone - The phone number of the contact person.
- * @returns {string} HTML string of the floating contact overlay.
+ * @param {string} name - The contact's name.
+ * @param {string} email - The contact's email address.
+ * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The initials for the profile picture.
+ * @param {string} color - The background color of the profile picture.
+ * @returns {string} - The HTML string for the mobile floating contact overlay.
  */
-function showFloatingContactOverlayMobile(name, email, phone) {
+function showFloatingContactOverlayMobile(name, email, phone, initials, color) {
   return `
 
 <div class="detailedContactSectionMobile">
@@ -693,33 +629,9 @@ function showFloatingContactOverlayMobile(name, email, phone) {
   <div class="mobileFloatingContactWrapper">
     <div class="profileHeadSection">
       <div class="profileWrapper">
-        <svg width="80" height="80" viewBox="0 0 134 134" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g filter="url(#filter0_d_576_4825)">
-            <rect x="7" y="7" width="120" height="120" rx="60" fill="white" />
-            <rect x="5.5" y="5.5" width="123" height="123" rx="61.5" stroke="white" stroke-width="3" />
-            <circle cx="67" cy="67" r="60" fill="#D1D1D1" />
-            <mask id="mask0_576_4825" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="35" y="35" width="64" height="64">
-              <rect x="35" y="35" width="64" height="64" fill="#D9D9D9" />
-            </mask>
-            <g mask="url(#mask0_576_4825)">
-              <path
-                d="M67.0001 67.0001C64.0667 67.0001 61.5556 65.9556 59.4667 63.8667C57.3779 61.7779 56.3334 59.2667 56.3334 56.3334C56.3334 53.4001 57.3779 50.889 59.4667 48.8001C61.5556 46.7112 64.0667 45.6667 67.0001 45.6667C69.9334 45.6667 72.4445 46.7112 74.5334 48.8001C76.6223 50.889 77.6667 53.4001 77.6667 56.3334C77.6667 59.2667 76.6223 61.7779 74.5334 63.8667C72.4445 65.9556 69.9334 67.0001 67.0001 67.0001ZM83.0001 88.3334H51.0001C49.5334 88.3334 48.2779 87.8112 47.2334 86.7668C46.189 85.7223 45.6667 84.4668 45.6667 83.0001V80.8667C45.6667 79.3556 46.0556 77.9667 46.8334 76.7001C47.6112 75.4334 48.6445 74.4667 49.9334 73.8001C52.689 72.4223 55.489 71.389 58.3334 70.7001C61.1779 70.0112 64.0667 69.6667 67.0001 69.6667C69.9334 69.6667 72.8223 70.0112 75.6667 70.7001C78.5112 71.389 81.3112 72.4223 84.0667 73.8001C85.3556 74.4667 86.389 75.4334 87.1667 76.7001C87.9445 77.9667 88.3334 79.3556 88.3334 80.8667V83.0001C88.3334 84.4668 87.8112 85.7223 86.7668 86.7668C85.7223 87.8112 84.4668 88.3334 83.0001 88.3334ZM51.0001 83.0001H83.0001V80.8667C83.0001 80.3779 82.8779 79.9334 82.6334 79.5334C82.389 79.1334 82.0667 78.8223 81.6667 78.6001C79.2668 77.4001 76.8445 76.5001 74.4001 75.9001C71.9556 75.3001 69.489 75.0001 67.0001 75.0001C64.5112 75.0001 62.0445 75.3001 59.6001 75.9001C57.1556 76.5001 54.7334 77.4001 52.3334 78.6001C51.9334 78.8223 51.6112 79.1334 51.3667 79.5334C51.1223 79.9334 51.0001 80.3779 51.0001 80.8667V83.0001ZM67.0001 61.6667C68.4667 61.6667 69.7223 61.1445 70.7668 60.1001C71.8112 59.0556 72.3334 57.8001 72.3334 56.3334C72.3334 54.8667 71.8112 53.6112 70.7668 52.5667C69.7223 51.5223 68.4667 51.0001 67.0001 51.0001C65.5334 51.0001 64.2779 51.5223 63.2334 52.5667C62.189 53.6112 61.6667 54.8667 61.6667 56.3334C61.6667 57.8001 62.189 59.0556 63.2334 60.1001C64.2779 61.1445 65.5334 61.6667 67.0001 61.6667Z"
-                fill="white"
-              />
-            </g>
-          </g>
-          <defs>
-            <filter id="filter0_d_576_4825" x="0" y="0" width="134" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-              <feOffset />
-              <feGaussianBlur stdDeviation="2" />
-              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_576_4825" />
-              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_576_4825" result="shape" />
-            </filter>
-          </defs>
-        </svg>
+        <div class="customProfilePictureBig" style="background-color: ${color};">
+          <span>${initials}</span>
+        </div>
         <div class="profileInformation">
           <p class="contactNameBig">${name}</p>
         </div>
@@ -733,7 +645,7 @@ function showFloatingContactOverlayMobile(name, email, phone) {
         <p><b>Phone</b></p>
         <p>${phone}</p>
       </div>
-      <div class="responsiveEditContactButton" onclick="openMobileContactMenu()">
+      <div class="responsiveEditContactButton" onclick="openMobileContactMenu('${initials}', '${color}')">
         <svg width="6" height="22" viewBox="0 0 6 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M2.99967 21.6666C2.26634 21.6666 1.63856 21.4055 1.11634 20.8833C0.594119 20.361 0.333008 19.7333 0.333008 18.9999C0.333008 18.2666 0.594119 17.6388 1.11634 17.1166C1.63856 16.5944 2.26634 16.3333 2.99967 16.3333C3.73301 16.3333 4.36079 16.5944 4.88301 17.1166C5.40523 17.6388 5.66634 18.2666 5.66634 18.9999C5.66634 19.7333 5.40523 20.361 4.88301 20.8833C4.36079 21.4055 3.73301 21.6666 2.99967 21.6666ZM2.99967 13.6666C2.26634 13.6666 1.63856 13.4055 1.11634 12.8833C0.594119 12.361 0.333008 11.7333 0.333008 10.9999C0.333008 10.2666 0.594119 9.63881 1.11634 9.11659C1.63856 8.59436 2.26634 8.33325 2.99967 8.33325C3.73301 8.33325 4.36079 8.59436 4.88301 9.11659C5.40523 9.63881 5.66634 10.2666 5.66634 10.9999C5.66634 11.7333 5.40523 12.361 4.88301 12.8833C4.36079 13.4055 3.73301 13.6666 2.99967 13.6666ZM2.99967 5.66659C2.26634 5.66659 1.63856 5.40547 1.11634 4.88325C0.594119 4.36103 0.333008 3.73325 0.333008 2.99992C0.333008 2.26659 0.594119 1.63881 1.11634 1.11659C1.63856 0.594363 2.26634 0.333252 2.99967 0.333252C3.73301 0.333252 4.36079 0.594363 4.88301 1.11659C5.40523 1.63881 5.66634 2.26659 5.66634 2.99992C5.66634 3.73325 5.40523 4.36103 4.88301 4.88325C4.36079 5.40547 3.73301 5.66659 2.99967 5.66659Z"
@@ -750,16 +662,18 @@ function showFloatingContactOverlayMobile(name, email, phone) {
 }
 
 /**
- * Generates the HTML string for the mobile contact menu.
- * Includes options to edit or delete a contact.
+ * Generates the HTML string for the mobile contact menu with options to edit or delete a contact.
  *
- * @returns {string} The HTML structure of the mobile contact menu.
+ * @param {string} initials - The initials of the contact to display in the menu.
+ * @param {string} color - The color associated with the contact, used for styling.
+ *
+ * @returns {string} The HTML structure of the mobile contact menu with edit and delete options.
  */
-function showMobileContactMenu() {
+function showMobileContactMenu(initials, color) {
   return `
   
     <div class="openMobileContactMenuContainer">
-       <div class="editContainer" onclick="openEditContactMobile()">
+       <div class="editContainer" onclick="openEditContactMobile('${initials}', '${color}')">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_273251_3173" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
               <rect width="24" height="24" fill="#D9D9D9" />
@@ -806,16 +720,18 @@ function showMobileContactMenu() {
  */
 function renderContactTemplate(name, email, phone, contactId, initials, color) {
   return `
-    <div class="contactBox">
-      <div class="contact" onclick="openContact('${name}', '${email}', '${phone}')" id="contact_${contactId}">
-        <div class="customProfilePicture" style="background-color: ${color};">
-          <span>${initials}</span>
-        </div>
-        <div class="personalInformationShort">
-          <p class="userName" id="userName">${name}</p>
-          <span class="blue smallText">${email}</span>
-        </div>
-      </div>
+
+   <div class="contactBox">
+  <div class="contact" onclick="openContact('${name}', '${email}', '${phone}', '${initials}', '${color}')" id="contact_${contactId}">
+    <div class="customProfilePicture" style="background-color: ${color};">
+      <span>${initials}</span>
     </div>
+    <div class="personalInformationShort">
+      <p class="userName" id="userName">${name}</p>
+      <span class="blue smallText">${email}</span>
+    </div>
+  </div>
+</div>
+
   `;
 }

@@ -301,7 +301,7 @@ body {
   }
 
   .profileWrapper {
-    gap: 14px;
+    gap: 20px;
   }
 
   .addContactButton {
@@ -327,6 +327,10 @@ body {
 
   .responsiveEditContactButton {
     display: flex;
+  }
+
+  .profileInformation > p {
+    font-weight: 700;
   }
 }
 

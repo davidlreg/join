@@ -64,7 +64,7 @@ function selectCategory(category) {
 
   selectContainer.textContent = category;
 
- selectCategory.classList.remove('show');
+  selectCategory.classList.remove('show');
 }
 
 /**
@@ -90,14 +90,14 @@ async function loadContacts() {
  */
 async function fetchContacts() {
   try {
-    const response = await fetch ('https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json');
+    const response = await fetch('https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json');
     const data = await response.json();
     return data.Data.Contacts || [];
 
   } catch (error) {
     console.error('Error fetching contacts:', error);
-    return []; 
-  }  
+    return [];
+  }
 }
 
 /**
@@ -106,12 +106,12 @@ async function fetchContacts() {
  * @param {Object} contacts - An object containing contact data, which is converted into an array
  *                            using Object.values() to ensure proper iteration and length checking.
  */
-function populateContacts(contacts){
+function populateContacts(contacts) {
   const contactContainer = document.getElementById('selectContact');
   contactContainer.innerHTML = '';
 
   const contactList = Object.values(contacts);
-  
+
   if (contactList.length === 0) {
     contactContainer.innerHTML = `<p>No contacts found</p>`;
     return;
@@ -126,7 +126,7 @@ function populateContacts(contacts){
  *
  * @param {Object} contact - The contact object containing details (e.g., name, email, etc.).
  */
-function addContactToDropdown(contact){
+function addContactToDropdown(contact) {
   const contactContainer = document.getElementById('selectContact');
   const contactItem = createContentItem(contact);
   contactContainer.appendChild(contactItem);
@@ -140,7 +140,7 @@ function addContactToDropdown(contact){
  * @returns {HTMLElement} A div element representing a contact.
  */
 
-function createContentItem(contact){
+function createContentItem(contact) {
   const contactItem = document.createElement('div');
   contactItem.classList.add('selectContactItem');
 
@@ -191,7 +191,7 @@ function createCheckbox(name) {
   checkbox.type = 'checkbox';
   checkbox.classList.add('contactCheckbox');
   checkbox.value = name;
-  checkbox.addEventListener('change' , updateSelectedContact);
+  checkbox.addEventListener('change', updateSelectedContact);
   return checkbox;
 }
 
@@ -199,7 +199,7 @@ function createCheckbox(name) {
 /**
  * Updates the display of selected contacts under the dropdown.
  */
-function updateSelectedContact(){
+function updateSelectedContact() {
   const selectedContacts = document.getElementById('selectedContacts');
   selectedContacts.innerHTML = "";
 
@@ -208,3 +208,63 @@ function updateSelectedContact(){
     selectedContacts.appendChild(contactProfile);
   });
 }
+
+/**
+ * Creates a new task, sets its default status to "To do," 
+ * and stores it in localStorage.
+ * 
+ * @param {Object} task - The task object created from user input.
+ */
+function handleNewTask(){
+  let task = createTask();
+  task.status = "To do";
+  addTaskLocal(task);
+}
+
+/**
+ * Collects all task input data from the form.
+ *
+ * @returns {Object} An object containing the task details like title, description, due date, priority, category, selected contacts, and subtasks.
+ */
+function createTask() {
+  const title = document.querySelector('.addTaskInput').value.trim();
+  const description = document.querySelector('.addDescriptionInput').value.trim();
+  const dueDate = document.querySelector('.addTaskInput[type="date"]').value;
+  const priority = document.querySelector('.priorityButton .active')?.id || 'medium';
+  const category = document.getElementById('selectTask').textContent.trim();
+
+  const selectedContacts = [...document.querySelectorAll('.contactCheckbox:checked')].map(cb => cb.value);
+  const subtasks = [...document.querySelectorAll('#subtaskList li span:first-child')].map(sub => sub.textContent);
+
+  return formatTaskData(title, description, dueDate, priority, category, selectedContacts, subtasks);
+}
+
+/**
+ * Formats the collected task data into an object.
+ */
+function formatTaskData(title, description, dueDate, priority, category, selectedContacts, subtasks) {
+  return { title, description, dueDate, priority, category, selectedContacts, subtasks }
+
+}
+
+/**
+ * Adds a new task to localStorage.
+ * Converts existing tasks from a string to an array, 
+ * appends the new task, and saves the updated list back as a string.
+ * 
+ * @param {Object} task - The task object to be stored.
+ */
+function addTaskLocal(task) {
+  let localTasks = JSON.parse(localStorage.getItem('localTasks')) || [];    //in array
+  localTasks.push(task);
+  localStorage.setItem('localTasks', JSON.stringify(localTasks));
+}
+
+
+
+
+
+
+
+
+

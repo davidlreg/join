@@ -11,6 +11,7 @@ async function init() {
   await loadData();
   headerUserName();
   loadTasksToBoard();
+  loadLocalTasksToBoard();
 }
 
 async function loadData() {
@@ -38,6 +39,31 @@ async function loadTasksToBoard() {
     }
   });
 }
+
+/**
+ * Loads all saved tasks from localStorage and adds them to the board.
+ * It checks the task status and puts each task in the right section (To do, In progress, etc.).
+ */
+function loadLocalTasksToBoard() {
+  let localTasks = JSON.parse(localStorage.getItem('localTasks')) || [];
+
+  const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
+
+  localTasks.forEach((task) => {
+    let taskHtml = templateBoardTasks(task);
+
+    if (task.status === "To do") {
+      setIdToCreateTasks(boardSectionTasksToDo, taskHtml);
+    } else if (task.status === "In progress") {
+      setIdToCreateTasks(boardSectionTasksInProgress, taskHtml);
+    } else if (task.status === "Await Feedback") {
+      setIdToCreateTasks(boardSectionTasksAwaiting, taskHtml);
+    } else if (task.status === "Done") {
+      setIdToCreateTasks(boardSectionTasksDone, taskHtml);
+    }
+  });
+}
+
 
 function getBoardElements() {
   return {

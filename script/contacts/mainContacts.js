@@ -98,6 +98,8 @@ function removeOverlayContentMobile() {
  * @param {string} name - The contact's name.
  * @param {string} email - The contact's email.
  * @param {string} phone - The contact's phone number.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} color - The color associated with the contact.
  */
 async function openContact(name, email, phone, initials, color) {
   if (isContactAlreadySelected(name, email)) {
@@ -150,6 +152,8 @@ async function getContactIdByEmail(email) {
  * @param {string} email - The contact's email.
  * @param {string} phone - The contact's phone number.
  * @param {string|null} contactId - The contact's ID.
+ * @param {string} initials - The initials of the contact.
+ * @param {string} color - The color associated with the contact.
  */
 function setCurrentlyViewedUser(name, email, phone, contactId, initials, color) {
   currentlyViewedUser = { name, email, phone, contactId, initials, color };
@@ -262,6 +266,9 @@ function closeFloatingContactOverlay(overlay) {
 
 /**
  * Opens the mobile contact menu by rendering the overlay and adding a close event listener.
+ *
+ * @param {string} initials - The initials of the contact.
+ * @param {string} color - The color associated with the contact.
  */
 function openMobileContactMenu(initials, color) {
   const menuContainer = document.getElementById("mobileMenu");
@@ -274,6 +281,7 @@ function openMobileContactMenu(initials, color) {
 
 /**
  * Closes the overlay with a sliding animation and removes it from the DOM.
+ *
  * @param {HTMLElement} overlay - The overlay element to be closed.
  */
 function closeOverlayWithAnimation(overlay) {
@@ -282,6 +290,7 @@ function closeOverlayWithAnimation(overlay) {
 
 /**
  * Applies a smooth transition to an element.
+ *
  * @param {HTMLElement} element - The element to animate.
  * @param {string} startTransform - The initial transform value.
  * @param {string} endTransform - The final transform value.
@@ -299,6 +308,7 @@ function applyTransition(element, startTransform, endTransform, callback) {
 
 /**
  * Adds an event listener to close the overlay when clicking outside of it.
+ *
  * @param {HTMLElement} overlay - The overlay element.
  * @param {HTMLElement} menuContainer - The container of the menu.
  */

@@ -1,28 +1,30 @@
-function templateBoardTasks(task) {
-  return `
-      <div class="boardTasks" onclick="addBoardOverlay()">
-        <span class="boardTaskCategory">${task.status}</span>
-        <span class="boardTaskTitle">${task.title}</span>
-        <span class="boardTaskDescription">${task.description}</span>
-        <div class="boardSubTasks">
-          <div class="boardSubtaskProgress">
-            <div class="boardSubtaskProgressBar"></div>        
-          </div>
-          <span>1/2 Subtasks</span>
+function templateBoardTasks(task, taskId) {
+    return `
+        <div class="boardTasks" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
+            <span class="boardTaskCategory">${task.status}</span>
+            <span class="boardTaskTitle">${task.title}</span>
+            <span class="boardTaskDescription">${task.description}</span>
+            <div class="boardSubTasks">
+                <div class="boardSubtaskProgress">
+                    <div class="boardSubtaskProgressBar"></div>        
+                </div>
+                <span>1/2 Subtasks</span>
+            </div>
+            <div class="boardTaskBottom">
+                <div class="boardTaskUsers">${task.assignedTo}</div>
+                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
+            </div>
         </div>
-        <div class="boardTaskBottom">
-          <div class="boardTaskUsers">${task.assignedTo}</div>
-          <div class="boardTaskPriority">${task.priority}</div>
-          </div>
-      </div>
-  `
+    `;
 }
 
-function templateBoardOverlay() {
+
+
+function templateBoardOverlay(task) {
   return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
-            <p class="boardOverlayTaskCategory">User Story</p>
+            <p class="boardOverlayTaskCategory">${task.status}</p>
             <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -38,18 +40,18 @@ function templateBoardOverlay() {
                 </svg>
             </div>
         </div>
-        <p class="boardOverlayTaskTitle">Kochwelt Page & Recipe Recommender</p>
-        <p class="boardOverlayTaskDescription">Build start page with recipe recommendation.</p>
+        <p class="boardOverlayTaskTitle">${task.title}</p>
+        <p class="boardOverlayTaskDescription">${task.description}</p>
         <div class="boardOverlayTaskInfo">
             <p class="boardOverlayTaskDate">
                 <span class="label">Due Date:</span>
-                <span id="dueDate">29/01/2025</span>
+                <span id="dueDate">${task.dueDate}</span>
             </p>
             
             <div class="boardOverlayTaskPriority">
                 <span class="label">Priority:</span>
-                <span>Medium</span>
-                <img src="/assets/img/Prio medium.png" alt="Priority Icon">
+                <span>${task.priority}</span>
+                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
@@ -57,15 +59,23 @@ function templateBoardOverlay() {
             <ul>
                 <li>
                     <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">Username1</span>
+                    <span class="boardOverlayUsername">${task.assignedTo}</span>
                 </li>
                 <li>
-                    <div class="boardOverlayUser">YY</div>
-                    <span class="boardOverlayUsername">Username2</span>
+                    <div class="boardOverlayUser">XX</div>
+                    <span class="boardOverlayUsername">${task.assignedTo}</span>
                 </li>
                 <li>
-                    <div class="boardOverlayUser">ZZ</div>
-                    <span class="boardOverlayUsername">Username3</span>
+                    <div class="boardOverlayUser">XX</div>
+                    <span class="boardOverlayUsername">${task.assignedTo}</span>
+                </li>
+                <li>
+                    <div class="boardOverlayUser">XX</div>
+                    <span class="boardOverlayUsername">${task.assignedTo}</span>
+                </li>
+                <li>
+                    <div class="boardOverlayUser">XX</div>
+                    <span class="boardOverlayUsername">${task.assignedTo}</span>
                 </li>
             </ul>
         </div>

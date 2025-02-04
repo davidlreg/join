@@ -138,7 +138,6 @@ main {
     padding: 15px 15px;
     cursor: pointer;
     min-width: 250px;
-    max-width: 250px;
     max-height: 300px;
     background-color: #FFFFFF;
     border-radius: 30px;
@@ -224,15 +223,15 @@ main {
     align-items: center;
 }
 
-.boardTaskPriority {
-}
-
 .boardTemplate {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
+.boardTemplate::-webkit-scrollbar {
+    display: none;
+}
   
  
   

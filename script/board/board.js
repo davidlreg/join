@@ -26,16 +26,16 @@ async function loadTasksToBoard() {
 
   Object.keys(tasks).forEach(taskId => {
     let task = tasks[taskId]; 
-    let taskHtml = templateBoardTasks(task); 
+    let taskHtml = templateBoardTasks(task, taskId); 
 
     if (task.status === "To do") {
-      setIdToCreateTasks (boardSectionTasksToDo, taskHtml)
+      setIdToCreateTasks(boardSectionTasksToDo, taskHtml)
     } else if (task.status === "In progress") {
-      setIdToCreateTasks (boardSectionTasksInProgress, taskHtml)
+      setIdToCreateTasks(boardSectionTasksInProgress, taskHtml)
     } else if (task.status === "Await Feedback") {
-      setIdToCreateTasks (boardSectionTasksAwaiting, taskHtml)
+      setIdToCreateTasks(boardSectionTasksAwaiting, taskHtml)
     } else if (task.status === "Done") {
-      setIdToCreateTasks (boardSectionTasksDone, taskHtml)
+      setIdToCreateTasks(boardSectionTasksDone, taskHtml)
     }
   });
 }
@@ -76,18 +76,26 @@ function getBoardElements() {
   };
 }
 
-function addBoardOverlay() {
+async function addBoardOverlay(taskId) {
+  await fetchDataJSON();
   const { boardOverlay, overlayBoardContent } = getBoardElements();
-  let addBoardHtml = templateBoardOverlay();
-  overlayBoardContent.innerHTML = addBoardHtml;
-  boardOverlay.classList.remove('hideOverlay');
+  let tasks = backendData.Data.Tasks;
+
+  let task = tasks[taskId];
+  if (task) {
+      let addBoardHtml = templateBoardOverlay(task);
+      overlayBoardContent.innerHTML = addBoardHtml;
+      boardOverlay.classList.remove('hideOverlay');
+  }
 }
+
 
 function closeBoardOverlay(){
   let boardOverlay = document.getElementById('addBoardOverlay');
   boardOverlay.classList.add('hideOverlay');
 }
 
+// Diese Funktion muss noch implementiert werden. Hab sie nur als Vorlage mal geschrieben.
 function updateSubtaskProgress(completed, total) {
   const progressBar = document.querySelector('.subtask-progress-bar');
   const percentage = (completed / total) * 100;

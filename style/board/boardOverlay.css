@@ -47,8 +47,10 @@
 .boardOverlayContent {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     padding: 32px;
+    overflow-y: auto;
+    max-height: 700px;
 }
 
 .boardOverlayHeader {
@@ -82,7 +84,7 @@
 
 .boardOverlayTaskInfo {
     display: grid;
-    gap: 15px;
+    gap: 20px;
 }
 
 .boardOverlayTaskDate,

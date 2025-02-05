@@ -248,7 +248,7 @@ function closeContactOverlay() {
  */
 function openFloatingContactOverlay(overlay) {
   overlay.style.transition = "transform 0.2s ease-in-out";
-  overlay.style.transform = "translateX(600%)";
+  overlay.style.transform = "translateX(150%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
@@ -258,8 +258,13 @@ function openFloatingContactOverlay(overlay) {
  * @param {HTMLElement} overlay - The overlay element to be closed.
  */
 function closeFloatingContactOverlay(overlay) {
-  overlay.style.transition = "transform 0.2s ease-in-out";
-  overlay.style.transform = "translateX(600%)";
+  overlay.style.transition = "transform 0.3s ease-in-out, opacity 0.3s ease-in-out";
+  overlay.style.transform = "translateX(200%)";
+  overlay.style.opacity = "0";
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 300);
 }
 
 // Logic for the mobile edit & delete menu

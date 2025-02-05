@@ -30,7 +30,6 @@
     .boardOverlayTaskTitle {
         font-size: 38px !important;
     }
-    
 }
 
 @media screen and (max-width: 400px) {
@@ -38,5 +37,13 @@
     .boardOverlayTaskTitle {
         font-size: 32px !important;
     }
-    
+}
+
+/* Height */
+
+@media (max-height: 700px) {
+    .boardOverlayContainer {
+        height: 550px !important;
+        max-height: 550px !important;
+    }
 }

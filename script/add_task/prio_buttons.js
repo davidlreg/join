@@ -1,3 +1,5 @@
+let selectedPriority = null
+
 function setPriority(priority) {
     resetButtons();
     resetButtonsOverlay();
@@ -7,6 +9,7 @@ function setPriority(priority) {
 
     activeButton.classList.add(priority);
     activeImg.src = `/assets/icon/add task/${priority}_white.png`;
+    selectedPriority = priority
 }
 
 function resetButtons() {

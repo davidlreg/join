@@ -475,6 +475,11 @@ form#taskFormOverlay {
   font-size: 14px;
 }
 
+.addDescriptionInputOverlay:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+}
+
 .priorityButtonOverlay {
   display: flex;
   gap: 20px;
@@ -540,4 +545,36 @@ form#taskFormOverlay {
 
 .taskInputContainerOverlay::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+.selectCategoryOverlay, .selectContactOverlay {
+  display: none;
+  max-width: 400px;
+  height: 90px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 5px 14px -5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.selectContactOverlay {
+  background-color: none;
+}
+
+.selectContactOverlay {
+  height: 150px;
+  width: 350px;
+  overflow-y: auto;
+}
+
+.selectCategoryOverlay {
+  width: 350px;
+}
+
+.selectCategoryOverlay.show, .selectContactOverlay.show {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  
 }

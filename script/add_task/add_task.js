@@ -58,9 +58,23 @@ function toggleCategory() {
   categoryDropdown.classList.toggle('show');
 }
 
+function toggleCategoryOverlay() {
+  const categoryDropdown = document.querySelector('.selectCategoryOverlay');
+  categoryDropdown.classList.toggle('show');
+}
+
 function selectCategory(category) {
   const selectContainer = document.getElementById('selectTask');
   const selectCategory = document.querySelector('.selectCategory');
+
+  selectContainer.textContent = category;
+
+  selectCategory.classList.remove('show');
+}
+
+function selectCategoryOverlay(category) {
+  const selectContainer = document.getElementById('selectTask');
+  const selectCategory = document.querySelector('.selectCategoryOverlay');
 
   selectContainer.textContent = category;
 

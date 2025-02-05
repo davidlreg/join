@@ -65,15 +65,15 @@ function addTaskHtmlTemplate() {
                    <div class="taskInputOverlay">
                        <p>Subtasks</p>
                        <div class="subtaskWrapper">
-                           <input required type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay">
+                           <input required type="text" id="subtaskInput" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay">
                            <div class="iconWrapper iconWrapperOverlay">
                                <div class="addSubtask">
-                                   <img src="/assets/img/Subtasks icons11.png" alt="">
+                                   <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">
                                </div>
                            </div>
                        </div>
+                       <ul id="subtaskList" class="subtaskListOverlay"></ul>
                    </div>
-                   <ul id="subtaskList" class="subtaskList"></ul>
                </div>
            </div>
 
@@ -100,4 +100,6 @@ function addTaskHtmlTemplate() {
     }, 100);
 
     return template; 
+    
+
 }

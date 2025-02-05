@@ -149,7 +149,8 @@ form#taskForm h1 {
   outline: none;
 }
 
-.selectCategory, .selectContact {
+.selectCategory,
+.selectContact {
   display: none;
   max-width: 400px;
   height: 90px;
@@ -168,9 +169,10 @@ form#taskForm h1 {
   overflow-y: auto;
 }
 
-.selectCategory.show, .selectContact.show {
+.selectCategory.show,
+.selectContact.show {
   display: block;
-  
+
 }
 
 .selectCategoryItem {
@@ -187,16 +189,16 @@ form#taskForm h1 {
 }
 
 .selectContactItem:last-child {
-  border-bottom: none; 
+  border-bottom: none;
 }
 
 .selectContactItem:hover {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 .selectContactItem:active {
-  background-color: #d9d9d9; 
-  transform: scale(0.98); 
+  background-color: #d9d9d9;
+  transform: scale(0.98);
   transition: transform 0.1s ease-in-out;
 }
 
@@ -457,7 +459,8 @@ form#taskFormOverlay {
 }
 
 .taskInputOverlay span {
-  color: red;
+  color: #2A3647;
+  cursor: pointer;
 }
 
 .taskInputOverlay input[type="date"] {
@@ -548,7 +551,8 @@ form#taskFormOverlay {
 }
 
 
-.selectCategoryOverlay, .selectContactOverlay {
+.selectCategoryOverlay,
+.selectContactOverlay {
   display: none;
   max-width: 400px;
   height: 90px;
@@ -572,9 +576,25 @@ form#taskFormOverlay {
   width: 350px;
 }
 
-.selectCategoryOverlay.show, .selectContactOverlay.show {
+.selectCategoryOverlay.show,
+.selectContactOverlay.show {
   display: block;
   position: absolute;
   z-index: 100;
+}
+
+.subtaskListOverlay {
+  max-height: 50px;
+  width: 360px;
+  overflow-y: auto;
+  padding: 5px;
+  position: absolute;
+}
+
+.subtaskListOverlay li {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
   
 }

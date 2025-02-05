@@ -76,6 +76,7 @@ form#taskForm h1 {
   border-radius: 10px;
   margin-top: 5px;
   background: #fff;
+  font-size: 16px;
 }
 
 .addTaskInput:focus {
@@ -94,6 +95,7 @@ form#taskForm h1 {
   border-radius: 10px;
   margin-top: 5px;
   background: #fff;
+  font-size: 16px;
 }
 
 .addDescriptionInput:focus {
@@ -147,6 +149,7 @@ form#taskForm h1 {
   background-color: #fff;
   font-size: 18px;
   outline: none;
+  font-size: 16px;
 }
 
 .selectCategory,

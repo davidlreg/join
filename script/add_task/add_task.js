@@ -10,7 +10,7 @@ function initTask() {
  * If the input has text, it creates a new subtask and adds it to the list. Then, it clears the input field.
  */
 function addSubtask() {
-  const subtaskInput = document.getElementById('subtaskInput');
+  const subtaskInput = document.getElementById('addTaskSubTasks');
   const subtaskList = document.getElementById('subtaskList');
   const subtaskValue = subtaskInput.value.trim();
 
@@ -67,7 +67,7 @@ function selectCategory(category) {
   const selectContainer = document.getElementById('selectTask');
   const selectCategory = document.querySelector('.selectCategory');
 
-  selectContainer.textContent = category;
+  selectContainer.value = category;
 
   selectCategory.classList.remove('show');
 }

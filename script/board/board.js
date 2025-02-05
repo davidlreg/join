@@ -137,6 +137,7 @@ function getAddTaskElements() {
     addTaskDescription: document.getElementById('addTaskDescription'),
     addTaskDate: document.getElementById('addTaskDate'),
     addTaskSubTasks: document.getElementById('addTaskSubTasks'),
+    addTaskCategory: document.getElementById('selectTask'),
   };
 }
 
@@ -144,7 +145,11 @@ function getAddTaskElements() {
  * Create a new task with the add task forumlar 
  */
 async function createTasksForBoard() {
-  const { addTaskTitle, addTaskDescription, addTaskDate } = getAddTaskElements();
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory } = getAddTaskElements();
+  
+  if (!validateTaskFields(addTaskTitle, addTaskDate, addTaskCategory)) {
+    return;
+  }
 
   let newTask = {
     assignedTo: "userId2",
@@ -153,7 +158,9 @@ async function createTasksForBoard() {
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
     status: selectedBoardSection,
     title: addTaskTitle.value,
+    category: addTaskCategory.textContent,
   };
+
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
 }

@@ -12,7 +12,7 @@ function addTaskHtmlTemplate() {
                    </div>
                    <div class="taskInputOverlay">
                        <p>Description</p>
-                       <textarea required placeholder="Enter a Description" class="addDescriptionInputOverlay" id="addTaskDescription"></textarea>
+                       <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay" id="addTaskDescription"></textarea>
                    </div>
                    <div class="taskInputOverlay">
                        <p>Assigned to</p>
@@ -48,22 +48,22 @@ function addTaskHtmlTemplate() {
                        </div>
                    </div>
                    <div class="taskInputOverlay">
-                       <p>Category <span>*</span></p>
-                       <div onclick="toggleCategoryOverlay()" class="dropdown dropdownOverlay">
-                           <div id="selectTask" class="selectContainer selectContainerOverlay">Select task category</div>
-                           <div class="dropdownIcon">
-                               <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
-                           </div>
-                       </div>
-                       <div class="selectCategory selectCategoryOverlay">
-                           <div class="selectCategoryItem" onclick="selectCategoryOverlay('Technical Task')">Technical Task</div>
-                           <div class="selectCategoryItem" onclick="selectCategoryOverlay('User Story')">User Story</div>
-                       </div>
-                   </div>
+                            <p>Category <span>*</span></p>
+                            <div onclick="toggleCategoryOverlay()" class="dropdown dropdownOverlay">
+                                <input required id="selectTask" class="selectContainer selectContainerOverlay" type="text" placeholder="Select task category"/>
+                                <div class="dropdownIcon">
+                                    <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                                </div>
+                            </div>
+                            <div class="selectCategory selectCategoryOverlay">
+                                <div class="selectCategoryItem" onclick="selectCategoryOverlay('Technical Task')">Technical Task</div>
+                                <div class="selectCategoryItem" onclick="selectCategoryOverlay('User Story')">User Story</div>
+                            </div>
+                        </div>
                    <div class="taskInputOverlay">
                        <p>Subtasks</p>
                        <div class="subtaskWrapper">
-                           <input required type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay" id="subtaskInput">
+                           <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay" id="addTaskSubTasks">
                            <div class="iconWrapper iconWrapperOverlay">
                                <div class="addSubtask">
                                    <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">

@@ -143,10 +143,12 @@
                                 </button>
                             </div>
                         </div>
+
+
                         <div class="taskInput">
                             <p>Category <span>*</span></p>
                             <div onclick="toggleCategory()" class="dropdown">
-                                <div id="selectTask" class="selectContainer">Select task category</div>
+                                <input required id="selectTask" class="selectContainer" type="text" placeholder="Select task category"/>
                                 <div class="dropdownIcon">
                                     <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
                                 </div>
@@ -157,6 +159,7 @@
                                 <div class="selectCategoryItem" onclick="selectCategory('User Story')">User Story</div>
                             </div>
                         </div>
+
                         <div class="taskInput">
                             <p>Subtasks</p>
                             <div class="subtaskWrapper">
@@ -207,5 +210,3 @@
 </body>
 
 </html>
-
-

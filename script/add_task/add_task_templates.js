@@ -9,11 +9,11 @@ function addTaskHtmlTemplate() {
                 <div class="taskInputLeft">
                     <div class="taskInputOverlay">
                         <p>Title<span>*</span></p>
-                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay">
+                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay" id="addTaskTitle">
                     </div>
                     <div class="taskInputOverlay">
                         <p>Description</p>
-                        <textarea required placeholder="Enter a Description" class="addDescriptionInputOverlay"></textarea>
+                        <textarea required placeholder="Enter a Description" class="addDescriptionInputOverlay" id="addTaskDescription"></textarea>
                     </div>
                     <div class="taskInputOverlay">
                         <p>Assigned to</p>
@@ -32,7 +32,7 @@ function addTaskHtmlTemplate() {
                 <div class="taskInputRight">
                     <div class="taskInputOverlay">
                         <p>Due Date <span>*</span></p>
-                        <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay"">
+                        <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay" id="addTaskDate">
                     </div>
                     <div class="taskInputOverlay">
                         <p>Prio</p>
@@ -60,7 +60,7 @@ function addTaskHtmlTemplate() {
                     <div class="taskInputOverlay">
                         <p>Subtasks</p>
                         <div class="subtaskWrapper">
-                            <input required type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay"">
+                            <input required type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay" id="addTaskSubTasks">
                             <div class="iconWrapper iconWrapperOverlay">
                                 <div class="addSubtask">
                                     <img src="/assets/img/Subtasks icons11.png" alt="">

@@ -27,10 +27,10 @@ async function loadTasksToBoard() {
   let tasks = backendData.Data.Tasks;
 
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
-  
+
   Object.keys(tasks).forEach(taskId => {
-    let task = tasks[taskId]; 
-    let taskHtml = templateBoardTasks(task, taskId); 
+    let task = tasks[taskId];
+    let taskHtml = templateBoardTasks(task, taskId);
 
     if (task.status === "To do") {
       setIdToCreateTasks(boardSectionTasksToDo, taskHtml)
@@ -44,7 +44,7 @@ async function loadTasksToBoard() {
   });
 
   setRightBackgroundColorForCategory()
-  
+
 }
 
 /**
@@ -95,13 +95,13 @@ async function addBoardOverlay(taskId) {
 
   let task = tasks[taskId];
   if (task) {
-      let addBoardHtml = templateBoardOverlay(task);
-      overlayBoardContent.innerHTML = addBoardHtml;
-      boardOverlay.classList.remove('hideOverlay');
+    let addBoardHtml = templateBoardOverlay(task);
+    overlayBoardContent.innerHTML = addBoardHtml;
+    boardOverlay.classList.remove('hideOverlay');
   }
 }
 
-function closeBoardOverlay(){
+function closeBoardOverlay() {
   let boardOverlay = document.getElementById('addBoardOverlay');
   boardOverlay.classList.add('hideOverlay');
 }
@@ -165,11 +165,11 @@ function getAddTaskElements() {
  */
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks } = getAddTaskElements();
-  
+
 
   let subtasksArray = Array.from(addTaskSubTasks).map(subtask => ({
-    text: subtask.textContent, 
-    completed: false, 
+    text: subtask.textContent,
+    completed: false,
   }));
 
   let newTask = {
@@ -180,14 +180,15 @@ async function createTasksForBoard() {
     duedate: addTaskDate.value,
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
     status: selectedBoardSection,
-    
+    subtask: subtasksArray,
+
   };
 
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
 
   closeTaskOverlay();
-  
+
 }
 
 /** 
@@ -225,6 +226,62 @@ async function syncBackendDataWithFirebase() {
     body: JSON.stringify(backendData)
   });
 }
+
+
+
+/////////////////////////
+// Section for search //
+////////////////////////
+
+
+/**
+ * Filters the task list based on the search input.
+ * 
+ * - Looks at the task title and description
+ * - If a task matches the search word, it stays visible
+ * - If a task does not match, it disappears
+ * - If no tasks are found, it calls `showNoResultsMessage(true)`.
+ * 
+ */
+function filterTasks() {
+  const searchTerm = document.getElementById('findTask').value.toLowerCase();
+  const tasks = document.querySelectorAll('.boardTasks');
+
+  let found = false;
+
+  tasks.forEach(task => {
+    const title = task.querySelector('.boardTaskTitle').textContent.toLowerCase();
+    const description = task.querySelector('.boardTaskDescription').textContent.toLowerCase();
+
+    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+      task.style.display = "block";
+      found = true;
+    } else {
+      task.style.display = "none";
+    }
+  });
+
+  showNoResultsMessage(!found);
+}
+
+/**
+ * Shows or hides the "No results found" message.
+ * 
+ * @param {boolean} show - If **true**, show the message. 
+ *                         If **false**, hide the message.
+ */
+function showNoResultsMessage(show) {
+  let message = document.getElementById('noResultsMessage');
+
+  if (show) {
+    message.style.display = 'block';
+  } else {
+    message.style.display = 'none';
+  }
+}
+
+document.getElementById('findTask').addEventListener('input', filterTasks);
+
 
 
 

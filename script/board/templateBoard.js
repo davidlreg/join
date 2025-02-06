@@ -56,42 +56,26 @@ function templateBoardOverlay(task) {
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
-            Assigned To:
+            <p>Assigned To:</p>
             <ul>
-                <li>
-                    <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">${task.assignedTo}</span>
-                </li>
-                <li>
-                    <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">${task.assignedTo}</span>
-                </li>
-                <li>
-                    <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">${task.assignedTo}</span>
-                </li>
-                <li>
-                    <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">${task.assignedTo}</span>
-                </li>
-                <li>
-                    <div class="boardOverlayUser">XX</div>
-                    <span class="boardOverlayUsername">${task.assignedTo}</span>
-                </li>
+                ${task.assignedTo.map(contact => `
+                    <li>
+                        <div class="boardOverlayUser">${contact.name[0]}</div>
+                        <span class="boardOverlayUsername">${contact.name}</span>
+                    </li>
+                `).join('')}
             </ul>
         </div>
-        <div class="boardOverlaySubtasks">Subtasks
+        <div class="boardOverlaySubtasks">
+            <p>Subtasks:</p>
             <ul class="checkboxList">
-                <li>
-                    <input type="checkbox" id="task1">
-                    <label for="task1"></label>
-                    <span>Task 1</span>
-                </li>
-                <li>
-                    <input type="checkbox" id="task2">
-                    <label for="task2"></label>
-                    <span>Task 2</span>
-                </li>
+                ${task.subtask.map((subtask, index) => `
+                    <li>
+                        <input type="checkbox" id="subtask-${index}" ${subtask.completed ? 'checked' : ''}>
+                        <label for="subtask-${index}"></label>
+                        <span>${subtask.text}</span>
+                    </li>
+                `).join('')}
             </ul>
         </div>
         <div class="boardOverlayActionButtons">

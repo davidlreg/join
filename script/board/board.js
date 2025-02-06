@@ -157,15 +157,27 @@ function getAddTaskElements() {
     addTaskDate: document.getElementById('addTaskDate'),
     addTaskSubTasks: document.querySelectorAll('#subtaskList li span:first-child'),
     addTaskCategory: document.getElementById('selectTask'),
+    assignedContacts: getSelectedContacts(),
   };
+}
+
+function getSelectedContacts(){
+  const selectedContacts = [];
+  document.querySelectorAll('.contactCheckbox:checked').forEach(checkbox => {
+    selectedContacts.push({
+      name: checkbox.value
+    });
+  });
+  console.log("📌 Ausgewählte Kontakte:",selectedContacts);
+  
+  return selectedContacts;
 }
 
 /**
  * Create a new task with the add task forumlar 
  */
 async function createTasksForBoard() {
-  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks } = getAddTaskElements();
-
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
   let subtasksArray = Array.from(addTaskSubTasks).map(subtask => ({
     text: subtask.textContent,
@@ -173,7 +185,7 @@ async function createTasksForBoard() {
   }));
 
   let newTask = {
-    assignedTo: "userId2",
+    assignedTo: assignedContacts,
     title: addTaskTitle.value,
     category: addTaskCategory.value,
     description: addTaskDescription.value,
@@ -272,7 +284,6 @@ function filterTasks() {
  */
 function showNoResultsMessage(show) {
   let message = document.getElementById('noResultsMessage');
-
   if (show) {
     message.style.display = 'block';
   } else {

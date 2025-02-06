@@ -1,7 +1,7 @@
 function templateBoardTasks(task, taskId) {
     return `
         <div class="boardTasks" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
-            <span class="boardTaskCategory">${task.status}</span>
+            <span class="boardTaskCategory">${task.category}</span>
             <span class="boardTaskTitle">${task.title}</span>
             <span class="boardTaskDescription">${task.description}</span>
             <div class="boardSubTasks">

@@ -27,7 +27,7 @@ async function loadTasksToBoard() {
   let tasks = backendData.Data.Tasks;
 
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
-
+  
   Object.keys(tasks).forEach(taskId => {
     let task = tasks[taskId]; 
     let taskHtml = templateBoardTasks(task, taskId); 
@@ -42,6 +42,9 @@ async function loadTasksToBoard() {
       setIdToCreateTasks(boardSectionTasksDone, taskHtml)
     }
   });
+
+  setRightBackgroundColorForCategory()
+  
 }
 
 /**
@@ -120,6 +123,22 @@ function setIdToCreateTasks(boardSectionId, taskHtml) {
   boardSectionId.insertAdjacentHTML("beforeend", taskHtml);
 }
 
+/**
+ * Set the right background color to the category
+ */
+function setRightBackgroundColorForCategory() {
+  let categoryElement = document.querySelectorAll('.boardTaskCategory');
+
+  categoryElement.forEach(categoryElement => {
+    let category = categoryElement.textContent.trim();
+
+    if (category === "User Story") {
+      categoryElement.style.backgroundColor = "#0038ff";
+    } else if (category === "Technical Task") {
+      categoryElement.style.backgroundColor = "#1fd7c1";
+    }
+  });
+}
 
 ////////////////////////////////////////////////
 // Section to create a new task for the board //
@@ -155,7 +174,6 @@ async function createTasksForBoard() {
     duedate: addTaskDate.value,
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
     status: selectedBoardSection,
-    
   };
 
   console.log("Task, die an pushTaskToBackendData übergeben wird:", newTask);

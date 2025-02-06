@@ -38,7 +38,6 @@
         order: 3;
         width: 100px;
         height: 2px;
-        margin-bottom: 20px;
       }
 }
 
@@ -49,6 +48,7 @@
     
     .summaryMainContent {
         padding: 0px 16px 0px 16px;
+        margin-top: 20px;
     }
 }
 

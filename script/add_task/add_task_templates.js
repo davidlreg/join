@@ -8,7 +8,7 @@ function addTaskHtmlTemplate() {
                <div class="taskInputLeft">
                    <div class="taskInputOverlay">
                        <p>Title<span>*</span></p>
-                       <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay" id="addTaskTitle">
+                       <input required type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay">
                    </div>
                    <div class="taskInputOverlay">
                        <p>Description</p>
@@ -86,7 +86,7 @@ function addTaskHtmlTemplate() {
                     <button class="clearButton clearButtonOverlay" onclick="closeTaskOverlay()">Clear
                         <img src="/assets/img/iconoir_cancel.png" alt="">
                     </button>
-                    <button class="createButton createButtonOverlay" onclick="createTasksForBoard()">Create Task
+                    <button type="button" class="createButton createButtonOverlay" onclick="createTasksForBoard()">Create Task
                         <img src="/assets/img/check.png" alt="">
                     </button>
                 </div>

@@ -147,22 +147,23 @@ function getAddTaskElements() {
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory } = getAddTaskElements();
   
-  if (!validateTaskFields(addTaskTitle, addTaskDate, addTaskCategory)) {
-    return;
-  }
-
   let newTask = {
     assignedTo: "userId2",
+    title: addTaskTitle.value,
+    category: addTaskCategory.value,
     description: addTaskDescription.value,
     duedate: addTaskDate.value,
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
     status: selectedBoardSection,
-    title: addTaskTitle.value,
-    category: addTaskCategory.textContent,
+    
   };
 
+  console.log("Task, die an pushTaskToBackendData übergeben wird:", newTask);
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
+
+  closeTaskOverlay();
+  
 }
 
 /** 

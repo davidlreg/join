@@ -65,20 +65,14 @@ function toggleCategoryOverlay() {
 
 function selectCategory(category) {
   const selectContainer = document.getElementById('selectTask');
-  const selectCategory = document.querySelector('.selectCategory');
-
   selectContainer.value = category;
-
-  selectCategory.classList.remove('show');
+  toggleCategory();
 }
 
 function selectCategoryOverlay(category) {
   const selectContainer = document.getElementById('selectTask');
-  const selectCategory = document.querySelector('.selectCategoryOverlay');
-
-  selectContainer.textContent = category;
-
-  selectCategory.classList.remove('show');
+  selectContainer.value = category;
+  toggleCategory();
 }
 
 /**

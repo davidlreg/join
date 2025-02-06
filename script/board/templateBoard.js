@@ -24,8 +24,9 @@ function templateBoardOverlay(task) {
   return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
-            <p class="boardOverlayTaskCategory">${task.status}</p>
+            <p class="boardOverlayTaskCategory">${task.category}</p>
             <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
+            <!-- SVG für Schließen-Button -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0"
@@ -45,7 +46,7 @@ function templateBoardOverlay(task) {
         <div class="boardOverlayTaskInfo">
             <p class="boardOverlayTaskDate">
                 <span class="label">Due Date:</span>
-                <span id="dueDate">${task.dueDate}</span>
+                <span id="dueDate">${task.duedate}</span>
             </p>
             
             <div class="boardOverlayTaskPriority">

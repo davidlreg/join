@@ -77,9 +77,9 @@
     text-align: left;
 }
 
-.boardOverlayTaskDescription {
-
-}
+/* .boardOverlayTaskDescription {
+  
+} */
 
 .boardOverlayTaskInfo {
     display: grid;
@@ -213,3 +213,82 @@
 .overlaySeparator {
     color: #888;
 }
+
+
+/* Edit Overlay */
+
+.editBoardHeader {
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.editTaskInputContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.editTaskInputLeft {
+    align-items: baseline;
+}
+
+.editTaskInputContainer::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.editTaskInputOverlay p {
+    margin-top: 0px !important;
+}
+
+.editTaskInputOverlay {
+    margin-right: 50px ;
+}
+
+.editPriorityButtonOverlay {
+    justify-content: flex-start !important;
+}
+
+.editPriorityButtonOverlay button{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.editPriorityImages {
+    width: 15px !important;
+    height: 15px !important;
+    object-fit: contain;
+}
+
+.button-medium {
+    background-color: #ffa800 !important;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button-urgent {
+    background-color: #ff3d00 !important;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button-low {
+    background-color: #7ae229 !important;
+    color: #fff;
+    font-weight: 600;
+  }

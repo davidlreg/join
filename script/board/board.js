@@ -88,9 +88,11 @@ async function addBoardOverlay(taskId) {
     console.log("Task erfolgreich gefunden:", task);
     let addBoardHtml = templateBoardOverlay(task);
     overlayBoardContent.innerHTML = addBoardHtml;
-    boardOverlay.classList.remove("hideOverlay");
+    boardOverlay.classList.remove('hideOverlay');
+  } else {
+    console.error("Task mit dieser ID wurde nicht gefunden:", task);
   }
-  console.error("Task mit dieser ID wurde nicht gefunden:", taskId);
+  
 }
 
 function closeBoardOverlay() {
@@ -179,7 +181,7 @@ async function createTasksForBoard() {
     title: addTaskTitle.value,
     category: addTaskCategory.value,
     description: addTaskDescription.value,
-    duedate: addTaskDate.value,
+    dueDate: addTaskDate.value,
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
     status: selectedBoardSection || "To do",
     subtask: subtasksArray,
@@ -187,8 +189,11 @@ async function createTasksForBoard() {
 
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
-  
-  closeTaskOverlay(); 
+
+  closeTaskOverlay();
+  loadData();
+
+
 }
 
 /**
@@ -208,7 +213,59 @@ async function deleteTask() {
     }
   });
   await syncBackendDataWithFirebase();
+  loadData();
 }
+
+/**
+ * Edit a task in the board
+ *
+*/
+
+async function editTask() {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  const { overlayBoardContent, boardOverlay } = getBoardElements();
+  const boardOverlayTaskTitle = document.querySelector('.boardOverlayTaskTitle');
+
+  Object.keys(tasks).forEach(taskId => {
+    let task = tasks[taskId];
+
+    if (task.title === boardOverlayTaskTitle.textContent) {
+      // Setze das Edit-Template
+      overlayBoardContent.innerHTML = templateEditTask(task);
+      boardOverlay.classList.remove('hideOverlay');
+
+      // Warte, bis das neue DOM geladen wurde
+      setTimeout(() => {
+        highlightPriorityButton(task.priority);
+      }, 0);
+    }
+  });
+}
+
+function highlightPriorityButton(priority) {
+  const priorityButtons = document.querySelectorAll('.priorityButtonOverlay button');
+
+  priorityButtons.forEach(button => {
+    if (priority === "Medium" && button.id === "mediumButton") {
+      button.classList.add('button-medium');
+    } else if (priority === "Urgent" && button.id === "urgentButton") {
+      button.classList.add('button-urgent');
+    } else if (priority === "Low" && button.id === "lowButton") {
+      button.classList.add('button-low');
+    }
+  });
+}
+
+function convertDateFormat(dateStr) {
+  if (dateStr) {
+    let parts = dateStr.split("-");
+    if (parts.length !== 3) return ""; 
+    return `${parts[0]}-${parts[1]}-${parts[2]}`; 
+  }
+}
+
+
 
 /**
  * Save the current Task into the global backandData

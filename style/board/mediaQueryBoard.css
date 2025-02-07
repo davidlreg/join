@@ -1,13 +1,22 @@
 @media screen and (max-width: 1350px) {
-  .boardSectionsContainer {
-    flex-direction: column;
-    height: 100vh;
-  }
+    .boardSectionsContainer {
+        flex-direction: column;
+        height: 100vh;
+    }
 
-  main {
-    height: calc(100% - 80px);
-    padding-bottom: 80px;
-  }
+    .editTaskInputOverlay {
+        margin-right: 0px;
+      }
+
+    .editTaskInput {
+        width: 100% !important;
+    }
+
+    .editDropDown {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
 }
 
 @media screen and (max-width: 950px) {
@@ -32,15 +41,37 @@
     padding: 32px 16px 16px 16px;
   }
 
-  .boardOverlayTaskTitle {
-    font-size: 38px !important;
-  }
+    .boardOverlayTaskTitle {
+        font-size: 38px !important;
+    }
+
+    .editPriorityButtonOverlay {
+        gap: 5px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .editPriorityButtonOverlay button {
+        font-size: 12px !important;
+        padding: 5px !important;
+    }
 }
 
 @media screen and (max-width: 400px) {
-  .boardOverlayTaskTitle {
-    font-size: 32px !important;
-  }
+
+    .boardOverlayTaskTitle {
+        font-size: 32px !important;
+    }
+}
+
+@media screen and (max-width: 395px){
+    .editTaskInputOverlay {
+        margin-right: 20px !important;
+    }
+
+    .editBoardHeader {
+        padding-right: 10px !important;
+    }
 }
 
 /* Height */

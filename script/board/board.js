@@ -22,6 +22,7 @@ async function loadData() {
  */
 async function loadTasksToBoard() {
   await fetchDataJSON();
+  
   let tasks = backendData.Data.Tasks;
 
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();

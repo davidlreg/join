@@ -1,22 +1,31 @@
 function templateBoardTasks(task, taskId) {
+    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+  
     return `
-        <div class="boardTasks" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
-            <span class="boardTaskCategory">${task.category}</span>
-            <span class="boardTaskTitle">${task.title}</span>
-            <span class="boardTaskDescription">${task.description}</span>
-            <div class="boardSubTasks">
-                <div class="boardSubtaskProgress">
-                    <div class="boardSubtaskProgressBar"></div>        
-                </div>
-                <span>1/2 Subtasks</span>
-            </div>
-            <div class="boardTaskBottom">
-                <div class="boardTaskUsers">${task.assignedTo}</div>
-                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
-            </div>
-        </div>
+      <div class="boardTasks" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
+          <span class="boardTaskCategory">${task.category}</span>
+          <span class="boardTaskTitle">${task.title}</span>
+          <span class="boardTaskDescription">${task.description}</span>
+          <div class="boardSubTasks">
+              <div class="boardSubtaskProgress">
+                  <div class="boardSubtaskProgressBar"></div>        
+              </div>
+              <span>${task.subtask ? `${task.subtask.filter(st => st.completed).length}/${task.subtask.length} Subtasks` : "No Subtasks"}</span>
+          </div>
+          <div class="boardTaskBottom">
+              <div class="boardTaskUsers">
+                  ${assignedToArray.map(contact => `
+                      <div class="profilePicture" title="${contact.name}">
+                          ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
+                      </div>
+                  `).join('')}
+              </div>
+              <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
+          </div>
+      </div>
     `;
-}
+  }
+  
 
 
 

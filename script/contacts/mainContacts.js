@@ -102,7 +102,7 @@ async function openContact(name, email, phone, initials, color) {
 
   setCurrentlyViewedUser(name, email, phone, contactId, initials, color);
   updateSelectedContact(name, email);
-  toggleContactOverlay(name, email, phone, initials, color);
+  toggleContactOverlay(name, email, phone, initials, color, contactId);
 }
 
 /**
@@ -182,11 +182,11 @@ function resetSelectedContact() {
  * @param {string} initials - The contact's initials.
  * @param {string} color - The contact's profile color.
  */
-function toggleContactOverlay(name, email, phone, initials, color) {
+function toggleContactOverlay(name, email, phone, initials, color, contactId) {
   if (window.innerWidth > 1350) {
-    showDesktopContactOverlay(name, email, phone, initials, color);
+    showDesktopContactOverlay(name, email, phone, initials, color, contactId);
   } else {
-    showMobileContactOverlay(name, email, phone, initials, color);
+    showMobileContactOverlay(name, email, phone, initials, color, contactId);
   }
 }
 
@@ -199,9 +199,9 @@ function toggleContactOverlay(name, email, phone, initials, color) {
  * @param {string} initials - The contact's initials.
  * @param {string} color - The contact's profile color.
  */
-function showDesktopContactOverlay(name, email, phone, initials, color) {
+function showDesktopContactOverlay(name, email, phone, initials, color, contactId) {
   const floatingContactContainer = document.getElementById("floatingContactContainer");
-  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone, initials, color);
+  floatingContactContainer.innerHTML = showFloatingContactOverlay(name, email, phone, initials, color, contactId);
   const overlay = floatingContactContainer.querySelector(".profileHeadSection");
   openFloatingContactOverlay(overlay);
 }
@@ -215,10 +215,10 @@ function showDesktopContactOverlay(name, email, phone, initials, color) {
  * @param {string} initials - The contact's initials.
  * @param {string} color - The contact's profile color.
  */
-function showMobileContactOverlay(name, email, phone, initials, color) {
+function showMobileContactOverlay(name, email, phone, initials, color, contactId) {
   const floatingContactContainer = document.getElementById("contactList");
   floatingContactContainer.innerHTML = "";
-  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone, initials, color);
+  floatingContactContainer.innerHTML = showFloatingContactOverlayMobile(name, email, phone, initials, color, contactId);
 }
 
 /**
@@ -265,9 +265,9 @@ function closeFloatingContactOverlay(overlay) {
  * @param {string} initials - The initials of the contact.
  * @param {string} color - The color associated with the contact.
  */
-function openMobileContactMenu(initials, color) {
+function openMobileContactMenu(initials, color, contactId) {
   const menuContainer = document.getElementById("mobileMenu");
-  menuContainer.innerHTML = showMobileContactMenu(initials, color);
+  menuContainer.innerHTML = showMobileContactMenu(initials, color, contactId);
 
   const overlay = menuContainer.querySelector(".openMobileContactMenuContainer");
   openOverlay(overlay);

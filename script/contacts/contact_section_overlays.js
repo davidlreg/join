@@ -543,7 +543,7 @@ function showEditContactOverlayMobile(initials, color) {
  * @param {string} color - The background color for the profile picture.
  * @returns {string} - The HTML string for the floating contact overlay.
  */
-function showFloatingContactOverlay(name, email, phone, initials, color) {
+function showFloatingContactOverlay(name, email, phone, initials, color, contactId) {
   return `
   
  <div class="profileHeadSection">
@@ -562,7 +562,7 @@ function showFloatingContactOverlay(name, email, phone, initials, color) {
             <p>Edit</p>
           </a>
         </div>
-        <div class="deleteIcon" onclick="deleteContact()">
+        <div class="deleteIcon" onclick="deleteContact('${contactId}')">
           <a
             ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_273251_1845" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -606,7 +606,7 @@ function showFloatingContactOverlay(name, email, phone, initials, color) {
  * @param {string} color - The background color of the profile picture.
  * @returns {string} - The HTML string for the mobile floating contact overlay.
  */
-function showFloatingContactOverlayMobile(name, email, phone, initials, color) {
+function showFloatingContactOverlayMobile(name, email, phone, initials, color, contactId) {
   return `
 
 <div class="detailedContactSectionMobile">
@@ -645,7 +645,7 @@ function showFloatingContactOverlayMobile(name, email, phone, initials, color) {
         <p><b>Phone</b></p>
         <p>${phone}</p>
       </div>
-      <div class="responsiveEditContactButton" onclick="openMobileContactMenu('${initials}', '${color}')">
+      <div class="responsiveEditContactButton" onclick="openMobileContactMenu('${initials}', '${color}', '${contactId}')">
         <svg width="6" height="22" viewBox="0 0 6 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M2.99967 21.6666C2.26634 21.6666 1.63856 21.4055 1.11634 20.8833C0.594119 20.361 0.333008 19.7333 0.333008 18.9999C0.333008 18.2666 0.594119 17.6388 1.11634 17.1166C1.63856 16.5944 2.26634 16.3333 2.99967 16.3333C3.73301 16.3333 4.36079 16.5944 4.88301 17.1166C5.40523 17.6388 5.66634 18.2666 5.66634 18.9999C5.66634 19.7333 5.40523 20.361 4.88301 20.8833C4.36079 21.4055 3.73301 21.6666 2.99967 21.6666ZM2.99967 13.6666C2.26634 13.6666 1.63856 13.4055 1.11634 12.8833C0.594119 12.361 0.333008 11.7333 0.333008 10.9999C0.333008 10.2666 0.594119 9.63881 1.11634 9.11659C1.63856 8.59436 2.26634 8.33325 2.99967 8.33325C3.73301 8.33325 4.36079 8.59436 4.88301 9.11659C5.40523 9.63881 5.66634 10.2666 5.66634 10.9999C5.66634 11.7333 5.40523 12.361 4.88301 12.8833C4.36079 13.4055 3.73301 13.6666 2.99967 13.6666ZM2.99967 5.66659C2.26634 5.66659 1.63856 5.40547 1.11634 4.88325C0.594119 4.36103 0.333008 3.73325 0.333008 2.99992C0.333008 2.26659 0.594119 1.63881 1.11634 1.11659C1.63856 0.594363 2.26634 0.333252 2.99967 0.333252C3.73301 0.333252 4.36079 0.594363 4.88301 1.11659C5.40523 1.63881 5.66634 2.26659 5.66634 2.99992C5.66634 3.73325 5.40523 4.36103 4.88301 4.88325C4.36079 5.40547 3.73301 5.66659 2.99967 5.66659Z"
@@ -669,7 +669,7 @@ function showFloatingContactOverlayMobile(name, email, phone, initials, color) {
  *
  * @returns {string} The HTML structure of the mobile contact menu with edit and delete options.
  */
-function showMobileContactMenu(initials, color) {
+function showMobileContactMenu(initials, color, contactId) {
   return `
   
     <div class="openMobileContactMenuContainer">
@@ -688,7 +688,7 @@ function showMobileContactMenu(initials, color) {
           <p>Edit</p>
         </div>
 
-        <div class="deleteContainer" onclick="deleteContactMobile()">
+        <div class="deleteContainer" onclick="deleteContact('${contactId}')">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_273251_1845" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
               <rect width="24" height="24" fill="#D9D9D9" />

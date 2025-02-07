@@ -174,6 +174,8 @@ async function createTasksForBoard() {
   await syncBackendDataWithFirebase();
   
   closeTaskOverlay(); 
+  
+
 }
 
 /** 

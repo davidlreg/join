@@ -176,6 +176,25 @@ async function createTasksForBoard() {
   closeTaskOverlay(); 
 }
 
+/**
+ * Delete a task from the board
+ */
+
+async function deleteTask() {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  const boardOverlayTaskTitle = document.querySelector('.boardOverlayTaskTitle');
+  closeBoardOverlay();
+  Object.keys(tasks).forEach(taskId => {
+    let task = tasks[taskId];
+  
+    if (task.title === boardOverlayTaskTitle.textContent) {
+      delete tasks[taskId];
+    }
+  });
+  await syncBackendDataWithFirebase();
+}
+
 /** 
  * Save the current Task into the global backandData
  */
@@ -211,8 +230,6 @@ async function syncBackendDataWithFirebase() {
     body: JSON.stringify(backendData)
   });
 }
-
-
 
 /////////////////////////
 // Section for search //

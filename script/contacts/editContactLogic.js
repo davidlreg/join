@@ -52,43 +52,44 @@ function editOverlayBackground(container) {
 }
 
 /**
- * Updates the contact data in Firebase Realtime Database.
- *
- * @param {string} currentContactId - The ID of the contact to update.
- * @returns {Promise<void>} - A promise indicating the completion of the update.
+ * Initiates the update process for a contact.
+ * 
+ * @param {string} contactId - The ID of the contact to update.
  */
-async function updateContactData(currentContactId) {
+async function updateContact(contactId) {
   const updatedData = getUpdatedContactData();
-  await updateContactInDatabase(currentContactId, updatedData);
-  location.reload();
+  await updateContactInDatabase(contactId, updatedData);
+  reloadPage();
 }
 
 /**
  * Retrieves the updated contact data from the form inputs.
- *
+ * 
  * @returns {Object} - An object containing the updated name, email, and phone.
  */
 function getUpdatedContactData() {
-  const updatedName = document.getElementById("contactName").value;
-  const updatedEmail = document.getElementById("contactEmail").value;
-  const updatedPhone = document.getElementById("contactPhone").value;
-
   return {
-    name: updatedName,
-    email: updatedEmail,
-    phone: updatedPhone,
+    name: document.getElementById("contactName").value,
+    email: document.getElementById("contactEmail").value,
+    phone: document.getElementById("contactPhone").value,
   };
 }
 
 /**
  * Updates the contact data in Firebase Realtime Database.
- *
- * @param {string} currentContactId - The ID of the contact to update.
+ * 
+ * @param {string} contactId - The ID of the contact to update.
  * @param {Object} updatedData - An object containing the updated name, email, and phone.
  * @returns {Promise<void>} - A promise indicating the completion of the update.
  */
-async function updateContactInDatabase(currentContactId, updatedData) {
-  const databaseRef = firebase.database().ref(`Data/Contacts/${currentContactId}`);
+async function updateContactInDatabase(contactId, updatedData) {
+  await firebase.database().ref(`Data/Contacts/${contactId}`).update(updatedData);
+}
 
-  await databaseRef.update(updatedData);
+/**
+ * Reloads the current page.
+ * 
+ */
+function reloadPage() {
+  location.reload();
 }

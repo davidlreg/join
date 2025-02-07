@@ -102,15 +102,15 @@
                     <div class="taskInputLeft">
                         <div class="taskInput">
                             <p>Title<span> *</span></p>
-                            <input required type="text" placeholder="Enter a title" class="addTaskInput">
+                            <input required type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput">
                         </div>
                         <div class="taskInput">
                             <p>Description</p>
-                            <textarea placeholder="Enter a Description" class="addDescriptionInput"></textarea>
+                            <textarea placeholder="Enter a Description" id="addTaskDescription" class="addDescriptionInput"></textarea>
                         </div>
                         <div class="taskInput">
                             <p>Assigned to</p>
-                            <div onclick="toggleContact()" class="dropdown">
+                            <div onclick="toggleContact()" id="dropdown" class="dropdown">
                                 <div class="selectContainer">Select contacts to assign</div>
                                 <div class="dropdownIcon">
                                     <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
@@ -127,7 +127,7 @@
                     <div class="taskInputRight">
                         <div class="taskInput">
                             <p>Due Date <span>*</span></p>
-                            <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput">
+                            <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput" id="addTaskDate">
                         </div>
                         <div class="taskInput">
                             <p>Prio</p>
@@ -163,7 +163,7 @@
                         <div class="taskInput">
                             <p>Subtasks</p>
                             <div class="subtaskWrapper">
-                                <input type="text" id="subtaskInput" placeholder="Add new subtask" class="addTaskInput">
+                                <input type="text" placeholder="Add new subtask" class="addTaskInput" id="addTaskSubTasks">
                                 <div class="iconWrapper">
                                     <div class="addSubtask">
                                         <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">
@@ -186,7 +186,7 @@
                         <button class="clearButton" onclick="">Clear
                             <img src="/assets/img/iconoir_cancel.png">
                         </button>
-                        <button class="createButton" onclick="handleNewTask()">Create Task
+                        <button  type="button" class="createButton" onclick="createTasksForBoard()">Create Task
                             <img src="/assets/img/check.png">
                         </button>
                     </div>

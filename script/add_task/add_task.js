@@ -217,56 +217,6 @@ function updateSelectedContact() {
   });
 }
 
-/**
- * Creates a new task, sets its default status to "To do," 
- * and stores it in localStorage.
- * 
- * @param {Object} task - The task object created from user input.
- */
-function handleNewTask(){
-  let task = createTask();
-  task.status = "To do";
-  addTaskLocal(task);
-}
-
-/**
- * Collects all task input data from the form.
- *
- * @returns {Object} An object containing the task details like title, description, due date, priority, category, selected contacts, and subtasks.
- */
-function createTask() {
-  const title = document.querySelector('.addTaskInput').value.trim();
-  const description = document.querySelector('.addDescriptionInput').value.trim();
-  const dueDate = document.querySelector('.addTaskInput[type="date"]').value;
-  const priority = document.querySelector('.priorityButton .active')?.id || 'medium';
-  const category = document.getElementById('selectTask').textContent.trim();
-
-  const selectedContacts = [...document.querySelectorAll('.contactCheckbox:checked')].map(cb => cb.value);
-  const subtasks = [...document.querySelectorAll('#subtaskList li span:first-child')].map(sub => sub.textContent);
-
-  return formatTaskData(title, description, dueDate, priority, category, selectedContacts, subtasks);
-}
-
-/**
- * Formats the collected task data into an object.
- */
-function formatTaskData(title, description, dueDate, priority, category, selectedContacts, subtasks) {
-  return { title, description, dueDate, priority, category, selectedContacts, subtasks }
-
-}
-
-/**
- * Adds a new task to localStorage.
- * Converts existing tasks from a string to an array, 
- * appends the new task, and saves the updated list back as a string.
- * 
- * @param {Object} task - The task object to be stored.
- */
-function addTaskLocal(task) {
-  let localTasks = JSON.parse(localStorage.getItem('localTasks')) || [];    //in array
-  localTasks.push(task);
-  localStorage.setItem('localTasks', JSON.stringify(localTasks));
-}
 
 
 

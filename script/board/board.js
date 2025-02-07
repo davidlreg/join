@@ -1,4 +1,3 @@
-
 let backendData = {};
 async function fetchDataJSON() {
   let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
@@ -11,7 +10,6 @@ async function init() {
   await loadData();
   headerUserName();
   loadTasksToBoard();
-  loadLocalTasksToBoard();
 }
 
 async function loadData() {
@@ -47,29 +45,6 @@ async function loadTasksToBoard() {
 
 }
 
-/**
- * Loads all saved tasks from localStorage and adds them to the board.
- * It checks the task status and puts each task in the right section (To do, In progress, etc.).
- */
-function loadLocalTasksToBoard() {
-  let localTasks = JSON.parse(localStorage.getItem('localTasks')) || [];
-
-  const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
-
-  localTasks.forEach((task) => {
-    let taskHtml = templateBoardTasks(task);
-
-    if (task.status === "To do") {
-      setIdToCreateTasks(boardSectionTasksToDo, taskHtml);
-    } else if (task.status === "In progress") {
-      setIdToCreateTasks(boardSectionTasksInProgress, taskHtml);
-    } else if (task.status === "Await Feedback") {
-      setIdToCreateTasks(boardSectionTasksAwaiting, taskHtml);
-    } else if (task.status === "Done") {
-      setIdToCreateTasks(boardSectionTasksDone, taskHtml);
-    }
-  });
-}
 
 /**
  * get all Board Elements 
@@ -168,7 +143,6 @@ function getSelectedContacts(){
       name: checkbox.value
     });
   });
-  console.log("📌 Ausgewählte Kontakte:",selectedContacts);
   
   return selectedContacts;
 }
@@ -191,16 +165,15 @@ async function createTasksForBoard() {
     description: addTaskDescription.value,
     duedate: addTaskDate.value,
     priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
-    status: selectedBoardSection,
+    status: selectedBoardSection || "To do",
     subtask: subtasksArray,
 
   };
 
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
-
-  closeTaskOverlay();
-
+  
+  closeTaskOverlay(); 
 }
 
 /** 
@@ -291,7 +264,14 @@ function showNoResultsMessage(show) {
   }
 }
 
-document.getElementById('findTask').addEventListener('input', filterTasks);
+const searchInput = document.getElementById('findTask');
+
+if (searchInput) {
+  searchInput.addEventListener('input', filterTasks);
+} else {
+  console.log('Suchfeld "findTask" nicht gefunden, kein EventListener hinzugefügt.');
+}
+
 
 
 

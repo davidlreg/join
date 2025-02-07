@@ -13,7 +13,16 @@ function addTaskOverlay(boardSection) {
     selectedBoardSection = boardSection;
 }
 
-function closeTaskOverlay(){
-    let overlay = document.getElementById('addTaskOverlay');
-    overlay.classList.add('hidden');
+function closeTaskOverlay() {
+    const overlay = document.getElementById('addTaskOverlay');
+
+    if (overlay) {
+        if (!overlay.classList.contains('hidden')) {
+            overlay.classList.add('hidden');
+        }
+    } else {
+        window.location.href = "/html/board.html";
+    }
 }
+
+

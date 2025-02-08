@@ -1,6 +1,6 @@
 function templateBoardTasks(task, taskId) {
-    return `
-        <div class="boardTasks" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
+  return `
+        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
             <span class="boardTaskCategory">${task.category}</span>
             <span class="boardTaskTitle">${task.title}</span>
             <span class="boardTaskDescription">${task.description}</span>
@@ -17,8 +17,6 @@ function templateBoardTasks(task, taskId) {
         </div>
     `;
 }
-
-
 
 function templateBoardOverlay(task) {
   return `
@@ -58,7 +56,9 @@ function templateBoardOverlay(task) {
         <div class="boardOverlayAssignedTo">
             <p>Assigned To:</p>
             <ul>
-                ${task.assignedTo.map(contact => `
+                ${task.assignedTo
+                  .map(
+                    (contact) => `
                     <li>
                         <div class="boardOverlayUser">${contact.name[0]}</div>
                         <span class="boardOverlayUsername">${contact.name}</span>
@@ -71,7 +71,9 @@ function templateBoardOverlay(task) {
         <div class="boardOverlaySubtasks">
             <p>Subtasks:</p>
             <ul class="checkboxList">
-                ${task.subtask.map((subtask, index) => `
+                ${task.subtask
+                  .map(
+                    (subtask, index) => `
                     <li>
                         <input type="checkbox" id="subtask-${index}" ${subtask.completed ? "checked" : ""}>
                         <label for="subtask-${index}"></label>

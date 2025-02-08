@@ -60,13 +60,17 @@ main {
 }
 
 .boardAddTask {
+  width: 160px;
+  height: 48px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   background-color: rgba(42, 54, 70);
   color: white;
   font-size: 20px;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
   text-decoration: none !important;
 }
@@ -234,4 +238,15 @@ main {
 
 .boardTemplate::-webkit-scrollbar {
   display: none;
+}
+
+.categoryText {
+  font-size: 20px;
+  font-weight: 700;
+  color: #42526e;
+}
+
+#boardAddTask {
+  font-size: 20px;
+  font-weight: 700;
 }

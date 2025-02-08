@@ -24,6 +24,7 @@ async function loadData() {
  */
 async function loadTasksToBoard() {
   await fetchDataJSON();
+  
   let tasks = backendData.Data.Tasks;
 
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
@@ -74,16 +75,22 @@ function getBoardElements() {
 }
 
 async function addBoardOverlay(taskId) {
+  console.log("Board Task angeklickt:", taskId);
   await fetchDataJSON();
   const { boardOverlay, overlayBoardContent } = getBoardElements();
   let tasks = backendData.Data.Tasks;
 
+  console.log("Alle Tasks:", tasks);
+  console.log("Gesuchte Task:", tasks[taskId]);
+
   let task = tasks[taskId];
   if (task) {
+    console.log("Task erfolgreich gefunden:", task);
     let addBoardHtml = templateBoardOverlay(task);
     overlayBoardContent.innerHTML = addBoardHtml;
     boardOverlay.classList.remove("hideOverlay");
   }
+  console.error("Task mit dieser ID wurde nicht gefunden:", taskId);
 }
 
 function closeBoardOverlay() {
@@ -168,7 +175,7 @@ async function createTasksForBoard() {
   }));
 
   let newTask = {
-    assignedTo: assignedContacts,
+    assignedTo: assignedContacts, 
     title: addTaskTitle.value,
     category: addTaskCategory.value,
     description: addTaskDescription.value,
@@ -180,8 +187,8 @@ async function createTasksForBoard() {
 
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
-
-  closeTaskOverlay();
+  
+  closeTaskOverlay(); 
 }
 
 /**

@@ -10,6 +10,8 @@ async function moveTo(newStatus, taskId) {
   updateTaskStatus(taskId, newStatus);
   await updateBackend(backendData);
   loadTasksToBoard();
+  checkIfTaskExistInContainer();
+  location.reload();
 }
 
 /**
@@ -63,5 +65,29 @@ function drag(event, taskId) {
  */
 function drop(event, newStatus) {
   event.preventDefault();
-  moveTo(newStatus, event.dataTransfer.getData("taskId"));
+  const taskId = event.dataTransfer.getData("taskId");
+  moveTo(newStatus, taskId);
+}
+
+function checkIfTaskExistInContainer() {
+  // Überprüfen der jeweiligen Container und Hinzufügen/Entfernen der dNone-Klasse
+  const sections = [
+    { containerId: "boardNoTasksToDo", sectionId: "tasksSectionToDo" },
+    { containerId: "boardNoTasksInProgress", sectionId: "tasksSectionInProgress" },
+    { containerId: "boardNoTasksAwaiting", sectionId: "tasksSectionAwaiting" },
+    { containerId: "boardNoTasksDone", sectionId: "tasksSectionDone" },
+  ];
+
+  sections.forEach((section) => {
+    const container = document.getElementById(section.containerId);
+    const taskSection = document.getElementById(section.sectionId);
+
+    // Wenn der Container leer ist, füge die dNone-Klasse hinzu
+    if (container.children.length == 0) {
+      taskSection.classList.remove("dNone");
+    } else {
+      // Wenn der Container nicht leer ist, entferne die dNone-Klasse
+      taskSection.classList.add("dNone");
+    }
+  });
 }

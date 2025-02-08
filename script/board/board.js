@@ -10,7 +10,8 @@ async function init() {
   setActiveLinkFromURL();
   await loadData();
   headerUserName();
-  loadTasksToBoard();
+  await loadTasksToBoard();
+  checkIfTaskExistInContainer();
 }
 
 async function loadData() {
@@ -24,12 +25,11 @@ async function loadData() {
  */
 async function loadTasksToBoard() {
   await fetchDataJSON();
-  
+
   let tasks = backendData.Data.Tasks;
 
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
 
- 
   let toDoTemplateRef = document.getElementById("boardNoTasksToDo");
   toDoTemplateRef.innerHTML = "";
   let inProgressTemplateRef = document.getElementById("boardNoTasksInProgress");
@@ -38,7 +38,6 @@ async function loadTasksToBoard() {
   awaitFeedbackTemplateRef.innerHTML = "";
   let doneTemplateRef = document.getElementById("boardNoTasksDone");
   doneTemplateRef.innerHTML = "";
-
 
   Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
@@ -88,11 +87,10 @@ async function addBoardOverlay(taskId) {
     console.log("Task erfolgreich gefunden:", task);
     let addBoardHtml = templateBoardOverlay(task);
     overlayBoardContent.innerHTML = addBoardHtml;
-    boardOverlay.classList.remove('hideOverlay');
+    boardOverlay.classList.remove("hideOverlay");
   } else {
     console.error("Task mit dieser ID wurde nicht gefunden:", task);
   }
-  
 }
 
 function closeBoardOverlay() {
@@ -177,7 +175,7 @@ async function createTasksForBoard() {
   }));
 
   let newTask = {
-    assignedTo: assignedContacts, 
+    assignedTo: assignedContacts,
     title: addTaskTitle.value,
     category: addTaskCategory.value,
     description: addTaskDescription.value,
@@ -192,8 +190,6 @@ async function createTasksForBoard() {
 
   closeTaskOverlay();
   loadData();
-
-
 }
 
 /**
@@ -219,21 +215,21 @@ async function deleteTask() {
 /**
  * Edit a task in the board
  *
-*/
+ */
 
 async function editTask() {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
   const { overlayBoardContent, boardOverlay } = getBoardElements();
-  const boardOverlayTaskTitle = document.querySelector('.boardOverlayTaskTitle');
+  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
 
-  Object.keys(tasks).forEach(taskId => {
+  Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
 
     if (task.title === boardOverlayTaskTitle.textContent) {
       // Setze das Edit-Template
       overlayBoardContent.innerHTML = templateEditTask(task);
-      boardOverlay.classList.remove('hideOverlay');
+      boardOverlay.classList.remove("hideOverlay");
 
       // Warte, bis das neue DOM geladen wurde
       setTimeout(() => {
@@ -244,15 +240,15 @@ async function editTask() {
 }
 
 function highlightPriorityButton(priority) {
-  const priorityButtons = document.querySelectorAll('.priorityButtonOverlay button');
+  const priorityButtons = document.querySelectorAll(".priorityButtonOverlay button");
 
-  priorityButtons.forEach(button => {
+  priorityButtons.forEach((button) => {
     if (priority === "Medium" && button.id === "mediumButton") {
-      button.classList.add('button-medium');
+      button.classList.add("button-medium");
     } else if (priority === "Urgent" && button.id === "urgentButton") {
-      button.classList.add('button-urgent');
+      button.classList.add("button-urgent");
     } else if (priority === "Low" && button.id === "lowButton") {
-      button.classList.add('button-low');
+      button.classList.add("button-low");
     }
   });
 }
@@ -260,12 +256,10 @@ function highlightPriorityButton(priority) {
 function convertDateFormat(dateStr) {
   if (dateStr) {
     let parts = dateStr.split("-");
-    if (parts.length !== 3) return ""; 
-    return `${parts[0]}-${parts[1]}-${parts[2]}`; 
+    if (parts.length !== 3) return "";
+    return `${parts[0]}-${parts[1]}-${parts[2]}`;
   }
 }
-
-
 
 /**
  * Save the current Task into the global backandData

@@ -105,10 +105,10 @@ main {
 }
 
 .boardSection {
+  width: 244px;
+  height: 24px;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
 }
 
 .boardSection .sectionPlus {
@@ -127,6 +127,9 @@ main {
 }
 
 .boardButton {
+  width: 252px;
+  height: 48px;
+  border: 1px dotted lightgray;
   background-color: rgb(231, 231, 231);
   color: rgb(183, 183, 183);
   border: 1px dashed rgb(199, 199, 199);
@@ -134,6 +137,7 @@ main {
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
+  text-align: center;
 }
 
 .boardButton:hover {
@@ -256,4 +260,8 @@ main {
 #findTask::placeholder {
   font-size: 18px;
   font-weight: 400;
+}
+
+.tasksInnerContainer {
+  height: 100%;
 }

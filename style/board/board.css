@@ -23,11 +23,13 @@ main {
 }
 
 .boardInputContainer {
+  width: 312px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  padding: 5px;
+  padding: 8px 16px;
   border: 1px solid rgb(168, 168, 168);
 }
 
@@ -249,4 +251,9 @@ main {
 #boardAddTask {
   font-size: 20px;
   font-weight: 700;
+}
+
+#findTask::placeholder {
+  font-size: 18px;
+  font-weight: 400;
 }

@@ -27,8 +27,9 @@ main {
   font-size: 64px;
 }
 
-.summaryHeadline p {
-  font-size: 20px;
+.summaryHeadline > p {
+  font-weight: 400;
+  font-size: 26px;
   order: 3;
 }
 
@@ -150,7 +151,7 @@ main {
   gap: 10px;
 }
 
-.summaryDeadline p, 
+.summaryDeadline p,
 .summaryDeadline span {
   padding: 10px;
 }
@@ -165,8 +166,8 @@ main {
 }
 
 .summaryRightContainer h2 {
-  font-size: 32px;
-  font-weight: 400;
+  font-size: 46px;
+  font-weight: 500;
 }
 
 .userName {

@@ -1,5 +1,5 @@
 function addTaskHtmlTemplate() {
-    const template = `
+  const template = `
        <form id="taskFormOverlay">
            <h1>Add task</h1>
            <!-- Task Input Container -->
@@ -37,13 +37,13 @@ function addTaskHtmlTemplate() {
                        <p>Prio</p>
                        <div class="priorityButtonOverlay">
                            <button id="urgentButton" type="button" onclick="setPriority('urgent')"> Urgent
-                               <img src="/assets/img/Prio alta.png" alt="Urgent">
+                               <img src="/assets/img/prioHigh.png" alt="Urgent">
                            </button>
                            <button id="mediumButton" type="button" onclick="setPriority('medium')"> Medium
-                               <img src="/assets/img/Prio medium.png" alt="Medium">
+                               <img src="/assets/img/prioMedium.png" alt="Medium">
                            </button>
                            <button id="lowButton" type="button" onclick="setPriority('low')"> Low
-                               <img src="/assets/img/Prio baja.png" alt="Low">
+                               <img src="/assets/img/prioLow.png" alt="Low">
                            </button>
                        </div>
                    </div>
@@ -66,7 +66,7 @@ function addTaskHtmlTemplate() {
                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay" id="addTaskSubTasks">
                            <div class="iconWrapper iconWrapperOverlay">
                                <div class="addSubtask">
-                                   <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">
+                                   <img src="/assets/img/subtaskPlusIcon.png" onclick="addSubtask()">
                                </div>
                            </div>
                        </div>
@@ -94,11 +94,9 @@ function addTaskHtmlTemplate() {
         </form>
     `;
 
-    setTimeout(() => {
-        initTask(); 
-    }, 100);
+  setTimeout(() => {
+    initTask();
+  }, 100);
 
-    return template; 
-    
-
+  return template;
 }

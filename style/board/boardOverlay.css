@@ -1,294 +1,280 @@
+/* Overlay Grundstruktur */
 .addBoardOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden;
 }
 
 .hideOverlay {
-    display: none;
+  display: none;
 }
 
-.closeBoardOverlay {
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: transparent;
-    color: #2A3647;
-}
-
-.closeBoardOverlay:hover {
-    background-color: #eeeeee;
-    border-radius: 50%;
-}
-
+/* Overlay Container */
 .boardOverlayContainer {
-    position: relative;
-    width: 90%;
-    max-width: 500px;
-    height: 750px;
-    max-height: 750px;
-    background-color: #FFFFFF;
-    border-radius: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  height: 750px;
+  max-height: 750px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .boardOverlayContent {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 32px;
-    max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  max-height: 700px;
 }
 
+/* Header */
 .boardOverlayHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
+.closeBoardOverlay {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #2a3647;
+}
+
+.closeBoardOverlay:hover {
+  background-color: #eeeeee;
+}
+
+/* Task Informationen */
 .boardOverlayTaskCategory {
-    font-size: 16px;
-    display: flex; 
-    align-items: flex-start;
-    color: #FFFFFF;
-    background-color: #29abe2;
-    padding: 5px 15px 5px 15px;
-    border-radius: 10px;
-    width: fit-content;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-start;
+  color: #ffffff;
+  background-color: #29abe2;
+  padding: 5px 15px;
+  border-radius: 10px;
+  width: fit-content;
 }
 
 .boardOverlayTaskTitle {
-    font-size: 48px;
-    font-weight: bold;
-    text-align: left;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: left;
 }
 
-/* .boardOverlayTaskDescription {
-  
-} */
-
 .boardOverlayTaskInfo {
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 }
 
 .boardOverlayTaskDate,
 .boardOverlayTaskPriority {
-    display: flex;
-    align-items: center; 
-    gap: 8px; 
-}
-
-.label {
-    min-width: 80px;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .boardOverlayTaskPriority img {
-    object-fit: contain;
-    width: 20px;
-    height: 20px;
+  object-fit: contain;
+  width: 20px;
+  height: 20px;
 }
 
+.label {
+  min-width: 80px;
+  text-align: left;
+}
+
+/* Benutzerzuweisung */
 .boardOverlayAssignedTo ul {
-    list-style: none;
-    padding: 10px;
-    margin-left: 20px;
+  list-style: none;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 .boardOverlayAssignedTo li {
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
 }
 
 .boardOverlayUser {
-    background-color: rgb(183, 183, 183);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(183, 183, 183);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .boardOverlayUsername {
-    font-size: 16px;
+  font-size: 16px;
 }
 
+/* Subtasks */
 .boardOverlaySubtasks {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .checkboxList {
-    list-style: none;
-    padding: 0;
-    margin-left: 30px;
+  list-style: none;
+  padding: 0;
+  margin-left: 30px;
 }
 
 .checkboxList li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
+/* Checkbox Styling */
 .checkboxList label {
-    display: block;
-    width: 24px;
-    height: 24px;
-    background: url("../../assets/icon/login/unchecked.svg");
-    background-size: cover;
-    cursor: pointer;
-    transition-duration: 0.2s;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../assets/icon/login/unchecked.svg");
+  background-size: cover;
+  cursor: pointer;
+  transition-duration: 0.2s;
 }
 
 .checkboxList label:hover {
-    background-image: url("../../assets/icon/login/hover_unchecked.svg");
-    background-size: cover;
+  background-image: url("../../assets/icon/login/hover_unchecked.svg");
 }
 
 .checkboxList input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 .checkboxList input[type="checkbox"]:checked + label {
-    background-image: url("../../assets/icon/login/checked.svg");
-    background-size: cover;
+  background-image: url("../../assets/icon/login/checked.svg");
 }
 
 .checkboxList input[type="checkbox"]:checked + label:hover {
-    background-image: url("../../assets/icon/login/hover_checked.svg");
-    background-size: cover;
+  background-image: url("../../assets/icon/login/hover_checked.svg");
 }
 
+/* Action Buttons */
 .boardOverlayActionButtons {
-    position: absolute;
-    bottom: 20px;  
-    right: 20px;    
-    display: flex;
-    gap: 10px;
-    width: 100%; 
-    justify-content: flex-end;
-}
-
-.boardOverlayActionButtons {
-    display: flex;
-    gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 .boardOverlayActionButtonsDelete,
 .boardOverlayActionButtonsEdit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .boardOverlayActionButtonsDelete svg,
 .boardOverlayActionButtonsEdit svg {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .overlaySeparator {
-    color: #888;
+  color: #888;
 }
 
-
 /* Edit Overlay */
-
 .editBoardHeader {
-    justify-content: flex-end;
-    margin-bottom: 20px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .editTaskInputContainer {
-    display: flex;
-    flex-direction: column;
-    max-height: 60vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.editTaskInputLeft {
-    align-items: baseline;
-}
-
+/* Scrollbar für Edit Task Input */
 .editTaskInputContainer::-webkit-scrollbar {
-    width: 6px;
-}
-  
-.editTaskInputContainer::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-  
-.editTaskInputContainer::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-  
-.editTaskInputContainer::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  width: 6px;
 }
 
-.editTaskInputOverlay p {
-    margin-top: 0px !important;
+.editTaskInputContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.editTaskInputContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.editTaskInputContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .editTaskInputOverlay {
-    margin-right: 50px ;
+  margin-right: 50px;
 }
 
+/* Priority Buttons */
 .editPriorityButtonOverlay {
-    justify-content: flex-start !important;
+  justify-content: flex-start !important;
 }
 
-.editPriorityButtonOverlay button{
-    padding-left: 10px !important;
-    padding-right: 10px !important;
+.editPriorityButtonOverlay button {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 
 .editPriorityImages {
-    width: 15px !important;
-    height: 15px !important;
-    object-fit: contain;
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain;
 }
 
+/* Prioritätsfarben */
 .button-medium {
-    background-color: #ffa800 !important;
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .button-urgent {
-    background-color: #ff3d00 !important;
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  .button-low {
-    background-color: #7ae229 !important;
-    color: #fff;
-    font-weight: 600;
-  }
+  background-color: #ffa800 !important;
+  color: #fff;
+  font-weight: 600;
+}
+
+.button-urgent {
+  background-color: #ff3d00 !important;
+  color: #fff;
+  font-weight: 600;
+}
+
+.button-low {
+  background-color: #7ae229 !important;
+  color: #fff;
+  font-weight: 600;
+}

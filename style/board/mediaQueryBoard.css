@@ -1,28 +1,25 @@
+/* Anpassungen für Bildschirme bis 1350px */
 @media screen and (max-width: 1350px) {
-    .boardSectionsContainer {
-        flex-direction: column;
-        height: 100vh;
-    }
+  .boardSectionsContainer {
+    flex-direction: column;
+    height: 100vh;
+  }
 
-    .editTaskInputOverlay {
-        margin-right: 0px;
-      }
+  .editTaskInputOverlay {
+    margin-right: 0px;
+  }
 
-    .editTaskInput {
-        width: 100% !important;
-    }
-
-    .editDropDown {
-        max-width: 100% !important;
-        width: 100% !important;
-    }
-    
+  .editTaskInput,
+  .editDropDown {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
+/* Anpassungen für Bildschirme bis 950px */
 @media screen and (max-width: 950px) {
   .boardInputContainer {
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin: 20px 0;
   }
 
   .btnDark {
@@ -36,46 +33,48 @@
   }
 }
 
+/* Anpassungen für Bildschirme bis 500px */
 @media screen and (max-width: 500px) {
   main {
     padding: 32px 16px 16px 16px;
   }
 
-    .boardOverlayTaskTitle {
-        font-size: 38px !important;
-    }
+  .boardOverlayTaskTitle {
+    font-size: 38px !important;
+  }
 
-    .editPriorityButtonOverlay {
-        gap: 5px !important;
-    }
+  .editPriorityButtonOverlay {
+    gap: 5px !important;
+  }
 }
 
+/* Anpassungen für Bildschirme bis 450px */
 @media screen and (max-width: 450px) {
-    .editPriorityButtonOverlay button {
-        font-size: 12px !important;
-        padding: 5px !important;
-    }
+  .editPriorityButtonOverlay button {
+    font-size: 12px !important;
+    padding: 5px !important;
+  }
 }
 
+/* Anpassungen für Bildschirme bis 400px */
 @media screen and (max-width: 400px) {
-
-    .boardOverlayTaskTitle {
-        font-size: 32px !important;
-    }
+  .boardOverlayTaskTitle {
+    font-size: 32px !important;
+  }
 }
 
-@media screen and (max-width: 395px){
-    .editTaskInputOverlay {
-        margin-right: 20px !important;
-    }
+/* Zusätzliche Anpassungen für sehr kleine Bildschirme (bis 395px) */
+@media screen and (max-width: 395px) {
+  .editTaskInputOverlay {
+    margin-right: 20px !important;
+  }
 
-    .editBoardHeader {
-        padding-right: 10px !important;
-    }
+  .editBoardHeader {
+    padding-right: 10px !important;
+  }
 }
 
-/* Height */
-
+/* Anpassungen für geringe Höhen (bis 700px) */
 @media (max-height: 700px) {
   .boardOverlayContainer {
     height: 550px !important;

@@ -251,5 +251,16 @@
         <h2>Enjoy using Join!</h2>
       </div>
     </div>
+    <!-- JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const userId = localStorage.getItem("userId");
+        const isGuest = localStorage.getItem("guestMode");
+
+        if (!userId && !isGuest) {
+        window.location.href = "./login.html";
+        }
+        });
+    </script>
   </body>
 </html>

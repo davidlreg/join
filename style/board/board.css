@@ -152,13 +152,13 @@ main {
   width: 100%;
   max-width: 252px;
   background-color: #ffffff;
-  border-radius: 30px;
+  border-radius: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 15px;
+  gap: 10px;
 }
 
 .boardTasksBigger {
@@ -174,21 +174,23 @@ main {
   font-size: 16px;
   color: #ffffff;
   background-color: #29abe2;
-  padding: 5px;
+  padding: 4px 16px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .boardTaskTitle {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
   text-align: left;
   margin-bottom: 5px;
+  color: #2a3647;
 }
 
 .boardTaskDescription {
   font-size: 16px;
-  color: rgb(183, 183, 183);
+  font-weight: 400;
+  color: #a8a8a8;
   text-align: left;
 }
 

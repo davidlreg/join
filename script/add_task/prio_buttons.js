@@ -35,11 +35,11 @@ function resetButtonsOverlay() {
     const img = button.querySelector("img");
 
     if (button.id === "urgentButton") {
-      img.src = "/assets/img/Prio alta.png";
+      img.src = "/assets/img/prioHigh.png";
     } else if (button.id === "mediumButton") {
-      img.src = "/assets/img/Prio medium.png";
+      img.src = "/assets/img/prioMedium.png";
     } else if (button.id === "lowButton") {
-      img.src = "/assets/img/Prio baja.png";
+      img.src = "/assets/img/prioLow.png";
     }
   });
 }

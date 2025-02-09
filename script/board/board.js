@@ -1,7 +1,9 @@
 let backendData = {};
 
 async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let response = await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json"
+  );
   let responseJSON = await response.json();
   backendData = responseJSON;
 }
@@ -28,13 +30,20 @@ async function loadTasksToBoard() {
 
   let tasks = backendData.Data.Tasks;
 
-  const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
+  const {
+    boardSectionTasksToDo,
+    boardSectionTasksInProgress,
+    boardSectionTasksAwaiting,
+    boardSectionTasksDone,
+  } = getBoardElements();
 
   let toDoTemplateRef = document.getElementById("boardNoTasksToDo");
   toDoTemplateRef.innerHTML = "";
   let inProgressTemplateRef = document.getElementById("boardNoTasksInProgress");
   inProgressTemplateRef.innerHTML = "";
-  let awaitFeedbackTemplateRef = document.getElementById("boardNoTasksAwaiting");
+  let awaitFeedbackTemplateRef = document.getElementById(
+    "boardNoTasksAwaiting"
+  );
   awaitFeedbackTemplateRef.innerHTML = "";
   let doneTemplateRef = document.getElementById("boardNoTasksDone");
   doneTemplateRef.innerHTML = "";
@@ -67,24 +76,21 @@ function getBoardElements() {
     boardOverlay: document.getElementById("addBoardOverlay"),
     overlayBoardContent: document.getElementById("overlayBoardContent"),
     boardSectionTasksToDo: document.getElementById("boardNoTasksToDo"),
-    boardSectionTasksInProgress: document.getElementById("boardNoTasksInProgress"),
+    boardSectionTasksInProgress: document.getElementById(
+      "boardNoTasksInProgress"
+    ),
     boardSectionTasksAwaiting: document.getElementById("boardNoTasksAwaiting"),
     boardSectionTasksDone: document.getElementById("boardNoTasksDone"),
   };
 }
 
 async function addBoardOverlay(taskId) {
-  console.log("Board Task angeklickt:", taskId);
   await fetchDataJSON();
   const { boardOverlay, overlayBoardContent } = getBoardElements();
   let tasks = backendData.Data.Tasks;
 
-  console.log("Alle Tasks:", tasks);
-  console.log("Gesuchte Task:", tasks[taskId]);
-
   let task = tasks[taskId];
   if (task) {
-    console.log("Task erfolgreich gefunden:", task);
     let addBoardHtml = templateBoardOverlay(task);
     overlayBoardContent.innerHTML = addBoardHtml;
     boardOverlay.classList.remove("hideOverlay");
@@ -125,9 +131,9 @@ function setRightBackgroundColorForCategory() {
     let category = categoryElement.textContent.trim();
 
     if (category === "User Story") {
-      categoryElement.style.backgroundColor = "#0038ff";
+      categoryElement.style.backgroundColor = "#0038FF";
     } else if (category === "Technical Task") {
-      categoryElement.style.backgroundColor = "#1fd7c1";
+      categoryElement.style.backgroundColor = "#20D7C2";
     }
   });
 }
@@ -146,7 +152,9 @@ function getAddTaskElements() {
     addTaskTitle: document.getElementById("addTaskTitle"),
     addTaskDescription: document.getElementById("addTaskDescription"),
     addTaskDate: document.getElementById("addTaskDate"),
-    addTaskSubTasks: document.querySelectorAll("#subtaskList li span:first-child"),
+    addTaskSubTasks: document.querySelectorAll(
+      "#subtaskList li span:first-child"
+    ),
     addTaskCategory: document.getElementById("selectTask"),
     assignedContacts: getSelectedContacts(),
   };
@@ -167,7 +175,14 @@ function getSelectedContacts() {
  * Create a new task with the add task forumlar
  */
 async function createTasksForBoard() {
-  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
+  const {
+    addTaskTitle,
+    addTaskDescription,
+    addTaskDate,
+    addTaskCategory,
+    addTaskSubTasks,
+    assignedContacts,
+  } = getAddTaskElements();
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
@@ -180,7 +195,9 @@ async function createTasksForBoard() {
     category: addTaskCategory.value,
     description: addTaskDescription.value,
     dueDate: addTaskDate.value,
-    priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
+    priority:
+      String(selectedPriority).charAt(0).toUpperCase() +
+      String(selectedPriority).slice(1),
     status: selectedBoardSection || "To do",
     subtask: subtasksArray,
   };
@@ -199,7 +216,9 @@ async function createTasksForBoard() {
 async function deleteTask() {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
-  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+  const boardOverlayTaskTitle = document.querySelector(
+    ".boardOverlayTaskTitle"
+  );
   closeBoardOverlay();
   Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
@@ -221,7 +240,9 @@ async function editTask() {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
   const { overlayBoardContent, boardOverlay } = getBoardElements();
-  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+  const boardOverlayTaskTitle = document.querySelector(
+    ".boardOverlayTaskTitle"
+  );
 
   Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
@@ -240,7 +261,9 @@ async function editTask() {
 }
 
 function highlightPriorityButton(priority) {
-  const priorityButtons = document.querySelectorAll(".priorityButtonOverlay button");
+  const priorityButtons = document.querySelectorAll(
+    ".priorityButtonOverlay button"
+  );
 
   priorityButtons.forEach((button) => {
     if (priority === "Medium" && button.id === "mediumButton") {
@@ -288,13 +311,16 @@ async function pushTaskToBackendData(task) {
  * Push the global backendData into the Firebase
  */
 async function syncBackendDataWithFirebase() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(backendData),
-  });
+  let response = await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(backendData),
+    }
+  );
 }
 
 /////////////////////////
@@ -317,8 +343,12 @@ function filterTasks() {
   let found = false;
 
   tasks.forEach((task) => {
-    const title = task.querySelector(".boardTaskTitle").textContent.toLowerCase();
-    const description = task.querySelector(".boardTaskDescription").textContent.toLowerCase();
+    const title = task
+      .querySelector(".boardTaskTitle")
+      .textContent.toLowerCase();
+    const description = task
+      .querySelector(".boardTaskDescription")
+      .textContent.toLowerCase();
 
     if (title.includes(searchTerm) || description.includes(searchTerm)) {
       task.style.display = "block";
@@ -351,5 +381,7 @@ const searchInput = document.getElementById("findTask");
 if (searchInput) {
   searchInput.addEventListener("input", filterTasks);
 } else {
-  console.log('Suchfeld "findTask" nicht gefunden, kein EventListener hinzugefügt.');
+  console.log(
+    'Suchfeld "findTask" nicht gefunden, kein EventListener hinzugefügt.'
+  );
 }

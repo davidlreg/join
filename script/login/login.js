@@ -193,7 +193,7 @@ function checkUserCredentials(email, password) {
         return;
       }
     });
-    if (!userFound) displayError("There is no account with this email.");
+    if (!userFound) displayError("Invalid credentials.");
   });
 }
 
@@ -213,7 +213,7 @@ function processUserSnapshot(userSnapshot, email, password) {
       localStorage.setItem("userId", userId);
       window.location.href = "./summary.html?active=summary&user=loggedIn";
     } else {
-      displayError("Your password is incorrect. Please try again.");
+      displayError("Invalid credentials.");
     }
     return true;
   }

@@ -159,6 +159,15 @@ function toggleVisibility() {
 }
 
 /**
+ * Enables guest mode by storing the guest state in local storage 
+ * and redirecting the user to the summary page.
+ */
+function guestLogIn() {
+  localStorage.setItem("guestMode", "true");
+  window.location.href = "./summary.html?active=summary&user=guest";
+}
+
+/**
  * Logs into the user's account by retrieving input values and verifying credentials.
  */
 function logIntoAccount() {

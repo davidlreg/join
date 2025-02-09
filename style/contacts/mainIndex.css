@@ -268,7 +268,7 @@ body {
 }
 
 /* Media Queries */
-@media (max-width: 1350px) {
+@media (max-width: 1400px) {
   body {
     flex-direction: column-reverse;
   }

@@ -9,7 +9,7 @@ body {
 }
 
 :target {
-  scroll-margin-top: 96px; 
+  scroll-margin-top: 96px;
 }
 
 main {
@@ -21,7 +21,6 @@ main {
 }
 
 main {
-
   margin: 0 auto;
   padding-bottom: 32px;
 }
@@ -59,12 +58,12 @@ main ul li {
 @media (max-width: 768px) {
   body {
     flex-direction: column;
-    overflow-y: auto; 
+    overflow-y: auto;
   }
 
   main {
-    padding: 16px; 
-    font-size: 0.95rem; 
+    padding: 16px;
+    font-size: 0.95rem;
   }
 
   main h1 {
@@ -95,11 +94,11 @@ main ul li {
 
   main {
     padding: 16px;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 
   main h1 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     margin-bottom: 12px;
   }
 
@@ -133,7 +132,7 @@ main ul li {
 @media (max-width: 319px) {
   main {
     padding: 8px;
-    font-size: 0.85rem; 
+    font-size: 0.85rem;
   }
 
   main h1 {
@@ -150,7 +149,8 @@ main ul li {
     font-size: 0.95rem;
   }
 
-  main p, main ul li {
+  main p,
+  main ul li {
     font-size: 0.85rem;
   }
 
@@ -158,5 +158,3 @@ main ul li {
     margin-left: 8px;
   }
 }
-
-

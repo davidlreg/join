@@ -1,314 +1,330 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.logoContainer, .logo, .signUp, .footer, .animationLogo, .logInForm, .signUpForm, .arrowBack {
-    position: absolute;
+.logoContainer,
+.logo,
+.signUp,
+.footer,
+.animationLogo,
+.logInForm,
+.signUpForm,
+.arrowBack {
+  position: absolute;
 }
 
-.logoContainer, .logo, .logoMobile, .animationLogo {
-    background-color: transparent;
+.logoContainer,
+.logo,
+.logoMobile,
+.animationLogo {
+  background-color: transparent;
 }
 
 .logoContainer {
-    top: 0;
-    left: 0;
+  top: 0;
+  left: 0;
 }
 
 .animationBackground {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(246, 247, 248);
-    animation: fadeOut 0.5s ease-out forwards;
-    animation-delay: 0.5s;
-    z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(246, 247, 248);
+  animation: fadeOut 0.5s ease-out forwards;
+  animation-delay: 0.5s;
+  z-index: 1;
 }
 
 .logo {
-    top: 50px;
-    left: 50px;
-    height: 80px;
+  top: 50px;
+  left: 50px;
+  height: 80px;
 }
 
 .logoMobile {
-    opacity: 0;
+  opacity: 0;
 }
 
 .animationLogo {
-    width: auto;
-    height: 250px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: flyToCorner 0.5s ease-out forwards;
-    animation-delay: 0.5s;
+  width: auto;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: flyToCorner 0.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 @keyframes flyToCorner {
-    0% {
-        transform: translate(-50%, -50%);
-        height: 250px;
-        top: 50%;
-        left: 50%;
-    }
-    100% {
-        transform: translate(0, 0);
-        height: 80px;
-        top: 50px;
-        left: 50px;
-    }
+  0% {
+    transform: translate(-50%, -50%);
+    height: 250px;
+    top: 50%;
+    left: 50%;
+  }
+  100% {
+    transform: translate(0, 0);
+    height: 80px;
+    top: 50px;
+    left: 50px;
+  }
 }
 
 @keyframes fadeOut {
-    0% {
-        background-color: rgba(246, 247, 248);
-    }
-    100% {
-        background: none;
-    }
+  0% {
+    background-color: rgba(246, 247, 248);
+  }
+  100% {
+    background: none;
+  }
 }
 
 .signUp {
-    top: 50px;
-    right: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: 280px;
-    gap: 35px;
+  top: 50px;
+  right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 280px;
+  gap: 35px;
 }
 
 .logInForm {
-    width: 500px;
-    height: 350px;
+  width: 500px;
+  height: 350px;
 }
 
 .signUpForm {
-    width: 450px;
-    height: 450px;
+  width: 450px;
+  height: 450px;
 }
 
-.logInForm, .signUpForm {
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
+.logInForm,
+.signUpForm {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
 }
 
-.logInForm h1, .signUpForm h1 {
-    background-color: white;
-    margin-bottom: 20px;
-    font-size: 42px;
-    color: black;
+.logInForm h1,
+.signUpForm h1 {
+  background-color: white;
+  margin-bottom: 20px;
+  font-size: 42px;
+  color: black;
 }
 
-.logInForm h1::after, .signUpForm h1::after {
-    content: "";
-    display: block;
-    margin: 10px auto 0;
-    width: 100px;
-    height: 2px;
-    background-color: rgba(42, 170, 226);
+.logInForm h1::after,
+.signUpForm h1::after {
+  content: "";
+  display: block;
+  margin: 10px auto 0;
+  width: 100px;
+  height: 2px;
+  background-color: rgba(42, 170, 226);
 }
 
-.arrowBack, .arrowBack img {
-    background-color: white;
-    padding: 5px;
-    height: 25px;
+.arrowBack,
+.arrowBack img {
+  background-color: white;
+  padding: 5px;
+  height: 25px;
 }
 
 .arrowBack {
-    top: 40px;
-    left: 30px;
+  top: 40px;
+  left: 30px;
 }
 
 .arrowBack img:hover {
-    cursor: pointer;
-    background-color: rgb(222, 222, 222);
-    border-radius: 50px;
-    transition-duration: 0.2s;
+  cursor: pointer;
+  background-color: rgb(222, 222, 222);
+  border-radius: 50px;
+  transition-duration: 0.2s;
 }
 
 .inputContainer {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .inputContainer input {
-    cursor: pointer;
-    background-color: white;
-    width: 280px;
-    border: 1px solid rgba(209, 209, 209);
-    border-radius: 8px;
-    font-size: 14px;
-    padding: 8px;
+  cursor: pointer;
+  background-color: white;
+  width: 280px;
+  border: 1px solid rgba(209, 209, 209);
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 8px;
 }
 
 .inputContainer input:focus {
-    outline: none;
-    border-color: rgba(42, 170, 226);
+  outline: none;
+  border-color: rgba(42, 170, 226);
 }
 
-.inputEmail, .inputPassword, .inputName {
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 20px;
+.inputEmail,
+.inputPassword,
+.inputName {
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
 }
 
 .inputPasswordWrapper {
-    position: relative;
+  position: relative;
 }
 
 .passwordToggle {
-    background: transparent;
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  background: transparent;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .errorMessage {
-    color: red;
-    font-size: 10px;
-    display: none;
+  color: red;
+  font-size: 10px;
+  display: none;
 }
 
 .inputEmail {
-    background-image: url(../../assets/icon/login/mail.svg);
+  background-image: url(../../assets/icon/login/mail.svg);
 }
 
 .inputPassword {
-    background-image: url(../../assets/icon/login/lock.svg);
+  background-image: url(../../assets/icon/login/lock.svg);
 }
 
 .inputName {
-    background-image: url(../../assets/icon/login/person.svg);
+  background-image: url(../../assets/icon/login/person.svg);
 }
 
 .checkbox {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    gap: 8px;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  gap: 8px;
+  margin-top: 20px;
 }
 
 .customBox {
-    display: block;
-    width: 24px;
-    height: 24px;
-    background: url('../../assets/icon/login/unchecked.svg');
-    background-size: cover;
-    cursor: pointer;
-    transition-duration: 0.2s;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../assets/icon/login/unchecked.svg");
+  background-size: cover;
+  cursor: pointer;
+  transition-duration: 0.2s;
 }
 
 .customBox:hover {
-    background-image: url('../../assets/icon/login/hover_unchecked.svg');
-    background-size: cover;
+  background-image: url("../../assets/icon/login/hover_unchecked.svg");
+  background-size: cover;
 }
 
 .box:checked + label {
-    background: url('../../assets/icon/login/checked.svg');
-    background-size: cover;
+  background: url("../../assets/icon/login/checked.svg");
+  background-size: cover;
 }
 
 .box:checked + label:hover {
-    background-image: url('../../assets/icon/login/hover_checked.svg');
-    background-size: cover;
+  background-image: url("../../assets/icon/login/hover_checked.svg");
+  background-size: cover;
 }
 
-
-span, span a {
-    background-color: white;
-    font-size: 14px;
+span,
+span a {
+  background-color: white;
+  font-size: 14px;
 }
 
 span {
-    color: rgba(209, 209, 209);
+  color: rgba(209, 209, 209);
 }
 
 span a {
-    color: rgba(42, 170, 226);
+  color: rgba(42, 170, 226);
 }
 
 span a:hover {
-    text-decoration: underline;
-    font-weight: bolder;
-    transition-duration: 0.2s;
+  text-decoration: underline;
+  font-weight: bolder;
+  transition-duration: 0.2s;
 }
 
 .buttons {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
 }
 
 .footer {
-    bottom: 40px;
-    font-size: 12px;
-    color: rgba(180, 180, 180);
-    gap: 20px;
+  bottom: 40px;
+  font-size: 12px;
+  color: rgba(180, 180, 180);
+  gap: 20px;
 }
 
 .footer a {
-    color: rgba(180, 180, 180);
-    font-size: 12px;
-    margin: 0 5px;
+  color: rgba(180, 180, 180);
+  font-size: 12px;
+  margin: 0 5px;
 }
 
 .footer a:hover {
-    color: rgba(42, 170, 226);
-    font-weight: bolder;
-    transition-duration: 0.2s;
+  color: rgba(42, 170, 226);
+  font-weight: bolder;
+  transition-duration: 0.2s;
 }
 
 .overlay {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
 .overlayMessage {
-    width: fit-content;
-    color: white;
-    font-weight: lighter;
-    background-color: rgba(42, 54, 70);
-    border-radius: 15px;
-    padding: 20px 20px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: flyIn 0.2s ease-out forwards;
+  width: fit-content;
+  color: white;
+  font-weight: lighter;
+  background-color: rgba(42, 54, 70);
+  border-radius: 15px;
+  padding: 20px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flyIn 0.2s ease-out forwards;
 }
 
 @keyframes flyIn {
-    from {
-        bottom: 0;
-    }
-    to {
-        bottom: 50%;
-    }
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 50%;
+  }
 }

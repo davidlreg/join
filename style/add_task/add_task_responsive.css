@@ -1,395 +1,389 @@
-@media (max-width: 1350px) {
-    .taskInputContainer {
-        flex-direction: column;
-        gap: 0;
-    }
+@media (max-width: 1400px) {
+  .taskInputContainer {
+    flex-direction: column;
+    gap: 0;
+  }
 
-    .taskInputLeft,
-    .taskInputRight {
-        width: 100%;
-    }
+  .taskInputLeft,
+  .taskInputRight {
+    width: 100%;
+  }
 
-    .taskInput p {
-        font-size: 24px;
-    }
+  .taskInput p {
+    font-size: 24px;
+  }
 
-    .addTaskInput {
-        padding: 16px 22px;
-        font-size: 18px;
-    }
+  .addTaskInput {
+    padding: 16px 22px;
+    font-size: 18px;
+  }
 
-    .addDescriptionInput {
-        padding: 12px 22px 2px 20px;
-        font-size: 18px;
-    }
+  .addDescriptionInput {
+    padding: 12px 22px 2px 20px;
+    font-size: 18px;
+  }
 
-    .dropdown {
-        max-width: 100%;
-    }
+  .dropdown {
+    max-width: 100%;
+  }
 
-    .selectContainer {
-        font-size: 18px;
-    }
+  .selectContainer {
+    font-size: 18px;
+  }
 
-    .priorityButton {
-        margin-right: 35px;
-    }
+  .priorityButton {
+    margin-right: 35px;
+  }
 
-    .priorityButton button {
-        width: calc(30% - 10px);
-        height: 60px;
-        font-size: 24px;
-    }
+  .priorityButton button {
+    width: calc(30% - 10px);
+    height: 60px;
+    font-size: 24px;
+  }
 
-    .subtaskWrapper {
-        width: 100%;
-    }
+  .subtaskWrapper {
+    width: 100%;
+  }
 
-    .iconWrapper {
-        right: 110px;
-        bottom: 10px;
-    }
+  .iconWrapper {
+    right: 110px;
+    bottom: 10px;
+  }
 
-    .requiredAction {
-        margin-top: 40px;
-        display: flex;
-        align-items: center;
-        gap: calc(10vw + 30px);
-        margin-bottom: 100px;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-    }
+  .requiredAction {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: calc(10vw + 30px);
+    margin-bottom: 100px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 
-    .requiredText {
-        flex-shrink: 1;
-        white-space: nowrap;
-    }
+  .requiredText {
+    flex-shrink: 1;
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 1000px) {
-    .iconWrapper {
-        right: 90px;
-        bottom: 10px;
-    }
+  .iconWrapper {
+    right: 90px;
+    bottom: 10px;
+  }
 }
 
 @media (max-width: 800px) {
-    .iconWrapper {
-        right: 70px;
-        bottom: 10px;
-    }
+  .iconWrapper {
+    right: 70px;
+    bottom: 10px;
+  }
 }
 
 @media (max-width: 650px) {
-    form#taskForm {
-        padding: 60px 20px 0 15px;
-    }
+  form#taskForm {
+    padding: 60px 20px 0 15px;
+  }
 
-    .taskInput p {
-        font-size: 22px;
-    }
+  .taskInput p {
+    font-size: 22px;
+  }
 
-    .priorityButton {
-        gap: 12px;
-    }
+  .priorityButton {
+    gap: 12px;
+  }
 
-    .iconWrapper {
-        right: 65px;
-        bottom: 10px;
-    }
+  .iconWrapper {
+    right: 65px;
+    bottom: 10px;
+  }
 
-    .priorityButton button {
-        width: 120px;
-        font-size: 18px;
-        height: 50px;
-        padding-right: 12px;
-        padding-left: 12px;
-    }
+  .priorityButton button {
+    width: 120px;
+    font-size: 18px;
+    height: 50px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 
-    .requiredAction {
-        display: block;
-    }
+  .requiredAction {
+    display: block;
+  }
 
-    .requiredText {
-        display: none;
-    }
+  .requiredText {
+    display: none;
+  }
 }
 
 @media (max-width: 395px) {
-    .taskInput p {
-        font-size: 20px;
-    }
+  .taskInput p {
+    font-size: 20px;
+  }
 
-    .addDescriptionInput {
-        padding: 8px 14px 2px 14px;
-        font-size: 16px;
-    }
+  .addDescriptionInput {
+    padding: 8px 14px 2px 14px;
+    font-size: 16px;
+  }
 
-    .addTaskInput {
-        padding: 10px 14px;
-        font-size: 16px;
-    }
+  .addTaskInput {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
 
-    .dropdown {
-        max-width: 89%;
-    }
+  .dropdown {
+    max-width: 89%;
+  }
 
-    .selectContainer {
-        font-size: 15px;
-    }
+  .selectContainer {
+    font-size: 15px;
+  }
 
-    .iconWrapper {
-        right: 40px;
-        bottom: 5px;
-    }
+  .iconWrapper {
+    right: 40px;
+    bottom: 5px;
+  }
 
-    .priorityButton button {
-        width: 105px;
-        font-size: 16px;
-        height: 45px;
-    }
+  .priorityButton button {
+    width: 105px;
+    font-size: 16px;
+    height: 45px;
+  }
 }
 
 @media (max-width: 360px) {
-    .priorityButton button {
-        width: 90px;
-        gap: 4px;
-        height: 40px;
-    }
+  .priorityButton button {
+    width: 90px;
+    gap: 4px;
+    height: 40px;
+  }
 
-    .createButton,
-    .clearButton {
-        font-size: 18px;
-    }
+  .createButton,
+  .clearButton {
+    font-size: 18px;
+  }
 }
 
-
 /*Overlay*/
-@media (max-width:1350px) {
-    form#taskFormOverlay {
-        width: 100%;
-    }
+@media (max-width: 1350px) {
+  form#taskFormOverlay {
+    width: 100%;
+  }
 
-    .taskInputContainerOverlay {
-        max-height: 35vh;
-        overflow-y: auto;
-        padding-right: 10px;
-        box-sizing: border-box;
-    }
+  .taskInputContainerOverlay {
+    max-height: 35vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
 
-    .addDescriptionInputOverlay {
-        font-size: 18px;
-    }
+  .addDescriptionInputOverlay {
+    font-size: 18px;
+  }
 
-    .priorityButtonOverlay {
-        margin-left: 6px;
-    }
+  .priorityButtonOverlay {
+    margin-left: 6px;
+  }
 
-    .iconWrapperOverlay {
-        right: 90px;
-        bottom: 10px;
-    }
-
+  .iconWrapperOverlay {
+    right: 90px;
+    bottom: 10px;
+  }
 }
 
 @media (max-width: 1024px) {
-    .taskInputContainerOverlay{
-        max-height: 33vh;
-    }
+  .taskInputContainerOverlay {
+    max-height: 33vh;
+  }
 }
 
-@media (max-width:1015px) {
-    .overlayTaskContent {
-        width: 800px;
-        max-width: 800px;
-    }
+@media (max-width: 1015px) {
+  .overlayTaskContent {
+    width: 800px;
+    max-width: 800px;
+  }
 
-    .iconWrapperOverlay {
-        right: 75px;
-    }
+  .iconWrapperOverlay {
+    right: 75px;
+  }
 
-    .requiredActionOverlay {
-        gap: 210px;
-    }
+  .requiredActionOverlay {
+    gap: 210px;
+  }
 }
 
-@media (max-width:810px) {
-    .overlayTaskContent {
-        width: 600px;
-        max-width: 600px;
-    }
+@media (max-width: 810px) {
+  .overlayTaskContent {
+    width: 600px;
+    max-width: 600px;
+  }
 
-    .iconWrapperOverlay {
-        right: 55px;
-    }
+  .iconWrapperOverlay {
+    right: 55px;
+  }
 
-    .requiredActionOverlay {
-        gap: 55px;
-    }
+  .requiredActionOverlay {
+    gap: 55px;
+  }
 }
 
 @media (max-width: 767px) {
-    .taskInputContainerOverlay{
-        max-height: 47vh;
-    }
+  .taskInputContainerOverlay {
+    max-height: 47vh;
+  }
 }
 
-@media (max-width:650px) {
-    .overlayTaskContent {
-        width: 530px;
-        max-width: 530px;
-    }
+@media (max-width: 650px) {
+  .overlayTaskContent {
+    width: 530px;
+    max-width: 530px;
+  }
 
-    .iconWrapperOverlay {
-        right: 50px;
-    }
+  .iconWrapperOverlay {
+    right: 50px;
+  }
 
-    .requiredActionOverlay {
-        display: block;
-        margin-right: 45px;
-    }
+  .requiredActionOverlay {
+    display: block;
+    margin-right: 45px;
+  }
 }
 
-@media (max-width:545px) {
-    form#taskFormOverlay {
-        padding: 40px;
-    }
+@media (max-width: 545px) {
+  form#taskFormOverlay {
+    padding: 40px;
+  }
 
-    .overlayTaskContent {
-        width: 480px;
-        max-width: 480px;
-    }
+  .overlayTaskContent {
+    width: 480px;
+    max-width: 480px;
+  }
 
-    .taskInputContainerOverlay {
-        width: 46vh;
-        padding-right: 35px;
-    }
+  .taskInputContainerOverlay {
+    width: 46vh;
+    padding-right: 35px;
+  }
 
-    .priorityButtonOverlay {
-        justify-content: space-between;
-    }
+  .priorityButtonOverlay {
+    justify-content: space-between;
+  }
 
-    .priorityButtonOverlay button {
-        padding: 10px;
-        gap: 8px;
-    }
-
+  .priorityButtonOverlay button {
+    padding: 10px;
+    gap: 8px;
+  }
 }
 
-@media (max-width:490px) {
-    .overlayTaskContent {
-        width: 420px;
-        max-width: 420px;
-    }
+@media (max-width: 490px) {
+  .overlayTaskContent {
+    width: 420px;
+    max-width: 420px;
+  }
 
-    .taskInputContainerOverlay {
-        width: 40vh;
-        padding-right: 5px;
-    }
+  .taskInputContainerOverlay {
+    width: 40vh;
+    padding-right: 5px;
+  }
 
-    .priorityButtonOverlay {
-        gap: 2px;
-    }
+  .priorityButtonOverlay {
+    gap: 2px;
+  }
 
-    .priorityButtonOverlay button {
-        font-size: 16px;
-    }
+  .priorityButtonOverlay button {
+    font-size: 16px;
+  }
 
-    .requiredActionOverlay {
-        margin-right: 20px;
-    }
+  .requiredActionOverlay {
+    margin-right: 20px;
+  }
 
-    .clearButtonOverlay, .createButtonOverlay {
-        font-size: 18px;
-    }
+  .clearButtonOverlay,
+  .createButtonOverlay {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 395px) {
-    #taskFormOverlay h1 {
-        font-size: 40px;
-    }
+  #taskFormOverlay h1 {
+    font-size: 40px;
+  }
 
-    .overlayTaskContent {
-        width: 370px;
-        max-width: 370px;
-        max-height: 640px;
-        height: 640px;
-    }
+  .overlayTaskContent {
+    width: 370px;
+    max-width: 370px;
+    max-height: 640px;
+    height: 640px;
+  }
 
-    .taskInputContainerOverlay {
-        width: 37vh;
-        padding-right: 3px;
-    }
+  .taskInputContainerOverlay {
+    width: 37vh;
+    padding-right: 3px;
+  }
 
-    .closeTaskOverlay {
-        right: 12px;
-    }
+  .closeTaskOverlay {
+    right: 12px;
+  }
 
-    form#taskFormOverlay {
-        padding: 10px;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
+  form#taskFormOverlay {
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
 
-    .selectContainerOverlay {
-        font-size: 14px;
-    }
+  .selectContainerOverlay {
+    font-size: 14px;
+  }
 
-    .addTaskInputOverlay {
-        padding: 10px 18px;
-        font-size: 14px;
-    }
+  .addTaskInputOverlay {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
 
-    .addDescriptionInputOverlay {
-        width: 92%;
-        font-size: 14px;
-    }
+  .addDescriptionInputOverlay {
+    width: 92%;
+    font-size: 14px;
+  }
 
-    .dropdownOverlay {
-        width: 91%;
-    }
+  .dropdownOverlay {
+    width: 91%;
+  }
 
-    .iconWrapperOverlay {
-        right: 30px;
-        bottom: 3px;
-    }
+  .iconWrapperOverlay {
+    right: 30px;
+    bottom: 3px;
+  }
 
-    .priorityButtonOverlay button {
-        font-size: 14px;
-        width: 84px;
-    }
+  .priorityButtonOverlay button {
+    font-size: 14px;
+    width: 84px;
+  }
 
-    .requiredActionOverlay {
-        margin-right: 15px;
-    }
+  .requiredActionOverlay {
+    margin-right: 15px;
+  }
 
-    
+  .clearButtonOverlay {
+    width: 100px;
+  }
 
-    .clearButtonOverlay {
-        width: 100px;
-    }
-
-    .createButtonOverlay {
-        width: 150px;
-    }
+  .createButtonOverlay {
+    width: 150px;
+  }
 }
 
-@media (max-width: 375px){
-    .overlayTaskContent {
-        width: 340px;
-        max-width: 340px;
-    }
+@media (max-width: 375px) {
+  .overlayTaskContent {
+    width: 340px;
+    max-width: 340px;
+  }
 
-    .taskInputContainerOverlay {
-        width: 285px;
-    }
+  .taskInputContainerOverlay {
+    width: 285px;
+  }
 }
 
-@media (max-width: 355px){
-    .overlayTaskContent {
-        width: 320px;
-        max-width: 320px;
-    }
-
-    
+@media (max-width: 355px) {
+  .overlayTaskContent {
+    width: 320px;
+    max-width: 320px;
+  }
 }

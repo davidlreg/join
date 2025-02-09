@@ -1,121 +1,126 @@
 @media (max-width: 1000px) {
-    .logo {
-        height: 60px;
-    }
-    
-    .animationBackground {
-        background-color: rgba(42, 54, 70);
-    }
+  .logo {
+    height: 60px;
+  }
 
-    .animationLogo, .animationLogoMobile {
-        height: 200px;
-        opacity: 1;
-    }
+  .animationBackground {
+    background-color: rgba(42, 54, 70);
+  }
 
-    .animationLogoMobile {
-        background-color: transparent;
-        width: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: flyToCorner 0.5s ease-out forwards, loseOpacity 0.5s ease-out forwards;
-        animation-delay: 0.5s;
-    }
-    
-    @keyframes flyToCorner {
-        0% {
-            transform: translate(-50%, -50%);
-            height: 200px;
-            top: 50%;
-            left: 50%;
-        }
-        100% {
-            transform: translate(0, 0);
-            height: 60px;
-            top: 50px;
-            left: 50px;
-        }
-    }
-    
-    @keyframes fadeOut {
-        0% {
-            background-color: rgba(42, 54, 70);
-        }
-        100% {
-            background: none;
-        }
-    }
+  .animationLogo,
+  .animationLogoMobile {
+    height: 200px;
+    opacity: 1;
+  }
 
-    @keyframes loseOpacity {
-        0% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-        
-    }
+  .animationLogoMobile {
+    background-color: transparent;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: flyToCorner 0.5s ease-out forwards,
+      loseOpacity 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+  }
 
-    .signUp {
-        top: auto;
-        bottom: 100px;
-        left: 50%;
-        transform: translateX(-50%);
+  @keyframes flyToCorner {
+    0% {
+      transform: translate(-50%, -50%);
+      height: 200px;
+      top: 50%;
+      left: 50%;
     }
+    100% {
+      transform: translate(0, 0);
+      height: 60px;
+      top: 50px;
+      left: 50px;
+    }
+  }
 
-    .logInForm {
-        width: 250px;
-        height: 350px;
+  @keyframes fadeOut {
+    0% {
+      background-color: rgba(42, 54, 70);
     }
-    
-    .signUpForm {
-        width: 250px;
-        height: 400px;
+    100% {
+      background: none;
     }
+  }
 
-    .logInForm h1, .signUpForm h1 {
-        font-size: 36px;
+  @keyframes loseOpacity {
+    0% {
+      opacity: 1;
     }
-    
-    .logInForm h1::after, .signUpForm h1::after {
-        width: 80px;
+    100% {
+      opacity: 0;
     }
+  }
 
-    .arrowBack {
-        top: 30px;
-        left: 15px;
-    }
-    
-    .inputContainer input {
-        width: 230px;
-        font-size: 12px;
-    }
+  .signUp {
+    top: auto;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-    .inputEmail, .inputPassword, .inputName {
-        background-size: 15px;
-    }
+  .logInForm {
+    width: 250px;
+    height: 350px;
+  }
 
-    .lockIcon {
-        width: 15px;
-        height: 15px;
-    }
-    
+  .signUpForm {
+    width: 250px;
+    height: 400px;
+  }
 
-    .checkbox {
-        align-items: end;
-    }
+  .logInForm h1,
+  .signUpForm h1 {
+    font-size: 36px;
+  }
 
-    .customBox {
-        width: 18px;
-        height: 18px;
-    }
+  .logInForm h1::after,
+  .signUpForm h1::after {
+    width: 80px;
+  }
 
-    span, span a {
-        font-size: 12px;
-    }
+  .arrowBack {
+    top: 30px;
+    left: 15px;
+  }
 
-    .buttons {
-        flex-direction: column;
-    }
+  .inputContainer input {
+    width: 230px;
+    font-size: 12px;
+  }
+
+  .inputEmail,
+  .inputPassword,
+  .inputName {
+    background-size: 15px;
+  }
+
+  .lockIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .checkbox {
+    align-items: end;
+  }
+
+  .customBox {
+    width: 18px;
+    height: 18px;
+  }
+
+  span,
+  span a {
+    font-size: 12px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
 }

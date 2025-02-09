@@ -15,7 +15,7 @@ body {
 
 @media (max-width: 768px) {
   .impressum {
-    padding: 32px; 
+    padding: 32px;
     font-size: 0.95rem;
   }
 
@@ -24,7 +24,8 @@ body {
     margin-bottom: 12px;
   }
 
-  .impressum h2, .impressum h3 {
+  .impressum h2,
+  .impressum h3 {
     font-size: 1.25rem;
   }
 
@@ -44,7 +45,8 @@ body {
     margin-bottom: 10px;
   }
 
-  .impressum h2, .impressum h3 {
+  .impressum h2,
+  .impressum h3 {
     font-size: 1.1rem;
     margin-bottom: 10px;
   }
@@ -69,7 +71,8 @@ body {
     margin-bottom: 8px;
   }
 
-  .impressum h2, .impressum h3 {
+  .impressum h2,
+  .impressum h3 {
     font-size: 1rem;
     margin-bottom: 8px;
   }

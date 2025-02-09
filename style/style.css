@@ -334,7 +334,7 @@ header h3 {
 }
 
 /* Responsive Styles for Screen Sizes */
-@media (max-width: 1350px) {
+@media (max-width: 1400px) {
   .layoutContainer {
     flex-direction: column-reverse;
   }

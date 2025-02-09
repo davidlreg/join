@@ -1,5 +1,5 @@
 /* Anpassungen für Bildschirme bis 1350px */
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1400px) {
   .boardSectionsContainer {
     flex-direction: column;
     height: 100vh;

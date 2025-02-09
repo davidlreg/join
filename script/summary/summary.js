@@ -1,4 +1,5 @@
 let backendData = {};
+
 async function fetchDataJSON() {
   let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
   let responseJSON = await response.json();

@@ -1,10 +1,22 @@
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database(app);
+
 let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelector(".inputPassword");
 let passwordToggle = document.querySelector(".passwordToggle")
 
+document.addEventListener("DOMContentLoaded", function() {
+  const userId = localStorage.getItem("userId");
+
+  if (userId) {
+    window.location.href = "./summary.html?active=summary&user=loggedIn";
+  }
+});
+
+
 /**
- * This function handles the removal of CSS animations from the logo elements
+ * Handles the removal of CSS animations from the logo elements
  * after the animation has completed.
  *
  * It listens for the "animationend" event on the #logoContainer element, 
@@ -32,7 +44,8 @@ function removeJoinAnimation () {
 };
 
 /**
- * This function validates the email input field by checking if the entered value matches a typical email format.
+ * Validates the email input field by checking if the entered value matches a typical email format.
+ * 
  * If the email is invalid, it sets the input field's border to red
  * and displays an error message below the input field.
  * If the email is valid, it hides the error message.
@@ -58,7 +71,7 @@ function validateEmail() {
 }
 
 /**
- * This function validates the log-in form fields and enables or disables the log in button based on the form's validity.
+ * Validates the log-in form fields and enables or disables the log in button based on the form's validity.
  * 
  * It checks if the email and password fields are filled out
  * and ensures that the email field does not have red borders (indicating an error).
@@ -85,7 +98,7 @@ function validateForm() {
   if (isFormValid) {
     logInButton.classList.remove("btnUnabledDark");
     logInButton.classList.add("btnDark");
-    logInButton.setAttribute("onclick", "location.href='./summary.html?active=summary&user=loggedIn'");
+    logInButton.setAttribute("onclick", "logIntoAccount()");
   } else {
     logInButton.classList.remove("btnDark");
     logInButton.classList.add("btnUnabledDark");
@@ -94,7 +107,7 @@ function validateForm() {
 }
 
 /**
- * This function updates the password input field's background icon based on its type and value.
+ * Updates the password input field's background icon based on its type and value.
  * 
  * If the input has text, it displays a visibility icon (open or closed eye) 
  * depending on whether the input type is "text" or "password".
@@ -120,7 +133,7 @@ function updatePasswordIcon() {
 }
 
 /**
- * This function toggles the visibility of password inputs and updates the associated icon.
+ * Toggles the visibility of password inputs and updates the associated icon.
  *
  * When the input type is "password", the button's background will show an crossed-out eye icon (invisible text).
  * When the input type is "text", the button's background will show a open eye icon (visible text).
@@ -143,6 +156,69 @@ function toggleVisibility() {
         input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
     }
   }
+}
+
+/**
+ * Logs into the user's account by retrieving input values and verifying credentials.
+ */
+function logIntoAccount() {
+  let email = emailInput.value;
+  let password = passwordInput.value;
+  checkUserCredentials(email, password);
+}
+
+/**
+ * Checks the user credentials against the database.
+ * 
+ * @param {string} email - The email input provided by the user.
+ * @param {string} password - The password input provided by the user.
+ */
+function checkUserCredentials(email, password) {
+  let usersRef = database.ref('Data/Users');
+  let userFound = false;
+
+  usersRef.once('value', snapshot => {
+    snapshot.forEach(userSnapshot => {
+      if (processUserSnapshot(userSnapshot, email, password)) {
+        userFound = true;
+        return;
+      }
+    });
+    if (!userFound) displayError("There is no account with this email.");
+  });
+}
+
+/**
+ * Processes a user snapshot and checks if the email and password match.
+ * 
+ * @param {Object} userSnapshot - The snapshot of the user data from the database.
+ * @param {string} email - The email input provided by the user.
+ * @param {string} password - The password input provided by the user.
+ * @returns {boolean} - Returns true if the user is found and processed, otherwise false.
+ */
+function processUserSnapshot(userSnapshot, email, password) {
+  const user = userSnapshot.val();
+  const userId = userSnapshot.key;
+  if (user.email === email) {
+    if (user.password === password) {
+      localStorage.setItem("userId", userId);
+      window.location.href = "./summary.html?active=summary&user=loggedIn";
+    } else {
+      displayError("Your password is incorrect. Please try again.");
+    }
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Displays an error message to the user.
+ * 
+ * @param {string} message - The error message to be displayed.
+ */
+function displayError(message) {
+  errorMessage.innerHTML = message;
+  errorMessage.style.display = "block";
 }
 
 emailInput.addEventListener("input", function () {

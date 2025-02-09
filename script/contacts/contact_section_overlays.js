@@ -68,7 +68,7 @@ function showAddContactOverlay() {
 
         <div class="formSection">
           <div>
-            <input type="text" placeholder="Name" class="formInput" requiered />
+            <input type="text" id="name" placeholder="Name" class="formInput" requiered />
             <svg class="nameIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <mask id="mask0_274969_2511" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9" />
@@ -83,7 +83,7 @@ function showAddContactOverlay() {
           </div>
 
           <div>
-            <input type="email" placeholder="Email" class="formInput" requiered /><svg
+            <input type="email" id="email" placeholder="Email" class="formInput" requiered /><svg
               class="mailIcon"
               width="24"
               height="24"
@@ -104,7 +104,7 @@ function showAddContactOverlay() {
           </div>
 
           <div>
-            <input type="tel" placeholder="Phone" class="formInput" requiered /><svg
+            <input type="tel" id="phone" placeholder="Phone" class="formInput" requiered /><svg
               class="phoneIcon"
               width="24"
               height="25"

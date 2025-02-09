@@ -1,13 +1,13 @@
-const firebaseConfig = {
-  databaseURL: "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app"
-};
-
+/**
+ * Initializes the Firebase application and database connection.
+ * 
+ */
 const app = firebase.initializeApp(firebaseConfig);
 const data = firebase.database(app);
 
 /**
- * Opens the overlay for adding a new contact, including setting content and event listeners.
- *
+ * Opens the overlay for adding a new contact, setting its content and event listeners.
+ * 
  */
 function openAddContactOverlay() {
   const overlayContainer = document.getElementById("overlayContainer");
@@ -19,7 +19,7 @@ function openAddContactOverlay() {
 
 /**
  * Opens the mobile overlay for adding a new contact and applies the background styling.
- *
+ * 
  */
 function openAddContactOverlayMobile() {
   const overlayContainer = document.getElementById("overlayContainer");
@@ -31,7 +31,7 @@ function openAddContactOverlayMobile() {
 
 /**
  * Closes the add contact overlay and removes its content.
- *
+ * 
  */
 function closeAddContactOverlay() {
   const overlay = document.querySelector(".addContactOverlay");
@@ -40,8 +40,8 @@ function closeAddContactOverlay() {
 }
 
 /**
- * Closes the add contact overlay and removes its content.
- *
+ * Closes the add contact overlay on mobile and removes its content.
+ * 
  */
 function closeAddContactOverlayMobile() {
   const overlay = document.querySelector(".addContactMobileWrapper");
@@ -50,24 +50,17 @@ function closeAddContactOverlayMobile() {
 }
 
 /**
- * Adds the overlay background class to the container.
+ * Adds the overlay background class to the given container.
  *
- * @param {Element} container The container to which the background class will be added.
- * 
+ * @param {Element} container - The container to which the background class will be added.
  */
 function addOverlayBackground(container) {
   container.classList.add("overlayBackground");
 }
 
 /**
- * This function creates a new contact by retrieving user input from the form
- * and saving it.
- * 
- * It fetches the next available contact ID,
- * then saves the contact details (email, name, phone) to the database.
- * 
- * After saving the contact, it closes the "Add Contact" overlay
- * and shows a confirmation message.
+ * Creates a new contact by retrieving user input from the form and saving it to the database.
+ * After saving, it closes the overlay and shows a confirmation message.
  * 
  */
 function createContact() {
@@ -84,13 +77,9 @@ function createContact() {
 }
 
 /**
- * This function fetches the next available contact ID from the database.
- * 
- * It queries the contacts stored in the database, calculates the smallest unused contact ID
- * and returns it as a promise.
+ * Fetches the next available contact ID from the database.
  *
- * @returns {Promise<number>} A promise that resolves to the next available contact ID.
- * 
+ * @returns {Promise<number>} A promise resolving to the next available contact ID.
  */
 function getNextId() {
   const contactsRef = data.ref('Data/Contacts'); 
@@ -109,15 +98,10 @@ function getNextId() {
 }
 
 /**
- * This function finds the smallest available contact ID
- * by checking the existing contact IDs in the provided object.
- * 
- * It iterates through the contact IDs,
- * extracts the numeric part and identifies the next available ID.
+ * Finds the smallest available contact ID by checking the existing ones.
  *
- * @param {Object} contacts - An object where keys are contact IDs (e.g., 'contactId1', 'contactId2', etc.)
+ * @param {Object} contacts - An object where keys are contact IDs (e.g., 'contactId1', 'contactId2', etc.).
  * @returns {number} The next available contact ID.
- * 
  */
 function findSmallestAvailableId(contacts) {
   const contactIds = Object.keys(contacts);
@@ -139,16 +123,12 @@ function findSmallestAvailableId(contacts) {
 }
 
 /**
- * This function saves a new contact to the database with the specified details.
- * 
- * It creates a new reference for the contact using the provided contact ID
- * and stores the contact's email, name, and phone.
+ * Saves a new contact to the database with the provided details.
  *
- * @param {number} nextContactId - The next available contact ID to use for the new contact.
+ * @param {number} nextContactId - The next available contact ID.
  * @param {string} email - The email address of the contact.
  * @param {string} name - The name of the contact.
  * @param {string} phone - The phone number of the contact.
- * 
  */
 function saveContact(nextContactId, email, name, phone) {
   const contactsRef = data.ref('Data/Contacts');
@@ -161,23 +141,24 @@ function saveContact(nextContactId, email, name, phone) {
   });
 }
 
+/**
+ * Displays a message confirming the contact was successfully created.
+ * 
+ */
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
 }
 
 /**
- * Generates a message indicating that a contact has been successfully created.
+ * Generates the HTML markup for the contact successfully created message.
  *
- * @function showContactSucessfullyCreatedMessage
  * @returns {string} HTML markup for the success message.
  */
 function showContactSucessfullyCreatedMessage() {
   return `
-    
     <div class="contactSucessfullyCretaed" id="contactSucessfullyCretaed">
-      <p>Contact succesfully created</p>
+      <p>Contact successfully created</p>
     </div>
-    
-    `;
+  `;
 }

@@ -149,8 +149,8 @@ main {
 .boardTasks {
   padding: 15px;
   cursor: pointer;
-  min-width: 250px;
-  max-height: 300px;
+  width: 100%;
+  max-width: 252px;
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -289,4 +289,8 @@ main {
 
 .tasksInnerContainer {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
 }

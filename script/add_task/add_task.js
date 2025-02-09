@@ -1,4 +1,5 @@
 function initTask() {
+  setActiveLinkFromURL();
   loadContacts();
   headerUserName();
   setPriority('medium');
@@ -8,6 +9,7 @@ function initTask() {
  * 
  * Gets the text from the subtask input field. If the input is empty, it shows an alert.
  * If the input has text, it creates a new subtask and adds it to the list. Then, it clears the input field.
+ * 
  */
 function addSubtask() {
   const subtaskInput = document.getElementById('addTaskSubTasks');
@@ -52,6 +54,7 @@ function removeSubtask(listItem) {
 
 /**
  * Toggles the visibility of the category dropdown.
+ * 
  */
 function toggleCategory() {
   const categoryDropdown = document.querySelector('.selectCategory');
@@ -77,6 +80,7 @@ function selectCategoryOverlay(category) {
 
 /**
  * Toggles the visibility of all the contacts.
+ * 
  */
 function toggleContact() {
   const categoryDropdown = document.getElementById('selectContact');
@@ -85,6 +89,7 @@ function toggleContact() {
 
 /**
  * Loads contact data from the Firebase database and displays it in the dropdown.
+ * 
  */
 async function loadContacts() {
   const data = await fetchContacts();
@@ -206,6 +211,7 @@ function createCheckbox(name) {
 
 /**
  * Updates the display of selected contacts under the dropdown.
+ * 
  */
 function updateSelectedContact() {
   const selectedContacts = document.getElementById('selectedContacts');

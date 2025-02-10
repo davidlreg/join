@@ -30,11 +30,14 @@ function updateTaskStatus(taskId, newStatus) {
  * @param {Object} data - The updated data to send.
  */
 async function updateBackend(data) {
-  await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
-    method: "PUT",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
-  });
+  await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
 
 /**
@@ -70,10 +73,12 @@ function drop(event, newStatus) {
 }
 
 function checkIfTaskExistInContainer() {
-  // Überprüfen der jeweiligen Container und Hinzufügen/Entfernen der dNone-Klasse
   const sections = [
     { containerId: "boardNoTasksToDo", sectionId: "tasksSectionToDo" },
-    { containerId: "boardNoTasksInProgress", sectionId: "tasksSectionInProgress" },
+    {
+      containerId: "boardNoTasksInProgress",
+      sectionId: "tasksSectionInProgress",
+    },
     { containerId: "boardNoTasksAwaiting", sectionId: "tasksSectionAwaiting" },
     { containerId: "boardNoTasksDone", sectionId: "tasksSectionDone" },
   ];
@@ -82,11 +87,9 @@ function checkIfTaskExistInContainer() {
     const container = document.getElementById(section.containerId);
     const taskSection = document.getElementById(section.sectionId);
 
-    // Wenn der Container leer ist, füge die dNone-Klasse hinzu
     if (container.children.length == 0) {
       taskSection.classList.remove("dNone");
     } else {
-      // Wenn der Container nicht leer ist, entferne die dNone-Klasse
       taskSection.classList.add("dNone");
     }
   });

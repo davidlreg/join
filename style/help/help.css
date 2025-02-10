@@ -39,12 +39,18 @@ span {
   color: rgba(42, 170, 226);
 }
 
+.helpSectionHeadline {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .arrowBack,
 .arrowBack img {
   background: transparent;
-  padding: 5px;
-  height: 15px;
-  position: fixed;
+  width: 26px;
+  height: 25px;
   top: 200px;
   right: 80px;
 }

@@ -66,7 +66,7 @@ function createContact() {
   });
 
   closeAddContactOverlay();
-  showContactCreatedMessage();
+  // showContactCreatedMessage();
 }
 
 /**
@@ -164,16 +164,19 @@ function saveContact(contactId, email, name, phone) {
  * Displays a message confirming the contact was successfully created.
  *
  */
+/*
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
 }
+*/
 
 /**
  * Generates the HTML markup for the contact successfully created message.
  *
  * @returns {string} HTML markup for the success message.
  */
+/*
 function showContactSucessfullyCreatedMessage() {
   return `
     <div class="contactSucessfullyCretaed" id="contactSucessfullyCretaed">
@@ -181,3 +184,4 @@ function showContactSucessfullyCreatedMessage() {
     </div>
   `;
 }
+*/

@@ -14,16 +14,52 @@
     width: 100% !important;
     max-width: 100% !important;
   }
+
+  .boardContainer {
+    margin-bottom: 32px;
+  }
+
+  .boardInputContainer {
+    margin: 32px 0px;
+  }
+
+  .boardSection {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .tasksInnerContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .boardButton {
+    width: 100%;
+  }
+
+  .categoryText {
+    font-size: 26px;
+  }
+
+  .boardSection .sectionPlus {
+    width: 30px;
+    height: 30px;
+  }
+
+  .boardAddTask {
+    width: 40px;
+    height: 40px;
+  }
+
+  .boardInputContainer {
+    width: 100%;
+  }
 }
 
 /* Anpassungen für Bildschirme bis 950px */
 @media screen and (max-width: 950px) {
-  .boardInputContainer {
-    margin: 20px 0;
-  }
-
   .btnDark {
-    padding: 5px !important;
+    padding: 3px !important;
   }
 
   .boardTemplate {

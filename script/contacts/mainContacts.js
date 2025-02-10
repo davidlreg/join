@@ -1,19 +1,16 @@
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
 let backendData = {};
 let currentlyViewedUser = {};
 let selectedContact = null;
 
 /**
  * Checks if the user is logged in or if they are in guest mode by retrieving
- * the `userId` and `guestMode` values from localStorage. If neither value is present, the 
+ * the `userId` and `guestMode` values from localStorage. If neither value is present, the
  * user is redirected to the login page (`/login.html`).
- * 
+ *
  * @event document#DOMContentLoaded
  * @listens document#DOMContentLoaded
  */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
 
@@ -134,22 +131,52 @@ function isContactAlreadySelected(name, email) {
 }
 
 /**
- * Retrieves the contact ID by email from the Firebase Realtime Database.
+ * Fetches all contacts from the database.
  *
- * @param {string} email - The contact's email.
- * @returns {Promise<string|null>} - The contact ID if found, otherwise null.
+ * @returns {Promise<Object>} The contacts data.
  */
-async function getContactIdByEmail(email) {
-  const contactsRef = database.ref("Data/Contacts");
-  const snapshot = await contactsRef.once("value");
-  const contacts = snapshot.val();
+async function fetchContacts() {
+  const response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts.json");
+  return response.json();
+}
 
+/**
+ * Finds a contact ID by email in the provided contacts data.
+ *
+ * @param {Object} contacts - The contacts data.
+ * @param {string} email - The contact's email.
+ * @returns {string|null} The contact ID if found, otherwise null.
+ */
+function findContactIdByEmail(contacts, email) {
   for (const contactId in contacts) {
     if (contacts[contactId].email === email) {
       return contactId;
     }
   }
   return null;
+}
+
+/**
+ * Retrieves the contact ID by email from the Firebase Realtime Database.
+ *
+ * @param {string} email - The contact's email.
+ * @returns {Promise<string|null>} The contact ID if found, otherwise null.
+ */
+async function getContactIdByEmail(email) {
+  try {
+    const contacts = await fetchContacts();
+    const contactId = findContactIdByEmail(contacts, email);
+
+    if (contactId) {
+      return contactId;
+    }
+
+    console.warn("No contact ID found for email:", email);
+    return null;
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+    return null;
+  }
 }
 
 /**

@@ -18,12 +18,26 @@ async function deleteContactData(contactId) {
 }
 
 /**
- * Removes the contact from the Firebase database.
+ * Removes the contact from the Realtime Database by making a DELETE request.
  *
  * @param {string} contactId - The ID of the contact to remove.
  */
 async function deleteContactInDatabase(contactId) {
-  await firebase.database().ref(`Data/Contacts/${contactId}`).remove();
+  const url = `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
+
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete contact.");
+    }
+
+    console.log(`Contact with ID ${contactId} deleted successfully.`);
+  } catch (error) {
+    console.error("Error deleting contact:", error);
+  }
 }
 
 /**

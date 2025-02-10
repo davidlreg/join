@@ -1,13 +1,6 @@
 /**
- * Initializes the Firebase application and database connection.
- * 
- */
-const app = firebase.initializeApp(firebaseConfig);
-const data = firebase.database(app);
-
-/**
  * Opens the overlay for adding a new contact, setting its content and event listeners.
- * 
+ *
  */
 function openAddContactOverlay() {
   const overlayContainer = document.getElementById("overlayContainer");
@@ -19,7 +12,7 @@ function openAddContactOverlay() {
 
 /**
  * Opens the mobile overlay for adding a new contact and applies the background styling.
- * 
+ *
  */
 function openAddContactOverlayMobile() {
   const overlayContainer = document.getElementById("overlayContainer");
@@ -31,7 +24,7 @@ function openAddContactOverlayMobile() {
 
 /**
  * Closes the add contact overlay and removes its content.
- * 
+ *
  */
 function closeAddContactOverlay() {
   const overlay = document.querySelector(".addContactOverlay");
@@ -41,7 +34,7 @@ function closeAddContactOverlay() {
 
 /**
  * Closes the add contact overlay on mobile and removes its content.
- * 
+ *
  */
 function closeAddContactOverlayMobile() {
   const overlay = document.querySelector(".addContactMobileWrapper");
@@ -61,15 +54,15 @@ function addOverlayBackground(container) {
 /**
  * Creates a new contact by retrieving user input from the form and saving it to the database.
  * After saving, it closes the overlay and shows a confirmation message.
- * 
+ *
  */
 function createContact() {
-  const email = document.getElementById('email').value;
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
+  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
 
-  getNextId().then(nextContactId => {
-      saveContact(nextContactId, email, name, phone);
+  getNextId().then((nextContactId) => {
+    saveContact(nextContactId, email, name, phone);
   });
 
   closeAddContactOverlay();
@@ -77,38 +70,55 @@ function createContact() {
 }
 
 /**
- * Fetches the next available contact ID from the database.
+ * Retrieves the next available contact ID from the database.
  *
- * @returns {Promise<number>} A promise resolving to the next available contact ID.
+ * @returns {Promise<number>} A promise that resolves to the next available contact ID.
  */
 function getNextId() {
-  const contactsRef = data.ref('Data/Contacts'); 
-  return new Promise((resolve, reject) => {
-    contactsRef.once('value').then(snapshot => {
-      const contacts = snapshot.val();
-      let nextContactId = 1;
-
-      if (contacts) {
-        nextContactId = findSmallestAvailableId(contacts);
-      }
-
-      resolve(nextContactId);
-    }).catch(reject);
-  });
+  return fetchContacts()
+    .then(findNextId)
+    .catch((error) => {
+      console.error("Error fetching contacts:", error);
+      return 1;
+    });
 }
 
 /**
- * Finds the smallest available contact ID by checking the existing ones.
+ * Fetches contacts from the database.
  *
- * @param {Object} contacts - An object where keys are contact IDs (e.g., 'contactId1', 'contactId2', etc.).
+ * @returns {Promise<Object>} A promise resolving to the contacts data.
+ */
+function fetchContacts() {
+  const url = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts.json";
+  return fetch(url).then((response) => response.json());
+}
+
+/**
+ * Determines the next available contact ID from the contacts data.
+ *
+ * @param {Object} contacts - The contacts data.
  * @returns {number} The next available contact ID.
+ */
+function findNextId(contacts) {
+  let nextContactId = 1;
+  if (contacts) {
+    nextContactId = findSmallestAvailableId(contacts);
+  }
+  return nextContactId;
+}
+
+/**
+ * Finds the smallest available contact ID.
+ *
+ * @param {Object} contacts - The contacts data.
+ * @returns {number} The smallest available contact ID.
  */
 function findSmallestAvailableId(contacts) {
   const contactIds = Object.keys(contacts);
   const usedIds = new Set();
 
-  contactIds.forEach(contactId => {
-    const idNumber = parseInt(contactId.replace('contactId', ''));
+  contactIds.forEach((contactId) => {
+    const idNumber = parseInt(contactId.replace("contactId", ""));
     if (!isNaN(idNumber)) {
       usedIds.add(idNumber);
     }
@@ -125,25 +135,34 @@ function findSmallestAvailableId(contacts) {
 /**
  * Saves a new contact to the database with the provided details.
  *
- * @param {number} nextContactId - The next available contact ID.
+ * @param {number} contactId - The contact ID.
  * @param {string} email - The email address of the contact.
  * @param {string} name - The name of the contact.
  * @param {string} phone - The phone number of the contact.
+ * @returns {Promise<void>} A promise that resolves once the contact is saved.
  */
-function saveContact(nextContactId, email, name, phone) {
-  const contactsRef = data.ref('Data/Contacts');
-  const newContactRef = contactsRef.child('contactId' + nextContactId);
+function saveContact(contactId, email, name, phone) {
+  const url = `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/contactId${contactId}.json`;
 
-  newContactRef.set({
-      email: email,
-      name: name,
-      phone: phone
-  });
+  const contactData = { email, name, phone };
+
+  return fetch(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(contactData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Contact saved successfully:", data);
+    })
+    .catch((error) => {
+      console.error("Error saving contact:", error);
+    });
 }
 
 /**
  * Displays a message confirming the contact was successfully created.
- * 
+ *
  */
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");

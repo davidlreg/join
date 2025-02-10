@@ -137,7 +137,7 @@ header h3 {
 }
 
 .userIcon > a {
-  background-color: #ffffff;
+  background-color: transparent;
   color: #29abe2;
   font-weight: bold;
   text-decoration: none;

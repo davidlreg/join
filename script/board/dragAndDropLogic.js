@@ -30,14 +30,11 @@ function updateTaskStatus(taskId, newStatus) {
  * @param {Object} data - The updated data to send.
  */
 async function updateBackend(data) {
-  await fetch(
-    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
-    {
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
+    method: "PUT",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 /**

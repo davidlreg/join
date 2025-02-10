@@ -202,16 +202,6 @@ function checkUserCredentials(email, password) {
 }
 
 /**
- * Displays an error message to the user.
- *
- * @param {string} message - The error message to be displayed.
- */
-function displayError(message) {
-  errorMessage.innerHTML = message;
-  errorMessage.style.display = "block";
-}
-
-/**
  * Processes a user snapshot and checks if the email and password match.
  *
  * @param {Object} userSnapshot - The snapshot of the user data from the database.

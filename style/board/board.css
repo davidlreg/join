@@ -6,6 +6,10 @@ main {
   overflow-y: scroll;
 }
 
+.mainContentWrapper {
+  max-width: 1980px;
+}
+
 /* ==================== Board Header ==================== */
 
 .boardContainer {
@@ -110,7 +114,6 @@ main {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  height: 100%;
 }
 
 .boardSectionsSubContainer {
@@ -290,7 +293,7 @@ main {
 }
 
 .tasksInnerContainer {
-  height: 100%;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

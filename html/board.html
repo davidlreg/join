@@ -119,65 +119,67 @@
         </div>
 
         <main>
-          <div class="boardContainer">
-            <h2>Board</h2>
-            <div class="boardControls">
-              <div class="boardInputContainer">
-                <input type="text" id="findTask" name="find-task" placeholder="Find Task" />
-                <span class="separator">|</span>
-                <button id="searchButton"></button>
-              </div>
-              <p id="noResultsMessage" style="display: none; text-align: center; font-size: 16px; color: gray">No tasks found</p>
-              <div>
-                <button onclick="addTaskOverlay()" class="boardAddTask btnDark">
-                  <span id="boardAddTask">Add Task</span>
-                  <img src="/assets/icon/board/plus_button-add-task.svg" alt="plusButtonImage" />
-                </button>
+          <div class="mainContentWrapper">
+            <div class="boardContainer">
+              <h2>Board</h2>
+              <div class="boardControls">
+                <div class="boardInputContainer">
+                  <input type="text" id="findTask" name="find-task" placeholder="Find Task" />
+                  <span class="separator">|</span>
+                  <button id="searchButton"></button>
+                </div>
+                <p id="noResultsMessage" style="display: none; text-align: center; font-size: 16px; color: gray">No tasks found</p>
+                <div>
+                  <button onclick="addTaskOverlay()" class="boardAddTask btnDark">
+                    <span id="boardAddTask">Add Task</span>
+                    <img src="/assets/icon/board/plus_button-add-task.svg" alt="plusButtonImage" />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="boardSectionsContainer">
-            <div class="boardSectionsSubContainer" id="tasksContainer1">
-              <div class="boardSection">
-                <span class="categoryText">To do</span>
-                <div class="sectionPlus" onclick="addTaskOverlay('To do')"></div>
+            <div class="boardSectionsContainer">
+              <div class="boardSectionsSubContainer" id="tasksContainer1">
+                <div class="boardSection">
+                  <span class="categoryText">To do</span>
+                  <div class="sectionPlus" onclick="addTaskOverlay('To do')"></div>
+                </div>
+                <div class="boardButton dNone" id="tasksSectionToDo">
+                  <p>No tasks To Do</p>
+                </div>
+                <div class="tasksInnerContainer" id="boardNoTasksToDo" ondrop="moveTo('To do', currentDraggedElement)" ondragover="allowDrop(event)"></div>
               </div>
-              <div class="boardButton dNone" id="tasksSectionToDo">
-                <p>No tasks To Do</p>
-              </div>
-              <div class="tasksInnerContainer" id="boardNoTasksToDo" ondrop="moveTo('To do', currentDraggedElement)" ondragover="allowDrop(event)"></div>
-            </div>
 
-            <div class="boardSectionsSubContainer" id="tasksContainer2">
-              <div class="boardSection">
-                <span class="categoryText">In progress</span>
-                <div class="sectionPlus" onclick="addTaskOverlay('In progress')"></div>
+              <div class="boardSectionsSubContainer" id="tasksContainer2">
+                <div class="boardSection">
+                  <span class="categoryText">In progress</span>
+                  <div class="sectionPlus" onclick="addTaskOverlay('In progress')"></div>
+                </div>
+                <div class="boardButton dNone" id="tasksSectionInProgress">
+                  <p>No tasks In Progress</p>
+                </div>
+                <div class="tasksInnerContainer" id="boardNoTasksInProgress" ondrop="moveTo('In progress', currentDraggedElement)" ondragover="allowDrop(event)"></div>
               </div>
-              <div class="boardButton dNone" id="tasksSectionInProgress">
-                <p>No tasks In Progress</p>
-              </div>
-              <div class="tasksInnerContainer" id="boardNoTasksInProgress" ondrop="moveTo('In progress', currentDraggedElement)" ondragover="allowDrop(event)"></div>
-            </div>
 
-            <div class="boardSectionsSubContainer" id="tasksContainer3">
-              <div class="boardSection">
-                <span class="categoryText">Await Feedback</span>
-                <div class="sectionPlus" onclick="addTaskOverlay('Await Feedback')"></div>
+              <div class="boardSectionsSubContainer" id="tasksContainer3">
+                <div class="boardSection">
+                  <span class="categoryText">Await Feedback</span>
+                  <div class="sectionPlus" onclick="addTaskOverlay('Await Feedback')"></div>
+                </div>
+                <div class="boardButton dNone" id="tasksSectionAwaiting">
+                  <p>No tasks Awaiting</p>
+                </div>
+                <div class="tasksInnerContainer" id="boardNoTasksAwaiting" ondrop="moveTo('Await Feedback', currentDraggedElement)" ondragover="allowDrop(event)"></div>
               </div>
-              <div class="boardButton dNone" id="tasksSectionAwaiting">
-                <p>No tasks Awaiting</p>
-              </div>
-              <div class="tasksInnerContainer" id="boardNoTasksAwaiting" ondrop="moveTo('Await Feedback', currentDraggedElement)" ondragover="allowDrop(event)"></div>
-            </div>
 
-            <div class="boardSectionsSubContainer" id="tasksContainer4">
-              <div class="boardSection">
-                <span class="categoryText">Done</span>
+              <div class="boardSectionsSubContainer" id="tasksContainer4">
+                <div class="boardSection">
+                  <span class="categoryText">Done</span>
+                </div>
+                <div class="boardButton dNone" id="tasksSectionDone">
+                  <p>No tasks Done</p>
+                </div>
+                <div class="tasksInnerContainer" id="boardNoTasksDone" ondrop="moveTo('Done', currentDraggedElement)" ondragover="allowDrop(event)"></div>
               </div>
-              <div class="boardButton dNone" id="tasksSectionDone">
-                <p>No tasks Done</p>
-              </div>
-              <div class="tasksInnerContainer" id="boardNoTasksDone" ondrop="moveTo('Done', currentDraggedElement)" ondragover="allowDrop(event)"></div>
             </div>
           </div>
         </main>

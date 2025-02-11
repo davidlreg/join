@@ -23,19 +23,12 @@ function templateBoardTasks(task, taskId) {
                   ${assignedToArray
                     .map(
                       (contact) => `
-                      <div class="profilePicture" title="${contact.name}">
-                          ${contact.name.charAt(0).toUpperCase()}${
-                        contact.name.split(" ")[1]?.charAt(0).toUpperCase() ||
-                        ""
-                      }
+                      <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
+                          ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                       </div>
-                  `
-                    )
-                    .join("")}
+                  `).join("")}
               </div>
-              <img src="/assets/icon/board/priority-${
-                task.priority
-              }.png" alt="Priority Icon">
+              <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
           </div>
       </div>
     `;
@@ -85,7 +78,9 @@ function templateBoardOverlay(task) {
                   .map(
                     (contact) => `
                     <li>
-                        <div class="boardOverlayUser">${contact.name[0]}</div>
+                         <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
+                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() ||""}
+                        </div>
                         <span class="boardOverlayUsername">${contact.name}</span>
                     </li>
                 `

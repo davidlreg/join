@@ -119,6 +119,8 @@
 .boardOverlayUser {
   background-color: rgb(183, 183, 183);
   border-radius: 50%;
+  color: white;
+  font-weight: 550;
   width: 40px;
   height: 40px;
   display: flex;

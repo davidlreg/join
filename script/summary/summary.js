@@ -157,7 +157,7 @@ function setCountUrgent(task) {
 */
 
 function setCountAwaiting(task) {
-  let summaryCountTaskAwaiting = document.getElementById('countTaskAwaiting')
+  let summaryCountTaskAwaiting = document.getElementById('countAwaitingFeedBack')
   if (task.status === "Await Feedback") {
     summaryCountTaskAwaiting.textContent = parseInt(summaryCountTaskAwaiting.textContent) + 1;
   }
@@ -192,7 +192,7 @@ function setCountTaskInBoard(task) {
 function setUpcomingDeadlineDate(task, dates) {
   let summaryUpcomingDeadline = document.getElementById('upcomingDeadline');
   if (task.priority == "Urgent") {
-    let deadlineDate = new Date(task.duedate);
+    let deadlineDate = new Date(task.dueDate);
     dates.push(deadlineDate.getTime())
     dates.sort((a, b) => a - b);
     summaryUpcomingDeadline.textContent = formatTimestampCustom(dates[0])

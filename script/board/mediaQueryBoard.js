@@ -1,5 +1,7 @@
 /**
- * The input field is moved dynamically with a window width of 950px.
+ * Dynamically adjusts the position of the input field based on the window width.
+ * Adds an event listener to update the layout on window resize.
+ *
  */
 function changeInputBoardLocation() {
   const inputContainer = document.querySelector(".boardInputContainer");
@@ -12,12 +14,12 @@ function changeInputBoardLocation() {
 }
 
 /**
- * Adjusts the layout of elements based on whether the window width is below or above the threshold (950px).
+ * Determines the appropriate layout adjustment based on the window width.
  *
- * @param {HTMLElement} inputContainer - The input field container to reposition.
- * @param {HTMLElement} boardControls - The container holding the board controls.
- * @param {HTMLElement} boardContainer - The main container for the board section.
- * @param {HTMLElement} boardAddTask - The "Add Task +" button element.
+ * @param {HTMLElement} inputContainer - The input field container.
+ * @param {HTMLElement} boardControls - The board controls container.
+ * @param {HTMLElement} boardContainer - The main board container.
+ * @param {HTMLElement} boardAddTask - The "Add Task" button.
  */
 function windowThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
   if (window.innerWidth <= 1400) {
@@ -28,12 +30,12 @@ function windowThreshold(inputContainer, boardControls, boardContainer, boardAdd
 }
 
 /**
- * Handles layout adjustments for when the window width is under 950px.
+ * Moves the input field out of board controls and hides the "Add Task" button when the width is below 950px.
  *
- * @param {HTMLElement} inputContainer - The input field container to reposition.
- * @param {HTMLElement} boardControls - The container holding the board controls.
- * @param {HTMLElement} boardContainer - The main container for the board section.
- * @param {HTMLElement} boardAddTask - The "Add Task +" button element.
+ * @param {HTMLElement} inputContainer - The input field container.
+ * @param {HTMLElement} boardControls - The board controls container.
+ * @param {HTMLElement} boardContainer - The main board container.
+ * @param {HTMLElement} boardAddTask - The "Add Task" button.
  */
 function innerWidthBelowThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
   if (boardControls.contains(inputContainer)) {
@@ -43,12 +45,12 @@ function innerWidthBelowThreshold(inputContainer, boardControls, boardContainer,
 }
 
 /**
- * Handles layout adjustments for when the window width is larger than 950px.
+ * Moves the input field back into board controls and shows the "Add Task" button when the width is above 950px.
  *
- * @param {HTMLElement} inputContainer - The input field container to reposition.
- * @param {HTMLElement} boardControls - The container holding the board controls.
- * @param {HTMLElement} boardContainer - The main container for the board section.
- * @param {HTMLElement} boardAddTask - The "Add Task" button element.
+ * @param {HTMLElement} inputContainer - The input field container.
+ * @param {HTMLElement} boardControls - The board controls container.
+ * @param {HTMLElement} boardContainer - The main board container.
+ * @param {HTMLElement} boardAddTask - The "Add Task" button.
  */
 function innerWidthAboveThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
   if (!boardControls.contains(inputContainer)) {
@@ -57,6 +59,7 @@ function innerWidthAboveThreshold(inputContainer, boardControls, boardContainer,
   }
 }
 
+// Initialize input field positioning on page load.
 document.addEventListener("DOMContentLoaded", () => {
   changeInputBoardLocation();
 });

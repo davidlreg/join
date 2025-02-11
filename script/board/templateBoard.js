@@ -1,3 +1,10 @@
+/**
+ * Generates HTML for a task card on the board.
+ *
+ * @param {Object} task - Task data containing title, category, description, subtasks, etc.
+ * @param {string} taskId - Unique identifier for the task.
+ * @returns {string} HTML string representing the task card.
+ */
 function templateBoardTasks(task, taskId) {
   const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
 
@@ -10,13 +17,7 @@ function templateBoardTasks(task, taskId) {
               <div class="boardSubtaskProgress">
                   <div class="boardSubtaskProgressBar"></div>        
               </div>
-              <span>${
-                task.subtask
-                  ? `${task.subtask.filter((st) => st.completed).length}/${
-                      task.subtask.length
-                    } Subtasks`
-                  : "No Subtasks"
-              }</span>
+              <span>${task.subtask ? `${task.subtask.filter((st) => st.completed).length}/${task.subtask.length} Subtasks` : "No Subtasks"}</span>
           </div>
           <div class="boardTaskBottom">
               <div class="boardTaskUsers">
@@ -26,7 +27,9 @@ function templateBoardTasks(task, taskId) {
                       <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                           ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                       </div>
-                  `).join("")}
+                  `
+                    )
+                    .join("")}
               </div>
               <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
           </div>
@@ -34,6 +37,12 @@ function templateBoardTasks(task, taskId) {
     `;
 }
 
+/**
+ * Generates the HTML for the task overlay, showing detailed information about the task.
+ *
+ * @param {Object} task - Task data containing title, category, description, due date, etc.
+ * @returns {string} HTML string representing the task overlay.
+ */
 function templateBoardOverlay(task) {
   return `
       <div class="boardOverlayContent">
@@ -66,9 +75,7 @@ function templateBoardOverlay(task) {
             <div class="boardOverlayTaskPriority">
                 <span class="label">Priority:</span>
                 <span>${task.priority}</span>
-                <img src="/assets/icon/board/priority-${
-                  task.priority
-                }.png" alt="Priority Icon">
+                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
@@ -79,7 +86,7 @@ function templateBoardOverlay(task) {
                     (contact) => `
                     <li>
                          <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
-                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() ||""}
+                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                         </div>
                         <span class="boardOverlayUsername">${contact.name}</span>
                     </li>
@@ -95,9 +102,7 @@ function templateBoardOverlay(task) {
                   .map(
                     (subtask, index) => `
                     <li>
-                        <input type="checkbox" id="subtask-${index}" ${
-                      subtask.completed ? "checked" : ""
-                    }>
+                        <input type="checkbox" id="subtask-${index}" ${subtask.completed ? "checked" : ""}>
                         <label for="subtask-${index}"></label>
                         <span>${subtask.text}</span>
                     </li>
@@ -134,6 +139,12 @@ function templateBoardOverlay(task) {
   `;
 }
 
+/**
+ * Generates the HTML for the task edit form, allowing the user to edit task details.
+ *
+ * @param {Object} task - Task data to be used to pre-fill the edit form.
+ * @returns {string} HTML string representing the task edit form.
+ */
 function templateEditTask(task) {
   return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
@@ -159,15 +170,11 @@ function templateEditTask(task) {
                 <div class="taskInputLeft Left">
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Title<span></span></p>
-                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${
-                          task.title
-                        }">
+                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title}">
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Description</p>
-                        <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${
-                          task.description
-                        }</textarea>
+                        <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${task.description}</textarea>
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Assigned to</p>

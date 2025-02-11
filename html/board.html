@@ -6,13 +6,13 @@
     <title>Board | Join</title>
     <link rel="icon" href="/assets/img/join_logo_small.png" />
     <!-- CSS -->
-    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/mainStyle.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
-    <link rel="stylesheet" href="/style/board/board.css" />
+    <link rel="stylesheet" href="/style/board/mainBoard.css" />
     <link rel="stylesheet" href="/style/board/mediaQueryBoard.css" />
-    <link rel="stylesheet" href="/style/board/boardOverlay.css" />
-    <link rel="stylesheet" href="/style/add_task/add_task.css" />
-    <link rel="stylesheet" href="/style/add_task/add_task_responsive.css" />
+    <link rel="stylesheet" href="/style/board/boardOverlays.css" />
+    <link rel="stylesheet" href="/style/addTask/mainAddTask.css" />
+    <link rel="stylesheet" href="/style/addTask/addTaskResponsive.css" />
   </head>
 
   <body onload="init()">
@@ -25,7 +25,7 @@
             <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" alt="Summary icon" />
             <p>Summary</p>
           </a>
-          <a class="nav-link" href="/html/add_task.html?active=add-task">
+          <a class="nav-link" href="/html/addTask.html?active=add-task">
             <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" alt="Add task icon" />
             <div class="text">
               <p>Add</p>
@@ -36,15 +36,19 @@
             <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" alt="Board Icon" />
             <p>Board</p>
           </a>
-          <a class="nav-link" href="/html/contacts.html?active=contacts">
+          <a class="nav-link" href="/html/contact.html?active=contacts">
             <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" alt="Contact Icon" />
             <p>Contact</p>
           </a>
         </div>
 
         <div class="sidebar__footer">
-          <a class="nav-link" href="/html/privacy_policy.html?active=privacy_policy"><p class="zoom">Privacy Policy</p></a>
-          <a class="nav-link" href="/html/legal_notice.html?active=legal_notice"><p class="zoom">Legal Notice</p></a>
+          <a class="nav-link" href="/html/privacyPolicy.html?active=privacy_policy">
+            <p class="zoom">Privacy Policy</p>
+          </a>
+          <a class="nav-link" href="/html/legalNotice.html?active=legal_notice">
+            <p class="zoom">Legal Notice</p>
+          </a>
         </div>
       </div>
 
@@ -81,8 +85,8 @@
               <div id="userIcon" class="userOptionsFrame">
                 <div class="userOptionsContent">
                   <a href="help.html" class="helpLink">Help</a>
-                  <a href="legal_notice.html">Legal Notice</a>
-                  <a href="privacy_policy.html">Privacy Policy</a>
+                  <a href="legalNotice.html">Legal Notice</a>
+                  <a href="privacyPolicy.html">Privacy Policy</a>
                   <a onclick="logout()" style="cursor: pointer">Log Out</a>
                 </div>
               </div>
@@ -186,14 +190,14 @@
       </div>
     </div>
     <!-- JavaScript -->
-    <script src="/script/script.js"></script>
+    <script src="/script/mainScript.js"></script>
     <script src="/script/board/mainBoard.js"></script>
     <script src="/script/board/boardMediaQueries.js"></script>
     <script src="/script/board/boardTemplates.js"></script>
-    <script src="/script/add_task/add_task_templates.js"></script>
-    <script src="/script/add_task/add_task_overlay.js"></script>
-    <script src="/script/add_task/prio_buttons.js"></script>
-    <script src="/script/add_task/add_task.js"></script>
+    <script src="/script/addTask/addTaskTemplates.js"></script>
+    <script src="/script/addTask/addTaskOverlays.js"></script>
+    <script src="/script/addTask/prioButtons.js"></script>
+    <script src="/script/addTask/mainAddTask.js"></script>
     <script src="/script/board/dragAndDropLogic.js"></script>
     <script src="/script/board/searchLogic.js"></script>
     <script src="/script/board/handleTaskLogic.js"></script>

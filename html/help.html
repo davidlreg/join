@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Help | Join</title>
     <link rel="icon" href="../assets/img/join_logo_small.png" />
+    <!-- CSS -->
     <link rel="stylesheet" href="../style/style.css" />
     <link rel="stylesheet" href="../style/fonts.css" />
     <link rel="stylesheet" href="../style//help/help.css" />
-    <script src="../script/script.js"></script>
   </head>
 
-  <body>
+  <body onload="init()">
     <div class="sidebar__container" id="sidebar-nav">
       <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" alt="Join logo big" /></a>
 
@@ -67,7 +67,6 @@
         <h3>Kanban Project Management Tool</h3>
 
         <div class="topBarIcons">
-
           <div onclick="toogleUser()" class="userIcon">
             <div id="userIcon" class="userOptionsFrame">
               <div class="userOptionsContent">
@@ -82,7 +81,6 @@
         </div>
       </header>
       <div class="helpInstructions">
-
         <section>
           <div class="helpSectionHeadline">
             <h1>Help</h1>
@@ -173,15 +171,7 @@
       </div>
     </div>
     <!-- JavaScript -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const userId = localStorage.getItem("userId");
-        const isGuest = localStorage.getItem("guestMode");
-
-        if (!userId && !isGuest) {
-          window.location.href = "./login.html";
-        }
-      });
-    </script>
+    <script src="/script/script.js"></script>
+    <script src="/script/help/help.js"></script>
   </body>
 </html>

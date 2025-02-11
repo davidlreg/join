@@ -5,6 +5,7 @@
   border: 0 solid transparent;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  border: unset;
 }
 
 html {

@@ -58,7 +58,36 @@ async function createTasksForBoard() {
   await syncBackendDataWithFirebase();
 
   closeTaskOverlay();
-  loadData();
+  loadTasksToBoard();
+  location.reload();
+}
+
+async function editTasksForBoard(taskId) {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts } = getAddTaskElements();
+
+  let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
+    text: subtask.textContent,
+    completed: false,
+  }));
+
+  tasks[taskId] = {
+    ...tasks[taskId],
+    assignedTo: assignedContacts,
+    title: addTaskTitle.value,
+    description: addTaskDescription.value,
+    dueDate: addTaskDate.value,
+    priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
+    status: tasks[taskId].status,
+    subtask: subtasksArray,
+  };
+
+  await syncBackendDataWithFirebase();
+
+  closeTaskOverlay();
+  loadTasksToBoard();
   location.reload();
 }
 
@@ -80,6 +109,7 @@ async function deleteTask() {
     }
   });
   await syncBackendDataWithFirebase();
+  loadTasksToBoard();
   location.reload();
 }
 
@@ -88,26 +118,18 @@ async function deleteTask() {
  *
  * @async
  */
-async function editTask() {
+async function editTask(taskId) {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
   const { overlayBoardContent, boardOverlay } = getBoardElements();
   const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
 
-  Object.keys(tasks).forEach((taskId) => {
-    let task = tasks[taskId];
-
-    if (task.title === boardOverlayTaskTitle.textContent) {
-      // Setze das Edit-Template
-      overlayBoardContent.innerHTML = templateEditTask(task);
+    if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
+      overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
       boardOverlay.classList.remove("hideOverlay");
-
-      // Warte, bis das neue DOM geladen wurde
-      setTimeout(() => {
-        highlightPriorityButton(task.priority);
-      }, 0);
+      setPriority(String(tasks[taskId].priority).toLowerCase());
     }
-  });
+  loadTasksToBoard();
 }
 
 /**
@@ -157,21 +179,3 @@ async function pushTaskToBackendData(task) {
   backendData.Data.Tasks[newTaskId] = task;
 }
 
-/**
- * Highlights the priority button based on the given priority level.
- *
- * @param {string} priority - The priority level (Medium, Urgent, Low).
- */
-function highlightPriorityButton(priority) {
-  const priorityButtons = document.querySelectorAll(".priorityButtonOverlay button");
-
-  priorityButtons.forEach((button) => {
-    if (priority === "Medium" && button.id === "mediumButton") {
-      button.classList.add("button-medium");
-    } else if (priority === "Urgent" && button.id === "urgentButton") {
-      button.classList.add("button-urgent");
-    } else if (priority === "Low" && button.id === "lowButton") {
-      button.classList.add("button-low");
-    }
-  });
-}

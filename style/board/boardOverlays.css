@@ -261,22 +261,3 @@
   height: 15px !important;
   object-fit: contain;
 }
-
-/* Prioritätsfarben */
-.button-medium {
-  background-color: #ffa800 !important;
-  color: #fff;
-  font-weight: 600;
-}
-
-.button-urgent {
-  background-color: #ff3d00 !important;
-  color: #fff;
-  font-weight: 600;
-}
-
-.button-low {
-  background-color: #7ae229 !important;
-  color: #fff;
-  font-weight: 600;
-}

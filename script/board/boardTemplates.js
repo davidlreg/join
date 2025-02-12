@@ -52,8 +52,8 @@ function templateBoardTasks(task, taskId) {
  * @param {Object} task - Task data containing title, category, description, due date, etc.
  * @returns {string} HTML string representing the task overlay.
  */
-function templateBoardOverlay(task) {
-    return `
+function templateBoardOverlay(task, taskId) {
+  return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
             <p class="boardOverlayTaskCategory">${task.category}</p>
@@ -131,7 +131,7 @@ function templateBoardOverlay(task) {
               Delete
             </button>
             <div class="overlaySeparator">|</div>
-            <button class="boardOverlayActionButtonsEdit" onclick="editTask()">
+            <button class="boardOverlayActionButtonsEdit" onclick="editTask('${taskId}')" data-task-id="${taskId}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_278437_2498" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
                 <rect width="24" height="24" fill="#D9D9D9"/>
@@ -152,8 +152,8 @@ function templateBoardOverlay(task) {
  * @param {Object} task - Task data to be used to pre-fill the edit form.
  * @returns {string} HTML string representing the task edit form.
  */
-function templateEditTask(task) {
-    return `
+function templateEditTask(task, taskId) {
+  return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
                 <div class="boardOverlayHeader editBoardHeader">
                     <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
@@ -192,7 +192,22 @@ function templateEditTask(task) {
                             </div>
                         </div>
                         <div id="selectContact" class="selectContact selectContactOverlay "></div>
-                        <div id="selectedContacts" class="selectedContacts"></div>
+                        <div id="selectedContacts" class="selectedContacts">
+                            <ul>
+                                ${(task.assignedTo || [])
+                                .map(
+                                    (contact) => `
+                                    <li>
+                                        <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
+                                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
+                                        </div>
+                                        <span class="boardOverlayUsername">${contact.name}</span>
+                                    </li>
+                                `
+                                )
+                                .join("")}
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -208,32 +223,43 @@ function templateEditTask(task) {
                         <p>Prio</p>
                         <div class="priorityButtonOverlay editPriorityButtonOverlay">
                             <button id="urgentButton" type="button" onclick="setPriority('urgent')"> Urgent
-                                <img class="editPriorityImages" src="/assets/img/Prio alta.png" alt="Urgent">
+                                <img class="editPriorityImages" src="/assets/icon/board/priority-Urgent.png" alt="Urgent">
                             </button>
                             <button id="mediumButton" type="button" onclick="setPriority('medium')"> Medium
-                                <img class="editPriorityImages" src="/assets/img/Prio medium.png" alt="Medium">
+                                <img class="editPriorityImages" src="/assets/icon/board/priority-Medium.png" alt="Medium">
                             </button>
                             <button id="lowButton" type="button" onclick="setPriority('low')"> Low
-                                <img class="editPriorityImages" src="/assets/img/Prio baja.png" alt="Low">
+                                <img class="editPriorityImages" src="/assets/icon/board/priority-Low.png" alt="Low">
                             </button>
                         </div>
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Subtasks</p>
                         <div class="subtaskWrapper">
-                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" value="${task.subtask[0].text
-        }">
+                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" >
                             <div class="iconWrapper iconWrapperOverlay">
                                 <div class="addSubtask">
-                                    <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">
+                                    <img src="/assets/img/subtaskPlusIcon.png" onclick="addSubtask()">
                                 </div>
                             </div>
                         </div>
-                        <ul id="subtaskList" class="subtaskListOverlay"></ul>
+                        <ul class="checkboxList">
+                            ${(task.subtask || [])
+                            .map(
+                                (subtask, index) => `
+                                <li>
+                                    <input type="checkbox" id="subtask-${index}" ${subtask.completed ? "checked" : ""}>
+                                    <label for="subtask-${index}"></label>
+                                    <span>${subtask.text}</span>
+                                </li>
+                            `
+                            )
+                            .join("")}
+                        </ul>
                     </div>
                                 <!-- Footer Actions -->
                     <div class="boardOverlayActionButtons">
-                        <button type="button" class="createButton createButtonOverlay btnDark" onclick="createTasksForBoard()">Ok
+                        <button type="button" class="createButton createButtonOverlay btnDark" onclick="editTasksForBoard('${taskId}')">Ok
                             <img src="/assets/img/check.png" alt="">
                         </button>
                     </div>

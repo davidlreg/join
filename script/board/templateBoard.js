@@ -1,28 +1,28 @@
 function templateBoardTasks(task, taskId) {
-  const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+    let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
+    let totalSubtasks = task.subtask ? task.subtask.length : 0;
+    let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+    let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
 
-  return `
+    return `
         <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
           <span class="boardTaskDescription">${task.description}</span>
+
           <div class="boardSubTasks">
-              <div class="boardSubtaskProgress">
-                  <div class="boardSubtaskProgressBar"></div>        
+              <div class="boardSubtaskProgress" title="${completedSubtasks} von ${totalSubtasks} Subtasks erledigt">
+                  <div class="boardSubtaskProgressBar" data-task-id="${taskId}"style="width: ${progressPercentage}%; background-color: ${progressColor};"></div>       
               </div>
-              <span>${
-                task.subtask
-                  ? `${task.subtask.filter((st) => st.completed).length}/${
-                      task.subtask.length
-                    } Subtasks`
-                  : "No Subtasks"
-              }</span>
+              <span>${completedSubtasks} von ${totalSubtasks} Subtasks erledigt</span>
           </div>
+          
           <div class="boardTaskBottom">
               <div class="boardTaskUsers">
                   ${assignedToArray
-                    .map(
-                      (contact) => `
+            .map(
+                (contact) => `
                       <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                           ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                       </div>
@@ -35,7 +35,7 @@ function templateBoardTasks(task, taskId) {
 }
 
 function templateBoardOverlay(task) {
-  return `
+    return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
             <p class="boardOverlayTaskCategory">${task.category}</p>
@@ -66,46 +66,41 @@ function templateBoardOverlay(task) {
             <div class="boardOverlayTaskPriority">
                 <span class="label">Priority:</span>
                 <span>${task.priority}</span>
-                <img src="/assets/icon/board/priority-${
-                  task.priority
-                }.png" alt="Priority Icon">
+                <img src="/assets/icon/board/priority-${task.priority
+        }.png" alt="Priority Icon">
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
             <p>Assigned To:</p>
             <ul>
                 ${(task.assignedTo || [])
-                  .map(
-                    (contact) => `
+            .map(
+                (contact) => `
                     <li>
                          <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
-                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() ||""}
+                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                         </div>
                         <span class="boardOverlayUsername">${contact.name}</span>
                     </li>
                 `
-                  )
-                  .join("")}
+            )
+            .join("")}
             </ul>
         </div>
         <div class="boardOverlaySubtasks">
-            <p>Subtasks:</p>
-            <ul class="checkboxList">
-                ${(task.subtask || [])
-                  .map(
-                    (subtask, index) => `
-                    <li>
-                        <input type="checkbox" id="subtask-${index}" ${
-                      subtask.completed ? "checked" : ""
-                    }>
-                        <label for="subtask-${index}"></label>
-                        <span>${subtask.text}</span>
-                    </li>
-                `
-                  )
-                  .join("")}
-            </ul>
-        </div>
+                <p>Subtasks:</p>
+                <ul class="checkboxList">
+                    ${(task.subtask || []).map((subtask, index) => `
+                        <li>
+                            <input type="checkbox" id="subtask-${task.id}-${index}" 
+                                ${subtask.completed ? "checked" : ""} 
+                                onchange="toggleSubtask('${task.id}', ${index})">
+                            <label for="subtask-${task.id}-${index}"></label>
+                            <span>${subtask.text}</span>
+                        </li>
+                    `).join("")}
+                </ul>
+            </div>
         <div class="boardOverlayActionButtons">
             <button class="boardOverlayActionButtonsDelete" onclick="deleteTask()">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +130,7 @@ function templateBoardOverlay(task) {
 }
 
 function templateEditTask(task) {
-  return `
+    return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
                 <div class="boardOverlayHeader editBoardHeader">
                     <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
@@ -159,15 +154,13 @@ function templateEditTask(task) {
                 <div class="taskInputLeft Left">
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Title<span></span></p>
-                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${
-                          task.title
-                        }">
+                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title
+        }">
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Description</p>
-                        <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${
-                          task.description
-                        }</textarea>
+                        <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${task.description
+        }</textarea>
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Assigned to</p>
@@ -187,8 +180,8 @@ function templateEditTask(task) {
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Due Date</p>
                         <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskDate" value="${convertDateFormat(
-                          task.dueDate
-                        )}">
+            task.dueDate
+        )}">
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Prio</p>
@@ -207,9 +200,8 @@ function templateEditTask(task) {
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Subtasks</p>
                         <div class="subtaskWrapper">
-                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" value="${
-                              task.subtask[0].text
-                            }">
+                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" value="${task.subtask[0].text
+        }">
                             <div class="iconWrapper iconWrapperOverlay">
                                 <div class="addSubtask">
                                     <img src="/assets/img/Subtasks icons11.png" onclick="addSubtask()">

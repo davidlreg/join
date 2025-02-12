@@ -102,30 +102,28 @@ function getBoardElements() {
 }
 
 async function addBoardOverlay(taskId) {
-  await fetchDataJSON();
+  await fetchDataJSON(); 
   const { boardOverlay, overlayBoardContent } = getBoardElements();
   let tasks = backendData.Data.Tasks;
 
   let task = tasks[taskId];
+
   if (task) {
-    let addBoardHtml = templateBoardOverlay(task);
-    overlayBoardContent.innerHTML = addBoardHtml;
-    boardOverlay.classList.remove("hideOverlay");
+      task.id = taskId; 
+
+      let addBoardHtml = templateBoardOverlay(task);
+      overlayBoardContent.innerHTML = addBoardHtml;
+      boardOverlay.classList.remove("hideOverlay");
   } else {
-    console.error("Task mit dieser ID wurde nicht gefunden:", task);
+      console.error("Task mit dieser ID nicht gefunden:", taskId);
   }
 }
+
+
 
 function closeBoardOverlay() {
   let boardOverlay = document.getElementById("addBoardOverlay");
   boardOverlay.classList.add("hideOverlay");
-}
-
-// Diese Funktion muss noch implementiert werden. Hab sie nur als Vorlage mal geschrieben.
-function updateSubtaskProgress(completed, total) {
-  const progressBar = document.querySelector(".subtask-progress-bar");
-  const percentage = (completed / total) * 100;
-  progressBar.style.width = percentage + "%";
 }
 
 function setIdToCreateTasks(boardSectionId, taskHtml) {
@@ -407,8 +405,47 @@ if (searchInput) {
 function getRandomColorForName(name){
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    hash += name.charCodeAt(i);
   }
-  let color = `hsl(${hash % 360}, 70%, 60%)`;
-  return color;
+  let hue = hash % 360;
+  return `hsl(${hue}, 70%, 60%)`;
 }
+
+///////////////////////////
+// Section for subtasks //
+/////////////////////////
+
+async function toggleSubtask(taskId, subtaskIndex) {
+  await fetchDataJSON();
+  let task = backendData.Data.Tasks[taskId];
+
+  if (!task || !Array.isArray(task.subtask)) {
+      return;
+  }
+
+  task.subtask[subtaskIndex].completed = !task.subtask[subtaskIndex].completed;
+
+  await syncBackendDataWithFirebase();
+  updateProgressBar(taskId);
+}
+
+
+function updateProgressBar(taskId) {
+  let task = backendData.Data.Tasks[taskId];
+
+  if (!task || !Array.isArray(task.subtask)) return;
+
+  let completedSubtasks = task.subtask.filter(subtask => subtask.completed).length;
+  let totalSubtasks = task.subtask.length;
+  let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff"; // Grün, wenn 100%
+
+  // Bestehende Fortschrittsbalken-Elemente suchen
+  let progressBar = document.querySelector(`.boardSubtaskProgressBar[data-task-id="${taskId}"]`);
+
+  if (progressBar) {
+      progressBar.style.width = `${progressPercentage}%`;
+      progressBar.style.backgroundColor = progressColor;
+  }
+}
+

@@ -153,6 +153,7 @@ function templateBoardOverlay(task, taskId) {
  * @returns {string} HTML string representing the task edit form.
  */
 function templateEditTask(task, taskId) {
+    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
     return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
                 <div class="boardOverlayHeader editBoardHeader">
@@ -193,15 +194,13 @@ function templateEditTask(task, taskId) {
                         </div>
                         <div id="selectContact" class="selectContact selectContactOverlay "></div>
                         <div id="selectedContacts" class="selectedContacts">
-                            ${(task.assignedTo || [])
+                            ${assignedToArray
                                 .map(
                                     (contact) => `
-                                            <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
-                                                ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
-                                            </div>
-                                    `
-                                )
-                                .join("")}
+                                        <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
+                                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
+                                        </div>
+                                    `).join("")}
                         </div>
                     </div>
                 </div>
@@ -238,20 +237,18 @@ function templateEditTask(task, taskId) {
                                 </div>
                             </div>
                         </div>
-                        <ul class="checkboxList">
-                            ${(task.subtask || [])
-                            .map(
-                                (subtask, index) => `
-                                <li>
-                                    <input type="checkbox" id="subtask-${index}" ${subtask.completed ? "checked" : ""}>
-                                    <label for="subtask-${index}"></label>
-                                    <span>${subtask.text}</span>
-                                </li>
-                            `
-                            )
-                            .join("")}
-                        </ul>
-                    </div>
+                            <ul class="checkboxList" id="subtaskList">
+                                ${(Array.isArray(task.subtask) ? task.subtask : []).map((subtask, index) => `
+                                    <li>
+                                        <input type="checkbox" id="subtask-${task.id}-${index}" 
+                                            ${subtask.completed ? "checked" : ""} 
+                                            onchange="toggleSubtask('${task.id}', ${index})">
+                                        <label for="subtask-${task.id}-${index}"></label>
+                                        <span>${subtask.text}</span>
+                                    </li>
+                                `).join("")}
+                            </ul>
+                        </div>
                                 <!-- Footer Actions -->
                     <div class="boardOverlayActionButtons">
                         <button type="button" class="createButton createButtonOverlay btnDark" onclick="editTasksForBoard('${taskId}')">Ok

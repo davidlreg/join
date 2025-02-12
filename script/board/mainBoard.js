@@ -123,7 +123,7 @@ async function addBoardOverlay(taskId) {
   if (task) {
       task.id = taskId; 
 
-      let addBoardHtml = templateBoardOverlay(task);
+      let addBoardHtml = templateBoardOverlay(task, taskId);
       overlayBoardContent.innerHTML = addBoardHtml;
       boardOverlay.classList.remove("hideOverlay");
   } else {
@@ -138,18 +138,6 @@ async function addBoardOverlay(taskId) {
 function closeBoardOverlay() {
   let boardOverlay = document.getElementById("addBoardOverlay");
   boardOverlay.classList.add("hideOverlay");
-}
-
-/**
- * Updates the progress of subtasks by adjusting the progress bar width.
- *
- * @param {number} completed - The number of completed subtasks.
- * @param {number} total - The total number of subtasks.
- */
-function updateSubtaskProgress(completed, total) {
-  const progressBar = document.querySelector(".subtask-progress-bar");
-  const percentage = (completed / total) * 100;
-  progressBar.style.width = percentage + "%";
 }
 
 /**

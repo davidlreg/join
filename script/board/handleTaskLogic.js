@@ -124,11 +124,11 @@ async function editTask(taskId) {
   const { overlayBoardContent, boardOverlay } = getBoardElements();
   const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
 
-    if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
-      overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
-      boardOverlay.classList.remove("hideOverlay");
-      setPriority(String(tasks[taskId].priority).toLowerCase());
-    }
+  if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
+    overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
+    boardOverlay.classList.remove("hideOverlay");
+    setPriority(String(tasks[taskId].priority).toLowerCase());
+  }
   loadTasksToBoard();
 }
 

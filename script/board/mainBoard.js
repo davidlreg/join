@@ -121,11 +121,15 @@ async function addBoardOverlay(taskId) {
   let task = tasks[taskId];
 
   if (task) {
-    let addBoardHtml = templateBoardOverlay(task, taskId);
-    overlayBoardContent.innerHTML = addBoardHtml;
-    boardOverlay.classList.remove("hideOverlay");
-  } 
- }
+      task.id = taskId; 
+
+      let addBoardHtml = templateBoardOverlay(task);
+      overlayBoardContent.innerHTML = addBoardHtml;
+      boardOverlay.classList.remove("hideOverlay");
+  } else {
+      console.error("Task mit dieser ID nicht gefunden:", taskId);
+  }
+}
 
 /**
  * Closes the board overlay.

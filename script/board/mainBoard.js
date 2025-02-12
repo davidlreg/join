@@ -251,3 +251,25 @@ function updateProgressBar(taskId) {
       progressBar.style.backgroundColor = progressColor;
   }
 }
+
+
+function showTooltip(event, text) {
+  hideTooltip();
+  let tooltip = document.getElementById("tooltip");
+  if (!tooltip) {
+      tooltip = document.createElement("div");
+      tooltip.id = "tooltip";
+      tooltip.className = "tooltip";
+      document.body.appendChild(tooltip);
+  }
+  tooltip.innerText = text;
+  tooltip.style.left = `${event.clientX + 20}px`;
+  tooltip.style.top = `${event.clientY - 5}px`;
+  tooltip.style.display = "block";
+}
+
+function hideTooltip() {
+  let tooltip = document.getElementById("tooltip");
+  if (tooltip) tooltip.style.display = "none";
+}
+

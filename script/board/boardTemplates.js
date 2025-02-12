@@ -20,11 +20,13 @@ function templateBoardTasks(task, taskId) {
           
           <!-- Fortschrittsanzeige -->
           <div class="boardSubTasks">
-              <div class="boardSubtaskProgress" title="${completedSubtasks} von ${totalSubtasks} Subtasks erledigt">
+              <div class="boardSubtaskProgress" 
+              onmouseover="showTooltip(event, '${completedSubtasks} of ${totalSubtasks} subtasks done')" 
+                   onmouseleave="hideTooltip()">
                   <div class="boardSubtaskProgressBar" data-task-id="${taskId}" 
                        style="width: ${progressPercentage}%; background-color: ${progressColor};"></div>        
               </div>
-              <span>${completedSubtasks} von ${totalSubtasks} Subtasks erledigt</span>
+              <span>${completedSubtasks}/${totalSubtasks} Subtasks</span>
           </div>
 
           <div class="boardTaskBottom">

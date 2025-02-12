@@ -438,9 +438,8 @@ function updateProgressBar(taskId) {
   let completedSubtasks = task.subtask.filter(subtask => subtask.completed).length;
   let totalSubtasks = task.subtask.length;
   let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-  let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff"; // Grün, wenn 100%
+  let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
 
-  // Bestehende Fortschrittsbalken-Elemente suchen
   let progressBar = document.querySelector(`.boardSubtaskProgressBar[data-task-id="${taskId}"]`);
 
   if (progressBar) {

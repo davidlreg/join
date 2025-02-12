@@ -114,17 +114,20 @@ function getBoardElements() {
  * @param {string} taskId - The ID of the task to display.
  */
 async function addBoardOverlay(taskId) {
-  await fetchDataJSON();
+  await fetchDataJSON(); 
   const { boardOverlay, overlayBoardContent } = getBoardElements();
   let tasks = backendData.Data.Tasks;
 
   let task = tasks[taskId];
+
   if (task) {
-    let addBoardHtml = templateBoardOverlay(task);
-    overlayBoardContent.innerHTML = addBoardHtml;
-    boardOverlay.classList.remove("hideOverlay");
+      task.id = taskId; 
+
+      let addBoardHtml = templateBoardOverlay(task);
+      overlayBoardContent.innerHTML = addBoardHtml;
+      boardOverlay.classList.remove("hideOverlay");
   } else {
-    console.error("Task mit dieser ID wurde nicht gefunden:", task);
+      console.error("Task mit dieser ID nicht gefunden:", taskId);
   }
 }
 
@@ -210,4 +213,41 @@ function getRandomColorForName(name) {
   }
   let color = `hsl(${hash % 360}, 70%, 60%)`;
   return color;
+}
+
+///////////////////////////
+// Section for subtasks //
+/////////////////////////
+
+async function toggleSubtask(taskId, subtaskIndex) {
+  await fetchDataJSON();
+  let task = backendData.Data.Tasks[taskId];
+
+  if (!task || !Array.isArray(task.subtask)) {
+      return;
+  }
+
+  task.subtask[subtaskIndex].completed = !task.subtask[subtaskIndex].completed;
+
+  await syncBackendDataWithFirebase();
+  updateProgressBar(taskId);
+}
+
+
+function updateProgressBar(taskId) {
+  let task = backendData.Data.Tasks[taskId];
+
+  if (!task || !Array.isArray(task.subtask)) return;
+
+  let completedSubtasks = task.subtask.filter(subtask => subtask.completed).length;
+  let totalSubtasks = task.subtask.length;
+  let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
+
+  let progressBar = document.querySelector(`.boardSubtaskProgressBar[data-task-id="${taskId}"]`);
+
+  if (progressBar) {
+      progressBar.style.width = `${progressPercentage}%`;
+      progressBar.style.backgroundColor = progressColor;
+  }
 }

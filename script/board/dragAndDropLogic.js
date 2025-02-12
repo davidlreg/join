@@ -11,7 +11,6 @@ async function moveTo(newStatus, taskId) {
   await updateBackend(backendData);
   loadTasksToBoard();
   checkIfTaskExistInContainer();
-  location.reload();
 }
 
 /**

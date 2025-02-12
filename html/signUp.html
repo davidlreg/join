@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up | Join</title>
+    <link rel="icon" href="/assets/img/join_logo_small.png" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/style/mainStyle.css" />
+    <link rel="stylesheet" href="/style/fonts.css" />
+    <link rel="stylesheet" href="/style/login/login.css" />
+    <link rel="stylesheet" href="/style/login/mediaQueryLogin.css" />
+  </head>
+
+  <body>
+    <img class="logo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo" />
+
+    <div class="signUpForm">
+      <button class="arrowBack" onclick="location.href='./login.html'">
+        <img src="../../assets/icon/arrow_back.svg" alt="Arrow back icon" />
+      </button>
+
+      <h1 class="header">Sign up</h1>
+
+      <div class="inputContainer">
+        <input type="text" name="name" id="userName" placeholder="Name" class="inputName" required />
+        <input type="text" name="email" id="userEmail" placeholder="Email" class="inputEmail" required />
+        <div class="inputPasswordWrapper">
+          <input type="password" name="password" placeholder="Password" class="inputPassword" required />
+          <button class="passwordToggle dNone"></button>
+        </div>
+        <div class="inputPasswordWrapper">
+          <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" id="userPassword" required />
+          <button class="passwordToggle dNone"></button>
+        </div>
+      </div>
+
+      <p class="errorMessage"></p>
+
+      <div class="checkbox">
+        <input type="checkbox" id="checkboxSignUp" class="box dNone" />
+        <label for="checkboxSignUp" class="customBox"></label>
+        <span>I accept the <a href="./privacyPolicy.html">Privacy Policy</a></span>
+      </div>
+
+      <div class="buttons">
+        <button id="signUpBtn" class="btnUnabledDark" type="button">Sign up</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="./privacyPolicy.html">Privacy Policy</a>
+      <a href="./legalNotice.html">Legal Notice</a>
+    </div>
+
+    <div id="overlay" class="overlay dNone">
+      <p id="overlayMessage" class="overlayMessage">You signed up successfully</p>
+    </div>
+    <!-- JavaScript -->
+    <script type="module" src="/script/login/signUp.js"></script>
+  </body>
+</html>

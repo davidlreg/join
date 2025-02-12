@@ -1,3 +1,10 @@
+/**
+ * Generates HTML for a task card on the board.
+ *
+ * @param {Object} task - Task data containing title, category, description, subtasks, etc.
+ * @param {string} taskId - Unique identifier for the task.
+ * @returns {string} HTML string representing the task card.
+ */
 function templateBoardTasks(task, taskId) {
     const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
     let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
@@ -15,7 +22,11 @@ function templateBoardTasks(task, taskId) {
               <div class="boardSubtaskProgress" title="${completedSubtasks} von ${totalSubtasks} Subtasks erledigt">
                   <div class="boardSubtaskProgressBar" data-task-id="${taskId}"style="width: ${progressPercentage}%; background-color: ${progressColor};"></div>       
               </div>
+<<<<<<< HEAD:script/board/templateBoard.js
               <span>${completedSubtasks} von ${totalSubtasks} Subtasks erledigt</span>
+=======
+              <span>${task.subtask ? `${task.subtask.filter((st) => st.completed).length}/${task.subtask.length} Subtasks` : "No Subtasks"}</span>
+>>>>>>> 2b361b7188d4b0fdcebb3c21306bd4bf3d70e74b:script/board/boardTemplates.js
           </div>
           
           <div class="boardTaskBottom">
@@ -26,7 +37,9 @@ function templateBoardTasks(task, taskId) {
                       <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                           ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                       </div>
-                  `).join("")}
+                  `
+                    )
+                    .join("")}
               </div>
               <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
           </div>
@@ -34,6 +47,12 @@ function templateBoardTasks(task, taskId) {
     `;
 }
 
+/**
+ * Generates the HTML for the task overlay, showing detailed information about the task.
+ *
+ * @param {Object} task - Task data containing title, category, description, due date, etc.
+ * @returns {string} HTML string representing the task overlay.
+ */
 function templateBoardOverlay(task) {
     return `
       <div class="boardOverlayContent">
@@ -66,8 +85,12 @@ function templateBoardOverlay(task) {
             <div class="boardOverlayTaskPriority">
                 <span class="label">Priority:</span>
                 <span>${task.priority}</span>
+<<<<<<< HEAD:script/board/templateBoard.js
                 <img src="/assets/icon/board/priority-${task.priority
         }.png" alt="Priority Icon">
+=======
+                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
+>>>>>>> 2b361b7188d4b0fdcebb3c21306bd4bf3d70e74b:script/board/boardTemplates.js
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
@@ -88,6 +111,7 @@ function templateBoardOverlay(task) {
             </ul>
         </div>
         <div class="boardOverlaySubtasks">
+<<<<<<< HEAD:script/board/templateBoard.js
                 <p>Subtasks:</p>
                 <ul class="checkboxList">
                     ${(task.subtask || []).map((subtask, index) => `
@@ -101,6 +125,23 @@ function templateBoardOverlay(task) {
                     `).join("")}
                 </ul>
             </div>
+=======
+            <p>Subtasks:</p>
+            <ul class="checkboxList">
+                ${(task.subtask || [])
+                  .map(
+                    (subtask, index) => `
+                    <li>
+                        <input type="checkbox" id="subtask-${index}" ${subtask.completed ? "checked" : ""}>
+                        <label for="subtask-${index}"></label>
+                        <span>${subtask.text}</span>
+                    </li>
+                `
+                  )
+                  .join("")}
+            </ul>
+        </div>
+>>>>>>> 2b361b7188d4b0fdcebb3c21306bd4bf3d70e74b:script/board/boardTemplates.js
         <div class="boardOverlayActionButtons">
             <button class="boardOverlayActionButtonsDelete" onclick="deleteTask()">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,6 +170,12 @@ function templateBoardOverlay(task) {
   `;
 }
 
+/**
+ * Generates the HTML for the task edit form, allowing the user to edit task details.
+ *
+ * @param {Object} task - Task data to be used to pre-fill the edit form.
+ * @returns {string} HTML string representing the task edit form.
+ */
 function templateEditTask(task) {
     return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
@@ -154,6 +201,7 @@ function templateEditTask(task) {
                 <div class="taskInputLeft Left">
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Title<span></span></p>
+<<<<<<< HEAD:script/board/templateBoard.js
                         <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title
         }">
                     </div>
@@ -161,6 +209,13 @@ function templateEditTask(task) {
                         <p>Description</p>
                         <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${task.description
         }</textarea>
+=======
+                        <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title}">
+                    </div>
+                    <div class="taskInputOverlay editTaskInputOverlay">
+                        <p>Description</p>
+                        <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${task.description}</textarea>
+>>>>>>> 2b361b7188d4b0fdcebb3c21306bd4bf3d70e74b:script/board/boardTemplates.js
                     </div>
                     <div class="taskInputOverlay editTaskInputOverlay">
                         <p>Assigned to</p>

@@ -1,0 +1,177 @@
+/**
+ * Retrieves all elements related to adding a task.
+ *
+ * @returns {Object} Elements required for task creation.
+ */
+function getAddTaskElements() {
+  return {
+    addTaskTitle: document.getElementById("addTaskTitle"),
+    addTaskDescription: document.getElementById("addTaskDescription"),
+    addTaskDate: document.getElementById("addTaskDate"),
+    addTaskSubTasks: document.querySelectorAll("#subtaskList li span:first-child"),
+    addTaskCategory: document.getElementById("selectTask"),
+    assignedContacts: getSelectedContacts(),
+  };
+}
+
+/**
+ * Retrieves the list of selected contacts.
+ *
+ * @returns {Array<Object>} Array of selected contacts.
+ */
+function getSelectedContacts() {
+  const selectedContacts = [];
+  document.querySelectorAll(".contactCheckbox:checked").forEach((checkbox) => {
+    selectedContacts.push({
+      name: checkbox.value,
+    });
+  });
+
+  return selectedContacts;
+}
+
+/**
+ * Creates a new task and adds it to the board.
+ *
+ * @async
+ */
+async function createTasksForBoard() {
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
+
+  let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
+    text: subtask.textContent,
+    completed: false,
+  }));
+
+  let newTask = {
+    assignedTo: assignedContacts,
+    title: addTaskTitle.value,
+    category: addTaskCategory.value,
+    description: addTaskDescription.value,
+    dueDate: addTaskDate.value,
+    priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
+    status: selectedBoardSection || "To do",
+    subtask: subtasksArray,
+  };
+
+  await pushTaskToBackendData(newTask);
+  await syncBackendDataWithFirebase();
+
+  closeTaskOverlay();
+  loadData();
+  location.reload();
+}
+
+/**
+ * Deletes a task from the board.
+ *
+ * @async
+ */
+async function deleteTask() {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+  closeBoardOverlay();
+  Object.keys(tasks).forEach((taskId) => {
+    let task = tasks[taskId];
+
+    if (task.title === boardOverlayTaskTitle.textContent) {
+      delete tasks[taskId];
+    }
+  });
+  await syncBackendDataWithFirebase();
+  location.reload();
+}
+
+/**
+ * Edits an existing task in the board.
+ *
+ * @async
+ */
+async function editTask() {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  const { overlayBoardContent, boardOverlay } = getBoardElements();
+  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+
+  Object.keys(tasks).forEach((taskId) => {
+    let task = tasks[taskId];
+
+    if (task.title === boardOverlayTaskTitle.textContent) {
+      // Setze das Edit-Template
+      overlayBoardContent.innerHTML = templateEditTask(task);
+      boardOverlay.classList.remove("hideOverlay");
+
+      // Warte, bis das neue DOM geladen wurde
+      setTimeout(() => {
+        highlightPriorityButton(task.priority);
+      }, 0);
+    }
+  });
+}
+
+/**
+ * Synchronizes the global `backendData` with Firebase.
+ *
+ * Sends a PUT request to update the Firebase Realtime Database with the current backend data.
+ *
+ * @async
+ * @function
+ * @returns {Promise<void>} Resolves when the data is successfully pushed.
+ */
+async function syncBackendDataWithFirebase() {
+  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(backendData),
+  });
+}
+
+/**
+ * Saves the given task into the global backendData.
+ * Automatically assigns a unique task ID.
+ *
+ * @async
+ * @param {Object} task - The task object to be saved.
+ * @returns {Promise<void>} A promise that resolves when the task is stored.
+ */
+async function pushTaskToBackendData(task) {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  let taskKeys = Object.keys(tasks);
+  let newTaskId = null;
+
+  for (let i = 0; i < taskKeys.length; i++) {
+    if (taskKeys[i] !== `taskId${i}`) {
+      newTaskId = `taskId${i}`;
+      break;
+    }
+  }
+
+  if (newTaskId === null) {
+    let nextId = taskKeys.length;
+    newTaskId = `taskId${nextId}`;
+  }
+  backendData.Data.Tasks[newTaskId] = task;
+}
+
+/**
+ * Highlights the priority button based on the given priority level.
+ *
+ * @param {string} priority - The priority level (Medium, Urgent, Low).
+ */
+function highlightPriorityButton(priority) {
+  const priorityButtons = document.querySelectorAll(".priorityButtonOverlay button");
+
+  priorityButtons.forEach((button) => {
+    if (priority === "Medium" && button.id === "mediumButton") {
+      button.classList.add("button-medium");
+    } else if (priority === "Urgent" && button.id === "urgentButton") {
+      button.classList.add("button-urgent");
+    } else if (priority === "Low" && button.id === "lowButton") {
+      button.classList.add("button-low");
+    }
+  });
+}

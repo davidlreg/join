@@ -10,19 +10,23 @@ body {
 }
 
 .helpInstructions {
-  margin: 80px;
+  margin: 64px;
 }
 
 h1 {
-  font-size: 52px;
+  font-size: 60px;
+}
+
+p {
+  font-size: 16px;
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .list {
@@ -46,18 +50,9 @@ span {
   align-items: center;
 }
 
-.arrowBack,
-.arrowBack img {
-  background: transparent;
-  width: 26px;
-  height: 25px;
-  top: 200px;
-  right: 80px;
-}
-
-.arrowBack {
-  top: 40px;
-  left: 30px;
+.arrowBack > img {
+  width: 22px;
+  height: 22px;
 }
 
 .arrowBack img:hover {
@@ -72,13 +67,17 @@ span {
     flex-direction: column-reverse;
   }
 
-  .helpInstructions {
-    margin: 30px;
+  h1 {
+    font-size: 46px;
   }
 
-  .arrowBack,
-  .arrowBack img {
-    top: 150px;
-    right: 30px;
+  .helpInstructions {
+    margin: 30px;
+    margin-bottom: 112px;
+  }
+
+  .arrowBack > img {
+    width: 18px;
+    height: 18px;
   }
 }

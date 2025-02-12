@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task | Join</title>
+    <link rel="icon" href="../assets/img/join_logo_small.png" />
+    <link rel="stylesheet" href="/style/addTask/mainAddTask.css" />
+    <link rel="stylesheet" href="/style/addTask/addTaskResponsive.css" />
+    <link rel="stylesheet" href="/style/mainStyle.css" />
+    <link rel="stylesheet" href="/style/fonts.css" />
+  </head>
+
+  <body onload="initTask()">
+    <!-- Sidebar -->
+    <div class="layoutContainer">
+      <div class="sidebar__container" id="sidebar-nav">
+        <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/Join_icon.svg" id="logo" alt="Join logo big" /></a>
+
+        <div class="nav__container" id="navbar">
+          <a class="nav-link" href="/html/summary.html?active=summary">
+            <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" alt="Summary icon" />
+            <p>Summary</p>
+          </a>
+          <a class="nav-link" href="/html/addTask.html?active=add-task">
+            <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" alt="Add task icon" />
+            <div class="text">
+              <p>Add</p>
+              <p>Task</p>
+            </div>
+          </a>
+          <a class="nav-link" href="/html/board.html?active=board">
+            <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" alt="Board Icon" />
+            <p>Board</p>
+          </a>
+          <a class="nav-link" href="/html/contact.html?active=contacts">
+            <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" alt="Contact Icon" />
+            <p>Contact</p>
+          </a>
+        </div>
+
+        <div class="sidebar__footer">
+          <a class="nav-link" href="/html/privacyPolicy.html?active=privacy_policy">
+            <p class="zoom">Privacy Policy</p>
+          </a>
+          <a class="nav-link" href="/html/legalNotice.html?active=legal_notice">
+            <p class="zoom">Legal Notice</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="mainContent">
+        <header>
+          <div class="joinLogoMedium">
+            <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.927 0.492188H15.8389V8.64696H22.927V0.492188Z" fill="#2A3647" />
+              <path
+                d="M15.8392 15.2793H22.9273V26.7803C22.9597 29.5478 22.1721 32.2624 20.6646 34.5791C19.1761 36.83 16.3027 39.5081 10.9866 39.5081C5.19613 39.5081 1.8211 36.7698 0 35.2692L4.47096 29.7542C6.24844 31.2055 7.96049 32.3994 11.0138 32.3994C13.3256 32.3994 14.2471 31.4574 14.7869 30.6359C15.5207 29.4949 15.9003 28.1604 15.8774 26.8022L15.8392 15.2793Z"
+                fill="#2A3647"
+              />
+              <path d="M12.2239 10.1311H5.13574V17.2508H12.2239V10.1311Z" fill="#29ABE2" />
+              <path
+                d="M26.6409 36.167C26.6409 37.684 25.8721 38.5001 24.798 38.5001C23.7239 38.5001 23.0205 37.5307 23.0205 36.2437C23.0205 34.9567 23.7457 33.938 24.858 33.938C25.9703 33.938 26.6409 34.9402 26.6409 36.167ZM23.8438 36.2272C23.8438 37.1418 24.2091 37.8155 24.8362 37.8155C25.4632 37.8155 25.8176 37.1035 25.8176 36.1725C25.8176 35.3564 25.4904 34.5897 24.8362 34.5897C24.1819 34.5897 23.8438 35.3291 23.8438 36.2272Z"
+                fill="#2A3647"
+              />
+              <path d="M28.0478 34.0042V38.4293H27.2627V34.0042H28.0478Z" fill="#2A3647" />
+              <path
+                d="M28.8975 38.4293V34.0042H29.7698L30.7077 35.8279C30.9491 36.3048 31.1639 36.7948 31.351 37.2956C31.302 36.748 31.2802 36.1181 31.2802 35.4171V34.0042H31.9999V38.4293H31.1875L30.2387 36.5672C29.9876 36.0781 29.7637 35.5753 29.5681 35.0611C29.5681 35.6088 29.6063 36.2277 29.6063 36.9889V38.4238L28.8975 38.4293Z"
+                fill="#2A3647"
+              />
+            </svg>
+          </div>
+          <h3>Kanban Project Management Tool</h3>
+
+          <div class="topBarIcons">
+            <div onclick="location.href='./help.html'">
+              <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" alt="questionIcon" />
+            </div>
+
+            <div onclick="toogleUser()" class="userIcon">
+              <div id="userIcon" class="userOptionsFrame">
+                <div class="userOptionsContent">
+                  <a href="help.html" class="helpLink">Help</a>
+                  <a href="legalNotice.html">Legal Notice</a>
+                  <a href="privacyPolicy.html">Privacy Policy</a>
+                  <a onclick="logout()" style="cursor: pointer">Log Out</a>
+                </div>
+              </div>
+              <a id="headerUserName"></a>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <form id="taskForm">
+            <h1>Add task</h1>
+
+            <!-- Left Column -->
+
+            <div class="taskInputContainer">
+              <div class="taskInputLeft">
+                <div class="taskInput">
+                  <p>Title<span> *</span></p>
+                  <input required type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput" />
+                </div>
+                <div class="taskInput">
+                  <p>Description</p>
+                  <textarea placeholder="Enter a Description" id="addTaskDescription" class="addDescriptionInput"></textarea>
+                </div>
+                <div class="taskInput">
+                  <p>Assigned to</p>
+                  <div onclick="toggleContact()" id="dropdown" class="dropdown">
+                    <div class="selectContainer">Select contacts to assign</div>
+                    <div class="dropdownIcon">
+                      <img src="/assets/img/arrow_drop_down.png" alt="" />
+                    </div>
+                  </div>
+                  <div id="selectContact" class="selectContact"></div>
+                  <div id="selectedContacts" class="selectedContacts"></div>
+                </div>
+              </div>
+
+              <hr class="taskSeparator" />
+
+              <!-- Right Column -->
+              <div class="taskInputRight">
+                <div class="taskInput">
+                  <p>Due Date <span>*</span></p>
+                  <input required type="date" class="addTaskInput" id="addTaskDate" />
+                </div>
+                <div class="taskInput">
+                  <p>Prio</p>
+                  <div class="priorityButton">
+                    <button id="urgentButton" type="button" onclick="setPriority('urgent')">
+                      Urgent
+                      <img src="/assets/img/prioHigh.png" alt="Urgent" />
+                    </button>
+                    <button id="mediumButton" type="button" onclick="setPriority('medium')">
+                      Medium
+                      <img src="/assets/img/prioMedium.png" alt="Medium" />
+                    </button>
+                    <button id="lowButton" type="button" onclick="setPriority('low')">
+                      Low
+                      <img src="/assets/img/prioLow.png" alt="Low" />
+                    </button>
+                  </div>
+                </div>
+
+                <div class="taskInput">
+                  <p>Category <span>*</span></p>
+                  <div onclick="toggleCategory()" class="dropdown">
+                    <input required id="selectTask" class="selectContainer" type="text" placeholder="Select task category" />
+                    <div class="dropdownIcon">
+                      <img src="/assets/img/arrow_drop_down.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="selectCategory">
+                    <div class="selectCategoryItem" onclick="selectCategory('Technical Task')">Technical Task</div>
+                    <div class="selectCategoryItem" onclick="selectCategory('User Story')">User Story</div>
+                  </div>
+                </div>
+
+                <div class="taskInput">
+                  <p>Subtasks</p>
+                  <div class="subtaskWrapper">
+                    <input type="text" placeholder="Add new subtask" class="addTaskInput" id="addTaskSubTasks" />
+                    <div class="iconWrapper">
+                      <div class="addSubtask">
+                        <img src="/assets/img/subtaskPlusIcon.png" onclick="addSubtask()" alt="Add subtask" />
+                      </div>
+                    </div>
+                  </div>
+                  <ul id="subtaskList" class="subtaskList"></ul>
+                </div>
+              </div>
+            </div>
+            <!-- Footer Actions -->
+            <div class="requiredAction">
+              <div class="requiredText">
+                <span>*</span>
+                This field is required
+              </div>
+
+              <div class="actions">
+                <button class="clearButton" onclick="">
+                  Clear
+                  <img src="/assets/img/iconoir_cancel.png" alt="Clear icon" />
+                </button>
+                <button type="button" class="createButton" onclick="createTasksForBoard()">
+                  Create Task
+                  <img src="/assets/img/check.png" alt="Create icon" />
+                </button>
+              </div>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+    <script src="/script/mainScript.js"></script>
+    <script src="/script/addTask/mainAddTask.js"></script>
+    <script src="/script/addTask/addTaskTemplates.js"></script>
+    <script src="/script/addTask/addTaskOverlays.js"></script>
+    <script src="/script/addTask/prioButtons.js"></script>
+    <script src="/script/board/board.js"></script>
+    <script src="/script/board/templateBoard.js"></script>
+  </body>
+</html>

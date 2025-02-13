@@ -380,7 +380,7 @@ function showEditContactOverlay(initials, color) {
             </div>
 
             <div>
-              <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" required value="${currentlyViewedUser.phone}" pattern="^\+?[0-9\s\-()]*$" />
+              <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" required value="${currentlyViewedUser.phone}" />
               <svg class="phoneIconEditOverlay" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_274969_2525" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
                   <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
@@ -396,7 +396,7 @@ function showEditContactOverlay(initials, color) {
 
             <div class="formButtons">
               <button type="button" class="deleteButton" onclick="deleteContact()"><p>Delete</p></button>
-              <button type="submit" class="saveContactButton" id="saveButton" onclick="updateContactData('${currentlyViewedUser.contactId}')">
+              <button type="button" class="saveContactButton" id="saveButton" onclick="updateContactData('${currentlyViewedUser.contactId}')">
                 <p>Save</p>
                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <mask id="mask0_274969_4267" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -487,7 +487,7 @@ function showEditContactOverlayMobile(initials, color) {
           />
         </g>
       </svg>
-      <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" required value="${currentlyViewedUser.phone}" pattern="^\+?[0-9\s\-()]*$"/>
+      <input type="tel" placeholder="Phone" class="formInput" id="contactPhone" required value="${currentlyViewedUser.phone}"/>
       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="phoneIconMobileEdit">
         <mask id="mask0_274969_2525" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
           <rect y="0.5" width="24" height="24" fill="#D9D9D9" />

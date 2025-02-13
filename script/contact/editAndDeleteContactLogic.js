@@ -57,30 +57,35 @@ function editOverlayBackground(container) {
  * @param {string} contactId - The ID of the contact to update.
  */
 async function updateContactData(contactId) {
+  if (!validateFormInput()) {
+    return;
+  }
   const updatedData = getUpdatedContactData();
-  validateFormInput();
   await updateContactInDatabase(contactId, updatedData);
-  location.reload();
+  setTimeout(() => location.reload(), 100);
 }
 
-function validateFormInput(event) {
+function validateFormInput() {
   let email = document.getElementById("contactEmail").value;
   let phone = document.getElementById("contactPhone").value;
 
   let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   let phonePattern = /^\+?[0-9\s\-()]*$/;
 
-  if (!emailPattern.test(email)) {
-    alert("Bitte eine gültige E-Mail-Adresse eingeben.");
-    return false; // Validation failed
+  let emailValid = emailPattern.test(email);
+  let phoneValid = phonePattern.test(phone);
+
+  if (!emailValid) {
+    alert("Please enter a valid email address.");
+    return false;
   }
 
-  if (!phonePattern.test(phone)) {
-    alert("Bitte eine gültige Telefonnummer eingeben.");
-    return false; // Validation failed
+  if (!phoneValid) {
+    alert("Please enter a valid phone number (e.g., +49 123 456789).");
+    return false;
   }
 
-  return true; // Validation successful
+  return true;
 }
 
 /**
@@ -105,8 +110,7 @@ function getUpdatedContactData() {
  */
 async function updateContactInDatabase(contactId, updatedData) {
   const url = buildContactUrl(contactId);
-  const result = await sendPatchRequest(url, updatedData);
-  console.log("Update successful:", result);
+  await sendPatchRequest(url, updatedData);
 }
 
 /**
@@ -132,7 +136,8 @@ async function sendPatchRequest(url, data) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  return response.json();
+  const result = await response.json();
+  return result;
 }
 
 /**

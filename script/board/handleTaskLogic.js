@@ -63,9 +63,10 @@ async function createTasksForBoard() {
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
 
-  closeTaskOverlay();
   loadTasksToBoard();
-  location.reload();
+
+  window.location.href = "/html/board.html";
+  
 }
 
 async function editTasksForBoard(taskId) {

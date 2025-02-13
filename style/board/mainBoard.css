@@ -1,9 +1,10 @@
 /* ==================== General Board Layout ==================== */
 
 main {
-  padding: 64px;
+  padding: 54px;
   height: calc(100% - 96px);
-  overflow-y: hidden;
+  
+  padding-bottom: 80px;
 }
 
 .mainContentWrapper {
@@ -162,6 +163,7 @@ main {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
+  margin-bottom: 12px;
 }
 
 .boardTasksBigger {
@@ -306,9 +308,13 @@ main {
 }
 
 .tasksInnerContainer {
-  height: 600px;
+  height: 550px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
+  overflow-y: auto;
 }
+
+

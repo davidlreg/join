@@ -17,7 +17,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 64px;
+  margin-bottom: 50px;
 }
 
 .boardContainer h2 {
@@ -115,6 +115,7 @@ main {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  
 }
 
 .boardSectionsSubContainer {
@@ -309,12 +310,18 @@ main {
 
 .tasksInnerContainer {
   height: 550px;
-  width: 280px;
+  width: 255px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
   overflow-y: auto;
+  padding-right: 8px;
 }
 
 
+@media(max-height: 795px){
+  .tasksInnerContainer {
+    height: 470px;
+  }
+}

@@ -38,7 +38,6 @@ function getSelectedContacts() {
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
-
   if(!addTaskTitle.value.trim() || !addTaskDate.value.trim() || !addTaskCategory.value.trim()){
     alert("Please fill in all required fields before creating a task.");
     return;

@@ -163,6 +163,14 @@ p {
   gap: 32px;
 }
 
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
 /* Form Buttons */
 .formButtons {
   width: 100%;
@@ -257,21 +265,21 @@ p {
 .nameIconEditOverlay {
   position: absolute;
   right: 25px;
-  top: 185px;
+  top: 205px;
   pointer-events: none;
 }
 
 .mailIconEditOverlay {
   position: absolute;
   right: 25px;
-  top: 270px;
+  top: 285px;
   pointer-events: none;
 }
 
 .phoneIconEditOverlay {
   position: absolute;
   right: 25px;
-  top: 355px;
+  top: 368px;
   pointer-events: none;
 }
 
@@ -423,7 +431,7 @@ p {
 
 .nameIconMobileEdit {
   position: absolute;
-  top: 420px;
+  top: 430px;
   right: 32px;
 }
 

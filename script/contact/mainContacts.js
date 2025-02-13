@@ -361,3 +361,9 @@ function addCloseEventListener(overlay, menuContainer) {
     });
   }, 0);
 }
+
+document.getElementById("editContactForm").addEventListener("submit", function(event) {
+  if (!validateFormInput(event)) {
+    event.preventDefault();
+  }
+});

@@ -58,8 +58,29 @@ function editOverlayBackground(container) {
  */
 async function updateContactData(contactId) {
   const updatedData = getUpdatedContactData();
+  validateFormInput();
   await updateContactInDatabase(contactId, updatedData);
   location.reload();
+}
+
+function validateFormInput(event) {
+  let email = document.getElementById("contactEmail").value;
+  let phone = document.getElementById("contactPhone").value;
+
+  let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  let phonePattern = /^\+?[0-9\s\-()]*$/;
+
+  if (!emailPattern.test(email)) {
+    alert("Bitte eine gültige E-Mail-Adresse eingeben.");
+    return false; // Validation failed
+  }
+
+  if (!phonePattern.test(phone)) {
+    alert("Bitte eine gültige Telefonnummer eingeben.");
+    return false; // Validation failed
+  }
+
+  return true; // Validation successful
 }
 
 /**

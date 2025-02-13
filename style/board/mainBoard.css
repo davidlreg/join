@@ -3,7 +3,7 @@
 main {
   padding: 64px;
   height: calc(100% - 96px);
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .mainContentWrapper {

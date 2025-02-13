@@ -69,6 +69,20 @@
           </svg>
         </div>
         <h3>Kanban Project Management Tool</h3>
+
+        <div class="topBarIcons">
+          <div onclick="toogleUser()" class="userIcon">
+            <div id="userIcon" class="userOptionsFrame">
+              <div class="userOptionsContent">
+                <a href="help.html" class="helpLink">Help</a>
+                <a href="legalNotice.html">Legal Notice</a>
+                <a href="privacyPolicy.html">Privacy Policy</a>
+                <a onclick="logout()" style="cursor: pointer">Log Out</a>
+              </div>
+            </div>
+            <a id="headerUserName"></a>
+          </div>
+        </div>
       </header>
 
       <div class="impressum">
@@ -205,5 +219,6 @@
     </div>
     <!-- JavaScript -->
     <script src="/script/mainScript.js"></script>
+    <script src="/script/help/mainHelp.js"></script>
   </body>
 </html>

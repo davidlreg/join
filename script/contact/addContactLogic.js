@@ -55,11 +55,16 @@ function addOverlayBackground(container) {
  * Creates a new contact by retrieving user input from the form and saving it to the database.
  * After saving, it closes the overlay and shows a confirmation message.
  *
+ * @returns {void}
  */
 function createContact() {
   const email = document.getElementById("email").value;
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
+
+  if (!validateForm()) {
+    return;
+  }
 
   getNextId().then((nextContactId) => {
     saveContact(nextContactId, email, name, phone);
@@ -158,6 +163,66 @@ function saveContact(contactId, email, name, phone) {
     .catch((error) => {
       console.error("Error saving contact:", error);
     });
+}
+
+/**
+ * Validates if the name is valid.
+ *
+ * @param {string} name - The name to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validateName(name) {
+  return /^[a-zA-Z\s]{2,}$/.test(name);
+}
+
+/**
+ * Validates if the email is valid.
+ *
+ * @param {string} email - The email to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validateEmail(email) {
+  return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+}
+
+/**
+ * Validates if the phone number is valid.
+ *
+ * @param {string} phone - The phone number to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validatePhone(phone) {
+  return /^\+?\d{1,4}[\s\-]?\(?\d{1,4}\)?[\s\-]?\d{1,4}[\s\-]?\d{1,4}$/.test(phone);
+}
+
+/**
+ * Checks if the form fields are valid.
+ *
+ * @returns {boolean} - Returns true if all fields are valid, false otherwise.
+ */
+function validateForm() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  let isValid = true;
+  let errorMessage = "";
+
+  if (!validateName(name)) {
+    isValid = false;
+    errorMessage += "Please enter a valid name.\n";
+  }
+  if (!validateEmail(email)) {
+    isValid = false;
+    errorMessage += "Please enter a valid email address.\n";
+  }
+  if (!validatePhone(phone)) {
+    isValid = false;
+    errorMessage += "Please enter a valid phone number.\n";
+  }
+
+  if (!isValid) alert(errorMessage);
+  return isValid;
 }
 
 /**

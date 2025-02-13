@@ -6,23 +6,29 @@ body {
   display: flex;
   height: 100vh;
   background-color: #f8f9fa;
-}
-
-:target {
-  scroll-margin-top: 96px;
-}
-
-main {
-  padding: 64px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
 }
 
 .rightSideWrapper {
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden; 
+}
+
+header {
+  background-color: white;
+  padding: 16px 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 main {
-  margin: 0 auto;
-  padding-bottom: 32px;
+  flex-grow: 1;
+  padding: 64px;
+  overflow-y: auto; 
 }
 
 main h1 {
@@ -46,7 +52,7 @@ main p {
 }
 
 main ul {
-  margin-left: 20px;
+  padding-left: 20px;
   margin-bottom: 16px;
 }
 
@@ -54,16 +60,27 @@ main ul li {
   margin-bottom: 8px;
 }
 
-/*Responsive*/
+
+:target {
+  scroll-margin-top: 96px;
+}
+
+/* Responsive*/
+@media (max-width: 1400px){
+  main {
+    padding-bottom: 100px;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
-    overflow-y: auto;
   }
 
   main {
-    padding: 16px;
+    padding: 32px;
     font-size: 0.95rem;
+    padding-bottom: 90px;
   }
 
   main h1 {
@@ -71,30 +88,15 @@ main ul li {
   }
 
   main h2 {
-    font-size: 1.25rem;
-  }
-
-  main h3 {
-    font-size: 1.1rem;
-  }
-
-  main ul {
-    margin-left: 16px;
-  }
-
-  main ul li {
-    font-size: 0.95rem;
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 0;
-  }
-
   main {
     padding: 16px;
     font-size: 0.9rem;
+    padding-bottom: 80px;
   }
 
   main h1 {
@@ -103,58 +105,31 @@ main ul li {
   }
 
   main h2 {
-    font-size: 1.1rem;
-    margin-top: 24px;
-    margin-bottom: 12px;
-  }
-
-  main h3 {
-    font-size: 1rem;
-    margin-bottom: 6px;
+    font-size: 1.2rem;
   }
 
   main p {
     font-size: 0.9rem;
-    margin-bottom: 12px;
     line-height: 1.4;
-  }
-
-  main ul {
-    margin-left: 12px;
-    margin-bottom: 12px;
-  }
-
-  main ul li {
-    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 319px) {
+@media (max-width: 320px) {
   main {
-    padding: 8px;
+    padding: 12px;
     font-size: 0.85rem;
+    padding-bottom: 80px;
   }
 
   main h1 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
 
   main h2 {
-    font-size: 1rem;
-    margin-top: 16px;
-    margin-bottom: 8px;
+    font-size: 1.1rem;
   }
 
-  main h3 {
-    font-size: 0.95rem;
-  }
-
-  main p,
-  main ul li {
+  main p {
     font-size: 0.85rem;
-  }
-
-  main ul {
-    margin-left: 8px;
   }
 }

@@ -19,7 +19,7 @@ function addTaskHtmlTemplate() {
                        <div onclick="toggleContact()" id="dropdown" class="dropdown dropdownOverlay">
                            <div class="selectContainer selectContainerOverlay">Select contacts to assign</div>
                            <div class="dropdownIcon">
-                               <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                               <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="">
                            </div>
                        </div>
                        <div id="selectContact" class="selectContact selectContactOverlay"></div>
@@ -52,7 +52,7 @@ function addTaskHtmlTemplate() {
                             <div onclick="toggleCategoryOverlay()" class="dropdown dropdownOverlay">
                                 <input required id="selectTask" class="selectContainer selectContainerOverlay" type="text" placeholder="Select task category"/>
                                 <div class="dropdownIcon">
-                                    <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                                    <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="">
                                 </div>
                             </div>
                             <div class="selectCategory selectCategoryOverlay">
@@ -84,7 +84,7 @@ function addTaskHtmlTemplate() {
                 </div>
                 <div class="actions">
                     <button class="clearButton clearButtonOverlay" onclick="closeTaskOverlay()">Clear
-                        <img src="/assets/img/iconoir_cancel.png" alt="">
+                        <img src="/assets/img/clearIcon.png" alt="">
                     </button>
                     <button type="button" class="createButton createButtonOverlay" onclick="createTasksForBoard()">Create Task
                         <img src="/assets/img/check.png" alt="">

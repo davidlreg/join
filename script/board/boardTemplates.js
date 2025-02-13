@@ -189,7 +189,7 @@ function templateEditTask(task, taskId) {
                         <div onclick="toggleContact()" id="dropdown" class="dropdown dropdownOverlay editDropDown">
                             <div class="selectContainer selectContainerOverlay">Select contacts to assign</div>
                             <div class="dropdownIcon">
-                                <img id="dropdownIconDown" src="/assets/img/arrow_drop_down.png" alt="">
+                                <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="">
                             </div>
                         </div>
                         <div id="selectContact" class="selectContact selectContactOverlay "></div>

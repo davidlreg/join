@@ -10,7 +10,7 @@ function showAddContactOverlay() {
   <div class="addContactLeftSide">
     <div class="leftSideContentWrapper">
       <div class="logoContainer">
-        <img src="/assets/img/join_logo_small.png" class="joinLogoSmall" />
+        <img src="/assets/img/joinLogoSmall.png" class="joinLogoSmall" />
       </div>
       <div class="addContactHeadline">
         <h1>Add contact</h1>
@@ -302,7 +302,7 @@ function showEditContactOverlay(initials, color) {
   <div class="editContactLeftSide">
     <div class="leftSideContentWrapper">
       <div class="logoContainer">
-        <img src="/assets/img/join_logo_small.png" class="joinLogoSmall" />
+        <img src="/assets/img/joinLogoSmall.png" class="joinLogoSmall" />
       </div>
       <div class="editContactHeadline">
         <h1>Edit contact</h1>

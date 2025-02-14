@@ -200,7 +200,7 @@ function templateEditTask(task, taskId) {
                                         <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                                             ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
                                         </div>
-                                    `).join("")}
+                                `).join("")}
                         </div>
                     </div>
                 </div>
@@ -256,8 +256,6 @@ function templateEditTask(task, taskId) {
                         </button>
                     </div>
             </div>
-
-
         </form>
     `;
 }

@@ -134,6 +134,7 @@ async function editTask(taskId) {
     overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
     boardOverlay.classList.remove("hideOverlay");
     setPriority(String(tasks[taskId].priority).toLowerCase());
+    loadContacts();
   }
   loadTasksToBoard();
 }

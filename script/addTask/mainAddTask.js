@@ -22,6 +22,20 @@ function initTask() {
   setPriority('medium');
 }
 
+function toggleSubtaskIcons() {
+  const subtaskInput = document.getElementById("addTaskSubTasks");
+  const subtaskPlusIcon = document.getElementById("subtaskPlusIcon");
+  const subtaskIcons = document.getElementById("subtaskIcons");
+
+  if (subtaskInput.value.trim() !== "") {
+    subtaskPlusIcon.style.display = "none"; 
+    subtaskIcons.style.display = "inline";  
+  } else {
+    subtaskPlusIcon.style.display = "inline"; 
+    subtaskIcons.style.display = "none"; 
+  }
+}
+
 /**
  * 
  * Gets the text from the subtask input field. If the input is empty, it shows an alert.
@@ -38,10 +52,17 @@ function addSubtask() {
     return;
   }
 
-  const listItem = createSubtaskElement(subtaskValue);
-  subtaskList.appendChild(listItem);
+  subtaskList.appendChild(createSubtaskElement(subtaskValue));
+  subtaskInput.value = "";
 
-  subtaskInput.value = '';
+  toggleSubtaskIcons();
+}
+
+function clearSubtaskInput(){
+  const subtaskInput = document.getElementById('addTaskSubTasks');
+  subtaskInput.value = "";
+
+  toggleSubtaskIcons();
 }
 
 /**

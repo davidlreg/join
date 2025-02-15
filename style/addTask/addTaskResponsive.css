@@ -51,8 +51,8 @@
   }
 
   .iconWrapper {
-    right: 110px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 11px;
   }
 
   .requiredAction {
@@ -73,15 +73,15 @@
 
 @media (max-width: 1000px) {
   .iconWrapper {
-    right: 90px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 11px;
   }
 }
 
 @media (max-width: 800px) {
   .iconWrapper {
-    right: 70px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 11px;
   }
 }
 
@@ -99,8 +99,8 @@
   }
 
   .iconWrapper {
-    right: 65px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 11px;
   }
 
   .priorityButton button {
@@ -136,7 +136,7 @@
   }
 
   .dropdown {
-    max-width: 89%;
+    max-width: 100%;
   }
 
   .selectContainer {
@@ -144,7 +144,7 @@
   }
 
   .iconWrapper {
-    right: 40px;
+    right: 15px;
     bottom: 5px;
   }
 
@@ -169,13 +169,13 @@
 }
 
 /*Overlay*/
-@media (max-width: 1350px) {
+@media (max-width: 1400px) {
   form#taskFormOverlay {
     width: 100%;
   }
 
   .taskInputContainerOverlay {
-    max-height: 35vh;
+    max-height: 47vh;
     overflow-y: auto;
     padding-right: 10px;
     box-sizing: border-box;
@@ -184,6 +184,14 @@
   .addDescriptionInputOverlay {
     font-size: 18px;
   }
+
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    position: static;
+    width: 810px;
+    max-width: 810px;
+  }
+
+  
 
   .priorityButtonOverlay {
     margin-left: 6px;
@@ -347,6 +355,7 @@
     width: 92%;
     font-size: 14px;
   }
+
 
   .dropdownOverlay {
     width: 91%;

@@ -107,13 +107,18 @@ async function deleteTask() {
   let tasks = backendData.Data.Tasks;
   const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
   closeBoardOverlay();
+
   Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
-
     if (task.title === boardOverlayTaskTitle.textContent) {
       delete tasks[taskId];
     }
   });
+
+  if (Object.keys(tasks).length === 0) {
+    backendData.Data.Tasks = {};  
+  }
+
   await syncBackendDataWithFirebase();
   loadTasksToBoard();
   location.reload();
@@ -168,6 +173,11 @@ async function syncBackendDataWithFirebase() {
  */
 async function pushTaskToBackendData(task) {
   await fetchDataJSON();
+
+  if (!backendData.Data.Tasks) {
+    backendData.Data.Tasks = {}; 
+  }
+  
   let tasks = backendData.Data.Tasks;
   let taskKeys = Object.keys(tasks);
   let newTaskId = null;

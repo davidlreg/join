@@ -7,9 +7,14 @@ let passwordToggle = document.querySelector(".passwordToggle");
 const databaseUrl = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const userId = localStorage.getItem("userId");
+  let userId = localStorage.getItem("userId");
+  let guestMode = localStorage.getItem("guestMode");
 
   if (userId) {
+    window.location.href = "./summary.html?active=summary&user=loggedIn";
+  }
+
+  if (guestMode) {
     window.location.href = "./summary.html?active=summary&user=loggedIn";
   }
 });

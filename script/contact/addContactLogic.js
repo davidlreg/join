@@ -28,7 +28,13 @@ function openAddContactOverlayMobile() {
  */
 function closeAddContactOverlay() {
   const overlay = document.querySelector(".addContactOverlay");
-  closeOverlay(overlay);
+
+  if (window.innerWidth > 1350) {
+    closeOverlay(overlay);
+  } else {
+    closeAddContactOverlayMobile();
+  }
+
   removeOverlayContent();
 }
 
@@ -75,7 +81,14 @@ function createContact() {
   setTimeout(() => {
     prepareData();
   }, 100);
-  showContactCreatedMessage();
+
+  if (window.innerWidth > 1350) {
+    showContactCreatedMessage();
+  } else {
+    setTimeout(() => {
+      showMobileContactCreatedMessage();
+    }, 300);
+  }
 }
 
 /**
@@ -239,6 +252,52 @@ function showContactCreatedMessage() {
   const overlay = createdContactContainer.querySelector(".contactSucessfullyCretaed");
   openOverlay(overlay);
   scheduleContactMessageClose(overlay);
+}
+
+/**
+ * Displays a success message when a contact is created.
+ * The message is animated into view and automatically disappears after a delay.
+ */
+function showMobileContactCreatedMessage() {
+  const createdContactContainer = document.getElementById("showCreatedContactContainerMobile");
+  createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
+  const overlay = document.getElementById("contactSucessfullyCretaed");
+
+  openOverlayMobile(overlay);
+  scheduleContactMessageCloseMobile(overlay);
+}
+
+/**
+ * Animates the success message into view from the bottom.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function openOverlayMobile(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateY(100%)";
+  setTimeout(() => (overlay.style.transform = "translateY(0)"), 100);
+}
+
+/**
+ * Schedules the automatic closing of the confirmation message after a delay.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function scheduleContactMessageCloseMobile(overlay) {
+  setTimeout(() => {
+    animateContactMessageCloseMobile(overlay);
+  }, 1500);
+}
+
+/**
+ * Animates the closing of the confirmation message by sliding it down.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function animateContactMessageCloseMobile(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateY(500%)";
+  removeContactMessageAfterAnimation(overlay);
 }
 
 /**

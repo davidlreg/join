@@ -153,6 +153,11 @@ body {
   left: 720px;
 }
 
+.showCreatedContactContainerMobile {
+  position: absolute;
+  bottom: 180px;
+}
+
 .contactSucessfullyCretaed {
   display: flex;
   flex-direction: column;
@@ -169,14 +174,6 @@ body {
 .contactSucessfullyCretaed > p {
   color: #ffffff;
   font-size: 20px;
-}
-
-.contactSuccessfullyCreated.show {
-  transform: translateX(-350px); /* Bewegt sich in den sichtbaren Bereich */
-}
-
-.contactSuccessfullyCreated.hide {
-  transform: translateX(100%); /* Bewegt sich nach rechts wieder heraus */
 }
 
 /* Floating Add Contact Container */

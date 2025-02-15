@@ -24,7 +24,7 @@ function getStoredUserName() {
 /**
  * Generates initials from a full name when an user or guest is logged in.
  * 
- * Otherwise there won't be any and the userIcon loses it's onclick function.
+ * Otherwise there won't be any and the userIcon loses its onclick function.
  *
  * @param {string} fullName - The full name of the user.
  * @returns {string} The initials or "G" if the name is invalid.

@@ -1,6 +1,6 @@
 /**
  * Checks if the user is logged in or in guest mode.
- * Removes the class 'dNone' and shows the navBar and help button when logged in.
+ * Removes the class 'dNone' and shows the navBar, userIcon and help button when logged in.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
@@ -9,6 +9,7 @@ function checkUserSession() {
   if (userId || isGuest) {
     document.getElementById("navbar").classList.remove("dNone");
     document.getElementById("help").classList.remove("dNone");
+    document.querySelector(".userIcon").classList.remove("dNone");
   }
 }
 
@@ -23,8 +24,6 @@ function getStoredUserName() {
 
 /**
  * Generates initials from a full name when an user or guest is logged in.
- * 
- * Otherwise there won't be any and the userIcon loses its onclick function.
  *
  * @param {string} fullName - The full name of the user.
  * @returns {string} The initials or "G" if the name is invalid.
@@ -32,14 +31,11 @@ function getStoredUserName() {
 function getUserInitials(fullName) {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
-  const userIcon = document.querySelector(".userIcon");
 
   if (userId || isGuest) {
     if (!fullName) return "G";
     const nameParts = fullName.split(" ");
     return nameParts.length >= 2 ? nameParts[0][0] + nameParts[1][0] : fullName[0];
-  } else {
-    userIcon.onclick = null;
   }
 }
 

@@ -9,23 +9,19 @@ const databaseUrl = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebas
 /**
  * Redirects the user to the summary page if they are logged in or in guest mode.
  *
- * It runs when the DOM is fully loaded and checks for the presence of 
- * `userId` or `guestMode` in local storage.
+ * It runs with an eventListener when the DOM is fully loaded
+ * and checks for the presence of `userId` or `guestMode` in local storage.
  * 
  * If either exists, the user is redirected to the summary page.
  */
-document.addEventListener("DOMContentLoaded", function () {
-  let userId = localStorage.getItem("userId");
-  let guestMode = localStorage.getItem("guestMode");
+function checkUserSession() {
+  let user = localStorage.getItem("userId");
+  let guest = localStorage.getItem("guestMode");
 
-  if (userId) {
+  if (user || guest) {
     window.location.href = "./summary.html?active=summary&user=loggedIn";
   }
-
-  if (guestMode) {
-    window.location.href = "./summary.html?active=summary&user=loggedIn";
-  }
-});
+}
 
 /**
  * Handles the removal of CSS animations from the logo elements
@@ -246,6 +242,8 @@ function displayError(message) {
   errorMessage.innerHTML = message;
   errorMessage.style.display = "block";
 }
+
+document.addEventListener("DOMContentLoaded", checkUserSession);
 
 emailInput.addEventListener("input", function () {
   validateEmail();

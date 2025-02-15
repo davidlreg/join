@@ -62,7 +62,7 @@ async function updateContactData(contactId) {
   }
   const updatedData = getUpdatedContactData();
   await updateContactInDatabase(contactId, updatedData);
-  setTimeout(() => location.reload(), 100);
+  setTimeout(() => location.reload(), 200);
 }
 
 function validateFormInput() {

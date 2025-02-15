@@ -228,7 +228,7 @@ function showAddContactOverlayMobile() {
 
   <div class="whiteBackground">
     <div class="formInputMobile">
-      <input type="text" placeholder="Name" />
+      <input type="text" placeholder="Name" id="name"/>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="nameIconMobile">
         <mask id="mask0_274969_2511" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -240,7 +240,7 @@ function showAddContactOverlayMobile() {
           />
         </g>
       </svg>
-      <input type="email" placeholder="Email" />
+      <input type="email" placeholder="Email" id="email"/>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="emailIconMobile">
         <mask id="mask0_274969_2518" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
           <rect width="24" height="24" fill="#D9D9D9" />
@@ -252,7 +252,7 @@ function showAddContactOverlayMobile() {
           />
         </g>
       </svg>
-      <input type="phone" placeholder="Phone" />
+      <input type="phone" placeholder="Phone" id="phone"/>
       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="phoneIconMobile">
         <mask id="mask0_274969_2525" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
           <rect y="0.5" width="24" height="24" fill="#D9D9D9" />

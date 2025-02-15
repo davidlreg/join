@@ -15,7 +15,7 @@
     <div class="sidebar__container" id="sidebar-nav">
       <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/joinIcon.svg" id="logo" alt="Join logo big" /></a>
 
-      <div class="nav__container" id="navbar">
+      <div class="nav__container dNone" id="navbar">
         <a class="nav-link" href="/html/summary.html?active=summary">
           <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" alt="Summary icon" />
           <p>Summary</p>
@@ -44,6 +44,9 @@
         <a class="nav-link" href="/html/legalNotice.html?active=legal_notice">
           <p class="zoom">Legal Notice</p>
         </a>
+        <a id="logInLink" class="nav-link" href="/html/login.html">
+          <p class="zoom">Log in</p>
+        </a>
       </div>
     </div>
 
@@ -71,11 +74,11 @@
         <h3>Kanban Project Management Tool</h3>
 
         <div class="topBarIcons">
-          <div onclick="location.href='./help.html'">
+          <div id="help" class="dNone" onclick="location.href='./help.html'">
             <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" alt="questionIcon" />
           </div>
 
-          <div onclick="toogleUser()" class="userIcon">
+          <div onclick="toogleUser()" class="userIcon dNone">
             <div id="userIcon" class="userOptionsFrame">
               <div class="userOptionsContent">
                 <a href="help.html" class="helpLink">Help</a>

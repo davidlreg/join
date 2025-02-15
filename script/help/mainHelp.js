@@ -1,13 +1,19 @@
 /**
  * Checks if the user is logged in or in guest mode.
- * Redirects to the login page if no valid session is found.
+ * 
+ * Removes the class 'dNone' and shows the navBar, userIcon and help button
+ * and adds the class 'dNone' to the log in link in the sidebar
+ * when logged in.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
 
-  if (!userId && !isGuest) {
-    window.location.href = "./login.html";
+  if (userId || isGuest) {
+    document.getElementById("navbar").classList.remove("dNone");
+    document.getElementById("help").classList.remove("dNone");
+    document.querySelector(".userIcon").classList.remove("dNone");
+    document.getElementById("logInLink").classList.add("dNone");
   }
 }
 
@@ -21,15 +27,20 @@ function getStoredUserName() {
 }
 
 /**
- * Generates initials from a full name.
+ * Generates initials from a full name when an user or guest is logged in.
  *
  * @param {string} fullName - The full name of the user.
  * @returns {string} The initials or "G" if the name is invalid.
  */
 function getUserInitials(fullName) {
-  if (!fullName) return "G";
-  const nameParts = fullName.split(" ");
-  return nameParts.length >= 2 ? nameParts[0][0] + nameParts[1][0] : fullName[0];
+  const userId = localStorage.getItem("userId");
+  const isGuest = localStorage.getItem("guestMode");
+
+  if (userId || isGuest) {
+    if (!fullName) return "G";
+    const nameParts = fullName.split(" ");
+    return nameParts.length >= 2 ? nameParts[0][0] + nameParts[1][0] : fullName[0];
+  }
 }
 
 /**

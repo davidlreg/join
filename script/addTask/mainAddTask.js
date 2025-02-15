@@ -257,23 +257,28 @@ function createCheckbox(name) {
 
 /**
  * Updates the display of selected contacts under the dropdown.
+ * Clears the existing display and regenerates it based on selected checkboxes.
  * 
+ * @param {string} selectedNames - Array of contact names with checked checkboxes.
  */
+
 function updateSelectedContact() {
   const selectedContacts = document.getElementById('selectedContacts');
   selectedContacts.innerHTML = "";
 
-  // Liste der ausgewählten Namen sammeln
   const selectedNames = Array.from(document.querySelectorAll('.contactCheckbox:checked'))
     .map(checkbox => checkbox.value);
 
-  // Erstelle Profilbilder für die ausgewählten Namen
   const contactProfiles = createSelectedProfilePictures(selectedNames);
-
-  // Füge die Profilbilder dem Container hinzu
   contactProfiles.forEach(profile => selectedContacts.appendChild(profile));
 }
 
+/**
+ * Creates profile picture elements for selected contacts.
+ * 
+ * @param {string[]} selectedNames - Array of contact names with checked checkboxes.
+ * @returns {HTMLDivElement[]} An array of div elements representing profile pictures.
+ */
 function createSelectedProfilePictures(selectedNames) {
   return selectedNames.map(name => {
     const profileDiv = document.createElement('div');
@@ -285,6 +290,7 @@ function createSelectedProfilePictures(selectedNames) {
     return profileDiv;
   });
 }
+
 
 
 

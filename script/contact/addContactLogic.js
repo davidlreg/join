@@ -71,7 +71,11 @@ function createContact() {
   });
 
   closeAddContactOverlay();
-  // showContactCreatedMessage();
+
+  setTimeout(() => {
+    prepareData();
+  }, 100);
+  showContactCreatedMessage();
 }
 
 /**
@@ -226,22 +230,58 @@ function validateForm() {
 }
 
 /**
- * Displays a message confirming the contact was successfully created.
+ * Renders and displays the contact creation confirmation message.
  *
  */
-/*
 function showContactCreatedMessage() {
   const createdContactContainer = document.getElementById("createdContactContainer");
   createdContactContainer.innerHTML = showContactSucessfullyCreatedMessage();
+  const overlay = createdContactContainer.querySelector(".contactSucessfullyCretaed");
+  openOverlay(overlay);
+  scheduleContactMessageClose(overlay);
 }
-*/
+
+/**
+ * Schedules the automatic closing of the confirmation message.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function scheduleContactMessageClose(overlay) {
+  setTimeout(() => {
+    animateContactMessageClose(overlay);
+  }, 1500);
+}
+
+/**
+ * Animates the closing of the confirmation message.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function animateContactMessageClose(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateX(500%)";
+  removeContactMessageAfterAnimation(overlay);
+}
+
+/**
+ * Removes the confirmation message from the DOM after the animation.
+ *
+ * @param {HTMLElement} overlay - The message element.
+ */
+function removeContactMessageAfterAnimation(overlay) {
+  setTimeout(() => {
+    if (overlay) {
+      overlay.remove();
+    }
+  }, 300);
+}
 
 /**
  * Generates the HTML markup for the contact successfully created message.
  *
  * @returns {string} HTML markup for the success message.
  */
-/*
+
 function showContactSucessfullyCreatedMessage() {
   return `
     <div class="contactSucessfullyCretaed" id="contactSucessfullyCretaed">
@@ -249,4 +289,3 @@ function showContactSucessfullyCreatedMessage() {
     </div>
   `;
 }
-*/

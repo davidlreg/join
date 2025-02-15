@@ -146,15 +146,37 @@ body {
 }
 
 /* Successfully Created Contact */
+
+.createdContactContainer {
+  position: absolute;
+  bottom: 250px;
+  left: 720px;
+}
+
 .contactSucessfullyCretaed {
-  padding: 132px 0 0 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 326px;
+  height: 74px;
+  background-color: #2a3647;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
 }
 
 .contactSucessfullyCretaed > p {
+  color: #ffffff;
   font-size: 20px;
-  font-weight: 400;
-  padding: 28px;
-  border-radius: 20px;
+}
+
+.contactSuccessfullyCreated.show {
+  transform: translateX(-350px); /* Bewegt sich in den sichtbaren Bereich */
+}
+
+.contactSuccessfullyCreated.hide {
+  transform: translateX(100%); /* Bewegt sich nach rechts wieder heraus */
 }
 
 /* Floating Add Contact Container */

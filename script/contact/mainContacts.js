@@ -58,6 +58,7 @@ function openOverlayMobile(overlay) {
  * @param {Element} overlay The overlay element to be closed.
  */
 function closeOverlay(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
   overlay.style.transform = "translateX(100%)";
 }
 
@@ -67,6 +68,7 @@ function closeOverlay(overlay) {
  * @param {Element} overlay The overlay element to be closed.
  */
 function closeOverlayMobile(overlay) {
+  overlay.style.transition = "transform 0.3s ease-in-out";
   overlay.style.transform = "translateY(100%)";
 }
 

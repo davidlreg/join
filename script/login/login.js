@@ -6,6 +6,14 @@ let passwordToggle = document.querySelector(".passwordToggle");
 // Firebase Realtime Database URL
 const databaseUrl = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
 
+/**
+ * Redirects the user to the summary page if they are logged in or in guest mode.
+ *
+ * It runs when the DOM is fully loaded and checks for the presence of 
+ * `userId` or `guestMode` in local storage.
+ * 
+ * If either exists, the user is redirected to the summary page.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   let userId = localStorage.getItem("userId");
   let guestMode = localStorage.getItem("guestMode");

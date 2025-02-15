@@ -10,7 +10,9 @@ async function moveTo(newStatus, taskId) {
   updateTaskStatus(taskId, newStatus);
   await updateBackend(backendData);
   loadTasksToBoard();
-  checkIfTaskExistInContainer();
+  setTimeout(() => {
+    checkIfTaskExistInContainer();
+  }, 75);
 }
 
 /**

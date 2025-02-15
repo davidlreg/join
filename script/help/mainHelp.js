@@ -1,13 +1,13 @@
 /**
  * Checks if the user is logged in or in guest mode.
- * Redirects to the login page if no valid session is found.
+ * Removes the class 'dNone' and shows the NavBar fully when logged in.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
 
-  if (!userId && !isGuest) {
-    window.location.href = "./login.html";
+  if (userId || isGuest) {
+    document.getElementById("navbar").classList.remove("dNone");
   }
 }
 

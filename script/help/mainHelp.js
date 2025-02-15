@@ -1,6 +1,9 @@
 /**
  * Checks if the user is logged in or in guest mode.
- * Removes the class 'dNone' and shows the navBar, userIcon and help button when logged in.
+ * 
+ * Removes the class 'dNone' and shows the navBar, userIcon and help button
+ * and adds the class 'dNone' to the log in link in the sidebar
+ * when logged in.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
@@ -10,6 +13,7 @@ function checkUserSession() {
     document.getElementById("navbar").classList.remove("dNone");
     document.getElementById("help").classList.remove("dNone");
     document.querySelector(".userIcon").classList.remove("dNone");
+    document.getElementById("logInLink").classList.add("dNone");
   }
 }
 

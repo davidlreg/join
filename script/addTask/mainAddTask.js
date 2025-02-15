@@ -195,7 +195,7 @@ function createContentItem(contact) {
   const contactItem = document.createElement('div');
   contactItem.classList.add('selectContactItem');
 
-  const profilePicture = createProfilePicture();
+  const profilePicture = createProfilePicture(contact);
   const contactName = createContactName(contact.name);
   const checkBox = createCheckbox(contact.name);
 
@@ -211,11 +211,16 @@ function createContentItem(contact) {
  * 
  * @returns {HTMLElement} A div element styled as a profile placeholder.
  */
-function createProfilePicture() {
-  const placeholder = document.createElement('div');
-  placeholder.classList.add('profilePicture');
-  return placeholder;
+function createProfilePicture(contact) {
+  const profileDiv = document.createElement('div');
+  profileDiv.classList.add('profilePicture');
+  profileDiv.setAttribute('title', contact.name);
+  profileDiv.style.backgroundColor = getRandomColorForName(contact.name);
+  profileDiv.textContent = `${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
+  
+  return profileDiv;
 }
+
 
 
 /**
@@ -238,14 +243,17 @@ function createContactName(name) {
  * @returns {HTMLElement} An input element of type "checkbox".
  */
 function createCheckbox(name) {
+  checkedContakts = checkedSelectedContacts();
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.classList.add('contactCheckbox');
   checkbox.value = name;
+  if (checkedContakts.includes(name)) {
+    checkbox.checked = true;
+  };
   checkbox.addEventListener('change', updateSelectedContact);
   return checkbox;
 }
-
 
 /**
  * Updates the display of selected contacts under the dropdown.
@@ -255,11 +263,30 @@ function updateSelectedContact() {
   const selectedContacts = document.getElementById('selectedContacts');
   selectedContacts.innerHTML = "";
 
-  document.querySelectorAll('.contactCheckbox:checked').forEach(() => {
-    const contactProfile = createProfilePicture();
-    selectedContacts.appendChild(contactProfile);
+  // Liste der ausgewählten Namen sammeln
+  const selectedNames = Array.from(document.querySelectorAll('.contactCheckbox:checked'))
+    .map(checkbox => checkbox.value);
+
+  // Erstelle Profilbilder für die ausgewählten Namen
+  const contactProfiles = createSelectedProfilePictures(selectedNames);
+
+  // Füge die Profilbilder dem Container hinzu
+  contactProfiles.forEach(profile => selectedContacts.appendChild(profile));
+}
+
+function createSelectedProfilePictures(selectedNames) {
+  return selectedNames.map(name => {
+    const profileDiv = document.createElement('div');
+    profileDiv.classList.add('profilePicture');
+    profileDiv.setAttribute('title', name);
+    profileDiv.style.backgroundColor = getRandomColorForName(name);
+    profileDiv.textContent = `${name.charAt(0).toUpperCase()}${name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
+    
+    return profileDiv;
   });
 }
+
+
 
 
 

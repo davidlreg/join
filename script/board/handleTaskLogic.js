@@ -30,6 +30,14 @@ function getSelectedContacts() {
   return selectedContacts;
 }
 
+function checkedSelectedContacts() {
+  checkedContacts = [];
+  document.querySelectorAll('#selectedContacts .profilePicture').forEach((el) => {
+    checkedContacts.push(el.getAttribute("title")); 
+  });
+  return checkedContacts;
+}
+
 /**
  * Creates a new task and adds it to the board.
  *
@@ -72,7 +80,7 @@ async function editTasksForBoard(taskId) {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
 
-  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts } = getAddTaskElements();
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts} = getAddTaskElements();
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,

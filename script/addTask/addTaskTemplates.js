@@ -124,11 +124,3 @@ function getSubtaskIcons() {
     <img src="/assets/icon/add task/done.png" class="subtaskIcon confirmEditSubtask">
     `;
 }
-
-`
-<div class="subtaskEdits">
-    <img src="/assets/icon/add task/edit.png" id="editSubtask" class="subtaskEditIcon" alt="Edit subtask" />
-    <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
-    <img src="/assets/icon/add task/delete.png" id="deleteSubtask" class="subtaskDeleteIcon" alt="Delete subtask" />
-</div>
-`

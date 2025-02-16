@@ -63,10 +63,12 @@ function clearSubtaskInput(){
  */
 function createSubtaskElement(subtaskValue) {
   const listItem = document.createElement('li');
+  listItem.classList.add('subtaskItem');
   listItem.innerHTML = getSubtasks(subtaskValue);
 
   listItem.querySelector('.editSubtask').addEventListener('click', () => editSubtask(listItem, subtaskValue));
   listItem.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
+  
   return listItem;
 }
 

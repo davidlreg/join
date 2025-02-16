@@ -37,15 +37,19 @@
         </a>
       </div>
 
+      <div id="logInLink"  class="logInLinkContainer">
+        <a class="nav-link" href="/html/login.html">
+          <img class="icon" src="/assets/icon/login_icon.svg" id="contacts" alt="Contact Icon" />
+          <p>Log in</p>
+        </a>
+      </div>
+
       <div class="sidebar__footer">
         <a class="nav-link" href="/html/privacyPolicy.html?active=privacy_policy">
           <p class="zoom">Privacy Policy</p>
         </a>
         <a class="nav-link" href="/html/legalNotice.html?active=legal_notice">
           <p class="zoom">Legal Notice</p>
-        </a>
-        <a id="logInLink" class="nav-link" href="/html/login.html">
-          <p class="zoom">Log in</p>
         </a>
       </div>
     </div>
@@ -615,6 +619,7 @@
     <!-- JavaScript -->
     <script src="/script/mainScript.js"></script>
     <script src="/script/help/mainHelp.js"></script>
+    <script src="/script/help/mainHelpTemplates.js"></script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {

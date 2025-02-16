@@ -12,7 +12,7 @@
 
 /* Task Form*/
 form#taskForm {
-  padding: 40px 20px 0 70px;
+  padding: 40px 20px 20px 70px;
 }
 
 form#taskForm h1 {
@@ -313,8 +313,11 @@ button img {
   background-color: transparent;
 }
 
-.addSubtask img:hover {
+.addSubtask img:hover,
+#confirmSubtask:hover,
+#discardSubtask:hover {
   background-color: #d9d9d9;
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -322,6 +325,28 @@ button img {
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
+
+.subtaskEditIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.subtaskDeleteIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.subtaskDeleteIcon:hover {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.subtaskEditIcon:hover {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
 }
 
 .subtaskList {
@@ -336,10 +361,10 @@ button img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
 }
 
 .subtaskList li .removeSubtask {
+  color: #ff4d4d;
   cursor: pointer;
   font-size: 14px;
 }
@@ -377,7 +402,7 @@ button img {
 }
 
 .requiredAction {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 20px;
   display: flex;
   gap: 560px;

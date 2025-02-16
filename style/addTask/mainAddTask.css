@@ -304,6 +304,28 @@ button img {
   cursor: pointer;
 }
 
+.subtaskEditIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.subtaskDeleteIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.subtaskDeleteIcon:hover {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.subtaskEditIcon:hover {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
 .subtaskList {
   list-style: none;
   padding: 0;
@@ -325,6 +347,11 @@ button img {
 .subtaskList span {
   color: black;
   text-indent: 30px;
+}
+
+.subtaskList:hover {
+  background-color: #d9d9d9;
+  cursor: pointer;
 }
 
 .iconWrapper {

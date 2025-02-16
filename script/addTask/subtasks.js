@@ -50,7 +50,7 @@ function toggleSubtaskIcons() {
   function createSubtaskElement(subtaskValue) {
     const listItem = document.createElement('li');
     listItem.innerHTML = getSubtasks(subtaskValue);
-    listItem.querySelector('.deleteSubtask').addEventListener('click', () => removeSubtask(listItem));
+    listItem.querySelector('.subtaskDeleteIcon').addEventListener('click', () => removeSubtask(listItem));
     return listItem;
   }
   

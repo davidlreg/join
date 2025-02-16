@@ -317,9 +317,14 @@ button img {
 }
 
 .subtaskList li .removeSubtask {
-  color: #ff4d4d;
+  color: black;
   cursor: pointer;
   font-size: 14px;
+}
+
+.subtaskList span {
+  color: black;
+  text-indent: 30px;
 }
 
 .iconWrapper {

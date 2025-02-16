@@ -7,11 +7,17 @@
 function styleContent() {
     return `
         @media (max-width: 1400px) {
+            .sidebar__container {
+            flex-direction: row;
+            justify-content: space-between;
+            }
+
             .sidebar__footer {
                 display: flex !important;
                 flex-direction: row;
-                justify-content: space-around;
                 padding-top: 2px;
+                width: auto;
+                padding: 0 32px;
             }
         
             .nav-link {

@@ -2,9 +2,9 @@
  * Checks the user's session status based on stored localStorage values.
  * 
  * If a user ID or guest mode is detected, it updates the UI by showing 
- * navigation elements and hiding the login link.
+ * navigation elements.
  * 
- * Otherwise, it triggers the `overrideMediaQuery` function.
+ * Otherwise, it shows the login link and triggers the `overrideMediaQuery` function.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
@@ -14,8 +14,8 @@ function checkUserSession() {
       document.getElementById("navbar").classList.remove("dNone");
       document.getElementById("help").classList.remove("dNone");
       document.querySelector(".userIcon").classList.remove("dNone");
-      document.getElementById("logInLink").classList.add("dNone");
   } else {
+    document.getElementById("logInLink").classList.remove("dNone");
     overrideMediaQuery();
   }
 }

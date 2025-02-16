@@ -8,8 +8,8 @@ function styleContent() {
     return `
         @media (max-width: 1400px) {
             .sidebar__container {
-            flex-direction: row;
-            justify-content: space-between;
+                flex-direction: row;
+                justify-content: space-between;
             }
 
             .sidebar__footer {
@@ -23,6 +23,16 @@ function styleContent() {
             .nav-link {
                 display: flex;
                 align-items: center;
+            }
+        }
+        
+        @media (max-width: 390px) {
+            .sidebar__footer {
+                padding: 0 10px;
+            }
+            
+            .logInLinkContainer {
+                padding: 0 10px;
             }
         }
     `;

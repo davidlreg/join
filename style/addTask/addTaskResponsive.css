@@ -36,6 +36,10 @@
     font-size: 18px;
   }
 
+  .selectContact.show, .selectCategory.show {
+    max-width: 1400px;
+  }
+
   .priorityButton {
     margin-right: 35px;
   }
@@ -187,19 +191,16 @@
 
   .selectContactOverlay.show, .selectCategoryOverlay.show {
     position: static;
-    width: 810px;
-    max-width: 810px;
+    width: 880px;
   }
-
-  
 
   .priorityButtonOverlay {
     margin-left: 6px;
   }
 
   .iconWrapperOverlay {
-    right: 90px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 11px;
   }
 }
 
@@ -215,9 +216,11 @@
     max-width: 800px;
   }
 
-  .iconWrapperOverlay {
-    right: 75px;
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 675px;
   }
+
+ 
 
   .requiredActionOverlay {
     gap: 210px;
@@ -230,8 +233,8 @@
     max-width: 600px;
   }
 
-  .iconWrapperOverlay {
-    right: 55px;
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 475px;
   }
 
   .requiredActionOverlay {
@@ -251,8 +254,8 @@
     max-width: 530px;
   }
 
-  .iconWrapperOverlay {
-    right: 50px;
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 410px;
   }
 
   .requiredActionOverlay {
@@ -269,6 +272,10 @@
   .overlayTaskContent {
     width: 480px;
     max-width: 480px;
+  }
+
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 370px;
   }
 
   .taskInputContainerOverlay {
@@ -295,6 +302,10 @@
   .taskInputContainerOverlay {
     width: 40vh;
     padding-right: 5px;
+  }
+
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 348px;
   }
 
   .priorityButtonOverlay {
@@ -327,8 +338,12 @@
     height: 640px;
   }
 
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 335px;
+  }
+
   .taskInputContainerOverlay {
-    width: 39vh;
+    width: 38vh;
     padding-right: 3px;
   }
 
@@ -358,12 +373,12 @@
 
 
   .dropdownOverlay {
-    width: 91%;
+    width: 100%;
   }
 
   .iconWrapperOverlay {
-    right: 30px;
-    bottom: 3px;
+    right: 10px;
+    bottom: 4px;
   }
 
   .priorityButtonOverlay button {
@@ -389,9 +404,13 @@
     width: 340px;
     max-width: 340px;
   }
+  .selectContactOverlay.show, .selectCategoryOverlay.show {
+    width: 270px;
+  }
 
   .taskInputContainerOverlay {
     width: 285px;
+    padding-right: 10px;
   }
 }
 

@@ -144,7 +144,7 @@ form#taskForm h1 {
 .selectCategory,
 .selectContact {
   display: none;
-  max-width: 400px;
+  max-width: 438px;
   height: 90px;
   background-color: white;
   border-radius: 0 0 10px 10px;
@@ -602,7 +602,7 @@ form#taskFormOverlay {
 
 .selectCategoryOverlay.show,
 .selectContactOverlay.show {
-  width: 390px;
+  width: 423px;
   display: block;
   position: absolute;
   z-index: 100;

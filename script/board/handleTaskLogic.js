@@ -102,7 +102,7 @@ function validateTaskInputs(title, date, category) {
     isValid = false;
   }
 
-  if (!isValid) return;
+  return isValid;
 }
 
 

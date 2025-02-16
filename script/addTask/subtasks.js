@@ -49,21 +49,7 @@ function clearSubtaskInput(){
  */
 function createSubtaskElement(subtaskValue) {
   const listItem = document.createElement('li');
-  listItem.innerHTML = `
-      <div class="subtaskContent">
-        <div class="subtaskTextWrapper">
-          <li class="bulletPoint">&#8226;</li>
-          <li class="subtaskText">${subtaskValue}</li>
-        </div>
-        <div class="subtaskIcons">
-          <img src="/assets/icon/add task/edit.png" class="subtaskIcon editSubtask">
-          <img src="/assets/icon/add task/vector.png">
-          <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
-          
-        </div>
-      </div>
-      
-  `;
+  listItem.innerHTML = getSubtasks(subtaskValue);
 
   listItem.querySelector('.editSubtask').addEventListener('click', () => editSubtask(listItem, subtaskValue));
   listItem.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
@@ -81,11 +67,7 @@ function editSubtask(listItem, oldValue) {
     <input type="text" class="editSubtaskInput" value="${oldValue}">
   `;
 
-  subtaskIcons.innerHTML = `
-    <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
-    <img src="/assets/icon/add task/vector.png">
-    <img src="/assets/icon/add task/done.png" class="subtaskIcon confirmEditSubtask">
-  `;
+  subtaskIcons.innerHTML = getSubtaskIcons();
 
   subtaskIcons.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
   subtaskIcons.querySelector('.confirmEditSubtask').addEventListener('click', () => {
@@ -100,7 +82,6 @@ function editSubtask(listItem, oldValue) {
     listItem.replaceWith(createSubtaskElement(newValue));
   });
 }
-
 
 /**
  * Removes a subtask from the list.

@@ -103,11 +103,24 @@ function addTaskHtmlTemplate() {
 
 function getSubtasks(subtaskValue) {
     return `
-    <span>● ${subtaskValue}</span>
-    <div class="subtaskEdits">
-        <img src="/assets/icon/add task/edit.png" id="editSubtask" class="subtaskEditIcon" alt="Edit subtask" />
-        <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
-        <img src="/assets/icon/add task/delete.png" id="deleteSubtask" class="subtaskDeleteIcon" alt="Delete subtask" />
+    <div class="subtaskContent">
+        <div class="subtaskTextWrapper">
+          <li class="bulletPoint">&#8226;</li>
+          <li class="subtaskText">${subtaskValue}</li>
+        </div>
+        <div class="subtaskIcons">
+          <img src="/assets/icon/add task/edit.png" class="subtaskIcon editSubtask">
+          <img src="/assets/icon/add task/vector.png">
+          <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
+        </div>
     </div>
+    `;
+}
+
+function getSubtaskIcons() {
+    return `
+    <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
+    <img src="/assets/icon/add task/vector.png">
+    <img src="/assets/icon/add task/done.png" class="subtaskIcon confirmEditSubtask">
     `;
 }

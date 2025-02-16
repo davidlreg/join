@@ -33,7 +33,7 @@ function getSelectedContacts() {
 function checkedSelectedContacts() {
   checkedContacts = [];
   document.querySelectorAll('#selectedContacts .profilePicture').forEach((el) => {
-    checkedContacts.push(el.getAttribute("title")); 
+    checkedContacts.push(el.getAttribute("title"));
   });
   return checkedContacts;
 }
@@ -46,11 +46,8 @@ function checkedSelectedContacts() {
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
-  if(!addTaskTitle.value.trim() || !addTaskDate.value.trim() || !addTaskCategory.value.trim()){
-    alert("Please fill in all required fields before creating a task.");
-    return;
-  }
-  
+  if(!validateTaskInputs(addTaskTitle, addTaskDate, addTaskCategory)) return;
+
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
     completed: false,
@@ -73,14 +70,114 @@ async function createTasksForBoard() {
   loadTasksToBoard();
 
   window.location.href = "/html/board.html";
-  
+
 }
+
+
+/**
+ * Validates if the required task input fields are filled.
+ * If a field is empty, it displays an error message and prevents form submission.
+ * 
+ * @param {HTMLElement} title - The input field for the task title.
+ * @param {HTMLElement} date - The input field for the due date.
+ * @param {HTMLElement} category - The input field for the task category.
+ */
+function validateTaskInputs(title, date, category) {
+  let isValid = true;
+
+  clearError(title);
+  clearError(date);
+  clearError(category);
+
+  if (!title.value.trim()) {
+    showError(title, "This field is required");
+    isValid = false;
+  }
+  if (!date.value.trim()) {
+    showError(date, "This field is required");
+    isValid = false;
+  }
+  if (!category.value.trim()) {
+    showError(category, "This field is required");
+    isValid = false;
+  }
+
+  if (!isValid) return;
+}
+
+
+/**
+ * Displays an error message below the input field and adds a red border.
+ *
+ * The error message disappears automatically after 3 seconds.
+ *
+ * @param {HTMLElement} inputElement - The input field where the error occurred.
+ * @param {string} message - The error message to be displayed.
+ */
+function showError(inputElement, message) {
+  let targetElement = getErrorTarget(inputElement);
+
+  targetElement.classList.add("errorBorder");
+
+  let errorMessage = document.createElement("span");
+  errorMessage.classList.add("errorMessage");
+  errorMessage.textContent = message;
+
+  targetElement.insertAdjacentElement("afterend", errorMessage);
+
+  setTimeout(() => {
+    clearError(inputElement);
+  }, 3000);
+}
+
+
+
+/**
+ * Determines the correct element where the error should be displayed.
+ *
+ * If the input field is the category dropdown, it returns the `.dropdown` container.
+ * Otherwise, it returns the input field itself.
+ *
+ * @param {HTMLElement} inputElement - The input field being validated.
+ * @returns {HTMLElement} - The element where the error styling should be applied.
+ */
+function getErrorTarget(inputElement){
+  if(inputElement.id === "selectTask") {
+    return inputElement.closest(".dropdown");
+  }
+
+  return inputElement;
+}
+
+/**
+ * Removes the visual error indication from an input field or dropdown.
+ * 
+ * @param {HTMLElement} inputElement - The input element (text field or dropdown) 
+ *                                      from which the error indication should be removed.
+ *                                      If `inputElement` is the category dropdown (`selectTask`), 
+ *                                      the error indication is removed from the entire `.dropdown` container.
+ */
+function clearError(inputElement) {
+  let targetElement = inputElement;
+
+  if (inputElement.id === "selectTask") {
+    targetElement = inputElement.closest(".dropdown");
+  }
+
+  targetElement.classList.remove("errorBorder");
+
+  let existingError = targetElement.parentNode.querySelector(".errorMessage");
+  if (existingError) existingError.remove();
+}
+
+
+
 
 async function editTasksForBoard(taskId) {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
 
-  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts} = getAddTaskElements();
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
@@ -124,7 +221,7 @@ async function deleteTask() {
   });
 
   if (Object.keys(tasks).length === 0) {
-    backendData.Data.Tasks = {};  
+    backendData.Data.Tasks = {};
   }
 
   await syncBackendDataWithFirebase();
@@ -183,9 +280,9 @@ async function pushTaskToBackendData(task) {
   await fetchDataJSON();
 
   if (!backendData.Data.Tasks) {
-    backendData.Data.Tasks = {}; 
+    backendData.Data.Tasks = {};
   }
-  
+
   let tasks = backendData.Data.Tasks;
   let taskKeys = Object.keys(tasks);
   let newTaskId = null;

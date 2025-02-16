@@ -464,6 +464,19 @@ button img {
   transition: inherit;
 }
 
+.errorBorder {
+  border: 1px solid red;
+  border-radius: 8px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+
 /* Overlay */
 .addTaskOverlay {
   position: fixed;

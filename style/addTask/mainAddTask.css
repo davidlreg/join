@@ -336,6 +336,8 @@ button img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
+  height: 30px;
 }
 
 .subtaskList li .removeSubtask {
@@ -349,9 +351,19 @@ button img {
   text-indent: 30px;
 }
 
-.subtaskList:hover {
-  background-color: #d9d9d9;
+.subtaskList li:hover,
+.subtaskList li:hover .subtaskEdits {
+  background-color: #ebebeb;
+  border-radius: 10px;
   cursor: pointer;
+}
+
+.subtaskList li:hover .subtaskEdits {
+  display: block;
+}
+
+.subtaskEdits {
+  display:none;
 }
 
 .iconWrapper {

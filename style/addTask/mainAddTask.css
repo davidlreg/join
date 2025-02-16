@@ -290,8 +290,11 @@ button img {
   background-color: transparent;
 }
 
-.addSubtask img:hover {
+.addSubtask img:hover,
+#confirmSubtask:hover,
+#discardSubtask:hover {
   background-color: #d9d9d9;
+  border-radius: 15px;
   cursor: pointer;
 }
 

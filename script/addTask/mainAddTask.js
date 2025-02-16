@@ -74,12 +74,57 @@ function clearSubtaskInput(){
 function createSubtaskElement(subtaskValue) {
   const listItem = document.createElement('li');
   listItem.innerHTML = `
-      <span>${subtaskValue}</span>
-      <span class="removeSubtask">Remove</span>
+      <div class="subtaskContent">
+        <div class="subtaskTextWrapper">
+          <li class="bulletPoint">&#8226;</li>
+          <li class="subtaskText">${subtaskValue}</li>
+        </div>
+        <div class="subtaskIcons">
+          <img src="/assets/icon/add task/edit.png" class="subtaskIcon editSubtask">
+          <img src="/assets/icon/add task/vector.png">
+          <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
+          
+        </div>
+      </div>
+      
   `;
+
+  listItem.querySelector('.editSubtask').addEventListener('click', () => editSubtask(listItem, subtaskValue));
   listItem.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
   return listItem;
 }
+
+function editSubtask(listItem, oldValue) {
+  const subtaskContent = listItem.querySelector('.subtaskContent');
+  const subtaskTextWrapper = listItem.querySelector('.subtaskTextWrapper');
+  const subtaskIcons = listItem.querySelector('.subtaskIcons');
+
+  subtaskContent.classList.add('editing');
+
+  subtaskTextWrapper.innerHTML = `
+    <input type="text" class="editSubtaskInput" value="${oldValue}">
+  `;
+
+  subtaskIcons.innerHTML = `
+    <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
+    <img src="/assets/icon/add task/vector.png">
+    <img src="/assets/icon/add task/done.png" class="subtaskIcon confirmEditSubtask">
+  `;
+
+  subtaskIcons.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
+  subtaskIcons.querySelector('.confirmEditSubtask').addEventListener('click', () => {
+    const newValue = listItem.querySelector('.editSubtaskInput').value.trim();
+    if (newValue === '') {
+      alert('Subtask cannot be empty!');
+      return;
+    }
+
+    subtaskContent.classList.remove('editing');
+
+    listItem.replaceWith(createSubtaskElement(newValue));
+  });
+}
+
 
 /**
  * Removes a subtask from the list.
@@ -89,6 +134,7 @@ function createSubtaskElement(subtaskValue) {
 function removeSubtask(listItem) {
   listItem.remove();
 }
+
 
 /**
  * Toggles the visibility of the category dropdown.

@@ -192,7 +192,7 @@ function templateEditTask(task, taskId) {
                                 <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="">
                             </div>
                         </div>
-                        <div id="selectContact" class="selectContact selectContactOverlay "></div>
+                        <div id="selectContact" class="selectContact selectContactOverlay"></div>
                         <div id="selectedContacts" class="selectedContacts">
                             ${assignedToArray
                                 .map(

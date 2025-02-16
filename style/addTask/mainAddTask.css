@@ -364,7 +364,6 @@ button img {
 }
 
 .subtaskList li .removeSubtask {
-  color: #ff4d4d;
   cursor: pointer;
   font-size: 14px;
 }

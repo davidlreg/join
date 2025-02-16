@@ -131,7 +131,6 @@ function showError(inputElement, message) {
 }
 
 
-
 /**
  * Determines the correct element where the error should be displayed.
  *
@@ -148,6 +147,7 @@ function getErrorTarget(inputElement){
 
   return inputElement;
 }
+
 
 /**
  * Removes the visual error indication from an input field or dropdown.

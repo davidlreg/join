@@ -1,22 +1,5 @@
 let backendData = {};
 
-/**
- * Checks if the user is logged in or if they are in guest mode by retrieving
- * the `userId` and `guestMode` values from localStorage. If neither value is present, the 
- * user is redirected to the login page (`/login.html`).
- * 
- * @event document#DOMContentLoaded
- * @listens document#DOMContentLoaded
- */
-document.addEventListener("DOMContentLoaded", function() {
-  const userId = localStorage.getItem("userId");
-  const isGuest = localStorage.getItem("guestMode");
-
-  if (!userId && !isGuest) {
-    window.location.href = "./login.html";
-  }
-});
-
 async function fetchDataJSON() {
   let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
   let responseJSON = await response.json();

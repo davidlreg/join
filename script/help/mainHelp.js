@@ -1,20 +1,43 @@
 /**
- * Checks if the user is logged in or in guest mode.
+ * Checks the user's session status based on stored localStorage values.
  * 
- * Removes the class 'dNone' and shows the navBar, userIcon and help button
- * and adds the class 'dNone' to the log in link in the sidebar
- * when logged in.
+ * If a user ID or guest mode is detected, it updates the UI by showing 
+ * navigation elements and hiding the login link.
+ * 
+ * Otherwise, it triggers the `overrideMediaQuery` function.
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
 
   if (userId || isGuest) {
-    document.getElementById("navbar").classList.remove("dNone");
-    document.getElementById("help").classList.remove("dNone");
-    document.querySelector(".userIcon").classList.remove("dNone");
-    document.getElementById("logInLink").classList.add("dNone");
+      document.getElementById("navbar").classList.remove("dNone");
+      document.getElementById("help").classList.remove("dNone");
+      document.querySelector(".userIcon").classList.remove("dNone");
+      document.getElementById("logInLink").classList.add("dNone");
+  } else {
+    overrideMediaQuery();
   }
+}
+
+/**
+ * Overrides the default media query styles
+ * by injecting a custom CSS style tag into the document head.
+ * 
+ * If the style tag already exists, it updates its content.
+ * The styles are retrieved from the `styleContent` function.
+ */
+function overrideMediaQuery() {
+  const styleId = 'override-sidebar-footer';
+  let styleTag = document.getElementById(styleId);
+
+  if (!styleTag) {
+    styleTag = document.createElement('style');
+    styleTag.id = styleId;
+    document.head.appendChild(styleTag);
+  }
+
+  styleTag.textContent = styleContent();
 }
 
 /**

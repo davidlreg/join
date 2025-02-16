@@ -40,7 +40,7 @@ body {
   justify-content: center;
 }
 
-.profileInformation > p {
+.profileInformation>p {
   font-size: 46px !important;
   font-weight: 500;
   background-color: #f6f7f8;
@@ -67,33 +67,33 @@ body {
   flex-direction: row;
 }
 
-.editIcon > a:hover,
-.deleteIcon > a:hover {
+.editIcon>a:hover,
+.deleteIcon>a:hover {
   text-decoration: none;
   transform: scale(1.05);
 }
 
-.editIcon > a,
-.deleteIcon > a {
+.editIcon>a,
+.deleteIcon>a {
   display: flex;
   gap: 8px;
 }
 
-.editIcon > a > p,
-.deleteIcon > a > p {
+.editIcon>a>p,
+.deleteIcon>a>p {
   color: #000000;
   font-size: 16px;
   background-color: #f6f7f8;
 }
 
-.editIcon > a:hover p,
-.deleteIcon > a:hover p {
+.editIcon>a:hover p,
+.deleteIcon>a:hover p {
   color: #70c5ea !important;
   fill: #70c5ea;
 }
 
-.editIcon > a:hover svg,
-.deleteIcon > a:hover svg {
+.editIcon>a:hover svg,
+.deleteIcon>a:hover svg {
   fill: #70c5ea;
 }
 
@@ -101,7 +101,7 @@ body {
   fill: #2a3647;
 }
 
-.deleteIcon > a:hover svg path {
+.deleteIcon>a:hover svg path {
   fill: #29abe2;
 }
 
@@ -118,7 +118,7 @@ body {
   padding: 26px 0;
 }
 
-.contactInformation > p {
+.contactInformation>p {
   font-size: 20px;
   font-weight: 400;
   background-color: #f6f7f8;
@@ -133,7 +133,7 @@ body {
   gap: 22px;
 }
 
-.bottomPart > p {
+.bottomPart>p {
   font-size: 16px;
   background-color: #f6f7f8;
   color: #000000;
@@ -171,7 +171,7 @@ body {
   transition: transform 0.5s ease-in-out;
 }
 
-.contactSucessfullyCretaed > p {
+.contactSucessfullyCretaed>p {
   color: #ffffff;
   font-size: 20px;
 }
@@ -253,13 +253,13 @@ body {
   padding: 8px;
 }
 
-.editContainer > p {
+.editContainer>p {
   font-size: 16px;
   background-color: transparent;
   color: #000000;
 }
 
-.deleteContainer > p {
+.deleteContainer>p {
   font-size: 16px;
   background-color: transparent;
   color: #000000;
@@ -348,7 +348,7 @@ body {
     display: flex;
   }
 
-  .profileInformation > p {
+  .profileInformation>p {
     font-weight: 700;
   }
 }
@@ -356,6 +356,10 @@ body {
 @media (max-width: 600px) {
   .userName {
     font-size: 18px !important;
+  }
+
+  .profileInformation>p {
+    font-size: 42px !important;
   }
 
   .smallText {
@@ -376,3 +380,14 @@ body {
     right: 18px;
   }
 }
+
+@media (max-width: 400px) {
+  .profileInformation>p {
+    font-size: 30px !important;
+  }
+
+  .contactInformation > p {
+    font-size: 18px;
+  }
+}
+

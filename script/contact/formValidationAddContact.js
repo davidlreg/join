@@ -33,18 +33,11 @@ function validatePhone(phone) {
  *
  */
 function checkFormValidity() {
-  // Überprüfen, ob der Bildschirm kleiner als 1350px ist
   const isMobile = window.innerWidth <= 1350;
-
-  // Wenn der Bildschirm kleiner als 1350px ist, benutze die mobilen Variablen
   const name = document.getElementById(isMobile ? "nameMobile" : "name").value.trim();
   const email = document.getElementById(isMobile ? "emailMobile" : "email").value.trim();
   const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value.trim();
-
-  // Validierung der Felder
   const isValid = validateFields(name, email, phone);
-
-  // Button aktivieren/deaktivieren
   toggleCreateButton(isValid);
 }
 

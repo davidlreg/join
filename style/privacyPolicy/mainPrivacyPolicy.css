@@ -22,6 +22,7 @@ main {
   flex-grow: 1;
   padding: 64px;
   overflow-y: auto; 
+  overflow-x: hidden;
 }
 
 main h1 {

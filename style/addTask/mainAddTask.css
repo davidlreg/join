@@ -238,6 +238,7 @@ form#taskForm h1 {
   align-items: center;
   padding: 12px 7px;
   gap: 16px;
+  color: black;
   width: 136px;
   height: 50px;
   border: none;
@@ -614,6 +615,7 @@ form#taskFormOverlay {
 }
 
 .priorityButtonOverlay button {
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;

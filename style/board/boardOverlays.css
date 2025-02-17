@@ -275,6 +275,8 @@
 .editSelectContact {
   width: inherit !important;
   position: relative !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
 }
 
 .editNoWidth {

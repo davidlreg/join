@@ -266,6 +266,7 @@ async function syncBackendDataWithFirebase() {
     },
     body: JSON.stringify(backendData),
   });
+  window.location.reload();
 }
 
 /**

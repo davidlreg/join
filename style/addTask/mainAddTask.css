@@ -144,7 +144,6 @@ form#taskForm h1 {
 .selectCategory,
 .selectContact {
   display: none;
-  max-width: 438px;
   height: 90px;
   background-color: white;
   border-radius: 0 0 10px 10px;
@@ -164,6 +163,10 @@ form#taskForm h1 {
 .selectCategory.show,
 .selectContact.show {
   display: block;
+  position: absolute;
+  z-index: 10;
+  max-width: 438px;
+  min-width: 438px;
 }
 
 .selectCategoryItem {
@@ -375,13 +378,13 @@ button img {
 }
 
 .bulletPoint {
-  font-size: 18px; 
+  font-size: 18px;
   color: #2a3647
 }
 
 .subtaskIcons {
   display: none;
-  gap: 10px;  
+  gap: 10px;
 }
 
 .subtaskItem:hover .subtaskIcons {
@@ -499,6 +502,7 @@ button img {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -510,6 +514,7 @@ button img {
     transform: translateX(0);
     opacity: 1;
   }
+
   to {
     transform: translateX(100%);
     opacity: 0;
@@ -525,8 +530,8 @@ button img {
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-  
+
+
   opacity: 0;
   transform: translateX(100%);
 }
@@ -695,18 +700,16 @@ form#taskFormOverlay {
   max-height: 50px;
   width: 432px;
   overflow-y: auto;
-  padding: 5px;
   position: absolute;
 }
 
 .subtaskListOverlay li {
-  margin-top: 8px;
   display: flex;
   justify-content: space-between;
   gap: 100px;
 }
 
-@media(max-height: 795px){
+@media(max-height: 795px) {
   .subtaskList {
     max-height: 40px;
   }

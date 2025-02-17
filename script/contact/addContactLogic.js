@@ -289,8 +289,3 @@ function showContactSucessfullyCreatedMessage() {
     </div>
   `;
 }
-
-// Attach event listeners
-document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("input", checkFormValidity);
-});

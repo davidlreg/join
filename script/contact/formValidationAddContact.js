@@ -109,3 +109,8 @@ function toggleCreateButton(isValid) {
 function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// Attach event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("input", checkFormValidity);
+});

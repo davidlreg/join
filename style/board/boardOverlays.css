@@ -271,3 +271,12 @@
   height: 15px !important;
   object-fit: contain;
 }
+
+.editSelectContact {
+  width: inherit !important;
+  position: relative !important;
+}
+
+.editNoWidth {
+  width: 100% !important;
+}

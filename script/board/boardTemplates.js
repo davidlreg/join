@@ -10,7 +10,11 @@ function templateBoardTasks(task, taskId) {
     let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
     let totalSubtasks = task.subtask ? task.subtask.length : 0;
     let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-    let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff"; 
+    let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
+
+    const maxVisibleContacts = 3;
+    const visibleContacts = assignedToArray.slice(0, maxVisibleContacts);
+    const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
     return `
         <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
@@ -31,19 +35,26 @@ function templateBoardTasks(task, taskId) {
 
           <div class="boardTaskBottom">
               <div class="boardTaskUsers">
-                  ${assignedToArray
+                  ${visibleContacts
                     .map(
                         (contact) => `
                             <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                                 ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
                             </div>
                         `).join("")}
+                  
+                  ${
+                      hiddenContactsCount > 0
+                          ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>`
+                          : ""
+                  }
               </div>
               <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
           </div>
       </div>
     `;
 }
+
 
 
 /**

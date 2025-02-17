@@ -253,7 +253,6 @@ main {
 .boardTaskUsers {
   background-color: none;
   border-radius: 50%;
-  width: 105px;
   height: 40px;
   display: flex;
   justify-content: flex-start;

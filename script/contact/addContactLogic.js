@@ -64,11 +64,12 @@ function addOverlayBackground(container) {
  * @returns {void}
  */
 function createContact() {
-  const email = document.getElementById("email").value;
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
+  const isMobile = window.innerWidth <= 1350;
+  const email = document.getElementById(isMobile ? "emailMobile" : "email").value;
+  const name = document.getElementById(isMobile ? "nameMobile" : "name").value;
+  const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value;
 
-  if (!validateForm()) {
+  if (checkFormValidity()) {
     return;
   }
 
@@ -80,14 +81,14 @@ function createContact() {
 
   setTimeout(() => {
     prepareData();
-  }, 100);
+  }, 500);
 
-  if (window.innerWidth > 1350) {
-    showContactCreatedMessage();
-  } else {
+  if (isMobile) {
     setTimeout(() => {
       showMobileContactCreatedMessage();
     }, 300);
+  } else {
+    showContactCreatedMessage();
   }
 }
 
@@ -213,33 +214,85 @@ function validatePhone(phone) {
 }
 
 /**
- * Checks if the form fields are valid.
+ * Checks if the form is valid and enables/disables the "Create Contact" button.
  *
- * @returns {boolean} - Returns true if all fields are valid, false otherwise.
  */
-function validateForm() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
+function checkFormValidity() {
+  // Überprüfen, ob der Bildschirm kleiner als 1350px ist
+  const isMobile = window.innerWidth <= 1350;
 
-  let isValid = true;
-  let errorMessage = "";
+  // Wenn der Bildschirm kleiner als 1350px ist, benutze die mobilen Variablen
+  const name = document.getElementById(isMobile ? "nameMobile" : "name").value.trim();
+  const email = document.getElementById(isMobile ? "emailMobile" : "email").value.trim();
+  const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value.trim();
 
-  if (!validateName(name)) {
-    isValid = false;
-    errorMessage += "Please enter a valid name.\n";
-  }
-  if (!validateEmail(email)) {
-    isValid = false;
-    errorMessage += "Please enter a valid email address.\n";
-  }
-  if (!validatePhone(phone)) {
-    isValid = false;
-    errorMessage += "Please enter a valid phone number.\n";
+  // Validierung der Felder
+  const isValid = validateFields(name, email, phone);
+
+  // Button aktivieren/deaktivieren
+  toggleCreateButton(isValid);
+}
+
+/**
+ * Validates all input fields and updates the error messages.
+ *
+ * @param {string} name - The user's name.
+ * @param {string} email - The user's email.
+ * @param {string} phone - The user's phone number.
+ * @returns {boolean} True if all fields are valid, otherwise false.
+ */
+function validateFields(name, email, phone) {
+  const fieldPrefix = window.innerWidth > 1350 ? "" : "Mobile";
+  const isNameValid = validateInput(`name${fieldPrefix}`, name, validateName, "Please enter a valid name.");
+  const isEmailValid = validateInput(`email${fieldPrefix}`, email, validateEmail, "Please enter a valid email address.");
+  const isPhoneValid = validateInput(`phone${fieldPrefix}`, phone, validatePhone, "Please enter a valid phone number.");
+  return isNameValid && isEmailValid && isPhoneValid;
+}
+
+/**
+ * Validates a single input field and updates its error message.
+ *
+ * @param {string} fieldId - The ID of the input field.
+ * @param {string} value - The field's current value.
+ * @param {Function} validator - The validation function.
+ * @param {string} errorMessage - The error message to display.
+ * @returns {boolean} True if the input is valid, otherwise false.
+ */
+function validateInput(fieldId, value, validator, errorMessage) {
+  const inputField = document.getElementById(fieldId);
+  const errorField = document.getElementById(`errorMsg${capitalize(fieldId)}`);
+
+  if (!validator(value)) {
+    inputField.style.border = "1px solid red";
+    errorField.innerHTML = errorMessage;
+    return false;
   }
 
-  if (!isValid) alert(errorMessage);
-  return isValid;
+  inputField.style.border = "";
+  errorField.innerHTML = "";
+  return true;
+}
+
+/**
+ * Enables or disables the "Create Contact" button.
+ *
+ * @param {boolean} isValid - Whether the form is valid.
+ */
+function toggleCreateButton(isValid) {
+  const button = document.getElementById("createContactBtn");
+  button.disabled = !isValid;
+  button.style.opacity = isValid ? "1" : "0.5";
+  button.style.cursor = isValid ? "pointer" : "not-allowed";
+}
+
+/**
+ * Capitalizes the first letter of a string.
+ *
+ * @param {string} str - The input string.
+ * @returns {string} The capitalized string.
+ */
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 /**
@@ -348,3 +401,8 @@ function showContactSucessfullyCreatedMessage() {
     </div>
   `;
 }
+
+// Attach event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("input", checkFormValidity);
+});

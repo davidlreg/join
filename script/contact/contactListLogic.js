@@ -85,6 +85,8 @@ function addContactToGroup(groups, letter, contact) {
  */
 function renderGroupedContacts(groupedContacts) {
   const contactList = document.getElementById("contactListInner");
+  contactList.innerHTML = "";
+
   Object.entries(groupedContacts).forEach(([letter, contacts]) => {
     renderSectionHeader(contactList, letter);
     renderContactList(contactList, contacts);

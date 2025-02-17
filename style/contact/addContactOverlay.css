@@ -105,7 +105,7 @@
 }
 
 .nameIcon {
-  top: 175px;
+  top: 178px;
 }
 
 .mailIcon {
@@ -114,6 +114,70 @@
 
 .phoneIcon {
   top: 343px;
+}
+
+.errorMsgName {
+  background-color: transparent;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+.errorMsgEmail {
+  background-color: transparent;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+.errorMsgPhone {
+  background-color: transparent;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+.errorMsgNameMobile {
+  background-color: transparent;
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  top: 450px;
+  left: 30px;
+}
+
+.errorMsgEmailMobile {
+  background-color: transparent;
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  top: 510px;
+  left: 30px;
+}
+
+.errorMsgPhoneMobile {
+  background-color: transparent;
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  top: 570px;
+  left: 30px;
+}
+
+#createContactBtn:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+#createContactBtn:disabled > p {
+  background-color: grey;
+  cursor: not-allowed;
 }
 
 /* Close Container */
@@ -298,5 +362,17 @@
 
   .createContactButton > p {
     font-size: 16px;
+  }
+
+  .errorMsgNameMobile {
+    top: 392px;
+  }
+
+  .errorMsgEmailMobile {
+    top: 450px;
+  }
+
+  .errorMsgPhoneMobile {
+    top: 508px;
   }
 }

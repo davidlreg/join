@@ -1,4 +1,5 @@
-/* Anpassungen für Bildschirme bis 1350px */
+/* Anpassungen für Bildschirme bis 1400px */
+
 @media screen and (max-width: 1400px) {
   .boardSectionsContainer {
     flex-direction: column;
@@ -116,10 +117,17 @@
   }
 }
 
-/* Anpassungen für geringe Höhen (bis 700px) */
-@media (max-height: 700px) {
+/* Anpassungen für geringe Höhen (bis 800px) */
+@media (max-height: 800px) {
   .boardOverlayContainer {
     height: 550px !important;
     max-height: 550px !important;
+  }
+}
+
+@media (max-height: 600px) {
+  .boardOverlayContainer {
+    height: 400px !important;
+    max-height: 400px !important;
   }
 }

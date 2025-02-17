@@ -20,7 +20,7 @@ async function prepareData() {
  */
 function openOverlay(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateX(100%)";
+  overlay.style.transform = "translateX(1000%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
@@ -31,7 +31,7 @@ function openOverlay(overlay) {
  */
 function openOverlayMobile(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateY(100%)";
+  overlay.style.transform = "translateY(1000%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
@@ -42,7 +42,7 @@ function openOverlayMobile(overlay) {
  */
 function closeOverlay(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateX(100%)";
+  overlay.style.transform = "translateX(1000%)";
 }
 
 /**
@@ -52,7 +52,7 @@ function closeOverlay(overlay) {
  */
 function closeOverlayMobile(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out";
-  overlay.style.transform = "translateY(100%)";
+  overlay.style.transform = "translateY(1000%)";
 }
 
 /**
@@ -266,8 +266,8 @@ function closeContactOverlay() {
  * @param {Element} overlay The overlay element to be opened.
  */
 function openFloatingContactOverlay(overlay) {
-  overlay.style.transition = "transform 0.2s ease-in-out";
-  overlay.style.transform = "translateX(150%)";
+  overlay.style.transition = "transform 0.3s ease-in-out";
+  overlay.style.transform = "translateX(1000%)";
   setTimeout(() => (overlay.style.transform = "translateX(0)"), 100);
 }
 
@@ -278,7 +278,7 @@ function openFloatingContactOverlay(overlay) {
  */
 function closeFloatingContactOverlay(overlay) {
   overlay.style.transition = "transform 0.3s ease-in-out, opacity 0.3s ease-in-out";
-  overlay.style.transform = "translateX(200%)";
+  overlay.style.transform = "translateX(1000%)";
   overlay.style.opacity = "0";
 
   setTimeout(() => {

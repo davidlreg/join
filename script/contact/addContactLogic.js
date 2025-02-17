@@ -64,11 +64,12 @@ function addOverlayBackground(container) {
  * @returns {void}
  */
 function createContact() {
-  const email = document.getElementById("email").value;
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
+  const isMobile = window.innerWidth <= 1350;
+  const email = document.getElementById(isMobile ? "emailMobile" : "email").value;
+  const name = document.getElementById(isMobile ? "nameMobile" : "name").value;
+  const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value;
 
-  if (!validateForm()) {
+  if (checkFormValidity()) {
     return;
   }
 
@@ -80,14 +81,14 @@ function createContact() {
 
   setTimeout(() => {
     prepareData();
-  }, 100);
+  }, 500);
 
-  if (window.innerWidth > 1350) {
-    showContactCreatedMessage();
-  } else {
+  if (isMobile) {
     setTimeout(() => {
       showMobileContactCreatedMessage();
     }, 300);
+  } else {
+    showContactCreatedMessage();
   }
 }
 
@@ -180,66 +181,6 @@ function saveContact(contactId, email, name, phone) {
     .catch((error) => {
       console.error("Error saving contact:", error);
     });
-}
-
-/**
- * Validates if the name is valid.
- *
- * @param {string} name - The name to validate.
- * @returns {boolean} - Returns true if valid, false otherwise.
- */
-function validateName(name) {
-  return /^[a-zA-Z\s]{2,}$/.test(name);
-}
-
-/**
- * Validates if the email is valid.
- *
- * @param {string} email - The email to validate.
- * @returns {boolean} - Returns true if valid, false otherwise.
- */
-function validateEmail(email) {
-  return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
-}
-
-/**
- * Validates if the phone number is valid.
- *
- * @param {string} phone - The phone number to validate.
- * @returns {boolean} - Returns true if valid, false otherwise.
- */
-function validatePhone(phone) {
-  return /^\+?\d{1,4}[\s\-]?\(?\d{1,4}\)?[\s\-]?\d{1,4}[\s\-]?\d{1,4}$/.test(phone);
-}
-
-/**
- * Checks if the form fields are valid.
- *
- * @returns {boolean} - Returns true if all fields are valid, false otherwise.
- */
-function validateForm() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-
-  let isValid = true;
-  let errorMessage = "";
-
-  if (!validateName(name)) {
-    isValid = false;
-    errorMessage += "Please enter a valid name.\n";
-  }
-  if (!validateEmail(email)) {
-    isValid = false;
-    errorMessage += "Please enter a valid email address.\n";
-  }
-  if (!validatePhone(phone)) {
-    isValid = false;
-    errorMessage += "Please enter a valid phone number.\n";
-  }
-
-  if (!isValid) alert(errorMessage);
-  return isValid;
 }
 
 /**

@@ -376,3 +376,19 @@
     top: 508px;
   }
 }
+
+@media (max-width: 400px) {
+  .nameIconMobile {
+    top: 330px;
+  }
+
+  .phoneIconMobile {
+    top: 445px;
+  }
+
+  .profilePictureMobile > svg {
+    position: absolute;
+    top: -15px;
+    left: -50px;
+  }
+}

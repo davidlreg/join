@@ -431,7 +431,7 @@ form {
 
 .nameIconMobileEdit {
   position: absolute;
-  top: 430px;
+  top: 425px;
   right: 32px;
 }
 
@@ -442,7 +442,7 @@ form {
 
 .phoneIconMobileEdit {
   position: absolute;
-  top: 545px;
+  top: 555px;
   right: 32px;
 }
 
@@ -495,15 +495,15 @@ form {
   }
 
   .nameIconMobileEdit {
-    top: 290px;
+    top: 315px;
   }
 
   .phoneIconMobileEdit {
-    top: 405px;
+    top: 430px;
   }
 
   .emailIconMobileEdit {
-    top: 348px;
+    top: 372px;
   }
 
   .formButtonsMobile > button {
@@ -513,12 +513,6 @@ form {
 }
 
 @media (max-width: 400px) {
-  .customProfilePictureBig {
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-  }
-
   .headlineMobile > p {
     font-size: 18px;
   }

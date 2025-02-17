@@ -319,10 +319,3 @@ main {
   overflow-y: auto;
   padding-right: 8px;
 }
-
-
-@media(max-height: 795px){
-  .tasksInnerContainer {
-    height: 470px;
-  }
-}

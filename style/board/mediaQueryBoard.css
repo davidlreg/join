@@ -69,6 +69,12 @@
   }
 }
 
+@media(max-height: 795px){
+  .tasksInnerContainer {
+    height: 470px;
+  }
+}
+
 /* Anpassungen für Bildschirme bis 500px */
 @media screen and (max-width: 500px) {
   main {

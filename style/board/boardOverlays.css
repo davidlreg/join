@@ -205,6 +205,16 @@
   height: 20px;
 }
 
+.boardOverlayActionButtonsDelete:hover,
+.boardOverlayActionButtonsEdit:hover {
+  color: #29abe2;
+}
+
+.boardOverlayActionButtonsDelete:hover svg path,
+.boardOverlayActionButtonsEdit:hover svg path {
+  fill: currentColor;
+}
+
 .overlaySeparator {
   color: #888;
 }

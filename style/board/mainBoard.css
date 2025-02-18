@@ -3,7 +3,7 @@
 main {
   padding: 54px;
   height: calc(100% - 96px);
-  
+
   padding-bottom: 80px;
 }
 
@@ -72,7 +72,6 @@ main {
 
 .boardInputContainer button:hover {
   background-image: url("/assets/icon/board/searchclick.png");
-  
 }
 
 .boardInputContainer .separator {
@@ -116,7 +115,6 @@ main {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  
 }
 
 .boardSectionsSubContainer {
@@ -173,6 +171,10 @@ main {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.boardTasks:hover {
+  transform: rotate(1deg);
 }
 
 /* ===== Task Categories & Titles ===== */

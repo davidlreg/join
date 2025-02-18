@@ -50,10 +50,10 @@ function checkFormValidity() {
  * @returns {boolean} True if all fields are valid, otherwise false.
  */
 function validateFields(name, email, phone) {
-  const fieldPrefix = window.innerWidth > 1350 ? "" : "Mobile";
-  const isNameValid = validateInput(`name${fieldPrefix}`, name, validateName, "Please enter a valid name.");
-  const isEmailValid = validateInput(`email${fieldPrefix}`, email, validateEmail, "Please enter a valid email address.");
-  const isPhoneValid = validateInput(`phone${fieldPrefix}`, phone, validatePhone, "Please enter a valid phone number.");
+  const mobilePlaceholder = window.innerWidth > 1350 ? "" : "Mobile";
+  const isNameValid = validateInput(`name${mobilePlaceholder}`, name, validateName, "Please enter a valid name.");
+  const isEmailValid = validateInput(`email${mobilePlaceholder}`, email, validateEmail, "Please enter a valid email address.");
+  const isPhoneValid = validateInput(`phone${mobilePlaceholder}`, phone, validatePhone, "Please enter a valid phone number.");
   return isNameValid && isEmailValid && isPhoneValid;
 }
 

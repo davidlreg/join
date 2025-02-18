@@ -125,6 +125,7 @@ function showAddContactOverlay() {
               </g>
             </svg>
             <p id="errorMsgPhone" class="errorMsgPhone"></p>
+            <p id="errorMsgContactExist" class="errorMsgContactExist"></p>
           </div>
         </div>
 
@@ -270,6 +271,7 @@ function showAddContactOverlayMobile() {
         </g>
       </svg>
       <p id="errorMsgPhoneMobile" class="errorMsgPhoneMobile"></p>
+      <p id="errorMsgContactExistMobile" class="errorMsgContactExistMobile"></p>
     </div>
 
     <div class="createdContactContainerMobile">

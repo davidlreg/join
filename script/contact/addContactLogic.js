@@ -63,13 +63,21 @@ function addOverlayBackground(container) {
  *
  * @returns {void}
  */
-function createContact() {
+async function createContact() {
   const isMobile = window.innerWidth <= 1350;
   const email = document.getElementById(isMobile ? "emailMobile" : "email").value;
   const name = document.getElementById(isMobile ? "nameMobile" : "name").value;
   const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value;
 
   if (checkFormValidity()) {
+    return;
+  }
+
+  const exists = await checkIfContactAlreadyExists(email, phone);
+  if (exists) {
+    const isMobile = window.innerWidth <= 1350;
+    const errorMsgContactExists = document.getElementById(isMobile ? "errorMsgContactExistMobile" : "errorMsgContactExist");
+    errorMsgContactExists.innerText = "This contact already exists.";
     return;
   }
 
@@ -90,6 +98,19 @@ function createContact() {
   } else {
     showContactCreatedMessage();
   }
+}
+
+/**
+ * Checks if a contact with the same email or phone number already exists.
+ *
+ * @param {string} email - The email of the new contact.
+ * @param {string} phone - The phone number of the new contact.
+ * @returns {Promise<boolean>} Resolves to true if the contact exists, otherwise false.
+ */
+async function checkIfContactAlreadyExists(email, phone) {
+  const contacts = await fetchContacts();
+  if (!contacts) return false;
+  return Object.values(contacts).some((contact) => contact.email === email || contact.phone === phone);
 }
 
 /**
@@ -173,14 +194,7 @@ function saveContact(contactId, email, name, phone) {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(contactData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Contact saved successfully:", data);
-    })
-    .catch((error) => {
-      console.error("Error saving contact:", error);
-    });
+  });
 }
 
 /**

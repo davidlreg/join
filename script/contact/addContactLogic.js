@@ -58,46 +58,27 @@ function addOverlayBackground(container) {
 }
 
 /**
- * Creates a new contact by retrieving user input from the form and saving it to the database.
- * After saving, it closes the overlay and shows a confirmation message.
+ * Creates a new contact if it does not already exist.
+ * Retrieves user input, checks for duplicates, and saves the contact.
+ * Displays an error message if the contact already exists.
  *
- * @returns {void}
  */
 async function createContact() {
   const isMobile = window.innerWidth <= 1350;
-  const email = document.getElementById(isMobile ? "emailMobile" : "email").value;
-  const name = document.getElementById(isMobile ? "nameMobile" : "name").value;
-  const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value;
+  const getValue = (id) => document.getElementById(isMobile ? id + "Mobile" : id).value;
+  const [email, name, phone] = [getValue("email"), getValue("name"), getValue("phone")];
 
-  if (checkFormValidity()) {
+  if (checkFormValidity() || (await checkIfContactAlreadyExists(email, phone))) {
+    document.getElementById(isMobile ? "errorMsgContactExistMobile" : "errorMsgContactExist").innerText = "This contact already exists.";
     return;
   }
 
-  const exists = await checkIfContactAlreadyExists(email, phone);
-  if (exists) {
-    const isMobile = window.innerWidth <= 1350;
-    const errorMsgContactExists = document.getElementById(isMobile ? "errorMsgContactExistMobile" : "errorMsgContactExist");
-    errorMsgContactExists.innerText = "This contact already exists.";
-    return;
-  }
-
-  getNextId().then((nextContactId) => {
-    saveContact(nextContactId, email, name, phone);
-  });
-
+  saveContact(await getNextId(), email, name, phone);
   closeAddContactOverlay();
-
   setTimeout(() => {
     prepareData();
+    isMobile ? showMobileContactCreatedMessage() : showContactCreatedMessage();
   }, 500);
-
-  if (isMobile) {
-    setTimeout(() => {
-      showMobileContactCreatedMessage();
-    }, 300);
-  } else {
-    showContactCreatedMessage();
-  }
 }
 
 /**

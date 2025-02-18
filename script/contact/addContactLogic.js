@@ -6,7 +6,15 @@ function openAddContactOverlay() {
   const overlayContainer = document.getElementById("overlayContainer");
   overlayContainer.innerHTML = showAddContactOverlay();
   addOverlayBackground(overlayContainer);
+  const inputIds = ["name", "email", "phone"];
   const overlay = overlayContainer.querySelector(".addContactOverlay");
+  inputIds.forEach((id) => {
+    const inputElement = overlay.querySelector(`#${id}`);
+    if (inputElement) {
+      inputElement.addEventListener("input", checkFormValidity);
+    }
+  });
+
   openOverlay(overlay);
 }
 
@@ -18,7 +26,14 @@ function openAddContactOverlayMobile() {
   const overlayContainer = document.getElementById("overlayContainer");
   overlayContainer.innerHTML = showAddContactOverlayMobile();
   addOverlayBackground(overlayContainer);
+  const inputIds = ["nameMobile", "emailMobile", "phoneMobile"];
   const overlay = overlayContainer.querySelector(".addContactMobileWrapper");
+  inputIds.forEach((id) => {
+    const inputElement = overlay.querySelector(`#${id}`);
+    if (inputElement) {
+      inputElement.addEventListener("input", checkFormValidity);
+    }
+  });
   openOverlayMobile(overlay);
 }
 

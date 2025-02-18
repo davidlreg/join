@@ -446,6 +446,36 @@ form {
   right: 32px;
 }
 
+.errorMsgEditContact {
+  background-color: transparent;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  padding-top: 2px;
+  padding-left: 2px;
+}
+
+#errorMsgEditContactNameMobile {
+  font-size: 10px;
+  position: absolute;
+  top: 462px;
+  left: 30px;
+}
+
+#errorMsgEditContactEmailMobile {
+  font-size: 10px;
+  position: absolute;
+  top: 528px;
+  left: 30px;
+}
+
+#errorMsgEditContactPhoneMobile {
+  font-size: 10px;
+  position: absolute;
+  top: 595px;
+  left: 30px;
+}
+
 /* Media Queries */
 @media (max-width: 1400px) {
   .detailedContactSectionMobile {
@@ -485,9 +515,7 @@ form {
     font-size: 36px;
   }
 
-  .customProfilePictureBig
-
-  .whiteBackgroundEdit {
+  .customProfilePictureBig .whiteBackgroundEdit {
     padding: 24px;
     border-radius: 0px 0px 18px 18px;
     padding-top: 64px;
@@ -509,6 +537,21 @@ form {
   .formButtonsMobile > button {
     padding: 12px;
     font-size: 16px;
+  }
+
+  #errorMsgEditContactNameMobile {
+    top: 346px;
+    left: 30px;
+  }
+
+  #errorMsgEditContactEmailMobile {
+    top: 404px;
+    left: 30px;
+  }
+
+  #errorMsgEditContactPhoneMobile {
+    top: 464px;
+    left: 30px;
   }
 }
 

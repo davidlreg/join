@@ -346,3 +346,33 @@ function addCloseEventListener(overlay, menuContainer) {
     });
   }, 0);
 }
+
+/**
+ * Validates if the name is valid.
+ *
+ * @param {string} name - The name to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validateName(name) {
+  return /^[a-zA-Z\s]{2,}$/.test(name);
+}
+
+/**
+ * Validates if the email is valid.
+ *
+ * @param {string} email - The email to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validateEmail(email) {
+  return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+}
+
+/**
+ * Validates if the phone number is valid.
+ *
+ * @param {string} phone - The phone number to validate.
+ * @returns {boolean} - Returns true if valid, false otherwise.
+ */
+function validatePhone(phone) {
+  return /^\+?\d{1,4}[\s\-]?\(?\d{1,4}\)?[\s\-]?\d{1,4}[\s\-]?\d{1,4}$/.test(phone);
+}

@@ -6,7 +6,14 @@ function openEditContact(initials, color) {
   const overlayContainer = document.getElementById("overlayContainer");
   overlayContainer.innerHTML = showEditContactOverlay(initials, color);
   addOverlayBackground(overlayContainer);
+  const inputIds = ["contactName", "contactEmail", "contactPhone"];
   const overlay = overlayContainer.querySelector(".editContactOverlay");
+  inputIds.forEach((id) => {
+    const inputElement = overlay.querySelector(`#${id}`);
+    if (inputElement) {
+      inputElement.addEventListener("input", checkEditFormValidity);
+    }
+  });
   openOverlay(overlay);
 }
 
@@ -18,7 +25,14 @@ function openEditContactMobile(initials, color) {
   const overlayContainer = document.getElementById("mobileOverlayContainer");
   overlayContainer.innerHTML = showEditContactOverlayMobile(initials, color);
   editOverlayBackground(overlayContainer);
+  const inputIds = ["contactNameMobile", "contactEmailMobile", "contactPhoneMobile"];
   const overlay = overlayContainer.querySelector(".editContactMobileWrapper");
+  inputIds.forEach((id) => {
+    const inputElement = overlay.querySelector(`#${id}`);
+    if (inputElement) {
+      inputElement.addEventListener("input", checkEditFormValidity);
+    }
+  });
   openOverlayMobile(overlay);
 }
 
@@ -57,35 +71,9 @@ function editOverlayBackground(container) {
  * @param {string} contactId - The ID of the contact to update.
  */
 async function updateContactData(contactId) {
-  if (!validateFormInput()) {
-    return;
-  }
   const updatedData = getUpdatedContactData();
   await updateContactInDatabase(contactId, updatedData);
   setTimeout(() => location.reload(), 200);
-}
-
-function validateFormInput() {
-  let email = document.getElementById("contactEmail").value;
-  let phone = document.getElementById("contactPhone").value;
-
-  let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  let phonePattern = /^\+?[0-9\s\-()]*$/;
-
-  let emailValid = emailPattern.test(email);
-  let phoneValid = phonePattern.test(phone);
-
-  if (!emailValid) {
-    alert("Please enter a valid email address.");
-    return false;
-  }
-
-  if (!phoneValid) {
-    alert("Please enter a valid phone number (e.g., +49 123 456789).");
-    return false;
-  }
-
-  return true;
 }
 
 /**
@@ -94,10 +82,15 @@ function validateFormInput() {
  * @returns {Object} - An object containing the updated name, email, and phone.
  */
 function getUpdatedContactData() {
+  const isMobile = window.innerWidth <= 1350;
+  const name = document.getElementById(isMobile ? "contactNameMobile" : "contactName").value.trim();
+  const email = document.getElementById(isMobile ? "contactEmailMobile" : "contactEmail").value.trim();
+  const phone = document.getElementById(isMobile ? "contactPhoneMobile" : "contactPhone").value.trim();
+
   return {
-    name: document.getElementById("contactName").value,
-    email: document.getElementById("contactEmail").value,
-    phone: document.getElementById("contactPhone").value,
+    name,
+    email,
+    phone,
   };
 }
 
@@ -141,14 +134,6 @@ async function sendPatchRequest(url, data) {
 }
 
 /**
- * Reloads the current page.
- *
- */
-function reloadPage() {
-  location.reload();
-}
-
-/**
  * Initiates the deletion of a contact by its ID.
  *
  * @param {string} contactId - The ID of the contact to delete.
@@ -175,19 +160,15 @@ async function deleteContactData(contactId) {
 async function deleteContactInDatabase(contactId) {
   const url = `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
 
-  try {
-    const response = await fetch(url, {
-      method: "DELETE",
-    });
+  const response = await fetch(url, {
+    method: "DELETE",
+  });
 
-    if (!response.ok) {
-      throw new Error("Failed to delete contact.");
-    }
-
-    console.log(`Contact with ID ${contactId} deleted successfully.`);
-  } catch (error) {
-    console.error("Error deleting contact:", error);
+  if (!response.ok) {
+    throw new Error("Failed to delete contact.");
   }
+
+  console.log(`Contact with ID ${contactId} deleted successfully.`);
 }
 
 /**

@@ -148,7 +148,7 @@
   color: red;
   font-size: 10px;
   position: absolute;
-  top: 450px;
+  top: 452px;
   left: 30px;
 }
 
@@ -157,7 +157,7 @@
   color: red;
   font-size: 10px;
   position: absolute;
-  top: 510px;
+  top: 512px;
   left: 30px;
 }
 
@@ -166,7 +166,7 @@
   color: red;
   font-size: 10px;
   position: absolute;
-  top: 570px;
+  top: 572px;
   left: 30px;
 }
 
@@ -185,16 +185,16 @@
   color: red;
   font-size: 16px;
   position: absolute;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 2px;
 }
 
 .errorMsgContactExistMobile {
   background-color: transparent;
   color: red;
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
-  top: 580px;
+  top: 584px;
 }
 
 /* Close Container */
@@ -394,8 +394,8 @@
   }
 
   .errorMsgContactExistMobile {
-    font-size: 12px;
-    top: 515px;
+    font-size: 10px;
+    top: 522px;
   }
 }
 
@@ -415,6 +415,18 @@
   }
 
   .errorMsgContactExistMobile {
-    top: 488px;
+    top: 495px;
+  }
+
+  .errorMsgNameMobile {
+    top: 365px;
+  }
+
+  .errorMsgEmailMobile {
+    top: 422px;
+  }
+
+  .errorMsgPhoneMobile {
+    top: 482px;
   }
 }

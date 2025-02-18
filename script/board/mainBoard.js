@@ -180,9 +180,9 @@ function convertDateFormat(dateStr) {
 function getRandomColorForName(name) {
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    hash = name.charCodeAt(i) + ((hash << 6) - hash);
   }
-  let color = `hsl(${hash % 360}, 70%, 60%)`;
+  let color = `hsl(${hash % 360}, 70%, 50%)`;
   return color;
 }
 

@@ -241,6 +241,14 @@ body {
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
+#mobileMenu {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  display: flex;
+  justify-content: end;
+}
+
 .editContainer,
 .deleteContainer {
   display: flex;
@@ -284,6 +292,10 @@ body {
 .deleteContainer:hover * {
   color: #29abe2;
   fill: #29abe2;
+}
+
+.detailedContactSectionMobile {
+  overflow-y: hidden;
 }
 
 /* Media Queries */

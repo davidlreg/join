@@ -14,7 +14,7 @@ body {
 }
 
 main {
-  padding: 64px 64px 48px 64px;
+  padding: 64px 32px;
 }
 
 .summaryHeadline {
@@ -51,7 +51,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 64px 0px 64px;
+  padding: 0px 32px;
 }
 
 /* Content Left */

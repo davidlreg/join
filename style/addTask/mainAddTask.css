@@ -12,11 +12,11 @@
 
 /* Task Form*/
 form#taskForm {
-  padding: 64px;
-  height: calc(100% - 80px);
+  padding: 64px 32px;
+  height: calc(100% - 144px);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 form#taskForm h1 {

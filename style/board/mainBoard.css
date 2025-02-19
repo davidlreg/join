@@ -2,7 +2,7 @@
 
 .boardMain {
   height: calc(100vh - 80px);
-  padding: 64px 32px 64px 32px;
+  padding: 64px 32px;
   overflow: hidden;
 }
 

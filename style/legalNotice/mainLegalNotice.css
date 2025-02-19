@@ -11,7 +11,7 @@ body {
 }
 
 .impressum {
-  padding: 64px;
+  padding: 64px 32px;
   overflow-y: auto;
 }
 
@@ -20,7 +20,6 @@ body {
     padding-bottom: 100px;
   }
 }
-
 
 @media (max-width: 768px) {
   .impressum {

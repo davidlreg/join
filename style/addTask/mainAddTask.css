@@ -248,6 +248,7 @@ form#taskForm h1 {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .priorityButton {

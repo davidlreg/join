@@ -252,10 +252,16 @@ function templateEditTask(task, taskId) {
                         <div class="taskInputOverlay editTaskInputOverlay">
                             <p>Subtasks</p>
                             <div class="subtaskWrapper">
-                                <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks">
+                                <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()">
                                 <div class="iconWrapper iconWrapperOverlay">
                                     <div class="addSubtask">
-                                        <img src="/assets/img/subtaskPlusIcon.png" onclick="addSubtask()">
+                                        <img  id="subtaskPlusIcon" src="/assets/img/subtaskPlusIcon.png">
+                                    </div>
+
+                                    <div id="subtaskIcons" style="display: none;">
+                                        <img src="/assets/icon/add task/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
+                                        <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
+                                        <img src="/assets/icon/add task/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
                                     </div>
                                 </div>
                             </div>

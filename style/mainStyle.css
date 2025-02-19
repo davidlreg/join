@@ -14,7 +14,7 @@ html {
 
 /*Scrollbar*/
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
   height: 8px;
 }
 
@@ -393,10 +393,6 @@ header h3 {
     font-size: 16px;
   }
 
-  header {
-    padding: 0 32px;
-  }
-
   .nav__container > a,
   .logInLinkContainer > a {
     flex-direction: column;
@@ -459,6 +455,11 @@ header h3 {
 
   .nav__container p {
     font-size: 14px !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 8px;
   }
 }
 

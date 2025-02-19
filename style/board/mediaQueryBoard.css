@@ -70,7 +70,7 @@
   }
 }
 
-@media(max-height: 795px){
+@media(max-height: 795px) {
   .tasksInnerContainer {
     height: 470px;
   }
@@ -115,6 +115,14 @@
   .editBoardHeader {
     padding-right: 10px !important;
   }
+
+  .boardOverlayAssignedTo ul {
+    padding: 0 !important;
+  }
+
+  .boardOverlayAssignedTo ul::-webkit-scrollbar-thumb {
+    display: none;
+  }
 }
 
 /* Anpassungen für geringe Höhen (bis 800px) */
@@ -124,6 +132,13 @@
     max-height: 550px !important;
   }
 }
+
+@media (max-height:792px) {
+  .boardOverlayAssignedTo ul {
+    max-height: 100px !important;
+  }
+}
+
 
 @media (max-height: 600px) {
   .boardOverlayContainer {

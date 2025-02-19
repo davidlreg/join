@@ -107,6 +107,12 @@
   list-style: none;
   padding: 10px;
   margin-left: 20px;
+  overflow-y: auto;
+  max-height: 250px;
+}
+
+.boardOverlayAssignedTo p {
+  margin-bottom: 12px;
 }
 
 .boardOverlayAssignedTo li {
@@ -171,11 +177,11 @@
   display: none;
 }
 
-.checkboxList input[type="checkbox"]:checked + label {
+.checkboxList input[type="checkbox"]:checked+label {
   background-image: url("../../assets/icon/login/checked.svg");
 }
 
-.checkboxList input[type="checkbox"]:checked + label:hover {
+.checkboxList input[type="checkbox"]:checked+label:hover {
   background-image: url("../../assets/icon/login/hover_checked.svg");
 }
 
@@ -282,3 +288,5 @@
 .editNoWidth {
   width: 100% !important;
 }
+
+

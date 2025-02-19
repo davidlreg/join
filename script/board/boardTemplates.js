@@ -21,7 +21,7 @@ function templateBoardTasks(task, taskId) {
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
           <span class="boardTaskDescription">${task.description}</span>
-          
+          z
           <!-- Fortschrittsanzeige -->
           <div class="boardSubTasks">
               <div class="boardSubtaskProgress" 
@@ -113,7 +113,7 @@ function templateBoardOverlay(task, taskId) {
                 `
             )
             .join("")}
-            </ul>
+            </ul> 
         </div>
         <div class="boardOverlaySubtasks">
                 <p>Subtasks:</p>

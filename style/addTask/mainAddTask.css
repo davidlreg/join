@@ -12,11 +12,10 @@
 
 /* Task Form*/
 form#taskForm {
-  padding: 64px 32px;
-  height: calc(100% - 144px);
+  padding: 64px 32px 32px 32px;
+  height: calc(100vh - 96px);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 form#taskForm h1 {
@@ -26,6 +25,7 @@ form#taskForm h1 {
 .taskInputContainer {
   display: flex;
   gap: 48px;
+  padding: 32px 0px;
 }
 
 .taskSeparator {
@@ -796,7 +796,7 @@ form#taskFormOverlay {
 }
 
 .addTaskMain {
-  height: 100%;
+  height: calc(100vh - 96px);
 }
 
 @media (max-height: 795px) {

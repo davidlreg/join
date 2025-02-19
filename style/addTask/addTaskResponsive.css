@@ -1,12 +1,14 @@
 @media (max-width: 1400px) {
   .addTaskMain {
     overflow-y: scroll;
-    width: 100%;
-    height: calc(100% - 80px);
+    height: calc(100vh - 160px);
   }
+
   .taskInputContainer {
     flex-direction: column;
     gap: 0;
+    flex: 1;
+    overflow-x: scroll;
   }
 
   .taskInputLeft,
@@ -68,7 +70,6 @@
     display: flex;
     align-items: center;
     gap: calc(10vw + 30px);
-    margin-bottom: 144px;
     flex-wrap: nowrap;
     justify-content: space-between;
   }
@@ -81,6 +82,11 @@
   form#taskForm h1 {
     margin-bottom: 32px;
     font-size: 48px;
+  }
+
+  form#taskForm {
+    height: calc(100vh - 160px);
+    overflow-x: hidden;
   }
 }
 

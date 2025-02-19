@@ -7,6 +7,10 @@ let currentDraggedElement;
  * @param {number} taskId - The ID of the task to move.
  */
 async function moveTo(newStatus, taskId) {
+  removeHighlight("boardNoTasksToDo");
+  removeHighlight("boardNoTasksInProgress");
+  removeHighlight("boardNoTasksAwaiting");
+  removeHighlight("boardNoTasksDone");
   updateTaskStatus(taskId, newStatus);
   await updateBackend(backendData);
   loadTasksToBoard();
@@ -45,6 +49,7 @@ async function updateBackend(data) {
  */
 function allowDrop(event) {
   event.preventDefault();
+  document.getElementById("");
 }
 
 /**
@@ -91,4 +96,12 @@ function checkIfTaskExistInContainer() {
       taskSection.classList.add("dNone");
     }
   });
+}
+
+function highlight(id) {
+  document.getElementById(id).classList.add("dragAreaHighlight");
+}
+
+function removeHighlight(id) {
+  document.getElementById(id).classList.remove("dragAreaHighlight");
 }

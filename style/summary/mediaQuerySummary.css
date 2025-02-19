@@ -51,3 +51,44 @@
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .summaryMainContent {
+    margin-top: 0px;
+  }
+}
+
+
+
+@media screen and (max-height:900px) {
+  .summaryTable {
+    height: 125px;
+  }
+}
+
+@media screen and (max-height:750px) {
+  .summaryMainContent {
+    height: 50%;
+  }
+  .summaryTable {
+    height: 100px;
+  }
+  .summaryToDo,
+  .summaryDone,
+  .summaryUrgent,
+  .summeryBottomContent .summaryTable .count {
+    transform: scale(0.7);
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .summaryDeadline p, .summaryDeadline span {
+    padding: 0px; 
+  }
+}
+
+@media screen and (max-height:700px) {
+  .summaryTable {
+    height: 85px;
+  }
+}

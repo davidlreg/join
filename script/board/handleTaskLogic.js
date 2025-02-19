@@ -8,7 +8,7 @@ function getAddTaskElements() {
     addTaskTitle: document.getElementById("addTaskTitle"),
     addTaskDescription: document.getElementById("addTaskDescription"),
     addTaskDate: document.getElementById("addTaskDate"),
-    addTaskSubTasks: document.querySelectorAll("#subtaskList li span:first-child"),
+    addTaskSubTasks: document.querySelectorAll("#subtaskList .subtaskText"),
     addTaskCategory: document.getElementById("selectTask"),
     assignedContacts: getSelectedContacts(),
   };
@@ -46,12 +46,16 @@ function checkedSelectedContacts() {
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
+  console.log("Subtask-Elemente aus DOM:", addTaskSubTasks);
+
   if(!validateTaskInputs(addTaskTitle, addTaskDate, addTaskCategory)) return;
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
     completed: false,
   }));
+
+  console.log("Generiertes Subtask-Array:", subtasksArray);
 
   let newTask = {
     assignedTo: assignedContacts,

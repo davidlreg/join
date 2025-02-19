@@ -150,7 +150,13 @@
                 <div class="boardButton dNone" id="tasksSectionToDo">
                   <p>No tasks To Do</p>
                 </div>
-                <div class="tasksInnerContainer" id="boardNoTasksToDo" ondrop="moveTo('To do', currentDraggedElement)" ondragover="allowDrop(event)"></div>
+                <div
+                  class="tasksInnerContainer"
+                  id="boardNoTasksToDo"
+                  ondrop="moveTo('To do', currentDraggedElement)"
+                  ondragover="allowDrop(event); highlight('boardNoTasksToDo')"
+                  ondragleave="removeHighlight('boardNoTasksToDo')"
+                ></div>
               </div>
 
               <div class="boardSectionsSubContainer" id="tasksContainer2">
@@ -161,7 +167,13 @@
                 <div class="boardButton dNone" id="tasksSectionInProgress">
                   <p>No tasks In Progress</p>
                 </div>
-                <div class="tasksInnerContainer" id="boardNoTasksInProgress" ondrop="moveTo('In progress', currentDraggedElement)" ondragover="allowDrop(event)"></div>
+                <div
+                  class="tasksInnerContainer"
+                  id="boardNoTasksInProgress"
+                  ondrop="moveTo('In progress', currentDraggedElement)"
+                  ondragover="allowDrop(event); highlight('boardNoTasksInProgress')"
+                  ondragleave="removeHighlight('boardNoTasksInProgress')"
+                ></div>
               </div>
 
               <div class="boardSectionsSubContainer" id="tasksContainer3">
@@ -172,7 +184,13 @@
                 <div class="boardButton dNone" id="tasksSectionAwaiting">
                   <p>No tasks Awaiting</p>
                 </div>
-                <div class="tasksInnerContainer" id="boardNoTasksAwaiting" ondrop="moveTo('Await Feedback', currentDraggedElement)" ondragover="allowDrop(event)"></div>
+                <div
+                  class="tasksInnerContainer"
+                  id="boardNoTasksAwaiting"
+                  ondrop="moveTo('Await Feedback', currentDraggedElement)"
+                  ondragover="allowDrop(event); highlight('boardNoTasksAwaiting')"
+                  ondragleave="removeHighlight('boardNoTasksAwaiting')"
+                ></div>
               </div>
 
               <div class="boardSectionsSubContainer" id="tasksContainer4">
@@ -182,7 +200,13 @@
                 <div class="boardButton dNone" id="tasksSectionDone">
                   <p>No tasks Done</p>
                 </div>
-                <div class="tasksInnerContainer" id="boardNoTasksDone" ondrop="moveTo('Done', currentDraggedElement)" ondragover="allowDrop(event)"></div>
+                <div
+                  class="tasksInnerContainer"
+                  id="boardNoTasksDone"
+                  ondrop="moveTo('Done', currentDraggedElement)"
+                  ondragover="allowDrop(event); highlight('boardNoTasksDone')"
+                  ondragleave="removeHighlight('boardNoTasksDone')"
+                ></div>
               </div>
             </div>
           </div>

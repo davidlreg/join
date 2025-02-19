@@ -165,7 +165,7 @@
 
 .boardTasks {
   padding: 15px;
-  cursor: pointer;
+  cursor: grab;
   min-width: 252px;
   max-width: 252px;
   width: 100%;
@@ -327,4 +327,12 @@
   height: 100%;
   overflow: auto;
   min-height: 64px;
+}
+
+.dragAreaHighlight {
+  background-color: #e7e7e7;
+  border: dashed;
+  border-width: 1px;
+  border-color: #a8a8a8;
+  border-radius: 24px;
 }

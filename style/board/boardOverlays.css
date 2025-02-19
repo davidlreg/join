@@ -149,6 +149,8 @@
   list-style: none;
   padding: 0;
   margin-left: 30px;
+  max-height: 80px;
+  overflow-y: auto;
 }
 
 .checkboxList li {

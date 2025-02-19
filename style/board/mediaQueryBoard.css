@@ -86,6 +86,14 @@
     font-size: 38px !important;
   }
 
+  .editTaskInputContainer {
+    margin-right: -60px;
+  }
+
+  .editTaskInputContainer::-webkit-scrollbar {
+    display: none;
+  }
+
   .editPriorityButtonOverlay {
     gap: 5px !important;
   }
@@ -94,8 +102,8 @@
 /* Anpassungen für Bildschirme bis 450px */
 @media screen and (max-width: 450px) {
   .editPriorityButtonOverlay button {
-    font-size: 12px !important;
-    padding: 5px !important;
+    font-size: 14px !important;
+    padding: 10px !important;
   }
 }
 
@@ -110,6 +118,10 @@
 @media screen and (max-width: 395px) {
   .editTaskInputOverlay {
     margin-right: 20px !important;
+  }
+
+  .editTaskInputContainer {
+    margin-right: 0;
   }
 
   .editBoardHeader {
@@ -136,6 +148,10 @@
 @media (max-height:792px) {
   .boardOverlayAssignedTo ul {
     max-height: 100px !important;
+  }
+
+  .editTaskInputContainer {
+    max-height: 45vh !important;
   }
 }
 

@@ -17,7 +17,7 @@ function filterTasks() {
     const description = task.querySelector(".boardTaskDescription").textContent.toLowerCase();
 
     if (title.includes(searchTerm) || description.includes(searchTerm)) {
-      task.style.display = "block";
+      task.style.display = "";
       found = true;
     } else {
       task.style.display = "none";

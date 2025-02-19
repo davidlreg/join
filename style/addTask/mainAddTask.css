@@ -215,6 +215,20 @@ form#taskForm h1 {
   text-align: center;
 }
 
+.moreContactschecked {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
 .contactName {
   flex-grow: 1;
   margin-left: 38px;
@@ -231,6 +245,7 @@ form#taskForm h1 {
 
 .selectedContacts {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
 }

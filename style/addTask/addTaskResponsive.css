@@ -298,6 +298,13 @@
     width: 370px;
   }
 
+  .selectedContacts {
+    flex-wrap: wrap;
+    padding: 8px;
+    margin-bottom: 20px;
+    max-width: 410px;
+  }
+
   .taskInputContainerOverlay {
     width: 46vh;
     padding-right: 35px;

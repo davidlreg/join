@@ -1,6 +1,6 @@
 function addTaskHtmlTemplate() {
   const template = `
-       <form id="taskFormOverlay">
+       <form id="taskFormOverlay" class="addTaskWrapper">
            <h1>Add task</h1>
            <!-- Task Input Container -->
            <div class="taskInputContainer taskInputContainerOverlay">

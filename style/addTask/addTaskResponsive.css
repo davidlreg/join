@@ -276,9 +276,6 @@
 }
 
 @media (max-width: 545px) {
-  form#taskFormOverlay {
-    padding: 40px;
-  }
 
   .overlayTaskContent {
     width: 480px;
@@ -303,6 +300,10 @@
     padding: 10px;
     gap: 8px;
   }
+
+  .boardOverlayContainer {
+    padding: 24px 20px;
+}
 }
 
 @media (max-width: 490px) {
@@ -366,12 +367,6 @@
 
   .closeTaskOverlay {
     right: 12px;
-  }
-
-  form#taskFormOverlay {
-    padding: 0px;
-    margin-top: 30px;
-    margin-left: 10px;
   }
 
   .selectContainerOverlay {

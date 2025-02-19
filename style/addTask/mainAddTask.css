@@ -62,7 +62,10 @@ form#taskForm h1 {
 
 .addTaskInput {
   width: 100%;
-  padding: 12px 20px;
+  max-width: 445px;
+  height: 100%;
+  max-height: 48px;
+  padding: 12px 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-top: 5px;
@@ -101,8 +104,8 @@ form#taskForm h1 {
   border: 1px solid #ccc;
   border-radius: 10px;
   cursor: pointer;
-  max-width: 440px;
   width: 100%;
+  max-width: 440px;
   background: #fff;
   position: relative;
 }
@@ -197,8 +200,8 @@ form#taskForm h1 {
 }
 
 .profilePicture {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   color: white;
   font-weight: 550;
   background-color: #ccc;
@@ -207,6 +210,7 @@ form#taskForm h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .contactName {
@@ -226,7 +230,7 @@ form#taskForm h1 {
 .selectedContacts {
   display: flex;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .priorityButton {
@@ -276,6 +280,8 @@ form#taskForm h1 {
 
 button img {
   background-color: transparent;
+  width: 21px;
+  height: 21px;
 }
 
 .subtaskContent {
@@ -310,7 +316,7 @@ button img {
   display: flex;
   align-items: center;
   position: relative;
-  width: 102%;
+  width: 100%;
 }
 
 .addSubtask {
@@ -378,7 +384,7 @@ button img {
 
 .bulletPoint {
   font-size: 18px;
-  color: #2a3647
+  color: #2a3647;
 }
 
 .subtaskIcons {
@@ -480,7 +486,6 @@ button img {
   display: block;
 }
 
-
 /* Overlay */
 .addTaskOverlay {
   position: fixed;
@@ -528,9 +533,6 @@ button img {
   max-height: 700px;
   background-color: #ffffff;
   border-radius: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-
   opacity: 0;
   transform: translateX(100%);
 }
@@ -538,7 +540,6 @@ button img {
 .overlayTaskContent.animate {
   animation: slideIn 0.3s ease-out forwards;
 }
-
 
 .hidden {
   display: none;
@@ -565,9 +566,11 @@ button img {
 }
 
 form#taskFormOverlay {
+  height: 100%;
   width: 100%;
-  padding: 50px;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: scroll;
 }
 
 #taskFormOverlay h1 {
@@ -575,13 +578,8 @@ form#taskFormOverlay {
   margin-bottom: 12px;
 }
 
-.taskInputOverlay {
-  margin-bottom: 20px;
-}
-
 .taskInputOverlay p {
-  margin-top: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #2a3647;
   font-size: 20px;
 }
@@ -600,7 +598,7 @@ form#taskFormOverlay {
   max-width: 100%;
   min-height: 60px;
   max-height: 150px;
-  padding: 12px 20px 2px 20px;
+  padding: 18px 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-top: 5px;
@@ -615,7 +613,7 @@ form#taskFormOverlay {
 
 .priorityButtonOverlay {
   display: flex;
-  gap: 20px;
+  gap: 16px;
 }
 
 .priorityButtonOverlay button {
@@ -709,7 +707,95 @@ form#taskFormOverlay {
   gap: 100px;
 }
 
-@media(max-height: 795px) {
+.editTaksTopPartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskInputLeft {
+  display: flex;
+  gap: 16px;
+}
+
+.editTaskWrapper {
+  height: 100%;
+  max-height: 700px;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.editButtonWidth {
+  width: 138px;
+  height: 56px;
+}
+
+.prioBold {
+  font-weight: 700;
+}
+
+.profilePictureLetters {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  margin-bottom: 0px !important;
+}
+
+.okayBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.okayBtn {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 90px;
+  height: 100%;
+  max-height: 58px;
+  background-color: #2a3647;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.okayBtn:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+}
+
+.okayBtn > p {
+  font-size: 20px;
+}
+.textareaStyling {
+  width: 440px;
+  height: 120px;
+}
+
+#overlayBoardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#overlayDynamicContent {
+  height: 100%;
+  width: 100%;
+}
+
+.addTaskWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 64px;
+}
+
+@media (max-height: 795px) {
   .subtaskList {
     max-height: 40px;
   }

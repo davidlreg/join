@@ -126,10 +126,6 @@
 
 /* Zusätzliche Anpassungen für sehr kleine Bildschirme (bis 395px) */
 @media screen and (max-width: 395px) {
-  .editTaskInputOverlay {
-    margin-right: 20px !important;
-  }
-
   .editTaskInputContainer {
     margin-right: 0;
   }
@@ -147,11 +143,13 @@
   }
 }
 
-/* Anpassungen für geringe Höhen (bis 800px) */
-@media (max-height: 800px) {
+@media (max-height: 930px) {
   .boardOverlayContainer {
-    height: 550px !important;
-    max-height: 550px !important;
+    max-height: 665px !important;
+  }
+
+  .editTaskWrapper {
+    max-height: 450px !important;
   }
 }
 
@@ -162,12 +160,5 @@
 
   .editTaskInputContainer {
     max-height: 45vh !important;
-  }
-}
-
-@media (max-height: 600px) {
-  .boardOverlayContainer {
-    height: 400px !important;
-    max-height: 400px !important;
   }
 }

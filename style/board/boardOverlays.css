@@ -20,16 +20,17 @@
 /* Overlay Container */
 .boardOverlayContainer {
   position: relative;
-  width: 90%;
-  max-width: 500px;
-  height: 750px;
-  max-height: 750px;
+  width: 100%;
+  max-width: 525px;
+  max-height: 930px;
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 48px 40px;
+  overflow-y: hidden;
 }
 
 .boardOverlayContent {
@@ -148,8 +149,8 @@
 .checkboxList {
   list-style: none;
   padding: 0;
-  margin-left: 30px;
-  max-height: 80px;
+  margin-top: 8px;
+  margin-left: 12px;
   overflow-y: auto;
 }
 
@@ -179,11 +180,11 @@
   display: none;
 }
 
-.checkboxList input[type="checkbox"]:checked+label {
+.checkboxList input[type="checkbox"]:checked + label {
   background-image: url("../../assets/icon/login/checked.svg");
 }
 
-.checkboxList input[type="checkbox"]:checked+label:hover {
+.checkboxList input[type="checkbox"]:checked + label:hover {
   background-image: url("../../assets/icon/login/hover_checked.svg");
 }
 
@@ -230,7 +231,6 @@
 /* Edit Overlay */
 .editBoardHeader {
   justify-content: flex-end;
-  margin-bottom: 20px;
 }
 
 .editTaskInputContainer {
@@ -260,14 +260,7 @@
   background: #555;
 }
 
-.editTaskInputOverlay {
-  margin-right: 50px;
-}
-
 /* Priority Buttons */
-.editPriorityButtonOverlay {
-  justify-content: flex-start !important;
-}
 
 .editPriorityButtonOverlay button {
   padding-left: 10px !important;
@@ -290,5 +283,3 @@
 .editNoWidth {
   width: 100% !important;
 }
-
-

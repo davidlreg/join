@@ -204,6 +204,12 @@
     right: 15px;
     bottom: 11px;
   }
+
+  .subtaskListOverlay{
+    position: static;
+    max-width: 880px;
+    min-width: 290px;
+  }
 }
 
 @media (max-width: 1024px) {

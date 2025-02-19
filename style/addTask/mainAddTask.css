@@ -697,8 +697,10 @@ form#taskFormOverlay {
 
 .subtaskListOverlay {
   max-height: 50px;
-  width: 432px;
+  max-width: 432px;
+  min-width: 200px;
   overflow-y: auto;
+  position: absolute;
 }
 
 .subtaskListOverlay li {

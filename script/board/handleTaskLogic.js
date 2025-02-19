@@ -39,23 +39,39 @@ function checkedSelectedContacts() {
 }
 
 /**
+ * Retrieves the "boardSection" parameter from the URL.
+ * This is used when navigating to the addTask page on smaller screens (under 1400px),
+ * ensuring that the task is assigned to the correct board section.
+ * 
+ * @returns {string|null} The value of the "boardSection" parameter, or null if not found.
+ */
+function getBoardSectionFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('boardSection');
+}
+
+/**
  * Creates a new task and adds it to the board.
+ * If the window width is 1400px or less, it retrieves the board section from the URL.
+ * The function validates input fields, constructs a task object, and pushes it to the backend.
+ * Finally, it synchronizes the data and reloads the board.
  *
  * @async
+ * @returns {Promise<void>} A promise that resolves once the task is created and the page is redirected.
  */
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
-  console.log("Subtask-Elemente aus DOM:", addTaskSubTasks);
+  if (window.innerWidth <= 1400) {
+    selectedBoardSection = getBoardSectionFromURL();
+  }
 
-  if(!validateTaskInputs(addTaskTitle, addTaskDate, addTaskCategory)) return;
+  if (!validateTaskInputs(addTaskTitle, addTaskDate, addTaskCategory)) return;
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
     completed: false,
   }));
-
-  console.log("Generiertes Subtask-Array:", subtasksArray);
 
   let newTask = {
     assignedTo: assignedContacts,
@@ -67,15 +83,12 @@ async function createTasksForBoard() {
     status: selectedBoardSection || "To do",
     subtask: subtasksArray,
   };
-
   await pushTaskToBackendData(newTask);
   await syncBackendDataWithFirebase();
-
   loadTasksToBoard();
-
   window.location.href = "/html/board.html";
-
 }
+
 
 
 /**

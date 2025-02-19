@@ -1,5 +1,5 @@
 @media (max-width: 1400px) {
-  main {
+  .addTaskMain {
     overflow-y: scroll;
     width: 100%;
     height: 100%;
@@ -36,7 +36,8 @@
     font-size: 18px;
   }
 
-  .selectContact.show, .selectCategory.show {
+  .selectContact.show,
+  .selectCategory.show {
     max-width: 1253px;
     min-width: 270px;
     position: static;
@@ -191,7 +192,8 @@
     font-size: 18px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     position: static;
     width: 880px;
   }
@@ -205,7 +207,7 @@
     bottom: 11px;
   }
 
-  .subtaskListOverlay{
+  .subtaskListOverlay {
     position: static;
     max-width: 880px;
     min-width: 290px;
@@ -224,11 +226,10 @@
     max-width: 800px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 675px;
   }
-
- 
 
   .requiredActionOverlay {
     gap: 210px;
@@ -241,7 +242,8 @@
     max-width: 600px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 475px;
   }
 
@@ -262,7 +264,8 @@
     max-width: 530px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 410px;
   }
 
@@ -282,7 +285,8 @@
     max-width: 480px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 370px;
   }
 
@@ -302,7 +306,6 @@
 }
 
 @media (max-width: 490px) {
-
   .taskInputContainerOverlay::-webkit-scrollbar-thumb {
     display: none;
   }
@@ -316,7 +319,8 @@
     padding-right: 5px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 348px;
   }
 
@@ -350,7 +354,8 @@
     height: 640px;
   }
 
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 335px;
   }
 
@@ -382,7 +387,6 @@
     width: 92%;
     font-size: 14px;
   }
-
 
   .dropdownOverlay {
     width: 100%;
@@ -416,7 +420,8 @@
     width: 340px;
     max-width: 340px;
   }
-  .selectContactOverlay.show, .selectCategoryOverlay.show {
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
     width: 270px;
   }
 

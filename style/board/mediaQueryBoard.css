@@ -1,9 +1,20 @@
 /* Anpassungen für Bildschirme bis 1400px */
 
 @media screen and (max-width: 1400px) {
+  .boardMain {
+    padding: 32px;
+    padding-bottom: 80px;
+  }
+
+  .mainContentWrapper {
+    height: 100%;
+    gap: 0px;
+  }
+
   .boardSectionsContainer {
     flex-direction: column;
-    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 32px;
   }
 
   .editTaskInputOverlay {
@@ -31,7 +42,6 @@
 
   .tasksInnerContainer {
     flex-direction: row;
-    flex-wrap: wrap;
   }
 
   .boardButton {
@@ -70,7 +80,7 @@
   }
 }
 
-@media(max-height: 795px) {
+@media (max-height: 795px) {
   .tasksInnerContainer {
     height: 470px;
   }
@@ -145,7 +155,7 @@
   }
 }
 
-@media (max-height:792px) {
+@media (max-height: 792px) {
   .boardOverlayAssignedTo ul {
     max-height: 100px !important;
   }
@@ -154,7 +164,6 @@
     max-height: 45vh !important;
   }
 }
-
 
 @media (max-height: 600px) {
   .boardOverlayContainer {

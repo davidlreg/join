@@ -92,7 +92,7 @@
           </div>
         </header>
 
-        <main>
+        <main class="addTaskMain">
           <form id="taskForm">
             <h1>Add task</h1>
 
@@ -164,20 +164,18 @@
                 <div class="taskInput">
                   <p>Subtasks</p>
                   <div class="subtaskWrapper">
-                    <input type="text" placeholder="Add new subtask" class="addTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()"/>
+                    <input type="text" placeholder="Add new subtask" class="addTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
                     <div class="iconWrapper">
                       <div class="addSubtask">
                         <img src="/assets/img/subtaskPlusIcon.png" id="subtaskPlusIcon" alt="Add subtask" />
                       </div>
 
-                      <div id="subtaskIcons" style="display: none;">
+                      <div id="subtaskIcons" style="display: none">
                         <img src="/assets/icon/add task/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
                         <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
                         <img src="/assets/icon/add task/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
                       </div>
                     </div>
-
-                    
                   </div>
                   <ul id="subtaskList" class="subtaskList"></ul>
                 </div>

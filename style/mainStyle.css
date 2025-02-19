@@ -14,7 +14,7 @@ html {
 
 /*Scrollbar*/
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
   height: 8px;
 }
 
@@ -22,16 +22,10 @@ html {
   background: transparent;
 }
 
-
 ::-webkit-scrollbar-thumb {
-  background: #3B4A5E;
+  background: #3b4a5e;
   border-radius: 4px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #295a9a, #1e2c3e);
-}
-
 
 /* Body Styling */
 body {
@@ -158,7 +152,7 @@ header h3 {
   align-items: center;
 }
 
-.userIcon>a {
+.userIcon > a {
   background-color: transparent;
   color: #29abe2;
   font-weight: bold;
@@ -250,7 +244,8 @@ header h3 {
   text-decoration: none;
 }
 
-.nav__container, .logInLinkContainer {
+.nav__container,
+.logInLinkContainer {
   display: flex;
   width: 100%;
   background-color: rgb(42, 54, 71);
@@ -263,7 +258,8 @@ header h3 {
   gap: 10px;
 }
 
-.nav__container a, .logInLinkContainer a {
+.nav__container a,
+.logInLinkContainer a {
   display: flex;
   align-items: center;
   width: 100%;
@@ -272,7 +268,8 @@ header h3 {
   background-color: rgb(42, 54, 71);
 }
 
-.nav__container p, .logInLinkContainer p {
+.nav__container p,
+.logInLinkContainer p {
   color: #d9d9d9;
   font-size: 16px;
   font-weight: 400;
@@ -295,12 +292,12 @@ header h3 {
   background-color: rgb(42, 54, 71);
 }
 
-.sidebar__footer>a {
+.sidebar__footer > a {
   padding: 6px 0;
   overflow: hidden;
 }
 
-.sidebar__footer a>p {
+.sidebar__footer a > p {
   font-size: 16px;
   font-weight: 400;
   color: #cdcdcd;
@@ -325,7 +322,7 @@ header h3 {
   overflow: hidden;
 }
 
-.sidebar__footer.active a>p {
+.sidebar__footer.active a > p {
   background-color: red;
 }
 
@@ -382,7 +379,8 @@ header h3 {
     display: none;
   }
 
-  .nav__container, .logInLinkContainer {
+  .nav__container,
+  .logInLinkContainer {
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 32px;
@@ -391,7 +389,7 @@ header h3 {
     height: 100%;
   }
 
-  .userIcon>a {
+  .userIcon > a {
     font-size: 16px;
   }
 
@@ -399,7 +397,8 @@ header h3 {
     padding: 0 32px;
   }
 
-  .nav__container>a, .logInLinkContainer>a {
+  .nav__container > a,
+  .logInLinkContainer > a {
     flex-direction: column;
     justify-content: center;
     gap: 4px;
@@ -490,14 +489,14 @@ header h3 {
 
   /*Scrollbar*/
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 0px;
     height: 6px;
   }
 }
 
 @media (max-width: 400px) {
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 0px;
     height: 4px;
   }
 }

@@ -1,14 +1,20 @@
 /* ==================== General Board Layout ==================== */
 
-main {
-  padding: 54px;
-  height: calc(100% - 96px);
-
-  padding-bottom: 80px;
+.boardMain {
+  height: calc(100vh - 80px);
+  padding: 64px;
 }
 
 .mainContentWrapper {
+  height: 100%;
   max-width: 1980px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.boardSectionsContainer {
+  overflow-x: scroll;
 }
 
 /* ==================== Board Header ==================== */
@@ -17,7 +23,6 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
 }
 
 .boardContainer h2 {
@@ -113,15 +118,17 @@ main {
 
 .boardSectionsContainer {
   display: flex;
-  justify-content: flex-start;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 26px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .boardSectionsSubContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  justify-content: flex-start;
+  gap: 16px;
   height: 100%;
 }
 
@@ -153,8 +160,9 @@ main {
 .boardTasks {
   padding: 15px;
   cursor: pointer;
-  width: 100%;
+  min-width: 252px;
   max-width: 252px;
+  width: 100%;
   background-color: #ffffff;
   border-radius: 24px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -163,7 +171,6 @@ main {
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 12px;
 }
 
 .boardTasksBigger {
@@ -171,10 +178,6 @@ main {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-}
-
-.boardTasks:hover {
-  transform: rotate(1deg);
 }
 
 /* ===== Task Categories & Titles ===== */
@@ -297,7 +300,7 @@ main {
 .categoryText {
   font-size: 20px;
   font-weight: 700;
-  color: #42526e;
+  color: #2a3647;
 }
 
 #boardAddTask {
@@ -311,12 +314,11 @@ main {
 }
 
 .tasksInnerContainer {
-  height: 550px;
-  width: 255px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
-  overflow-y: auto;
-  padding-right: 8px;
+  height: 100%;
+  overflow: auto;
+  min-height: 64px;
 }

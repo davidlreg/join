@@ -215,6 +215,22 @@ form#taskForm h1 {
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+.moreContactschecked {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+>>>>>>> 5312651 (finished contact list in edit task & fixed responsivness in edit task)
 
 .contactName {
   flex-grow: 1;

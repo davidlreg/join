@@ -165,6 +165,11 @@ function templateBoardOverlay(task, taskId) {
  */
 function templateEditTask(task, taskId) {
     const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+
+    const maxVisibleContacts = 3;
+    const visibleContacts = assignedToArray.slice(0, maxVisibleContacts);
+    const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
+
     return `
            <form id="taskFormOverlay" class="editTaskFormOverlay">
                 <div class="boardOverlayHeader editBoardHeader">
@@ -205,13 +210,19 @@ function templateEditTask(task, taskId) {
                             </div>
                             <div id="selectContact" class="editSelectContact selectContact selectContactOverlay "></div>
                             <div id="selectedContacts" class="selectedContacts">
-                                ${assignedToArray
+                                ${visibleContacts
                                     .map(
                                         (contact) => `
                                             <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
                                                 ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
                                             </div>
                                     `).join("")}
+
+                                ${
+                                    hiddenContactsCount > 0
+                                        ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>`
+                                        : ""
+                                }
                             </div>
                         </div>
                     </div>

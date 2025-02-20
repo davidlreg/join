@@ -9,6 +9,8 @@
     gap: 0;
     flex: 1;
     overflow-x: scroll;
+    padding: 8px 0px;
+    ;
   }
 
   .taskInputLeft,
@@ -62,16 +64,17 @@
 
   .iconWrapper {
     right: 15px;
-    bottom: 11px;
+    bottom: 7px;
   }
 
   .requiredAction {
-    margin-top: 50px;
     display: flex;
     align-items: center;
     gap: calc(10vw + 30px);
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 0;
   }
 
   .requiredText {
@@ -82,25 +85,19 @@
   form#taskForm h1 {
     margin-bottom: 32px;
     font-size: 48px;
+    margin-left: 0;
   }
 
   form#taskForm {
     height: calc(100vh - 160px);
     overflow-x: hidden;
   }
-}
 
-@media (max-width: 1000px) {
-  .iconWrapper {
-    right: 15px;
-    bottom: 11px;
-  }
-}
-
-@media (max-width: 800px) {
-  .iconWrapper {
-    right: 15px;
-    bottom: 11px;
+  .subtaskList {
+    max-width: 2000px;
+    min-width: 200px;
+    position: static;
+    max-height: 130px;
   }
 }
 
@@ -115,11 +112,6 @@
 
   .priorityButton {
     gap: 12px;
-  }
-
-  .iconWrapper {
-    right: 15px;
-    bottom: 11px;
   }
 
   .priorityButton button {
@@ -162,15 +154,15 @@
     font-size: 15px;
   }
 
-  .iconWrapper {
-    right: 15px;
-    bottom: 5px;
-  }
-
   .priorityButton button {
     width: 105px;
     font-size: 16px;
     height: 45px;
+  }
+
+  .iconWrapper {
+    right: 10px;
+    bottom: 4px;
   }
 }
 
@@ -184,11 +176,19 @@
   .createButton,
   .clearButton {
     font-size: 18px;
+    white-space: nowrap;
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }
 
 /*Overlay*/
 @media (max-width: 1400px) {
+
+  .addTaskOverlay{
+    display: none;
+  }
+
   form#taskFormOverlay {
     width: 100%;
   }
@@ -328,6 +328,7 @@
   .taskInputContainerOverlay::-webkit-scrollbar-thumb {
     display: none;
   }
+
   .overlayTaskContent {
     width: 420px;
     max-width: 420px;
@@ -433,6 +434,7 @@
     width: 340px;
     max-width: 340px;
   }
+
   .selectContactOverlay.show,
   .selectCategoryOverlay.show {
     width: 270px;

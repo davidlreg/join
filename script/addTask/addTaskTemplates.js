@@ -3,7 +3,7 @@ function addTaskHtmlTemplate() {
        <form id="taskFormOverlay" class="addTaskWrapper">
            <h1>Add task</h1>
            <!-- Task Input Container -->
-           <div class="taskInputContainer taskInputContainerOverlay">
+           <div class="taskInputContainerOverlay">
                <!-- Left Column -->
                <div class="taskInputLeft">
                    <div class="taskInputOverlay">
@@ -26,7 +26,7 @@ function addTaskHtmlTemplate() {
                        <div id="selectedContacts" class="selectedContacts"></div>
                    </div>
                </div>
-
+                <hr class="taskSeparator" />
                <!-- Right Column -->
                <div class="taskInputRight">
                    <div class="taskInputOverlay">

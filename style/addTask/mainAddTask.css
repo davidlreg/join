@@ -20,12 +20,13 @@ form#taskForm {
 
 form#taskForm h1 {
   font-size: 60px;
+  margin-left: 54px;
 }
 
 .taskInputContainer {
   display: flex;
   gap: 48px;
-  padding: 32px 0px;
+  padding: 32px 54px;
 }
 
 .taskSeparator {
@@ -365,7 +366,10 @@ button img {
   padding: 0;
   margin-top: 4px;
   max-height: 110px;
+  max-width: 440px;
+  min-width: 440px;
   overflow-y: auto;
+  position: absolute;
 }
 
 .subtaskList li {
@@ -428,8 +432,10 @@ button img {
 
 .requiredAction {
   display: flex;
-  gap: 560px;
+  gap: 535px;
+  margin-top: 70px;
   align-items: center;
+  margin-left: 54px;
 }
 
 .requiredText span {
@@ -473,7 +479,6 @@ button img {
   border-radius: 10px;
   color: #fff;
   border: none;
-  transition: background-color 0.1s ease-out;
   background-color: #2a3647;
 }
 
@@ -485,7 +490,6 @@ button img {
 .createButton:hover * {
   background-color: #29abe2;
   cursor: pointer;
-  transition: inherit;
 }
 
 .errorBorder {
@@ -513,6 +517,12 @@ button img {
   align-items: center;
   z-index: 1000;
   overflow: hidden;
+}
+
+.taskInputContainerOverlay {
+  display: flex;
+  gap: 48px;
+  padding: 32px 0px;
 }
 
 @keyframes slideIn {
@@ -564,8 +574,8 @@ button img {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
-  right: 40px;
+  top: 45px;
+  right: 35px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -584,12 +594,24 @@ form#taskFormOverlay {
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: scroll;
+}
+
+.editTaskFormOverlay {
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: scroll !important;
+  padding-right: 8px;
 }
 
 #taskFormOverlay h1 {
   font-size: 50px;
   margin-bottom: 12px;
+}
+
+.taskInputOverlay {
+  margin-bottom: 18px;
 }
 
 .taskInputOverlay p {
@@ -669,7 +691,7 @@ form#taskFormOverlay {
 }
 
 .requiredActionOverlay {
-  margin-top: 35px;
+  margin-top: 15px;
   display: flex;
   gap: 409px;
   align-items: center;

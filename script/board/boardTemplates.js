@@ -6,17 +6,17 @@
  * @returns {string} HTML string representing the task card.
  */
 function templateBoardTasks(task, taskId) {
-    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
-    let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
-    let totalSubtasks = task.subtask ? task.subtask.length : 0;
-    let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-    let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
+  const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+  let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
+  let totalSubtasks = task.subtask ? task.subtask.length : 0;
+  let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
 
-    const maxVisibleContacts = 3;
-    const visibleContacts = assignedToArray.slice(0, maxVisibleContacts);
-    const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
+  const maxVisibleContacts = 3;
+  const visibleContacts = assignedToArray.slice(0, maxVisibleContacts);
+  const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
-    return `
+  return `
         <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
@@ -37,25 +37,21 @@ function templateBoardTasks(task, taskId) {
               <div class="boardTaskUsers">
                   ${visibleContacts
                     .map(
-                        (contact) => `
+                      (contact) => `
                             <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
-                                ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
+                                ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
                             </div>
-                        `).join("")}
+                        `
+                    )
+                    .join("")}
                   
-                  ${
-                      hiddenContactsCount > 0
-                          ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>`
-                          : ""
-                  }
+                  ${hiddenContactsCount > 0 ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>` : ""}
               </div>
               <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
           </div>
       </div>
     `;
 }
-
-
 
 /**
  * Generates the HTML for the task overlay, showing detailed information about the task.
@@ -64,7 +60,7 @@ function templateBoardTasks(task, taskId) {
  * @returns {string} HTML string representing the task overlay.
  */
 function templateBoardOverlay(task, taskId) {
-    return `
+  return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
             <p class="boardOverlayTaskCategory">${task.category}</p>
@@ -102,8 +98,8 @@ function templateBoardOverlay(task, taskId) {
             <p>Assigned To:</p>
             <ul>
                 ${(task.assignedTo || [])
-            .map(
-                (contact) => `
+                  .map(
+                    (contact) => `
                     <li>
                          <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
                             ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
@@ -111,14 +107,16 @@ function templateBoardOverlay(task, taskId) {
                         <span class="boardOverlayUsername">${contact.name}</span>
                     </li>
                 `
-            )
-            .join("")}
+                  )
+                  .join("")}
             </ul>
         </div>
         <div class="boardOverlaySubtasks">
                 <p>Subtasks:</p>
                 <ul class="checkboxList">
-                    ${(Array.isArray(task.subtask) ? task.subtask : []).map((subtask, index) => `
+                    ${(Array.isArray(task.subtask) ? task.subtask : [])
+                      .map(
+                        (subtask, index) => `
                         <li>
                             <input type="checkbox" id="subtask-${task.id}-${index}" 
                                 ${subtask.completed ? "checked" : ""} 
@@ -126,7 +124,9 @@ function templateBoardOverlay(task, taskId) {
                              <label for="subtask-${task.id}-${index}"></label>
                             <span>${subtask.text}</span>
                         </li>
-                    `).join("")}
+                    `
+                      )
+                      .join("")}
                 </ul>
             </div>
         <div class="boardOverlayActionButtons">
@@ -164,110 +164,139 @@ function templateBoardOverlay(task, taskId) {
  * @returns {string} HTML string representing the task edit form.
  */
 function templateEditTask(task, taskId) {
-    const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
-    return `
-           <form id="taskFormOverlay" class="editTaskFormOverlay">
-                <div class="boardOverlayHeader editBoardHeader">
-                    <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
-                    <!-- SVG für Schließen-Button -->
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0"
-                                y="0" width="24" height="24">
-                                <rect width="24" height="24" fill="#D9D9D9" />
-                            </mask>
-                            <g mask="url(#mask0_274405_5666)">
-                                <path
-                                    d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z"
-                                    fill="#2A3647" />
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <div class="editTaskInputContainer">
-                    <!-- Left Column -->
-                    <div class="taskInputLeft editNoWidth">
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Title<span></span></p>
-                            <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title}">
-                        </div>
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Description</p>
-                            <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput" id="addTaskDescription">${task.description}</textarea>
-                        </div>
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Assigned to</p>
-                            <div onclick="toggleContact()" id="dropdown" class="dropdown dropdownOverlay editDropDown">
-                                <div class="selectContainer selectContainerOverlay">Select contacts to assign</div>
-                                <div class="dropdownIcon">
-                                    <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="">
-                                </div>
-                            </div>
-                            <div id="selectContact" class="editSelectContact selectContact selectContactOverlay "></div>
-                            <div id="selectedContacts" class="selectedContacts">
-                                ${assignedToArray
-                                    .map(
-                                        (contact) => `
-                                            <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
-                                                ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || "" }
-                                            </div>
-                                    `).join("")}
-                            </div>
-                        </div>
-                    </div>
+  const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
+  const maxVisibleContacts = 4;
+  const visibleContacts = assignedToArray.slice(0, maxVisibleContacts);
+  const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
-                    <!-- Right Column -->
-                    <div class="taskInputRight editNoWidth">
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Due Date</p>
-                            <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskDate" value="${convertDateFormat(
-                            task.dueDate
-                            )}">
-                        </div>
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Prio</p>
-                            <div class="priorityButtonOverlay editPriorityButtonOverlay">
-                                <button id="urgentButton" type="button" onclick="setPriority('urgent')"> Urgent
-                                    <img class="editPriorityImages" src="/assets/icon/board/priority-Urgent.png" alt="Urgent">
-                                </button>
-                                <button id="mediumButton" type="button" onclick="setPriority('medium')"> Medium
-                                    <img class="editPriorityImages" src="/assets/icon/board/priority-Medium.png" alt="Medium">
-                                </button>
-                                <button id="lowButton" type="button" onclick="setPriority('low')"> Low
-                                    <img class="editPriorityImages" src="/assets/icon/board/priority-Low.png" alt="Low">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="taskInputOverlay editTaskInputOverlay">
-                            <p>Subtasks</p>
-                            <div class="subtaskWrapper">
-                                <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks">
-                                <div class="iconWrapper iconWrapperOverlay">
-                                    <div class="addSubtask">
-                                        <img src="/assets/img/subtaskPlusIcon.png" onclick="addSubtask()">
-                                    </div>
-                                </div>
-                            </div>
-                                <ul class="checkboxList" id="subtaskList">
-                                    ${(Array.isArray(task.subtask) ? task.subtask : []).map((subtask, index) => `
-                                        <li>
-                                            <input type="checkbox" id="subtask-${task.id}-${index}" 
-                                                ${subtask.completed ? "checked" : ""} 
-                                                onchange="toggleSubtask('${task.id}', ${index})">
-                                            <label for="subtask-${task.id}-${index}"></label>
-                                            <span>${subtask.text}</span>
-                                        </li>
-                                    `).join("")}
-                                </ul>
-                            </div>
-                                    <!-- Footer Actions -->
-                        <div class="boardOverlayActionButtons">
-                            <button type="button" class="createButton createButtonOverlay btnDark" onclick="editTasksForBoard('${taskId}')">Ok
-                                <img src="/assets/img/check.png" alt="">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+  return `
+   
+ <div class="boardOverlayHeader editBoardHeader">
+  <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
+    <!-- SVG für Schließen-Button -->
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <mask id="mask0_274405_5666" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+        <rect width="24" height="24" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_274405_5666)">
+        <path
+          d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z"
+          fill="#2A3647"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+
+<form id="taskFormOverlay" class="editTaskFormOverlay">
+  <div class="editTaskWrapper">
+    <!-- Left Column -->
+
+    <div class="editTaksTopPartWrapper">
+      <div class="taskInputLeft editNoWidth">
+        <div class="taskInputOverlay editTaskInputOverlay">
+          <p>Title<span></span></p>
+          <input required type="text" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskTitle" value="${task.title}" />
+        </div>
+        <div class="taskInputOverlay editTaskInputOverlay">
+          <p>Description</p>
+          <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay editTaskInput textareaStyling" id="addTaskDescription">${task.description}</textarea>
+        </div>
+
+        <div class="taskInputOverlay editTaskInputOverlay">
+          <p>Due Date</p>
+          <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskDate" value="${convertDateFormat(task.dueDate)}" />
+        </div>
+      </div>
+    </div>
+
+    <div class="taskInputOverlay editTaskInputOverlay">
+      <p class="prioBold">Priority</p>
+      <div class="priorityButtonOverlay editPriorityButtonOverlay">
+        <button class="editButtonWidth" id="urgentButton" type="button" onclick="setPriority('urgent')">
+          Urgent
+          <img class="editPriorityImages" src="/assets/icon/board/priority-Urgent.png" alt="Urgent" />
+        </button>
+        <button class="editButtonWidth" id="mediumButton" type="button" onclick="setPriority('medium')">
+          Medium
+          <img class="editPriorityImages" src="/assets/icon/board/priority-Medium.png" alt="Medium" />
+        </button>
+        <button class="editButtonWidth" id="lowButton" type="button" onclick="setPriority('low')">
+          Low
+          <img class="editPriorityImages" src="/assets/icon/board/priority-Low.png" alt="Low" />
+        </button>
+      </div>
+    </div>
+
+    <div class="taskInputOverlay editTaskInputOverlay">
+      <p>Assigned to</p>
+      <div onclick="toggleContact()" id="dropdown" class="dropdown dropdownOverlay editDropDown">
+        <div class="selectContainer selectContainerOverlay">Select contacts to assign</div>
+        <div class="dropdownIcon">
+          <img id="dropdownIconDown" src="/assets/img/arrowDropDown.png" alt="" />
+        </div>
+      </div>
+      <div id="selectContact" class="editSelectContact selectContact selectContactOverlay"></div>
+      <div id="selectedContacts" class="selectedContacts">
+        ${visibleContacts
+          .map(
+            (contact) => `
+        <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
+          <p class="profilePictureLetters">${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}</p>
+        </div>
+        `
+          )
+          .join("")} ${
+    hiddenContactsCount > 0
+      ? `
+        <div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>
+        `
+      : ""
+  }
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="taskInputRight editNoWidth">
+      <div class="taskInputOverlay editTaskInputOverlay">
+        <p>Subtasks</p>
+        <div class="subtaskWrapper">
+          <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
+          <div class="iconWrapper iconWrapperOverlay">
+            <div class="addSubtask">
+              <img id="subtaskPlusIcon" src="/assets/img/subtaskPlusIcon.png" />
+            </div>
+
+            <div id="subtaskIcons" style="display: none">
+              <img src="/assets/icon/add task/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
+              <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
+              <img src="/assets/icon/add task/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
+            </div>
+          </div>
+        </div>
+        <ul class="checkboxList" id="subtaskList">
+          ${(Array.isArray(task.subtask) ? task.subtask : [])
+            .map(
+              (subtask, index) => `
+          <li>
+            <input type="checkbox" id="subtask-${task.id}-${index}" ${subtask.completed ? "checked" : ""} onchange="toggleSubtask('${task.id}', ${index})">
+            <label for="subtask-${task.id}-${index}"></label>
+            <span>${subtask.text}</span>
+          </li>
+          `
+            )
+            .join("")}
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Footer Actions -->
+<div class="okayBtnContainer">
+  <button type="button" class="okayBtn createButtonOverlay" onclick="editTasksForBoard('${taskId}')">
+    <p>Ok</p>
+    <img src="/assets/img/check.png" alt="" />
+  </button>
+</div>
     `;
 }

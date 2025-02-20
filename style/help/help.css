@@ -80,4 +80,10 @@ span {
     width: 18px;
     height: 18px;
   }
+
+  /* Disable Hover Effects */
+
+  .arrowBack img:hover {
+    background-color: transparent;
+  }
 }

@@ -93,13 +93,83 @@
     overflow-x: hidden;
   }
 
-  .subtaskList {
-    max-width: 2000px;
-    min-width: 200px;
-    position: static;
-    max-height: 130px;
+  /* Disable Hover Effects */
+  
+  .clearButton:hover {
+    border: 1px solid #2a3647;
+    color: #2a3647;
+  }
+  
+  .createButton:hover,
+  .createButton:hover * {
+    background-color: #2a3647 !important;
+    transition: inherit;
+  }
+
+  .priorityButton button:hover {
+    background-color: #fff;
+  }
+
+  .priorityButton button.urgent {
+    background-color: #ff3d00;
+  }
+  
+  .priorityButton button.medium {
+    background-color: #ffa800;
+  }
+  
+  .priorityButton button.low {
+    background-color: #7ae229;
+  }
+
+  .priorityButtonOverlay button:hover {
+    background-color: #fff;
+  }
+  
+  .priorityButtonOverlay button.urgent {
+    background-color: #ff3d00;
+  }
+  
+  .priorityButtonOverlay button.medium {
+    background-color: #ffa800;
+  }
+  
+  .priorityButtonOverlay button.low {
+    background-color: #7ae229;
+  }
+
+  .okayBtn:hover {
+    background-color: #2a3647;
+  }
+
+  .dropdownIcon:hover {
+    background-color: #fff !important;
+  }
+  .editSubtask:hover,
+  .removeSubtask:hover,
+  .confirmEditSubtask:hover,
+  .addSubtask img:hover,
+  #confirmSubtask:hover,
+  #discardSubtask:hover {
+  background-color: transparent;
+}
+}
+
+@media (max-width: 1000px) {
+  .iconWrapper {
+    right: 15px;
+    bottom: 11px;
   }
 }
+
+@media (max-width: 800px) {
+  .iconWrapper {
+    right: 15px;
+    bottom: 11px;
+  }
+}
+
+
 
 @media (max-width: 650px) {
   form#taskForm {
@@ -184,11 +254,6 @@
 
 /*Overlay*/
 @media (max-width: 1400px) {
-
-  .addTaskOverlay{
-    display: none;
-  }
-
   form#taskFormOverlay {
     width: 100%;
   }

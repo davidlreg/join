@@ -54,7 +54,6 @@ main ul li {
   margin-bottom: 8px;
 }
 
-
 :target {
   scroll-margin-top: 96px;
 }

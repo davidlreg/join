@@ -8,6 +8,26 @@
     display: flex;
     flex-direction: column;
   }
+
+  /* Disable Hover Effects */
+
+  .summaryTable:hover {
+    background-color: #fff !important;
+    color: inherit !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .summaryTable:hover .summaryToDo img {
+      background-color: #2a3647 !important;
+      content: url("/assets/icon/summary/edit_white.svg") !important;
+      transition: none !important;
+  }
+
+  .summaryTable:hover .summaryDone img {
+      background-color: #2a3647 !important;
+      content: url("/assets/icon/summary/done_white.svg") !important;
+      transition: none !important;
+  }
 }
 
 @media screen and (max-width: 800px) {

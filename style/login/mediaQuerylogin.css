@@ -123,4 +123,21 @@
   .buttons {
     flex-direction: column;
   }
+
+  /* Disable Hover Effects */
+  
+  .arrowBack img:hover {
+    background-color: inherit !important;
+  }
+  
+  .footer a:hover {
+    color: rgba(180, 180, 180) ;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  span a:hover {
+    text-decoration: none;
+    font-weight: 400;
+  }
 }

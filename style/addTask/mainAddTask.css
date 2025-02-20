@@ -669,7 +669,6 @@ form#taskFormOverlay {
 
 .priorityButtonOverlay button:hover {
   background-color: #ddd;
-  cursor: pointer;
 }
 
 .priorityButtonOverlay button.urgent {

@@ -491,6 +491,44 @@ form {
     background-color: #f6f7f8;
     z-index: 1;
   }
+
+  /* Disable Hover Effects */
+
+  .goBackArrow:hover,
+  .goBackArrow:hover * {
+    background-color: #f6f7f8 !important;
+  } 
+
+  .saveContactButton:hover {
+    border: 1px solid #2a3647;
+    transition: none;
+    background-color: #2a3647;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  
+  .deleteButton {
+    color: #2a3647;
+    font-weight: bold;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .deleteButton:hover {
+    border: 1px solid #2a3647;
+    fill: #2a3647 !important;
+    border-color: #2a3647;
+    color: #2a3647;
+    transition: none;
+    box-shadow: none;
+  }
+  
+  .deleteButton:hover > p {
+    color: #2a3647;
+    transition: none;
+  }
 }
 
 @media (max-width: 600px) {

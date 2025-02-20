@@ -268,4 +268,10 @@ main {
     height: calc(100vh - 80px);
     margin-bottom: 80px;
   }
+
+  /* Disable Hover Effects */
+  
+  .contact:hover {
+    background: linear-gradient(to bottom, #fff, #fff);
+  }
 }

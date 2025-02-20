@@ -360,6 +360,41 @@ body {
   .profileInformation > p {
     font-weight: 700;
   }
+
+  /* Disable Hover Effects */
+
+  .floatingAddContactContainer:hover,
+  .floatingAddContactContainer:hover * {
+    background-color: #2a3647;
+  }
+
+  .responsiveEditContactButton:hover,
+  .responsiveEditContactButton:hover * {
+    background-color: #2a3647;
+  }
+
+  .editContainer:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: #2a3647 !important;
+  }
+  
+  .deleteContainer:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: #2a3647 !important;
+  }
+  
+  .editContainer:hover * {
+    color: #2a3647;
+    fill: #2a3647;
+  }
+  
+  .deleteContainer:hover * {
+    color: #2a3647;
+    fill: #2a3647;
+  }
+
 }
 
 @media (max-width: 600px) {

@@ -32,6 +32,7 @@
   }
 
   .boardInputContainer {
+    width: 100%;
     margin: 32px 0px;
   }
 
@@ -62,8 +63,30 @@
     height: 40px;
   }
 
-  .boardInputContainer {
-    width: 100%;
+  /* Disable Hover Effects */
+
+  .boardAddTask:hover,
+  .boardAddTask:hover * {
+    background-color: rgba(42, 54, 70);
+    transition: inherit;
+  }
+  
+  .boardSection .sectionPlus:hover {
+    background-image: url("/assets/icon/board/plus_button-section-black.svg");
+  }
+  
+  .boardInputContainer button:hover {
+    background-image: url("/assets/icon/board/search_Button.svg");
+  }
+
+  .closeBoardOverlay:hover {
+    background-color: transparent !important;
+  }
+
+  .boardOverlayActionButtonsDelete:hover,
+  .boardOverlayActionButtonsEdit:hover {
+    color: rgba(42, 54, 70) !important;
+    background-color: transparent;
   }
 }
 

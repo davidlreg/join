@@ -327,6 +327,16 @@
 
 /* Media Queries */
 
+@media screen and (max-width: 1400px) {
+  
+  /* Disable Hover Effects */
+  .createContactButton:hover {
+    background-color: #2a3647;
+    transition: none;
+    box-shadow: none;
+  }
+}
+
 @media (max-width: 600px) {
   .addContactMobileWrapper {
     width: 300px;

@@ -153,23 +153,14 @@
   #discardSubtask:hover {
   background-color: transparent;
 }
-}
 
-@media (max-width: 1000px) {
-  .iconWrapper {
-    right: 15px;
-    bottom: 11px;
+  .subtaskList {
+    max-width: 2000px;
+    min-width: 200px;
+    position: static;
+    max-height: 130px;
   }
 }
-
-@media (max-width: 800px) {
-  .iconWrapper {
-    right: 15px;
-    bottom: 11px;
-  }
-}
-
-
 
 @media (max-width: 650px) {
   form#taskForm {
@@ -254,6 +245,11 @@
 
 /*Overlay*/
 @media (max-width: 1400px) {
+
+  .addTaskOverlay{
+    display: none;
+  }
+
   form#taskFormOverlay {
     width: 100%;
   }

@@ -23,7 +23,8 @@ function templateBoardTasks(task, taskId) {
           <span class="boardTaskDescription">${task.description}</span>
           
           <!-- Fortschrittsanzeige -->
-          <div class="boardSubTasks">
+          <div class="boardSubTasks" style="${totalSubtasks === 0 ? 'display:none;' : 'display: block;'}">
+
               <div class="boardSubtaskProgress" 
               onmouseover="showTooltip(event, '${completedSubtasks} of ${totalSubtasks} subtasks done')" 
                    onmouseleave="hideTooltip()">

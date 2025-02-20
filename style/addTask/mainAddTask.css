@@ -215,8 +215,6 @@ form#taskForm h1 {
   text-align: center;
 }
 
-<<<<<<< HEAD
-=======
 .moreContactschecked {
   width: 32px;
   height: 32px;
@@ -230,7 +228,6 @@ form#taskForm h1 {
   font-weight: bold;
 }
 
->>>>>>> 5312651 (finished contact list in edit task & fixed responsivness in edit task)
 
 .contactName {
   flex-grow: 1;

@@ -13,11 +13,24 @@ function toggleSubtaskIcons() {
   const subtaskIcons = document.getElementById("subtaskIcons");
 
   if (subtaskInput.value.trim() !== "") {
-    subtaskPlusIcon.style.display = "none"; 
-    subtaskIcons.style.display = "inline";  
+    subtaskPlusIcon.style.display = "none";
+    subtaskIcons.style.display = "inline";
   } else {
-    subtaskPlusIcon.style.display = "inline"; 
-    subtaskIcons.style.display = "none"; 
+    subtaskPlusIcon.style.display = "inline";
+    subtaskIcons.style.display = "none";
+  }
+}
+
+function showSubtaskBoard() {
+  const showSubtask = document.querySelector(`[data-task-id="${taskId}"] .boardSubTasks`);
+
+  if (showSubtask) {
+    const task = backendData.Data.Tasks[taskId];
+    if (!task.subtask || task.subtask.length === 0) {
+      showSubtask.style.display = "none";
+    } else {
+      showSubtask.style.display = "inline";
+    }
   }
 }
 
@@ -48,7 +61,7 @@ function addSubtask() {
  * 
  * After clearing the input, it calls `toggleSubtaskIcons()` to update the UI accordingly.
  */
-function clearSubtaskInput(){
+function clearSubtaskInput() {
   const subtaskInput = document.getElementById('addTaskSubTasks');
   subtaskInput.value = "";
 
@@ -68,7 +81,7 @@ function createSubtaskElement(subtaskValue) {
 
   listItem.querySelector('.editSubtask').addEventListener('click', () => editSubtask(listItem, subtaskValue));
   listItem.querySelector('.removeSubtask').addEventListener('click', () => removeSubtask(listItem));
-  
+
   return listItem;
 }
 
@@ -81,7 +94,7 @@ function createSubtaskElement(subtaskValue) {
 function editSubtask(listItem, oldValue) {
   const subtaskContent = listItem.querySelector('.subtaskContent');
   subtaskContent.classList.add('editing');
-  
+
   updateSubtaskTextWrapper(listItem, oldValue);
   updateSubtaskIcons(listItem);
 }
@@ -121,7 +134,7 @@ function updateSubtaskIcons(listItem) {
 function addSubtaskEventListeners(listItem) {
   listItem.querySelector('.removeSubtask')
     .addEventListener('click', () => removeSubtask(listItem));
-  
+
   listItem.querySelector('.confirmEditSubtask')
     .addEventListener('click', () => confirmSubtaskEdit(listItem));
 }
@@ -133,12 +146,12 @@ function addSubtaskEventListeners(listItem) {
  */
 function confirmSubtaskEdit(listItem) {
   const newValue = listItem.querySelector('.editSubtaskInput').value.trim();
-  
+
   if (newValue === '') {
     alert('Subtask cannot be empty!');
     return;
   }
-  
+
   finalizeSubtaskEdit(listItem, newValue);
 }
 

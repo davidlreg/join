@@ -881,6 +881,40 @@ form#taskFormOverlay {
   height: calc(100vh - 96px);
 }
 
+/* Task sucessfully created */
+
+.createdTaskContainer {
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background-color: #2a3647; 
+  color: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 300px;
+  font-size: 18px;
+  padding: 15px 25px;
+  text-align: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.taskSuccessfullyCreated {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* Media Query */
+
 @media (max-height: 795px) {
   .subtaskList {
     max-height: 40px;

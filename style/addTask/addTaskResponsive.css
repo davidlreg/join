@@ -282,8 +282,8 @@
 
   .subtaskListOverlay {
     position: static;
-    max-width: 880px;
-    min-width: 290px;
+    max-width: 380px;
+    min-width: 380px;
   }
 }
 

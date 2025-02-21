@@ -190,7 +190,7 @@ function updateSelectedContact() {
 }
 
 /**
- * Creates profile picture elements for selected contacts.
+ * Creates profile picture elements for selected contacts in editTask.
  * 
  * @param {string[]} selectedNames - Array of contact names with checked checkboxes.
  * @returns {HTMLDivElement[]} An array of div elements representing profile pictures.

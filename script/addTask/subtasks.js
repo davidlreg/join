@@ -45,15 +45,89 @@ function addSubtask() {
   const subtaskList = document.getElementById('subtaskList');
   const subtaskValue = subtaskInput.value.trim();
 
-  if (subtaskValue === '') {
-    alert('Subtask cannot be empty!');
-    return;
-  }
 
   subtaskList.appendChild(createSubtaskElement(subtaskValue));
   subtaskInput.value = "";
 
   toggleSubtaskIcons();
+}
+
+/**
+ * Checks if the subtask input is empty.
+ * If empty, shows an error message.
+ * 
+ * @param {HTMLInputElement} subtaskInput - The input field where the user types a subtask.
+ */
+function subtaskEmpty() {
+  const subtaskInput = document.getElementById('addTaskSubTasks');
+  if (!validateSubtaskInput(subtaskInput)) return;
+}
+
+/**
+ * Checks if the subtask input is empty.
+ * If empty, shows an error message.
+ * 
+ * @param {HTMLInputElement} subtaskInput - The input field where the user types a subtask.
+ * @returns {boolean} - `true` if the input is valid, `false` if empty.
+ */
+function validateSubtaskInput(subtaskInput) {
+  let isValid = true;
+
+  clearSubtaskError(subtaskInput)
+
+  if (!subtaskInput.value.trim()) {
+    showSubtaskError(subtaskInput, "Subtask cannot be empty");
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+/**
+ * Shows an error message below the subtask input field.
+ * 
+ * @param {HTMLInputElement} inputElement - The input field with the error.
+ * @param {string} message - The text to show as an error message.
+ */
+function showSubtaskError(inputElement, message) {
+  let targetElement = getSubtaskErrorTarget(inputElement);
+
+  let errorMessage = document.createElement("span");
+  errorMessage.classList.add("errorMessage");
+  errorMessage.textContent = message;
+
+  targetElement.insertAdjacentElement("afterend", errorMessage);
+
+  setTimeout(() => {
+    clearSubtaskError(inputElement);
+  }, 3000);
+}
+
+
+/**
+ * Finds the correct place to show the error message.
+ * 
+ * @param {HTMLInputElement} inputElement - The input field with the error.
+ * @returns {HTMLElement} - The container where the error should be shown.
+ */
+function getSubtaskErrorTarget(inputElement) {
+  if(inputElement.id === "editSubtaskInput") {
+    return inputElement.closest(".subtaskItem");
+  }
+
+  return inputElement.closest(".subtaskWrapper");
+}
+
+/**
+ * Removes the error message from the subtask input field.
+ * 
+ * @param {HTMLInputElement} inputElement - The input field where the error was shown.
+ */
+function clearSubtaskError(inputElement) {
+  let targetElement = getSubtaskErrorTarget(inputElement);
+
+  let existingError = targetElement.parentNode.querySelector(".errorMessage");
+  if (existingError) existingError.remove(); 
 }
 
 /**
@@ -109,7 +183,7 @@ function updateSubtaskTextWrapper(listItem, oldValue) {
   const subtaskTextWrapper = listItem.querySelector('.subtaskTextWrapper');
 
   subtaskTextWrapper.innerHTML = `
-    <input type="text" class="editSubtaskInput" value="${oldValue}">
+    <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
   `;
 }
 
@@ -145,14 +219,11 @@ function addSubtaskEventListeners(listItem) {
  * @param {HTMLElement} listItem - The list item containing the subtask.
  */
 function confirmSubtaskEdit(listItem) {
-  const newValue = listItem.querySelector('.editSubtaskInput').value.trim();
+  const editInput = listItem.querySelector('.editSubtaskInput');
 
-  if (newValue === '') {
-    alert('Subtask cannot be empty!');
-    return;
-  }
+  if (!validateSubtaskInput(editInput)) return;
 
-  finalizeSubtaskEdit(listItem, newValue);
+  finalizeSubtaskEdit(listItem, editInput.value.trim());
 }
 
 /**

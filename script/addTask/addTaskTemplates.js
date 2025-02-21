@@ -66,7 +66,7 @@ function addTaskHtmlTemplate() {
                            <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay" id="addTaskSubTasks" oninput="toggleSubtaskIcons()">
                            <div class="iconWrapper iconWrapperOverlay">
                                <div class="addSubtask">
-                                    <img src="/assets/img/subtaskPlusIcon.png" id="subtaskPlusIcon" alt="Add subtask" />
+                                    <img src="/assets/img/subtaskPlusIcon.png" id="subtaskPlusIcon" alt="Add subtask" onclick="subtaskEmpty()" />
                                 </div>
 
                                 <div id="subtaskIcons" style="display: none;">

@@ -32,7 +32,7 @@ function getSelectedContacts() {
 
 function checkedSelectedContacts() {
   checkedContacts = [];
-  document.querySelectorAll('#selectedContacts .profilePicture').forEach((el) => {
+  document.querySelectorAll("#selectedContacts .profilePicture").forEach((el) => {
     checkedContacts.push(el.getAttribute("title"));
   });
   return checkedContacts;
@@ -42,12 +42,12 @@ function checkedSelectedContacts() {
  * Retrieves the "boardSection" parameter from the URL.
  * This is used when navigating to the addTask page on smaller screens (under 1400px),
  * ensuring that the task is assigned to the correct board section.
- * 
+ *
  * @returns {string|null} The value of the "boardSection" parameter, or null if not found.
  */
 function getBoardSectionFromURL() {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get('boardSection');
+  return urlParams.get("boardSection");
 }
 
 /**
@@ -89,12 +89,10 @@ async function createTasksForBoard() {
   window.location.href = "/html/board.html";
 }
 
-
-
 /**
  * Validates if the required task input fields are filled.
  * If a field is empty, it displays an error message and prevents form submission.
- * 
+ *
  * @param {HTMLElement} title - The input field for the task title.
  * @param {HTMLElement} date - The input field for the due date.
  * @param {HTMLElement} category - The input field for the task category.
@@ -122,7 +120,6 @@ function validateTaskInputs(title, date, category) {
   return isValid;
 }
 
-
 /**
  * Displays an error message below the input field and adds a red border.
  *
@@ -147,7 +144,6 @@ function showError(inputElement, message) {
   }, 3000);
 }
 
-
 /**
  * Determines the correct element where the error should be displayed.
  *
@@ -157,21 +153,20 @@ function showError(inputElement, message) {
  * @param {HTMLElement} inputElement - The input field being validated.
  * @returns {HTMLElement} - The element where the error styling should be applied.
  */
-function getErrorTarget(inputElement){
-  if(inputElement.id === "selectTask") {
+function getErrorTarget(inputElement) {
+  if (inputElement.id === "selectTask") {
     return inputElement.closest(".dropdown");
   }
 
   return inputElement;
 }
 
-
 /**
  * Removes the visual error indication from an input field or dropdown.
- * 
- * @param {HTMLElement} inputElement - The input element (text field or dropdown) 
+ *
+ * @param {HTMLElement} inputElement - The input element (text field or dropdown)
  *                                      from which the error indication should be removed.
- *                                      If `inputElement` is the category dropdown (`selectTask`), 
+ *                                      If `inputElement` is the category dropdown (`selectTask`),
  *                                      the error indication is removed from the entire `.dropdown` container.
  */
 function clearError(inputElement) {
@@ -187,19 +182,18 @@ function clearError(inputElement) {
   if (existingError) existingError.remove();
 }
 
-
-
-
 async function editTasksForBoard(taskId) {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
 
-  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks, assignedContacts } = getAddTaskElements();
+  const { addTaskTitle, addTaskDescription, addTaskDate, addTaskSubTasks } = getAddTaskElements();
 
   let subtasksArray = Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
     completed: false,
   }));
+
+  const assignedContacts = getSelectedContacts();
 
   tasks[taskId] = {
     ...tasks[taskId],
@@ -261,7 +255,7 @@ async function editTask(taskId) {
     overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
     boardOverlay.classList.remove("hideOverlay");
     setPriority(String(tasks[taskId].priority).toLowerCase());
-    loadContacts();
+    loadContacts(tasks[taskId].assignedTo);
   }
   loadTasksToBoard();
 }
@@ -318,7 +312,3 @@ async function pushTaskToBackendData(task) {
   }
   backendData.Data.Tasks[newTaskId] = task;
 }
-
-
-
-

@@ -193,7 +193,18 @@ form#taskForm h1 {
 }
 
 .selectContactItem:hover {
-  background-color: #f0f0f0;
+  background-color: #2A3647;
+}
+
+.selectContactItem:hover .contactName,
+.selectContactItem.selected .contactName,
+.selectContactItem.selected:hover .contactName {
+  color: white !important;
+}
+
+.selectContactItem.selected {
+  background-color: #091931;
+  color: white;
 }
 
 .selectContactItem:active {
@@ -203,17 +214,19 @@ form#taskForm h1 {
 }
 
 .profilePicture {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
+  font-size: 14px;
+  border: 2px solid white;
   color: white;
-  font-weight: 550;
+  font-weight: 400;
   background-color: #ccc;
   border-radius: 50%;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  margin-right: -8px;
 }
 
 .moreContactschecked {
@@ -227,6 +240,7 @@ form#taskForm h1 {
   color: white;
   font-size: 14px;
   font-weight: bold;
+  
 }
 
 
@@ -242,12 +256,45 @@ form#taskForm h1 {
   width: 20px;
   height: 20px;
   cursor: pointer;
+  appearance: none;
+  border: 2px solid #2A3647;
+  border-radius: 4px;
+}
+
+.contactCheckbox:checked {
+  background-color: #2A3647; 
+  border-color: #2A3647;
+  position: relative;
+}
+
+.contactCheckbox:checked::after {
+  content: "✔";
+  font-size: 18px;
+  color: white; 
+  font-weight: bold;
+}
+
+.selectContactItem.selected .contactCheckbox {
+  border-color: white; 
+}
+
+.selectContactItem.selected .contactCheckbox:checked {
+  background-color: white; 
+  border-color: white;
+}
+
+.selectContactItem.selected .contactCheckbox:checked::after {
+  color: #2A3647; 
+}
+
+.selectContactItem:hover .contactCheckbox {
+  border-color: white;
 }
 
 .selectedContacts {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 15px;
   margin-top: 8px;
   margin-bottom: 8px;
 }
@@ -712,7 +759,6 @@ form#taskFormOverlay {
 
 .selectContactOverlay {
   height: 150px;
-  width: 350px;
   overflow-y: auto;
 }
 
@@ -722,7 +768,8 @@ form#taskFormOverlay {
 
 .selectCategoryOverlay.show,
 .selectContactOverlay.show {
-  width: 423px;
+  max-width: 375px;
+  min-width: 375px;
   display: block;
   position: absolute;
   z-index: 100;
@@ -804,9 +851,10 @@ form#taskFormOverlay {
   background-color: #29abe2;
 }
 
-.okayBtn > p {
+.okayBtn>p {
   font-size: 20px;
 }
+
 .textareaStyling {
   width: 440px;
   height: 120px;

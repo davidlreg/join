@@ -178,13 +178,24 @@ function convertDateFormat(dateStr) {
  * @returns {string} A HSL color string (e.g., "hsl(210, 70%, 60%)").
  */
 function getRandomColorForName(name) {
+  const colorPalette = [
+    "#FF8C00", "#FF69B4", "#8A2BE2", 
+    "#800080", "#00BFFF", "#40E0D0", 
+    "#FF6347", "#FFA07A", "#FF77FF", 
+    "#FFD700", "#0000FF", "#ADFF2F", 
+    "#FF4500", "#FFA500"  
+  ];
+
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 6) - hash);
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
-  let color = `hsl(${hash % 360}, 70%, 50%)`;
-  return color;
+
+  let index = Math.abs(hash) % colorPalette.length;
+
+  return colorPalette[index];
 }
+
 
 ///////////////////////////
 // Section for subtasks //

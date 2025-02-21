@@ -119,7 +119,37 @@ function createContentItem(contact) {
   contactItem.appendChild(contactName);
   contactItem.appendChild(checkBox);
 
+  addContactClick(contactItem, checkBox);
+
   return contactItem;
+}
+
+
+/**
+ * Adds a click event to a contact item, allowing selection by clicking the container or checkbox.
+ * 
+ * @param {HTMLElement} contactItem - The container element for the contact.
+ * @param {HTMLInputElement} checkBox - The checkbox inside the contact item.
+ */
+function addContactClick(contactItem, checkBox) {
+  contactItem.addEventListener('click', function (event) {
+
+    if (event.target === checkBox) {
+      contactItem.classList.toggle("selected");
+      updateSelectedContact();
+      return;
+    }
+
+    this.classList.toggle("selected");
+    checkBox.checked = !checkBox.checked;
+    updateSelectedContact();
+  });
+
+  checkBox.addEventListener("click", function (event) {        //if clicked on checkbox 
+    event.stopPropagation();
+    contactItem.classList.toggle("selected");
+    updateSelectedContact();
+  });
 }
 
 /**
@@ -133,7 +163,7 @@ function createProfilePicture(contact) {
   profileDiv.setAttribute('title', contact.name);
   profileDiv.style.backgroundColor = getRandomColorForName(contact.name);
   profileDiv.textContent = `${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
-  
+
   return profileDiv;
 }
 
@@ -202,7 +232,7 @@ function createSelectedProfilePictures(selectedNames) {
     profileDiv.setAttribute('title', name);
     profileDiv.style.backgroundColor = getRandomColorForName(name);
     profileDiv.textContent = `${name.charAt(0).toUpperCase()}${name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
-    
+
     return profileDiv;
   });
 }

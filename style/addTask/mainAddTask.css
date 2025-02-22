@@ -20,13 +20,12 @@ form#taskForm {
 
 form#taskForm h1 {
   font-size: 60px;
-  margin-left: 54px;
 }
 
 .taskInputContainer {
   display: flex;
   gap: 48px;
-  padding: 32px 54px;
+  padding: 32px 0px;
 }
 
 .taskSeparator {
@@ -193,7 +192,7 @@ form#taskForm h1 {
 }
 
 .selectContactItem:hover {
-  background-color: #2A3647;
+  background-color: #2a3647;
 }
 
 .selectContactItem:hover .contactName,
@@ -240,9 +239,7 @@ form#taskForm h1 {
   color: white;
   font-size: 14px;
   font-weight: bold;
-  
 }
-
 
 .contactName {
   flex-grow: 1;
@@ -257,34 +254,34 @@ form#taskForm h1 {
   height: 20px;
   cursor: pointer;
   appearance: none;
-  border: 2px solid #2A3647;
+  border: 2px solid #2a3647;
   border-radius: 4px;
 }
 
 .contactCheckbox:checked {
-  background-color: #2A3647; 
-  border-color: #2A3647;
+  background-color: #2a3647;
+  border-color: #2a3647;
   position: relative;
 }
 
 .contactCheckbox:checked::after {
   content: "✔";
   font-size: 18px;
-  color: white; 
+  color: white;
   font-weight: bold;
 }
 
 .selectContactItem.selected .contactCheckbox {
-  border-color: white; 
+  border-color: white;
 }
 
 .selectContactItem.selected .contactCheckbox:checked {
-  background-color: white; 
+  background-color: white;
   border-color: white;
 }
 
 .selectContactItem.selected .contactCheckbox:checked::after {
-  color: #2A3647; 
+  color: #2a3647;
 }
 
 .selectContactItem:hover .contactCheckbox {
@@ -479,10 +476,10 @@ button img {
 
 .requiredAction {
   display: flex;
-  gap: 535px;
-  margin-top: 70px;
+  padding-top: 70px;
   align-items: center;
-  margin-left: 54px;
+  width: 100%;
+  gap: 535px;
 }
 
 .requiredText span {
@@ -851,7 +848,7 @@ form#taskFormOverlay {
   background-color: #29abe2;
 }
 
-.okayBtn>p {
+.okayBtn > p {
   font-size: 20px;
 }
 
@@ -879,16 +876,17 @@ form#taskFormOverlay {
 
 .addTaskMain {
   height: calc(100vh - 96px);
+  max-width: 1980px;
 }
 
 /* Task sucessfully created */
 
 .createdTaskContainer {
   position: fixed;
-  top: 50%; 
-  left: 50%; 
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #2a3647; 
+  background-color: #2a3647;
   color: white;
   border-radius: 10px;
   width: 90%;
@@ -900,7 +898,6 @@ form#taskFormOverlay {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
-
 
 .taskSuccessfullyCreated {
   display: flex;

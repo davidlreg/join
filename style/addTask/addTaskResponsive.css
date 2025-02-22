@@ -10,7 +10,6 @@
     flex: 1;
     overflow-x: scroll;
     padding: 8px 0px;
-    ;
   }
 
   .taskInputLeft,
@@ -73,8 +72,8 @@
     gap: calc(10vw + 30px);
     flex-wrap: nowrap;
     justify-content: space-between;
-    margin-top: 20px;
     margin-left: 0;
+    padding-top: 0;
   }
 
   .requiredText {
@@ -94,12 +93,12 @@
   }
 
   /* Disable Hover Effects */
-  
+
   .clearButton:hover {
     border: 1px solid #2a3647;
     color: #2a3647;
   }
-  
+
   .createButton:hover,
   .createButton:hover * {
     background-color: #2a3647 !important;
@@ -113,11 +112,11 @@
   .priorityButton button.urgent {
     background-color: #ff3d00;
   }
-  
+
   .priorityButton button.medium {
     background-color: #ffa800;
   }
-  
+
   .priorityButton button.low {
     background-color: #7ae229;
   }
@@ -125,15 +124,15 @@
   .priorityButtonOverlay button:hover {
     background-color: #fff;
   }
-  
+
   .priorityButtonOverlay button.urgent {
     background-color: #ff3d00;
   }
-  
+
   .priorityButtonOverlay button.medium {
     background-color: #ffa800;
   }
-  
+
   .priorityButtonOverlay button.low {
     background-color: #7ae229;
   }
@@ -151,8 +150,8 @@
   .addSubtask img:hover,
   #confirmSubtask:hover,
   #discardSubtask:hover {
-  background-color: transparent;
-}
+    background-color: transparent;
+  }
 
   .subtaskList {
     max-width: 2000px;
@@ -245,8 +244,7 @@
 
 /*Overlay*/
 @media (max-width: 1400px) {
-
-  .addTaskOverlay{
+  .addTaskOverlay {
     display: none;
   }
 

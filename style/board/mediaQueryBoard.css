@@ -70,11 +70,11 @@
     background-color: rgba(42, 54, 70);
     transition: inherit;
   }
-  
+
   .boardSection .sectionPlus:hover {
     background-image: url("/assets/icon/board/plus_button-section-black.svg");
   }
-  
+
   .boardInputContainer button:hover {
     background-image: url("/assets/icon/board/search_Button.svg");
   }

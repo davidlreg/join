@@ -416,11 +416,11 @@ header h3 {
 
   .nav-link:hover {
     border-radius: 18px;
-    background-color: #2A3647 ;
+    background-color: #2a3647;
   }
 
   .nav-link:hover img {
-    background-color: #2A3647;
+    background-color: #2a3647;
   }
 
   .sidebar__container {
@@ -475,11 +475,11 @@ header h3 {
     border: 1px solid rgba(42, 54, 70) !important;
     box-shadow: 0px 0px 0px 0px white !important;
   }
-  
+
   .btnLight:hover {
     color: rgba(42, 54, 70);
     background-color: white !important;
-    border: 1px solid rgba(42, 54, 70)!important;
+    border: 1px solid rgba(42, 54, 70) !important;
     box-shadow: 0px 0px 0px 0px white !important;
   }
 
@@ -489,8 +489,8 @@ header h3 {
 
   .zoom:hover {
     color: #cdcdcd;
-    transform: scale(1.0);
-  }  
+    transform: scale(1);
+  }
   .userOptionsContent a:hover {
     background-color: rgba(42, 54, 71, 1);
   }

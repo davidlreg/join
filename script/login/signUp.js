@@ -69,7 +69,7 @@ function validatePasswords() {
  *
  * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class,
  * adding the 'btnDark' class
- * and placing an EventListener that triggers the function createUser().
+ * and placing an EventListener that triggers the function checkAvailability().
  *
  * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class,
  * adding the 'btnUnabledDark' class
@@ -93,11 +93,11 @@ function validateForm() {
   if (isFormValid) {
     signUpButton.classList.remove("btnUnabledDark");
     signUpButton.classList.add("btnDark");
-    signUpButton.addEventListener("click", createUser);
+    signUpButton.addEventListener("click", checkAvailability);
   } else {
     signUpButton.classList.remove("btnDark");
     signUpButton.classList.add("btnUnabledDark");
-    signUpButton.removeEventListener("click", createUser);
+    signUpButton.removeEventListener("click", checkAvailability);
   }
 }
 
@@ -152,6 +152,46 @@ function toggleVisibility() {
 }
 
 /**
+ * Checks if the entered email is already registered.
+ */
+async function checkAvailability() {
+  const email = document.getElementById("userEmail").value;
+  const errorMessage = document.getElementById("errorMsgEmail");
+  const usersRef = ref(database, "Data/Users");
+  const snapshot = await get(usersRef);
+  const users = snapshot.val();
+
+  if (users) {
+    const emailExists = Object.values(users).some(user => user.email === email);
+    
+    if (emailExists) {
+      emailInput.style.border = "1px solid red";
+      errorMessage.innerHTML = `This email address is already in use.`;
+    } else {
+      createUser();
+    }
+  }
+}
+
+/**
+ * Creates a new user and contact, saving them to the database.
+ */
+async function createUser() {
+  const name = document.getElementById("userName").value;
+  const email = document.getElementById("userEmail").value;
+  const password = document.querySelectorAll(".inputPassword")[0].value;
+  const newUserId = await getNextId("Data/Users", "userId");
+  await saveUser(newUserId, { name, email, password });
+  const newContactId = await getNextId("Data/Contacts", "contactId");
+  await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
+  showOverlay();
+
+  setTimeout(function() {
+    window.location.href = "../../html/login.html";
+  }, 2000); 
+}
+
+/**
  * Retrieves the next available ID based on the count of existing entries.
  *
  * @param {string} refPath - The path in the Firebase database (e.g., "Data/Users" or "Data/Contacts").
@@ -183,25 +223,6 @@ async function saveUser(userId, userData) {
  */
 async function saveContact(contactId, contactData) {
   await set(ref(database, `Data/Contacts/${contactId}`), contactData);
-}
-
-/**
- * Creates a new user and contact, saving them to the database.
- *
- */
-async function createUser() {
-  const name = document.getElementById("userName").value;
-  const email = document.getElementById("userEmail").value;
-  const password = document.querySelectorAll(".inputPassword")[0].value;
-  const newUserId = await getNextId("Data/Users", "userId");
-  await saveUser(newUserId, { name, email, password });
-  const newContactId = await getNextId("Data/Contacts", "contactId");
-  await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
-  showOverlay();
-
-  setTimeout(function() {
-    window.location.href = "../../html/login.html";
-  }, 2000); 
 }
 
 /**

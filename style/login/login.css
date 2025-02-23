@@ -197,7 +197,7 @@ body {
   cursor: pointer;
 }
 
-.errorMessage {
+.errorGap {
   height: 15px;
   color: red;
   font-size: 10px;

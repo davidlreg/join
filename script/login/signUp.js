@@ -8,7 +8,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-let errorMessage = document.querySelector(".errorMessage");
 let nameInput = document.querySelector(".inputName");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
@@ -28,14 +27,14 @@ let checkbox = document.getElementById("checkboxSignUp");
 function validateEmail() {
   let emailValue = emailInput.value;
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let errorMessage = document.getElementById("errorMsgEmail");
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Please enter a valid email address.`;
-    errorMessage.style.display = "block";
   } else {
     emailInput.style.border = "";
-    errorMessage.style.display = "none";
+    errorMessage.innerHTML = "";
   }
 }
 
@@ -50,13 +49,14 @@ function validateEmail() {
  * @returns {void}
  */
 function validatePasswords() {
+  let errorMessage = document.getElementById("errorMsgPassword");
+
   if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Your passwords don't match. Please try again.`;
-    errorMessage.style.display = "block";
   } else {
     confirmPasswordInput.style.border = "";
-    errorMessage.style.display = "none";
+    errorMessage.innerHTML = "";
   }
 }
 
@@ -246,6 +246,11 @@ function hideOverlay() {
 // Event listeners
 emailInput.addEventListener("input", function () {
   validateEmail();
+  validateForm();
+});
+
+passwordInput.addEventListener("input", function () {
+  validatePasswords();
   validateForm();
 });
 

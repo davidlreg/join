@@ -24,18 +24,20 @@
 
       <div class="inputContainer">
         <input type="text" name="name" id="userName" placeholder="Name" class="inputName" required />
+        <p class="errorGap"></p>
         <input type="text" name="email" id="userEmail" placeholder="Email" class="inputEmail" required />
+        <p id="errorMsgEmail" class="errorGap"></p>
         <div class="inputPasswordWrapper">
           <input type="password" name="password" placeholder="Password" class="inputPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
+        <p class="errorGap"></p>
         <div class="inputPasswordWrapper">
           <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" id="userPassword" required />
           <button class="passwordToggle dNone"></button>
         </div>
+        <p id="errorMsgPassword" class="errorGap"></p>
       </div>
-
-      <p class="errorMessage"></p>
 
       <div class="checkbox">
         <input type="checkbox" id="checkboxSignUp" class="box dNone" />

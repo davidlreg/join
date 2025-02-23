@@ -197,25 +197,11 @@ async function createUser() {
   await saveUser(newUserId, { name, email, password });
   const newContactId = await getNextId("Data/Contacts", "contactId");
   await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
-  clearInput();
   showOverlay();
-}
 
-/**
- * This function clears the input values of the form.
- *
- * It resets the values of the input fields to their default empty states
- * and unchecks the checkbox.
- *
- * Additionally it enables the sign up button by calling the function validateForm().
- */
-function clearInput() {
-  nameInput.value = "";
-  emailInput.value = "";
-  passwordInput.value = "";
-  confirmPasswordInput.value = "";
-  checkbox.checked = false;
-  validateForm();
+  setTimeout(function() {
+    window.location.href = "../../html/login.html";
+  }, 2000); 
 }
 
 /**
@@ -228,10 +214,6 @@ function clearInput() {
 function showOverlay() {
   let overlay = document.getElementById("overlay");
   overlay.classList.remove("dNone");
-
-  setTimeout(() => {
-    hideOverlay();
-  }, 2000);
 }
 
 /**

@@ -20,7 +20,7 @@ body {
 
 main {
   flex-grow: 1;
-  padding: 64px 32px;
+  padding: 64px;
   overflow-y: auto; 
   overflow-x: hidden;
 }

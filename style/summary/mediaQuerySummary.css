@@ -42,10 +42,6 @@
   .summaryUrgent {
     gap: 10px;
   }
-
-  .summaryMainContent {
-    flex: 1;
-  }
 }
 
 @media screen and (max-width: 600px) {

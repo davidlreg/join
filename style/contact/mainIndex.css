@@ -52,7 +52,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 22px;
-  padding: 0px 32px;
+  padding: 0px 64px;
 }
 
 .profileWrapper {

@@ -63,6 +63,10 @@
     height: 40px;
   }
 
+  .boardSectionsContainer {
+    gap: 26px;
+  }
+
   /* Disable Hover Effects */
 
   .boardAddTask:hover,

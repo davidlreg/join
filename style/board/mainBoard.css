@@ -2,7 +2,7 @@
 
 .boardMain {
   height: calc(100vh - 80px);
-  padding: 64px 32px;
+  padding: 64px;
   overflow: hidden;
 }
 
@@ -125,7 +125,6 @@
 .boardSectionsContainer {
   display: flex;
   justify-content: space-between;
-  gap: 26px;
   height: 100%;
   overflow: hidden;
 }

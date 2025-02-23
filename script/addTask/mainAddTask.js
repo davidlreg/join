@@ -1,8 +1,11 @@
+let datePicker; 
+
 function initTask() {
   setActiveLinkFromURL();
   loadContacts();
   headerUserName();
   setPriority("medium");
+  initFlatpickr();
 }
 
 function selectCategory(category) {
@@ -246,4 +249,30 @@ function createSelectedProfilePictures(selectedNames) {
 
     return profileDiv;
   });
+}
+
+/**
+ * Initializes Flatpickr and ensures correct positioning.
+ */
+function initFlatpickr() {
+  const inputElement = document.getElementById("addTaskDate");
+  datePicker = flatpickr(inputElement, {
+    dateFormat: "d/m/Y",
+    allowInput: false,   
+    clickOpens: false,   
+    disableMobile: true,
+    clickOpens: true, 
+    position: "below right",
+    positionElement: inputElement,
+    appendTo: document.body,
+  });
+}
+
+/**
+ * Opens the date picker.
+ */
+function openDatePicker() {
+  if (datePicker) {
+    datePicker.open();
+  }
 }

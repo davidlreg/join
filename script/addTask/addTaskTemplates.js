@@ -31,7 +31,7 @@ function addTaskHtmlTemplate() {
     <div class="taskInputRight">
       <div class="taskInputOverlay">
         <p>Due Date <span>*</span></p>
-        <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay" id="addTaskDate" />
+        <input required type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
       </div>
       <div class="taskInputOverlay">
         <p>Prio</p>

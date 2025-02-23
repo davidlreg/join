@@ -206,8 +206,8 @@ function templateEditTask(task, taskId) {
 
         <div class="taskInputOverlay editTaskInputOverlay">
           <p>Due Date</p>
-          <input required type="date" placeholder="dd/mm/yyyy" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskDate" value="${convertDateFormat(task.dueDate)}" />
-        </div>
+          <input required type="text" class="addTaskInput addTaskInputOverlay editTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly  value="${task.dueDate}" onclick="openDatePicker()" />
+          </div>
       </div>
     </div>
 

@@ -1,6 +1,5 @@
 /**
  * Checks if the form is valid and enables/disables the "Create Contact" button.
- *
  */
 function checkFormValidity() {
   const isMobile = window.innerWidth <= 1350;
@@ -40,6 +39,11 @@ function validateInput(fieldId, value, validator, errorMessage) {
   const inputField = document.getElementById(fieldId);
   const errorField = document.getElementById(`errorMsg${capitalize(fieldId)}`);
 
+  errorField.innerHTML = "";
+  if (value.trim() === "") {
+    return false;
+  }
+
   if (!validator(value)) {
     inputField.style.border = "1px solid red";
     errorField.innerHTML = errorMessage;
@@ -47,7 +51,6 @@ function validateInput(fieldId, value, validator, errorMessage) {
   }
 
   inputField.style.border = "";
-  errorField.innerHTML = "";
   return true;
 }
 
@@ -58,8 +61,8 @@ function validateInput(fieldId, value, validator, errorMessage) {
  */
 function toggleCreateButton(isValid) {
   const button = document.getElementById("createContactBtn");
+
   button.disabled = !isValid;
-  button.style.opacity = isValid ? "1" : "0.5";
   button.style.cursor = isValid ? "pointer" : "not-allowed";
 }
 

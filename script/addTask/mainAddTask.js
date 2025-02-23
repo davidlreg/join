@@ -5,20 +5,6 @@ function initTask() {
   setPriority("medium");
 }
 
-/**
- * Toggles the visibility of the category dropdown.
- *
- */
-function toggleCategory() {
-  const categoryDropdown = document.querySelector(".selectCategory");
-  categoryDropdown.classList.toggle("show");
-}
-
-function toggleCategoryOverlay() {
-  const categoryDropdown = document.querySelector(".selectCategoryOverlay");
-  categoryDropdown.classList.toggle("show");
-}
-
 function selectCategory(category) {
   const selectContainer = document.getElementById("selectTask");
   selectContainer.value = category;
@@ -39,6 +25,23 @@ function toggleContact() {
   const categoryDropdown = document.getElementById("selectContact");
   categoryDropdown.classList.toggle("show");
 }
+
+/**
+ * Closes the dropdown menu if the click occurs outside of it.
+ *
+ * @param {Event} event - The click event.
+ */
+function closeDropdown(event) {
+  const selectContact = document.getElementById("selectContact");
+  const dropdown = document.getElementById("dropdown");
+
+  if (!dropdown.contains(event.target) && !selectContact.contains(event.target)) {
+    selectContact.classList.remove("show");
+  }
+}
+
+// Add event listener to close dropdown on page click
+document.addEventListener("click", closeDropdown);
 
 /**
  * Loads contact data from the Firebase database and displays it in the dropdown.
@@ -197,7 +200,7 @@ function createCheckbox(name, assignedTo = []) {
 /**
  * Updates the display of selected contacts under the dropdown
  * without resetting previously selected contacts.
- * 
+ *
  */
 function updateSelectedContact() {
   const selectedContactsContainer = document.getElementById("selectedContacts");

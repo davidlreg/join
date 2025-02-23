@@ -144,6 +144,8 @@ form#taskForm h1 {
   font-size: 18px;
   outline: none;
   font-size: 16px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .selectCategory,
@@ -172,6 +174,7 @@ form#taskForm h1 {
   z-index: 10;
   max-width: 438px;
   min-width: 438px;
+  border-radius: 18px;
 }
 
 .selectCategoryItem {
@@ -547,4 +550,3 @@ button img {
   margin-top: 4px;
   display: block;
 }
-

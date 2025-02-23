@@ -49,7 +49,6 @@ async function updateBackend(data) {
  */
 function allowDrop(event) {
   event.preventDefault();
-  document.getElementById("");
 }
 
 /**
@@ -105,3 +104,4 @@ function highlight(id) {
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("dragAreaHighlight");
 }
+

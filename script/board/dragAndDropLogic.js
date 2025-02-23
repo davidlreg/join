@@ -52,7 +52,7 @@ function allowDrop(event) {
 }
 
 /**
- * Sets the currently dragged task.
+ * Sets the currently dragged task and applies a temporary shake effect.
  *
  * @param {DragEvent} event - The drag event.
  * @param {number} taskId - The ID of the task being dragged.
@@ -60,6 +60,13 @@ function allowDrop(event) {
 function drag(event, taskId) {
   currentDraggedElement = taskId;
   event.dataTransfer.setData("taskId", taskId);
+  const taskElement = document.getElementById(taskId);
+  if (taskElement) {
+    taskElement.classList.add("shake");
+  }
+  setTimeout(() => {
+    taskElement.classList.remove("shake");
+  }, 500);
 }
 
 /**
@@ -97,11 +104,20 @@ function checkIfTaskExistInContainer() {
   });
 }
 
+/**
+ * Highlights the element with the given ID by adding a CSS class.
+ *
+ * @param {string} id - The ID of the element to highlight.
+ */
 function highlight(id) {
   document.getElementById(id).classList.add("dragAreaHighlight");
 }
 
+/**
+ * Removes the highlight from the element with the given ID.
+ *
+ * @param {string} id - The ID of the element to remove the highlight from.
+ */
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("dragAreaHighlight");
 }
-

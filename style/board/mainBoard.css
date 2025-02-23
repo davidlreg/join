@@ -329,6 +329,7 @@
   height: 100%;
   overflow: auto;
   min-height: 64px;
+  overflow-x: hidden;
 }
 
 .dragAreaHighlight::after {
@@ -339,4 +340,26 @@
   background-color: transparent;
   pointer-events: none;
   border-radius: 24px;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
 }

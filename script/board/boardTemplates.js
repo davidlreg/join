@@ -17,7 +17,7 @@ function templateBoardTasks(task, taskId) {
   const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
   return `
-        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}">
+        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}" id="${taskId}">
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
           <span class="boardTaskDescription">${task.description}</span>

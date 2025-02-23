@@ -259,12 +259,24 @@ function initFlatpickr() {
   datePicker = flatpickr(inputElement, {
     dateFormat: "d/m/Y",
     allowInput: false,   
-    clickOpens: false,   
     disableMobile: true,
     clickOpens: true, 
-    position: "below right",
+    position: "below",
+    static: true,
     positionElement: inputElement,
     appendTo: document.body,
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+      let today = new Date();
+      today.setHours(0, 0, 0, 0);
+  
+      let date = new Date(dayElem.dateObj);
+      
+      if (date < today) {
+        dayElem.style.background = "lightgray"; 
+        dayElem.style.color = "darkgray";
+        dayElem.classList.add("past-day");
+      }
+    }
   });
 }
 

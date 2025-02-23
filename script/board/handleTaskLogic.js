@@ -259,6 +259,7 @@ async function editTask(taskId) {
     loadContacts(tasks[taskId].assignedTo);
   }
   loadTasksToBoard();
+  initFlatpickr();
 }
 
 /**

@@ -1,4 +1,3 @@
-let errorMessage = document.querySelector(".errorMessage");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelector(".inputPassword");
 let passwordToggle = document.querySelector(".passwordToggle");
@@ -64,16 +63,17 @@ function removeJoinAnimation() {
  */
 function validateEmail() {
   let emailValue = emailInput.value;
+  let errorMessage = document.getElementById("errorMsgEmail");
+  
   localStorage.setItem("email", emailValue);
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Please enter a valid email address.`;
-    errorMessage.style.display = "block";
   } else {
     emailInput.style.border = "";
-    errorMessage.style.display = "none";
+    errorMessage.innerHTML = "";
   }
 }
 
@@ -179,68 +179,29 @@ function logIntoAccount() {
 }
 
 /**
- * Fetches the user credentials from the database and checks the validity.
+ * Checks the user credentials against the stored users in the database.
+ * 
+ * If valid, it stores the user ID in localStorage and redirects to the summary page.
+ * If invalid, it displays an error message.
  *
- * @param {string} email - The email input provided by the user.
- * @param {string} password - The password input provided by the user.
+ * @param {string} email - The email provided by the user to check against the stored users.
+ * @param {string} password - The password provided by the user to check against the stored users.
  */
 function checkUserCredentials(email, password) {
-  const usersUrl = `${databaseUrl}/Data/Users.json`;
-
-  fetch(usersUrl)
+  const errorMessage = document.getElementById("errorMsgCredentials");
+  fetch(`${databaseUrl}/Data/Users.json`)
     .then((response) => response.json())
     .then((users) => {
-      let userFound = false;
-
-      for (let userId in users) {
-        const user = users[userId];
-        if (user.email === email && user.password === password) {
-          localStorage.setItem("userId", userId);
-          window.location.href = "./summary.html?active=summary&user=loggedIn";
-          userFound = true;
-          break;
-        }
+      const user = Object.values(users).find(user => user.email === email && user.password === password);
+      if (user) {
+        localStorage.setItem("userId", Object.keys(users).find(id => users[id] === user));
+        window.location.href = "./summary.html?active=summary&user=loggedIn";
+        passwordInput.style.border = "";
+        errorMessage.innerHTML = "";
+      } else {
+        errorMessage.innerHTML = "Check your email and password. Please try again.";
       }
-
-      if (!userFound) displayError("Invalid credentials.");
-    })
-    .catch((error) => {
-      console.error("Error fetching user credentials:", error);
-      displayError("Error while checking credentials.");
     });
-}
-
-/**
- * Processes a user snapshot and checks if the email and password match.
- *
- * @param {Object} userSnapshot - The snapshot of the user data from the database.
- * @param {string} email - The email input provided by the user.
- * @param {string} password - The password input provided by the user.
- * @returns {boolean} - Returns true if the user is found and processed, otherwise false.
- */
-function processUserSnapshot(userSnapshot, email, password) {
-  const user = userSnapshot.val();
-  const userId = userSnapshot.key;
-  if (user.email === email) {
-    if (user.password === password) {
-      localStorage.setItem("userId", userId);
-      window.location.href = "./summary.html?active=summary&user=loggedIn";
-    } else {
-      displayError("Invalid credentials.");
-    }
-    return true;
-  }
-  return false;
-}
-
-/**
- * Displays an error message to the user.
- *
- * @param {string} message - The error message to be displayed.
- */
-function displayError(message) {
-  errorMessage.innerHTML = message;
-  errorMessage.style.display = "block";
 }
 
 document.addEventListener("DOMContentLoaded", checkUserSession);

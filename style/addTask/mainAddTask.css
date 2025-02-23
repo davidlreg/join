@@ -59,10 +59,6 @@ form#taskForm h1 {
   color: red;
 }
 
-.taskInput input[type="date"] {
-  color: #d1d1d1;
-}
-
 .addTaskInput {
   width: 100%;
   max-width: 445px;
@@ -549,4 +545,49 @@ button img {
   font-size: 12px;
   margin-top: 4px;
   display: block;
+}
+
+
+/* Calender */
+
+.dateInput {
+  background: url('/assets/icon/add task/calender.png') no-repeat right 10px center;
+  background-color: #fff;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+
+.flatpickr-calendar {
+  left: auto !important;
+  width: auto !important;
+  right: 0 !important;
+}
+
+.flatpickr-wrapper {
+  width: 100%;
+}
+
+.flatpickr-input {
+  width: 100% !important;
+}
+
+.flatpickr-day {
+  color: #393939 !important;
+  background: #f0f0f0; 
+}
+
+.flatpickr-day.selected {
+  background: #007bff !important; 
+  color: white !important; 
+}
+
+.flatpickr-day:hover {
+  background: #2f92fd !important;
+}
+
+.past-day {
+  background: lightgray !important;
+  color: darkgray !important;
+  pointer-events: none; 
 }

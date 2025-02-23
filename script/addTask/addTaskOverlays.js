@@ -30,6 +30,7 @@ function addTaskOverlay(boardSection) {
       document.querySelector('.overlayTaskContent').classList.add('animate');
     }, 50);
   }
+  
 }
 
 /**

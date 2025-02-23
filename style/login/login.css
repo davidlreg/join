@@ -1,3 +1,4 @@
+/* Body Styling */
 body {
   display: flex;
   flex-direction: column;
@@ -6,6 +7,7 @@ body {
   height: 100vh;
 }
 
+/* Main Content Page Styling */
 .logoContainer,
 .logo,
 .signUp,
@@ -29,6 +31,7 @@ body {
   left: 0;
 }
 
+/* Animation Styling */
 .animationBackground {
   width: 100vw;
   height: 100vh;
@@ -82,6 +85,7 @@ body {
   }
 }
 
+/* Log in and Sign up Form */
 .signUp {
   top: 50px;
   right: 50px;
@@ -152,6 +156,7 @@ body {
   transition-duration: 0.2s;
 }
 
+/* Input Fields */
 .inputContainer {
   background-color: white;
   display: flex;
@@ -217,6 +222,7 @@ body {
   background-image: url(../../assets/icon/login/person.svg);
 }
 
+/* Checkbox Styling */
 .checkbox {
   display: flex;
   align-items: center;
@@ -278,6 +284,7 @@ span a:hover {
   gap: 20px;
 }
 
+/* Footer Styling */
 .footer {
   bottom: 40px;
   font-size: 12px;
@@ -297,6 +304,8 @@ span a:hover {
   transition-duration: 0.2s;
 }
 
+
+/* Overlay Message and Animation */
 .overlay {
   height: 100vh;
   width: 100vw;

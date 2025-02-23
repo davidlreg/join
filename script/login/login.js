@@ -178,13 +178,16 @@ function checkUserCredentials(email, password) {
 
 document.addEventListener("DOMContentLoaded", checkUserSession);
 
-emailInput.addEventListener("input", function () {
+emailInput.addEventListener("blur", function () {
   validateEmail();
   validateForm();
 });
 
-passwordInput.addEventListener("input", function () {
+passwordInput.addEventListener("blur", function () {
   validateForm();
+});
+
+passwordInput.addEventListener("input", function () {
   updatePasswordIcon.call(passwordInput);
 });
 

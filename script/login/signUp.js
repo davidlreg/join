@@ -247,24 +247,24 @@ function hideOverlay() {
 }
 
 // Event listeners
-emailInput.addEventListener("input", function () {
+emailInput.addEventListener("blur", function () {
   validateEmail();
   validateForm();
 });
 
-passwordInput.addEventListener("input", function () {
+passwordInput.addEventListener("blur", function () {
   validatePasswords();
   validateForm();
 });
 
-confirmPasswordInput.addEventListener("input", function () {
+confirmPasswordInput.addEventListener("blur", function () {
   validatePasswords();
   validateForm();
 });
 
-nameInput.addEventListener("input", validateForm);
+nameInput.addEventListener("blur", validateForm);
 
-passwordInput.addEventListener("input", validateForm);
+passwordInput.addEventListener("blur", validateForm);
 
 checkbox.addEventListener("change", validateForm);
 

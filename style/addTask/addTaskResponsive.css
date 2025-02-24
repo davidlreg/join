@@ -163,10 +163,6 @@
     max-height: 130px;
   }
 
-  .addTaskOverlay {
-    display: none;
-  }
-
   form#taskFormOverlay {
     width: 100%;
     padding: 32px;

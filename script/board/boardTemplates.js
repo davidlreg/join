@@ -113,7 +113,7 @@ function templateBoardOverlay(task, taskId) {
             </ul>
         </div>
         <div class="boardOverlaySubtasks">
-                <p>Subtasks:</p>
+                <p>Subtasks</p>
                 <ul class="checkboxList">
                     ${(Array.isArray(task.subtask) ? task.subtask : [])
                       .map(

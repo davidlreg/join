@@ -108,6 +108,16 @@
   .boardMain {
     padding-bottom: 80px;
   }
+
+
+  .boardOverlayAssignedTo ul::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  .checkboxList::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
 }
 
 /* Anpassungen für Bildschirme bis 950px */
@@ -180,11 +190,15 @@
   .boardOverlayAssignedTo ul::-webkit-scrollbar-thumb {
     display: none;
   }
+
+  .checkboxList::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media (max-height: 930px) {
   .boardOverlayContainer {
-    max-height: 665px !important;
+    max-height: 800px !important;
   }
 
   .editTaskWrapper {

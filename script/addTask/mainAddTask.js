@@ -307,3 +307,31 @@ function openDatePicker() {
     datePicker.open();
   }
 }
+
+/**
+ * Resets the task creation form by clearing all input fields, deselecting contacts, 
+ * resetting subtask icons, and setting the priority back to "Medium".
+ * 
+ * This function ensures that all selected checkboxes are unchecked, 
+ * removes hover effects from contact items, and restores the default UI state.
+ */
+function clearButton() {
+  ['addTaskTitle', 'addTaskDescription', 'addTaskDate', 'selectTask', 'addTaskSubTasks'].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  ['selectedContacts', 'subtaskList'].forEach(id => {
+    document.getElementById(id).textContent = "";
+  });
+
+  document.querySelectorAll('.contactCheckbox').forEach(checkbox => checkbox.checked = false);
+  document.querySelectorAll('.selectContactItem').forEach(contact => contact.classList.remove('selected'));
+
+  document.getElementById('subtaskPlusIcon').style.display = "inline";
+  document.getElementById('subtaskIcons').style.display = "none";
+
+  resetButtonsOverlay();
+  let mediumButton = document.getElementById('mediumButton');
+  mediumButton.classList.add('medium');
+  mediumButton.querySelector('img').src = `/assets/icon/add task/medium_white.png`;
+}

@@ -42,6 +42,7 @@
 
   .tasksInnerContainer {
     flex-direction: row;
+    overflow-x: auto;
   }
 
   .boardButton {

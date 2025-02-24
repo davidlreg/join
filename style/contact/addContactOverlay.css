@@ -308,7 +308,7 @@
 
 /* Media Queries */
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1000px) {
   
   /* Disable Hover Effects */
   .createContactButton:not([disabled]):hover {

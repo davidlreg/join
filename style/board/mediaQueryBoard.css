@@ -67,6 +67,30 @@
     gap: 26px;
   }
 
+  #boardAddTask {
+    display: none !important;
+  }
+
+  .mainContentBoard {
+    overflow-y: scroll;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .boardMain {
+    padding-bottom: 80px;
+  }
+
+
+  .boardOverlayAssignedTo ul::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  .checkboxList::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
   /* Disable Hover Effects */
 
   .boardAddTask:hover,
@@ -91,31 +115,6 @@
   .boardOverlayActionButtonsEdit:hover {
     color: rgba(42, 54, 70) !important;
     background-color: transparent;
-  }
-}
-
-@media (max-width: 1400px) {
-  #boardAddTask {
-    display: none !important;
-  }
-
-  .mainContentBoard {
-    overflow-y: scroll;
-  }
-}
-
-@media (max-width: 1000px) {
-  .boardMain {
-    padding-bottom: 80px;
-  }
-
-
-  .boardOverlayAssignedTo ul::-webkit-scrollbar {
-    width: 8px !important;
-  }
-
-  .checkboxList::-webkit-scrollbar {
-    width: 8px !important;
   }
 
 }

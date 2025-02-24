@@ -45,7 +45,6 @@
     max-width: 1253px;
     min-width: 270px;
     position: relative;
-
   }
 
   .priorityButton {
@@ -93,6 +92,23 @@
     overflow-x: hidden;
     overflow-y: hidden;
     padding: 32px;
+  }
+}
+
+@media (max-width: 1000px) {
+  form#taskForm {
+    height: calc(100vh - 160px);
+  }
+
+  .subtaskContent:hover {
+    background-color: transparent;
+    border-radius: 0;
+    cursor: not-allowed;
+  }
+
+  .subtaskItem,
+  .subtaskIcons {
+    display: flex;
   }
 
   /* Disable Hover Effects */
@@ -203,23 +219,6 @@
     position: static;
     max-width: 380px;
     min-width: 380px;
-  }
-}
-
-@media (max-width: 1000px) {
-  form#taskForm {
-    height: calc(100vh - 160px);
-  }
-
-  .subtaskContent:hover {
-    background-color: transparent;
-    border-radius: 0;
-    cursor: not-allowed;
-  }
-
-  .subtaskItem,
-  .subtaskIcons {
-    display: flex;
   }
 }
 

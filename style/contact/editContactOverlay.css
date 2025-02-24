@@ -492,12 +492,56 @@ form {
     z-index: 1;
   }
 
+  .formInput {
+    width: 380px;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 0px 8px;
+    font-size: 18px;
+  }
+
+  .contactPicture {
+    margin: 0px 0px 0px 32px;
+  }
+
+  .contactForm {
+    margin: 32px;
+    gap: 48px;
+  }
+
+  .nameIconEditOverlay {
+    top: 198px;
+  }
+
+  .mailIconEditOverlay {
+    top: 280px;
+  }
+
+  .phoneIconEditOverlay {
+    top: 362px;
+  }
+
+  .editContactOverlay {
+    width: 950px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1000px) {
   /* Disable Hover Effects */
 
   .goBackArrow:hover,
   .goBackArrow:hover * {
     background-color: #f6f7f8 !important;
-  } 
+  }
 
   .saveContactButton:hover {
     border: 1px solid #2a3647;
@@ -506,7 +550,7 @@ form {
     box-shadow: none;
     cursor: pointer;
   }
-  
+
   .deleteButton {
     color: #2a3647;
     font-weight: bold;
@@ -515,7 +559,7 @@ form {
     align-items: center;
     gap: 4px;
   }
-  
+
   .deleteButton:hover {
     border: 1px solid #2a3647;
     fill: #2a3647 !important;
@@ -524,53 +568,11 @@ form {
     transition: none;
     box-shadow: none;
   }
-  
+
   .deleteButton:hover > p {
     color: #2a3647;
     transition: none;
   }
-
-  .formInput {
-    width: 380px;
-    height: 48px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    padding: 0px 8px;
-    font-size: 18px;
-}
-
-.contactPicture {
-  margin: 0px 0px 0px 32px;
-}
-
-.contactForm {
-  margin: 32px;
-  gap: 48px;
-}
-
-.nameIconEditOverlay {
-  top: 198px;
-}
-
-.mailIconEditOverlay {
-  top: 280px;
-}
-
-.phoneIconEditOverlay {
-  top: 362px;
-}
-
-.editContactOverlay {
-  width: 950px;
-}
-
-h1 {
-  font-size: 48px;
-}
-
-p {
-  font-size: 24px;
-}
 }
 
 @media (max-width: 600px) {

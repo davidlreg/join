@@ -15,6 +15,16 @@
 
 .hideOverlay {
   display: none;
+  animation: slideIn 0.3s ease-in-out backwards;
+}
+
+@keyframes hideOverlay {
+  from {
+    right:0px;
+  }
+  to {
+    right: -300px;
+  }
 }
 
 /* Overlay Container */
@@ -31,6 +41,16 @@
   justify-content: space-between;
   padding: 48px 40px;
   overflow-y: hidden;
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+@keyframes boardOverlayContainer {
+  from {
+    right:-300px;
+  }
+  to {
+    right: 0;
+  }
 }
 
 .boardOverlayContent {

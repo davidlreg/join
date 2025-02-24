@@ -74,9 +74,9 @@ function addTaskHtmlTemplate() {
             </div>
 
             <div id="subtaskIcons" style="display: none">
-              <img src="/assets/icon/add task/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
-              <img src="/assets/icon/add task/vector.png" id="vectorIcon" alt="Vector separator" />
-              <img src="/assets/icon/add task/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
+              <img src="/assets/icon/addTask/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
+              <img src="/assets/icon/addTask/vector.png" id="vectorIcon" alt="Vector separator" />
+              <img src="/assets/icon/addTask/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
             </div>
           </div>
         </div>
@@ -120,9 +120,9 @@ function getSubtasks(subtaskValue) {
           <li class="subtaskText">${subtaskValue}</li>
         </div>
         <div class="subtaskIcons">
-          <img src="/assets/icon/add task/edit.png" class="subtaskIcon editSubtask">
-          <img src="/assets/icon/add task/vector.png">
-          <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
+          <img src="/assets/icon/addTask/edit.png" class="subtaskIcon editSubtask">
+          <img src="/assets/icon/addTask/vector.png">
+          <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask">
         </div>
     </div>
     `;
@@ -130,8 +130,8 @@ function getSubtasks(subtaskValue) {
 
 function getSubtaskIcons() {
   return `
-    <img src="/assets/icon/add task/delete.png" class="subtaskIcon removeSubtask">
-    <img src="/assets/icon/add task/vector.png">
-    <img src="/assets/icon/add task/done.png" class="subtaskIcon confirmEditSubtask">
+    <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask">
+    <img src="/assets/icon/addTask/vector.png">
+    <img src="/assets/icon/addTask/done.png" class="subtaskIcon confirmEditSubtask">
     `;
 }

@@ -245,3 +245,17 @@ function finalizeSubtaskEdit(listItem, newValue) {
 function removeSubtask(listItem) {
   listItem.remove();
 }
+
+/**
+ * Event listener for detecting double-clicks on elements with the class "subtaskItem".
+ * When a double-click is detected, the "editSubtask" function is called.
+ * 
+ * @param {MouseEvent} event - The double-click event.
+ */
+document.addEventListener('dblclick', function (event) {
+  const target = event.target.closest('.subtaskItem');
+  if (target) {
+    const oldValue = target.querySelector('.subtaskText')?.textContent || '';
+    editSubtask(target, oldValue);
+  }
+});

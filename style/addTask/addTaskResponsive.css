@@ -211,6 +211,12 @@
     max-width: 380px;
     min-width: 380px;
   }
+}
+
+@media (max-width: 1000px) {
+  form#taskForm {
+    height: calc(100vh - 160px);
+  }
 
   .subtaskContent:hover {
     background-color: transparent;
@@ -221,12 +227,6 @@
   .subtaskItem,
   .subtaskIcons {
     display: flex;
-  }
-}
-
-@media (max-width: 1000px) {
-  form#taskForm {
-    height: calc(100vh - 160px);
   }
 }
 

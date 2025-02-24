@@ -38,6 +38,9 @@ function closeDropdown(event) {
   const selectContact = document.getElementById("selectContact");
   const dropdown = document.getElementById("dropdown");
 
+  if (!selectContact || !dropdown) 
+    return;
+
   if (!dropdown.contains(event.target) && !selectContact.contains(event.target)) {
     selectContact.classList.remove("show");
   }

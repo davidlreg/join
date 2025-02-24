@@ -120,7 +120,16 @@ async function addBoardOverlay(taskId) {
  */
 function closeBoardOverlay() {
   let boardOverlay = document.getElementById("addBoardOverlay");
-  boardOverlay.classList.add("hideOverlay");
+  let overlayBoardContent = document.querySelector(".boardOverlayContainer");
+
+  if (boardOverlay && overlayBoardContent) {
+    overlayBoardContent.classList.remove("animate");
+    overlayBoardContent.style.animation = "slideOut 0.3s ease-in forwards";
+    setTimeout(() => {
+      boardOverlay.classList.add("hideOverlay");
+      overlayBoardContent.style.animation = "";
+    }, 300);
+  }
 }
 
 /**

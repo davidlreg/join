@@ -249,11 +249,36 @@ function createSelectedProfilePictures(selectedNames) {
 }
 
 /**
- * Initializes Flatpickr and ensures correct positioning.
+ * Returns today's date at 00:00.
+ * @returns {Date} - Today's date without time.
  */
-function initFlatpickr() {
-  const inputElement = document.getElementById("addTaskDate");
-  datePicker = flatpickr(inputElement, {
+function getToday() {
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
+}
+
+/**
+ * Past days were decleared with a gray background-color.
+ * @param {HTMLElement} dayElem - HTML-Element of the day.
+ */
+function stylePastDays(dayElem) {
+  let today = getToday();
+  let date = new Date(dayElem.dateObj);
+
+  if (date < today) {
+    dayElem.style.background = "lightgray";
+    dayElem.style.color = "darkgray";
+    dayElem.classList.add("past-day");
+  }
+}
+
+/**
+ * Initializes Flatpickr for a single input field.
+ * @param {HTMLInputElement} inputElement - Input-Element for the datePicker.
+ */
+function setupFlatpickr(inputElement) {
+  flatpickr(inputElement, {
     dateFormat: "d/m/Y",
     allowInput: false,
     disableMobile: true,
@@ -262,20 +287,17 @@ function initFlatpickr() {
     static: true,
     positionElement: inputElement,
     appendTo: document.body,
-    onDayCreate: function (dObj, dStr, fp, dayElem) {
-      let today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      let date = new Date(dayElem.dateObj);
-
-      if (date < today) {
-        dayElem.style.background = "lightgray";
-        dayElem.style.color = "darkgray";
-        dayElem.classList.add("past-day");
-      }
-    },
+    onDayCreate: (dObj, dStr, fp, dayElem) => stylePastDays(dayElem),
   });
 }
+
+/**
+ * Searches for all datepicker input fields with the ID “addTaskDate” and initializes Flatpickr for each of them.
+ */
+function initFlatpickr() {
+  document.querySelectorAll("#addTaskDate").forEach(setupFlatpickr);
+}
+
 
 /**
  * Opens the date picker.

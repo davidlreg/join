@@ -193,7 +193,6 @@ async function editTasksForBoard(taskId) {
     text: subtask.textContent,
     completed: false,
   }));
-  initFlatpickr();
   const assignedContacts = getSelectedContacts();
 
   tasks[taskId] = {

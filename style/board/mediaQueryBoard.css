@@ -94,10 +94,13 @@
   }
 }
 
-
 @media (max-width: 1400px) {
   #boardAddTask {
     display: none !important;
+  }
+
+  .mainContentBoard {
+    overflow-y: scroll;
   }
 }
 

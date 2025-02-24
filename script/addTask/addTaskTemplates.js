@@ -54,7 +54,7 @@ function addTaskHtmlTemplate() {
         <p>Category <span>*</span></p>
         <div class="dropdownCategory">
           <select required id="selectTask" class="selectContainer" placeholder="Select task category">
-            <option value="" disabled selected>Select task category</option>
+            <option class="dNone" value="" disabled selected>Select task category</option>
             <option value="Technical Task">Technical Task</option>
             <option value="User Story">User Story</option>
           </select>

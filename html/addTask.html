@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/style/addTask/addTaskOverlay.css" />
     <link rel="stylesheet" href="/style/mainStyle.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   </head>
 
   <body onload="initTask()">
@@ -129,7 +129,7 @@
               <div class="taskInputRight">
                 <div class="taskInput">
                   <p>Due Date <span>*</span></p>
-                  <input required type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
+                  <input required type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()" />
                 </div>
                 <div class="taskInput">
                   <p>Prio</p>
@@ -153,7 +153,7 @@
                   <p>Category <span>*</span></p>
                   <div class="dropdownCategory">
                     <select required id="selectTask" class="selectContainer" placeholder="Select task category">
-                      <option value="" disabled selected>Select task category</option>
+                      <option class="dNone" value="" disabled selected>Select task category</option>
                       <option value="Technical Task">Technical Task</option>
                       <option value="User Story">User Story</option>
                     </select>
@@ -216,6 +216,5 @@
     <script src="/script/board/mainBoard.js"></script>
     <script src="/script/board/handleTaskLogic.js"></script>
     <script src="/script/board/boardTemplates.js"></script>
-    
   </body>
 </html>

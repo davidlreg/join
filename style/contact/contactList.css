@@ -260,6 +260,18 @@ main {
 
 /* Media Queries */
 @media (max-width: 1400px) {
+  .contactListInner {
+    height: 100%;
+  }
+
+  /* Disable Hover Effects */
+  
+  .contact:hover {
+    background: linear-gradient(to bottom, #fff, #fff);
+  }
+}
+
+@media (max-width: 1000px) {
   main {
     height: calc(100% - 80px);
   }
@@ -275,3 +287,4 @@ main {
     background: linear-gradient(to bottom, #fff, #fff);
   }
 }
+

@@ -3,7 +3,7 @@
  *
  */
 function checkEditFormValidity() {
-  const isMobile = window.innerWidth <= 1350;
+  const isMobile = window.innerWidth <= 1000;
   const name = document.getElementById(isMobile ? "contactNameMobile" : "contactName").value.trim();
   const email = document.getElementById(isMobile ? "contactEmailMobile" : "contactEmail").value.trim();
   const phone = document.getElementById(isMobile ? "contactPhoneMobile" : "contactPhone").value.trim();
@@ -20,7 +20,7 @@ function checkEditFormValidity() {
  * @returns {boolean} True if all fields are valid, otherwise false.
  */
 function validateEditFields(name, email, phone) {
-  const mobilePlaceholder = window.innerWidth > 1350 ? "" : "Mobile";
+  const mobilePlaceholder = window.innerWidth > 1000 ? "" : "Mobile";
   const isNameValid = validateEditInput(`contactName${mobilePlaceholder}`, name, validateName, "Please enter a valid name.");
   const isEmailValid = validateEditInput(`contactEmail${mobilePlaceholder}`, email, validateEmail, "Please enter a valid email address.");
   const isPhoneValid = validateEditInput(`contactPhone${mobilePlaceholder}`, phone, validatePhone, "Please enter a valid phone number.");

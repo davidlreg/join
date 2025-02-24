@@ -3,7 +3,6 @@
 @media screen and (max-width: 1400px) {
   .boardMain {
     padding: 32px;
-    padding-bottom: 80px;
   }
 
   .mainContentWrapper {
@@ -91,6 +90,19 @@
   .boardOverlayActionButtonsEdit:hover {
     color: rgba(42, 54, 70) !important;
     background-color: transparent;
+  }
+}
+
+
+@media (max-width: 1400px) {
+  #boardAddTask {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .boardMain {
+    padding-bottom: 80px;
   }
 }
 

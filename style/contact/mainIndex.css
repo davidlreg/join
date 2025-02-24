@@ -296,7 +296,55 @@ body {
 }
 
 /* Media Queries */
+
 @media (max-width: 1400px) {
+  .addContactButton {
+    width: 280px;
+    height: 56px;
+  }
+
+  .headline {
+    padding: 32px;
+    gap: 18px;
+  }
+
+  .headline > h1 {
+    font-size: 48px;
+  }
+
+  .customProfilePictureBig {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profileInformation > p {
+    font-size: 36px !important;
+  }
+
+  .profileHeadSection {
+    gap: 22px;
+    padding: 0px 32px;
+  }
+
+  .profileWrapper {
+    gap: 24px;
+  }
+
+  .contactInformation {
+    padding: 18px 0px;
+  }
+
+  .contactList {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  main {
+    height: calc(100% - 80px);
+  }
+}
+
+@media (max-width: 1000px) {
   body {
     flex-direction: column-reverse;
   }
@@ -378,23 +426,22 @@ body {
     background-color: transparent;
     color: #2a3647 !important;
   }
-  
+
   .deleteContainer:hover {
     cursor: pointer;
     background-color: transparent;
     color: #2a3647 !important;
   }
-  
+
   .editContainer:hover * {
     color: #2a3647;
     fill: #2a3647;
   }
-  
+
   .deleteContainer:hover * {
     color: #2a3647;
     fill: #2a3647;
   }
-
 }
 
 @media (max-width: 600px) {

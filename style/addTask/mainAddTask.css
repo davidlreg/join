@@ -12,7 +12,7 @@
 
 /* Task Form*/
 form#taskForm {
-  padding: 64px 32px 32px 64px;
+  padding: 64px;
   height: calc(100vh - 96px);
   display: flex;
   flex-direction: column;
@@ -500,7 +500,7 @@ button img {
 }
 
 .requiredText span {
-  color: black;
+  color: red;
 }
 
 .actions {

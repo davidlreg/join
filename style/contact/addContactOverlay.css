@@ -317,6 +317,10 @@
     box-shadow: none;
     cursor: not-allowed !important;
   }
+
+  .addContactOverlay {
+   width: 950px;
+}
 }
 
 @media (max-width: 600px) {

@@ -356,7 +356,26 @@ header h3 {
 }
 
 /* Responsive Styles for Screen Sizes */
+
 @media (max-width: 1400px) {
+  .sidebar__container {
+    padding: 32px 0;
+    min-width: 180px;
+  }
+
+  .nav__container a,
+  .logInLinkContainer a {
+    padding: 4px 32px;
+  }
+
+  header {
+    min-height: 80px;
+    max-height: 80px;
+    padding: 0px 32px;
+  }
+}
+
+@media (max-width: 1000px) {
   .layoutContainer {
     flex-direction: column-reverse;
   }

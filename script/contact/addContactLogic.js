@@ -44,7 +44,7 @@ function openAddContactOverlayMobile() {
 function closeAddContactOverlay() {
   const overlay = document.querySelector(".addContactOverlay");
 
-  if (window.innerWidth > 1350) {
+  if (window.innerWidth > 1000) {
     closeOverlay(overlay);
   } else {
     closeAddContactOverlayMobile();
@@ -79,7 +79,7 @@ function addOverlayBackground(container) {
  *
  */
 async function createContact() {
-  const isMobile = window.innerWidth <= 1350;
+  const isMobile = window.innerWidth <= 1000;
   const getValue = (id) => document.getElementById(isMobile ? id + "Mobile" : id).value;
   const [email, name, phone] = [getValue("email"), getValue("name"), getValue("phone")];
 

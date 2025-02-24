@@ -16,7 +16,7 @@ function showSummaryStartAnimation() {
   function setupRightContainerAnimation() {
     const { rightContainer, leftContainer, mainContent, headline } = getSummaryElements();
   
-    if (window.innerWidth <= 1350) {
+    if (window.innerWidth <= 1000) {
       showRightContainer(rightContainer, mainContent);
       hideHeadlineAndLeftContainer(leftContainer, headline);
       setTimeForRightContent(leftContainer, headline);
@@ -24,12 +24,11 @@ function showSummaryStartAnimation() {
   }
   
   function disableRightContainer() {
-    const { rightContainer, leftContainer, mainContent, headline } = getSummaryElements();
+    const { rightContainer, leftContainer, headline } = getSummaryElements();
   
-    if (window.innerWidth <= 1350) {
+    if (window.innerWidth <= 1000) {
       hideRightContainer(rightContainer);
       showLeftContainer(leftContainer, headline);
-      setFullHeight(mainContent);
     } else {
       setContentToNormal(rightContainer, leftContainer);
     }
@@ -72,12 +71,10 @@ function showSummaryStartAnimation() {
    * Shows the right container and sets its size to occupy the full width.
    *
    * @param {HTMLElement} rightContainer - The right container element from the mainContent.
-   * @param {HTMLElement} mainContent - The main content container to adjust its height.
    */
-  function showRightContainer(rightContainer, mainContent) {
+  function showRightContainer(rightContainer) {
     rightContainer.style.display = "flex";
     rightContainer.style.width = "100%";
-    setFullHeight(mainContent);
   }
   
   /**
@@ -101,15 +98,6 @@ function showSummaryStartAnimation() {
     leftContainer.style.display = "flex";
     leftContainer.style.width = "100%";
     headline.style.display = "flex";
-  }
-  
-  /**
-   * Sets the height of the mainContent container to occupy the full height of its parent.
-   *
-   * @param {HTMLElement} mainContent - The main content container element.
-   */
-  function setFullHeight(mainContent) {
-    mainContent.style.height = "50%";
   }
   
   /**

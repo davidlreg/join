@@ -8,20 +8,20 @@ body {
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .rightSideWrapper {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 main {
   flex-grow: 1;
   padding: 64px;
-  overflow-y: auto; 
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -59,7 +59,13 @@ main ul li {
 }
 
 /* Responsive*/
-@media (max-width: 1400px){
+@media (max-width: 1400px) {
+  main {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 1000px) {
   main {
     padding-bottom: 100px;
   }

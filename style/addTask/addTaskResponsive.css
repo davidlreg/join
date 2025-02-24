@@ -88,8 +88,10 @@
   }
 
   form#taskForm {
-    height: calc(100vh - 160px);
+    height: calc(100vh - 80px);
     overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 32px;
   }
 
   /* Disable Hover Effects */
@@ -158,6 +160,73 @@
     min-width: 200px;
     position: static;
     max-height: 130px;
+  }
+
+  .addTaskOverlay {
+    display: none;
+  }
+
+  form#taskFormOverlay {
+    width: 100%;
+    padding: 32px;
+  }
+
+  #taskFormOverlay h1 {
+    font-size: 48px;
+    margin-bottom: 0px !important;
+  }
+
+  .taskInputContainerOverlay {
+    overflow-y: auto;
+    padding-right: 10px;
+    box-sizing: border-box;
+    padding: 28px 0px;
+  }
+
+  .addDescriptionInputOverlay {
+    font-size: 18px;
+  }
+
+  .selectContactOverlay.show,
+  .selectCategoryOverlay.show {
+    position: static;
+    width: 880px;
+  }
+
+  .selectedContacts {
+    position: static;
+  }
+
+  .priorityButtonOverlay {
+    margin-left: 6px;
+  }
+
+  .iconWrapperOverlay {
+    right: 15px;
+    bottom: 6px;
+  }
+
+  .subtaskListOverlay {
+    position: static;
+    max-width: 380px;
+    min-width: 380px;
+  }
+
+  .subtaskContent:hover {
+    background-color: transparent;
+    border-radius: 0;
+    cursor: not-allowed;
+  }
+
+  .subtaskItem,
+  .subtaskIcons {
+    display: flex;
+  }
+}
+
+@media (max-width: 1000px) {
+  form#taskForm {
+    height: calc(100vh - 160px);
   }
 }
 
@@ -239,69 +308,6 @@
     white-space: nowrap;
     padding-right: 12px;
     padding-left: 12px;
-  }
-}
-
-/*Overlay*/
-@media (max-width: 1400px) {
-  .addTaskOverlay {
-    display: none;
-  }
-
-  form#taskFormOverlay {
-    width: 100%;
-  }
-
-  .taskInputContainerOverlay {
-    max-height: 47vh;
-    overflow-y: auto;
-    padding-right: 10px;
-    box-sizing: border-box;
-  }
-
-  .addDescriptionInputOverlay {
-    font-size: 18px;
-  }
-
-  .selectContactOverlay.show,
-  .selectCategoryOverlay.show {
-    position: static;
-    width: 880px;
-  }
-
-  .selectedContacts {
-    position: static;
-  }
-
-  .priorityButtonOverlay {
-    margin-left: 6px;
-  }
-
-  .iconWrapperOverlay {
-    right: 15px;
-    bottom: 6px;
-  }
-
-  .subtaskListOverlay {
-    position: static;
-    max-width: 380px;
-    min-width: 380px;
-  }
-
-  .subtaskContent:hover {
-    background-color: transparent;
-    border-radius: 0;
-    cursor: not-allowed;
-  }
-
-  .subtaskItem, .subtaskIcons {
-    display: flex;
-  }
-}
-
-@media (max-width: 1024px) {
-  .taskInputContainerOverlay {
-    max-height: 33vh;
   }
 }
 

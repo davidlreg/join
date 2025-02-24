@@ -212,7 +212,7 @@ function resetSelectedContact() {
  * @param {string} color - The contact's profile color.
  */
 function toggleContactOverlay(name, email, phone, initials, color, contactId) {
-  if (window.innerWidth > 1350) {
+  if (window.innerWidth > 1000) {
     showDesktopContactOverlay(name, email, phone, initials, color, contactId);
   } else {
     showMobileContactOverlay(name, email, phone, initials, color, contactId);

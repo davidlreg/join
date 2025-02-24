@@ -62,10 +62,14 @@ span {
   transition-duration: 0.2s;
 }
 
-@media screen and (max-width: 1400px) {
-  body {
-    flex-direction: column-reverse;
-  }
+@media (max-width: 1400px) {
+  .helpInstructions {
+    margin: 32px;
+}
+}
+
+@media screen and (max-width: 1000px) {
+
 
   h1 {
     font-size: 46px;

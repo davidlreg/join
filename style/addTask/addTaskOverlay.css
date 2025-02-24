@@ -326,6 +326,7 @@
   .addTaskMain {
     height: calc(100vh - 96px);
     max-width: 1980px;
+    overflow-y: hidden;
   }
   
   /* Task sucessfully created */
@@ -361,6 +362,17 @@
   
   /* Media Query */
   
+@media (max-width: 1400px) {
+  .addTaskMain {
+    height: calc(100vh - 80px);
+  }
+
+  .dropdownCategory {
+    max-width: 1400px;
+}
+
+}
+
   @media (max-height: 795px) {
     .subtaskList {
       max-height: 40px;

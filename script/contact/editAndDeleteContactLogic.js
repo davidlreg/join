@@ -82,7 +82,7 @@ async function updateContactData(contactId) {
  * @returns {Object} - An object containing the updated name, email, and phone.
  */
 function getUpdatedContactData() {
-  const isMobile = window.innerWidth <= 1350;
+  const isMobile = window.innerWidth <= 1000;
   const name = document.getElementById(isMobile ? "contactNameMobile" : "contactName").value.trim();
   const email = document.getElementById(isMobile ? "contactEmailMobile" : "contactEmail").value.trim();
   const phone = document.getElementById(isMobile ? "contactPhoneMobile" : "contactPhone").value.trim();

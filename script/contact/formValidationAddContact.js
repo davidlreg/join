@@ -2,7 +2,7 @@
  * Checks if the form is valid and enables/disables the "Create Contact" button.
  */
 function checkFormValidity() {
-  const isMobile = window.innerWidth <= 1350;
+  const isMobile = window.innerWidth <= 1000;
   const name = document.getElementById(isMobile ? "nameMobile" : "name").value.trim();
   const email = document.getElementById(isMobile ? "emailMobile" : "email").value.trim();
   const phone = document.getElementById(isMobile ? "phoneMobile" : "phone").value.trim();
@@ -19,7 +19,7 @@ function checkFormValidity() {
  * @returns {boolean} True if all fields are valid, otherwise false.
  */
 function validateFields(name, email, phone) {
-  const mobilePlaceholder = window.innerWidth > 1350 ? "" : "Mobile";
+  const mobilePlaceholder = window.innerWidth > 1000 ? "" : "Mobile";
   const isNameValid = validateInput(`name${mobilePlaceholder}`, name, validateName, "Please enter a valid name.");
   const isEmailValid = validateInput(`email${mobilePlaceholder}`, email, validateEmail, "Please enter a valid email address.");
   const isPhoneValid = validateInput(`phone${mobilePlaceholder}`, phone, validatePhone, "Please enter a valid phone number.");

@@ -62,7 +62,7 @@ function getBoardSectionFromURL() {
 async function createTasksForBoard() {
   const { addTaskTitle, addTaskDescription, addTaskDate, addTaskCategory, addTaskSubTasks, assignedContacts } = getAddTaskElements();
 
-  if (window.innerWidth <= 1400) {
+  if (window.innerWidth <= 1000) {
     selectedBoardSection = getBoardSectionFromURL();
   }
 

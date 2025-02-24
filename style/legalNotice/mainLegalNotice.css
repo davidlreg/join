@@ -17,6 +17,12 @@ body {
 
 @media (max-width: 1400px) {
   .impressum {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .impressum {
     padding-bottom: 100px;
   }
 }

@@ -22,7 +22,7 @@ function changeInputBoardLocation() {
  * @param {HTMLElement} boardAddTask - The "Add Task" button.
  */
 function windowThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
-  if (window.innerWidth <= 1400) {
+  if (window.innerWidth <= 1000) {
     innerWidthBelowThreshold(inputContainer, boardControls, boardContainer, boardAddTask);
   } else {
     innerWidthAboveThreshold(inputContainer, boardControls, boardContainer, boardAddTask);

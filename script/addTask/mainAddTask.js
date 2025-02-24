@@ -333,5 +333,5 @@ function clearButton() {
   resetButtonsOverlay();
   let mediumButton = document.getElementById('mediumButton');
   mediumButton.classList.add('medium');
-  mediumButton.querySelector('img').src = `/assets/icon/add task/medium_white.png`;
+  mediumButton.querySelector('img').src = `/assets/icon/addTask/medium_white.png`;
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/style/addTask/addTaskOverlay.css" />
     <link rel="stylesheet" href="/style/mainStyle.css" />
     <link rel="stylesheet" href="/style/fonts.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
 
   <body onload="initTask()">
@@ -128,7 +129,7 @@
               <div class="taskInputRight">
                 <div class="taskInput">
                   <p>Due Date <span>*</span></p>
-                  <input required type="date" class="addTaskInput" id="addTaskDate" />
+                  <input required type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
                 </div>
                 <div class="taskInput">
                   <p>Prio</p>
@@ -150,11 +151,12 @@
 
                 <div class="taskInput">
                   <p>Category <span>*</span></p>
-                  <div onclick="toggleCategory()" class="dropdown">
-                    <input required id="selectTask" class="selectContainer" type="text" placeholder="Select task category" />
-                    <div class="dropdownIcon">
-                      <img src="/assets/img/arrowDropDown.png" alt="" />
-                    </div>
+                  <div class="dropdown">
+                    <select required id="selectTask" class="selectContainer" placeholder="Select task category">
+                      <option value="" disabled selected>Select task category</option>
+                      <option value="Technical Task">Technical Task</option>
+                      <option value="User Story">User Story</option>
+                    </select>
                   </div>
                   <div class="selectCategory">
                     <div class="selectCategoryItem" onclick="selectCategory('Technical Task')">Technical Task</div>
@@ -168,7 +170,7 @@
                     <input type="text" placeholder="Add new subtask" class="addTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
                     <div class="iconWrapper">
                       <div class="addSubtask">
-                        <img src="/assets/img/subtaskPlusIcon.png" id="subtaskPlusIcon" alt="Add subtask" onclick="subtaskEmpty()"/>
+                        <img src="/assets/img/subtaskPlusIcon.png" id="subtaskPlusIcon" alt="Add subtask" onclick="subtaskEmpty()" />
                       </div>
 
                       <div id="subtaskIcons" style="display: none">
@@ -205,6 +207,7 @@
       </div>
     </div>
     <script src="/script/mainScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/script/addTask/mainAddTask.js"></script>
     <script src="/script/addTask/addTaskTemplates.js"></script>
     <script src="/script/addTask/addTaskOverlays.js"></script>
@@ -213,5 +216,6 @@
     <script src="/script/board/mainBoard.js"></script>
     <script src="/script/board/handleTaskLogic.js"></script>
     <script src="/script/board/boardTemplates.js"></script>
+    
   </body>
 </html>

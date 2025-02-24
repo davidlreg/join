@@ -1,22 +1,11 @@
+let datePicker; 
+
 function initTask() {
   setActiveLinkFromURL();
   loadContacts();
   headerUserName();
   setPriority("medium");
-}
-
-/**
- * Toggles the visibility of the category dropdown.
- *
- */
-function toggleCategory() {
-  const categoryDropdown = document.querySelector(".selectCategory");
-  categoryDropdown.classList.toggle("show");
-}
-
-function toggleCategoryOverlay() {
-  const categoryDropdown = document.querySelector(".selectCategoryOverlay");
-  categoryDropdown.classList.toggle("show");
+  initFlatpickr();
 }
 
 function selectCategory(category) {
@@ -39,6 +28,26 @@ function toggleContact() {
   const categoryDropdown = document.getElementById("selectContact");
   categoryDropdown.classList.toggle("show");
 }
+
+/**
+ * Closes the dropdown menu if the click occurs outside of it.
+ *
+ * @param {Event} event - The click event.
+ */
+function closeDropdown(event) {
+  const selectContact = document.getElementById("selectContact");
+  const dropdown = document.getElementById("dropdown");
+
+  if (!selectContact || !dropdown) 
+    return;
+
+  if (!dropdown.contains(event.target) && !selectContact.contains(event.target)) {
+    selectContact.classList.remove("show");
+  }
+}
+
+// Add event listener to close dropdown on page click
+document.addEventListener("click", closeDropdown);
 
 /**
  * Loads contact data from the Firebase database and displays it in the dropdown.
@@ -197,7 +206,7 @@ function createCheckbox(name, assignedTo = []) {
 /**
  * Updates the display of selected contacts under the dropdown
  * without resetting previously selected contacts.
- * 
+ *
  */
 function updateSelectedContact() {
   const selectedContactsContainer = document.getElementById("selectedContacts");
@@ -238,4 +247,42 @@ function createSelectedProfilePictures(selectedNames) {
 
     return profileDiv;
   });
+}
+
+/**
+ * Initializes Flatpickr and ensures correct positioning.
+ */
+function initFlatpickr() {
+  const inputElement = document.getElementById("addTaskDate");
+  datePicker = flatpickr(inputElement, {
+    dateFormat: "d/m/Y",
+    allowInput: false,   
+    disableMobile: true,
+    clickOpens: true, 
+    position: "below",
+    static: true,
+    positionElement: inputElement,
+    appendTo: document.body,
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+      let today = new Date();
+      today.setHours(0, 0, 0, 0);
+  
+      let date = new Date(dayElem.dateObj);
+      
+      if (date < today) {
+        dayElem.style.background = "lightgray"; 
+        dayElem.style.color = "darkgray";
+        dayElem.classList.add("past-day");
+      }
+    }
+  });
+}
+
+/**
+ * Opens the date picker.
+ */
+function openDatePicker() {
+  if (datePicker) {
+    datePicker.open();
+  }
 }

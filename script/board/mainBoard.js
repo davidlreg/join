@@ -158,20 +158,6 @@ function setRightBackgroundColorForCategory() {
 }
 
 /**
- * Converts a date string to the format YYYY-MM-DD.
- *
- * @param {string} dateStr - The input date string.
- * @returns {string} The formatted date string or an empty string if invalid.
- */
-function convertDateFormat(dateStr) {
-  if (dateStr) {
-    let parts = dateStr.split("-");
-    if (parts.length !== 3) return "";
-    return `${parts[0]}-${parts[1]}-${parts[2]}`;
-  }
-}
-
-/**
  * Generates a random but consistent HSL color based on a given name.
  *
  * @param {string} name - The input string used to generate the color.
@@ -196,10 +182,6 @@ function getRandomColorForName(name) {
   return colorPalette[index];
 }
 
-
-///////////////////////////
-// Section for subtasks //
-/////////////////////////
 
 async function toggleSubtask(taskId, subtaskIndex) {
   await fetchDataJSON();

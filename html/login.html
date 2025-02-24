@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="/style/login/mediaQueryLogin.css" />
   </head>
 
-  <body onload="removeJoinAnimation()">
-    <div id="logoContainer" class="logoContainer animationBackground">
-      <img id="logo" class="logo animationLogo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo Dark" />
-      <img id="logoMobile" class="logoMobile animationLogoMobile" src="../assets/img/joinIcon.svg" alt="Join Logo Light" />
+  <body onload="initializeJoinAnimation()">
+    <div id="logoContainer" class="logoContainer">
+      <img id="logo" class="logo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo Dark" />
+      <img id="logoMobile" class="logoMobile" src="../assets/img/joinIcon.svg" alt="Join Logo Light" />
     </div>
 
     <div class="signUp">
@@ -27,13 +27,13 @@
       <h1 class="header">Log in</h1>
       <div class="inputContainer">
         <input type="text" name="email" placeholder="Email" class="inputEmail" required />
+        <p id="errorMsgEmail" class="errorGap"></p>
         <div class="inputPasswordWrapper">
           <input type="password" name="password" placeholder="Password" class="inputPassword" required />
           <button class="passwordToggle"></button>
         </div>
+        <p id="errorMsgCredentials" class="errorGap"></p>
       </div>
-
-      <p class="errorMessage"></p>
 
       <div class="checkbox">
         <input type="checkbox" id="checkboxLogIn" class="box dNone" />
@@ -53,5 +53,6 @@
     </div>
     <!-- JavaScript -->
     <script src="/script/login/login.js"></script>
+    <script src="/script/login/loginAnimation.js"></script>
   </body>
 </html>

@@ -193,7 +193,7 @@ async function editTasksForBoard(taskId) {
     text: subtask.textContent,
     completed: false,
   }));
-
+  initFlatpickr();
   const assignedContacts = getSelectedContacts();
 
   tasks[taskId] = {
@@ -259,6 +259,7 @@ async function editTask(taskId) {
     loadContacts(tasks[taskId].assignedTo);
   }
   loadTasksToBoard();
+  initFlatpickr();
 }
 
 /**
@@ -278,7 +279,6 @@ async function syncBackendDataWithFirebase() {
     },
     body: JSON.stringify(backendData),
   });
-  window.location.reload();
 }
 
 /**

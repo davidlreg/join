@@ -11,7 +11,7 @@ function openAddContactOverlay() {
   inputIds.forEach((id) => {
     const inputElement = overlay.querySelector(`#${id}`);
     if (inputElement) {
-      inputElement.addEventListener("input", checkFormValidity);
+      inputElement.addEventListener("blur", checkFormValidity);
     }
   });
 
@@ -31,7 +31,7 @@ function openAddContactOverlayMobile() {
   inputIds.forEach((id) => {
     const inputElement = overlay.querySelector(`#${id}`);
     if (inputElement) {
-      inputElement.addEventListener("input", checkFormValidity);
+      inputElement.addEventListener("blur", checkFormValidity);
     }
   });
   openOverlayMobile(overlay);

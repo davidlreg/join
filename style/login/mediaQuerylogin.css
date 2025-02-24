@@ -125,7 +125,6 @@
   }
 
   /* Disable Hover Effects */
-  
   .arrowBack img:hover {
     background-color: inherit !important;
   }

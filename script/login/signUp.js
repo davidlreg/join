@@ -8,7 +8,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-let errorMessage = document.querySelector(".errorMessage");
 let nameInput = document.querySelector(".inputName");
 let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelectorAll(".inputPassword")[0];
@@ -28,14 +27,14 @@ let checkbox = document.getElementById("checkboxSignUp");
 function validateEmail() {
   let emailValue = emailInput.value;
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let errorMessage = document.getElementById("errorMsgEmail");
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Please enter a valid email address.`;
-    errorMessage.style.display = "block";
   } else {
     emailInput.style.border = "";
-    errorMessage.style.display = "none";
+    errorMessage.innerHTML = "";
   }
 }
 
@@ -50,13 +49,14 @@ function validateEmail() {
  * @returns {void}
  */
 function validatePasswords() {
+  let errorMessage = document.getElementById("errorMsgPassword");
+
   if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Your passwords don't match. Please try again.`;
-    errorMessage.style.display = "block";
   } else {
     confirmPasswordInput.style.border = "";
-    errorMessage.style.display = "none";
+    errorMessage.innerHTML = "";
   }
 }
 
@@ -69,7 +69,7 @@ function validatePasswords() {
  *
  * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class,
  * adding the 'btnDark' class
- * and placing an EventListener that triggers the function createUser().
+ * and placing an EventListener that triggers the function checkAvailability().
  *
  * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class,
  * adding the 'btnUnabledDark' class
@@ -93,11 +93,11 @@ function validateForm() {
   if (isFormValid) {
     signUpButton.classList.remove("btnUnabledDark");
     signUpButton.classList.add("btnDark");
-    signUpButton.addEventListener("click", createUser);
+    signUpButton.addEventListener("click", checkAvailability);
   } else {
     signUpButton.classList.remove("btnDark");
     signUpButton.classList.add("btnUnabledDark");
-    signUpButton.removeEventListener("click", createUser);
+    signUpButton.removeEventListener("click", checkAvailability);
   }
 }
 
@@ -152,6 +152,46 @@ function toggleVisibility() {
 }
 
 /**
+ * Checks if the entered email is already registered.
+ */
+async function checkAvailability() {
+  const email = document.getElementById("userEmail").value;
+  const errorMessage = document.getElementById("errorMsgEmail");
+  const usersRef = ref(database, "Data/Users");
+  const snapshot = await get(usersRef);
+  const users = snapshot.val();
+
+  if (users) {
+    const emailExists = Object.values(users).some(user => user.email === email);
+    
+    if (emailExists) {
+      emailInput.style.border = "1px solid red";
+      errorMessage.innerHTML = `This email address is already in use.`;
+    } else {
+      createUser();
+    }
+  }
+}
+
+/**
+ * Creates a new user and contact, saving them to the database.
+ */
+async function createUser() {
+  const name = document.getElementById("userName").value;
+  const email = document.getElementById("userEmail").value;
+  const password = document.querySelectorAll(".inputPassword")[0].value;
+  const newUserId = await getNextId("Data/Users", "userId");
+  await saveUser(newUserId, { name, email, password });
+  const newContactId = await getNextId("Data/Contacts", "contactId");
+  await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
+  showOverlay();
+
+  setTimeout(function() {
+    window.location.href = "../../html/login.html";
+  }, 2000); 
+}
+
+/**
  * Retrieves the next available ID based on the count of existing entries.
  *
  * @param {string} refPath - The path in the Firebase database (e.g., "Data/Users" or "Data/Contacts").
@@ -186,39 +226,6 @@ async function saveContact(contactId, contactData) {
 }
 
 /**
- * Creates a new user and contact, saving them to the database.
- *
- */
-async function createUser() {
-  const name = document.getElementById("userName").value;
-  const email = document.getElementById("userEmail").value;
-  const password = document.querySelectorAll(".inputPassword")[0].value;
-  const newUserId = await getNextId("Data/Users", "userId");
-  await saveUser(newUserId, { name, email, password });
-  const newContactId = await getNextId("Data/Contacts", "contactId");
-  await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
-  clearInput();
-  showOverlay();
-}
-
-/**
- * This function clears the input values of the form.
- *
- * It resets the values of the input fields to their default empty states
- * and unchecks the checkbox.
- *
- * Additionally it enables the sign up button by calling the function validateForm().
- */
-function clearInput() {
-  nameInput.value = "";
-  emailInput.value = "";
-  passwordInput.value = "";
-  confirmPasswordInput.value = "";
-  checkbox.checked = false;
-  validateForm();
-}
-
-/**
  * This function displays the overlay and hides it after a delay.
  *
  * It removes the 'dNone' class from the element with the ID 'overlay',
@@ -228,10 +235,6 @@ function clearInput() {
 function showOverlay() {
   let overlay = document.getElementById("overlay");
   overlay.classList.remove("dNone");
-
-  setTimeout(() => {
-    hideOverlay();
-  }, 2000);
 }
 
 /**
@@ -244,19 +247,24 @@ function hideOverlay() {
 }
 
 // Event listeners
-emailInput.addEventListener("input", function () {
+emailInput.addEventListener("blur", function () {
   validateEmail();
   validateForm();
 });
 
-confirmPasswordInput.addEventListener("input", function () {
+passwordInput.addEventListener("blur", function () {
   validatePasswords();
   validateForm();
 });
 
-nameInput.addEventListener("input", validateForm);
+confirmPasswordInput.addEventListener("blur", function () {
+  validatePasswords();
+  validateForm();
+});
 
-passwordInput.addEventListener("input", validateForm);
+nameInput.addEventListener("blur", validateForm);
+
+passwordInput.addEventListener("blur", validateForm);
 
 checkbox.addEventListener("change", validateForm);
 

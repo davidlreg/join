@@ -183,10 +183,6 @@ function getRandomColorForName(name) {
 }
 
 
-///////////////////////////
-// Section for subtasks //
-/////////////////////////
-
 async function toggleSubtask(taskId, subtaskIndex) {
   await fetchDataJSON();
   let task = backendData.Data.Tasks[taskId];

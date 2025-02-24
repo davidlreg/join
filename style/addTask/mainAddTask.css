@@ -144,12 +144,12 @@ form#taskForm h1 {
   background-color: transparent;
 }
 
-.dropdownIcon:hover {
+/* .dropdownIcon:hover {
   background-color: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .selectContainer {
   background-color: #fff;
@@ -533,9 +533,15 @@ button img {
 }
 
 .clearButton:hover {
-  border: 1.7px solid #29abe2;
+  border: 1px solid #29abe2;
   color: #29abe2;
   cursor: pointer;
+  fill: #29abe2;
+}
+
+.clearButton:hover * > img {
+  color: #29abe2 !important;
+  fill: #29abe2 !important;
 }
 
 .createButton {

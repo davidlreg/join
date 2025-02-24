@@ -20,7 +20,7 @@ function addTaskOverlay(boardSection) {
   let dynamicContent = document.getElementById('overlayDynamicContent');
 
   if (window.innerWidth <= 1400) {
-    window.location.href = `http://127.0.0.1:5500/html/addTask.html?active=addTask&boardSection=${encodeURIComponent(boardSection)}`;
+    window.location.href = `/html/addTask.html?active=addTask&boardSection=${encodeURIComponent(boardSection)}`;
   } else {
     let addTaskHtml = addTaskHtmlTemplate();
     dynamicContent.innerHTML = addTaskHtml;

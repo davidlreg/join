@@ -279,13 +279,23 @@
 
   .iconWrapperOverlay {
     right: 15px;
-    bottom: 11px;
+    bottom: 6px;
   }
 
   .subtaskListOverlay {
     position: static;
     max-width: 380px;
     min-width: 380px;
+  }
+
+  .subtaskContent:hover {
+    background-color: transparent;
+    border-radius: 0;
+    cursor: not-allowed;
+  }
+
+  .subtaskItem, .subtaskIcons {
+    display: flex;
   }
 }
 

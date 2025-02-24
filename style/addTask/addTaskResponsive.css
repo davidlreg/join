@@ -269,6 +269,10 @@
     width: 880px;
   }
 
+  .selectedContacts {
+    position: static;
+  }
+
   .priorityButtonOverlay {
     margin-left: 6px;
   }

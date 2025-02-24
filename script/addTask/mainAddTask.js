@@ -203,20 +203,15 @@ function updateSelectedContact() {
   const selectedContactsContainer = document.getElementById("selectedContacts");
   selectedContactsContainer.innerHTML = "";
 
-  // Neue Auswahl der Kontakte abrufen
   const newSelectedNames = Array.from(document.querySelectorAll(".contactCheckbox:checked")).map((checkbox) => checkbox.value);
 
-  // Aktualisiere die globale Liste mit allen zugewiesenen Kontakten
   fullAssignedContacts = newSelectedNames;
 
-  // Zeige maximal 4 Kontakte im Overlay an
   displayContacts = fullAssignedContacts.slice(0, 4);
 
-  // Kontakte im UI aktualisieren
   const contactProfiles = createSelectedProfilePictures(displayContacts);
   contactProfiles.forEach((profile) => selectedContactsContainer.appendChild(profile));
 
-  // Falls es mehr als 4 gibt, ein "+X" anzeigen
   if (fullAssignedContacts.length > 4) {
     const moreContacts = document.createElement("div");
     moreContacts.classList.add("profilePicture", "moreContactsIndicator");

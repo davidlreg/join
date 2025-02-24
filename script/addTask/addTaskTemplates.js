@@ -52,7 +52,7 @@ function addTaskHtmlTemplate() {
       </div>
       <div class="taskInputOverlay">
         <p>Category <span>*</span></p>
-        <div class="dropdown">
+        <div class="dropdownCategory">
           <select required id="selectTask" class="selectContainer" placeholder="Select task category">
             <option value="" disabled selected>Select task category</option>
             <option value="Technical Task">Technical Task</option>

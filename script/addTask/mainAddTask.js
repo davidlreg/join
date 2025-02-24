@@ -1,4 +1,4 @@
-let datePicker; 
+let datePicker;
 
 function initTask() {
   setActiveLinkFromURL();
@@ -38,7 +38,7 @@ function closeDropdown(event) {
   const selectContact = document.getElementById("selectContact");
   const dropdown = document.getElementById("dropdown");
 
-  if (!selectContact || !dropdown) 
+  if (!selectContact || !dropdown)
     return;
 
   if (!dropdown.contains(event.target) && !selectContact.contains(event.target)) {
@@ -256,21 +256,21 @@ function initFlatpickr() {
   const inputElement = document.getElementById("addTaskDate");
   datePicker = flatpickr(inputElement, {
     dateFormat: "d/m/Y",
-    allowInput: false,   
+    allowInput: false,
     disableMobile: true,
-    clickOpens: true, 
+    clickOpens: true,
     position: "below",
     static: true,
     positionElement: inputElement,
     appendTo: document.body,
-    onDayCreate: function(dObj, dStr, fp, dayElem) {
+    onDayCreate: function (dObj, dStr, fp, dayElem) {
       let today = new Date();
       today.setHours(0, 0, 0, 0);
-  
+
       let date = new Date(dayElem.dateObj);
-      
+
       if (date < today) {
-        dayElem.style.background = "lightgray"; 
+        dayElem.style.background = "lightgray";
         dayElem.style.color = "darkgray";
         dayElem.classList.add("past-day");
       }
@@ -285,4 +285,32 @@ function openDatePicker() {
   if (datePicker) {
     datePicker.open();
   }
+}
+
+/**
+ * Resets the task creation form by clearing all input fields, deselecting contacts, 
+ * resetting subtask icons, and setting the priority back to "Medium".
+ * 
+ * This function ensures that all selected checkboxes are unchecked, 
+ * removes hover effects from contact items, and restores the default UI state.
+ */
+function clearButton() {
+  ['addTaskTitle', 'addTaskDescription', 'addTaskDate', 'selectTask', 'addTaskSubTasks'].forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  ['selectedContacts', 'subtaskList'].forEach(id => {
+    document.getElementById(id).textContent = "";
+  });
+
+  document.querySelectorAll('.contactCheckbox').forEach(checkbox => checkbox.checked = false);
+  document.querySelectorAll('.selectContactItem').forEach(contact => contact.classList.remove('selected'));
+
+  document.getElementById('subtaskPlusIcon').style.display = "inline";
+  document.getElementById('subtaskIcons').style.display = "none";
+
+  resetButtonsOverlay();
+  let mediumButton = document.getElementById('mediumButton');
+  mediumButton.classList.add('medium');
+  mediumButton.querySelector('img').src = `/assets/icon/add task/medium_white.png`;
 }

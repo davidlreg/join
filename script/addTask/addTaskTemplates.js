@@ -8,7 +8,7 @@ function addTaskHtmlTemplate() {
     <div class="taskInputLeft">
       <div class="taskInputOverlay">
         <p>Title<span>*</span></p>
-        <input required type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay" />
+        <input type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay" />
       </div>
       <div class="taskInputOverlay">
         <p>Description</p>
@@ -31,7 +31,7 @@ function addTaskHtmlTemplate() {
     <div class="taskInputRight">
       <div class="taskInputOverlay">
         <p>Due Date <span>*</span></p>
-        <input required type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
+        <input type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
       </div>
       <div class="taskInputOverlay">
         <p>Prio</p>
@@ -53,7 +53,7 @@ function addTaskHtmlTemplate() {
       <div class="taskInputOverlay">
         <p>Category <span>*</span></p>
         <div class="dropdown">
-          <select required id="selectTask" class="selectContainer" placeholder="Select task category">
+          <select id="selectTask" class="selectContainer" placeholder="Select task category">
             <option value="" disabled selected>Select task category</option>
             <option value="Technical Task">Technical Task</option>
             <option value="User Story">User Story</option>
@@ -92,7 +92,7 @@ function addTaskHtmlTemplate() {
       This field is required
     </div>
     <div class="actions">
-      <button class="clearButton clearButtonOverlay" onclick="closeTaskOverlay()">
+      <button type="button" class="clearButton clearButtonOverlay" onclick="clearButton()">
         Clear
         <img src="/assets/img/clearIcon.png" alt="" />
       </button>

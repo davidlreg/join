@@ -116,6 +116,7 @@
   
   .taskInputOverlay span {
     cursor: pointer;
+    color: red;
   }
   
   .taskInputOverlay input[type="date"] {

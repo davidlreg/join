@@ -44,7 +44,8 @@
   .selectCategory.show {
     max-width: 1253px;
     min-width: 270px;
-    position: static;
+    position: relative;
+
   }
 
   .priorityButton {
@@ -187,10 +188,6 @@
   .selectCategoryOverlay.show {
     position: static;
     width: 880px;
-  }
-
-  .selectedContacts {
-    position: static;
   }
 
   .priorityButtonOverlay {

@@ -8,7 +8,7 @@ function setPriority(priority) {
   const activeImg = activeButton.querySelector(`img`);
 
   activeButton.classList.add(priority);
-  activeImg.src = `/assets/icon/add task/${priority}_white.png`;
+  activeImg.src = `/assets/icon/addTask/${priority}_white.png`;
   selectedPriority = priority;
 }
 

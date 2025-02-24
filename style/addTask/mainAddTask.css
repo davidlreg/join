@@ -111,7 +111,7 @@ form#taskForm h1 {
 .dropdownCategory {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border: 1px solid #ccc;
   border-radius: 10px;
   cursor: pointer;
@@ -159,6 +159,14 @@ form#taskForm h1 {
   width: 100%;
   cursor: pointer;
   border-radius: 18px;
+}
+
+select {
+  padding: 10px;
+  background: url(/assets/icon/addTask/arrow_drop_downaa.svg) no-repeat right 10px center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .selectCategory,
@@ -310,6 +318,7 @@ form#taskForm h1 {
   gap: 15px;
   margin-top: 8px;
   margin-bottom: 8px;
+  height: 38px;
 }
 
 .priorityButton {
@@ -568,7 +577,7 @@ button img {
 /* Calender */
 
 .dateInput {
-  background: url("/assets/icon/add task/calender.png") no-repeat right 10px center;
+  background: url("/assets/icon/addTask/calender.png") no-repeat right 10px center;
   background-color: #fff;
   background-size: 20px;
   cursor: pointer;

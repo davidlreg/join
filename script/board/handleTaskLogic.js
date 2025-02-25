@@ -91,6 +91,16 @@ function showError(inputElement, message) {
   return false;
 }
 
+
+/*Returns the input element that caused the error.
+ *
+ * @param {HTMLElement} inputElement - The input element in question.
+ * @returns {HTMLElement} - The input element.
+ */
+function getErrorTarget(inputElement) {
+  return inputElement;
+}
+
 /**
  * Clears error indications from an input field.
  *

@@ -87,10 +87,9 @@ function showError(inputElement, message) {
   errorMessage.textContent = message;
   targetElement.insertAdjacentElement("afterend", errorMessage);
 
-  setTimeout(() => clearError(inputElement), 3000);
+  
   return false;
 }
-
 
 /*Returns the input element that caused the error.
  *

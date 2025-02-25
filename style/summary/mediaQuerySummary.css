@@ -5,6 +5,7 @@
 
   .summaryMainContent {
     padding: 0px 32px;
+    gap: 32px;
   }
 
   .rightSideWrapper {
@@ -77,6 +78,20 @@
   .rightSideWrapper {
     padding-bottom: 80px;
   }
+
+  .summaryToDo img,
+  .summaryDone img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .count span {
+    font-size: 56px;
+  }
+
+  .count p {
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -93,6 +108,24 @@
 @media screen and (max-width: 400px) {
   .summaryMainContent {
     margin-top: 0px;
+  }
+
+  .summaryToDo,
+  .summaryDone {
+    gap: 16px;
+  }
+
+  .summaryDeadline {
+    gap: 6px;
+  }
+
+  .separatorGrey {
+    margin: 12px;
+  }
+
+  .summaryDeadline p,
+  .summaryDeadline span {
+    padding: 6px;
   }
 }
 

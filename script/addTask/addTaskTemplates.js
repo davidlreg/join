@@ -1,6 +1,7 @@
 function addTaskHtmlTemplate() {
   const template = `
-       <form id="taskFormOverlay" class="addTaskWrapper">
+       
+<form id="taskFormOverlay" class="addTaskWrapper">
   <h1>Add task</h1>
   <!-- Task Input Container -->
   <div class="taskInputContainerOverlay">
@@ -31,7 +32,7 @@ function addTaskHtmlTemplate() {
     <div class="taskInputRight">
       <div class="taskInputOverlay">
         <p>Due Date <span>*</span></p>
-        <input type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()">
+        <input type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()" />
       </div>
       <div class="taskInputOverlay">
         <p>Prio</p>
@@ -53,7 +54,7 @@ function addTaskHtmlTemplate() {
       <div class="taskInputOverlay">
         <p>Category <span>*</span></p>
         <div class="dropdownCategory">
-          <select required id="selectTask" class="selectContainer" placeholder="Select task category">
+          <select id="selectTask" class="selectContainer" placeholder="Select task category">
             <option class="dNone" value="" disabled selected>Select task category</option>
             <option value="Technical Task">Technical Task</option>
             <option value="User Story">User Story</option>
@@ -94,7 +95,20 @@ function addTaskHtmlTemplate() {
     <div class="actions">
       <button type="button" class="clearButton clearButtonOverlay" onclick="clearButton()">
         Clear
-        <img src="/assets/img/clearIcon.png" alt="" />
+        <svg
+          class="clearIcon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
       </button>
       <button type="button" class="createButton createButtonOverlay" onclick="createTasksForBoard()">
         Create Task
@@ -103,6 +117,7 @@ function addTaskHtmlTemplate() {
     </div>
   </div>
 </form>
+
     `;
 
   setTimeout(() => {

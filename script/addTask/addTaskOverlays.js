@@ -51,7 +51,6 @@ function closeTaskOverlay() {
             overlay.classList.add('hidden');
             content.style.animation = ""; 
         }, 300); 
-    } else {
         window.location.href = "/html/board.html";
     }
 }

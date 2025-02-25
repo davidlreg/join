@@ -278,12 +278,18 @@ function templateEditTask(task, taskId) {
         <ul class="checkboxList" id="subtaskList">
           ${(Array.isArray(task.subtask) ? task.subtask : [])
             .map(
-              (subtask, index) => `
-          <li>
-            <input type="checkbox" id="subtask-${task.id}-${index}" ${subtask.completed ? "checked" : ""} onchange="toggleSubtask('${task.id}', ${index})">
-            <label for="subtask-${task.id}-${index}"></label>
-            <span>${subtask.text}</span>
-          </li>
+              (subtask) => `
+            <div class="subtaskContent" class="subtaskItem">
+                <div class="subtaskTextWrapper">
+                  <li class="bulletPoint">&#8226;</li>
+                  <li class="subtaskText">${subtask.text}</li>
+                </div>
+                <div class="subtaskIcons">
+                  <img src="/assets/icon/addTask/edit.png" class="subtaskIcon editSubtask" />
+                  <img src="/assets/icon/addTask/vector.png">
+                  <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask" />
+                </div>
+            </div>
           `
             )
             .join("")}

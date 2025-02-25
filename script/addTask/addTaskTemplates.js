@@ -109,7 +109,7 @@ function addTaskHtmlTemplate() {
           <path d="M18 6L6 18M6 6l12 12"></path>
         </svg>
       </button>
-      <button type="button" class="createButton createButtonOverlay" onclick="createTasksForBoard()">
+      <button id="createTaskButton" type="button" class="createButton createButtonOverlay" onclick="createTasksForBoard()">
         Create Task
         <img src="/assets/img/check.png" alt="" />
       </button>

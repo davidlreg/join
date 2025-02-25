@@ -59,16 +59,13 @@ function validateTaskInputs(title, date, category) {
 
   if (!title.value.trim()) {
     isValid = showError("errorMessageAddTaskTitle", "This field is required") && false;
-    isValid = showError("errorMessageAddTaskTitle", "This field is required") && false;
   }
 
   if (!date.value.trim()) {
     isValid = showError("errorMessageAddTaskDueDate", "This field is required") && false;
-    isValid = showError("errorMessageAddTaskDueDate", "This field is required") && false;
   }
 
   if (!category.value.trim()) {
-    isValid = showError("errorMessageAddTaskCategory", "This field is required") && false;
     isValid = showError("errorMessageAddTaskCategory", "This field is required") && false;
   }
 
@@ -89,11 +86,6 @@ function showError(id, message) {
   const errorElement = document.getElementById(id);
   errorElement.textContent = message;
   errorElement.style.display = "block";
-function showError(id, message) {
-  const errorElement = document.getElementById(id);
-  errorElement.textContent = message;
-  errorElement.style.display = "block";
-  return false;
 }
 
 /*Returns the input element that caused the error.
@@ -111,14 +103,6 @@ function getErrorTarget(inputElement) {
  * @param {HTMLElement} inputElement - The input element in question.
  * @returns {HTMLElement} - The input element.
  */
-function clearError() {
-  const errorElementTitle = document.getElementById("errorMessageAddTaskTitle");
-  const errorElementDueDate = document.getElementById("errorMessageAddTaskDueDate");
-  const errorElementCategory = document.getElementById("errorMessageAddTaskCategory");
-
-  errorElementTitle.innerHTML = "";
-  errorElementDueDate.innerHTML = "";
-  errorElementCategory.innerHTML = "";
 function clearError() {
   const errorElementTitle = document.getElementById("errorMessageAddTaskTitle");
   const errorElementDueDate = document.getElementById("errorMessageAddTaskDueDate");

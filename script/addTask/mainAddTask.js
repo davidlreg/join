@@ -6,6 +6,7 @@ function initTask() {
   headerUserName();
   setPriority("medium");
   initFlatpickr();
+  addInputListeners();
 }
 
 function selectCategory(category) {
@@ -298,7 +299,6 @@ function initFlatpickr() {
   document.querySelectorAll("#addTaskDate").forEach(setupFlatpickr);
 }
 
-
 /**
  * Opens the date picker.
  */
@@ -309,29 +309,58 @@ function openDatePicker() {
 }
 
 /**
- * Resets the task creation form by clearing all input fields, deselecting contacts, 
- * resetting subtask icons, and setting the priority back to "Medium".
- * 
- * This function ensures that all selected checkboxes are unchecked, 
- * removes hover effects from contact items, and restores the default UI state.
+ * Resets the task creation form by clearing all input fields, deselecting contacts,
+ * resetting subtask icons, and restoring the default UI state.
+ *
+ * @function clearButton
  */
 function clearButton() {
-  ['addTaskTitle', 'addTaskDescription', 'addTaskDate', 'selectTask', 'addTaskSubTasks'].forEach(id => {
+  ["addTaskTitle", "addTaskDescription", "addTaskDate", "selectTask", "addTaskSubTasks"].forEach((id) => {
     document.getElementById(id).value = "";
   });
 
-  ['selectedContacts', 'subtaskList'].forEach(id => {
+  ["selectedContacts", "subtaskList"].forEach((id) => {
     document.getElementById(id).textContent = "";
   });
 
-  document.querySelectorAll('.contactCheckbox').forEach(checkbox => checkbox.checked = false);
-  document.querySelectorAll('.selectContactItem').forEach(contact => contact.classList.remove('selected'));
+  document.querySelectorAll(".contactCheckbox").forEach((checkbox) => (checkbox.checked = false));
+  document.querySelectorAll(".selectContactItem").forEach((contact) => contact.classList.remove("selected"));
 
-  document.getElementById('subtaskPlusIcon').style.display = "inline";
-  document.getElementById('subtaskIcons').style.display = "none";
+  document.getElementById("subtaskPlusIcon").style.display = "inline";
+  document.getElementById("subtaskIcons").style.display = "none";
 
   resetButtonsOverlay();
-  let mediumButton = document.getElementById('mediumButton');
-  mediumButton.classList.add('medium');
-  mediumButton.querySelector('img').src = `/assets/icon/addTask/medium_white.png`;
+  let mediumButton = document.getElementById("mediumButton");
+  mediumButton.classList.add("medium");
+  mediumButton.querySelector("img").src = `/assets/icon/addTask/medium_white.png`;
+  clearErrorForField("errorMessageAddTaskTitle");
+  clearErrorForField("errorMessageAddTaskDueDate");
+  clearErrorForField("errorMessageAddTaskCategory");
+}
+
+/**
+ * Adds input event listeners to the task title, due date, and category select fields,
+ * clearing corresponding error messages on user input.
+ *
+ * @function addInputListeners
+ */
+function addInputListeners() {
+  const titleInput = document.getElementById("addTaskTitle");
+  const dateInput = document.getElementById("addTaskDate");
+  const categorySelect = document.getElementById("selectTask");
+
+  titleInput.addEventListener("input", clearErrorForField.bind(null, "errorMessageAddTaskTitle"));
+  dateInput.addEventListener("input", clearErrorForField.bind(null, "errorMessageAddTaskDueDate"));
+  categorySelect.addEventListener("change", clearErrorForField.bind(null, "errorMessageAddTaskCategory"));
+}
+
+/**
+ * Clears the error message for the specified field.
+ *
+ * @function clearErrorForField
+ * @param {string} errorId - The ID of the error message element to clear.
+ */
+function clearErrorForField(errorId) {
+  const errorElement = document.getElementById(errorId);
+  errorElement.textContent = "";
 }

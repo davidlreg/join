@@ -45,65 +45,68 @@ function getBoardSectionFromURL() {
 }
 
 /**
- * Validates task input fields.
+ * Validates the input fields for task creation.
  *
- * @param {HTMLElement} title - The task title input field.
- * @param {HTMLElement} date - The due date input field.
- * @param {HTMLElement} category - The task category input field.
- * @returns {boolean} True if valid, false otherwise.
+ * @param {HTMLInputElement} title - The title input element.
+ * @param {HTMLInputElement} date - The date input element.
+ * @param {HTMLSelectElement} category - The category select element.
+ * @returns {boolean} - True if all inputs are valid, false otherwise.
  */
 function validateTaskInputs(title, date, category) {
-  clearError(title);
-  clearError(date);
-  clearError(category);
-
+  clearError();
   let isValid = true;
+
   if (!title.value.trim()) {
-    isValid = showError(title, "This field is required") && false;
+    isValid = showError("errorMessageAddTaskTitle", "This field is required") && false;
   }
+
   if (!date.value.trim()) {
-    isValid = showError(date, "This field is required") && false;
+    isValid = showError("errorMessageAddTaskDueDate", "This field is required") && false;
   }
+
   if (!category.value.trim()) {
-    isValid = showError(category, "This field is required") && false;
+    isValid = showError("errorMessageAddTaskCategory", "This field is required") && false;
   }
 
   return isValid;
 }
 
 /**
- * Displays an error message for an input field.
+ * Displays an error message for a specific input field.
  *
- * @param {HTMLElement} inputElement - The input field to show the error for.
+ * @param {string} id - The ID of the error message element.
  * @param {string} message - The error message to display.
- * @returns {boolean} Always returns false.
+ * @returns {boolean} - Always returns false to indicate validation failure.
  */
-function showError(inputElement, message) {
-  let targetElement = getErrorTarget(inputElement);
-  targetElement.classList.add("errorBorder");
-
-  const errorMessage = document.createElement("span");
-  errorMessage.classList.add("errorMessage");
-  errorMessage.textContent = message;
-  targetElement.insertAdjacentElement("afterend", errorMessage);
-
-  setTimeout(() => clearError(inputElement), 3000);
+function showError(id, message) {
+  const errorElement = document.getElementById(id);
+  errorElement.textContent = message;
+  errorElement.style.display = "block";
   return false;
 }
 
 /**
- * Clears error indications from an input field.
+ * Returns the input element that caused the error.
  *
- * @param {HTMLElement} inputElement - The input field to clear errors from.
+ * @param {HTMLElement} inputElement - The input element in question.
+ * @returns {HTMLElement} - The input element.
  */
-function clearError(inputElement) {
-  let targetElement = inputElement.id === "selectTask" ? inputElement.closest(".dropdown") : inputElement;
-  if (targetElement) {
-    targetElement.classList.remove("errorBorder");
+function getErrorTarget(inputElement) {
+  return inputElement;
+}
 
-    const existingError = targetElement.parentNode.querySelector(".errorMessage");
-    if (existingError) existingError.remove();
-  }
+/**
+ * Clears any existing error messages from the input fields.
+ *
+ */
+function clearError() {
+  const errorElementTitle = document.getElementById("errorMessageAddTaskTitle");
+  const errorElementDueDate = document.getElementById("errorMessageAddTaskDueDate");
+  const errorElementCategory = document.getElementById("errorMessageAddTaskCategory");
+
+  errorElementTitle.innerHTML = "";
+  errorElementDueDate.innerHTML = "";
+  errorElementCategory.innerHTML = "";
 }
 
 /**

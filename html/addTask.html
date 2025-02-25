@@ -105,6 +105,7 @@
                 <div class="taskInput">
                   <p>Title<span> *</span></p>
                   <input type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput" />
+                  <p class="errorMessageAddTask" id="errorMessageAddTaskTitle"></p>
                 </div>
                 <div class="taskInput">
                   <p>Description</p>
@@ -130,6 +131,7 @@
                 <div class="taskInput">
                   <p>Due Date <span>*</span></p>
                   <input type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()" />
+                  <p class="errorMessageAddTask" id="errorMessageAddTaskDueDate"></p>
                 </div>
                 <div class="taskInput">
                   <p>Prio</p>
@@ -157,10 +159,7 @@
                       <option value="Technical Task">Technical Task</option>
                       <option value="User Story">User Story</option>
                     </select>
-                  </div>
-                  <div class="selectCategory">
-                    <div class="selectCategoryItem" onclick="selectCategory('Technical Task')">Technical Task</div>
-                    <div class="selectCategoryItem" onclick="selectCategory('User Story')">User Story</div>
+                    <p class="errorMessageAddTask" id="errorMessageAddTaskCategory"></p>
                   </div>
                 </div>
 
@@ -206,7 +205,7 @@
                     <path d="M18 6L6 18M6 6l12 12"></path>
                   </svg>
                 </button>
-                <button type="button" class="createButton" onclick="createTasksForBoard()">
+                <button id="createTaskButton" type="button" class="createButton" onclick="createTasksForBoard()">
                   Create Task
                   <img src="/assets/img/check.png" alt="Create icon" />
                 </button>

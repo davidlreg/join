@@ -1,200 +1,280 @@
 let backendData = {};
 
+/**
+ * Fetches data from the backend and updates the global backendData variable.
+ *
+ * @returns {Promise<void>} A promise that resolves when data is fetched.
+ */
 async function fetchDataJSON() {
   let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
-  let responseJSON = await response.json();
-  backendData = responseJSON;
+  backendData = await response.json();
 }
 
+/**
+ * Initializes the application by setting up links and loading data.
+ *
+ * @returns {Promise<void>} A promise that resolves when initialization is complete.
+ */
 async function init() {
   setActiveLinkFromURL();
   showSummaryStartAnimation();
   await loadData();
-  processData();
+  await processData();
 }
 
+/**
+ * Loads data from the backend.
+ *
+ * @returns {Promise<void>} A promise that resolves when data is loaded.
+ */
 async function loadData() {
   await fetchDataJSON();
 }
 
-function processData() {
+/**
+ * Processes user data and updates the UI.
+ *
+ * @returns {Promise<void>} A promise that resolves when processing is complete.
+ */
+async function processData() {
   updateGreeting();
   headerUserName();
-  updatedBoardCount();
+  await updatedBoardCount();
 }
 
-
+/**
+ * Retrieves the user's name based on the stored email.
+ *
+ * @returns {string} The user's name or an empty string if not found.
+ */
 function getUserName() {
   const users = backendData.Data.Users;
   const userKeys = Object.keys(users);
   const localEmail = getUserByEmail();
 
-  for (let i = 0; i < userKeys.length; i++) {
-    const userId = userKeys[i];
+  for (let userId of userKeys) {
     if (localEmail === users[userId].email) {
-      headerName = localStorage.setItem('headerName', users[userId].name)
+      localStorage.setItem("headerName", users[userId].name);
       return users[userId].name;
     }
   }
   return "";
 }
 
+/**
+ * Retrieves the user's email from local storage.
+ *
+ * @returns {string} The user's email.
+ */
 function getUserByEmail() {
-  const localEmail = localStorage.getItem('email');
-  return localEmail;
-}
-
-function getUserType() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('user');
+  return localStorage.getItem("email");
 }
 
 /**
- * The geeting is updated by the date time
+ * Retrieves the user type from the URL parameters.
+ *
+ * @returns {string|null} The user type or null if not found.
  */
+function getUserType() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("user");
+}
 
+/**
+ * Updates the greeting message based on the current time and user status.
+ */
 function updateGreeting() {
   const userType = getUserType();
   const userName = getUserName();
-  const summaryUserName = document.getElementById('userName');
-  const startTime = document.getElementById('startTime');
+  const summaryUserName = document.getElementById("userName");
+  const startTime = document.getElementById("startTime");
 
   if (summaryUserName) {
     summaryUserName.textContent = userType === "loggedIn" ? userName : "";
   }
 
   const hour = new Date().getHours();
-  let greeting = "Good Night";
-
-  if (hour >= 5 && hour < 12) {
-    greeting = "Good Morning";
-  } else if (hour >= 12 && hour < 17) {
-    greeting = "Good Afternoon";
-  } else if (hour >= 17 && hour < 21) {
-    greeting = "Good Evening";
-  }
-
+  const greeting = getGreetingMessage(hour);
   startTime.textContent = userType === "loggedIn" ? `${greeting},` : `${greeting}!`;
 }
 
+/**
+ * Returns a greeting message based on the hour of the day.
+ *
+ * @param {number} hour - The current hour.
+ * @returns {string} The appropriate greeting message.
+ */
+function getGreetingMessage(hour) {
+  if (hour >= 5 && hour < 12) return "Good Morning";
+  if (hour >= 12 && hour < 17) return "Good Afternoon";
+  if (hour >= 17 && hour < 21) return "Good Evening";
+  return "Good Night";
+}
 
 /**
- * Update the summary counts from the board
+ * Updates the task counts and displays the upcoming deadline.
+ *
+ * @returns {Promise<void>} A promise that resolves when the update is complete.
  */
 async function updatedBoardCount() {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
   let dates = [];
 
-  Object.keys(tasks).forEach(taskId => {
-    let task = tasks[taskId]; 
-
-    setCountToDo(task)
-    setCountDone(task)
-    setCountUrgent(task)
-    setUpcomingDeadlineDate(task, dates)
-    setCountAwaiting(task)
-    setCountInProgress(task)
-    
+  Object.keys(tasks).forEach((taskId) => {
+    let task = tasks[taskId];
+    countTaskStatus(task);
+    setUpcomingDeadlineDate(task, dates);
   });
-  setCountTaskInBoard(tasks)
+
+  setCountTaskInBoard(tasks);
+  displayUpcomingDeadline(dates);
 }
 
 /**
- * update the count to do
- * 
+ * Counts the status of the given task.
+ *
+ * @param {Object} task - The task object.
+ */
+function countTaskStatus(task) {
+  setCountToDo(task);
+  setCountDone(task);
+  setCountUrgent(task);
+  setCountAwaiting(task);
+  setCountInProgress(task);
+}
+
+/**
+ * Updates the count of tasks marked as "To do".
+ *
+ * @param {Object} task - The task object.
  */
 function setCountToDo(task) {
-  let summaryCountToDo = document.getElementById('countToDo')
   if (task.status === "To do") {
-    summaryCountToDo.textContent = parseInt(summaryCountToDo.textContent) + 1;
+    updateCountDisplay("countToDo");
   }
 }
 
 /**
- * update the count done
- * 
+ * Updates the count of tasks marked as "Done".
+ *
+ * @param {Object} task - The task object.
  */
-
 function setCountDone(task) {
-  let summaryCountDone = document.getElementById('countDone')
   if (task.status === "Done") {
-    summaryCountDone.textContent = parseInt(summaryCountDone.textContent) + 1;
+    updateCountDisplay("countDone");
   }
 }
 
 /**
- * update the count urgent
- * 
+ * Updates the count of tasks marked as "Urgent".
+ *
+ * @param {Object} task - The task object.
  */
-
 function setCountUrgent(task) {
-  let summaryCountUrgent = document.getElementById('countUrgent')
   if (task.priority === "Urgent") {
-    summaryCountUrgent.textContent = parseInt(summaryCountUrgent.textContent) + 1;
+    updateCountDisplay("countUrgent");
   }
 }
 
 /**
- * update the count awaiting feedback
-*/
-
+ * Updates the count of tasks marked as "Await Feedback".
+ *
+ * @param {Object} task - The task object.
+ */
 function setCountAwaiting(task) {
-  let summaryCountTaskAwaiting = document.getElementById('countAwaitingFeedBack')
   if (task.status === "Await Feedback") {
-    summaryCountTaskAwaiting.textContent = parseInt(summaryCountTaskAwaiting.textContent) + 1;
+    updateCountDisplay("countAwaitingFeedBack");
   }
 }
 
 /**
- * update the count in progress
- * 
+ * Updates the count of tasks marked as "In Progress".
+ *
+ * @param {Object} task - The task object.
  */
-
 function setCountInProgress(task) {
-  let summaryCountTaskInProgress = document.getElementById('countTaskInProgress')
   if (task.status === "In Progress") {
-    summaryCountTaskInProgress.textContent = parseInt(summaryCountTaskInProgress.textContent) + 1;
+    updateCountDisplay("countTaskInProgress");
   }
 }
 
 /**
- * update the count of tasks in the board
- * 
+ * Updates the count of tasks displayed in the board.
+ *
+ * @param {Object} tasks - The tasks object.
  */
-
-function setCountTaskInBoard(task) {
-  let summaryCountTaskInBoard = document.getElementById('countTasksInBoard')
-  summaryCountTaskInBoard.textContent = Object.keys(task).length;
+function setCountTaskInBoard(tasks) {
+  document.getElementById("countTasksInBoard").textContent = Object.keys(tasks).length;
 }
 
 /**
- * Update the upcoming deadline in the database
+ * Updates the upcoming deadline date from a task.
+ *
+ * @param {Object} task - The task object containing dueDate and status.
+ * @param {Array<number>} dates - The array to store valid deadline timestamps.
  */
-
 function setUpcomingDeadlineDate(task, dates) {
-  let summaryUpcomingDeadline = document.getElementById('upcomingDeadline');
-  if (task.priority == "Urgent") {
-    let deadlineDate = new Date(task.dueDate);
-    dates.push(deadlineDate.getTime())
-    dates.sort((a, b) => a - b);
-    summaryUpcomingDeadline.textContent = formatTimestampCustom(dates[0])
+  if (!task.dueDate || task.status === "Done") return;
+
+  let deadlineDate = task.dueDate instanceof Date ? task.dueDate : parseCustomDate(task.dueDate);
+
+  if (!isNaN(deadlineDate.getTime())) {
+    dates.push(deadlineDate.getTime());
+  } else {
+    console.warn("Invalid date found:", task.dueDate);
   }
 }
 
 /**
- * Set the right Date in the upcoming deadline
- * 
- * 
+ * Converts a date string from DD/MM/YYYY to a valid Date object.
+ *
+ * @param {string} dateStr - The date string in the format DD/MM/YYYY.
+ * @returns {Date} A Date object representing the given date, or an invalid Date if the format is incorrect.
  */
+function parseCustomDate(dateStr) {
+  let parts = dateStr.split("/");
+  if (parts.length !== 3) return new Date(NaN);
 
+  let day = parseInt(parts[0], 10);
+  let month = parseInt(parts[1], 10) - 1;
+  let year = parseInt(parts[2], 10);
+
+  return new Date(year, month, day);
+}
+
+/**
+ * Updates the displayed upcoming deadline.
+ *
+ * @param {Array<number>} dates - The array of deadline timestamps.
+ */
+function displayUpcomingDeadline(dates) {
+  let summaryUpcomingDeadline = document.getElementById("upcomingDeadline");
+  if (dates.length > 0) {
+    dates.sort((a, b) => a - b);
+    summaryUpcomingDeadline.textContent = formatTimestampCustom(dates[0]);
+  }
+}
+
+/**
+ * Updates the count display of a specific element.
+ *
+ * @param {string} elementId - The ID of the element to update.
+ */
+function updateCountDisplay(elementId) {
+  let countElement = document.getElementById(elementId);
+  countElement.textContent = parseInt(countElement.textContent) + 1;
+}
+
+/**
+ * Formats a timestamp into a readable date string.
+ *
+ * @param {number} timestamp - The timestamp to format.
+ * @returns {string} The formatted date string.
+ */
 function formatTimestampCustom(timestamp) {
   const date = new Date(timestamp);
-  const months = [
-    "Januar", "Februar", "März", "April", "Mai", "Juni",
-    "Juli", "August", "September", "Oktober", "November", "Dezember"
-  ];
-
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let day = date.getDate();
   let month = months[date.getMonth()];
   let year = date.getFullYear();

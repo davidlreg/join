@@ -92,23 +92,6 @@ function showError(inputElement, message) {
 }
 
 /**
- * Determines the correct element where the error should be displayed.
- *
- * If the input field is the category dropdown, it returns the `.dropdown` container.
- * Otherwise, it returns the input field itself.
- *
- * @param {HTMLElement} inputElement - The input field being validated.
- * @returns {HTMLElement} - The element where the error styling should be applied.
- */
-function getErrorTarget(inputElement) {
-  if (inputElement.id === "selectTask") {
-    return inputElement.closest(".dropdown");
-  }
-
-  return inputElement;
-}
-
-/**
  * Clears error indications from an input field.
  *
  * @param {HTMLElement} inputElement - The input field to clear errors from.

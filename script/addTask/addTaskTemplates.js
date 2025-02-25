@@ -10,7 +10,8 @@ function addTaskHtmlTemplate() {
       <div class="taskInputOverlay">
         <p>Title<span>*</span></p>
         <input type="text" id="addTaskTitle" placeholder="Enter a title" class="addTaskInput addTaskInputOverlay" />
-      </div>
+        <p class="errorMessageAddTask" id="errorMessageAddTaskTitle"></p>
+        </div>
       <div class="taskInputOverlay">
         <p>Description</p>
         <textarea placeholder="Enter a Description" class="addDescriptionInputOverlay" id="addTaskDescription"></textarea>
@@ -33,7 +34,8 @@ function addTaskHtmlTemplate() {
       <div class="taskInputOverlay">
         <p>Due Date <span>*</span></p>
         <input type="text" class="addTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly onclick="openDatePicker()" />
-      </div>
+        <p class="errorMessageAddTask" id="errorMessageAddTaskDueDate"></p>
+        </div>
       <div class="taskInputOverlay">
         <p>Prio</p>
         <div class="priorityButtonOverlay">
@@ -59,10 +61,7 @@ function addTaskHtmlTemplate() {
             <option value="Technical Task">Technical Task</option>
             <option value="User Story">User Story</option>
           </select>
-        </div>
-        <div class="selectCategory selectCategoryOverlay">
-          <div class="selectCategoryItem" onclick="selectCategoryOverlay('Technical Task')">Technical Task</div>
-          <div class="selectCategoryItem" onclick="selectCategoryOverlay('User Story')">User Story</div>
+          <p class="errorMessageAddTask" id="errorMessageAddTaskCategory"></p>
         </div>
       </div>
       <div class="taskInputOverlay">

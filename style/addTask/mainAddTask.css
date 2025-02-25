@@ -109,9 +109,6 @@ form#taskForm h1 {
 }
 
 .dropdownCategory {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #ccc;
   border-radius: 10px;
   cursor: pointer;
@@ -502,7 +499,7 @@ button img {
 
 .requiredAction {
   display: flex;
-  padding-top: 70px;
+  padding-top: 60px;
   align-items: center;
   width: 100%;
   gap: 535px;
@@ -578,6 +575,30 @@ button img {
   font-size: 12px;
   margin-top: 4px;
   display: block;
+}
+
+.errorMessageAddTask {
+  color: red !important;
+  font-size: 12px !important;
+  margin-top: 2px !important;
+}
+
+#errorMessageAddTaskTitle {
+  position: relative !important;
+  height: 5px;
+  margin: 2px !important;
+}
+
+#errorMessageAddTaskDueDate {
+  position: relative !important;
+  height: 5px;
+  margin: 2px !important;
+}
+
+#errorMessageAddTaskCategory {
+  position: relative !important;
+  height: 5px;
+  margin: 2px !important;
 }
 
 /* Calender */

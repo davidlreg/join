@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let currentTouchElement;
 
 /**
  * Moves a task to a new status and updates the backend.
@@ -60,6 +61,7 @@ function allowDrop(event) {
 function drag(event, taskId) {
   currentDraggedElement = taskId;
   event.dataTransfer.setData("taskId", taskId);
+
   const taskElement = document.getElementById(taskId);
   if (taskElement) {
     taskElement.classList.add("shake");
@@ -121,3 +123,113 @@ function highlight(id) {
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("dragAreaHighlight");
 }
+
+
+/**
+ * Starts the touch interaction and sets the dragged task.
+ *
+ * @param {TouchEvent} event - The touch event that starts when the user touches the screen.
+ * @param {string} taskId - The ID of the task being dragged.
+ */
+function touchStart(event, taskId) {
+  currentTouchElement = document.getElementById(taskId);
+  currentDraggedElement = taskId;
+
+  event.preventDefault();
+}
+
+
+/**
+ * Moves the dragged task as the user moves their finger.
+ *
+ * @param {TouchEvent} event - The touch event that tracks the user's finger movement.
+ */
+function touchMove(event) {
+  let touch = event.touches[0];
+  currentTouchElement.style.position = "absolute";
+  currentTouchElement.style.left = `${touch.pageX - currentTouchElement.offsetWidth / 2}px`;
+  currentTouchElement.style.top = `${touch.pageY - currentTouchElement.offsetHeight / 2}px`;
+
+  event.preventDefault();
+}
+
+
+/**
+ * Ends the touch interaction and places the task in the closest drop zone.
+ *
+ * @param {TouchEvent} event - The touch event when the user lifts their finger.
+ */
+function touchEnd(event) {
+  if (!currentTouchElement) return;
+
+  let touch = event.changedTouches[0];
+  let dropZones = {
+    "boardNoTasksToDo": "To do",
+    "boardNoTasksInProgress": "In progress",
+    "boardNoTasksAwaiting": "Await Feedback",
+    "boardNoTasksDone": "Done"
+  };
+
+  let dropZone = findDropZone(touch.clientX, touch.clientY, dropZones);
+
+  if (dropZone) {
+    moveTo(dropZones[dropZone.id], currentDraggedElement);
+    dropZone.appendChild(currentTouchElement);
+  }
+
+  resetDraggedTask();
+  event.preventDefault();
+}
+
+/**
+ * Finds the nearest drop zone based on the touch coordinates.
+ *
+ * @param {number} x - The X position (horizontal) of the touch event.
+ * @param {number} y - The Y position (vertical) of the touch event.
+ * @param {Object} dropZones - An object with drop zone IDs as keys and task statuses as values.
+ * @returns {HTMLElement|null} - The closest drop zone or null if no valid zone is found.
+ */
+function findDropZone(x, y, dropZones) {
+  let closestZone = null;
+  let minDistance = Infinity;
+
+  Object.keys(dropZones).forEach(id => {
+    let zone = document.getElementById(id);
+    if (!zone) return;
+
+    let rect = zone.getBoundingClientRect();
+    let centerX = rect.left + rect.width / 2;
+    let centerY = rect.top + rect.height / 2;
+
+    let distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestZone = zone;
+    }
+  });
+
+  return closestZone;
+}
+
+/**
+ * Resets the position and variables of the dragged task after dropping.
+ */
+function resetDraggedTask() {
+  currentTouchElement.style.position = "";
+  currentTouchElement.style.left = "";
+  currentTouchElement.style.top = "";
+  currentTouchElement = null;
+  currentDraggedElement = null;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -279,7 +279,7 @@ function templateEditTask(task, taskId) {
           ${(Array.isArray(task.subtask) ? task.subtask : [])
             .map(
               (subtask) => `
-            <div class="subtaskContent" class="subtaskItem">
+            <div class="subtaskContent subtaskItem">
                 <div class="subtaskTextWrapper">
                   <li class="bulletPoint">&#8226;</li>
                   <li class="subtaskText">${subtask.text}</li>

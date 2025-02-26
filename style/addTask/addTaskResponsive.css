@@ -9,7 +9,7 @@
     gap: 0;
     flex: 1;
     overflow-x: scroll;
-    padding: 8px 0px;
+    padding: 8px 4px;
   }
 
   .taskInputLeft,
@@ -38,13 +38,6 @@
 
   .selectContainer {
     font-size: 18px;
-  }
-
-  .selectContact.show,
-  .selectCategory.show {
-    max-width: 1253px;
-    min-width: 270px;
-    position: relative;
   }
 
   .priorityButton {

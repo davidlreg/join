@@ -45,6 +45,7 @@ form#taskForm h1 {
 
 .taskInput {
   margin-bottom: 20px;
+  position: relative;
 }
 
 .taskInput p {
@@ -190,8 +191,7 @@ select {
   display: block;
   position: absolute;
   z-index: 10;
-  max-width: 438px;
-  min-width: 438px;
+  width: 100%;
   border-radius: 18px;
 }
 

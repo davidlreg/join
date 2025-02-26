@@ -612,8 +612,15 @@ button img {
 
 .flatpickr-calendar {
   left: auto !important;
-  width: auto !important;
-  right: 0 !important;
+  right: -12px !important;
+}
+
+.flatpickr-calendar.open {
+  transform: scale(0.9);
+}
+
+.flatpickr-calendar.static {
+  top: calc(100% + -12px) !important;
 }
 
 .flatpickr-wrapper {

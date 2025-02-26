@@ -266,7 +266,7 @@ function templateEditTask(task, taskId) {
           <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
           <div class="iconWrapper iconWrapperOverlay">
             <div class="addSubtask">
-              <img id="subtaskPlusIcon" src="/assets/img/subtaskPlusIcon.png" />
+              <img id="subtaskPlusIcon" src="/assets/img/subtaskPlusIcon.png" onclick="subtaskEmpty()"/>
             </div>
 
             <div id="subtaskIcons" style="display: none">
@@ -279,19 +279,19 @@ function templateEditTask(task, taskId) {
         <ul class="checkboxList" id="subtaskList">
           ${(Array.isArray(task.subtask) ? task.subtask : [])
             .map(
-              (subtask) => `
-            <div class="subtaskContent subtaskItem">
+              (subtask, index) => `
+              <div id="subtask${index + 1}" class="subtaskContent subtaskItem">
                 <div class="subtaskTextWrapper">
                   <li class="bulletPoint">&#8226;</li>
                   <li class="subtaskText">${subtask.text}</li>
                 </div>
                 <div class="subtaskIcons">
-                  <img src="/assets/icon/addTask/edit.png" class="subtaskIcon editSubtask" />
+                  <img src="/assets/icon/addTask/edit.png" class="subtaskIcon editSubtask" onclick="editOldSubtask(${index})"/>
                   <img src="/assets/icon/addTask/vector.png">
-                  <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask" />
+                  <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask" onclick="removeOldSubtask(${index})"/>
                 </div>
-            </div>
-          `
+              </div>
+            `
             )
             .join("")}
         </ul>

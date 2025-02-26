@@ -70,15 +70,28 @@ function toogleUser() {
   }
 }
 
+/**
+ * Updates the content to display the initials of the user's name.
+ * 
+ * If the name consists of one part, only the first letter of that part will be displayed.
+ * If the name consists of two parts, the first letter of each part will be shown.
+ * 
+ * If no name is found in localStorage, the function sets the content to "G" for guest.
+ */
 function headerUserName() {
   const headerName = localStorage.getItem("headerName");
   if (headerName) {
     nameParts = headerName.split(" ");
-    document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
+    if (nameParts.length === 1) {
+      document.getElementById("headerUserName").textContent = nameParts[0][0];
+    } else {
+      document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
+    }
   } else {
     document.getElementById("headerUserName").textContent = "G";
   }
 }
+
 
 /**
  * Logs the user out by redirecting them to the login page.

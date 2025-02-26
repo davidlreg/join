@@ -51,12 +51,32 @@ document.addEventListener("click", closeDropdown);
 
 /**
  * Loads contact data from the Firebase database and displays it in the dropdown.
+ * Loads contacts into conttact list and highlights those that are already selected.
  *
+ *
+ * @param {Array} assignedContacts 
  */
-async function loadContacts(assignedTo = []) {
+async function loadContacts(assignedContacts = []) {
   const data = await fetchContacts();
-  if (data) populateContacts(data, assignedTo);
+  if (!data) return;
+
+  const contactContainer = document.getElementById('selectContact');
+  contactContainer.innerHTML = '';
+
+  const contactList = Object.values(data);
+  contactList.forEach(contact => {
+    const contactItem = createContentItem(contact);
+
+    if (assignedContacts.some(assigned => assigned.name === contact.name)) {
+      contactItem.classList.add('selected');  
+      const checkBox = contactItem.querySelector('.contactCheckbox');
+      checkBox.checked = true;  
+    }
+
+    contactContainer.appendChild(contactItem);
+  });
 }
+
 
 /**
  * Fetches contact data from a Firebase database.

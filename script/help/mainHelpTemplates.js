@@ -6,7 +6,7 @@
  */
 function styleContent() {
     return `
-        @media (max-width: 1400px) {
+        @media (max-width: 1000px) {
             .sidebar__container {
                 flex-direction: row;
                 justify-content: space-between;

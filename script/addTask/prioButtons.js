@@ -42,7 +42,7 @@ function resetButtons() {
  *
  */
 function resetButtonsOverlay() {
-  const buttons = document.querySelectorAll(".priorityButtonOverlay button");
+  const buttons = document.querySelectorAll(".priorityButtonOverlay button, .editPriorityButtonOverlay button");
   buttons.forEach((button) => {
     button.classList.remove("urgent", "medium", "low");
     const img = button.querySelector("img");

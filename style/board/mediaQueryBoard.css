@@ -16,8 +16,11 @@
     padding-bottom: 32px;
   }
 
-  .editTaskInputOverlay {
+  .editTaskInput {
     margin-right: 0px;
+    padding: 12px 22px;
+    font-size: 18px;
+    max-width: 1980px;
   }
 
   .editTaskInput,
@@ -75,6 +78,22 @@
     overflow-y: scroll;
   }
 
+  .editDropdownCategory {
+    max-width: 1400px;
+  }
+
+  .editSelectContainerOverlay {
+    font-size: 18px;
+  }
+
+  .editSubtaskWrapper {
+    width: 100%;
+  }
+  .editIconWrapperOverlay {
+    right: 15px;
+    bottom: 7px;
+  }
+
 }
 
 @media (max-width: 1000px) {
@@ -89,6 +108,26 @@
 
   .checkboxList::-webkit-scrollbar {
     width: 8px !important;
+  }
+
+  .editDescriptionInputOverlay {
+    font-size: 18px;
+  }
+
+  .editPriorityButtonOverlay button:hover {
+    background-color: #fff;
+  }
+
+  .editPriorityButtonOverlay button.urgent {
+    background-color: #ff3d00;
+  }
+
+  .editPriorityButtonOverlay button.medium {
+    background-color: #ffa800;
+  }
+
+  .editPriorityButtonOverlay button.low {
+    background-color: #7ae229;
   }
 
   /* Disable Hover Effects */
@@ -117,6 +156,19 @@
     background-color: transparent;
   }
 
+  .editIconWrapperOverlay {
+    right: 15px;
+    bottom: 6px;
+  }
+
+  .editSubtask:hover,
+  .removeSubtask:hover,
+  .confirmEditSubtask:hover,
+  .editSubtask img:hover,
+  #confirmSubtask:hover,
+  #discardSubtask:hover {
+    background-color: transparent;
+  }
 }
 
 /* Anpassungen für Bildschirme bis 950px */
@@ -135,6 +187,9 @@
 @media (max-height: 795px) {
   .tasksInnerContainer {
     height: 470px;
+  }
+  .editSelectContainerOverlay {
+    font-size: 15px;
   }
 }
 
@@ -155,6 +210,26 @@
   .editPriorityButtonOverlay {
     gap: 5px !important;
   }
+  .editTaskInput {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  .editDescriptionInputOverlay {
+    width: 92%;
+    font-size: 14px;
+  }
+  
+  .editSelectedContacts {
+    flex-wrap: wrap;
+    padding: 8px;
+    margin-bottom: 20px;
+    max-width: 410px;
+  }
+  .okayBtn {
+    font-size: 18px;
+  }
+
 }
 
 /* Anpassungen für Bildschirme bis 450px */
@@ -174,6 +249,11 @@
 
 /* Zusätzliche Anpassungen für sehr kleine Bildschirme (bis 395px) */
 @media screen and (max-width: 395px) {
+
+  .editTaskInputOverlay {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
   .editTaskInputContainer {
     margin-right: 0;
   }
@@ -192,6 +272,18 @@
 
   .checkboxList::-webkit-scrollbar {
     display: none;
+  }
+
+  .editSelectContainerOverlay {
+    font-size: 14px;
+  }
+
+  .editIconWrapperOverlay {
+    right: 10px;
+    bottom: 4px;
+  }
+  .okayBtn {
+    width: 150px;
   }
 }
 

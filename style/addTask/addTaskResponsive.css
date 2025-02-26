@@ -93,6 +93,10 @@
     overflow-y: hidden;
     padding: 32px;
   }
+
+  .subtaskList {
+    position: static;
+  }
 }
 
 @media (max-width: 1000px) {

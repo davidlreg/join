@@ -68,7 +68,6 @@ function toogleUser() {
   } else {
     userOptions.classList.add("active");
   }
-  userOptions.classList.toggle("active");
 }
 
 /**

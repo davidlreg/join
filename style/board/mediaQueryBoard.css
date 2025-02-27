@@ -2,17 +2,17 @@
 
 @media screen and (max-width: 1400px) {
   .boardMain {
-    padding: 32px;
-  }
+    padding: 32px 0px 32px 32px  }
 
   .mainContentWrapper {
     height: 100%;
+    overflow-y: scroll;
+    padding-right: 8px;
     gap: 0px;
   }
 
   .boardSectionsContainer {
     flex-direction: column;
-    overflow-y: scroll;
     padding-bottom: 32px;
   }
 
@@ -134,7 +134,7 @@
 
 @media (max-height: 795px) {
   .tasksInnerContainer {
-    height: 470px;
+    max-height: 400px;
   }
 }
 

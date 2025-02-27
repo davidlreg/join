@@ -1,0 +1,369 @@
+/* Edit Overlay */
+.editBoardHeader {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.editOverlayContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  max-height: 700px;
+}
+
+.editTaskFormOverlay {
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: scroll !important;
+  padding-right: 8px;
+}
+
+.editTaskWrapper {
+  height: 100%;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.editTaksTopPartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editTaskInputOverlay {
+  margin-bottom: 18px;
+}
+
+.editTaskInputOverlay p {
+  margin-bottom: 8px;
+  color: #2a3647;
+  font-size: 20px;
+}
+
+.editTaskInputOverlay span {
+  cursor: pointer;
+  color: red;
+}
+
+.editTaskInputOverlay input[type="date"] {
+  color: #d1d1d1;
+}
+
+.editTaskInput {
+  width: 100%;
+  max-width: 445px;
+  height: 100%;
+  max-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.editTaskInput:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+}
+
+.editDescriptionInputOverlay {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 60px;
+  max-height: 150px;
+  padding: 18px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 5px;
+  background: #fff;
+  font-size: 16px;
+}
+
+.editPriorityButtonOverlay {
+  display: flex;
+  gap: 20px;
+}
+
+.editDescriptionInputOverlay:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+}
+
+.editPriorityButtonOverlay button {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  gap: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px 0px #0000001a;
+}
+
+.editPriorityButtonOverlay button:hover {
+  background-color: #ddd;
+}
+
+.editPriorityButtonOverlay button.urgent {
+  background-color: #ff3d00;
+  color: #fff;
+  font-weight: 600;
+}
+
+.editPriorityButtonOverlay button.medium {
+  background-color: #ffa800;
+  color: #fff;
+  font-weight: 600;
+}
+
+.editPriorityButtonOverlay button.low {
+  background-color: #7ae229;
+  color: #fff;
+  font-weight: 600;
+}
+
+.editPriorityButtonOverlay button {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.editDropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  position: relative;
+}
+
+.editDownCategory {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  max-height: 48px;
+  margin-bottom: 18px;
+  background: #fff;
+  position: relative;
+}
+
+.editDropdown:focus {
+  border-color: rgba(42, 170, 226, 1);
+  outline: none;
+}
+
+.editDropdownIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  transition: background-color 0.1s ease;
+}
+
+.editDropdownIcon img {
+  background-color: transparent;
+}
+
+.editSelectContainerOverlay {
+  background-color: #fff;
+  height: 100%;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 18px;
+}
+
+   
+.editTaskInputContainer {
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  padding-right: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar {
+  width: 6px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+  
+.editTaskInputContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.editSelectCategory,
+.editSelectContact {
+  display: none;
+  height: 90px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 5px 14px -5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  overflow-y: auto;
+}
+  
+.editSelectCategory.show,
+.editSelectContact.show {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  max-width: 438px;
+  min-width: 438px;
+  border-radius: 18px;
+}
+
+.selectedContacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: 38px;
+}
+
+/* Priority Buttons */
+  
+.editPriorityImages {
+  width: 15px !important;
+  height: 15px !important;
+  object-fit: contain;
+}
+  
+.editSelectContact {
+  width: inherit !important;
+  position: relative !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
+}
+
+.editSelectedContacts {
+  display: flex ;
+}
+  
+.editTaskInputLeft,
+.editTaskInputRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100% !important;
+}
+
+.editSubtaskWrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.editIconWrapperOverlay {
+  position: absolute;
+  right: 15px;
+  bottom: 6px;
+}
+
+.editSubtask {
+  background-color: transparent;
+}
+
+.editSubtask img {
+  background-color: transparent;
+}
+
+.editSubtask:hover,
+.removeSubtask:hover,
+.confirmEditSubtask:hover,
+.editSubtask img:hover,
+#confirmSubtask:hover,
+#discardSubtask:hover {
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.editSubtaskIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.editSubtaskContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 28px;
+  margin-top: 8px;
+  padding: 5px 26px;
+}
+
+.editSubtaskContent.editing {
+  border-bottom: 2px solid #007bff;
+  background-color: white;
+}
+
+.editSubtaskContent.editing .editSubtaskIcons {
+  display: flex !important;
+}
+
+.editSubtaskContent:hover {
+  background-color: #ededed;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.editSubtaskContent.editing:hover {
+  background-color: white;
+  border-radius: 0;
+}
+
+.editSubtaskItem:hover .editSubtaskIcons {
+  display: flex;
+}
+
+.editSubtaskTextWrapper {
+  display: flex;
+  align-self: center;
+  gap: 8px;
+  color: #2a3647;
+  flex-grow: 1;
+}
+
+.editSubtaskIcons {
+  display: none;
+  gap: 10px;
+}
+
+.okayBtn:hover {
+  background-color: #2a3647;
+}

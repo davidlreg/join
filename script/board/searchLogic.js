@@ -1,9 +1,7 @@
 /**
  * Filters tasks based on the search input.
- *
- * - Checks task title and description.
- * - Displays matching tasks, hides non-matching ones.
- * - Shows a "No results" message if no tasks match.
+ * Displays matching tasks and hides non-matching ones.
+ * Shows a "No results" message if no tasks match.
  *
  */
 function filterTasks() {
@@ -34,17 +32,19 @@ function filterTasks() {
  */
 function showNoResultsMessage(show) {
   let message = document.getElementById("noResultsMessage");
-  if (show) {
-    message.style.display = "block";
-  } else {
-    message.style.display = "none";
+  message.style.display = show ? "block" : "none";
+}
+
+/**
+ * Initializes the search functionality by adding an event listener to the search input.
+ *
+ */
+function initializeSearch() {
+  const searchInput = document.getElementById("findTask");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", filterTasks);
   }
 }
 
-const searchInput = document.getElementById("findTask");
-
-if (searchInput) {
-  searchInput.addEventListener("input", filterTasks);
-} else {
-  console.log('Suchfeld "findTask" nicht gefunden, kein EventListener hinzugefügt.');
-}
+initializeSearch();

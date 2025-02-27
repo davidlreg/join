@@ -1,5 +1,6 @@
 /**
  * Initializes the animation if it hasn't been played before.
+ *
  */
 function initializeJoinAnimation() {
   let logoContainer = document.getElementById("logoContainer");
@@ -16,7 +17,7 @@ function initializeJoinAnimation() {
 
 /**
  * Checks if the animation has been played before by the user.
- * 
+ *
  * @returns {boolean} True if animation was played, false otherwise.
  */
 function hasAnimationPlayed() {
@@ -25,6 +26,7 @@ function hasAnimationPlayed() {
 
 /**
  * Adds animation classes to elements to trigger the animation.
+ *
  */
 function addAnimationClasses() {
   let logoContainer = document.getElementById("logoContainer");
@@ -44,6 +46,7 @@ function addAnimationClasses() {
 
 /**
  * Removes animation classes from elements.
+ *
  */
 function removeAnimationClasses() {
   let logoContainer = document.getElementById("logoContainer");
@@ -63,6 +66,7 @@ function removeAnimationClasses() {
 
 /**
  * Handles the animation end event and updates state.
+ *
  */
 function onAnimationEnd() {
   removeAnimationClasses();

@@ -12,8 +12,7 @@ async function fetchDataJSON() {
 }
 
 /**
- * Initializes the application by setting the active link, loading data,
- * updating the header user name, loading tasks, and checking existing tasks.
+ * Initializes the application.
  *
  * @async
  */
@@ -26,7 +25,7 @@ async function init() {
 }
 
 /**
- * Loads data from the backend by calling `fetchDataJSON`.
+ * Loads data from the backend.
  *
  * @async
  */
@@ -36,7 +35,6 @@ async function loadData() {
 
 /**
  * Loads all tasks from the backend and adds them to the board.
- * It sorts tasks into appropriate sections based on their status.
  *
  * @async
  */
@@ -44,7 +42,6 @@ async function loadTasksToBoard() {
   await fetchDataJSON();
 
   let tasks = backendData.Data.Tasks;
-
   const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
 
   let toDoTemplateRef = document.getElementById("boardNoTasksToDo");
@@ -75,7 +72,7 @@ async function loadTasksToBoard() {
 }
 
 /**
- * Retrieves board elements and returns them as an object.
+ * Retrieves board elements.
  *
  * @returns {Object} Board elements.
  */
@@ -97,20 +94,19 @@ function getBoardElements() {
  * @param {string} taskId - The ID of the task to display.
  */
 async function addBoardOverlay(taskId) {
-  await fetchDataJSON(); 
+  await fetchDataJSON();
   const { boardOverlay, overlayBoardContent } = getBoardElements();
   let tasks = backendData.Data.Tasks;
 
   let task = tasks[taskId];
 
   if (task) {
-      task.id = taskId; 
-
-      let addBoardHtml = templateBoardOverlay(task, taskId);
-      overlayBoardContent.innerHTML = addBoardHtml;
-      boardOverlay.classList.remove("hideOverlay");
+    task.id = taskId;
+    let addBoardHtml = templateBoardOverlay(task, taskId);
+    overlayBoardContent.innerHTML = addBoardHtml;
+    boardOverlay.classList.remove("hideOverlay");
   } else {
-      console.error("Task mit dieser ID nicht gefunden:", taskId);
+    console.error("Task not found:", taskId);
   }
 }
 
@@ -144,7 +140,6 @@ function setIdToCreateTasks(boardSectionId, taskHtml) {
     boardSectionId.textContent = "";
     boardSectionId.style.backgroundColor = "transparent";
   }
-
   boardSectionId.insertAdjacentHTML("beforeend", taskHtml);
 }
 
@@ -173,13 +168,7 @@ function setRightBackgroundColorForCategory() {
  * @returns {string} A HSL color string (e.g., "hsl(210, 70%, 60%)").
  */
 function getRandomColorForName(name) {
-  const colorPalette = [
-    "#FF8C00", "#FF69B4", "#8A2BE2", 
-    "#800080", "#00BFFF", "#40E0D0", 
-    "#FF6347", "#FFA07A", "#FF77FF", 
-    "#FFD700", "#0000FF", "#ADFF2F", 
-    "#FF4500", "#FFA500"  
-  ];
+  const colorPalette = ["#FF8C00", "#FF69B4", "#8A2BE2", "#800080", "#00BFFF", "#40E0D0", "#FF6347", "#FFA07A", "#FF77FF", "#FFD700", "#0000FF", "#ADFF2F", "#FF4500", "#FFA500"];
 
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
@@ -191,13 +180,19 @@ function getRandomColorForName(name) {
   return colorPalette[index];
 }
 
-
+/**
+ * Toggles the completion status of a subtask.
+ *
+ * @param {string} taskId - The ID of the task.
+ * @param {number} subtaskIndex - The index of the subtask.
+ * @async
+ */
 async function toggleSubtask(taskId, subtaskIndex) {
   await fetchDataJSON();
   let task = backendData.Data.Tasks[taskId];
 
   if (!task || !Array.isArray(task.subtask)) {
-      return;
+    return;
   }
 
   task.subtask[subtaskIndex].completed = !task.subtask[subtaskIndex].completed;
@@ -206,13 +201,17 @@ async function toggleSubtask(taskId, subtaskIndex) {
   updateProgressBar(taskId);
 }
 
-
+/**
+ * Updates the progress bar for a task.
+ *
+ * @param {string} taskId - The ID of the task.
+ */
 function updateProgressBar(taskId) {
   let task = backendData.Data.Tasks[taskId];
 
   if (!task || !Array.isArray(task.subtask)) return;
 
-  let completedSubtasks = task.subtask.filter(subtask => subtask.completed).length;
+  let completedSubtasks = task.subtask.filter((subtask) => subtask.completed).length;
   let totalSubtasks = task.subtask.length;
   let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
   let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
@@ -220,20 +219,25 @@ function updateProgressBar(taskId) {
   let progressBar = document.querySelector(`.boardSubtaskProgressBar[data-task-id="${taskId}"]`);
 
   if (progressBar) {
-      progressBar.style.width = `${progressPercentage}%`;
-      progressBar.style.backgroundColor = progressColor;
+    progressBar.style.width = `${progressPercentage}%`;
+    progressBar.style.backgroundColor = progressColor;
   }
 }
 
-
+/**
+ * Shows a tooltip with the specified text.
+ *
+ * @param {MouseEvent} event - The mouse event.
+ * @param {string} text - The text to display in the tooltip.
+ */
 function showTooltip(event, text) {
   hideTooltip();
   let tooltip = document.getElementById("tooltip");
   if (!tooltip) {
-      tooltip = document.createElement("div");
-      tooltip.id = "tooltip";
-      tooltip.className = "tooltip";
-      document.body.appendChild(tooltip);
+    tooltip = document.createElement("div");
+    tooltip.id = "tooltip";
+    tooltip.className = "tooltip";
+    document.body.appendChild(tooltip);
   }
   tooltip.innerText = text;
   tooltip.style.left = `${event.clientX + 20}px`;
@@ -241,8 +245,11 @@ function showTooltip(event, text) {
   tooltip.style.display = "block";
 }
 
+/**
+ * Hides the tooltip.
+ *
+ */
 function hideTooltip() {
   let tooltip = document.getElementById("tooltip");
   if (tooltip) tooltip.style.display = "none";
 }
-

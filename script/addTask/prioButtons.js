@@ -1,5 +1,10 @@
 let selectedPriority = null;
 
+/**
+ * Sets the priority by updating button styles and images.
+ *
+ * @param {string} priority - The priority level ("urgent", "medium", "low").
+ */
 function setPriority(priority) {
   resetButtons();
   resetButtonsOverlay();
@@ -12,6 +17,10 @@ function setPriority(priority) {
   selectedPriority = priority;
 }
 
+/**
+ * Resets the styles and images of all priority buttons.
+ *
+ */
 function resetButtons() {
   const buttons = document.querySelectorAll(".priorityButton button");
   buttons.forEach((button) => {
@@ -28,8 +37,12 @@ function resetButtons() {
   });
 }
 
+/**
+ * Resets the styles and images of all priority buttons in the overlay.
+ *
+ */
 function resetButtonsOverlay() {
-  const buttons = document.querySelectorAll(".priorityButtonOverlay button");
+  const buttons = document.querySelectorAll(".priorityButtonOverlay button, .editPriorityButtonOverlay button");
   buttons.forEach((button) => {
     button.classList.remove("urgent", "medium", "low");
     const img = button.querySelector("img");

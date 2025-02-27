@@ -1,5 +1,9 @@
 let datePicker;
 
+/**
+ * Initializes the task management system.
+ *
+ */
 function initTask() {
   setActiveLinkFromURL();
   loadContacts();
@@ -9,12 +13,22 @@ function initTask() {
   addInputListeners();
 }
 
+/**
+ * Selects a task category.
+ *
+ * @param {string} category - The selected category.
+ */
 function selectCategory(category) {
   const selectContainer = document.getElementById("selectTask");
   selectContainer.value = category;
   toggleCategory();
 }
 
+/**
+ * Selects a task category from the overlay.
+ *
+ * @param {string} category - The selected category.
+ */
 function selectCategoryOverlay(category) {
   const selectContainer = document.getElementById("selectTask");
   selectContainer.value = category;
@@ -22,7 +36,7 @@ function selectCategoryOverlay(category) {
 }
 
 /**
- * Toggles the visibility of all the contacts.
+ * Toggles the visibility of the contact dropdown.
  *
  */
 function toggleContact() {
@@ -32,7 +46,7 @@ function toggleContact() {
 
 /**
  * Closes the dropdown menu if the click occurs outside of it.
- *
+ * 
  * @param {Event} event - The click event.
  */
 function closeDropdown(event) {
@@ -46,42 +60,36 @@ function closeDropdown(event) {
   }
 }
 
-// Add event listener to close dropdown on page click
-document.addEventListener("click", closeDropdown);
-
 /**
- * Loads contact data from the Firebase database and displays it in the dropdown.
- * Loads contacts into conttact list and highlights those that are already selected.
+ * Loads contacts and populates the dropdown.
  *
- *
- * @param {Array} assignedContacts 
+ * @param {Array} [assignedTo=[]] - List of assigned contacts.
  */
 async function loadContacts(assignedContacts = []) {
   const data = await fetchContacts();
   if (!data) return;
 
-  const contactContainer = document.getElementById('selectContact');
-  contactContainer.innerHTML = '';
+  const contactContainer = document.getElementById("selectContact");
+  contactContainer.innerHTML = "";
 
   const contactList = Object.values(data);
-  contactList.forEach(contact => {
+  contactList.forEach((contact) => {
     const contactItem = createContentItem(contact);
 
-    if (assignedContacts.some(assigned => assigned.name === contact.name)) {
-      contactItem.classList.add('selected');  
-      const checkBox = contactItem.querySelector('.contactCheckbox');
-      checkBox.checked = true;  
+    if (assignedContacts.some((assigned) => assigned.name === contact.name)) {
+      contactItem.classList.add("selected");
+      const checkBox = contactItem.querySelector(".contactCheckbox");
+      checkBox.checked = true;
     }
 
     contactContainer.appendChild(contactItem);
   });
 }
 
-
 /**
- * Fetches contact data from a Firebase database.
+ * Fetches contact data from Firebase.
  *
- * @returns {Promise<Array>} A promise that resolves to an array of contact objects if available, or an empty array if no contacts are found.
+ * @returns {Promise<Array>} A promise resolving to an array of contacts.
  */
 async function fetchContacts() {
   try {
@@ -95,10 +103,10 @@ async function fetchContacts() {
 }
 
 /**
- * Populates the contact dropdown with contact data.
+ * Populates the contact dropdown.
  *
- * @param {Object} contacts - An object containing contact data, which is converted into an array
- *                            using Object.values() to ensure proper iteration and length checking.
+ * @param {Object} contacts - Contact data object.
+ * @param {Array} [assignedTo=[]] - Assigned contacts.
  */
 function populateContacts(contacts, assignedTo = []) {
   const contactContainer = document.getElementById("selectContact");
@@ -115,9 +123,10 @@ function populateContacts(contacts, assignedTo = []) {
 }
 
 /**
- * Adds a contact item to the dropdown menu.
+ * Adds a contact to the dropdown.
  *
- * @param {Object} contact - The contact object containing details (e.g., name, email, etc.).
+ * @param {Object} contact - The contact object.
+ * @param {Array} [assignedTo=[]] - Assigned contacts.
  */
 function addContactToDropdown(contact, assignedTo = []) {
   const contactContainer = document.getElementById("selectContact");
@@ -126,12 +135,12 @@ function addContactToDropdown(contact, assignedTo = []) {
 }
 
 /**
- * Creates a contact item with a profile placeholder, name, and checkbox.
+ * Creates a contact item element.
  *
- * @param {Object} contact - The contact object containing the name.
- * @returns {HTMLElement} A div element representing a contact.
+ * @param {Object} contact - The contact object.
+ * @param {Array} [assignedTo=[]] - Assigned contacts.
+ * @returns {HTMLElement} Contact item element.
  */
-
 function createContentItem(contact, assignedTo = []) {
   const contactItem = document.createElement("div");
   contactItem.classList.add("selectContactItem");
@@ -145,7 +154,6 @@ function createContentItem(contact, assignedTo = []) {
   contactItem.appendChild(checkBox);
 
   addContactClick(contactItem, checkBox);
-
   return contactItem;
 }
 
@@ -250,9 +258,8 @@ function updateSelectedContact() {
 }
 
 /**
- * Creates profile picture elements for selected contacts in
+ * Creates profile picture elements for selected contacts in Task.
  *
- * Task.
  *
  * @param {string[]} selectedNames - Array of contact names with checked checkboxes.
  * @returns {HTMLDivElement[]} An array of div elements representing profile pictures.
@@ -271,6 +278,7 @@ function createSelectedProfilePictures(selectedNames) {
 
 /**
  * Returns today's date at 00:00.
+ * 
  * @returns {Date} - Today's date without time.
  */
 function getToday() {
@@ -281,6 +289,7 @@ function getToday() {
 
 /**
  * Past days were decleared with a gray background-color.
+ * 
  * @param {HTMLElement} dayElem - HTML-Element of the day.
  */
 function stylePastDays(dayElem) {
@@ -296,6 +305,7 @@ function stylePastDays(dayElem) {
 
 /**
  * Initializes Flatpickr for a single input field.
+ * 
  * @param {HTMLInputElement} inputElement - Input-Element for the datePicker.
  */
 function setupFlatpickr(inputElement) {
@@ -314,42 +324,35 @@ function setupFlatpickr(inputElement) {
 
 /**
  * Searches for all datepicker input fields with the ID “addTaskDate” and initializes Flatpickr for each of them.
+ * 
  */
 function initFlatpickr() {
   document.querySelectorAll("#addTaskDate").forEach(setupFlatpickr);
 }
 
 /**
- * Opens the date picker.
+ * Opens the date picker if available.
  *
  */
 function openDatePicker() {
-  if (datePicker) {
-    datePicker.open();
-  }
+  if (datePicker) datePicker.open();
 }
 
 /**
- * Resets the task creation form by clearing all input fields, deselecting contacts,
- * resetting subtask icons, and restoring the default UI state.
+ * Clears the task creation form.
  *
- * @function clearButton
  */
 function clearButton() {
   ["addTaskTitle", "addTaskDescription", "addTaskDate", "selectTask", "addTaskSubTasks"].forEach((id) => {
     document.getElementById(id).value = "";
   });
-
   ["selectedContacts", "subtaskList"].forEach((id) => {
     document.getElementById(id).textContent = "";
   });
-
   document.querySelectorAll(".contactCheckbox").forEach((checkbox) => (checkbox.checked = false));
   document.querySelectorAll(".selectContactItem").forEach((contact) => contact.classList.remove("selected"));
-
   document.getElementById("subtaskPlusIcon").style.display = "inline";
   document.getElementById("subtaskIcons").style.display = "none";
-
   resetButtonsOverlay();
   let mediumButton = document.getElementById("mediumButton");
   mediumButton.classList.add("medium");
@@ -360,10 +363,8 @@ function clearButton() {
 }
 
 /**
- * Adds input event listeners to the task title, due date, and category select fields,
- * clearing corresponding error messages on user input.
+ * Adds input event listeners to clear errors on input.
  *
- * @function addInputListeners
  */
 function addInputListeners() {
   const titleInput = document.getElementById("addTaskTitle");
@@ -376,12 +377,13 @@ function addInputListeners() {
 }
 
 /**
- * Clears the error message for the specified field.
+ * Clears an error message by its ID.
  *
- * @function clearErrorForField
- * @param {string} errorId - The ID of the error message element to clear.
+ * @param {string} errorId - The ID of the error message element.
  */
 function clearErrorForField(errorId) {
   const errorElement = document.getElementById(errorId);
   errorElement.textContent = "";
 }
+
+document.addEventListener("click", closeDropdown);

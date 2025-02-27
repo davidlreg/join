@@ -2,12 +2,24 @@ let backendData = {};
 let currentlyViewedUser = {};
 let selectedContact = null;
 
+/**
+ * Initializes the application by setting the active link and preparing data.
+ * 
+ * @async
+ * @function
+ */
 async function init() {
   setActiveLinkFromURL();
   await prepareData();
   headerUserName();
 }
 
+/**
+ * Prepares data by fetching JSON data and rendering contacts.
+ * 
+ * @async
+ * @function
+ */
 async function prepareData() {
   await fetchDataJSON();
   renderContactsInContactList();
@@ -78,8 +90,6 @@ function removeOverlayContentMobile() {
     overlayContainer.classList.remove("overlayBackground");
   }, 300);
 }
-
-// Logic for the floating contact template
 
 /**
  * Opens or closes the contact overlay and highlights the selected contact.
@@ -194,6 +204,7 @@ function updateSelectedContact(name, email) {
 
 /**
  * Resets the selected contact to default state.
+ * 
  */
 function resetSelectedContact() {
   if (selectedContact) {
@@ -252,6 +263,7 @@ function showMobileContactOverlay(name, email, phone, initials, color, contactId
 
 /**
  * Closes the contact overlay.
+ * 
  */
 function closeContactOverlay() {
   const overlay = document.querySelector(".profileHeadSection");
@@ -285,8 +297,6 @@ function closeFloatingContactOverlay(overlay) {
     overlay.style.display = "none";
   }, 300);
 }
-
-// Logic for the mobile edit & delete menu
 
 /**
  * Opens the mobile contact menu by rendering the overlay and adding a close event listener.

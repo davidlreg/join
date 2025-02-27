@@ -3,7 +3,7 @@ function init() {
 }
 
 /**
- * This function changes the background colour of the currently clicked element in the sidebar.
+ * Changes the background colour of the currently clicked element in the sidebar.
  *
  */
 function setActiveLinkFromURL() {
@@ -58,7 +58,7 @@ function historyBack() {
 
 /**
  * Toggles the visibility of the user options menu.
- * If the menu is open, it will be closed; if it is closed, it will be opened.
+ *
  */
 function toogleUser() {
   const userOptions = document.getElementById("userIcon");
@@ -71,34 +71,25 @@ function toogleUser() {
 }
 
 /**
- * Updates the content to display the initials of the user's name.
- * 
- * If the name consists of one part, only the first letter of that part will be displayed.
- * If the name consists of two parts, the first letter of each part will be shown.
- * 
- * If no name is found in localStorage, the function sets the content to "G" for guest.
+ * Updates the header username display based on localStorage value.
+ *
  */
 function headerUserName() {
   const headerName = localStorage.getItem("headerName");
   if (headerName) {
-    nameParts = headerName.split(" ");
-    if (nameParts.length === 1) {
-      document.getElementById("headerUserName").textContent = nameParts[0][0];
-    } else {
-      document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
-    }
+    const nameParts = headerName.split(" ");
+    document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
   } else {
     document.getElementById("headerUserName").textContent = "G";
   }
 }
 
-
 /**
  * Logs the user out by redirecting them to the login page.
+ *
  */
 function logout() {
   localStorage.clear();
   sessionStorage.clear();
-
   window.location.href = "login.html";
 }

@@ -90,15 +90,6 @@ form#taskFormOverlay {
   flex-direction: column;
 }
 
-.editTaskFormOverlay {
-  height: 100% !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  overflow-y: scroll !important;
-  padding-right: 8px;
-}
-
 #taskFormOverlay h1 {
   font-size: 50px;
   margin-bottom: 12px;
@@ -236,24 +227,9 @@ form#taskFormOverlay {
   gap: 100px;
 }
 
-.editTaksTopPartWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .taskInputLeft {
   display: flex;
   gap: 16px;
-}
-
-.editTaskWrapper {
-  height: 100%;
-  max-height: 700px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .editButtonWidth {

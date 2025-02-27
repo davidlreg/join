@@ -14,7 +14,6 @@ function openAddContactOverlay() {
       inputElement.addEventListener("blur", checkFormValidity);
     }
   });
-
   openOverlay(overlay);
 }
 
@@ -43,13 +42,11 @@ function openAddContactOverlayMobile() {
  */
 function closeAddContactOverlay() {
   const overlay = document.querySelector(".addContactOverlay");
-
   if (window.innerWidth > 1000) {
     closeOverlay(overlay);
   } else {
     closeAddContactOverlayMobile();
   }
-
   removeOverlayContent();
 }
 
@@ -208,6 +205,7 @@ function showContactCreatedMessage() {
 /**
  * Displays a success message when a contact is created.
  * The message is animated into view and automatically disappears after a delay.
+ *
  */
 function showMobileContactCreatedMessage() {
   const createdContactContainer = document.getElementById("showCreatedContactContainerMobile");
@@ -291,7 +289,6 @@ function removeContactMessageAfterAnimation(overlay) {
  *
  * @returns {string} HTML markup for the success message.
  */
-
 function showContactSucessfullyCreatedMessage() {
   return `
     <div class="contactSucessfullyCretaed" id="contactSucessfullyCretaed">

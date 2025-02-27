@@ -149,8 +149,6 @@ function touchStart(event, taskId) {
  * @param {TouchEvent} event - The touch event.
  */
 function touchMove(event) {
-  if (!currentTouchElement) return;
-
   let touch = event.touches[0];
   currentTouchElement.style.position = "absolute";
   currentTouchElement.style.left = `${touch.pageX - currentTouchElement.offsetWidth / 2}px`;
@@ -166,19 +164,11 @@ function touchMove(event) {
 function touchEnd(event) {
   clearTimeout(touchTimer);
 
-  if (!currentTouchElement) return;
-
   if (!currentTouchElement.classList.contains("dragging")) {
     addBoardOverlay(currentDraggedElement);
   } else {
-
     let touch = event.changedTouches[0];
-    let dropZones = {
-      boardNoTasksToDo: "To do",
-      boardNoTasksInProgress: "In progress",
-      boardNoTasksAwaiting: "Await Feedback",
-      boardNoTasksDone: "Done",
-    };
+    let dropZones = getDropZones();
     let dropZone = findDropZone(touch.clientX, touch.clientY, dropZones);
     if (dropZone) {
       moveTo(dropZones[dropZone.id], currentDraggedElement);
@@ -189,6 +179,19 @@ function touchEnd(event) {
   event.preventDefault();
 }
 
+/**
+ * Gives a list of drop zones and their task names.
+ * Used to know where to place a task after touch.
+ *
+ * */
+function getDropZones() {
+  return {
+    boardNoTasksToDo: "To do",
+    boardNoTasksInProgress: "In progress",
+    boardNoTasksAwaiting: "Await Feedback",
+    boardNoTasksDone: "Done",
+  };
+}
 
 /**
  * Finds the nearest drop zone based on the touch coordinates.

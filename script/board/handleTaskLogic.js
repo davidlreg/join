@@ -1,4 +1,4 @@
-/** 
+/**
  * Retrieves elements for task creation.
  *
  */
@@ -13,7 +13,7 @@ function getAddTaskElements() {
   };
 }
 
-/** 
+/**
  * Retrieves selected contacts.
  *
  */
@@ -23,7 +23,7 @@ function getSelectedContacts() {
   }));
 }
 
-/** 
+/**
  * Retrieves checked contacts.
  *
  */
@@ -31,7 +31,7 @@ function getCheckedSelectedContacts() {
   return Array.from(document.querySelectorAll("#selectedContacts .profilePicture")).map((el) => el.getAttribute("title"));
 }
 
-/** 
+/**
  * Gets "boardSection" from URL.
  *
  */
@@ -39,7 +39,7 @@ function getBoardSectionFromURL() {
   return new URLSearchParams(window.location.search).get("boardSection");
 }
 
-/** 
+/**
  * Validates task inputs.
  *
  */
@@ -52,7 +52,7 @@ function validateTaskInputs(title, date, category) {
   return isValid;
 }
 
-/** 
+/**
  * Displays an error message.
  *
  */
@@ -62,9 +62,9 @@ function showError(id, message) {
   errorElement.style.display = "block";
 }
 
-/** 
- * Clears error messages. 
- * 
+/**
+ * Clears error messages.
+ *
  * */
 function clearError() {
   document.getElementById("errorMessageAddTaskTitle").innerHTML = "";
@@ -72,7 +72,7 @@ function clearError() {
   document.getElementById("errorMessageAddTaskCategory").innerHTML = "";
 }
 
-/** 
+/**
  * Creates a task object.
  *
  */
@@ -94,8 +94,8 @@ function createTaskObject(elements, selectedBoardSection) {
   };
 }
 
-/** 
- * 
+/**
+ *
  * Creates and adds a task to the board.
  *
  */
@@ -111,7 +111,7 @@ async function createTasksForBoard() {
   window.location.href = "/html/board.html?active=board";
 }
 
-/** 
+/**
  * Edits a task on the board.
  *
  */
@@ -136,7 +136,7 @@ async function editTasksForBoard(taskId) {
   location.reload();
 }
 
-/** 
+/**
  * Deletes a task.
  *
  */
@@ -152,7 +152,7 @@ async function deleteTask() {
   location.reload();
 }
 
-/** 
+/**
  * Syncs backend data with Firebase.
  *
  */
@@ -164,7 +164,7 @@ async function syncBackendDataWithFirebase() {
   });
 }
 
-/** 
+/**
  * Saves task to backend.
  *
  */
@@ -174,7 +174,7 @@ async function pushTaskToBackendData(task) {
   backendData.Data.Tasks[`taskId${Object.keys(backendData.Data.Tasks).length}`] = task;
 }
 
-/** 
+/**
  * Displays task creation message.
  *
  */
@@ -182,7 +182,7 @@ async function showTaskCreatedMessage() {
   return new Promise((resolve) => {
     const message = document.createElement("div");
     message.className = "createdTaskContainer";
-    message.innerHTML = '<div class="taskSuccessfullyCreated"><p>Task added to board</p></div>';
+    message.innerHTML = '<div class="taskSuccessfullyCreated"> <p>Task added to board</p> <img src="/assets/icon/addTask/Vector.svg"/></div>';
     document.body.appendChild(message);
     setTimeout(() => {
       message.classList.add("fadeOut");

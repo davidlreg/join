@@ -46,6 +46,7 @@ function toggleContact() {
 
 /**
  * Closes the dropdown menu if the click occurs outside of it.
+ * 
  * @param {Event} event - The click event.
  */
 function closeDropdown(event) {
@@ -257,9 +258,8 @@ function updateSelectedContact() {
 }
 
 /**
- * Creates profile picture elements for selected contacts in
+ * Creates profile picture elements for selected contacts in Task.
  *
- * Task.
  *
  * @param {string[]} selectedNames - Array of contact names with checked checkboxes.
  * @returns {HTMLDivElement[]} An array of div elements representing profile pictures.
@@ -278,6 +278,7 @@ function createSelectedProfilePictures(selectedNames) {
 
 /**
  * Returns today's date at 00:00.
+ * 
  * @returns {Date} - Today's date without time.
  */
 function getToday() {
@@ -288,6 +289,7 @@ function getToday() {
 
 /**
  * Past days were decleared with a gray background-color.
+ * 
  * @param {HTMLElement} dayElem - HTML-Element of the day.
  */
 function stylePastDays(dayElem) {
@@ -303,6 +305,7 @@ function stylePastDays(dayElem) {
 
 /**
  * Initializes Flatpickr for a single input field.
+ * 
  * @param {HTMLInputElement} inputElement - Input-Element for the datePicker.
  */
 function setupFlatpickr(inputElement) {
@@ -321,6 +324,7 @@ function setupFlatpickr(inputElement) {
 
 /**
  * Searches for all datepicker input fields with the ID “addTaskDate” and initializes Flatpickr for each of them.
+ * 
  */
 function initFlatpickr() {
   document.querySelectorAll("#addTaskDate").forEach(setupFlatpickr);

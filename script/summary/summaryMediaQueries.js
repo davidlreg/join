@@ -13,7 +13,7 @@ function showSummaryStartAnimation() {
 /**
 * Sets up and plays the right container animation for the summary page.
 * This animation is displayed only on smaller screens (≤ 1350px).
-
+*
 */
 function setupRightContainerAnimation() {
   const { rightContainer, leftContainer, mainContent, headline } = getSummaryElements();
@@ -25,6 +25,12 @@ function setupRightContainerAnimation() {
   }
 }
 
+/**
+ * Disables the right container based on the window width.
+ * If the window width is 1000 pixels or less, the right container is hidden
+ * and the left container is shown. Otherwise, content is set to normal.
+ * 
+ */
 function disableRightContainer() {
   const { rightContainer, leftContainer, headline } = getSummaryElements();
 
@@ -38,7 +44,7 @@ function disableRightContainer() {
 
 /**
 * Resets the layout of the right and left containers to normal.
-
+*
 */
 function setContentToNormal() {
   const { rightContainer, leftContainer } = getSummaryElements();
@@ -122,7 +128,7 @@ function getSummaryElements() {
 
 /**
 * Navigates to the board page when called.
-
+*
 */
 function fromSummaryToBoard() {
   window.location.href = "/html/board.html?active=board";
@@ -130,7 +136,7 @@ function fromSummaryToBoard() {
 
 /**
 * Adds an event listener to initialize the animation and handle window resizing dynamically.
-
+*
 */
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {

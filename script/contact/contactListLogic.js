@@ -12,6 +12,7 @@ async function fetchDataJSON() {
 
 /**
  * Renders contacts into the contact list after sorting and grouping.
+ * 
  */
 function renderContactsInContactList() {
   const contacts = getContacts();

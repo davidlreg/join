@@ -1,4 +1,5 @@
-/** Adjusts input field position based on window width.
+/** 
+ * Adjusts input field position based on window width.
  *
  */
 function changeInputBoardLocation() {

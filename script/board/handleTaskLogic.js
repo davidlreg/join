@@ -95,7 +95,6 @@ function createTaskObject(elements, selectedBoardSection) {
 }
 
 /**
- *
  * Creates and adds a task to the board.
  *
  */
@@ -152,7 +151,8 @@ async function deleteTask() {
   location.reload();
 }
 
-/* Edits an existing task in the board.
+/* 
+* Edits an existing task in the board.
 *
 * @async
 */

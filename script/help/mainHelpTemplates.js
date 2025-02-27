@@ -5,13 +5,8 @@
  * @returns {string} A CSS string with styles for screens with a max-width of 1400px.
  */
 function styleContent() {
-<<<<<<< HEAD
   return `
-        @media (max-width: 1400px) {
-=======
-    return `
         @media (max-width: 1000px) {
->>>>>>> a4c7ae843e1fe5266354c30e6d6406a2bbe566f5
             .sidebar__container {
                 flex-direction: row;
                 justify-content: space-between;

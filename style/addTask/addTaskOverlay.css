@@ -232,11 +232,6 @@ form#taskFormOverlay {
   gap: 16px;
 }
 
-.editButtonWidth {
-  width: 138px;
-  height: 56px;
-}
-
 .prioBold {
   font-weight: 700;
 }

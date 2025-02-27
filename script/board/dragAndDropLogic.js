@@ -1,5 +1,6 @@
 let currentDraggedElement;
 let currentTouchElement;
+let touchTimer;
 
 /**
  * Moves a task to a new status and updates the backend.
@@ -134,6 +135,11 @@ function removeHighlight(id) {
 function touchStart(event, taskId) {
   currentTouchElement = document.getElementById(taskId);
   currentDraggedElement = taskId;
+
+  touchTimer = setTimeout(() => {
+    currentTouchElement.classList.add("dragging");
+  }, 100);
+
   event.preventDefault();
 }
 
@@ -143,6 +149,8 @@ function touchStart(event, taskId) {
  * @param {TouchEvent} event - The touch event.
  */
 function touchMove(event) {
+  if (!currentTouchElement) return;
+
   let touch = event.touches[0];
   currentTouchElement.style.position = "absolute";
   currentTouchElement.style.left = `${touch.pageX - currentTouchElement.offsetWidth / 2}px`;
@@ -156,22 +164,31 @@ function touchMove(event) {
  * @param {TouchEvent} event - The touch event.
  */
 function touchEnd(event) {
+  clearTimeout(touchTimer);
+
   if (!currentTouchElement) return;
-  let touch = event.changedTouches[0];
-  let dropZones = {
-    boardNoTasksToDo: "To do",
-    boardNoTasksInProgress: "In progress",
-    boardNoTasksAwaiting: "Await Feedback",
-    boardNoTasksDone: "Done",
-  };
-  let dropZone = findDropZone(touch.clientX, touch.clientY, dropZones);
-  if (dropZone) {
-    moveTo(dropZones[dropZone.id], currentDraggedElement);
-    dropZone.appendChild(currentTouchElement);
+
+  if (!currentTouchElement.classList.contains("dragging")) {
+    addBoardOverlay(currentDraggedElement);
+  } else {
+
+    let touch = event.changedTouches[0];
+    let dropZones = {
+      boardNoTasksToDo: "To do",
+      boardNoTasksInProgress: "In progress",
+      boardNoTasksAwaiting: "Await Feedback",
+      boardNoTasksDone: "Done",
+    };
+    let dropZone = findDropZone(touch.clientX, touch.clientY, dropZones);
+    if (dropZone) {
+      moveTo(dropZones[dropZone.id], currentDraggedElement);
+      dropZone.appendChild(currentTouchElement);
+    }
   }
   resetDraggedTask();
   event.preventDefault();
 }
+
 
 /**
  * Finds the nearest drop zone based on the touch coordinates.

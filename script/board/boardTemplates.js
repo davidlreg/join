@@ -17,8 +17,8 @@ function templateBoardTasks(task, taskId) {
   const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
   return `
-        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" ontouchstart=addBoardOverlay('${taskId}')" 
-         onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}" id="${taskId}">
+        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" ontouchstart="touchStart(event, '${taskId}')"  
+        ontouchmove="touchMove(event)" ontouchend="touchEnd(event)" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}" id="${taskId}">
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
           <span class="boardTaskDescription">${task.description}</span>
@@ -258,33 +258,32 @@ function templateEditTask(task, taskId) {
         </div>
 
     <!-- Right Column -->
-    <div class="taskInputRight editNoWidth">
-      <div class="taskInputOverlay editTaskInputOverlay">
+    <div class="editTaskInputRight">
+      <div class="editTaskInputOverlay">
         <p>Subtasks</p>
-        <div class="subtaskWrapper">
-          <input type="text" placeholder="Add new subtask" class="addTaskInput addTaskInputOverlay editTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
-          <div class="iconWrapper iconWrapperOverlay">
-            <div class="addSubtask">
+        <div class="editSubtaskWrapper">
+          <input type="text" placeholder="Add new subtask" class="editTaskInput" id="addTaskSubTasks" oninput="toggleSubtaskIcons()" />
+          <div class="editIconWrapperOverlay">
+            <div class="editSubtask">
               <img id="subtaskPlusIcon" src="/assets/img/subtaskPlusIcon.png" onclick="subtaskEmpty()"/>
             </div>
 
             <div id="subtaskIcons" style="display: none">
-              <img src="/assets/icon/addTask/discard.png" id="discardSubtask" class="subtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
+              <img src="/assets/icon/addTask/discard.png" id="discardSubtask" class="editSubtaskIcon" onclick="clearSubtaskInput()" alt="Discard subtask" />
               <img src="/assets/icon/addTask/vector.png" id="vectorIcon" alt="Vector separator" />
-              <img src="/assets/icon/addTask/done.png" id="confirmSubtask" class="subtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
+              <img src="/assets/icon/addTask/done.png" id="confirmSubtask" class="editSubtaskIcon" onclick="addSubtask()" alt="Confirm subtask" />
             </div>
           </div>
         </div>
-        <ul class="checkboxList" id="subtaskList">
+        <ul class="editCheckboxList" id="subtaskList">
           ${(Array.isArray(task.subtask) ? task.subtask : [])
             .map(
               (subtask, index) => `
-              <div id="subtask${index + 1}"class="editSubtaskContent">
+              <div id="subtask${index + 1}" class="editSubtaskContent">
                 <div class="editSubtaskTextWrapper">
-                  <li class="bulletPoint">&#8226;</li>
-                  <li class="editSubtaskText">${subtask.text}</li>
+                  <li class="subtaskText">${subtask.text}</li>
                 </div>
-                <div class="editSubtaskIcons">
+                <div class="editSubtaskIcons editSubtaskItem">
                   <img src="/assets/icon/addTask/edit.png" class="editSubtaskIcon" />
                   <img src="/assets/icon/addTask/vector.png">
                   <img src="/assets/icon/addTask/delete.png" class="editSubtaskIcon removeSubtask" />

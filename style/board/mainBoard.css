@@ -3,7 +3,7 @@
 .boardMain {
   height: calc(100vh - 80px);
   padding: 64px;
-  overflow: hidden;
+  overflow-x: scroll;
 }
 
 .mainContentBoard {
@@ -17,10 +17,6 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
-}
-
-.boardSectionsContainer {
-  overflow-x: scroll;
 }
 
 /* ==================== Board Header ==================== */
@@ -125,8 +121,8 @@
 .boardSectionsContainer {
   display: flex;
   justify-content: space-between;
-  height: 100%;
-  overflow: hidden;
+  height: calc(100vh - 80px);
+  overflow: scroll;
 }
 
 .boardSectionsSubContainer {

@@ -1,19 +1,28 @@
 /* Anpassungen für Bildschirme bis 1400px */
 
 @media screen and (max-width: 1400px) {
+
   .boardMain {
     padding: 32px;
+    padding-right: 0px;
+    overflow-x: visible;
+  }
+
+  .boardSectionsContainer {
+    display: flex;
+    justify-content: space-between;
   }
 
   .mainContentWrapper {
-    height: 100%;
     gap: 0px;
+    overflow-x: scroll;
+    padding-right: 32px;
   }
 
   .boardSectionsContainer {
     flex-direction: column;
-    overflow-y: scroll;
     padding-bottom: 32px;
+    overflow: visible;
   }
 
   .editTaskInput {
@@ -74,10 +83,6 @@
     display: none !important;
   }
 
-  .mainContentBoard {
-    overflow-y: scroll;
-  }
-
   .editDropdownCategory {
     max-width: 1400px;
   }
@@ -93,14 +98,12 @@
     right: 15px;
     bottom: 7px;
   }
-
 }
 
 @media (max-width: 1000px) {
   .boardMain {
     padding-bottom: 80px;
   }
-
 
   .boardOverlayAssignedTo ul::-webkit-scrollbar {
     width: 8px !important;
@@ -219,7 +222,7 @@
     width: 92%;
     font-size: 14px;
   }
-  
+
   .editSelectedContacts {
     flex-wrap: wrap;
     padding: 8px;
@@ -229,7 +232,6 @@
   .okayBtn {
     font-size: 18px;
   }
-
 }
 
 /* Anpassungen für Bildschirme bis 450px */
@@ -249,7 +251,6 @@
 
 /* Zusätzliche Anpassungen für sehr kleine Bildschirme (bis 395px) */
 @media screen and (max-width: 395px) {
-
   .editTaskInputOverlay {
     padding: 10px 18px;
     font-size: 14px;

@@ -247,7 +247,7 @@ function editOldSubtask(index) {
 
 
 function updateOldSubtaskTextWrapper(listItem, oldValue) {
-  const subtaskTextWrapper = listItem.querySelector('.subtaskTextWrapper');
+  const subtaskTextWrapper = listItem.querySelector('.editSubtaskTextWrapper');
   
   subtaskTextWrapper.innerHTML = `
     <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
@@ -256,7 +256,7 @@ function updateOldSubtaskTextWrapper(listItem, oldValue) {
 
 
 function updateOldSubtaskIcons(listItem) {
-  const subtaskIcons = listItem.querySelector('.subtaskIcons');
+  const subtaskIcons = listItem.querySelector('.editSubtaskIcons');
   
   subtaskIcons.innerHTML = getSubtaskIcons();
   

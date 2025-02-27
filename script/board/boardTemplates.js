@@ -284,9 +284,9 @@ function templateEditTask(task, taskId) {
                   <li class="subtaskText">${subtask.text}</li>
                 </div>
                 <div class="editSubtaskIcons editSubtaskItem">
-                  <img src="/assets/icon/addTask/edit.png" class="editSubtaskIcon onclick="editOldSubtask(${index})" />
+                  <img src="/assets/icon/addTask/edit.png" class="editSubtaskIcon" onclick="editOldSubtask(${index})" />
                   <img src="/assets/icon/addTask/vector.png">
-                  <img src="/assets/icon/addTask/delete.png" class="editSubtaskIcon removeSubtask onclick="removeOldSubtask(${index})" />
+                  <img src="/assets/icon/addTask/delete.png" class="editSubtaskIcon removeSubtask" onclick="removeOldSubtask(${index})" />
                 </div>
               </div>
             `

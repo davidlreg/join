@@ -170,6 +170,10 @@
   #discardSubtask:hover {
     background-color: transparent;
   }
+
+  .editTaskFormOverlay {
+    padding: 0 !important;
+  }
 }
 
 /* Anpassungen für Bildschirme bis 950px */
@@ -191,6 +195,21 @@
   }
   .editSelectContainerOverlay {
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 545px) { 
+  .boardOverlayContainer {
+    padding: 24px 20px !important;
+  }
+
+  .editButtonWidth {
+    width: 120px !important;
+    height: 40px !important;
+  }
+
+  .editPriorityButtonOverlay button {
+    gap: 5px !important;
   }
 }
 
@@ -245,6 +264,11 @@
   .boardOverlayTaskTitle {
     font-size: 32px !important;
   }
+
+  .editButtonWidth {
+    width: 100px !important;
+    height: 40px !important;
+  }
 }
 
 /* Zusätzliche Anpassungen für sehr kleine Bildschirme (bis 395px) */
@@ -283,6 +307,15 @@
   }
   .okayBtn {
     width: 150px;
+  }
+
+  .boardOverlayContainer {
+    padding: 10px 6px !important;
+  }
+
+  .editButtonWidth {
+    width: 80px !important;
+    height: 40px !important;
   }
 }
 

@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 32px;
   max-height: 700px;
 }
 
@@ -347,7 +346,7 @@
   border-radius: 0;
 }
 
-.editSubtaskItem:hover .editSubtaskIcons {
+.editSubtaskContent:hover .editSubtaskIcons {
   display: flex;
 }
 
@@ -366,4 +365,49 @@
 
 .okayBtn:hover {
   background-color: #2a3647;
+}
+
+.editCheckboxList {
+  list-style: none;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 100px;
+}
+
+.editCheckboxList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* editCheckboxList Styling */
+.editCheckboxList label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../assets/icon/login/unchecked.svg");
+  background-size: cover;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.editCheckboxList label:hover {
+  background-image: url("../../assets/icon/login/hover_unchecked.svg");
+}
+
+.editCheckboxList input[type="editCheckboxList"] {
+  display: none;
+}
+
+.editCheckboxList input[type="editCheckboxList"]:checked + label {
+  background-image: url("../../assets/icon/login/checked.svg");
+}
+
+.editCheckboxList input[type="editCheckboxList"]:checked + label:hover {
+  background-image: url("../../assets/icon/login/hover_checked.svg");
+}
+
+.editButtonWidth {
+  width: 138px;
+  height: 56px;
 }

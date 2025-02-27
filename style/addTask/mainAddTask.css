@@ -45,6 +45,7 @@ form#taskForm h1 {
 
 .taskInput {
   margin-bottom: 20px;
+  position: relative;
 }
 
 .taskInput p {
@@ -190,8 +191,7 @@ select {
   display: block;
   position: absolute;
   z-index: 10;
-  max-width: 438px;
-  min-width: 438px;
+  width: 100%;
   border-radius: 18px;
 }
 
@@ -433,7 +433,6 @@ button img {
   padding: 0;
   margin-top: 4px;
   max-height: 110px;
-  max-width: 440px;
   min-width: 440px;
   overflow-y: auto;
   position: absolute;
@@ -612,8 +611,15 @@ button img {
 
 .flatpickr-calendar {
   left: auto !important;
-  width: auto !important;
-  right: 0 !important;
+  right: -12px !important;
+}
+
+.flatpickr-calendar.open {
+  transform: scale(0.9);
+}
+
+.flatpickr-calendar.static {
+  top: calc(100% + -12px) !important;
 }
 
 .flatpickr-wrapper {

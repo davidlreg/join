@@ -138,7 +138,33 @@ async function deleteTask() {
   location.reload();
 }
 
+<<<<<<< HEAD
 /** Syncs backend data with Firebase.
+=======
+/**
+ * Edits an existing task in the board.
+ *
+ * @async
+ */
+async function editTask(taskId) {
+  await fetchDataJSON();
+  let tasks = backendData.Data.Tasks;
+  const { overlayBoardContent, boardOverlay } = getBoardElements();
+  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+
+  if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
+    overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
+    boardOverlay.classList.remove("hideOverlay");
+    setPriority(String(tasks[taskId].priority).toLowerCase());
+    loadContacts(tasks[taskId].assignedTo);
+  }
+  loadTasksToBoard();
+  initFlatpickr();
+}
+
+/**
+ * Synchronizes the global `backendData` with Firebase.
+>>>>>>> a4c7ae843e1fe5266354c30e6d6406a2bbe566f5
  *
  */
 async function syncBackendDataWithFirebase() {

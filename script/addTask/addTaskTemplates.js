@@ -155,9 +155,9 @@ function getSubtasks(subtaskValue) {
 }
 
 /**
- * Returns the HTML string containing subtask action icons.
+ * Generates HTML string for subtask icons.
  *
- * @returns {string} The HTML template for subtask icons.
+ * @returns {string} HTML string containing subtask icons.
  */
 function getSubtaskIcons() {
   return `

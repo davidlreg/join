@@ -204,3 +204,110 @@ function finalizeSubtaskEdit(listItem, newValue) {
 function removeSubtask(listItem) {
   listItem.remove();
 }
+<<<<<<< HEAD
+=======
+
+/**
+ * Event listener for detecting double-clicks on elements with the class "subtaskItem".
+ * When a double-click is detected, the "editSubtask" function is called.
+ * 
+ * @param {MouseEvent} event - The double-click event.
+ */
+document.addEventListener('dblclick', function (event) {
+  const target = event.target.closest('.subtaskItem');
+  if (target) {
+    const oldValue = target.querySelector('.subtaskText')?.textContent || '';
+    editSubtask(target, oldValue);
+  }
+});
+
+/**
+ * Enables editing mode for an existing subtask and updates the UI with input fields and icons.
+ * 
+ * @param {number} index - The index of the subtask to be edited.
+ */
+function editOldSubtask(index) {
+  const listItem = document.getElementById(`subtask${index + 1}`);
+  const oldValue = listItem.querySelector('.subtaskText').innerHTML;
+  listItem.classList.add('editing');
+
+  updateOldSubtaskTextWrapper(listItem, oldValue);
+  updateOldSubtaskIcons(listItem);
+}
+
+/**
+ * Updates the text wrapper of a subtask with an input field for editing.
+ * 
+ * @param {HTMLElement} listItem - The DOM element of the subtask being edited.
+ * @param {string} oldValue - The current value of the subtask text before editing.
+ */
+function updateOldSubtaskTextWrapper(listItem, oldValue) {
+  const subtaskTextWrapper = listItem.querySelector('.subtaskTextWrapper');
+  
+  subtaskTextWrapper.innerHTML = `
+    <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
+  `;
+}
+
+/**
+ * Updates the icons in the subtask with edit and remove options.
+ * 
+ * @param {HTMLElement} listItem - The DOM element of the subtask.
+ */
+function updateOldSubtaskIcons(listItem) {
+  const subtaskIcons = listItem.querySelector('.subtaskIcons');
+  
+  subtaskIcons.innerHTML = getSubtaskIcons();
+  
+  addOldSubtaskEventListeners(listItem);
+}
+
+/**
+ * Adds event listeners for removing and confirming edits on the subtask.
+ * 
+ * @param {HTMLElement} listItem - The DOM element of the subtask.
+ */
+function addOldSubtaskEventListeners(listItem) {
+  listItem.querySelector('.removeSubtask')
+    .addEventListener('click', () => removeOldSubtask(listItem));
+  
+  listItem.querySelector('.confirmEditSubtask')
+    .addEventListener('click', () => confirmOldSubtaskEdit(listItem));
+}
+
+/**
+ * Confirms the edit by validating the input and finalizing the subtask update.
+ * 
+ * @param {HTMLElement} listItem - The DOM element of the subtask being edited.
+ */
+function confirmOldSubtaskEdit(listItem) {
+  const editInput = listItem.querySelector('.editSubtaskInput');
+  
+  if (!validateSubtaskInput(editInput)) return;
+  
+  finalizeOldSubtaskEdit(listItem, editInput.value.trim());
+}
+
+/**
+ * Finalizes the subtask edit by updating the text and removing the editing state.
+ * 
+ * @param {HTMLElement} listItem - The DOM element of the subtask being edited.
+ * @param {string} newValue - The new value for the subtask text.
+ */
+function finalizeOldSubtaskEdit(listItem, newValue) {
+  listItem.classList.remove('editing');
+  listItem.replaceWith(createSubtaskElement(newValue));
+}
+
+/**
+ * Removes an old subtask from the DOM.
+ * 
+ * @param {number} index - The index of the subtask to be removed.
+ */
+function removeOldSubtask(index) {
+  const subtaskElement = document.getElementById(`subtask${index + 1}`);
+  if (subtaskElement) {
+    subtaskElement.remove();
+  }
+}
+>>>>>>> a4c7ae843e1fe5266354c30e6d6406a2bbe566f5

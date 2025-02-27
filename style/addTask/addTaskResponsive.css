@@ -8,7 +8,7 @@
     flex-direction: column;
     gap: 0;
     flex: 1;
-    overflow-x: scroll;
+    overflow-x: hidden;
     padding: 8px 4px;
   }
 
@@ -152,7 +152,7 @@
   .priorityButtonOverlay button.low {
     background-color: #7ae229;
   }
-  
+
   .dropdownIcon:hover {
     background-color: #fff !important;
   }

@@ -281,7 +281,7 @@ function templateEditTask(task, taskId) {
               (subtask, index) => `
               <div id="subtask${index + 1}" class="editSubtaskContent">
                 <div class="editSubtaskTextWrapper">
-                  <li class="editSubtaskText">${subtask.text}</li>
+                  <li class="subtaskText">${subtask.text}</li>
                 </div>
                 <div class="editSubtaskIcons editSubtaskItem">
                   <img src="/assets/icon/addTask/edit.png" class="editSubtaskIcon" />

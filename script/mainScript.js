@@ -62,6 +62,12 @@ function historyBack() {
  */
 function toogleUser() {
   const userOptions = document.getElementById("userIcon");
+
+  if (userOptions.classList.contains("active")) {
+    userOptions.classList.remove("active");
+  } else {
+    userOptions.classList.add("active");
+  }
   userOptions.classList.toggle("active");
 }
 

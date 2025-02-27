@@ -1,4 +1,5 @@
-/** Retrieves elements for task creation.
+/** 
+ * Retrieves elements for task creation.
  *
  */
 function getAddTaskElements() {
@@ -12,7 +13,8 @@ function getAddTaskElements() {
   };
 }
 
-/** Retrieves selected contacts.
+/** 
+ * Retrieves selected contacts.
  *
  */
 function getSelectedContacts() {
@@ -21,21 +23,24 @@ function getSelectedContacts() {
   }));
 }
 
-/** Retrieves checked contacts.
+/** 
+ * Retrieves checked contacts.
  *
  */
 function getCheckedSelectedContacts() {
   return Array.from(document.querySelectorAll("#selectedContacts .profilePicture")).map((el) => el.getAttribute("title"));
 }
 
-/** Gets "boardSection" from URL.
+/** 
+ * Gets "boardSection" from URL.
  *
  */
 function getBoardSectionFromURL() {
   return new URLSearchParams(window.location.search).get("boardSection");
 }
 
-/** Validates task inputs.
+/** 
+ * Validates task inputs.
  *
  */
 function validateTaskInputs(title, date, category) {
@@ -47,7 +52,8 @@ function validateTaskInputs(title, date, category) {
   return isValid;
 }
 
-/** Displays an error message.
+/** 
+ * Displays an error message.
  *
  */
 function showError(id, message) {
@@ -56,14 +62,18 @@ function showError(id, message) {
   errorElement.style.display = "block";
 }
 
-/** Clears error messages. */
+/** 
+ * Clears error messages. 
+ * 
+ * */
 function clearError() {
   document.getElementById("errorMessageAddTaskTitle").innerHTML = "";
   document.getElementById("errorMessageAddTaskDueDate").innerHTML = "";
   document.getElementById("errorMessageAddTaskCategory").innerHTML = "";
 }
 
-/** Creates a task object.
+/** 
+ * Creates a task object.
  *
  */
 function createTaskObject(elements, selectedBoardSection) {
@@ -84,7 +94,9 @@ function createTaskObject(elements, selectedBoardSection) {
   };
 }
 
-/** Creates and adds a task to the board.
+/** 
+ * 
+ * Creates and adds a task to the board.
  *
  */
 async function createTasksForBoard() {
@@ -99,7 +111,8 @@ async function createTasksForBoard() {
   window.location.href = "/html/board.html?active=board";
 }
 
-/** Edits a task on the board.
+/** 
+ * Edits a task on the board.
  *
  */
 async function editTasksForBoard(taskId) {
@@ -123,7 +136,8 @@ async function editTasksForBoard(taskId) {
   location.reload();
 }
 
-/** Deletes a task.
+/** 
+ * Deletes a task.
  *
  */
 async function deleteTask() {
@@ -138,33 +152,8 @@ async function deleteTask() {
   location.reload();
 }
 
-<<<<<<< HEAD
-/** Syncs backend data with Firebase.
-=======
-/**
- * Edits an existing task in the board.
- *
- * @async
- */
-async function editTask(taskId) {
-  await fetchDataJSON();
-  let tasks = backendData.Data.Tasks;
-  const { overlayBoardContent, boardOverlay } = getBoardElements();
-  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
-
-  if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
-    overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
-    boardOverlay.classList.remove("hideOverlay");
-    setPriority(String(tasks[taskId].priority).toLowerCase());
-    loadContacts(tasks[taskId].assignedTo);
-  }
-  loadTasksToBoard();
-  initFlatpickr();
-}
-
-/**
- * Synchronizes the global `backendData` with Firebase.
->>>>>>> a4c7ae843e1fe5266354c30e6d6406a2bbe566f5
+/** 
+ * Syncs backend data with Firebase.
  *
  */
 async function syncBackendDataWithFirebase() {
@@ -175,7 +164,8 @@ async function syncBackendDataWithFirebase() {
   });
 }
 
-/** Saves task to backend.
+/** 
+ * Saves task to backend.
  *
  */
 async function pushTaskToBackendData(task) {
@@ -184,7 +174,8 @@ async function pushTaskToBackendData(task) {
   backendData.Data.Tasks[`taskId${Object.keys(backendData.Data.Tasks).length}`] = task;
 }
 
-/** Displays task creation message.
+/** 
+ * Displays task creation message.
  *
  */
 async function showTaskCreatedMessage() {

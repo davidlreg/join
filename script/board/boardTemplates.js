@@ -17,8 +17,8 @@ function templateBoardTasks(task, taskId) {
   const hiddenContactsCount = assignedToArray.length - maxVisibleContacts;
 
   return `
-        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" ontouchstart="touchStart(event, '${taskId}')"  
-        ontouchmove="touchMove(event)" ontouchend="touchEnd(event)" onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}" id="${taskId}">
+        <div class="boardTasks" draggable="true" ondragstart="drag(event, '${taskId}')" ontouchstart=addBoardOverlay('${taskId}')" 
+         onclick="addBoardOverlay('${taskId}')" data-task-id="${taskId}" id="${taskId}">
           <span class="boardTaskCategory">${task.category}</span>
           <span class="boardTaskTitle">${task.title}</span>
           <span class="boardTaskDescription">${task.description}</span>
@@ -248,12 +248,12 @@ function templateEditTask(task, taskId) {
             `
               )
               .join("")} ${
-        hiddenContactsCount > 0
-          ? `
+    hiddenContactsCount > 0
+      ? `
             <div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>
             `
-          : ""
-      }
+      : ""
+  }
           </div>
         </div>
 
@@ -291,8 +291,8 @@ function templateEditTask(task, taskId) {
                 </div>
               </div>
             `
-              )
-              .join("")}
+            )
+            .join("")}
           </ul>
         </div>
       </div>

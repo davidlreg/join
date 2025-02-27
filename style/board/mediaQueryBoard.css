@@ -189,7 +189,7 @@
 
 @media (max-height: 795px) {
   .tasksInnerContainer {
-    height: 470px;
+    max-height: 400px;
   }
   .editSelectContainerOverlay {
     font-size: 15px;

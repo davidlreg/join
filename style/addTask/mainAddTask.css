@@ -10,6 +10,10 @@
   width: 100%;
 }
 
+.scrollAll {
+  overflow-y: hidden;
+}
+
 /* Task Form*/
 form#taskForm {
   padding: 64px;
@@ -25,7 +29,7 @@ form#taskForm h1 {
 .taskInputContainer {
   display: flex;
   gap: 48px;
-  padding: 32px 0px;
+  padding: 18px 0px;
 }
 
 .taskSeparator {
@@ -512,6 +516,7 @@ button img {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
+  margin-right: 12px;
 }
 
 .clearButton {
@@ -535,7 +540,7 @@ button img {
   fill: #29abe2;
 }
 
-.clearButton:hover * > img {
+.clearButton:hover *>img {
   color: #29abe2 !important;
   fill: #29abe2 !important;
 }

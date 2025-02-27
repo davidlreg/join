@@ -8,8 +8,8 @@
     flex-direction: column;
     gap: 0;
     flex: 1;
-    overflow-x: hidden;
-    padding: 8px 4px;
+    overflow-x: scroll;
+    padding: 8px 8px;
   }
 
   .taskInputLeft,
@@ -66,7 +66,7 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     margin-left: 0;
-    padding-top: 0;
+    padding-top: 10px;
   }
 
   .requiredText {
@@ -84,7 +84,11 @@
     height: calc(100vh - 80px);
     overflow-x: hidden;
     overflow-y: hidden;
-    padding: 32px;
+    padding: 32px 0 32px 32px;
+  }
+
+  .scrollAll{
+    overflow-y: scroll;
   }
 
   .subtaskList {
@@ -156,6 +160,7 @@
   .dropdownIcon:hover {
     background-color: #fff !important;
   }
+
   .editSubtask:hover,
   .removeSubtask:hover,
   .confirmEditSubtask:hover,
@@ -225,7 +230,7 @@
   }
 
   .priorityButton {
-    gap: 12px;
+    gap: 8px;
   }
 
   .priorityButton button {
@@ -242,6 +247,10 @@
 
   .requiredText {
     display: none;
+  }
+
+  .actions {
+    margin-right: 0px;
   }
 }
 
@@ -262,6 +271,10 @@
 
   .dropdown {
     max-width: 100%;
+  }
+
+  .dropdownCategory {
+    max-height: 40px;
   }
 
   .selectContainer {

@@ -1,4 +1,4 @@
-/** 
+/**
  * Adjusts input field position based on window width.
  *
  */
@@ -58,4 +58,6 @@ function innerWidthAboveThreshold(inputContainer, boardControls, boardContainer,
   }
 }
 
-document.addEventListener("DOMContentLoaded", changeInputBoardLocation);
+document.addEventListener("DOMContentLoaded", () => {
+  changeInputBoardLocation();
+});

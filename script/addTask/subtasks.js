@@ -25,7 +25,11 @@ function showSubtaskBoard() {
 
   if (showSubtask) {
     const task = backendData.Data.Tasks[taskId];
-    showSubtask.style.display = task.subtask?.length ? "inline" : "none";
+    if (!task.subtask || task.subtask.length === 0) {
+      showSubtask.style.display = "none";
+    } else {
+      showSubtask.style.display = "inline";
+    }
   }
 }
 
@@ -49,7 +53,7 @@ function addSubtask() {
  */
 function subtaskEmpty() {
   const subtaskInput = document.getElementById("addTaskSubTasks");
-  validateSubtaskInput(subtaskInput);
+  if (!validateSubtaskInput(subtaskInput)) return;
 }
 
 /**
@@ -82,7 +86,9 @@ function showSubtaskError(inputElement, message) {
   errorMessage.textContent = message;
   targetElement.insertAdjacentElement("afterend", errorMessage);
 
-  setTimeout(() => clearSubtaskError(inputElement), 3000);
+  setTimeout(() => {
+    clearSubtaskError(inputElement);
+  }, 3000);
 }
 
 /**
@@ -92,7 +98,11 @@ function showSubtaskError(inputElement, message) {
  * @returns {HTMLElement} - The correct target element for the error message.
  */
 function getSubtaskErrorTarget(inputElement) {
-  return inputElement.id === "editSubtaskInput" ? inputElement.closest(".subtaskItem") : inputElement.closest(".subtaskWrapper");
+  if (inputElement.id === "editSubtaskInput") {
+    return inputElement.closest(".subtaskItem");
+  }
+
+  return inputElement.closest(".subtaskWrapper");
 }
 
 /**
@@ -139,7 +149,8 @@ function createSubtaskElement(subtaskValue) {
  * @param {string} oldValue - The previous value of the subtask.
  */
 function editSubtask(listItem, oldValue) {
-  listItem.querySelector(".subtaskContent").classList.add("editing");
+  const subtaskContent = listItem.querySelector(".subtaskContent");
+  subtaskContent.classList.add("editing");
   updateSubtaskTextWrapper(listItem, oldValue);
   updateSubtaskIcons(listItem);
 }
@@ -151,7 +162,11 @@ function editSubtask(listItem, oldValue) {
  * @param {string} oldValue - The previous subtask value.
  */
 function updateSubtaskTextWrapper(listItem, oldValue) {
-  listItem.querySelector(".subtaskTextWrapper").innerHTML = `<input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">`;
+  const subtaskTextWrapper = listItem.querySelector(".subtaskTextWrapper");
+
+  subtaskTextWrapper.innerHTML = `
+    <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
+  `;
 }
 
 /**
@@ -160,7 +175,8 @@ function updateSubtaskTextWrapper(listItem, oldValue) {
  * @param {HTMLElement} listItem - The subtask element.
  */
 function updateSubtaskIcons(listItem) {
-  listItem.querySelector(".subtaskIcons").innerHTML = getSubtaskIcons();
+  const subtaskIcons = listItem.querySelector(".subtaskIcons");
+  subtaskIcons.innerHTML = getSubtaskIcons();
   addSubtaskEventListeners(listItem);
 }
 
@@ -204,3 +220,17 @@ function finalizeSubtaskEdit(listItem, newValue) {
 function removeSubtask(listItem) {
   listItem.remove();
 }
+
+/**
+ * Event listener for detecting double-clicks on elements with the class "subtaskItem".
+ * When a double-click is detected, the "editSubtask" function is called.
+ *
+ * @param {MouseEvent} event - The double-click event.
+ */
+document.addEventListener("dblclick", function (event) {
+  const target = event.target.closest(".subtaskItem");
+  if (target) {
+    const oldValue = target.querySelector(".subtaskText")?.textContent || "";
+    editSubtask(target, oldValue);
+  }
+});

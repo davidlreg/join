@@ -32,7 +32,11 @@ function filterTasks() {
  */
 function showNoResultsMessage(show) {
   let message = document.getElementById("noResultsMessage");
-  message.style.display = show ? "block" : "none";
+  if (show) {
+    message.style.display = "block";
+  } else {
+    message.style.display = "none";
+  }
 }
 
 /**

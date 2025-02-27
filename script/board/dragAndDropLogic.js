@@ -89,7 +89,10 @@ function drop(event, newStatus) {
 function checkIfTaskExistInContainer() {
   const sections = [
     { containerId: "boardNoTasksToDo", sectionId: "tasksSectionToDo" },
-    { containerId: "boardNoTasksInProgress", sectionId: "tasksSectionInProgress" },
+    {
+      containerId: "boardNoTasksInProgress",
+      sectionId: "tasksSectionInProgress",
+    },
     { containerId: "boardNoTasksAwaiting", sectionId: "tasksSectionAwaiting" },
     { containerId: "boardNoTasksDone", sectionId: "tasksSectionDone" },
   ];

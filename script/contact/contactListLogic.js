@@ -12,7 +12,6 @@ async function fetchDataJSON() {
 
 /**
  * Renders contacts into the contact list after sorting and grouping.
- *
  */
 function renderContactsInContactList() {
   const contacts = getContacts();
@@ -101,13 +100,11 @@ function renderGroupedContacts(groupedContacts) {
  */
 function renderSectionHeader(contactList, letter) {
   const headerHTML = `
-    
   <div class="letterDividerBox">
     <h2 class="contactListLetter">${letter}</h2>
     <div class="dividerBottom"></div>
   </div>
-  
-    `;
+  `;
   contactList.innerHTML += headerHTML;
 }
 

@@ -1,3 +1,9 @@
+/**
+ * Generates the HTML template for adding a task.
+ * Initializes the task form after a short delay.
+ *
+ * @returns {string} The HTML template as a string.
+ */
 function addTaskHtmlTemplate() {
   const template = `
        
@@ -126,6 +132,12 @@ function addTaskHtmlTemplate() {
   return template;
 }
 
+/**
+ * Generates the HTML structure for a subtask item.
+ *
+ * @param {string} subtaskValue - The text of the subtask.
+ * @returns {string} The HTML template for the subtask.
+ */
 function getSubtasks(subtaskValue) {
   return `
     <div class="subtaskContent">
@@ -142,6 +154,11 @@ function getSubtasks(subtaskValue) {
     `;
 }
 
+/**
+ * Returns the HTML string containing subtask action icons.
+ *
+ * @returns {string} The HTML template for subtask icons.
+ */
 function getSubtaskIcons() {
   return `
     <img src="/assets/icon/addTask/delete.png" class="subtaskIcon removeSubtask">

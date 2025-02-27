@@ -15,12 +15,7 @@ let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
 let checkbox = document.getElementById("checkboxSignUp");
 
 /**
- * This function validates the email input field by checking if the entered value matches a typical email format.
- * If the email is invalid, it sets the input field's border to red
- * and displays an error message below the input field.
- * If the email is valid, it hides the error message.
- *
- * Event listener on the email input triggers this validation whenever it's modified by the user.
+ * Validates the email input field.
  *
  * @returns {void}
  */
@@ -39,12 +34,7 @@ function validateEmail() {
 }
 
 /**
- * This function validates if the entered password and confirm password fields match.
- * If they don't match, it sets the confirm password input field's border to red
- * and displays an error message below the input field.
- * If they match, it hides the error message.
- *
- * Event listener on the password input triggers this validation whenever it's modified by the user.
+ * Validates if the entered passwords match.
  *
  * @returns {void}
  */
@@ -61,21 +51,7 @@ function validatePasswords() {
 }
 
 /**
- * This function validates the sign-up form fields and enables or disables the sign up button based on the form's validity.
- *
- * It checks if the name, email, password, and confirm password fields are filled out,
- * ensures that the email and confirm password fields do not have red borders (indicating an error)
- * and verifies that the checkbox is checked.
- *
- * If all validation conditions are met, it enables the submit button by removing the 'btnUnabledDark' class,
- * adding the 'btnDark' class
- * and placing an EventListener that triggers the function checkAvailability().
- *
- * If any of the conditions are not met, it disables the sign up button by removing the 'btnDark' class,
- * adding the 'btnUnabledDark' class
- * and removing the EventListener.
- *
- * Event listeners on the form inputs trigger this validation whenever any of these fields are modified by the user.
+ * Validates the sign-up form fields and updates the sign-up button state.
  *
  * @returns {void}
  */
@@ -102,16 +78,9 @@ function validateForm() {
 }
 
 /**
- * This function updates the password input field's background icon based on its type and value.
+ * Updates the password input field's background icon based on its value.
  *
- * If the input has text, it displays a visibility icon (open or closed eye)
- * depending on whether the input type is "text" or "password".
- * If the input is empty, it reverts to the default lock icon.
- *
- * Event listeners attached to all elements with the class "inputPassword",
- * which will trigger on each "input" event (whenever the user types in the field).
- *
- * @this {HTMLInputElement} The password input field triggering the event.
+ * @this {HTMLInputElement}
  */
 function updatePasswordIcon() {
   let inputType = this.type;
@@ -126,16 +95,9 @@ function updatePasswordIcon() {
 }
 
 /**
- * This function toggles the visibility of password inputs and updates the associated icon.
+ * Toggles the visibility of the password input field.
  *
- * When the input type is "password", the button's background will show an crossed-out eye icon (invisible text).
- * When the input type is "text", the button's background will show a open eye icon (visible text).
- *
- * Event Listeners are attached to all elements with the class 'passwordToggle'.
- * It triggers on a click event, invoking the toggleVisibility function for each matched element.
- *
- * Assumption:
- * The input element is the previous sibling of the element that triggers the event.
+ * @this {HTMLElement}
  */
 function toggleVisibility() {
   let input = this.previousElementSibling;
@@ -144,15 +106,15 @@ function toggleVisibility() {
     input.type = "text";
     input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
   } else {
-    if (input.type === "text") {
-      input.type = "password";
-      input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
-    }
+    input.type = "password";
+    input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
   }
 }
 
 /**
  * Checks if the entered email is already registered.
+ *
+ * @returns {Promise<void>}
  */
 async function checkAvailability() {
   const email = document.getElementById("userEmail").value;
@@ -162,8 +124,8 @@ async function checkAvailability() {
   const users = snapshot.val();
 
   if (users) {
-    const emailExists = Object.values(users).some(user => user.email === email);
-    
+    const emailExists = Object.values(users).some((user) => user.email === email);
+
     if (emailExists) {
       emailInput.style.border = "1px solid red";
       errorMessage.innerHTML = `This email address is already in use.`;
@@ -175,28 +137,30 @@ async function checkAvailability() {
 
 /**
  * Creates a new user and contact, saving them to the database.
+ *
+ * @returns {Promise<void>}
  */
 async function createUser() {
   const name = document.getElementById("userName").value;
   const email = document.getElementById("userEmail").value;
-  const password = document.querySelectorAll(".inputPassword")[0].value;
+  const password = passwordInput.value;
   const newUserId = await getNextId("Data/Users", "userId");
   await saveUser(newUserId, { name, email, password });
   const newContactId = await getNextId("Data/Contacts", "contactId");
   await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
   showOverlay();
 
-  setTimeout(function() {
+  setTimeout(function () {
     window.location.href = "../../html/login.html";
-  }, 2000); 
+  }, 2000);
 }
 
 /**
- * Retrieves the next available ID based on the count of existing entries.
+ * Retrieves the next available ID based on existing entries.
  *
- * @param {string} refPath - The path in the Firebase database (e.g., "Data/Users" or "Data/Contacts").
- * @param {string} prefix - The prefix to use for the ID (e.g., "userId" or "contactId").
- * @returns {Promise<string>} - The next ID in sequence (e.g., "userId1", "contactId2").
+ * @param {string} refPath
+ * @param {string} prefix
+ * @returns {Promise<string>}
  */
 async function getNextId(refPath, prefix) {
   const snapshot = await get(ref(database, refPath));
@@ -206,31 +170,31 @@ async function getNextId(refPath, prefix) {
 }
 
 /**
- * Saves a new user to the database under Data/Users.
+ * Saves a new user to the database.
  *
- * @param {string} userId - The user ID to be used for the new user.
- * @param {Object} userData - The user data to be stored.
+ * @param {string} userId
+ * @param {Object} userData
+ * @returns {Promise<void>}
  */
 async function saveUser(userId, userData) {
   await set(ref(database, `Data/Users/${userId}`), userData);
 }
 
 /**
- * Saves a new contact to the database under Data/Contacts.
+ * Saves a new contact to the database.
  *
- * @param {string} contactId - The contact ID to be used for the new contact.
- * @param {Object} contactData - The contact data to be stored.
+ * @param {string} contactId
+ * @param {Object} contactData
+ * @returns {Promise<void>}
  */
 async function saveContact(contactId, contactData) {
   await set(ref(database, `Data/Contacts/${contactId}`), contactData);
 }
 
 /**
- * This function displays the overlay and hides it after a delay.
+ * Displays the overlay.
  *
- * It removes the 'dNone' class from the element with the ID 'overlay',
- * making it visible. After a delay of 2000 milliseconds, the overlay is hidden
- * by calling the function hideOverlay().
+ * @returns {void}
  */
 function showOverlay() {
   let overlay = document.getElementById("overlay");
@@ -238,15 +202,14 @@ function showOverlay() {
 }
 
 /**
- * This function hides the overlay.
+ * Hides the overlay.
  *
- * It adds the 'dNone' class to the element with the ID 'overlay'.
+ * @returns {void}
  */
 function hideOverlay() {
   document.getElementById("overlay").classList.add("dNone");
 }
 
-// Event listeners
 emailInput.addEventListener("blur", function () {
   validateEmail();
   validateForm();
@@ -263,8 +226,6 @@ confirmPasswordInput.addEventListener("blur", function () {
 });
 
 nameInput.addEventListener("blur", validateForm);
-
-passwordInput.addEventListener("blur", validateForm);
 
 checkbox.addEventListener("change", validateForm);
 

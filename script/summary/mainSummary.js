@@ -82,6 +82,7 @@ function getUserType() {
 
 /**
  * Updates the greeting message based on the current time and user status.
+ * 
  */
 function updateGreeting() {
   const userType = getUserType();

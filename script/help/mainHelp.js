@@ -1,19 +1,16 @@
 /**
  * Checks the user's session status based on stored localStorage values.
- * 
- * If a user ID or guest mode is detected, it updates the UI by showing 
- * navigation elements.
- * 
- * Otherwise, it shows the login link and triggers the `overrideMediaQuery` function.
+ * Updates the UI to show navigation elements or the login link.
+ *
  */
 function checkUserSession() {
   const userId = localStorage.getItem("userId");
   const isGuest = localStorage.getItem("guestMode");
 
   if (userId || isGuest) {
-      document.getElementById("navbar").classList.remove("dNone");
-      document.getElementById("help").classList.remove("dNone");
-      document.querySelector(".userIcon").classList.remove("dNone");
+    document.getElementById("navbar").classList.remove("dNone");
+    document.getElementById("help").classList.remove("dNone");
+    document.querySelector(".userIcon").classList.remove("dNone");
   } else {
     document.getElementById("logInLink").classList.remove("dNone");
     overrideMediaQuery();
@@ -21,18 +18,15 @@ function checkUserSession() {
 }
 
 /**
- * Overrides the default media query styles
- * by injecting a custom CSS style tag into the document head.
- * 
- * If the style tag already exists, it updates its content.
- * The styles are retrieved from the `styleContent` function.
+ * Overrides the default media query styles by injecting a custom CSS style tag.
+ *
  */
 function overrideMediaQuery() {
-  const styleId = 'override-sidebar-footer';
+  const styleId = "override-sidebar-footer";
   let styleTag = document.getElementById(styleId);
 
   if (!styleTag) {
-    styleTag = document.createElement('style');
+    styleTag = document.createElement("style");
     styleTag.id = styleId;
     document.head.appendChild(styleTag);
   }
@@ -50,7 +44,7 @@ function getStoredUserName() {
 }
 
 /**
- * Generates initials from a full name when an user or guest is logged in.
+ * Generates initials from a full name when a user or guest is logged in.
  *
  * @param {string} fullName - The full name of the user.
  * @returns {string} The initials or "G" if the name is invalid.
@@ -68,6 +62,7 @@ function getUserInitials(fullName) {
 
 /**
  * Updates the header with the user's initials.
+ *
  */
 function updateHeaderUserName() {
   const fullName = getStoredUserName();
@@ -77,6 +72,7 @@ function updateHeaderUserName() {
 
 /**
  * Initializes the page by checking the user session and updating the header.
+ *
  */
 function initializePage() {
   checkUserSession();

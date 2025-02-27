@@ -1,5 +1,6 @@
 /**
  * Checks if the form is valid and enables/disables the "Create Contact" button.
+ * 
  */
 function checkFormValidity() {
   const isMobile = window.innerWidth <= 1000;

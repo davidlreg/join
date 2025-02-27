@@ -1,7 +1,7 @@
 /**
  * Displays the "Add Contact" overlay.
  *
- * @returns {string} The HTML string of the "Add Contact" overlay.
+ * @returns {string} HTML string of the "Add Contact" overlay.
  */
 function showAddContactOverlay() {
   return `
@@ -168,9 +168,9 @@ function showAddContactOverlay() {
 }
 
 /**
- * Displays the "Add Contact" overlay.
+ * Displays the "Add Contact" overlay for mobile view.
  *
- * @returns {string} The HTML string of the "Add Contact" overlay.
+ * @returns {string} HTML string of the mobile "Add Contact" overlay.
  */
 function showAddContactOverlayMobile() {
   return `
@@ -297,11 +297,11 @@ function showAddContactOverlayMobile() {
 }
 
 /**
- * Displays the Edit Contact Overlay on the screen for desktop view.
+ * Displays the "Edit Contact" overlay for desktop view.
  *
- * @param {string} initials - The initials to be displayed in the contact's profile picture.
- * @param {string} color - The background color for the contact's profile picture.
- * @returns {string} HTML string representing the Edit Contact Overlay.
+ * @param {string} initials - Initials for the contact's profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @returns {string} HTML string of the "Edit Contact" overlay.
  */
 function showEditContactOverlay(initials, color) {
   return `
@@ -433,11 +433,11 @@ function showEditContactOverlay(initials, color) {
 }
 
 /**
- * Displays the Edit Contact Overlay on the screen for mobile view.
+ * Displays the "Edit Contact" overlay for mobile view.
  *
- * @param {string} initials - The initials to be displayed in the contact's profile picture.
- * @param {string} color - The background color for the contact's profile picture.
- * @returns {string} HTML string representing the Edit Contact Overlay for mobile.
+ * @param {string} initials - Initials for the contact's profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @returns {string} HTML string of the mobile "Edit Contact" overlay.
  */
 function showEditContactOverlayMobile(initials, color) {
   return `
@@ -539,14 +539,15 @@ function showEditContactOverlayMobile(initials, color) {
 }
 
 /**
- * Displays a floating contact overlay with the provided contact details.
+ * Displays a floating contact overlay with contact details.
  *
- * @param {string} name - The contact's name.
- * @param {string} email - The contact's email address.
- * @param {string} phone - The contact's phone number.
- * @param {string} initials - The initials to display in the profile picture.
- * @param {string} color - The background color for the profile picture.
- * @returns {string} - The HTML string for the floating contact overlay.
+ * @param {string} name - Contact's name.
+ * @param {string} email - Contact's email.
+ * @param {string} phone - Contact's phone number.
+ * @param {string} initials - Initials for the profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @param {string} contactId - Unique identifier for the contact.
+ * @returns {string} HTML string of the floating contact overlay.
  */
 function showFloatingContactOverlay(name, email, phone, initials, color, contactId) {
   return `
@@ -601,15 +602,15 @@ function showFloatingContactOverlay(name, email, phone, initials, color, contact
 }
 
 /**
- * Generates and returns a floating contact overlay for mobile view.
- * Displays the contact's name, email, phone number, and includes a back button.
+ * Displays a floating contact overlay for mobile view.
  *
- * @param {string} name - The contact's name.
- * @param {string} email - The contact's email address.
- * @param {string} phone - The contact's phone number.
- * @param {string} initials - The initials for the profile picture.
- * @param {string} color - The background color of the profile picture.
- * @returns {string} - The HTML string for the mobile floating contact overlay.
+ * @param {string} name - Contact's name.
+ * @param {string} email - Contact's email.
+ * @param {string} phone - Contact's phone number.
+ * @param {string} initials - Initials for the profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @param {string} contactId - Unique identifier for the contact.
+ * @returns {string} HTML string of the mobile floating contact overlay.
  */
 function showFloatingContactOverlayMobile(name, email, phone, initials, color, contactId) {
   return `
@@ -667,12 +668,12 @@ function showFloatingContactOverlayMobile(name, email, phone, initials, color, c
 }
 
 /**
- * Generates the HTML string for the mobile contact menu with options to edit or delete a contact.
+ * Generates a mobile contact menu with edit and delete options.
  *
- * @param {string} initials - The initials of the contact to display in the menu.
- * @param {string} color - The color associated with the contact, used for styling.
- *
- * @returns {string} The HTML structure of the mobile contact menu with edit and delete options.
+ * @param {string} initials - Initials for the profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @param {string} contactId - Unique identifier for the contact.
+ * @returns {string} HTML string of the mobile contact menu.
  */
 function showMobileContactMenu(initials, color, contactId) {
   return `
@@ -713,15 +714,15 @@ function showMobileContactMenu(initials, color, contactId) {
 }
 
 /**
- * Generates an HTML template for displaying a contact.
+ * Renders a contact template.
  *
- * @param {string} name - The contact's full name.
- * @param {string} email - The contact's email address.
- * @param {string} phone - The contact's phone number.
- * @param {string} contactId - A unique identifier for the contact.
- * @param {string} initials - The contact's initials for the profile picture.
- * @param {string} color - The background color for the profile picture.
- * @returns {string} The HTML string representing the contact.
+ * @param {string} name - Contact's name.
+ * @param {string} email - Contact's email.
+ * @param {string} phone - Contact's phone number.
+ * @param {string} contactId - Unique identifier for the contact.
+ * @param {string} initials - Initials for the profile picture.
+ * @param {string} color - Background color for the profile picture.
+ * @returns {string} HTML string representing the contact.
  */
 function renderContactTemplate(name, email, phone, contactId, initials, color) {
   return `

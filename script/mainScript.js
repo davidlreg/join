@@ -3,7 +3,7 @@ function init() {
 }
 
 /**
- * This function changes the background colour of the currently clicked element in the sidebar.
+ * Changes the background colour of the currently clicked element in the sidebar.
  *
  */
 function setActiveLinkFromURL() {
@@ -58,22 +58,21 @@ function historyBack() {
 
 /**
  * Toggles the visibility of the user options menu.
- * If the menu is open, it will be closed; if it is closed, it will be opened.
+ *
  */
 function toogleUser() {
   const userOptions = document.getElementById("userIcon");
-
-  if (userOptions.classList.contains("active")) {
-    userOptions.classList.remove("active");
-  } else {
-    userOptions.classList.add("active");
-  }
+  userOptions.classList.toggle("active");
 }
 
+/**
+ * Updates the header username display based on localStorage value.
+ *
+ */
 function headerUserName() {
   const headerName = localStorage.getItem("headerName");
   if (headerName) {
-    nameParts = headerName.split(" ");
+    const nameParts = headerName.split(" ");
     document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
   } else {
     document.getElementById("headerUserName").textContent = "G";
@@ -82,10 +81,10 @@ function headerUserName() {
 
 /**
  * Logs the user out by redirecting them to the login page.
+ *
  */
 function logout() {
   localStorage.clear();
   sessionStorage.clear();
-
   window.location.href = "login.html";
 }

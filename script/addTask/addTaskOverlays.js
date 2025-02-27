@@ -1,6 +1,5 @@
 /**
- * Global variable to store the selected board section.
- * It is used to determine where the new task should be added.
+ * Stores the selected board section for task placement.
  * 
  * @type {string | null}
  */
@@ -8,11 +7,6 @@ let selectedBoardSection = null;
 
 /**
  * Opens the task overlay or redirects to the add task page on smaller screens.
- * 
- * If the window width is 1400px or less, the function redirects to the addTask page 
- * while passing the board section as a URL parameter.
- * Otherwise, it dynamically loads the task creation form inside the overlay.
- * 
  * @param {string} boardSection - The board section where the new task will be added.
  */
 function addTaskOverlay(boardSection) {
@@ -30,15 +24,11 @@ function addTaskOverlay(boardSection) {
       document.querySelector('.overlayTaskContent').classList.add('animate');
     }, 50);
   }
-  
 }
 
 /**
- * Closes the task overlay with an animation effect.
+ * Closes the task overlay with an animation effect or redirects to the board page.
  * 
- * If the overlay exists, the function removes the animation class and applies a slide-out effect. 
- * After the animation duration (300ms), it hides the overlay.
- * If the overlay does not exist (e.g., on mobile view), the function redirects to the board page.
  */
 function closeTaskOverlay() {
     const overlay = document.getElementById('addTaskOverlay');

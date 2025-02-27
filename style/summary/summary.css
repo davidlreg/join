@@ -94,6 +94,7 @@ main {
   color: white !important;
   transform: scale(1.05);
   transition: transform 0.3s ease;
+  border-radius: 20px;
 }
 
 .summaryTable:hover *{

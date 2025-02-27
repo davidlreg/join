@@ -15,7 +15,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 400px) {
   /* Disable Hover Effects */
 
   .summaryTable:hover {
@@ -24,6 +24,12 @@
     transform: none !important;
     transition: none !important;
   }
+
+  .summaryTable:hover * {
+    background-color: white;
+    color: black !important;
+  }
+
   .summaryTable:hover .summaryToDo img {
     background-color: #2a3647 !important;
     content: url("/assets/icon/summary/edit_white.svg") !important;
@@ -36,7 +42,7 @@
     transition: none !important;
   }
 
-  .summaryRightContainer > h2 {
+  .summaryRightContainer>h2 {
     font-size: 42px;
   }
 }
@@ -120,7 +126,8 @@
   }
 
   .separatorGrey {
-    margin: 12px;
+    margin: 12px; 
+    background-color: rgb(224, 221, 221) !important;
   }
 
   .summaryDeadline p,
@@ -141,9 +148,11 @@
   .summaryMainContent {
     height: 50%;
   }
+
   .summaryTable {
     height: 100px;
   }
+
   .summaryToDo,
   .summaryDone,
   .summaryUrgent,

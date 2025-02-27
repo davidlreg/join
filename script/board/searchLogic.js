@@ -35,8 +35,16 @@ function showNoResultsMessage(show) {
   message.style.display = show ? "block" : "none";
 }
 
-const searchInput = document.getElementById("findTask");
+/**
+ * Initializes the search functionality by adding an event listener to the search input.
+ *
+ */
+function initializeSearch() {
+  const searchInput = document.getElementById("findTask");
 
-if (searchInput) {
-  searchInput.addEventListener("input", filterTasks);
+  if (searchInput) {
+    searchInput.addEventListener("input", filterTasks);
+  }
 }
+
+initializeSearch();

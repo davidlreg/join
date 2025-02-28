@@ -1,8 +1,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  get,
+  set,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
-  databaseURL: "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/",
+  databaseURL:
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -51,30 +57,45 @@ function validatePasswords() {
 }
 
 /**
- * Validates the sign-up form fields and updates the sign-up button state.
+ * Checks if all required form fields are valid.
  *
- * @returns {void}
+ * @returns {boolean} True if the form is valid, otherwise false.
  */
-function validateForm() {
-  let signUpButton = document.getElementById("signUpBtn");
-  let isFormValid =
+function isFormValid() {
+  return (
     nameInput.value !== "" &&
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
     passwordInput.value !== "" &&
     confirmPasswordInput.value !== "" &&
     confirmPasswordInput.style.border !== "1px solid red" &&
-    checkbox.checked;
+    checkbox.checked
+  );
+}
 
-  if (isFormValid) {
-    signUpButton.classList.remove("btnUnabledDark");
-    signUpButton.classList.add("btnDark");
-    signUpButton.addEventListener("click", checkAvailability);
-  } else {
-    signUpButton.classList.remove("btnDark");
-    signUpButton.classList.add("btnUnabledDark");
-    signUpButton.removeEventListener("click", checkAvailability);
-  }
+/**
+ * Updates the sign-up button's state based on form validation.
+ *
+ * @param {boolean} isValid - Whether the form is valid.
+ * @returns {void}
+ */
+function updateSignUpButtonState(isValid) {
+  let signUpButton = document.getElementById("signUpBtn");
+  signUpButton.classList.toggle("btnDark", isValid);
+  signUpButton.classList.toggle("btnUnabledDark", !isValid);
+  signUpButton[isValid ? "addEventListener" : "removeEventListener"](
+    "click",
+    checkAvailability
+  );
+}
+
+/**
+ * Validates the sign-up form and updates the button state.
+ *
+ * @returns {void}
+ */
+function validateForm() {
+  updateSignUpButtonState(isFormValid());
 }
 
 /**
@@ -86,7 +107,10 @@ function updatePasswordIcon() {
   let inputType = this.type;
 
   if (this.value.length > 0) {
-    this.style.backgroundImage = inputType === "text" ? "url(../../assets/icon/login/visibility.svg)" : "url(../../assets/icon/login/visibility_off.svg)";
+    this.style.backgroundImage =
+      inputType === "text"
+        ? "url(../../assets/icon/login/visibility.svg)"
+        : "url(../../assets/icon/login/visibility_off.svg)";
     this.nextElementSibling.classList.remove("dNone");
   } else {
     this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
@@ -107,7 +131,8 @@ function toggleVisibility() {
     input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
   } else {
     input.type = "password";
-    input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+    input.style.backgroundImage =
+      "url(../../assets/icon/login/visibility_off.svg)";
   }
 }
 
@@ -124,7 +149,9 @@ async function checkAvailability() {
   const users = snapshot.val();
 
   if (users) {
-    const emailExists = Object.values(users).some((user) => user.email === email);
+    const emailExists = Object.values(users).some(
+      (user) => user.email === email
+    );
 
     if (emailExists) {
       emailInput.style.border = "1px solid red";
@@ -147,7 +174,12 @@ async function createUser() {
   const newUserId = await getNextId("Data/Users", "userId");
   await saveUser(newUserId, { name, email, password });
   const newContactId = await getNextId("Data/Contacts", "contactId");
-  await saveContact(newContactId, { createdBy: newUserId, email, name, phone: "" });
+  await saveContact(newContactId, {
+    createdBy: newUserId,
+    email,
+    name,
+    phone: "",
+  });
   showOverlay();
 
   setTimeout(function () {

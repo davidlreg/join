@@ -12,8 +12,12 @@
     <link rel="stylesheet" href="/style/login/mediaQueryLogin.css" />
   </head>
 
-  <body>
-    <img class="logo" src="../../assets/icon/login/join_icon_dark.svg" alt="Join Logo" />
+  <body onload="initSignUp()">
+    <img
+      class="logo"
+      src="../../assets/icon/login/join_icon_dark.svg"
+      alt="Join Logo"
+    />
 
     <div class="signUpForm">
       <button class="arrowBack" onclick="location.href='./login.html'">
@@ -23,17 +27,44 @@
       <h1 class="header">Sign up</h1>
 
       <div class="inputContainer">
-        <input type="text" name="name" id="userName" placeholder="Name" class="inputName" required />
+        <input
+          type="text"
+          name="name"
+          id="userName"
+          placeholder="Name"
+          class="inputName"
+          required
+        />
         <p class="errorGap"></p>
-        <input type="text" name="email" id="userEmail" placeholder="Email" class="inputEmail" required />
+        <input
+          type="text"
+          name="email"
+          id="userEmail"
+          placeholder="Email"
+          class="inputEmail"
+          required
+        />
         <p id="errorMsgEmail" class="errorGap"></p>
         <div class="inputPasswordWrapper">
-          <input type="password" name="password" placeholder="Password" class="inputPassword" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="inputPassword"
+            required
+          />
           <button class="passwordToggle dNone"></button>
         </div>
         <p class="errorGap"></p>
         <div class="inputPasswordWrapper">
-          <input type="password" name="password" placeholder="Confirm Password" class="inputPassword" id="userPassword" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Confirm Password"
+            class="inputPassword"
+            id="userPassword"
+            required
+          />
           <button class="passwordToggle dNone"></button>
         </div>
         <p id="errorMsgPassword" class="errorGap"></p>
@@ -42,11 +73,15 @@
       <div class="checkbox">
         <input type="checkbox" id="checkboxSignUp" class="box dNone" />
         <label for="checkboxSignUp" class="customBox"></label>
-        <span>I accept the <a href="./privacyPolicy.html">Privacy Policy</a></span>
+        <span
+          >I accept the <a href="./privacyPolicy.html">Privacy Policy</a></span
+        >
       </div>
 
       <div class="buttons">
-        <button id="signUpBtn" class="btnUnabledDark" type="button">Sign up</button>
+        <button id="signUpBtn" class="btnUnabledDark" type="button">
+          Sign up
+        </button>
       </div>
     </div>
 
@@ -56,7 +91,9 @@
     </div>
 
     <div id="overlay" class="overlay dNone">
-      <p id="overlayMessage" class="overlayMessage">You signed up successfully</p>
+      <p id="overlayMessage" class="overlayMessage">
+        You signed up successfully
+      </p>
     </div>
     <!-- JavaScript -->
     <script type="module" src="/script/login/signUp.js"></script>

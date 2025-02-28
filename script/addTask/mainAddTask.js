@@ -1,3 +1,11 @@
+/**
+ * Initializes the click event listener to close dropdowns when clicked outside.
+ *
+ */
+function initMainAddTask() {
+  document.addEventListener("click", closeDropdown);
+}
+
 let datePicker;
 
 /**
@@ -19,8 +27,7 @@ function initTask() {
  * @param {string} category - The selected category.
  */
 function selectCategory(category) {
-  const selectContainer = document.getElementById("selectTask");
-  selectContainer.value = category;
+  selectCategoryHelper(category);
   toggleCategory();
 }
 
@@ -30,9 +37,18 @@ function selectCategory(category) {
  * @param {string} category - The selected category.
  */
 function selectCategoryOverlay(category) {
+  selectCategoryHelper(category);
+  toggleCategory();
+}
+
+/**
+ * Helper to select task category.
+ *
+ * @param {string} category - The selected category.
+ */
+function selectCategoryHelper(category) {
   const selectContainer = document.getElementById("selectTask");
   selectContainer.value = category;
-  toggleCategory();
 }
 
 /**
@@ -54,8 +70,6 @@ function closeDropdown(event) {
   const dropdown = document.getElementById("dropdown");
 
   if (
-    dropdown &&
-    selectContact &&
     !dropdown.contains(event.target) &&
     !selectContact.contains(event.target)
   ) {
@@ -66,27 +80,11 @@ function closeDropdown(event) {
 /**
  * Loads contacts and populates the dropdown.
  *
- * @param {Array} [assignedTo=[]] - List of assigned contacts.
+ * @param {Array} [assignedContacts=[]] - List of assigned contacts.
  */
 async function loadContacts(assignedContacts = []) {
   const data = await fetchContacts();
-  if (!data) return;
-
-  const contactContainer = document.getElementById("selectContact");
-  contactContainer.innerHTML = "";
-
-  const contactList = Object.values(data);
-  contactList.forEach((contact) => {
-    const contactItem = createContentItem(contact);
-
-    if (assignedContacts.some((assigned) => assigned.name === contact.name)) {
-      contactItem.classList.add("selected");
-      const checkBox = contactItem.querySelector(".contactCheckbox");
-      checkBox.checked = true;
-    }
-
-    contactContainer.appendChild(contactItem);
-  });
+  if (data) populateContacts(data, assignedContacts);
 }
 
 /**
@@ -118,10 +116,8 @@ function populateContacts(contacts, assignedTo = []) {
   contactContainer.innerHTML = "";
 
   const contactList = Object.values(contacts);
-
-  if (contactList.length === 0) {
+  if (!contactList.length) {
     contactContainer.innerHTML = `<p>No contacts found</p>`;
-    return;
   }
 
   contactList.forEach((contact) => addContactToDropdown(contact, assignedTo));
@@ -170,22 +166,24 @@ function createContentItem(contact, assignedTo = []) {
  */
 function addContactClick(contactItem, checkBox) {
   contactItem.addEventListener("click", function (event) {
-    if (event.target === checkBox) {
-      contactItem.classList.toggle("selected");
-      updateSelectedContact();
-      return;
-    }
-
-    this.classList.toggle("selected");
-    checkBox.checked = !checkBox.checked;
-    updateSelectedContact();
+    toggleSelection(contactItem, checkBox);
   });
-
   checkBox.addEventListener("click", function (event) {
     event.stopPropagation();
-    contactItem.classList.toggle("selected");
-    updateSelectedContact();
+    toggleSelection(contactItem, checkBox);
   });
+}
+
+/**
+ * Toggle selection of the contact item and updates selected contacts.
+ *
+ * @param {HTMLElement} contactItem - The contact item to toggle.
+ * @param {HTMLInputElement} checkBox - The checkbox inside the contact item.
+ */
+function toggleSelection(contactItem, checkBox) {
+  contactItem.classList.toggle("selected");
+  checkBox.checked = !checkBox.checked;
+  updateSelectedContact();
 }
 
 /**
@@ -201,7 +199,6 @@ function createProfilePicture(contact) {
   profileDiv.textContent = `${contact.name.charAt(0).toUpperCase()}${
     contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""
   }`;
-
   return profileDiv;
 }
 
@@ -229,48 +226,65 @@ function createCheckbox(name, assignedTo = []) {
   checkbox.type = "checkbox";
   checkbox.classList.add("contactCheckbox");
   checkbox.value = name;
-
-  if (assignedTo.some((contact) => contact.name === name)) {
+  if (assignedTo.some((contact) => contact.name === name))
     checkbox.checked = true;
-  }
-
   checkbox.addEventListener("change", updateSelectedContact);
   return checkbox;
 }
 
 /**
- * Updates the display of selected contacts under the dropdown
- * without resetting previously selected contacts.
- *
+ * Updates the display of selected contacts.
  */
 function updateSelectedContact() {
   const selectedContactsContainer = document.getElementById("selectedContacts");
   selectedContactsContainer.innerHTML = "";
 
-  const newSelectedNames = Array.from(
-    document.querySelectorAll(".contactCheckbox:checked")
-  ).map((checkbox) => checkbox.value);
-
+  const newSelectedNames = getSelectedNames();
   fullAssignedContacts = newSelectedNames;
-
   displayContacts = fullAssignedContacts.slice(0, 4);
 
-  const contactProfiles = createSelectedProfilePictures(displayContacts);
-  contactProfiles.forEach((profile) =>
-    selectedContactsContainer.appendChild(profile)
-  );
+  displaySelectedProfiles(displayContacts, selectedContactsContainer);
+  displayMoreContactsIfNeeded(selectedContactsContainer);
+}
 
+/**
+ * Returns an array of names of selected contacts.
+ *
+ * @returns {string[]} Array of selected contact names.
+ */
+function getSelectedNames() {
+  return Array.from(document.querySelectorAll(".contactCheckbox:checked")).map(
+    (checkbox) => checkbox.value
+  );
+}
+
+/**
+ * Appends profile pictures for the selected contacts.
+ *
+ * @param {string[]} displayContacts - List of contact names to display.
+ * @param {HTMLElement} container - The container to append the profiles to.
+ */
+function displaySelectedProfiles(displayContacts, container) {
+  const contactProfiles = createSelectedProfilePictures(displayContacts);
+  contactProfiles.forEach((profile) => container.appendChild(profile));
+}
+
+/**
+ * Appends a "more contacts" indicator if there are more than 4 selected contacts.
+ *
+ * @param {HTMLElement} container - The container to append the "more" indicator to.
+ */
+function displayMoreContactsIfNeeded(container) {
   if (fullAssignedContacts.length > 4) {
     const moreContacts = document.createElement("div");
     moreContacts.classList.add("profilePicture", "moreContactsIndicator");
     moreContacts.textContent = `+${fullAssignedContacts.length - 4}`;
-    selectedContactsContainer.appendChild(moreContacts);
+    container.appendChild(moreContacts);
   }
 }
 
 /**
- * Creates profile picture elements for selected contacts in Task.
- *
+ * Creates profile picture elements for selected contacts.
  *
  * @param {string[]} selectedNames - Array of contact names with checked checkboxes.
  * @returns {HTMLDivElement[]} An array of div elements representing profile pictures.
@@ -284,7 +298,6 @@ function createSelectedProfilePictures(selectedNames) {
     profileDiv.textContent = `${name.charAt(0).toUpperCase()}${
       name.split(" ")[1]?.charAt(0).toUpperCase() || ""
     }`;
-
     return profileDiv;
   });
 }
@@ -301,7 +314,7 @@ function getToday() {
 }
 
 /**
- * Past days were decleared with a gray background-color.
+ * Styles past days in the datepicker.
  *
  * @param {HTMLElement} dayElem - HTML-Element of the day.
  */
@@ -336,7 +349,7 @@ function setupFlatpickr(inputElement) {
 }
 
 /**
- * Searches for all datepicker input fields with the ID “addTaskDate” and initializes Flatpickr for each of them.
+ * Initializes Flatpickr for all "addTaskDate" input fields.
  *
  */
 function initFlatpickr() {
@@ -352,10 +365,10 @@ function openDatePicker() {
 }
 
 /**
- * Clears the task creation form.
+ * Clears the input fields in the task creation form.
  *
  */
-function clearButton() {
+function clearInputFields() {
   [
     "addTaskTitle",
     "addTaskDescription",
@@ -365,6 +378,13 @@ function clearButton() {
   ].forEach((id) => {
     document.getElementById(id).value = "";
   });
+}
+
+/**
+ * Clears the selected contacts and subtasks from the task creation form.
+ *
+ */
+function clearSelectedItems() {
   ["selectedContacts", "subtaskList"].forEach((id) => {
     document.getElementById(id).textContent = "";
   });
@@ -374,8 +394,15 @@ function clearButton() {
   document
     .querySelectorAll(".selectContactItem")
     .forEach((contact) => contact.classList.remove("selected"));
-  document.getElementById("subtaskPlusIcon").style.display = "inline";
-  document.getElementById("subtaskIcons").style.display = "none";
+}
+
+/**
+ * Resets the task creation form's state.
+ *
+ */
+function clearButton() {
+  clearInputFields();
+  clearSelectedItems();
   resetButtonsOverlay();
   setPriority("medium");
   clearErrorForField("errorMessageAddTaskTitle");
@@ -415,5 +442,3 @@ function clearErrorForField(errorId) {
   const errorElement = document.getElementById(errorId);
   errorElement.textContent = "";
 }
-
-document.addEventListener("click", closeDropdown);

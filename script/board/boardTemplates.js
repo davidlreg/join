@@ -7,9 +7,12 @@
  */
 function templateBoardTasks(task, taskId) {
   const assignedToArray = Array.isArray(task.assignedTo) ? task.assignedTo : [];
-  let completedSubtasks = task.subtask ? task.subtask.filter((st) => st.completed).length : 0;
+  let completedSubtasks = task.subtask
+    ? task.subtask.filter((st) => st.completed).length
+    : 0;
   let totalSubtasks = task.subtask ? task.subtask.length : 0;
-  let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let progressPercentage =
+    totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
   let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
 
   const maxVisibleContacts = 3;
@@ -24,7 +27,9 @@ function templateBoardTasks(task, taskId) {
           <span class="boardTaskDescription">${task.description}</span>
           
           <!-- Fortschrittsanzeige -->
-          <div class="boardSubTasks" data-task-id="${taskId}" style="${totalSubtasks === 0 ? "display:none;" : "display: block;"}">
+          <div class="boardSubTasks" data-task-id="${taskId}" style="${
+    totalSubtasks === 0 ? "display:none;" : "display: block;"
+  }">
 
               <div class="boardSubtaskProgress" 
               onmouseover="showTooltip(event, '${completedSubtasks} of ${totalSubtasks} subtasks done')" 
@@ -40,16 +45,29 @@ function templateBoardTasks(task, taskId) {
                   ${visibleContacts
                     .map(
                       (contact) => `
-                            <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
-                                ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
+                            <div class="profilePicture" title="${
+                              contact.name
+                            }" style="background-color: ${getRandomColorForName(
+                        contact.name
+                      )};">
+                                ${contact.name.charAt(0).toUpperCase()}${
+                        contact.name.split(" ")[1]?.charAt(0).toUpperCase() ||
+                        ""
+                      }
                             </div>
                         `
                     )
                     .join("")}
                   
-                  ${hiddenContactsCount > 0 ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>` : ""}
+                  ${
+                    hiddenContactsCount > 0
+                      ? `<div class="profilePicture moreContactsIndicator" title="${hiddenContactsCount} more contacts">+${hiddenContactsCount}</div>`
+                      : ""
+                  }
               </div>
-              <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
+              <img src="/assets/icon/board/priority-${
+                task.priority
+              }.png" alt="Priority Icon">
           </div>
       </div>
     `;
@@ -93,7 +111,9 @@ function templateBoardOverlay(task, taskId) {
             <div class="boardOverlayTaskPriority">
                 <span class="label">Priority:</span>
                 <span>${task.priority}</span>
-                <img src="/assets/icon/board/priority-${task.priority}.png" alt="Priority Icon">
+                <img src="/assets/icon/board/priority-${
+                  task.priority
+                }.png" alt="Priority Icon">
             </div>
         </div>
         <div class="boardOverlayAssignedTo">
@@ -103,10 +123,16 @@ function templateBoardOverlay(task, taskId) {
                   .map(
                     (contact) => `
                     <li>
-                         <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(contact.name)};">
-                            ${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}
+                         <div class="boardOverlayUser" style="background-color: ${getRandomColorForName(
+                           contact.name
+                         )};">
+                            ${contact.name.charAt(0).toUpperCase()}${
+                      contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""
+                    }
                         </div>
-                        <span class="boardOverlayUsername">${contact.name}</span>
+                        <span class="boardOverlayUsername">${
+                          contact.name
+                        }</span>
                     </li>
                 `
                   )
@@ -120,9 +146,13 @@ function templateBoardOverlay(task, taskId) {
                       .map(
                         (subtask, index) => `
                         <li>
-                            <input type="checkbox" id="subtask-${task.id}-${index}" 
+                            <input type="checkbox" id="subtask-${
+                              task.id
+                            }-${index}" 
                                 ${subtask.completed ? "checked" : ""} 
-                                onchange="toggleSubtask('${task.id}', ${index})">
+                                onchange="toggleSubtask('${
+                                  task.id
+                                }', ${index})">
                              <label for="subtask-${task.id}-${index}"></label>
                             <span>${subtask.text}</span>
                         </li>
@@ -197,16 +227,22 @@ function templateEditTask(task, taskId) {
           <div class="editTaskInputLeft">
             <div class="editTaskInputOverlay">
               <p>Title<span></span></p>
-              <input required type="text" placeholder="Enter a title" class="editTaskInput" id="addTaskTitle" value="${task.title}" />
+              <input required type="text" placeholder="Enter a title" class="editTaskInput" id="addTaskTitle" value="${
+                task.title
+              }" />
             </div>
             <div class="editTaskInputOverlay">
               <p>Description</p>
-              <textarea placeholder="Enter a Description" class="editDescriptionInputOverlay textareaStyling" id="addTaskDescription">${task.description}</textarea>
+              <textarea placeholder="Enter a Description" class="editDescriptionInputOverlay textareaStyling" id="addTaskDescription">${
+                task.description
+              }</textarea>
             </div>
 
             <div class="editTaskInputOverlay">
               <p>Due Date</p>
-              <input required type="text" class="editTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly value="${task.dueDate}" onclick="openDatePicker()">
+              <input required type="text" class="editTaskInput dateInput" id="addTaskDate" placeholder="TT/MM/YYYY" readonly value="${
+                task.dueDate
+              }" onclick="openDatePicker()">
               </div>
           </div>
         </div>
@@ -242,8 +278,16 @@ function templateEditTask(task, taskId) {
             ${visibleContacts
               .map(
                 (contact) => `
-            <div class="profilePicture" title="${contact.name}" style="background-color: ${getRandomColorForName(contact.name)};">
-              <p class="profilePictureLetters">${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}</p>
+            <div class="profilePicture" title="${
+              contact.name
+            }" style="background-color: ${getRandomColorForName(
+                  contact.name
+                )};">
+              <p class="profilePictureLetters">${contact.name
+                .charAt(0)
+                .toUpperCase()}${
+                  contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""
+                }</p>
             </div>
             `
               )
@@ -307,4 +351,33 @@ function templateEditTask(task, taskId) {
   </button>
 </div>
     `;
+}
+
+/**
+ * Generates the HTML structure for a success message when a task is added.
+ *
+ * @returns {string} The HTML markup for the success message.
+ */
+function insertTaskCreatedMessage() {
+  const svgMarkup = getSvgMarkup();
+  return `
+    <div class="taskSuccessfullyCreated">
+      <p>Task added to board</p>
+      ${svgMarkup}
+    </div>
+  `;
+}
+
+/**
+ * Returns the SVG markup for the success icon.
+ *
+ * @returns {string} The SVG markup.
+ */
+function getSvgMarkup() {
+  return `
+    <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 1.99979L20 19.9998C19.9995 20.5301..." fill="white"/>
+      <path d="M26 2.00001L26 20C25.9995 20.5303..." fill="white"/>
+    </svg>
+  `;
 }

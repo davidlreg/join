@@ -18,9 +18,11 @@ function getAddTaskElements() {
  *
  */
 function getSelectedContacts() {
-  return Array.from(document.querySelectorAll(".contactCheckbox:checked")).map((checkbox) => ({
-    name: checkbox.value,
-  }));
+  return Array.from(document.querySelectorAll(".contactCheckbox:checked")).map(
+    (checkbox) => ({
+      name: checkbox.value,
+    })
+  );
 }
 
 /**
@@ -48,15 +50,20 @@ function validateTaskInputs(title, date, category) {
   clearError();
   let isValid = true;
   if (!title.value.trim()) {
-    isValid = showError("errorMessageAddTaskTitle", "This field is required") && false;
+    isValid =
+      showError("errorMessageAddTaskTitle", "This field is required") && false;
   }
 
   if (!date.value.trim()) {
-    isValid = showError("errorMessageAddTaskDueDate", "This field is required") && false;
+    isValid =
+      showError("errorMessageAddTaskDueDate", "This field is required") &&
+      false;
   }
 
   if (!category.value.trim()) {
-    isValid = showError("errorMessageAddTaskCategory", "This field is required") && false;
+    isValid =
+      showError("errorMessageAddTaskCategory", "This field is required") &&
+      false;
   }
   return isValid;
 }
@@ -86,8 +93,12 @@ function showError(id, message) {
  * */
 function clearError() {
   const errorElementTitle = document.getElementById("errorMessageAddTaskTitle");
-  const errorElementDueDate = document.getElementById("errorMessageAddTaskDueDate");
-  const errorElementCategory = document.getElementById("errorMessageAddTaskCategory");
+  const errorElementDueDate = document.getElementById(
+    "errorMessageAddTaskDueDate"
+  );
+  const errorElementCategory = document.getElementById(
+    "errorMessageAddTaskCategory"
+  );
 
   errorElementTitle.innerHTML = "";
   errorElementDueDate.innerHTML = "";
@@ -95,35 +106,68 @@ function clearError() {
 }
 
 /**
- * Creates a task object.
+ * Creates a task object from the given elements and selected board section.
  *
+ * @param {Object} elements - The DOM elements containing task details.
+ * @param {string} selectedBoardSection - The board section the task will be assigned to.
+ * @returns {Object} The task object with all its details.
  */
 function createTaskObject(elements, selectedBoardSection) {
-  const subtasksArray = Array.from(elements.addTaskSubTasks).map((subtask) => ({
-    text: subtask.textContent,
-    completed: false,
-  }));
-
+  const subtasksArray = mapSubtasks(elements.addTaskSubTasks);
   return {
     assignedTo: elements.assignedContacts,
     title: elements.addTaskTitle.value,
     category: elements.addTaskCategory.value,
     description: elements.addTaskDescription.value,
     dueDate: elements.addTaskDate.value,
-    priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
+    priority: formatPriority(selectedPriority),
     status: selectedBoardSection || "To do",
     subtask: subtasksArray,
   };
 }
 
 /**
- * Creates and adds a task to the board.
+ * Maps the subtasks into an array of objects with text and completed properties.
  *
+ * @param {NodeList} subtasks - The DOM nodes for the subtasks.
+ * @returns {Array} The mapped subtasks array.
+ */
+function mapSubtasks(subtasks) {
+  return Array.from(subtasks).map((subtask) => ({
+    text: subtask.textContent,
+    completed: false,
+  }));
+}
+
+/**
+ * Formats the priority string to capitalize the first letter.
+ *
+ * @param {string} priority - The selected priority string.
+ * @returns {string} The formatted priority.
+ */
+function formatPriority(priority) {
+  return String(priority).charAt(0).toUpperCase() + String(priority).slice(1);
+}
+
+/**
+ * Creates and adds a task to the board by gathering inputs and pushing to the backend.
+ *
+ * @returns {Promise<void>} Resolves after task creation and sync with the backend.
  */
 async function createTasksForBoard() {
   const elements = getAddTaskElements();
-  const selectedBoardSection = window.innerWidth <= 1000 ? getBoardSectionFromURL() : null;
-  if (!validateTaskInputs(elements.addTaskTitle, elements.addTaskDate, elements.addTaskCategory)) return;
+  const selectedBoardSection =
+    window.innerWidth <= 1000 ? getBoardSectionFromURL() : null;
+
+  if (
+    !validateTaskInputs(
+      elements.addTaskTitle,
+      elements.addTaskDate,
+      elements.addTaskCategory
+    )
+  )
+    return;
+
   const newTask = createTaskObject(elements, selectedBoardSection);
   await showTaskCreatedMessage();
   await pushTaskToBackendData(newTask);
@@ -133,31 +177,65 @@ async function createTasksForBoard() {
 }
 
 /**
- * Edits a task on the board.
+ * Edits task details for a board.
  *
+ * Fetches data, updates task properties, and syncs with the backend.
+ * @param {string} taskId - The ID of the task to edit.
  */
 async function editTasksForBoard(taskId) {
   await fetchDataJSON();
   const tasks = backendData.Data.Tasks;
   const elements = getAddTaskElements();
-  const subtasksArray = Array.from(elements.addTaskSubTasks).map((subtask) => ({
+  const subtasksArray = mapSubtasks(elements.addTaskSubTasks);
+  updateTaskData(tasks, taskId, elements, subtasksArray);
+  await syncBackendDataWithFirebase();
+  await closeTaskOverlay();
+  loadTasksToBoard();
+  location.reload();
+}
+
+/**
+ * Maps the subtasks from the DOM elements.
+ *
+ * @param {NodeList} addTaskSubTasks - The subtasks DOM nodes.
+ * @returns {Array} - Array of subtasks with text and completed status.
+ */
+function mapSubtasks(addTaskSubTasks) {
+  return Array.from(addTaskSubTasks).map((subtask) => ({
     text: subtask.textContent,
     completed: false,
   }));
+}
+
+/**
+ * Updates task data with the new input values.
+ *
+ * @param {Object} tasks - The tasks object.
+ * @param {string} taskId - The ID of the task to update.
+ * @param {Object} elements - The DOM elements containing the new data.
+ * @param {Array} subtasksArray - The updated subtasks array.
+ */
+function updateTaskData(tasks, taskId, elements, subtasksArray) {
   tasks[taskId] = {
     ...tasks[taskId],
     assignedTo: getSelectedContacts(),
     title: elements.addTaskTitle.value,
     description: elements.addTaskDescription.value,
     dueDate: elements.addTaskDate.value,
-    priority: String(selectedPriority).charAt(0).toUpperCase() + String(selectedPriority).slice(1),
+    priority: formatPriority(selectedPriority),
     status: tasks[taskId].status,
     subtask: subtasksArray,
   };
-  await syncBackendDataWithFirebase();
-  await closeTaskOverlay();
-  loadTasksToBoard();
-  location.reload();
+}
+
+/**
+ * Capitalizes and formats the priority value.
+ *
+ * @param {string} priority - The priority string.
+ * @returns {string} - The formatted priority string.
+ */
+function formatPriority(priority) {
+  return String(priority).charAt(0).toUpperCase() + String(priority).slice(1);
 }
 
 /**
@@ -167,7 +245,9 @@ async function editTasksForBoard(taskId) {
 async function deleteTask() {
   await fetchDataJSON();
   const tasks = backendData.Data.Tasks;
-  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+  const boardOverlayTaskTitle = document.querySelector(
+    ".boardOverlayTaskTitle"
+  );
   closeBoardOverlay();
   for (const taskId in tasks) {
     if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
@@ -192,7 +272,9 @@ async function editTask(taskId) {
   await fetchDataJSON();
   let tasks = backendData.Data.Tasks;
   const { overlayBoardContent, boardOverlay } = getBoardElements();
-  const boardOverlayTaskTitle = document.querySelector(".boardOverlayTaskTitle");
+  const boardOverlayTaskTitle = document.querySelector(
+    ".boardOverlayTaskTitle"
+  );
 
   if (tasks[taskId].title === boardOverlayTaskTitle.textContent) {
     overlayBoardContent.innerHTML = templateEditTask(tasks[taskId], taskId);
@@ -209,13 +291,16 @@ async function editTask(taskId) {
  *
  */
 async function syncBackendDataWithFirebase() {
-  await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(backendData),
-  });
+  await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(backendData),
+    }
+  );
 }
 
 /**
@@ -238,23 +323,7 @@ async function showTaskCreatedMessage() {
   return new Promise((resolve) => {
     const message = document.createElement("div");
     message.className = "createdTaskContainer";
-    message.innerHTML = `
-
-    <div class="taskSuccessfullyCreated">
- <p>Task added to board</p>
- <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-   <path
-     d="M20 1.99979L20 19.9998C19.9995 20.5301 19.7886 21.0385 19.4136 21.4134C19.0387 21.7884 18.5303 21.9993 18 21.9998L14 21.9998C13.4697 21.9993 12.9613 21.7884 12.5864 21.4134C12.2114 21.0385 12.0005 20.5301 12 19.9998L12 1.99979C12.0005 1.46952 12.2114 0.961118 12.5864 0.58616C12.9613 0.211202 13.4697 0.000317938 14 -0.000212328L18 -0.000212503C18.5303 0.000317717 19.0387 0.211202 19.4136 0.58616C19.7886 0.961118 19.9995 1.46952 20 1.99979ZM14 19.9998L18 19.9998L18 1.99979L14 1.99979L14 19.9998ZM14 1.99979L14 19.9998C13.9995 20.5301 13.7886 21.0384 13.4136 21.4134C13.0387 21.7883 12.5303 21.9992 12 21.9998L8 21.9998C7.46973 21.9992 6.96133 21.7883 6.58637 21.4134C6.21141 21.0384 6.00053 20.53 6 19.9998L6 1.99977C6.00053 1.4695 6.21141 0.961097 6.58637 0.586139C6.96133 0.211181 7.46973 0.000299127 8 -0.000231139L12 -0.000231314C12.5303 0.000298906 13.0387 0.211181 13.4136 0.586139C13.7886 0.961097 13.9995 1.46952 14 1.99979ZM8 19.9998L12 19.9998L12 1.99979L8 1.99977L8 19.9998ZM8 1.99977L8 19.9998C7.99947 20.53 7.78859 21.0384 7.41363 21.4134C7.03867 21.7883 6.53027 21.9992 6 21.9998L2 21.9998C1.46973 21.9992 0.961329 21.7883 0.586371 21.4134C0.211413 21.0384 0.000529412 20.53 -8.74331e-08 19.9998L-8.74238e-07 1.99977C0.000528579 1.4695 0.211412 0.961098 0.58637 0.58614C0.961328 0.211182 1.46973 0.000299389 2 -0.000230877L6 -0.000231051C6.53027 0.000299168 7.03867 0.211181 7.41363 0.586139C7.78859 0.961097 7.99947 1.4695 8 1.99977ZM2 19.9998L6 19.9998L6 1.99977L2 1.99977L2 19.9998Z"
-     fill="white"
-   />
-   <path
-     d="M26 2.00001L26 20C25.9995 20.5303 25.7886 21.0387 25.4136 21.4136C25.0387 21.7886 24.5303 21.9995 24 22L20 22C19.4697 21.9995 18.9613 21.7886 18.5864 21.4136C18.2114 21.0387 18.0005 20.5301 18 19.9998L18 1.99979C18.0005 1.46952 18.2114 0.961339 18.5864 0.586381C18.9613 0.211423 19.4697 0.000540836 20 1.05699e-05L24 1.0395e-05C24.5303 0.000540615 25.0387 0.211423 25.4136 0.586381C25.7886 0.961339 25.9995 1.46974 26 2.00001ZM20 19.9998L24 20L24 2.00001L20 1.99979L20 19.9998Z"
-     fill="white"
-   />
- </svg>
-</div>
-
-   `;
+    message.innerHTML = insertTaskCreatedMessage();
     document.body.appendChild(message);
     setTimeout(() => {
       message.classList.add("fadeOut");

@@ -37,11 +37,14 @@ function updateTaskStatus(taskId, newStatus) {
  * @param {Object} data - The updated data to send.
  */
 async function updateBackend(data) {
-  await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json", {
-    method: "PUT",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
-  });
+  await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 }
 
 /**
@@ -84,8 +87,9 @@ function drop(event, newStatus) {
 }
 
 /**
- * Checks if task containers are empty and updates their visibility accordingly.
+ * Checks if the task container is empty and shows/hides the corresponding task section.
  *
+ * @function
  */
 function checkIfTaskExistInContainer() {
   const sections = [
@@ -97,15 +101,48 @@ function checkIfTaskExistInContainer() {
     { containerId: "boardNoTasksAwaiting", sectionId: "tasksSectionAwaiting" },
     { containerId: "boardNoTasksDone", sectionId: "tasksSectionDone" },
   ];
+
   sections.forEach((section) => {
-    const container = document.getElementById(section.containerId);
-    const taskSection = document.getElementById(section.sectionId);
-    if (container.children.length == 0) {
-      taskSection.classList.remove("dNone");
-    } else {
-      taskSection.classList.add("dNone");
-    }
+    toggleTaskSection(section.containerId, section.sectionId);
   });
+}
+
+/**
+ * Toggles the visibility of a task section based on whether its container has any children.
+ *
+ * @param {string} containerId - The ID of the task container.
+ * @param {string} sectionId - The ID of the task section to toggle.
+ * @function
+ */
+function toggleTaskSection(containerId, sectionId) {
+  const container = document.getElementById(containerId);
+  const taskSection = document.getElementById(sectionId);
+
+  if (container.children.length === 0) {
+    showSection(taskSection);
+  } else {
+    hideSection(taskSection);
+  }
+}
+
+/**
+ * Shows the given section by removing the 'dNone' class.
+ *
+ * @param {Element} taskSection - The task section element to show.
+ * @function
+ */
+function showSection(taskSection) {
+  taskSection.classList.remove("dNone");
+}
+
+/**
+ * Hides the given section by adding the 'dNone' class.
+ *
+ * @param {Element} taskSection - The task section element to hide.
+ * @function
+ */
+function hideSection(taskSection) {
+  taskSection.classList.add("dNone");
 }
 
 /**
@@ -151,8 +188,12 @@ function touchStart(event, taskId) {
 function touchMove(event) {
   let touch = event.touches[0];
   currentTouchElement.style.position = "absolute";
-  currentTouchElement.style.left = `${touch.pageX - currentTouchElement.offsetWidth / 2}px`;
-  currentTouchElement.style.top = `${touch.pageY - currentTouchElement.offsetHeight / 2}px`;
+  currentTouchElement.style.left = `${
+    touch.pageX - currentTouchElement.offsetWidth / 2
+  }px`;
+  currentTouchElement.style.top = `${
+    touch.pageY - currentTouchElement.offsetHeight / 2
+  }px`;
   event.preventDefault();
 }
 
@@ -194,29 +235,45 @@ function getDropZones() {
 }
 
 /**
- * Finds the nearest drop zone based on the touch coordinates.
+ * Finds the closest drop zone to a given point (x, y).
  *
- * @param {number} x - The X position of the touch event.
- * @param {number} y - The Y position of the touch event.
- * @param {Object} dropZones - Drop zone mappings.
- * @returns {HTMLElement|null} - The closest drop zone or null.
+ * @param {number} x - The x-coordinate of the point.
+ * @param {number} y - The y-coordinate of the point.
+ * @param {Object} dropZones - The drop zones with element IDs as keys.
+ * @returns {HTMLElement|null} The closest drop zone element or null if none found.
  */
 function findDropZone(x, y, dropZones) {
   let closestZone = null;
   let minDistance = Infinity;
+
   Object.keys(dropZones).forEach((id) => {
     let zone = document.getElementById(id);
-    if (!zone) return;
-    let rect = zone.getBoundingClientRect();
-    let centerX = rect.left + rect.width / 2;
-    let centerY = rect.top + rect.height / 2;
-    let distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-    if (distance < minDistance) {
-      minDistance = distance;
-      closestZone = zone;
+    if (zone) {
+      let distance = calculateDistance(x, y, zone);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestZone = zone;
+      }
     }
   });
+
   return closestZone;
+}
+
+/**
+ * Calculates the distance between a point (x, y) and the center of a zone element.
+ *
+ * @param {number} x - The x-coordinate of the point.
+ * @param {number} y - The y-coordinate of the point.
+ * @param {HTMLElement} zone - The drop zone element.
+ * @returns {number} The calculated distance.
+ */
+function calculateDistance(x, y, zone) {
+  let rect = zone.getBoundingClientRect();
+  let centerX = rect.left + rect.width / 2;
+  let centerY = rect.top + rect.height / 2;
+
+  return Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
 }
 
 /**

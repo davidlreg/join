@@ -21,7 +21,9 @@ function toggleSubtaskIcons() {
  *
  */
 function showSubtaskBoard() {
-  const showSubtask = document.querySelector(`[data-task-id="${taskId}"] .boardSubTasks`);
+  const showSubtask = document.querySelector(
+    `[data-task-id="${taskId}"] .boardSubTasks`
+  );
 
   if (showSubtask) {
     const task = backendData.Data.Tasks[taskId];
@@ -38,6 +40,8 @@ function showSubtaskBoard() {
  *
  */
 function addSubtask() {
+  if (!subtaskEmpty()) return; // Falls Eingabe leer ist, abbrechen
+
   const subtaskInput = document.getElementById("addTaskSubTasks");
   const subtaskList = document.getElementById("subtaskList");
   const subtaskValue = subtaskInput.value.trim();
@@ -53,7 +57,7 @@ function addSubtask() {
  */
 function subtaskEmpty() {
   const subtaskInput = document.getElementById("addTaskSubTasks");
-  if (!validateSubtaskInput(subtaskInput)) return;
+  return validateSubtaskInput(subtaskInput); // Gibt true oder false zurück
 }
 
 /**
@@ -81,14 +85,18 @@ function validateSubtaskInput(subtaskInput) {
  */
 function showSubtaskError(inputElement, message) {
   let targetElement = getSubtaskErrorTarget(inputElement);
+  if (!targetElement) return;
+
+  let existingError = targetElement.nextElementSibling;
+  if (existingError && existingError.classList.contains("errorMessage")) {
+    existingError.remove();
+  }
+
   let errorMessage = document.createElement("span");
   errorMessage.classList.add("errorMessage");
   errorMessage.textContent = message;
-  targetElement.insertAdjacentElement("afterend", errorMessage);
 
-  setTimeout(() => {
-    clearSubtaskError(inputElement);
-  }, 3000);
+  targetElement.insertAdjacentElement("afterend", errorMessage);
 }
 
 /**
@@ -98,11 +106,10 @@ function showSubtaskError(inputElement, message) {
  * @returns {HTMLElement} - The correct target element for the error message.
  */
 function getSubtaskErrorTarget(inputElement) {
-  if (inputElement.id === "editSubtaskInput") {
-    return inputElement.closest(".subtaskItem");
-  }
+  if (!inputElement) return null;
 
-  return inputElement.closest(".subtaskWrapper");
+  let subtaskContainer = inputElement.closest("[id^='subtask']");
+  return subtaskContainer ? subtaskContainer : null;
 }
 
 /**
@@ -112,7 +119,10 @@ function getSubtaskErrorTarget(inputElement) {
  */
 function clearSubtaskError(inputElement) {
   let targetElement = getSubtaskErrorTarget(inputElement);
-  let existingError = targetElement.parentNode.querySelector(".errorMessage");
+
+  if (!targetElement) return; // Falls targetElement null ist, verlasse die Funktion
+
+  let existingError = targetElement.parentNode?.querySelector(".errorMessage");
   if (existingError) existingError.remove();
 }
 
@@ -137,8 +147,12 @@ function createSubtaskElement(subtaskValue) {
   listItem.classList.add("subtaskItem");
   listItem.innerHTML = getSubtasks(subtaskValue);
 
-  listItem.querySelector(".editSubtask").addEventListener("click", () => editSubtask(listItem, subtaskValue));
-  listItem.querySelector(".removeSubtask").addEventListener("click", () => removeSubtask(listItem));
+  listItem
+    .querySelector(".editSubtask")
+    .addEventListener("click", () => editSubtask(listItem, subtaskValue));
+  listItem
+    .querySelector(".removeSubtask")
+    .addEventListener("click", () => removeSubtask(listItem));
   return listItem;
 }
 
@@ -186,8 +200,12 @@ function updateSubtaskIcons(listItem) {
  * @param {HTMLElement} listItem - The subtask element.
  */
 function addSubtaskEventListeners(listItem) {
-  listItem.querySelector(".removeSubtask").addEventListener("click", () => removeSubtask(listItem));
-  listItem.querySelector(".confirmEditSubtask").addEventListener("click", () => confirmSubtaskEdit(listItem));
+  listItem
+    .querySelector(".removeSubtask")
+    .addEventListener("click", () => removeSubtask(listItem));
+  listItem
+    .querySelector(".confirmEditSubtask")
+    .addEventListener("click", () => confirmSubtaskEdit(listItem));
 }
 
 /**
@@ -235,6 +253,11 @@ document.addEventListener("dblclick", function (event) {
   }
 });
 
+/**
+ * Enables editing mode for an existing subtask.
+ *
+ * @param {number} index - The index of the subtask to edit.
+ */
 function editOldSubtask(index) {
   const listItem = document.getElementById(`subtask${index + 1}`);
   const oldValue = listItem.querySelector(".subtaskText").innerHTML;
@@ -244,28 +267,53 @@ function editOldSubtask(index) {
   updateOldSubtaskIcons(listItem);
 }
 
+/**
+ * Updates the text wrapper of a subtask for editing.
+ *
+ * @param {HTMLElement} listItem - The subtask element.
+ * @param {string} oldValue - The previous subtask value.
+ */
 function updateOldSubtaskTextWrapper(listItem, oldValue) {
-  const subtaskTextWrapper = listItem.querySelector(".subtaskTextWrapper");
+  const subtaskTextWrapper = listItem.querySelector(".editSubtaskTextWrapper");
 
   subtaskTextWrapper.innerHTML = `
     <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
   `;
 }
 
+/**
+ * Updates the icons of a subtask during editing mode.
+ *
+ * @param {HTMLElement} listItem - The subtask element.
+ */
 function updateOldSubtaskIcons(listItem) {
-  const subtaskIcons = listItem.querySelector(".subtaskIcons");
+  const subtaskIcons = listItem.querySelector(".editSubtaskIcons");
 
   subtaskIcons.innerHTML = getSubtaskIcons();
 
   addOldSubtaskEventListeners(listItem);
 }
 
+/**
+ * Adds event listeners for subtask actions (edit, remove).
+ *
+ * @param {HTMLElement} listItem - The subtask element.
+ */
 function addOldSubtaskEventListeners(listItem) {
-  listItem.querySelector(".removeSubtask").addEventListener("click", () => removeOldSubtask(listItem));
+  listItem
+    .querySelector(".removeSubtask")
+    .addEventListener("click", () => removeOldSubtask(listItem));
 
-  listItem.querySelector(".confirmEditSubtask").addEventListener("click", () => confirmOldSubtaskEdit(listItem));
+  listItem
+    .querySelector(".confirmEditSubtask")
+    .addEventListener("click", () => confirmOldSubtaskEdit(listItem));
 }
 
+/**
+ * Validates and confirms the subtask edit.
+ *
+ * @param {HTMLElement} listItem - The subtask element.
+ */
 function confirmOldSubtaskEdit(listItem) {
   const editInput = listItem.querySelector(".editSubtaskInput");
 
@@ -274,62 +322,22 @@ function confirmOldSubtaskEdit(listItem) {
   finalizeOldSubtaskEdit(listItem, editInput.value.trim());
 }
 
+/**
+ * Finalizes the subtask edit by updating the element.
+ *
+ * @param {HTMLElement} listItem - The subtask element.
+ * @param {string} newValue - The new subtask value.
+ */
 function finalizeOldSubtaskEdit(listItem, newValue) {
   listItem.classList.remove("editing");
   listItem.replaceWith(createSubtaskElement(newValue));
 }
 
-function removeOldSubtask(index) {
-  const subtaskElement = document.getElementById(`subtask${index + 1}`);
-  if (subtaskElement) {
-    subtaskElement.remove();
-  }
-}
-
-function editOldSubtask(index) {
-  const listItem = document.getElementById(`subtask${index + 1}`);
-  const oldValue = listItem.querySelector(".subtaskText").innerHTML;
-  listItem.classList.add("editing");
-
-  updateOldSubtaskTextWrapper(listItem, oldValue);
-  updateOldSubtaskIcons(listItem);
-}
-
-function updateOldSubtaskTextWrapper(listItem, oldValue) {
-  const subtaskTextWrapper = listItem.querySelector(".subtaskTextWrapper");
-
-  subtaskTextWrapper.innerHTML = `
-    <input type="text" class="editSubtaskInput" id="editSubtaskInput" value="${oldValue}">
-  `;
-}
-
-function updateOldSubtaskIcons(listItem) {
-  const subtaskIcons = listItem.querySelector(".subtaskIcons");
-
-  subtaskIcons.innerHTML = getSubtaskIcons();
-
-  addOldSubtaskEventListeners(listItem);
-}
-
-function addOldSubtaskEventListeners(listItem) {
-  listItem.querySelector(".removeSubtask").addEventListener("click", () => removeOldSubtask(listItem));
-
-  listItem.querySelector(".confirmEditSubtask").addEventListener("click", () => confirmOldSubtaskEdit(listItem));
-}
-
-function confirmOldSubtaskEdit(listItem) {
-  const editInput = listItem.querySelector(".editSubtaskInput");
-
-  if (!validateSubtaskInput(editInput)) return;
-
-  finalizeOldSubtaskEdit(listItem, editInput.value.trim());
-}
-
-function finalizeOldSubtaskEdit(listItem, newValue) {
-  listItem.classList.remove("editing");
-  listItem.replaceWith(createSubtaskElement(newValue));
-}
-
+/**
+ * Removes an existing subtask from the list.
+ *
+ * @param {number} index - The index of the subtask to remove.
+ */
 function removeOldSubtask(index) {
   const subtaskElement = document.getElementById(`subtask${index + 1}`);
   if (subtaskElement) {

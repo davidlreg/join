@@ -165,7 +165,8 @@ form#taskForm h1 {
 
 select {
   padding: 10px;
-  background: url(/assets/icon/addTask/arrow_drop_downaa.svg) no-repeat right 10px center;
+  background: url(/assets/icon/addTask/arrow_drop_downaa.svg) no-repeat right
+    10px center;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -540,7 +541,7 @@ button img {
   fill: #29abe2;
 }
 
-.clearButton:hover *>img {
+.clearButton:hover * > img {
   color: #29abe2 !important;
   fill: #29abe2 !important;
 }
@@ -579,6 +580,7 @@ button img {
   font-size: 12px;
   margin-top: 4px;
   display: block;
+  position: relative;
 }
 
 .errorMessageAddTask {
@@ -608,7 +610,8 @@ button img {
 /* Calender */
 
 .dateInput {
-  background: url("/assets/icon/addTask/calender.png") no-repeat right 10px center;
+  background: url("/assets/icon/addTask/calender.png") no-repeat right 10px
+    center;
   background-color: #fff;
   background-size: 20px;
   cursor: pointer;

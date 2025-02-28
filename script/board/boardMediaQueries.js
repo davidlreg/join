@@ -1,15 +1,4 @@
 /**
- * Initializes media queries for the board by triggering
- * the changeInputBoardLocation function once the DOM is fully loaded.
- *
- */
-function initBoardMediaQueries() {
-  document.addEventListener("DOMContentLoaded", () => {
-    changeInputBoardLocation();
-  });
-}
-
-/**
  * Adjusts input field position based on window width.
  *
  */

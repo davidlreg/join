@@ -24,6 +24,7 @@ async function init() {
   headerUserName();
   await loadTasksToBoard();
   checkIfTaskExistInContainer();
+  changeInputBoardLocation();
 }
 
 /**

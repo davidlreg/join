@@ -196,9 +196,8 @@ async function toggleSubtask(taskId, subtaskIndex) {
   }
 
   task.subtask[subtaskIndex].completed = !task.subtask[subtaskIndex].completed;
-
-  await syncBackendDataWithFirebase();
   updateProgressBar(taskId);
+  await syncBackendDataWithFirebase();
 }
 
 /**
@@ -221,6 +220,22 @@ function updateProgressBar(taskId) {
   if (progressBar) {
     progressBar.style.width = `${progressPercentage}%`;
     progressBar.style.backgroundColor = progressColor;
+  }
+
+  updateCompletedSubtasks(taskId, completedSubtasks, totalSubtasks)
+}
+
+/**
+ * Updates the the completed subtasks of the task
+ * 
+ * @param {string} taskId - The id of the task
+ */
+
+
+function updateCompletedSubtasks(taskId, completedSubtasks, totalSubtasks) {
+  let updateSubtaskStatus = document.querySelector(`.boardSubTasks[data-task-id="${taskId}"] span`);
+  if (updateSubtaskStatus) {
+    updateSubtaskStatus.textContent = `${completedSubtasks}/${totalSubtasks} Subtasks`;
   }
 }
 

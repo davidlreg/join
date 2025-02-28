@@ -1,4 +1,15 @@
 /**
+ * Initializes media queries for the board by triggering
+ * the changeInputBoardLocation function once the DOM is fully loaded.
+ *
+ */
+function initBoardMediaQueries() {
+  document.addEventListener("DOMContentLoaded", () => {
+    changeInputBoardLocation();
+  });
+}
+
+/**
  * Adjusts input field position based on window width.
  *
  */
@@ -20,11 +31,26 @@ function changeInputBoardLocation() {
  * @param {HTMLElement} boardContainer
  * @param {HTMLElement} boardAddTask
  */
-function windowThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
+function windowThreshold(
+  inputContainer,
+  boardControls,
+  boardContainer,
+  boardAddTask
+) {
   if (window.innerWidth <= 1000) {
-    innerWidthBelowThreshold(inputContainer, boardControls, boardContainer, boardAddTask);
+    innerWidthBelowThreshold(
+      inputContainer,
+      boardControls,
+      boardContainer,
+      boardAddTask
+    );
   } else {
-    innerWidthAboveThreshold(inputContainer, boardControls, boardContainer, boardAddTask);
+    innerWidthAboveThreshold(
+      inputContainer,
+      boardControls,
+      boardContainer,
+      boardAddTask
+    );
   }
 }
 
@@ -36,7 +62,12 @@ function windowThreshold(inputContainer, boardControls, boardContainer, boardAdd
  * @param {HTMLElement} boardContainer
  * @param {HTMLElement} boardAddTask
  */
-function innerWidthBelowThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
+function innerWidthBelowThreshold(
+  inputContainer,
+  boardControls,
+  boardContainer,
+  boardAddTask
+) {
   if (boardControls.contains(inputContainer)) {
     boardContainer.insertAdjacentElement("afterend", inputContainer);
     boardAddTask.style.display = "none";
@@ -51,13 +82,14 @@ function innerWidthBelowThreshold(inputContainer, boardControls, boardContainer,
  * @param {HTMLElement} boardContainer
  * @param {HTMLElement} boardAddTask
  */
-function innerWidthAboveThreshold(inputContainer, boardControls, boardContainer, boardAddTask) {
+function innerWidthAboveThreshold(
+  inputContainer,
+  boardControls,
+  boardContainer,
+  boardAddTask
+) {
   if (!boardControls.contains(inputContainer)) {
     boardControls.appendChild(inputContainer);
     boardAddTask.style.display = "block";
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  changeInputBoardLocation();
-});

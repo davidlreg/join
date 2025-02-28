@@ -40,7 +40,7 @@ function showSubtaskBoard() {
  *
  */
 function addSubtask() {
-  if (!subtaskEmpty()) return; // Falls Eingabe leer ist, abbrechen
+  if (!subtaskEmpty()) return;
 
   const subtaskInput = document.getElementById("addTaskSubTasks");
   const subtaskList = document.getElementById("subtaskList");
@@ -57,7 +57,7 @@ function addSubtask() {
  */
 function subtaskEmpty() {
   const subtaskInput = document.getElementById("addTaskSubTasks");
-  return validateSubtaskInput(subtaskInput); // Gibt true oder false zurück
+  return validateSubtaskInput(subtaskInput);
 }
 
 /**
@@ -120,7 +120,7 @@ function getSubtaskErrorTarget(inputElement) {
 function clearSubtaskError(inputElement) {
   let targetElement = getSubtaskErrorTarget(inputElement);
 
-  if (!targetElement) return; // Falls targetElement null ist, verlasse die Funktion
+  if (!targetElement) return;
 
   let existingError = targetElement.parentNode?.querySelector(".errorMessage");
   if (existingError) existingError.remove();

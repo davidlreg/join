@@ -2,7 +2,43 @@ let emailInput = document.querySelector(".inputEmail");
 let passwordInput = document.querySelector(".inputPassword");
 let passwordToggle = document.querySelector(".passwordToggle");
 
-const databaseUrl = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
+const databaseUrl =
+  "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
+
+/**
+ * Initializes login functionality by adding event listeners.
+ * Ensures form validation and toggles password visibility.
+ *
+ */
+function initLogin() {
+  document.addEventListener("DOMContentLoaded", checkUserSession);
+  addEmailInputListeners();
+  addPasswordInputListeners();
+  passwordToggle.addEventListener("click", toggleVisibility);
+}
+
+/**
+ * Adds event listeners for email input validation.
+ *
+ */
+function addEmailInputListeners() {
+  emailInput.addEventListener("blur", () => {
+    validateEmail();
+    validateForm();
+  });
+}
+
+/**
+ * Adds event listeners for password input validation and visibility toggle.
+ *
+ */
+function addPasswordInputListeners() {
+  passwordInput.addEventListener("blur", validateForm);
+  passwordInput.addEventListener(
+    "input",
+    updatePasswordIcon.bind(passwordInput)
+  );
+}
 
 /**
  * Redirects the user to the summary page if they are logged in or in guest mode.
@@ -46,7 +82,10 @@ function validateEmail() {
  */
 function validateForm() {
   let logInButton = document.getElementById("logInBtn");
-  let isFormValid = emailInput.value !== "" && emailInput.style.border !== "1px solid red" && passwordInput.value !== "";
+  let isFormValid =
+    emailInput.value !== "" &&
+    emailInput.style.border !== "1px solid red" &&
+    passwordInput.value !== "";
 
   if (isFormValid) {
     logInButton.classList.remove("btnUnabledDark");
@@ -69,7 +108,10 @@ function updatePasswordIcon() {
   let inputType = this.type;
 
   if (this.value.length > 0) {
-    this.style.backgroundImage = inputType === "text" ? "url(../../assets/icon/login/visibility.svg)" : "url(../../assets/icon/login/visibility_off.svg)";
+    this.style.backgroundImage =
+      inputType === "text"
+        ? "url(../../assets/icon/login/visibility.svg)"
+        : "url(../../assets/icon/login/visibility_off.svg)";
     this.nextElementSibling.classList.remove("dNone");
   } else {
     this.style.backgroundImage = "url(../../assets/icon/login/lock.svg)";
@@ -90,7 +132,8 @@ function toggleVisibility() {
     input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
   } else {
     input.type = "password";
-    input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
+    input.style.backgroundImage =
+      "url(../../assets/icon/login/visibility_off.svg)";
   }
 }
 
@@ -116,45 +159,66 @@ function logIntoAccount() {
 }
 
 /**
+ * Fetches user data from the database.
+ *
+ * @returns {Promise<Object>} A promise resolving to the users object.
+ */
+function fetchUsers() {
+  return fetch(`${databaseUrl}/Data/Users.json`).then((response) =>
+    response.json()
+  );
+}
+
+/**
+ * Finds a user by email and password.
+ *
+ * @param {Object} users - The users object from the database.
+ * @param {string} email - The email provided by the user.
+ * @param {string} password - The password provided by the user.
+ * @returns {Object|null} The matched user or null if not found.
+ */
+function findUser(users, email, password) {
+  return (
+    Object.values(users).find(
+      (user) => user.email === email && user.password === password
+    ) || null
+  );
+}
+
+/**
+ * Handles the login process for a valid user.
+ *
+ * @param {Object} users - The users object from the database.
+ * @param {Object} user - The authenticated user.
+ */
+function handleSuccessfulLogin(users, user) {
+  localStorage.setItem(
+    "userId",
+    Object.keys(users).find((id) => users[id] === user)
+  );
+  window.location.href = "./summary.html?active=summary&user=loggedIn";
+  passwordInput.style.border = "";
+  document.getElementById("errorMsgCredentials").innerHTML = "";
+}
+
+/**
+ * Displays an error message for invalid credentials.
+ *
+ */
+function handleFailedLogin() {
+  document.getElementById("errorMsgCredentials").innerHTML =
+    "Check your email and password. Please try again.";
+}
+
+/**
  * Checks the user credentials against the stored users in the database.
  *
  * @param {string} email - The email provided by the user.
  * @param {string} password - The password provided by the user.
- * @returns {void}
  */
 function checkUserCredentials(email, password) {
-  const errorMessage = document.getElementById("errorMsgCredentials");
-  fetch(`${databaseUrl}/Data/Users.json`)
-    .then((response) => response.json())
-    .then((users) => {
-      const user = Object.values(users).find((user) => user.email === email && user.password === password);
-      if (user) {
-        localStorage.setItem(
-          "userId",
-          Object.keys(users).find((id) => users[id] === user)
-        );
-        window.location.href = "./summary.html?active=summary&user=loggedIn";
-        passwordInput.style.border = "";
-        errorMessage.innerHTML = "";
-      } else {
-        errorMessage.innerHTML = "Check your email and password. Please try again.";
-      }
-    });
+  fetchUsers().then((users) => {
+    const user = findUser(users, email, password);
+    user ? handleSuccessfulLogin(users, user) : handleFailedLogin();
+  });
 }
-
-document.addEventListener("DOMContentLoaded", checkUserSession);
-
-emailInput.addEventListener("blur", function () {
-  validateEmail();
-  validateForm();
-});
-
-passwordInput.addEventListener("blur", function () {
-  validateForm();
-});
-
-passwordInput.addEventListener("input", function () {
-  updatePasswordIcon.call(passwordInput);
-});
-
-passwordToggle.addEventListener("click", toggleVisibility);

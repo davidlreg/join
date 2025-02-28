@@ -57,45 +57,30 @@ function validatePasswords() {
 }
 
 /**
- * Checks if all required form fields are valid.
+ * Validates the sign-up form fields and updates the sign-up button state.
  *
- * @returns {boolean} True if the form is valid, otherwise false.
+ * @returns {void}
  */
-function isFormValid() {
-  return (
+function validateForm() {
+  let signUpButton = document.getElementById("signUpBtn");
+  let isFormValid =
     nameInput.value !== "" &&
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
     passwordInput.value !== "" &&
     confirmPasswordInput.value !== "" &&
     confirmPasswordInput.style.border !== "1px solid red" &&
-    checkbox.checked
-  );
-}
+    checkbox.checked;
 
-/**
- * Updates the sign-up button's state based on form validation.
- *
- * @param {boolean} isValid - Whether the form is valid.
- * @returns {void}
- */
-function updateSignUpButtonState(isValid) {
-  let signUpButton = document.getElementById("signUpBtn");
-  signUpButton.classList.toggle("btnDark", isValid);
-  signUpButton.classList.toggle("btnUnabledDark", !isValid);
-  signUpButton[isValid ? "addEventListener" : "removeEventListener"](
-    "click",
-    checkAvailability
-  );
-}
-
-/**
- * Validates the sign-up form and updates the button state.
- *
- * @returns {void}
- */
-function validateForm() {
-  updateSignUpButtonState(isFormValid());
+  if (isFormValid) {
+    signUpButton.classList.remove("btnUnabledDark");
+    signUpButton.classList.add("btnDark");
+    signUpButton.addEventListener("click", checkAvailability);
+  } else {
+    signUpButton.classList.remove("btnDark");
+    signUpButton.classList.add("btnUnabledDark");
+    signUpButton.removeEventListener("click", checkAvailability);
+  }
 }
 
 /**

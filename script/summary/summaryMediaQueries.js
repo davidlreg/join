@@ -1,4 +1,19 @@
 /**
+ * Initializes the summary functionality.
+ * Listens for DOMContentLoaded and window resize events.
+ */
+function initSummary() {
+  document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
+}
+
+/**
+ * Handles the DOMContentLoaded event by adding a resize listener.
+ */
+function handleDOMContentLoaded() {
+  window.addEventListener("resize", disableRightContainer);
+}
+
+/**
  * Starts the summary page animation. If the animation has already been played,
  * skips to the post-animation state.
  *
@@ -11,12 +26,13 @@ function showSummaryStartAnimation() {
 }
 
 /**
-* Sets up and plays the right container animation for the summary page.
-* This animation is displayed only on smaller screens (≤ 1350px).
-*
-*/
+ * Sets up and plays the right container animation for the summary page.
+ * This animation is displayed only on smaller screens (≤ 1350px).
+ *
+ */
 function setupRightContainerAnimation() {
-  const { rightContainer, leftContainer, mainContent, headline } = getSummaryElements();
+  const { rightContainer, leftContainer, mainContent, headline } =
+    getSummaryElements();
 
   if (window.innerWidth <= 1000) {
     showRightContainer(rightContainer, mainContent);
@@ -29,7 +45,7 @@ function setupRightContainerAnimation() {
  * Disables the right container based on the window width.
  * If the window width is 1000 pixels or less, the right container is hidden
  * and the left container is shown. Otherwise, content is set to normal.
- * 
+ *
  */
 function disableRightContainer() {
   const { rightContainer, leftContainer, headline } = getSummaryElements();
@@ -43,9 +59,9 @@ function disableRightContainer() {
 }
 
 /**
-* Resets the layout of the right and left containers to normal.
-*
-*/
+ * Resets the layout of the right and left containers to normal.
+ *
+ */
 function setContentToNormal() {
   const { rightContainer, leftContainer } = getSummaryElements();
   rightContainer.style.width = "40%";
@@ -73,7 +89,9 @@ function setTimeForRightContent(leftContainer, headline) {
  *
  * @param {HTMLElement} [rightContainer=document.querySelector('.summaryRightContainer')] - The right container element to hide.
  */
-function hideRightContainer(rightContainer = document.querySelector(".summaryRightContainer")) {
+function hideRightContainer(
+  rightContainer = document.querySelector(".summaryRightContainer")
+) {
   if (rightContainer) {
     rightContainer.style.display = "none";
   }
@@ -127,19 +145,9 @@ function getSummaryElements() {
 }
 
 /**
-* Navigates to the board page when called.
-*
-*/
+ * Navigates to the board page when called.
+ *
+ */
 function fromSummaryToBoard() {
   window.location.href = "/html/board.html?active=board";
 }
-
-/**
-* Adds an event listener to initialize the animation and handle window resizing dynamically.
-*
-*/
-document.addEventListener("DOMContentLoaded", () => {
-  window.addEventListener("resize", () => {
-    disableRightContainer();
-  });
-});

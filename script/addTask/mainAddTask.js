@@ -53,9 +53,12 @@ function closeDropdown(event) {
   const selectContact = document.getElementById("selectContact");
   const dropdown = document.getElementById("dropdown");
 
-  if (!selectContact || !dropdown) return;
-
-  if (!dropdown.contains(event.target) && !selectContact.contains(event.target)) {
+  if (
+    dropdown &&
+    selectContact &&
+    !dropdown.contains(event.target) &&
+    !selectContact.contains(event.target)
+  ) {
     selectContact.classList.remove("show");
   }
 }
@@ -93,7 +96,9 @@ async function loadContacts(assignedContacts = []) {
  */
 async function fetchContacts() {
   try {
-    const response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+    const response = await fetch(
+      "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json"
+    );
     const data = await response.json();
     return data.Data.Contacts || [];
   } catch (error) {
@@ -193,7 +198,9 @@ function createProfilePicture(contact) {
   profileDiv.classList.add("profilePicture");
   profileDiv.setAttribute("title", contact.name);
   profileDiv.style.backgroundColor = getRandomColorForName(contact.name);
-  profileDiv.textContent = `${contact.name.charAt(0).toUpperCase()}${contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
+  profileDiv.textContent = `${contact.name.charAt(0).toUpperCase()}${
+    contact.name.split(" ")[1]?.charAt(0).toUpperCase() || ""
+  }`;
 
   return profileDiv;
 }
@@ -240,14 +247,18 @@ function updateSelectedContact() {
   const selectedContactsContainer = document.getElementById("selectedContacts");
   selectedContactsContainer.innerHTML = "";
 
-  const newSelectedNames = Array.from(document.querySelectorAll(".contactCheckbox:checked")).map((checkbox) => checkbox.value);
+  const newSelectedNames = Array.from(
+    document.querySelectorAll(".contactCheckbox:checked")
+  ).map((checkbox) => checkbox.value);
 
   fullAssignedContacts = newSelectedNames;
 
   displayContacts = fullAssignedContacts.slice(0, 4);
 
   const contactProfiles = createSelectedProfilePictures(displayContacts);
-  contactProfiles.forEach((profile) => selectedContactsContainer.appendChild(profile));
+  contactProfiles.forEach((profile) =>
+    selectedContactsContainer.appendChild(profile)
+  );
 
   if (fullAssignedContacts.length > 4) {
     const moreContacts = document.createElement("div");
@@ -270,7 +281,9 @@ function createSelectedProfilePictures(selectedNames) {
     profileDiv.classList.add("profilePicture");
     profileDiv.setAttribute("title", name);
     profileDiv.style.backgroundColor = getRandomColorForName(name);
-    profileDiv.textContent = `${name.charAt(0).toUpperCase()}${name.split(" ")[1]?.charAt(0).toUpperCase() || ""}`;
+    profileDiv.textContent = `${name.charAt(0).toUpperCase()}${
+      name.split(" ")[1]?.charAt(0).toUpperCase() || ""
+    }`;
 
     return profileDiv;
   });
@@ -343,20 +356,32 @@ function openDatePicker() {
  *
  */
 function clearButton() {
-  ["addTaskTitle", "addTaskDescription", "addTaskDate", "selectTask", "addTaskSubTasks"].forEach((id) => {
+  [
+    "addTaskTitle",
+    "addTaskDescription",
+    "addTaskDate",
+    "selectTask",
+    "addTaskSubTasks",
+  ].forEach((id) => {
     document.getElementById(id).value = "";
   });
   ["selectedContacts", "subtaskList"].forEach((id) => {
     document.getElementById(id).textContent = "";
   });
-  document.querySelectorAll(".contactCheckbox").forEach((checkbox) => (checkbox.checked = false));
-  document.querySelectorAll(".selectContactItem").forEach((contact) => contact.classList.remove("selected"));
+  document
+    .querySelectorAll(".contactCheckbox")
+    .forEach((checkbox) => (checkbox.checked = false));
+  document
+    .querySelectorAll(".selectContactItem")
+    .forEach((contact) => contact.classList.remove("selected"));
   document.getElementById("subtaskPlusIcon").style.display = "inline";
   document.getElementById("subtaskIcons").style.display = "none";
   resetButtonsOverlay();
   let mediumButton = document.getElementById("mediumButton");
   mediumButton.classList.add("medium");
-  mediumButton.querySelector("img").src = `/assets/icon/addTask/medium_white.png`;
+  mediumButton.querySelector(
+    "img"
+  ).src = `/assets/icon/addTask/medium_white.png`;
   clearErrorForField("errorMessageAddTaskTitle");
   clearErrorForField("errorMessageAddTaskDueDate");
   clearErrorForField("errorMessageAddTaskCategory");
@@ -371,9 +396,18 @@ function addInputListeners() {
   const dateInput = document.getElementById("addTaskDate");
   const categorySelect = document.getElementById("selectTask");
 
-  titleInput.addEventListener("input", clearErrorForField.bind(null, "errorMessageAddTaskTitle"));
-  dateInput.addEventListener("input", clearErrorForField.bind(null, "errorMessageAddTaskDueDate"));
-  categorySelect.addEventListener("change", clearErrorForField.bind(null, "errorMessageAddTaskCategory"));
+  titleInput.addEventListener(
+    "input",
+    clearErrorForField.bind(null, "errorMessageAddTaskTitle")
+  );
+  dateInput.addEventListener(
+    "input",
+    clearErrorForField.bind(null, "errorMessageAddTaskDueDate")
+  );
+  categorySelect.addEventListener(
+    "change",
+    clearErrorForField.bind(null, "errorMessageAddTaskCategory")
+  );
 }
 
 /**

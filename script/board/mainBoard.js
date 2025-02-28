@@ -6,7 +6,9 @@ let backendData = {};
  * @async
  */
 async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  let response = await fetch(
+    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json"
+  );
   let responseJSON = await response.json();
   backendData = responseJSON;
 }
@@ -34,7 +36,7 @@ async function loadData() {
 }
 
 /**
- * Loads all tasks from the backend and adds them to the board.
+ * Loads all tasks from the backend and categorizes them into different board sections.
  *
  * @async
  */
@@ -42,33 +44,69 @@ async function loadTasksToBoard() {
   await fetchDataJSON();
 
   let tasks = backendData.Data.Tasks;
-  const { boardSectionTasksToDo, boardSectionTasksInProgress, boardSectionTasksAwaiting, boardSectionTasksDone } = getBoardElements();
+  const {
+    boardSectionTasksToDo,
+    boardSectionTasksInProgress,
+    boardSectionTasksAwaiting,
+    boardSectionTasksDone,
+  } = getBoardElements();
 
-  let toDoTemplateRef = document.getElementById("boardNoTasksToDo");
-  toDoTemplateRef.innerHTML = "";
-  let inProgressTemplateRef = document.getElementById("boardNoTasksInProgress");
-  inProgressTemplateRef.innerHTML = "";
-  let awaitFeedbackTemplateRef = document.getElementById("boardNoTasksAwaiting");
-  awaitFeedbackTemplateRef.innerHTML = "";
-  let doneTemplateRef = document.getElementById("boardNoTasksDone");
-  doneTemplateRef.innerHTML = "";
+  clearBoardSections();
 
   Object.keys(tasks).forEach((taskId) => {
     let task = tasks[taskId];
     let taskHtml = templateBoardTasks(task, taskId);
-
-    if (task.status === "To do") {
-      setIdToCreateTasks(boardSectionTasksToDo, taskHtml);
-    } else if (task.status === "In progress") {
-      setIdToCreateTasks(boardSectionTasksInProgress, taskHtml);
-    } else if (task.status === "Await Feedback") {
-      setIdToCreateTasks(boardSectionTasksAwaiting, taskHtml);
-    } else if (task.status === "Done") {
-      setIdToCreateTasks(boardSectionTasksDone, taskHtml);
-    }
+    categorizeTask(
+      task,
+      taskHtml,
+      boardSectionTasksToDo,
+      boardSectionTasksInProgress,
+      boardSectionTasksAwaiting,
+      boardSectionTasksDone
+    );
   });
 
   setRightBackgroundColorForCategory();
+}
+
+/**
+ * Clears the content of the board sections.
+ *
+ */
+function clearBoardSections() {
+  document.getElementById("boardNoTasksToDo").innerHTML = "";
+  document.getElementById("boardNoTasksInProgress").innerHTML = "";
+  document.getElementById("boardNoTasksAwaiting").innerHTML = "";
+  document.getElementById("boardNoTasksDone").innerHTML = "";
+}
+
+/**
+ * Categorizes a task based on its status and appends it to the appropriate board section.
+ *
+ * @param {Object} task The task object.
+ * @param {string} taskHtml The HTML string for the task.
+ * @param {HTMLElement} toDoSection The "To do" section.
+ * @param {HTMLElement} inProgressSection The "In progress" section.
+ * @param {HTMLElement} awaitingSection The "Awaiting Feedback" section.
+ * @param {HTMLElement} doneSection The "Done" section.
+ */
+function categorizeTask(
+  task,
+  taskHtml,
+  toDoSection,
+  inProgressSection,
+  awaitingSection,
+  doneSection
+) {
+  if (task.status === "To do") {
+    setIdToCreateTasks(toDoSection, taskHtml);
+  } else if (task.status === "In progress") {
+    setIdToCreateTasks(inProgressSection, taskHtml);
+  } else if (task.status === "Await Feedback") {
+    setIdToCreateTasks(awaitingSection, taskHtml);
+  } else if (task.status === "Done") {
+    setIdToCreateTasks(doneSection, taskHtml);
+  }
 }
 
 /**
@@ -81,7 +119,9 @@ function getBoardElements() {
     boardOverlay: document.getElementById("addBoardOverlay"),
     overlayBoardContent: document.getElementById("overlayBoardContent"),
     boardSectionTasksToDo: document.getElementById("boardNoTasksToDo"),
-    boardSectionTasksInProgress: document.getElementById("boardNoTasksInProgress"),
+    boardSectionTasksInProgress: document.getElementById(
+      "boardNoTasksInProgress"
+    ),
     boardSectionTasksAwaiting: document.getElementById("boardNoTasksAwaiting"),
     boardSectionTasksDone: document.getElementById("boardNoTasksDone"),
   };
@@ -168,7 +208,22 @@ function setRightBackgroundColorForCategory() {
  * @returns {string} A HSL color string (e.g., "hsl(210, 70%, 60%)").
  */
 function getRandomColorForName(name) {
-  const colorPalette = ["#FF8C00", "#FF69B4", "#8A2BE2", "#800080", "#00BFFF", "#40E0D0", "#FF6347", "#FFA07A", "#FF77FF", "#FFD700", "#0000FF", "#ADFF2F", "#FF4500", "#FFA500"];
+  const colorPalette = [
+    "#FF8C00",
+    "#FF69B4",
+    "#8A2BE2",
+    "#800080",
+    "#00BFFF",
+    "#40E0D0",
+    "#FF6347",
+    "#FFA07A",
+    "#FF77FF",
+    "#FFD700",
+    "#0000FF",
+    "#ADFF2F",
+    "#FF4500",
+    "#FFA500",
+  ];
 
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
@@ -210,30 +265,58 @@ function updateProgressBar(taskId) {
 
   if (!task || !Array.isArray(task.subtask)) return;
 
-  let completedSubtasks = task.subtask.filter((subtask) => subtask.completed).length;
-  let totalSubtasks = task.subtask.length;
-  let progressPercentage = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let { completedSubtasks, totalSubtasks } = calculateSubtaskProgress(
+    task.subtask
+  );
+  let progressPercentage =
+    totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
   let progressColor = progressPercentage === 100 ? "#28a745" : "#007bff";
 
-  let progressBar = document.querySelector(`.boardSubtaskProgressBar[data-task-id="${taskId}"]`);
+  setProgressBar(taskId, progressPercentage, progressColor);
+  updateCompletedSubtasks(taskId, completedSubtasks, totalSubtasks);
+}
 
+/**
+ * Calculates the number of completed subtasks and total subtasks.
+ *
+ * @param {Array} subtasks - List of subtasks.
+ * @returns {Object} - Object containing completed and total subtasks count.
+ */
+function calculateSubtaskProgress(subtasks) {
+  let completedSubtasks = subtasks.filter(
+    (subtask) => subtask.completed
+  ).length;
+  let totalSubtasks = subtasks.length;
+  return { completedSubtasks, totalSubtasks };
+}
+
+/**
+ * Updates the visual progress bar.
+ *
+ * @param {string} taskId - The ID of the task.
+ * @param {number} progressPercentage - The completion percentage.
+ * @param {string} progressColor - The color of the progress bar.
+ */
+function setProgressBar(taskId, progressPercentage, progressColor) {
+  let progressBar = document.querySelector(
+    `.boardSubtaskProgressBar[data-task-id="${taskId}"]`
+  );
   if (progressBar) {
     progressBar.style.width = `${progressPercentage}%`;
     progressBar.style.backgroundColor = progressColor;
   }
-
-  updateCompletedSubtasks(taskId, completedSubtasks, totalSubtasks)
 }
 
 /**
  * Updates the the completed subtasks of the task
- * 
+ *
  * @param {string} taskId - The id of the task
  */
 
-
 function updateCompletedSubtasks(taskId, completedSubtasks, totalSubtasks) {
-  let updateSubtaskStatus = document.querySelector(`.boardSubTasks[data-task-id="${taskId}"] span`);
+  let updateSubtaskStatus = document.querySelector(
+    `.boardSubTasks[data-task-id="${taskId}"] span`
+  );
   if (updateSubtaskStatus) {
     updateSubtaskStatus.textContent = `${completedSubtasks}/${totalSubtasks} Subtasks`;
   }

@@ -377,11 +377,7 @@ function clearButton() {
   document.getElementById("subtaskPlusIcon").style.display = "inline";
   document.getElementById("subtaskIcons").style.display = "none";
   resetButtonsOverlay();
-  let mediumButton = document.getElementById("mediumButton");
-  mediumButton.classList.add("medium");
-  mediumButton.querySelector(
-    "img"
-  ).src = `/assets/icon/addTask/medium_white.png`;
+  setPriority("medium");
   clearErrorForField("errorMessageAddTaskTitle");
   clearErrorForField("errorMessageAddTaskDueDate");
   clearErrorForField("errorMessageAddTaskCategory");

@@ -1,4 +1,13 @@
 /**
+ * Initializes the search functionality.
+ * This function calls the initializeSearch() function to set up the search system.
+ * 
+ */
+function searchInit() {
+  initializeSearch();
+}
+
+/**
  * Filters tasks based on the search input.
  * Displays matching tasks and hides non-matching ones.
  * Shows a "No results" message if no tasks match.
@@ -11,8 +20,12 @@ function filterTasks() {
   let found = false;
 
   tasks.forEach((task) => {
-    const title = task.querySelector(".boardTaskTitle").textContent.toLowerCase();
-    const description = task.querySelector(".boardTaskDescription").textContent.toLowerCase();
+    const title = task
+      .querySelector(".boardTaskTitle")
+      .textContent.toLowerCase();
+    const description = task
+      .querySelector(".boardTaskDescription")
+      .textContent.toLowerCase();
 
     if (title.includes(searchTerm) || description.includes(searchTerm)) {
       task.style.display = "";
@@ -50,5 +63,3 @@ function initializeSearch() {
     searchInput.addEventListener("input", filterTasks);
   }
 }
-
-initializeSearch();

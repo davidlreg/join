@@ -1,3 +1,7 @@
+/**
+ * Initializes the application by setting the active link based on the current URL.
+ *
+ */
 function init() {
   setActiveLinkFromURL();
 }
@@ -78,7 +82,8 @@ function headerUserName() {
   const headerName = localStorage.getItem("headerName");
   if (headerName) {
     const nameParts = headerName.split(" ");
-    document.getElementById("headerUserName").textContent = nameParts[0][0] + nameParts[1][0];
+    document.getElementById("headerUserName").textContent =
+      nameParts[0][0] + nameParts[1][0];
   } else {
     document.getElementById("headerUserName").textContent = "G";
   }

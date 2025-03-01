@@ -1,14 +1,13 @@
+const databaseURL =
+  "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
+
 const emailInput = document.querySelector(".inputEmail");
 const passwordInput = document.querySelector(".inputPassword");
 const passwordToggle = document.querySelector(".passwordToggle");
 
-const databaseUrl =
-  "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
-
 /**
  * Initializes login functionality by adding event listeners.
  * Ensures form validation and toggles password visibility.
- *
  */
 function initLogin() {
   document.addEventListener("DOMContentLoaded", checkUserSession);
@@ -19,7 +18,6 @@ function initLogin() {
 
 /**
  * Adds event listeners for email input validation.
- *
  */
 function addEmailInputListeners() {
   emailInput.addEventListener("blur", () => {
@@ -30,7 +28,6 @@ function addEmailInputListeners() {
 
 /**
  * Adds event listeners for password input validation and visibility toggle.
- *
  */
 function addPasswordInputListeners() {
   passwordInput.addEventListener("blur", validateForm);
@@ -108,8 +105,7 @@ function updatePasswordIcon() {
   const inputType = this.type;
 
   if (this.value.length > 0) {
-    this.style.backgroundImage =
-      inputType === "text"
+    this.style.backgroundImage = inputType === "text"
         ? "url(../../assets/icon/login/visibility.svg)"
         : "url(../../assets/icon/login/visibility_off.svg)";
     this.nextElementSibling.classList.remove("dNone");
@@ -132,8 +128,7 @@ function toggleVisibility() {
     input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
   } else {
     input.type = "password";
-    input.style.backgroundImage =
-      "url(../../assets/icon/login/visibility_off.svg)";
+    input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
   }
 }
 
@@ -164,7 +159,7 @@ function logIntoAccount() {
  * @returns {Promise<Object>} A promise resolving to the users object.
  */
 function fetchUsers() {
-  return fetch(`${databaseUrl}/Data/Users.json`).then((response) =>
+  return fetch(`${databaseURL}/Data/Users.json`).then((response) =>
     response.json()
   );
 }
@@ -203,7 +198,6 @@ function handleSuccessfulLogin(users, user) {
 
 /**
  * Displays an error message for invalid credentials.
- *
  */
 function handleFailedLogin() {
   document.getElementById("errorMsgCredentials").innerHTML =

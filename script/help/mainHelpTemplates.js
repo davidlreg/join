@@ -2,7 +2,7 @@
  * Generates a CSS string containing media query styles for adjusting
  * the layout of the sidebar footer and navigation links on smaller screens.
  *
- * @returns {string} A CSS string with styles for screens with a max-width of 1400px.
+ * @returns {string} A CSS string with styles for screens with a max-width of 1000px.
  */
 function styleContent() {
   return `

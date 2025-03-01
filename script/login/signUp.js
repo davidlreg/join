@@ -1,18 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  get,
-  set,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-const firebaseConfig = {
-  databaseURL:
-    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/",
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const databaseURL = 
+  "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/";
 
 const nameInput = document.querySelector(".inputName");
 const emailInput = document.querySelector(".inputEmail");
@@ -21,16 +8,89 @@ const confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
 const checkbox = document.getElementById("checkboxSignUp");
 
 /**
+ * Initializes sign-up functionality by adding event listeners.
+ * Ensures form validation and toggles password visibility.
+ */
+function initSignUp() {
+  addInputListeners();
+  addPasswordToggleListeners();
+}
+
+/**
+ * Adds event listeners for form validation and input interactions.
+ */
+function addInputListeners() {
+  emailInput.addEventListener("blur", handleEmailBlur);
+  passwordInput.addEventListener("blur", handlePasswordBlur);
+  confirmPasswordInput.addEventListener("blur", handlePasswordBlur);
+  nameInput.addEventListener("blur", validateForm);
+  checkbox.addEventListener("change", validateForm);
+  
+  document.querySelectorAll(".inputPassword").forEach((input) => {
+    input.addEventListener("input", updatePasswordIcon);
+  });
+}
+
+/**
+ * Adds event listeners for password visibility toggling.
+ */
+function addPasswordToggleListeners() {
+  document.querySelectorAll(".passwordToggle").forEach((toggle) => {
+    toggle.addEventListener("click", toggleVisibility);
+  });
+}
+
+/**
+ * Handles email input validation on blur.
+ */
+function handleEmailBlur() {
+  validateEmail();
+  validateForm();
+}
+
+/**
+ * Handles password input validation on blur.
+ */
+function handlePasswordBlur() {
+  validatePasswords();
+  validateForm();
+}
+
+/**
+ * Fetches data from the database.
+ * 
+ * @param {string} endpoint - The database endpoint to fetch data from.
+ * @returns {Promise<Object>} The fetched data as an object.
+ */
+async function fetchData(endpoint) {
+  const response = await fetch(`${databaseURL}${endpoint}.json`);
+  return response.json();
+}
+
+/**
+ * Saves data to the database.
+ * 
+ * @param {string} endpoint - The database endpoint where data should be saved.
+ * @param {Object} data - The data to be saved.
+ */
+async function saveData(endpoint, data) {
+  await fetch(`${databaseURL}${endpoint}.json`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+  });
+}
+
+/**
  * Validates the email input field.
  *
  * @returns {void}
  */
 function validateEmail() {
-  const emailValue = emailInput.value;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const errorMessage = document.getElementById("errorMsgEmail");
 
-  if (!emailPattern.test(emailValue)) {
+  if (!emailPattern.test(emailInput.value)) {
     emailInput.style.border = "1px solid red";
     errorMessage.innerHTML = `Please enter a valid email address.`;
   } else {
@@ -89,11 +149,10 @@ function validateForm() {
  * @this {HTMLInputElement}
  */
 function updatePasswordIcon() {
-  const inputType = this.type;
+  let inputType = this.type;
 
   if (this.value.length > 0) {
-    this.style.backgroundImage =
-      inputType === "text"
+    this.style.backgroundImage = inputType === "text"
         ? "url(../../assets/icon/login/visibility.svg)"
         : "url(../../assets/icon/login/visibility_off.svg)";
     this.nextElementSibling.classList.remove("dNone");
@@ -109,62 +168,50 @@ function updatePasswordIcon() {
  * @this {HTMLElement}
  */
 function toggleVisibility() {
-  const input = this.previousElementSibling;
+  let input = this.previousElementSibling;
 
   if (input.type === "password") {
     input.type = "text";
     input.style.backgroundImage = "url(../../assets/icon/login/visibility.svg)";
   } else {
     input.type = "password";
-    input.style.backgroundImage =
-      "url(../../assets/icon/login/visibility_off.svg)";
+    input.style.backgroundImage = "url(../../assets/icon/login/visibility_off.svg)";
   }
 }
 
 /**
- * Checks if the entered email is already registered.
- *
- * @returns {Promise<void>}
+ * Checks if the entered email address is already in use.
+ * 
+ * If the email is taken, displays an error message. Otherwise, proceeds to create a new user.
  */
 async function checkAvailability() {
-  const email = document.getElementById("userEmail").value;
+  let email = emailInput.value;
   const errorMessage = document.getElementById("errorMsgEmail");
-  const usersRef = ref(database, "Data/Users");
-  const snapshot = await get(usersRef);
-  const users = snapshot.val();
+  const users = await fetchData("Data/Users");
 
-  if (users) {
-    const emailExists = Object.values(users).some(
-      (user) => user.email === email
-    );
-
-    if (emailExists) {
-      emailInput.style.border = "1px solid red";
-      errorMessage.innerHTML = `This email address is already in use.`;
-    } else {
-      createUser();
-    }
+  if (users && Object.values(users).some(user => user.email === email)) {
+    emailInput.style.border = "1px solid red";
+    errorMessage.innerHTML = `This email address is already in use.`;
+  } else {
+    createUser();
   }
 }
 
 /**
- * Creates a new user and contact, saving them to the database.
- *
- * @returns {Promise<void>}
+ * Creates a new user and associated contact.
+ * 
+ * Redirects to the login page after a short delay.
  */
 async function createUser() {
-  const name = document.getElementById("userName").value;
-  const email = document.getElementById("userEmail").value;
-  const password = passwordInput.value;
-  const newUserId = await getNextId("Data/Users", "userId");
-  await saveUser(newUserId, { name, email, password });
-  const newContactId = await getNextId("Data/Contacts", "contactId");
-  await saveContact(newContactId, {
-    createdBy: newUserId,
-    email,
-    name,
-    phone: "",
-  });
+  let name = nameInput.value;
+  let email = emailInput.value;
+  let password = passwordInput.value;
+  let userId = await getNextId("Data/Users", "userId");
+  
+  await saveUser(userId, { name, email, password });
+  const contactId = await getNextId("Data/Contacts", "contactId");
+  await saveContact(contactId, { createdBy: userId, email, name, phone: "" });
+  
   showOverlay();
 
   setTimeout(function () {
@@ -173,39 +220,36 @@ async function createUser() {
 }
 
 /**
- * Retrieves the next available ID based on existing entries.
- *
- * @param {string} refPath
- * @param {string} prefix
- * @returns {Promise<string>}
+ * Retrieves the next available ID for a given reference path.
+ * 
+ * @param {string} refPath - The reference path in the database.
+ * @param {string} prefix - The prefix for the ID.
+ * @returns {Promise<string>} The next available ID with the given prefix.
  */
 async function getNextId(refPath, prefix) {
-  const snapshot = await get(ref(database, refPath));
-  const data = snapshot.val();
+  const data = await fetchData(refPath);
   const count = data ? Object.keys(data).length : 0;
   return `${prefix}${count + 1}`;
 }
 
 /**
- * Saves a new user to the database.
- *
- * @param {string} userId
- * @param {Object} userData
- * @returns {Promise<void>}
+ * Saves user data to the database.
+ * 
+ * @param {string} userId - The unique ID of the user.
+ * @param {Object} userData - The user data object.
  */
 async function saveUser(userId, userData) {
-  await set(ref(database, `Data/Users/${userId}`), userData);
+  await saveData(`Data/Users/${userId}`, userData);
 }
 
 /**
- * Saves a new contact to the database.
- *
- * @param {string} contactId
- * @param {Object} contactData
- * @returns {Promise<void>}
+ * Saves contact data to the database.
+ * 
+ * @param {string} contactId - The unique ID of the contact.
+ * @param {Object} contactData - The contact data object.
  */
 async function saveContact(contactId, contactData) {
-  await set(ref(database, `Data/Contacts/${contactId}`), contactData);
+  await saveData(`Data/Contacts/${contactId}`, contactData);
 }
 
 /**
@@ -226,30 +270,3 @@ function showOverlay() {
 function hideOverlay() {
   document.getElementById("overlay").classList.add("dNone");
 }
-
-emailInput.addEventListener("blur", function () {
-  validateEmail();
-  validateForm();
-});
-
-passwordInput.addEventListener("blur", function () {
-  validatePasswords();
-  validateForm();
-});
-
-confirmPasswordInput.addEventListener("blur", function () {
-  validatePasswords();
-  validateForm();
-});
-
-nameInput.addEventListener("blur", validateForm);
-
-checkbox.addEventListener("change", validateForm);
-
-document.querySelectorAll(".inputPassword").forEach((input) => {
-  input.addEventListener("input", updatePasswordIcon);
-});
-
-document.querySelectorAll(".passwordToggle").forEach((toggle) => {
-  toggle.addEventListener("click", toggleVisibility);
-});

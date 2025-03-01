@@ -55,22 +55,23 @@ span {
   height: 22px;
 }
 
-.arrowBack img:hover {
+.arrowBack {
+  padding: 6px;
   cursor: pointer;
+}
+
+.arrowBack:hover {
   background-color: rgb(222, 222, 222);
-  border-radius: 50px;
-  transition-duration: 0.2s;
+  border-radius: 50%;
 }
 
 @media (max-width: 1400px) {
   .helpInstructions {
     margin: 32px;
-}
+  }
 }
 
 @media screen and (max-width: 1000px) {
-
-
   h1 {
     font-size: 46px;
   }

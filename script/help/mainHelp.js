@@ -9,8 +9,6 @@ function checkUserSession() {
 
   if (userId || isGuest) {
     document.getElementById("navbar").classList.remove("dNone");
-    document.getElementById("help").classList.remove("dNone");
-    document.querySelector(".userIcon").classList.remove("dNone");
   } else {
     document.getElementById("logInLink").classList.remove("dNone");
     overrideMediaQuery();
@@ -56,7 +54,9 @@ function getUserInitials(fullName) {
   if (userId || isGuest) {
     if (!fullName) return "G";
     const nameParts = fullName.split(" ");
-    return nameParts.length >= 2 ? nameParts[0][0] + nameParts[1][0] : fullName[0];
+    return nameParts.length >= 2
+      ? nameParts[0][0] + nameParts[1][0]
+      : fullName[0];
   }
 }
 
@@ -78,5 +78,3 @@ function initializePage() {
   checkUserSession();
   updateHeaderUserName();
 }
-
-document.addEventListener("DOMContentLoaded", initializePage);

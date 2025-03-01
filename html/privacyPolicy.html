@@ -11,41 +11,75 @@
     <link rel="stylesheet" href="/style/privacyPolicy/mainPrivacyPolicy.css" />
   </head>
 
-  <body onload="init()">
+  <body onload="init(), initializePage()">
     <div class="sidebar__container" id="sidebar-nav">
-      <a class="joinLogoBig"><img class="sidebar__join-image" src="/assets/img/joinIcon.svg" id="logo" alt="Join logo big" /></a>
+      <a class="joinLogoBig"
+        ><img
+          class="sidebar__join-image"
+          src="/assets/img/joinIcon.svg"
+          id="logo"
+          alt="Join logo big"
+      /></a>
 
       <div class="nav__container dNone" id="navbar">
         <a class="nav-link" href="/html/summary.html?active=summary">
-          <img class="icon" src="/assets/icon/Summary_icon_grey.svg" id="summery" alt="Summary icon" />
+          <img
+            class="icon"
+            src="/assets/icon/Summary_icon_grey.svg"
+            id="summery"
+            alt="Summary icon"
+          />
           <p>Summary</p>
         </a>
         <a class="nav-link" href="/html/addTask.html?active=add-task">
-          <img class="icon" src="/assets/icon/Add_task_icon_grey.svg" id="add-task" alt="Add task icon" />
+          <img
+            class="icon"
+            src="/assets/icon/Add_task_icon_grey.svg"
+            id="add-task"
+            alt="Add task icon"
+          />
           <div class="text">
             <p>Add</p>
             <p>Task</p>
           </div>
         </a>
         <a class="nav-link" href="/html/board.html?active=board">
-          <img class="icon" src="/assets/icon/Board_icon_grey.svg" id="board" alt="Board Icon" />
+          <img
+            class="icon"
+            src="/assets/icon/Board_icon_grey.svg"
+            id="board"
+            alt="Board Icon"
+          />
           <p>Board</p>
         </a>
         <a class="nav-link" href="/html/contact.html?active=contacts">
-          <img class="icon" src="/assets/icon/Contacts_icon_grey.svg" id="contacts" alt="Contact Icon" />
+          <img
+            class="icon"
+            src="/assets/icon/Contacts_icon_grey.svg"
+            id="contacts"
+            alt="Contact Icon"
+          />
           <p>Contact</p>
         </a>
       </div>
 
-      <div id="logInLink"  class="logInLinkContainer dNone">
+      <div id="logInLink" class="logInLinkContainer dNone">
         <a class="nav-link" href="/html/login.html">
-          <img class="icon" src="/assets/icon/login_icon.svg" id="contacts" alt="Contact Icon" />
+          <img
+            class="icon"
+            src="/assets/icon/login_icon.svg"
+            id="contacts"
+            alt="Contact Icon"
+          />
           <p>Log in</p>
         </a>
       </div>
 
       <div class="sidebar__footer">
-        <a class="nav-link" href="/html/privacyPolicy.html?active=privacy_policy">
+        <a
+          class="nav-link"
+          href="/html/privacyPolicy.html?active=privacy_policy"
+        >
           <p class="zoom">Privacy Policy</p>
         </a>
         <a class="nav-link" href="/html/legalNotice.html?active=legal_notice">
@@ -57,18 +91,33 @@
     <div class="rightSideWrapper">
       <header>
         <div class="joinLogoMedium">
-          <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.927 0.492188H15.8389V8.64696H22.927V0.492188Z" fill="#2A3647" />
+          <svg
+            width="32"
+            height="40"
+            viewBox="0 0 32 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.927 0.492188H15.8389V8.64696H22.927V0.492188Z"
+              fill="#2A3647"
+            />
             <path
               d="M15.8392 15.2793H22.9273V26.7803C22.9597 29.5478 22.1721 32.2624 20.6646 34.5791C19.1761 36.83 16.3027 39.5081 10.9866 39.5081C5.19613 39.5081 1.8211 36.7698 0 35.2692L4.47096 29.7542C6.24844 31.2055 7.96049 32.3994 11.0138 32.3994C13.3256 32.3994 14.2471 31.4574 14.7869 30.6359C15.5207 29.4949 15.9003 28.1604 15.8774 26.8022L15.8392 15.2793Z"
               fill="#2A3647"
             />
-            <path d="M12.2239 10.1311H5.13574V17.2508H12.2239V10.1311Z" fill="#29ABE2" />
+            <path
+              d="M12.2239 10.1311H5.13574V17.2508H12.2239V10.1311Z"
+              fill="#29ABE2"
+            />
             <path
               d="M26.6409 36.167C26.6409 37.684 25.8721 38.5001 24.798 38.5001C23.7239 38.5001 23.0205 37.5307 23.0205 36.2437C23.0205 34.9567 23.7457 33.938 24.858 33.938C25.9703 33.938 26.6409 34.9402 26.6409 36.167ZM23.8438 36.2272C23.8438 37.1418 24.2091 37.8155 24.8362 37.8155C25.4632 37.8155 25.8176 37.1035 25.8176 36.1725C25.8176 35.3564 25.4904 34.5897 24.8362 34.5897C24.1819 34.5897 23.8438 35.3291 23.8438 36.2272Z"
               fill="#2A3647"
             />
-            <path d="M28.0478 34.0042V38.4293H27.2627V34.0042H28.0478Z" fill="#2A3647" />
+            <path
+              d="M28.0478 34.0042V38.4293H27.2627V34.0042H28.0478Z"
+              fill="#2A3647"
+            />
             <path
               d="M28.8975 38.4293V34.0042H29.7698L30.7077 35.8279C30.9491 36.3048 31.1639 36.7948 31.351 37.2956C31.302 36.748 31.2802 36.1181 31.2802 35.4171V34.0042H31.9999V38.4293H31.1875L30.2387 36.5672C29.9876 36.0781 29.7637 35.5753 29.5681 35.0611C29.5681 35.6088 29.6063 36.2277 29.6063 36.9889V38.4238L28.8975 38.4293Z"
               fill="#2A3647"
@@ -76,24 +125,6 @@
           </svg>
         </div>
         <h3>Kanban Project Management Tool</h3>
-
-        <div class="topBarIcons">
-          <div id="help" class="dNone" onclick="location.href='./help.html'">
-            <img id="questionIcon" class="questionIcon" src="/assets/icon/Help_icon_grey.svg" alt="questionIcon" />
-          </div>
-
-          <div onclick="toogleUser()" class="userIcon dNone">
-            <div id="userIcon" class="userOptionsFrame">
-              <div class="userOptionsContent">
-                <a href="help.html" class="helpLink">Help</a>
-                <a href="legalNotice.html">Legal Notice</a>
-                <a href="privacyPolicy.html">Privacy Policy</a>
-                <a onclick="logout()" style="cursor: pointer">Log Out</a>
-              </div>
-            </div>
-            <a id="headerUserName"></a>
-          </div>
-        </div>
       </header>
       <main>
         <h1>Privacy policy</h1>
@@ -102,7 +133,9 @@
         <ul class="index">
           <li><a class="index-link" href="#m3">Responsible Party</a></li>
           <li>
-            <a class="index-link" href="#mOverview">Overview of Processing Activities</a>
+            <a class="index-link" href="#mOverview"
+              >Overview of Processing Activities</a
+            >
           </li>
           <li>
             <a class="index-link" href="#m2427">Relevant Legal Bases</a>
@@ -115,34 +148,52 @@
             <a class="index-link" href="#m24">International Data Transfers</a>
           </li>
           <li>
-            <a class="index-link" href="#m12">General Information on Data Storage and Deletion</a>
+            <a class="index-link" href="#m12"
+              >General Information on Data Storage and Deletion</a
+            >
           </li>
           <li>
             <a class="index-link" href="#m10">Rights of Affected Persons</a>
           </li>
           <li>
-            <a class="index-link" href="#m225">Provision of the Online Offer and Web Hosting</a>
+            <a class="index-link" href="#m225"
+              >Provision of the Online Offer and Web Hosting</a
+            >
           </li>
           <li><a class="index-link" href="#m134">Use of Cookies</a></li>
           <li>
-            <a class="index-link" href="#m182">Contact and Inquiry Management</a>
+            <a class="index-link" href="#m182"
+              >Contact and Inquiry Management</a
+            >
           </li>
           <li>
-            <a class="index-link" href="#m263">Web Analysis, Monitoring, and Optimization</a>
+            <a class="index-link" href="#m263"
+              >Web Analysis, Monitoring, and Optimization</a
+            >
           </li>
           <li>
-            <a class="index-link" href="#m328">Plug-ins and Embedded Functions and Content</a>
+            <a class="index-link" href="#m328"
+              >Plug-ins and Embedded Functions and Content</a
+            >
           </li>
         </ul>
         <h2 id="m3">Responsible Party</h2>
-        <p>First Name, Last Name / Company<br />Street, House Number<br />Postal Code, City, Country</p>
+        <p>
+          First Name, Last Name / Company<br />Street, House Number<br />Postal
+          Code, City, Country
+        </p>
         <p>
           Email Address:
-          <a href="mailto:vorname.name@beispielsdomain.eu">vorname.name@beispielsdomain.eu</a>
+          <a href="mailto:vorname.name@beispielsdomain.eu"
+            >vorname.name@beispielsdomain.eu</a
+          >
         </p>
         <h2 id="mOverview">Overview of Processing Activities</h2>
-        <p>The following overview summarizes the types of processed data, the purposes of their processing, and the affected individuals.</p>
-        
+        <p>
+          The following overview summarizes the types of processed data, the
+          purposes of their processing, and the affected individuals.
+        </p>
+
         <h3>Types of Processed Data</h3>
         <ul>
           <li>Inventory data.</li>
@@ -153,13 +204,13 @@
           <li>Metadata, communication, and procedural data.</li>
           <li>Log data.</li>
         </ul>
-        
+
         <h3>Categories of Affected Individuals</h3>
         <ul>
           <li>Communication partners.</li>
           <li>Users.</li>
         </ul>
-        
+
         <h3>Purposes of Processing</h3>
         <ul>
           <li>Communication.</li>
@@ -174,435 +225,988 @@
           <li>Provision of our online services and user-friendliness.</li>
           <li>Information technology infrastructure.</li>
         </ul>
-        
+
         <h2 id="m2427">Relevant Legal Bases</h2>
         <p>
-          <strong>Relevant legal bases under the GDPR:</strong> Below, you will find an overview of the legal bases of the GDPR on which we process personal data. Please note that, 
-          in addition to the provisions of the GDPR, national data protection regulations in your or our country of residence or business location may also apply. If more specific 
-          legal bases are relevant in individual cases, we will inform you of them in our privacy policy.
+          <strong>Relevant legal bases under the GDPR:</strong> Below, you will
+          find an overview of the legal bases of the GDPR on which we process
+          personal data. Please note that, in addition to the provisions of the
+          GDPR, national data protection regulations in your or our country of
+          residence or business location may also apply. If more specific legal
+          bases are relevant in individual cases, we will inform you of them in
+          our privacy policy.
         </p>
-        
+
         <ul>
           <li>
-            <strong>Consent (Art. 6(1)(a) GDPR)</strong> - The data subject has given their consent to the processing of their personal data for a specific purpose or multiple specified purposes.
+            <strong>Consent (Art. 6(1)(a) GDPR)</strong> - The data subject has
+            given their consent to the processing of their personal data for a
+            specific purpose or multiple specified purposes.
           </li>
           <li>
-            <strong>Contract fulfillment and pre-contractual inquiries (Art. 6(1)(b) GDPR)</strong> 
-            - Processing is necessary for the performance of a contract to which the data subject is a party, or to take steps at the request of the data subject prior to entering into a contract.
+            <strong
+              >Contract fulfillment and pre-contractual inquiries (Art. 6(1)(b)
+              GDPR)</strong
+            >
+            - Processing is necessary for the performance of a contract to which
+            the data subject is a party, or to take steps at the request of the
+            data subject prior to entering into a contract.
           </li>
           <li>
-            <strong>Legitimate interests (Art. 6(1)(f) GDPR)</strong> 
-            - Processing is necessary for the purposes of the legitimate interests pursued by the controller or a third party, provided that the interests, fundamental rights, and freedoms of the data subject requiring protection of personal data do not override those interests.
+            <strong>Legitimate interests (Art. 6(1)(f) GDPR)</strong>
+            - Processing is necessary for the purposes of the legitimate
+            interests pursued by the controller or a third party, provided that
+            the interests, fundamental rights, and freedoms of the data subject
+            requiring protection of personal data do not override those
+            interests.
           </li>
         </ul>
-        
+
         <p>
-          <strong>National data protection regulations in Germany: </strong>In addition to the GDPR, national data protection regulations apply in Germany. This includes, in particular, the 
-          Federal Data Protection Act (Bundesdatenschutzgesetz – BDSG), which provides specific regulations on the right to access, the right to erasure, the right to object, the processing 
-          of special categories of personal data, processing for other purposes, data transfers, and automated individual decision-making, including profiling. Additionally, data protection 
+          <strong>National data protection regulations in Germany: </strong>In
+          addition to the GDPR, national data protection regulations apply in
+          Germany. This includes, in particular, the Federal Data Protection Act
+          (Bundesdatenschutzgesetz – BDSG), which provides specific regulations
+          on the right to access, the right to erasure, the right to object, the
+          processing of special categories of personal data, processing for
+          other purposes, data transfers, and automated individual
+          decision-making, including profiling. Additionally, data protection
           laws of individual federal states may also apply.
         </p>
-        
+
         <p>
-          <strong>National data protection regulations in Austria: </strong>In addition to the GDPR, national data protection regulations apply in Austria. This includes, in particular, 
-          the Federal Act on the Protection of Natural Persons in the Processing of Personal Data (Data Protection Act – DSG). The Data Protection Act contains specific provisions on the 
-          right of access, the right to rectification or erasure, the processing of special categories of personal data, processing for other purposes, data transfers, and automated 
+          <strong>National data protection regulations in Austria: </strong>In
+          addition to the GDPR, national data protection regulations apply in
+          Austria. This includes, in particular, the Federal Act on the
+          Protection of Natural Persons in the Processing of Personal Data (Data
+          Protection Act – DSG). The Data Protection Act contains specific
+          provisions on the right of access, the right to rectification or
+          erasure, the processing of special categories of personal data,
+          processing for other purposes, data transfers, and automated
           individual decision-making.
         </p>
-        
+
         <p>
-          <strong>Relevant legal bases under the Swiss Data Protection Act: </strong>If you are located in Switzerland, we process your data based on the Federal Act on Data Protection 
-          (Swiss FADP). Unlike the GDPR, the Swiss FADP generally does not require a legal basis to be specified for data processing. Instead, personal data must be processed in good 
-          faith, lawfully, and proportionately (Art. 6(1) and (2) Swiss FADP). Additionally, personal data is only collected for a specific, recognizable purpose for the data subject and 
-          is processed only in a way that is compatible with that purpose (Art. 6(3) Swiss FADP).
+          <strong
+            >Relevant legal bases under the Swiss Data Protection Act: </strong
+          >If you are located in Switzerland, we process your data based on the
+          Federal Act on Data Protection (Swiss FADP). Unlike the GDPR, the
+          Swiss FADP generally does not require a legal basis to be specified
+          for data processing. Instead, personal data must be processed in good
+          faith, lawfully, and proportionately (Art. 6(1) and (2) Swiss FADP).
+          Additionally, personal data is only collected for a specific,
+          recognizable purpose for the data subject and is processed only in a
+          way that is compatible with that purpose (Art. 6(3) Swiss FADP).
         </p>
-        
+
         <p>
-          <strong>Note on applicability of GDPR and Swiss FADP: </strong>These privacy notices serve to provide information under both the Swiss FADP and the GDPR. For broader applicability 
-          and ease of understanding, the terminology of the GDPR is used. Specifically, instead of the terms used in the Swiss FADP, such as “processing” of “personal data,” “overriding 
-          interest,” and “particularly sensitive personal data,” the GDPR terms “processing” of “personal data,” “legitimate interest,” and “special categories of data” are used. However, 
-          the legal meaning of the terms remains defined by the Swiss FADP within its scope of application.
+          <strong>Note on applicability of GDPR and Swiss FADP: </strong>These
+          privacy notices serve to provide information under both the Swiss FADP
+          and the GDPR. For broader applicability and ease of understanding, the
+          terminology of the GDPR is used. Specifically, instead of the terms
+          used in the Swiss FADP, such as “processing” of “personal data,”
+          “overriding interest,” and “particularly sensitive personal data,” the
+          GDPR terms “processing” of “personal data,” “legitimate interest,” and
+          “special categories of data” are used. However, the legal meaning of
+          the terms remains defined by the Swiss FADP within its scope of
+          application.
         </p>
-      
+
         <h2 id="m27">Security Measures</h2>
         <p>
-          We take appropriate technical and organizational measures in accordance with legal requirements, considering the state of the art, implementation costs, 
-          the nature, scope, circumstances, and purposes of processing, as well as the varying likelihood and severity of threats to the rights and freedoms of natural persons, 
-          to ensure a level of security appropriate to the risk.
+          We take appropriate technical and organizational measures in
+          accordance with legal requirements, considering the state of the art,
+          implementation costs, the nature, scope, circumstances, and purposes
+          of processing, as well as the varying likelihood and severity of
+          threats to the rights and freedoms of natural persons, to ensure a
+          level of security appropriate to the risk.
         </p>
         <p>
-          These measures include, in particular, ensuring the confidentiality, integrity, and availability of data by controlling physical and electronic access to the data, 
-          as well as access, input, transmission, availability security, and separation of the data. Furthermore, we have established procedures that allow for the exercise of 
-          data subject rights, the deletion of data, and responses to data threats. Additionally, we consider the protection of personal data during the development or selection 
-          of hardware, software, and procedures, following the principles of data protection by design and by default.
+          These measures include, in particular, ensuring the confidentiality,
+          integrity, and availability of data by controlling physical and
+          electronic access to the data, as well as access, input, transmission,
+          availability security, and separation of the data. Furthermore, we
+          have established procedures that allow for the exercise of data
+          subject rights, the deletion of data, and responses to data threats.
+          Additionally, we consider the protection of personal data during the
+          development or selection of hardware, software, and procedures,
+          following the principles of data protection by design and by default.
         </p>
 
         <h2 id="m25">Transfer of Personal Data</h2>
         <p>
-          In the course of processing personal data, we may transfer or disclose such data to other entities, companies, legally independent organizations, or individuals. 
-          Recipients of this data may include service providers responsible for IT-related tasks or providers of services and content integrated into a website. In such cases, 
-          we comply with legal requirements and conclude contracts or agreements with the recipients to protect your data.
+          In the course of processing personal data, we may transfer or disclose
+          such data to other entities, companies, legally independent
+          organizations, or individuals. Recipients of this data may include
+          service providers responsible for IT-related tasks or providers of
+          services and content integrated into a website. In such cases, we
+          comply with legal requirements and conclude contracts or agreements
+          with the recipients to protect your data.
         </p>
 
         <h2 id="m24">International Data Transfers</h2>
         <p>
-          <strong>Data processing in third countries:</strong> If we process data in a third country (i.e., outside the European Union (EU) or the European Economic Area (EEA)) 
-          or if processing occurs in the context of using third-party services or disclosing or transferring data to other entities, persons, or companies, this is done only in 
-          accordance with legal requirements. If an adequacy decision has been issued for the third country (Art. 45 GDPR), this serves as the basis for the data transfer. 
-          Otherwise, data transfers only take place if an adequate level of data protection is ensured in other ways, particularly through standard contractual clauses 
-          (Art. 46(2)(c) GDPR), explicit consent, or in cases of contractual or legally required transfers (Art. 49(1) GDPR). In addition, we inform you about the legal basis 
-          for third-country transfers in relation to individual third-country providers, with adequacy decisions taking precedence. 
-          Information on third-country transfers and applicable adequacy decisions can be found on the European Commission's website:
-          <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en?prefLang=de" target="_blank">
-            https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en?prefLang=de
-          </a>.
+          <strong>Data processing in third countries:</strong> If we process
+          data in a third country (i.e., outside the European Union (EU) or the
+          European Economic Area (EEA)) or if processing occurs in the context
+          of using third-party services or disclosing or transferring data to
+          other entities, persons, or companies, this is done only in accordance
+          with legal requirements. If an adequacy decision has been issued for
+          the third country (Art. 45 GDPR), this serves as the basis for the
+          data transfer. Otherwise, data transfers only take place if an
+          adequate level of data protection is ensured in other ways,
+          particularly through standard contractual clauses (Art. 46(2)(c)
+          GDPR), explicit consent, or in cases of contractual or legally
+          required transfers (Art. 49(1) GDPR). In addition, we inform you about
+          the legal basis for third-country transfers in relation to individual
+          third-country providers, with adequacy decisions taking precedence.
+          Information on third-country transfers and applicable adequacy
+          decisions can be found on the European Commission's website:
+          <a
+            href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en?prefLang=de"
+            target="_blank"
+          >
+            https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection_en?prefLang=de </a
+          >.
         </p>
         <p>
-          Under the so-called "Data Privacy Framework" (DPF), the EU Commission has also recognized the level of data protection for certain U.S. companies as adequate under its 
-          adequacy decision of 07/10/2023. The list of certified companies and further information about the DPF can be found on the U.S. Department of Commerce website:
-          <a href="https://www.dataprivacyframework.gov/" target="_blank">https://www.dataprivacyframework.gov/</a>.
-          Our privacy notices inform you which of our service providers are certified under the Data Privacy Framework.
+          Under the so-called "Data Privacy Framework" (DPF), the EU Commission
+          has also recognized the level of data protection for certain U.S.
+          companies as adequate under its adequacy decision of 07/10/2023. The
+          list of certified companies and further information about the DPF can
+          be found on the U.S. Department of Commerce website:
+          <a href="https://www.dataprivacyframework.gov/" target="_blank"
+            >https://www.dataprivacyframework.gov/</a
+          >. Our privacy notices inform you which of our service providers are
+          certified under the Data Privacy Framework.
         </p>
 
         <p>
-          <strong>Disclosure of personal data abroad:</strong> According to the Swiss Data Protection Act (Swiss FADP), we only transfer personal data abroad if adequate protection 
-          for the affected persons is ensured (Art. 16 Swiss FADP). If the Swiss Federal Council has not recognized adequate protection 
-          (list: <a href="https://www.bj.admin.ch/bj/en/home/state/data-protection/international/recognition-of-states.html" target="_blank">
-            https://www.bj.admin.ch/bj/en/home/state/data-protection/international/recognition-of-states.html</a>), 
-          we implement alternative security measures. These may include international treaties, specific guarantees, data protection clauses in contracts, standard 
-          data protection clauses approved by the Swiss Federal Data Protection and Information Commissioner (FDPIC), or company-internal data protection regulations 
-          recognized by the FDPIC or another competent data protection authority. 
+          <strong>Disclosure of personal data abroad:</strong> According to the
+          Swiss Data Protection Act (Swiss FADP), we only transfer personal data
+          abroad if adequate protection for the affected persons is ensured
+          (Art. 16 Swiss FADP). If the Swiss Federal Council has not recognized
+          adequate protection (list:
+          <a
+            href="https://www.bj.admin.ch/bj/en/home/state/data-protection/international/recognition-of-states.html"
+            target="_blank"
+          >
+            https://www.bj.admin.ch/bj/en/home/state/data-protection/international/recognition-of-states.html</a
+          >), we implement alternative security measures. These may include
+          international treaties, specific guarantees, data protection clauses
+          in contracts, standard data protection clauses approved by the Swiss
+          Federal Data Protection and Information Commissioner (FDPIC), or
+          company-internal data protection regulations recognized by the FDPIC
+          or another competent data protection authority.
         </p>
         <p>
-          According to Art. 16 of the Swiss FADP, exceptions for international data transfers may be granted under certain conditions, 
-          such as the consent of the data subject, contract fulfillment, public interest, protection of life or physical integrity, 
-          publicly available data, or data from legally mandated registers. Such disclosures always comply with legal requirements.
+          According to Art. 16 of the Swiss FADP, exceptions for international
+          data transfers may be granted under certain conditions, such as the
+          consent of the data subject, contract fulfillment, public interest,
+          protection of life or physical integrity, publicly available data, or
+          data from legally mandated registers. Such disclosures always comply
+          with legal requirements.
         </p>
         <p>
-          Under the so-called "Data Privacy Framework" (DPF), Switzerland has also recognized the data protection level for certain U.S. companies as adequate under its adequacy 
-          decision of 06/07/2024. The list of certified companies and further details about the DPF can be found on the U.S. Department of Commerce website:
-          <a href="https://www.dataprivacyframework.gov/" target="_blank">https://www.dataprivacyframework.gov/</a>.
-          Our privacy notices inform you about which of our service providers are certified under the Data Privacy Framework.
+          Under the so-called "Data Privacy Framework" (DPF), Switzerland has
+          also recognized the data protection level for certain U.S. companies
+          as adequate under its adequacy decision of 06/07/2024. The list of
+          certified companies and further details about the DPF can be found on
+          the U.S. Department of Commerce website:
+          <a href="https://www.dataprivacyframework.gov/" target="_blank"
+            >https://www.dataprivacyframework.gov/</a
+          >. Our privacy notices inform you about which of our service providers
+          are certified under the Data Privacy Framework.
         </p>
 
         <h2 id="m12">General Information on Data Retention and Deletion</h2>
         <p>
-          We delete personal data that we process in accordance with legal regulations as soon as the underlying consent is revoked or 
-          no other legal basis for processing exists. This applies when the original purpose of processing is no longer applicable or 
-          the data is no longer needed. Exceptions to this rule exist when legal obligations or particular interests require extended retention or archiving of the data.
+          We delete personal data that we process in accordance with legal
+          regulations as soon as the underlying consent is revoked or no other
+          legal basis for processing exists. This applies when the original
+          purpose of processing is no longer applicable or the data is no longer
+          needed. Exceptions to this rule exist when legal obligations or
+          particular interests require extended retention or archiving of the
+          data.
         </p>
         <p>
-          Specifically, data that must be retained for commercial or tax law reasons or that is necessary for legal prosecution or the 
-          protection of the rights of other natural or legal persons must be archived accordingly.
+          Specifically, data that must be retained for commercial or tax law
+          reasons or that is necessary for legal prosecution or the protection
+          of the rights of other natural or legal persons must be archived
+          accordingly.
         </p>
         <p>
-          Our privacy notices include additional information about data retention and deletion policies that apply specifically to certain 
+          Our privacy notices include additional information about data
+          retention and deletion policies that apply specifically to certain
           processing operations.
         </p>
         <p>
-          If multiple retention periods or deletion deadlines apply to a piece of data, the longest period is always authoritative.
+          If multiple retention periods or deletion deadlines apply to a piece
+          of data, the longest period is always authoritative.
         </p>
         <p>
-          If a retention period does not explicitly begin on a specified date and is at least one year, it automatically starts at the end of 
-          the calendar year in which the event triggering the period occurs. In the case of ongoing contractual relationships where data is stored, 
-          the event triggering the retention period is the date the termination or other legal conclusion of the contractual relationship takes effect.
+          If a retention period does not explicitly begin on a specified date
+          and is at least one year, it automatically starts at the end of the
+          calendar year in which the event triggering the period occurs. In the
+          case of ongoing contractual relationships where data is stored, the
+          event triggering the retention period is the date the termination or
+          other legal conclusion of the contractual relationship takes effect.
         </p>
         <p>
-          Data that is no longer required for its original purpose but must be retained due to legal obligations or other reasons is processed 
-          only for the purposes justifying its retention.
+          Data that is no longer required for its original purpose but must be
+          retained due to legal obligations or other reasons is processed only
+          for the purposes justifying its retention.
         </p>
         <p>
-          <strong>Additional information on processing operations, procedures, and services:</strong>
+          <strong
+            >Additional information on processing operations, procedures, and
+            services:</strong
+          >
         </p>
 
         <ul class="m-elements">
           <li>
-            <strong>Retention and Deletion of Data: </strong>The following general periods apply for retention and archiving under German law:
+            <strong>Retention and Deletion of Data: </strong>The following
+            general periods apply for retention and archiving under German law:
             <ul>
               <li>
-                10 years - Retention period for books and records, financial statements, inventories, management reports, opening balance sheets, and all necessary instructions and organizational documents 
-                (§ 147 para. 1 no. 1 in conjunction with para. 3 AO, § 14b para. 1 UStG, § 257 para. 1 no. 1 in conjunction with para. 4 HGB).
+                10 years - Retention period for books and records, financial
+                statements, inventories, management reports, opening balance
+                sheets, and all necessary instructions and organizational
+                documents (§ 147 para. 1 no. 1 in conjunction with para. 3 AO, §
+                14b para. 1 UStG, § 257 para. 1 no. 1 in conjunction with para.
+                4 HGB).
               </li>
               <li>
-                8 years - Accounting records such as invoices and cost receipts (§ 147 para. 1 no. 4 and 4a in conjunction with para. 3 sentence 1 AO and § 257 para. 1 no. 4 in conjunction with para. 4 HGB).
+                8 years - Accounting records such as invoices and cost receipts
+                (§ 147 para. 1 no. 4 and 4a in conjunction with para. 3 sentence
+                1 AO and § 257 para. 1 no. 4 in conjunction with para. 4 HGB).
               </li>
               <li>
-                6 years - Other business documents: received commercial or business letters, copies of sent commercial or business letters, and other documents relevant for taxation, e.g., hourly wage sheets, cost accounting sheets, 
-                calculation documents, price markings, as well as payroll documents if they are not already accounting records and cash register receipts (§ 147 para. 1 no. 2, 3, 5 in conjunction with para. 3 AO, § 257 para. 1 no. 2 and 3 
-                in conjunction with para. 4 HGB).
+                6 years - Other business documents: received commercial or
+                business letters, copies of sent commercial or business letters,
+                and other documents relevant for taxation, e.g., hourly wage
+                sheets, cost accounting sheets, calculation documents, price
+                markings, as well as payroll documents if they are not already
+                accounting records and cash register receipts (§ 147 para. 1 no.
+                2, 3, 5 in conjunction with para. 3 AO, § 257 para. 1 no. 2 and
+                3 in conjunction with para. 4 HGB).
               </li>
               <li>
-                3 years - Data required to consider potential warranty and compensation claims or similar contractual claims and rights, as well as related inquiries, 
-                based on past business experiences and common industry practices, are stored for the duration of the regular statutory limitation period of three years (§§ 195, 199 BGB).
+                3 years - Data required to consider potential warranty and
+                compensation claims or similar contractual claims and rights, as
+                well as related inquiries, based on past business experiences
+                and common industry practices, are stored for the duration of
+                the regular statutory limitation period of three years (§§ 195,
+                199 BGB).
               </li>
             </ul>
           </li>
           <li>
-            <strong>Retention and Deletion of Data: </strong>The following general periods apply for retention and archiving under Austrian law:
+            <strong>Retention and Deletion of Data: </strong>The following
+            general periods apply for retention and archiving under Austrian
+            law:
             <ul>
               <li>
-                10 years - Retention period for books and records, financial statements, inventories, management reports, opening balance sheets, accounting records, and invoices, 
-                as well as all necessary instructions and organizational documents (Federal Tax Code (BAO §132), Company Code (UGB §§190-212)).
+                10 years - Retention period for books and records, financial
+                statements, inventories, management reports, opening balance
+                sheets, accounting records, and invoices, as well as all
+                necessary instructions and organizational documents (Federal Tax
+                Code (BAO §132), Company Code (UGB §§190-212)).
               </li>
               <li>
-                6 years - Other business documents: received commercial or business letters, copies of sent commercial or business letters, and other tax-relevant documents, 
-                such as hourly wage sheets, cost accounting sheets, calculation documents, price markings, and payroll documents if they are not already accounting records and cash register receipts 
-                (Federal Tax Code (BAO §132), Company Code (UGB §§190-212)).
+                6 years - Other business documents: received commercial or
+                business letters, copies of sent commercial or business letters,
+                and other tax-relevant documents, such as hourly wage sheets,
+                cost accounting sheets, calculation documents, price markings,
+                and payroll documents if they are not already accounting records
+                and cash register receipts (Federal Tax Code (BAO §132), Company
+                Code (UGB §§190-212)).
               </li>
               <li>
-                3 years - Data required to consider potential warranty and compensation claims or similar contractual claims and rights, as well as related inquiries, 
-                based on past business experiences and common industry practices, are stored for the duration of the regular statutory limitation period of three years (§§ 1478, 1480 ABGB).
+                3 years - Data required to consider potential warranty and
+                compensation claims or similar contractual claims and rights, as
+                well as related inquiries, based on past business experiences
+                and common industry practices, are stored for the duration of
+                the regular statutory limitation period of three years (§§ 1478,
+                1480 ABGB).
               </li>
             </ul>
           </li>
           <li>
-            <strong>Retention and Deletion of Data: </strong>The following general periods apply for retention and archiving under Swiss law:
+            <strong>Retention and Deletion of Data: </strong>The following
+            general periods apply for retention and archiving under Swiss law:
             <ul>
               <li>
-                10 years - Retention period for books and records, financial statements, inventories, management reports, opening balance sheets, accounting records, and invoices, 
-                as well as all necessary instructions and organizational documents (Art. 958f of the Swiss Code of Obligations (CO)).
+                10 years - Retention period for books and records, financial
+                statements, inventories, management reports, opening balance
+                sheets, accounting records, and invoices, as well as all
+                necessary instructions and organizational documents (Art. 958f
+                of the Swiss Code of Obligations (CO)).
               </li>
               <li>
-                10 years - Data necessary for considering potential compensation claims or similar contractual claims and rights, as well as related inquiries, based on past business experiences and common industry practices, 
-                are stored for the statutory limitation period of ten years, unless a shorter five-year period applies in certain cases (Art. 127, 130 CO). 
-                Claims for rent, lease, and interest payments, as well as other periodic services, food supply, catering, debts in inns, craftsmanship work, retail sales, medical services, professional work by lawyers, legal agents, 
-                procurators, and notaries, and employment-related claims expire after five years (Art. 128 CO).
+                10 years - Data necessary for considering potential compensation
+                claims or similar contractual claims and rights, as well as
+                related inquiries, based on past business experiences and common
+                industry practices, are stored for the statutory limitation
+                period of ten years, unless a shorter five-year period applies
+                in certain cases (Art. 127, 130 CO). Claims for rent, lease, and
+                interest payments, as well as other periodic services, food
+                supply, catering, debts in inns, craftsmanship work, retail
+                sales, medical services, professional work by lawyers, legal
+                agents, procurators, and notaries, and employment-related claims
+                expire after five years (Art. 128 CO).
               </li>
             </ul>
           </li>
         </ul>
         <h2 id="m10">Rights of Data Subjects</h2>
         <p>
-          Rights of data subjects under the GDPR: As a data subject, you have various rights under the GDPR, which particularly arise from Articles 15 to 21 GDPR:
+          Rights of data subjects under the GDPR: As a data subject, you have
+          various rights under the GDPR, which particularly arise from Articles
+          15 to 21 GDPR:
         </p>
         <ul>
           <li>
             <strong>
-              Right to Object: You have the right, for reasons arising from your particular situation, to object at any time to the processing of personal data concerning you that is carried out 
-              under Article 6(1)(e) or (f) GDPR; this also applies to profiling based on these provisions. If your personal data is processed for direct marketing purposes, 
-              you have the right to object at any time to the processing of personal data concerning you for such marketing purposes, including profiling related to direct marketing.
+              Right to Object: You have the right, for reasons arising from your
+              particular situation, to object at any time to the processing of
+              personal data concerning you that is carried out under Article
+              6(1)(e) or (f) GDPR; this also applies to profiling based on these
+              provisions. If your personal data is processed for direct
+              marketing purposes, you have the right to object at any time to
+              the processing of personal data concerning you for such marketing
+              purposes, including profiling related to direct marketing.
             </strong>
           </li>
-          <li><strong>Right to Withdraw Consent:</strong> You have the right to withdraw consent at any time.</li>
           <li>
-            <strong>Right to Access:</strong> You have the right to request confirmation as to whether personal data concerning you is being processed, 
-            and to obtain information about such data as well as further details and a copy of the data as per legal requirements.
+            <strong>Right to Withdraw Consent:</strong> You have the right to
+            withdraw consent at any time.
           </li>
           <li>
-            <strong>Right to Rectification:</strong> You have the right to request the completion or correction of inaccurate data concerning you in accordance with legal requirements.
+            <strong>Right to Access:</strong> You have the right to request
+            confirmation as to whether personal data concerning you is being
+            processed, and to obtain information about such data as well as
+            further details and a copy of the data as per legal requirements.
           </li>
           <li>
-            <strong>Right to Erasure and Restriction of Processing:</strong> You have the right to request the immediate deletion of personal data concerning you, 
-            or alternatively, the restriction of data processing in accordance with legal requirements.
+            <strong>Right to Rectification:</strong> You have the right to
+            request the completion or correction of inaccurate data concerning
+            you in accordance with legal requirements.
           </li>
           <li>
-            <strong>Right to Data Portability:</strong> You have the right to receive personal data concerning you that you have provided to us in a structured, commonly used, 
-            and machine-readable format or to request its transmission to another controller in accordance with legal requirements.
+            <strong>Right to Erasure and Restriction of Processing:</strong> You
+            have the right to request the immediate deletion of personal data
+            concerning you, or alternatively, the restriction of data processing
+            in accordance with legal requirements.
           </li>
           <li>
-            <strong>Right to Lodge a Complaint with a Supervisory Authority:</strong> Without prejudice to other administrative or judicial remedies, you have the right to lodge a complaint with a supervisory authority, 
-            particularly in the Member State of your habitual residence, workplace, or the place of the alleged infringement if you believe that the processing of personal data concerning you 
-            violates the GDPR.
+            <strong>Right to Data Portability:</strong> You have the right to
+            receive personal data concerning you that you have provided to us in
+            a structured, commonly used, and machine-readable format or to
+            request its transmission to another controller in accordance with
+            legal requirements.
+          </li>
+          <li>
+            <strong
+              >Right to Lodge a Complaint with a Supervisory Authority:</strong
+            >
+            Without prejudice to other administrative or judicial remedies, you
+            have the right to lodge a complaint with a supervisory authority,
+            particularly in the Member State of your habitual residence,
+            workplace, or the place of the alleged infringement if you believe
+            that the processing of personal data concerning you violates the
+            GDPR.
           </li>
         </ul>
         <p>Rights of data subjects under Swiss DPA:</p>
-        <p>As a data subject, you have the following rights under the Swiss DPA:</p>
+        <p>
+          As a data subject, you have the following rights under the Swiss DPA:
+        </p>
         <ul>
           <li>
-            <strong>Right to Access:</strong> You have the right to request confirmation as to whether your personal data is being processed and to receive the information necessary 
-            to assert your rights under this law and ensure transparent data processing.
+            <strong>Right to Access:</strong> You have the right to request
+            confirmation as to whether your personal data is being processed and
+            to receive the information necessary to assert your rights under
+            this law and ensure transparent data processing.
           </li>
           <li>
-            <strong>Right to Data Release or Transfer:</strong> You have the right to request the release of personal data you have provided to us in a commonly used electronic format.
+            <strong>Right to Data Release or Transfer:</strong> You have the
+            right to request the release of personal data you have provided to
+            us in a commonly used electronic format.
           </li>
-          <li><strong>Right to Rectification:</strong> You have the right to request the correction of inaccurate personal data concerning you.</li>
           <li>
-            <strong>Right to Object, Erasure, and Destruction:</strong> You have the right to object to data processing, as well as to request the deletion or destruction of personal data concerning you.
+            <strong>Right to Rectification:</strong> You have the right to
+            request the correction of inaccurate personal data concerning you.
+          </li>
+          <li>
+            <strong>Right to Object, Erasure, and Destruction:</strong> You have
+            the right to object to data processing, as well as to request the
+            deletion or destruction of personal data concerning you.
           </li>
         </ul>
-        
+
         <h2 id="m225">Provision of Online Services and Web Hosting</h2>
         <p>
-          We process user data in order to provide them with our online services. For this purpose, we process the user's IP address, which is necessary to transmit the content and functions of our online services to the user's browser or device.
+          We process user data in order to provide them with our online
+          services. For this purpose, we process the user's IP address, which is
+          necessary to transmit the content and functions of our online services
+          to the user's browser or device.
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processed Data Types:</strong> Usage data (e.g., page views and duration, click paths, usage intensity and frequency, types of devices and operating systems used, interactions with content and features); Meta, communication, and procedural data (e.g., IP addresses, timestamps, identification numbers, involved persons). Log data (e.g., log files related to logins or data retrieval or access times).
+            <strong>Processed Data Types:</strong> Usage data (e.g., page views
+            and duration, click paths, usage intensity and frequency, types of
+            devices and operating systems used, interactions with content and
+            features); Meta, communication, and procedural data (e.g., IP
+            addresses, timestamps, identification numbers, involved persons).
+            Log data (e.g., log files related to logins or data retrieval or
+            access times).
           </li>
-          <li><strong>Data Subjects:</strong> Users (e.g., website visitors, online service users).</li>
           <li>
-            <strong>Purpose of Processing:</strong> Provision of our online services and user convenience; Information technology infrastructure (operation and provision of information systems and technical devices (computers, servers, etc.)). Security measures.
+            <strong>Data Subjects:</strong> Users (e.g., website visitors,
+            online service users).
           </li>
-          <li><strong>Retention and Deletion:</strong> Deletion according to the information provided in the section "General Information on Data Retention and Deletion".</li>
-          <li class=""><strong>Legal Basis:</strong> Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</li>
+          <li>
+            <strong>Purpose of Processing:</strong> Provision of our online
+            services and user convenience; Information technology infrastructure
+            (operation and provision of information systems and technical
+            devices (computers, servers, etc.)). Security measures.
+          </li>
+          <li>
+            <strong>Retention and Deletion:</strong> Deletion according to the
+            information provided in the section "General Information on Data
+            Retention and Deletion".
+          </li>
+          <li class="">
+            <strong>Legal Basis:</strong> Legitimate interests (Art. 6(1)
+            Sentence 1 lit. f) GDPR).
+          </li>
         </ul>
         <p>
-          <strong>Additional Information on Processing Procedures, Processes, and Services:</strong>
+          <strong
+            >Additional Information on Processing Procedures, Processes, and
+            Services:</strong
+          >
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Collection of Access Data and Log Files:</strong> Access to our online services is logged in the form of so-called "server log files." Server log files may include the address and name of retrieved websites and files, date and time of retrieval, transmitted data volume, message on successful retrieval, browser type and version, the user's operating system, referrer URL (the previously visited page), and usually IP addresses and the requesting provider. The server log files may be used for security purposes, e.g., to avoid overloading the servers (particularly in the case of abusive attacks, so-called DDoS attacks), and to ensure server load and stability;
-            <span class=""><strong>Legal Basis:</strong> Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</span><strong>Data Deletion:</strong> Log file information is stored for a maximum of 30 days and then deleted or anonymized. Data whose further storage is necessary for evidence purposes are exempt from deletion until the respective incident is fully resolved.
+            <strong>Collection of Access Data and Log Files:</strong> Access to
+            our online services is logged in the form of so-called "server log
+            files." Server log files may include the address and name of
+            retrieved websites and files, date and time of retrieval,
+            transmitted data volume, message on successful retrieval, browser
+            type and version, the user's operating system, referrer URL (the
+            previously visited page), and usually IP addresses and the
+            requesting provider. The server log files may be used for security
+            purposes, e.g., to avoid overloading the servers (particularly in
+            the case of abusive attacks, so-called DDoS attacks), and to ensure
+            server load and stability;
+            <span class=""
+              ><strong>Legal Basis:</strong> Legitimate interests (Art. 6(1)
+              Sentence 1 lit. f) GDPR).</span
+            ><strong>Data Deletion:</strong> Log file information is stored for
+            a maximum of 30 days and then deleted or anonymized. Data whose
+            further storage is necessary for evidence purposes are exempt from
+            deletion until the respective incident is fully resolved.
           </li>
         </ul>
         <h2 id="m134">Use of Cookies</h2>
         <p>
-          The term "cookies" refers to features that store information on the user's devices and retrieve it. Cookies can also be used for various purposes, such as functionality, security, and comfort of online services, as well as for creating analysis of visitor flows. We use cookies in accordance with legal requirements. For this purpose, we obtain the user's consent in advance if necessary. If consent is not required, we rely on our legitimate interests. This applies when storing and retrieving information is essential to provide explicitly requested content and functions. This includes, for example, saving settings and ensuring the functionality and security of our online services. Consent can be revoked at any time. We clearly inform about the scope and which cookies are used.
+          The term "cookies" refers to features that store information on the
+          user's devices and retrieve it. Cookies can also be used for various
+          purposes, such as functionality, security, and comfort of online
+          services, as well as for creating analysis of visitor flows. We use
+          cookies in accordance with legal requirements. For this purpose, we
+          obtain the user's consent in advance if necessary. If consent is not
+          required, we rely on our legitimate interests. This applies when
+          storing and retrieving information is essential to provide explicitly
+          requested content and functions. This includes, for example, saving
+          settings and ensuring the functionality and security of our online
+          services. Consent can be revoked at any time. We clearly inform about
+          the scope and which cookies are used.
         </p>
         <p>
-          <strong>Notes on Data Protection Legal Basis:</strong> Whether we process personal data using cookies depends on consent. If consent is given, it serves as the legal basis. Without consent, we rely on our legitimate interests, which are explained earlier in this section and in the context of the respective services and processes.
+          <strong>Notes on Data Protection Legal Basis:</strong> Whether we
+          process personal data using cookies depends on consent. If consent is
+          given, it serves as the legal basis. Without consent, we rely on our
+          legitimate interests, which are explained earlier in this section and
+          in the context of the respective services and processes.
         </p>
-        <p><strong>Storage Duration:</strong> Regarding storage duration, the following types of cookies are distinguished:</p>
+        <p>
+          <strong>Storage Duration:</strong> Regarding storage duration, the
+          following types of cookies are distinguished:
+        </p>
         <ul>
           <li>
-            <strong>Temporary Cookies (also: Session or Session Cookies):</strong>
-            Temporary cookies are deleted as soon as a user leaves an online service and closes their device (e.g., browser or mobile application).
+            <strong
+              >Temporary Cookies (also: Session or Session Cookies):</strong
+            >
+            Temporary cookies are deleted as soon as a user leaves an online
+            service and closes their device (e.g., browser or mobile
+            application).
           </li>
           <li>
-            <strong>Permanent Cookies:</strong> Permanent cookies remain stored even after the device is closed. For example, the login status can be saved, and preferred content can be directly displayed when the user visits a website again. Similarly, user data collected via cookies may be used for reach measurement. If we do not provide explicit information about the type and storage duration of cookies (e.g., during the collection of consent), users should assume that these cookies are permanent and can be stored for up to two years.
+            <strong>Permanent Cookies:</strong> Permanent cookies remain stored
+            even after the device is closed. For example, the login status can
+            be saved, and preferred content can be directly displayed when the
+            user visits a website again. Similarly, user data collected via
+            cookies may be used for reach measurement. If we do not provide
+            explicit information about the type and storage duration of cookies
+            (e.g., during the collection of consent), users should assume that
+            these cookies are permanent and can be stored for up to two years.
           </li>
         </ul>
         <p>
-          <strong>General Notes on Revocation and Objection (Opt-out):</strong> Users can revoke their consent at any time and also declare an objection to processing according to legal provisions, including through the privacy settings of their browser.
+          <strong>General Notes on Revocation and Objection (Opt-out):</strong>
+          Users can revoke their consent at any time and also declare an
+          objection to processing according to legal provisions, including
+          through the privacy settings of their browser.
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processed Data Types:</strong> Meta, communication, and procedural data (e.g., IP addresses, timestamps, identification numbers, involved persons).
+            <strong>Processed Data Types:</strong> Meta, communication, and
+            procedural data (e.g., IP addresses, timestamps, identification
+            numbers, involved persons).
           </li>
-          <li><strong>Data Subjects:</strong> Users (e.g., website visitors, online service users).</li>
-          <li class=""><strong>Legal Basis:</strong> Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR). Consent (Art. 6(1) Sentence 1 lit. a) GDPR).</li>
+          <li>
+            <strong>Data Subjects:</strong> Users (e.g., website visitors,
+            online service users).
+          </li>
+          <li class="">
+            <strong>Legal Basis:</strong> Legitimate interests (Art. 6(1)
+            Sentence 1 lit. f) GDPR). Consent (Art. 6(1) Sentence 1 lit. a)
+            GDPR).
+          </li>
         </ul>
 
         <p>
-          <strong>Additional Information on Processing Procedures, Processes, and Services:</strong>
+          <strong
+            >Additional Information on Processing Procedures, Processes, and
+            Services:</strong
+          >
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processing of Cookie Data Based on Consent:</strong> We use a consent management solution to obtain users' consent for the use of cookies or for the procedures and providers mentioned in the consent management solution. This procedure is used to collect, log, manage, and withdraw consent, particularly regarding the use of cookies and similar technologies that are used to store, read, and process information on the user's devices. As part of this procedure, users' consent for the use of cookies and the associated processing of information, including the specific processes and providers mentioned in the consent management process, is obtained. Users also have the option to manage and withdraw their consent. The consent declarations are stored to avoid asking for consent again and to be able to provide proof of consent in accordance with legal requirements. The storage is done server-side and/or in a cookie (so-called opt-in cookie) or using similar technologies to associate the consent with a specific user or their device. If no specific information about consent management service providers is available, the following general information applies: The duration of consent storage is up to two years. A pseudonymous user identifier is created, which is stored along with the time of consent, the scope of the consent (e.g., relevant categories of cookies and/or service providers), and information about the browser, system, and device used;
-            <span class=""><strong>Legal Basis:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR).</span>
+            <strong>Processing of Cookie Data Based on Consent:</strong> We use
+            a consent management solution to obtain users' consent for the use
+            of cookies or for the procedures and providers mentioned in the
+            consent management solution. This procedure is used to collect, log,
+            manage, and withdraw consent, particularly regarding the use of
+            cookies and similar technologies that are used to store, read, and
+            process information on the user's devices. As part of this
+            procedure, users' consent for the use of cookies and the associated
+            processing of information, including the specific processes and
+            providers mentioned in the consent management process, is obtained.
+            Users also have the option to manage and withdraw their consent. The
+            consent declarations are stored to avoid asking for consent again
+            and to be able to provide proof of consent in accordance with legal
+            requirements. The storage is done server-side and/or in a cookie
+            (so-called opt-in cookie) or using similar technologies to associate
+            the consent with a specific user or their device. If no specific
+            information about consent management service providers is available,
+            the following general information applies: The duration of consent
+            storage is up to two years. A pseudonymous user identifier is
+            created, which is stored along with the time of consent, the scope
+            of the consent (e.g., relevant categories of cookies and/or service
+            providers), and information about the browser, system, and device
+            used;
+            <span class=""
+              ><strong>Legal Basis:</strong> Consent (Art. 6(1) Sentence 1 lit.
+              a) GDPR).</span
+            >
           </li>
         </ul>
         <h2 id="m182">Contact and Inquiry Management</h2>
         <p>
-          When contacting us (e.g., by mail, contact form, email, phone, or via social media) or within the scope of existing user and business relationships, the information of the inquiring individuals is processed as far as necessary to respond to the contact inquiries and any requested actions.
+          When contacting us (e.g., by mail, contact form, email, phone, or via
+          social media) or within the scope of existing user and business
+          relationships, the information of the inquiring individuals is
+          processed as far as necessary to respond to the contact inquiries and
+          any requested actions.
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processed Data Types:</strong> Personal data (e.g., full name, address, contact information, customer number, etc.); contact data (e.g., postal and email addresses or phone numbers); content data (e.g., textual or visual messages and posts, as well as related information such as authorship or creation time); usage data (e.g., page views and duration, click paths, usage intensity and frequency, types of devices and operating systems used, interactions with content and features). Meta, communication, and procedural data (e.g., IP addresses, timestamps, identification numbers, involved persons).
+            <strong>Processed Data Types:</strong> Personal data (e.g., full
+            name, address, contact information, customer number, etc.); contact
+            data (e.g., postal and email addresses or phone numbers); content
+            data (e.g., textual or visual messages and posts, as well as related
+            information such as authorship or creation time); usage data (e.g.,
+            page views and duration, click paths, usage intensity and frequency,
+            types of devices and operating systems used, interactions with
+            content and features). Meta, communication, and procedural data
+            (e.g., IP addresses, timestamps, identification numbers, involved
+            persons).
           </li>
           <li><strong>Data Subjects:</strong> Communication partners.</li>
           <li>
-            <strong>Purpose of Processing:</strong> Communication; organizational and administrative procedures; feedback (e.g., collecting feedback via online forms). Provision of our online services and user convenience.
+            <strong>Purpose of Processing:</strong> Communication;
+            organizational and administrative procedures; feedback (e.g.,
+            collecting feedback via online forms). Provision of our online
+            services and user convenience.
           </li>
-          <li><strong>Retention and Deletion:</strong> Deletion according to the information provided in the section "General Information on Data Retention and Deletion".</li>
+          <li>
+            <strong>Retention and Deletion:</strong> Deletion according to the
+            information provided in the section "General Information on Data
+            Retention and Deletion".
+          </li>
           <li class="">
-            <strong>Legal Basis:</strong> Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR). Contract fulfillment and pre-contractual inquiries (Art. 6(1) Sentence 1 lit. b) GDPR).
+            <strong>Legal Basis:</strong> Legitimate interests (Art. 6(1)
+            Sentence 1 lit. f) GDPR). Contract fulfillment and pre-contractual
+            inquiries (Art. 6(1) Sentence 1 lit. b) GDPR).
           </li>
         </ul>
         <p>
-          <strong>Additional Information on Processing Procedures, Processes, and Services:</strong>
+          <strong
+            >Additional Information on Processing Procedures, Processes, and
+            Services:</strong
+          >
         </p>
-        
+
         <ul class="m-elements">
           <li>
-            <strong>Contact Form:</strong> When contacting us via our contact form, email, or other communication methods, we process the personal data transmitted to us to respond to and handle the respective request. This usually includes information such as name, contact details, and, if applicable, any additional information provided to us that is necessary for appropriate processing. We use this data exclusively for the stated purpose of contact and communication;
-            <span class=""><strong>Legal Bases:</strong> Contract fulfillment and pre-contractual inquiries (Art. 6(1) Sentence 1 lit. b) GDPR), Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</span>
+            <strong>Contact Form:</strong> When contacting us via our contact
+            form, email, or other communication methods, we process the personal
+            data transmitted to us to respond to and handle the respective
+            request. This usually includes information such as name, contact
+            details, and, if applicable, any additional information provided to
+            us that is necessary for appropriate processing. We use this data
+            exclusively for the stated purpose of contact and communication;
+            <span class=""
+              ><strong>Legal Bases:</strong> Contract fulfillment and
+              pre-contractual inquiries (Art. 6(1) Sentence 1 lit. b) GDPR),
+              Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</span
+            >
           </li>
         </ul>
         <h2 id="m263">Web Analysis, Monitoring, and Optimization</h2>
         <p>
-          Web analysis (also referred to as "reach measurement") is used to evaluate the visitor traffic to our online services and can include behavior, interests, or demographic information about the visitors, such as age or gender, as pseudonymous data. With the help of reach analysis, we can, for example, identify when our online services or their functions or content are used most frequently or when a revisit is likely. It also allows us to understand which areas need optimization.
+          Web analysis (also referred to as "reach measurement") is used to
+          evaluate the visitor traffic to our online services and can include
+          behavior, interests, or demographic information about the visitors,
+          such as age or gender, as pseudonymous data. With the help of reach
+          analysis, we can, for example, identify when our online services or
+          their functions or content are used most frequently or when a revisit
+          is likely. It also allows us to understand which areas need
+          optimization.
         </p>
         <p>
-          In addition to web analysis, we may also use testing procedures to test and optimize different versions of our online services or their components.
+          In addition to web analysis, we may also use testing procedures to
+          test and optimize different versions of our online services or their
+          components.
         </p>
         <p>
-          Unless stated otherwise below, profiles, which are data grouped together for a usage process, may be created, and information can be stored in a browser or on a device and then read. The data collected includes visited websites and used elements, as well as technical information such as the browser used, the computer system used, and information about usage times. If users have consented to the collection of their location data with us or with the providers of the services we use, location data may also be processed.
+          Unless stated otherwise below, profiles, which are data grouped
+          together for a usage process, may be created, and information can be
+          stored in a browser or on a device and then read. The data collected
+          includes visited websites and used elements, as well as technical
+          information such as the browser used, the computer system used, and
+          information about usage times. If users have consented to the
+          collection of their location data with us or with the providers of the
+          services we use, location data may also be processed.
         </p>
         <p>
-          Furthermore, the IP addresses of users are stored. However, we use an IP masking process (i.e., pseudonymization by truncating the IP address) to protect users. Generally, no clear user data (e.g., email addresses or names) is stored as part of web analysis, A/B testing, and optimization, but pseudonyms are used. This means that neither we nor the providers of the software used know the actual identity of the users, but only the information stored in their profiles for the specific procedures.
+          Furthermore, the IP addresses of users are stored. However, we use an
+          IP masking process (i.e., pseudonymization by truncating the IP
+          address) to protect users. Generally, no clear user data (e.g., email
+          addresses or names) is stored as part of web analysis, A/B testing,
+          and optimization, but pseudonyms are used. This means that neither we
+          nor the providers of the software used know the actual identity of the
+          users, but only the information stored in their profiles for the
+          specific procedures.
         </p>
         <p>
-          Information on legal bases: If we ask users for their consent to use third-party services, the legal basis for the data processing is consent. Otherwise, user data is processed based on our legitimate interests (i.e., interest in efficient, economical, and user-friendly services). In this context, we would also like to draw your attention to the information regarding the use of cookies in this privacy policy.
+          Information on legal bases: If we ask users for their consent to use
+          third-party services, the legal basis for the data processing is
+          consent. Otherwise, user data is processed based on our legitimate
+          interests (i.e., interest in efficient, economical, and user-friendly
+          services). In this context, we would also like to draw your attention
+          to the information regarding the use of cookies in this privacy
+          policy.
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processed Data Types:</strong> Usage data (e.g., page views and duration, click paths, usage intensity and frequency, types of devices and operating systems used, interactions with content and features). Meta, communication, and procedural data (e.g., IP addresses, timestamps, identification numbers, involved persons).
+            <strong>Processed Data Types:</strong> Usage data (e.g., page views
+            and duration, click paths, usage intensity and frequency, types of
+            devices and operating systems used, interactions with content and
+            features). Meta, communication, and procedural data (e.g., IP
+            addresses, timestamps, identification numbers, involved persons).
           </li>
-          <li><strong>Data Subjects:</strong> Users (e.g., website visitors, online service users).</li>
           <li>
-            <strong>Purposes of Processing:</strong> Reach measurement (e.g., access statistics, recognition of recurring visitors); profiles with user-related information (creating user profiles). Provision of our online services and user convenience.
+            <strong>Data Subjects:</strong> Users (e.g., website visitors,
+            online service users).
           </li>
           <li>
-            <strong>Retention and Deletion:</strong> Deletion according to the information in the section "General Information on Data Retention and Deletion". Storage of cookies for up to 2 years (unless otherwise stated, cookies and similar storage methods may be stored on users' devices for up to two years).
+            <strong>Purposes of Processing:</strong> Reach measurement (e.g.,
+            access statistics, recognition of recurring visitors); profiles with
+            user-related information (creating user profiles). Provision of our
+            online services and user convenience.
           </li>
-          <li><strong>Security Measures:</strong> IP masking (pseudonymization of IP addresses).</li>
-          <li class=""><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR). Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</li>
+          <li>
+            <strong>Retention and Deletion:</strong> Deletion according to the
+            information in the section "General Information on Data Retention
+            and Deletion". Storage of cookies for up to 2 years (unless
+            otherwise stated, cookies and similar storage methods may be stored
+            on users' devices for up to two years).
+          </li>
+          <li>
+            <strong>Security Measures:</strong> IP masking (pseudonymization of
+            IP addresses).
+          </li>
+          <li class="">
+            <strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a)
+            GDPR). Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).
+          </li>
         </ul>
         <p>
-          <strong>Additional Information on Processing Procedures, Processes, and Services:</strong>
+          <strong
+            >Additional Information on Processing Procedures, Processes, and
+            Services:</strong
+          >
         </p>
-        
+
         <ul class="m-elements">
           <li>
-            <strong>Google Analytics:</strong> We use Google Analytics to measure and analyze the usage of our online services based on a pseudonymous user identification number. This identification number does not contain any unique data, such as names or email addresses. It is used to assign analytical data to a device in order to recognize which content users have accessed within a single or multiple sessions, which search terms they have used, re-accessed, or interacted with our online services. Additionally, the time of use and its duration are stored, as well as the sources that refer users to our online services and technical aspects of their devices and browsers.<br /> Pseudonymous user profiles are created using information from the use of different devices, with cookies potentially being used. Google Analytics does not log or store individual IP addresses for EU users. However, Analytics provides rough geographical location data by deriving the following metadata from IP addresses: city (and the derived latitude and longitude of the city), continent, country, region, subcontinent (and ID-based counterparts). For EU traffic, IP address data is only used for the derivation of geolocation data and is immediately deleted thereafter. They are not logged, are not accessible, and are not used for other purposes. When Google Analytics collects measurement data, all IP queries are carried out on EU-based servers before the traffic is forwarded to Analytics servers for processing; <strong>Service Provider:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; <span class=""><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR); </span><strong>Website:</strong>
-            <a href="https://marketingplatform.google.com/intl/de/about/analytics/" target="_blank">https://marketingplatform.google.com/intl/de/about/analytics/</a>;
-            <strong>Security Measures:</strong> IP masking (pseudonymization of the IP address);
+            <strong>Google Analytics:</strong> We use Google Analytics to
+            measure and analyze the usage of our online services based on a
+            pseudonymous user identification number. This identification number
+            does not contain any unique data, such as names or email addresses.
+            It is used to assign analytical data to a device in order to
+            recognize which content users have accessed within a single or
+            multiple sessions, which search terms they have used, re-accessed,
+            or interacted with our online services. Additionally, the time of
+            use and its duration are stored, as well as the sources that refer
+            users to our online services and technical aspects of their devices
+            and browsers.<br />
+            Pseudonymous user profiles are created using information from the
+            use of different devices, with cookies potentially being used.
+            Google Analytics does not log or store individual IP addresses for
+            EU users. However, Analytics provides rough geographical location
+            data by deriving the following metadata from IP addresses: city (and
+            the derived latitude and longitude of the city), continent, country,
+            region, subcontinent (and ID-based counterparts). For EU traffic, IP
+            address data is only used for the derivation of geolocation data and
+            is immediately deleted thereafter. They are not logged, are not
+            accessible, and are not used for other purposes. When Google
+            Analytics collects measurement data, all IP queries are carried out
+            on EU-based servers before the traffic is forwarded to Analytics
+            servers for processing; <strong>Service Provider:</strong> Google
+            Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland;
+            <span class=""
+              ><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit.
+              a) GDPR); </span
+            ><strong>Website:</strong>
+            <a
+              href="https://marketingplatform.google.com/intl/de/about/analytics/"
+              target="_blank"
+              >https://marketingplatform.google.com/intl/de/about/analytics/</a
+            >; <strong>Security Measures:</strong> IP masking (pseudonymization
+            of the IP address);
             <strong>Privacy Policy:</strong>
-            <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>; <strong>Data Processing Agreement:</strong>
-            <a href="https://business.safety.google/adsprocessorterms/" target="_blank">https://business.safety.google/adsprocessorterms/</a>;
-            <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland);
+            <a href="https://policies.google.com/privacy" target="_blank"
+              >https://policies.google.com/privacy</a
+            >; <strong>Data Processing Agreement:</strong>
+            <a
+              href="https://business.safety.google/adsprocessorterms/"
+              target="_blank"
+              >https://business.safety.google/adsprocessorterms/</a
+            >; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data
+            Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland);
             <strong>Opt-Out Possibility:</strong> Opt-Out Plugin:
-            <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=de</a>, Ad Personalization Settings: <a href="https://myadcenter.google.com/personalizationoff" target="_blank">https://myadcenter.google.com/personalizationoff</a>.
+            <a
+              href="https://tools.google.com/dlpage/gaoptout?hl=de"
+              target="_blank"
+              >https://tools.google.com/dlpage/gaoptout?hl=de</a
+            >, Ad Personalization Settings:
+            <a
+              href="https://myadcenter.google.com/personalizationoff"
+              target="_blank"
+              >https://myadcenter.google.com/personalizationoff</a
+            >.
             <strong>More Information:</strong>
-            <a href="https://business.safety.google/adsservices/" target="_blank">https://business.safety.google/adsservices/</a>
+            <a
+              href="https://business.safety.google/adsservices/"
+              target="_blank"
+              >https://business.safety.google/adsservices/</a
+            >
             (Types of processing and the processed data).
           </li>
         </ul>
         <h2 id="m328">Plug-ins and Embedded Functions and Content</h2>
         <p>
-          We integrate functional and content elements into our online services that are sourced from the servers of their respective providers (hereinafter referred to as "third parties"). These can include, for example, graphics, videos, or maps (collectively referred to as "content").
+          We integrate functional and content elements into our online services
+          that are sourced from the servers of their respective providers
+          (hereinafter referred to as "third parties"). These can include, for
+          example, graphics, videos, or maps (collectively referred to as
+          "content").
         </p>
         <p>
-          The integration always requires that the third-party providers of this content process the users' IP addresses, as they cannot send the content to the users' browsers without the IP address. The IP address is thus necessary for the display of these contents or functions. We strive to only use content whose respective providers apply the IP address solely for delivering the content. Third parties may also use so-called pixel tags (invisible graphics, also known as "web beacons") for statistical or marketing purposes. Through "pixel tags," information such as the visitor traffic on the pages of this website can be evaluated. The pseudonymous information may also be stored in cookies on the users' devices and may contain technical details such as the browser and operating system used, referring websites, visit times, and further details about the usage of our online services, but can also be combined with such information from other sources.
+          The integration always requires that the third-party providers of this
+          content process the users' IP addresses, as they cannot send the
+          content to the users' browsers without the IP address. The IP address
+          is thus necessary for the display of these contents or functions. We
+          strive to only use content whose respective providers apply the IP
+          address solely for delivering the content. Third parties may also use
+          so-called pixel tags (invisible graphics, also known as "web beacons")
+          for statistical or marketing purposes. Through "pixel tags,"
+          information such as the visitor traffic on the pages of this website
+          can be evaluated. The pseudonymous information may also be stored in
+          cookies on the users' devices and may contain technical details such
+          as the browser and operating system used, referring websites, visit
+          times, and further details about the usage of our online services, but
+          can also be combined with such information from other sources.
         </p>
         <p>
-          <strong>Information on Legal Bases:</strong> If we ask users for their consent for the use of third-party services, the legal basis for the data processing is consent. Otherwise, user data is processed based on our legitimate interests (i.e., interest in efficient, economical, and user-friendly services). In this context, we would also like to refer you to the information about the use of cookies in this privacy policy.
+          <strong>Information on Legal Bases:</strong> If we ask users for their
+          consent for the use of third-party services, the legal basis for the
+          data processing is consent. Otherwise, user data is processed based on
+          our legitimate interests (i.e., interest in efficient, economical, and
+          user-friendly services). In this context, we would also like to refer
+          you to the information about the use of cookies in this privacy
+          policy.
         </p>
         <ul class="m-elements">
           <li>
-            <strong>Processed Data Types:</strong> Usage data (e.g., page views and duration, click paths, usage intensity and frequency, device types and operating systems used, interactions with content and functions); Meta, communication, and procedural data (e.g., IP addresses, timestamps, identification numbers, involved persons). Location data (information about the geographic position of a device or person).
+            <strong>Processed Data Types:</strong> Usage data (e.g., page views
+            and duration, click paths, usage intensity and frequency, device
+            types and operating systems used, interactions with content and
+            functions); Meta, communication, and procedural data (e.g., IP
+            addresses, timestamps, identification numbers, involved persons).
+            Location data (information about the geographic position of a device
+            or person).
           </li>
-          <li><strong>Data Subjects:</strong> Users (e.g., website visitors, online service users).</li>
           <li>
-            <strong>Purposes of Processing:</strong> Providing our online services and user convenience; Reach measurement (e.g., access statistics, recognition of recurring visitors); Tracking (e.g., interest-/behavior-based profiling, use of cookies); Audience targeting. Marketing.
+            <strong>Data Subjects:</strong> Users (e.g., website visitors,
+            online service users).
           </li>
           <li>
-            <strong>Retention and Deletion:</strong> Deletion according to the information in the section "General Information on Data Retention and Deletion". Storage of cookies for up to 2 years (unless otherwise stated, cookies and similar storage methods may be stored on users' devices for up to two years).
+            <strong>Purposes of Processing:</strong> Providing our online
+            services and user convenience; Reach measurement (e.g., access
+            statistics, recognition of recurring visitors); Tracking (e.g.,
+            interest-/behavior-based profiling, use of cookies); Audience
+            targeting. Marketing.
           </li>
-          <li class=""><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR). Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).</li>
+          <li>
+            <strong>Retention and Deletion:</strong> Deletion according to the
+            information in the section "General Information on Data Retention
+            and Deletion". Storage of cookies for up to 2 years (unless
+            otherwise stated, cookies and similar storage methods may be stored
+            on users' devices for up to two years).
+          </li>
+          <li class="">
+            <strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a)
+            GDPR). Legitimate interests (Art. 6(1) Sentence 1 lit. f) GDPR).
+          </li>
         </ul>
         <p>
-          <strong>Further Information on Processing Procedures, Processes, and Services:</strong>
+          <strong
+            >Further Information on Processing Procedures, Processes, and
+            Services:</strong
+          >
         </p>
-        
+
         <ul class="m-elements">
           <li>
-            <strong>Google Fonts (Sourced from Google Server):</strong> Fonts (and symbols) are sourced for the purpose of technically secure, maintenance-free, and efficient use of fonts and symbols with regard to currentness and load times, uniform display, and consideration of possible copyright restrictions. The font provider receives the user's IP address to make the fonts available in the user's browser. Additionally, technical data (language settings, screen resolution, operating system, used hardware) are transmitted, which are necessary for providing the fonts depending on the devices and technical environment used. This data may be processed on a server of the font provider in the USA - When visiting our online services, users' browsers send their browser HTTP requests to the Google Fonts Web API (i.e., a software interface for retrieving the fonts). The Google Fonts Web API provides the users with the Cascading Style Sheets (CSS) from Google Fonts and then the fonts specified in the CSS. These HTTP requests include (1) the IP address used by the respective user to access the internet, (2) the requested URL on the Google server, and (3) the HTTP headers, including the User-Agent, which describes the browser and operating system versions of the website visitors, as well as the referring URL (i.e., the website on which the Google font is to be displayed). IP addresses are neither logged nor stored on Google servers, and they are not analyzed. The Google Fonts Web API logs details of the HTTP requests (requested URL, User-Agent, and referring URL). Access to this data is restricted and tightly controlled. The requested URL identifies the font families for which the user wants to load fonts. This data is logged so that Google can determine how often a specific font family is requested. The User-Agent is primarily logged for debugging and used to generate aggregated usage statistics that measure the popularity of font families. These summarized usage statistics are published on the "Analytics" page of Google Fonts. Finally, the referring URL is logged so that the data can be used for production maintenance and an aggregated report of top integrations based on the number of font requests can be generated. According to Google, none of the data collected by Google Fonts is used to create user profiles or display targeted ads; <strong>Service Provider:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; <span class=""><strong>Legal Bases:</strong> Legitimate Interests (Art. 6(1) Sentence 1 lit. f) GDPR); </span><strong>Website:</strong>
-            <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>; <strong>Privacy Policy:</strong>
-            <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland). <strong>More Information:</strong>
-            <a href="https://developers.google.com/fonts/faq/privacy?hl=de" target="_blank">https://developers.google.com/fonts/faq/privacy?hl=de</a>.
+            <strong>Google Fonts (Sourced from Google Server):</strong> Fonts
+            (and symbols) are sourced for the purpose of technically secure,
+            maintenance-free, and efficient use of fonts and symbols with regard
+            to currentness and load times, uniform display, and consideration of
+            possible copyright restrictions. The font provider receives the
+            user's IP address to make the fonts available in the user's browser.
+            Additionally, technical data (language settings, screen resolution,
+            operating system, used hardware) are transmitted, which are
+            necessary for providing the fonts depending on the devices and
+            technical environment used. This data may be processed on a server
+            of the font provider in the USA - When visiting our online services,
+            users' browsers send their browser HTTP requests to the Google Fonts
+            Web API (i.e., a software interface for retrieving the fonts). The
+            Google Fonts Web API provides the users with the Cascading Style
+            Sheets (CSS) from Google Fonts and then the fonts specified in the
+            CSS. These HTTP requests include (1) the IP address used by the
+            respective user to access the internet, (2) the requested URL on the
+            Google server, and (3) the HTTP headers, including the User-Agent,
+            which describes the browser and operating system versions of the
+            website visitors, as well as the referring URL (i.e., the website on
+            which the Google font is to be displayed). IP addresses are neither
+            logged nor stored on Google servers, and they are not analyzed. The
+            Google Fonts Web API logs details of the HTTP requests (requested
+            URL, User-Agent, and referring URL). Access to this data is
+            restricted and tightly controlled. The requested URL identifies the
+            font families for which the user wants to load fonts. This data is
+            logged so that Google can determine how often a specific font family
+            is requested. The User-Agent is primarily logged for debugging and
+            used to generate aggregated usage statistics that measure the
+            popularity of font families. These summarized usage statistics are
+            published on the "Analytics" page of Google Fonts. Finally, the
+            referring URL is logged so that the data can be used for production
+            maintenance and an aggregated report of top integrations based on
+            the number of font requests can be generated. According to Google,
+            none of the data collected by Google Fonts is used to create user
+            profiles or display targeted ads;
+            <strong>Service Provider:</strong> Google Ireland Limited, Gordon
+            House, Barrow Street, Dublin 4, Ireland;
+            <span class=""
+              ><strong>Legal Bases:</strong> Legitimate Interests (Art. 6(1)
+              Sentence 1 lit. f) GDPR); </span
+            ><strong>Website:</strong>
+            <a href="https://fonts.google.com/" target="_blank"
+              >https://fonts.google.com/</a
+            >; <strong>Privacy Policy:</strong>
+            <a href="https://policies.google.com/privacy" target="_blank"
+              >https://policies.google.com/privacy</a
+            >; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data
+            Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland).
+            <strong>More Information:</strong>
+            <a
+              href="https://developers.google.com/fonts/faq/privacy?hl=de"
+              target="_blank"
+              >https://developers.google.com/fonts/faq/privacy?hl=de</a
+            >.
           </li>
           <li>
-            <strong>Google Maps:</strong> We integrate the maps of the "Google Maps" service from the provider Google. The processed data may include, in particular, IP addresses and location data of the users; <strong>Service Provider:</strong> Google Cloud EMEA Limited, 70 Sir John Rogerson’s Quay, Dublin 2, Ireland; <span class=""><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR); </span><strong>Website:</strong>
-            <a href="https://mapsplatform.google.com/" target="_blank">https://mapsplatform.google.com/</a>; <strong>Privacy Policy:</strong>
-            <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland).
+            <strong>Google Maps:</strong> We integrate the maps of the "Google
+            Maps" service from the provider Google. The processed data may
+            include, in particular, IP addresses and location data of the users;
+            <strong>Service Provider:</strong> Google Cloud EMEA Limited, 70 Sir
+            John Rogerson’s Quay, Dublin 2, Ireland;
+            <span class=""
+              ><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit.
+              a) GDPR); </span
+            ><strong>Website:</strong>
+            <a href="https://mapsplatform.google.com/" target="_blank"
+              >https://mapsplatform.google.com/</a
+            >; <strong>Privacy Policy:</strong>
+            <a href="https://policies.google.com/privacy" target="_blank"
+              >https://policies.google.com/privacy</a
+            >; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data
+            Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland).
           </li>
           <li>
-            <strong>YouTube Videos:</strong> Video content; <strong>Service Provider:</strong> Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; <span class=""><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit. a) GDPR); </span><strong>Website:</strong>
-            <a href="https://www.youtube.com" target="_blank">https://www.youtube.com</a>; <strong>Privacy Policy:</strong>
-            <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland). <strong>Opt-Out Possibility:</strong> Opt-Out Plugin:
-            <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=de</a>, Ad Personalization Settings: <a href="https://myadcenter.google.com/personalizationoff" target="_blank">https://myadcenter.google.com/personalizationoff</a>.
+            <strong>YouTube Videos:</strong> Video content;
+            <strong>Service Provider:</strong> Google Ireland Limited, Gordon
+            House, Barrow Street, Dublin 4, Ireland;
+            <span class=""
+              ><strong>Legal Bases:</strong> Consent (Art. 6(1) Sentence 1 lit.
+              a) GDPR); </span
+            ><strong>Website:</strong>
+            <a href="https://www.youtube.com" target="_blank"
+              >https://www.youtube.com</a
+            >; <strong>Privacy Policy:</strong>
+            <a href="https://policies.google.com/privacy" target="_blank"
+              >https://policies.google.com/privacy</a
+            >; <strong>Basis for Third-Country Transfers:</strong> EU/EEA - Data
+            Privacy Framework (DPF), Switzerland - Adequacy Decision (Ireland).
+            <strong>Opt-Out Possibility:</strong> Opt-Out Plugin:
+            <a
+              href="https://tools.google.com/dlpage/gaoptout?hl=de"
+              target="_blank"
+              >https://tools.google.com/dlpage/gaoptout?hl=de</a
+            >, Ad Personalization Settings:
+            <a
+              href="https://myadcenter.google.com/personalizationoff"
+              target="_blank"
+              >https://myadcenter.google.com/personalizationoff</a
+            >.
           </li>
         </ul>
         <p class="seal">
@@ -611,14 +1215,14 @@
             title="Legal text by Dr. Schwenke - for more information please click here."
             target="_blank"
             rel="noopener noreferrer nofollow"
-            >Created with the free Data Privacy Generator by Dr. Thomas Schwenke</a
+            >Created with the free Data Privacy Generator by Dr. Thomas
+            Schwenke</a
           >
         </p>
       </main>
     </div>
     <!-- JavaScript -->
     <script src="/script/mainScript.js"></script>
-    <script src="/script/help/mainHelp.js"></script>
     <script src="/script/help/mainHelpTemplates.js"></script>
     <script>
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

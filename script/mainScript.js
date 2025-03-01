@@ -98,3 +98,28 @@ function logout() {
   sessionStorage.clear();
   window.location.href = "login.html";
 }
+
+/**
+ * Initializes the page by checking the user session and updating the header.
+ *
+ */
+function initializePage() {
+  checkUserSession();
+}
+
+/**
+ * Checks the user's session status based on stored localStorage values.
+ * Updates the UI to show navigation elements or the login link.
+ *
+ */
+function checkUserSession() {
+  const userId = localStorage.getItem("userId");
+  const isGuest = localStorage.getItem("guestMode");
+
+  if (userId || isGuest) {
+    document.getElementById("navbar").classList.remove("dNone");
+  } else {
+    document.getElementById("logInLink").classList.remove("dNone");
+    overrideMediaQuery();
+  }
+}

@@ -6,7 +6,7 @@ let backendData = {};
  * @returns {Promise<void>} A promise that resolves when data is fetched.
  */
 async function fetchDataJSON() {
-  let response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  const response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
   backendData = await response.json();
 }
 
@@ -119,11 +119,11 @@ function getGreetingMessage(hour) {
  */
 async function updatedBoardCount() {
   await fetchDataJSON();
-  let tasks = backendData.Data.Tasks;
-  let dates = [];
+  const tasks = backendData.Data.Tasks;
+  const dates = [];
 
   Object.keys(tasks).forEach((taskId) => {
-    let task = tasks[taskId];
+    const task = tasks[taskId];
     countTaskStatus(task);
     setUpcomingDeadlineDate(task, dates);
   });
@@ -218,7 +218,7 @@ function setCountTaskInBoard(tasks) {
 function setUpcomingDeadlineDate(task, dates) {
   if (!task.dueDate || task.status === "Done") return;
 
-  let deadlineDate = task.dueDate instanceof Date ? task.dueDate : parseCustomDate(task.dueDate);
+  const deadlineDate = task.dueDate instanceof Date ? task.dueDate : parseCustomDate(task.dueDate);
 
   if (!isNaN(deadlineDate.getTime())) {
     dates.push(deadlineDate.getTime());
@@ -234,12 +234,12 @@ function setUpcomingDeadlineDate(task, dates) {
  * @returns {Date} A Date object representing the given date, or an invalid Date if the format is incorrect.
  */
 function parseCustomDate(dateStr) {
-  let parts = dateStr.split("/");
+  const parts = dateStr.split("/");
   if (parts.length !== 3) return new Date(NaN);
 
-  let day = parseInt(parts[0], 10);
-  let month = parseInt(parts[1], 10) - 1;
-  let year = parseInt(parts[2], 10);
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1;
+  const year = parseInt(parts[2], 10);
 
   return new Date(year, month, day);
 }
@@ -250,7 +250,7 @@ function parseCustomDate(dateStr) {
  * @param {Array<number>} dates - The array of deadline timestamps.
  */
 function displayUpcomingDeadline(dates) {
-  let summaryUpcomingDeadline = document.getElementById("upcomingDeadline");
+  const summaryUpcomingDeadline = document.getElementById("upcomingDeadline");
   if (dates.length > 0) {
     dates.sort((a, b) => a - b);
     summaryUpcomingDeadline.textContent = formatTimestampCustom(dates[0]);
@@ -263,7 +263,7 @@ function displayUpcomingDeadline(dates) {
  * @param {string} elementId - The ID of the element to update.
  */
 function updateCountDisplay(elementId) {
-  let countElement = document.getElementById(elementId);
+  const countElement = document.getElementById(elementId);
   countElement.textContent = parseInt(countElement.textContent) + 1;
 }
 
@@ -276,9 +276,9 @@ function updateCountDisplay(elementId) {
 function formatTimestampCustom(timestamp) {
   const date = new Date(timestamp);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let day = date.getDate();
-  let month = months[date.getMonth()];
-  let year = date.getFullYear();
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
 
   return `${month} ${day}, ${year}`;
 }

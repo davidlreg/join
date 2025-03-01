@@ -1,6 +1,6 @@
-let emailInput = document.querySelector(".inputEmail");
-let passwordInput = document.querySelector(".inputPassword");
-let passwordToggle = document.querySelector(".passwordToggle");
+const emailInput = document.querySelector(".inputEmail");
+const passwordInput = document.querySelector(".inputPassword");
+const passwordToggle = document.querySelector(".passwordToggle");
 
 const databaseUrl =
   "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
@@ -46,8 +46,8 @@ function addPasswordInputListeners() {
  * @returns {void}
  */
 function checkUserSession() {
-  let user = localStorage.getItem("userId");
-  let guest = localStorage.getItem("guestMode");
+  const user = localStorage.getItem("userId");
+  const guest = localStorage.getItem("guestMode");
 
   if (user || guest) {
     window.location.href = "./summary.html?active=summary&user=loggedIn";
@@ -60,15 +60,15 @@ function checkUserSession() {
  * @returns {void}
  */
 function validateEmail() {
-  let emailValue = emailInput.value;
-  let errorMessage = document.getElementById("errorMsgEmail");
+  const emailValue = emailInput.value;
+  const errorMessage = document.getElementById("errorMsgEmail");
 
   localStorage.setItem("email", emailValue);
-  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
-    errorMessage.innerHTML = `Please enter a valid email address.`;
+    errorMessage.innerHTML = "Please enter a valid email address.";
   } else {
     emailInput.style.border = "";
     errorMessage.innerHTML = "";
@@ -81,8 +81,8 @@ function validateEmail() {
  * @returns {void}
  */
 function validateForm() {
-  let logInButton = document.getElementById("logInBtn");
-  let isFormValid =
+  const logInButton = document.getElementById("logInBtn");
+  const isFormValid =
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
     passwordInput.value !== "";
@@ -105,7 +105,7 @@ function validateForm() {
  * @returns {void}
  */
 function updatePasswordIcon() {
-  let inputType = this.type;
+  const inputType = this.type;
 
   if (this.value.length > 0) {
     this.style.backgroundImage =
@@ -125,7 +125,7 @@ function updatePasswordIcon() {
  * @returns {void}
  */
 function toggleVisibility() {
-  let input = this.previousElementSibling;
+  const input = this.previousElementSibling;
 
   if (input.type === "password") {
     input.type = "text";
@@ -153,8 +153,8 @@ function guestLogIn() {
  * @returns {void}
  */
 function logIntoAccount() {
-  let email = emailInput.value;
-  let password = passwordInput.value;
+  const email = emailInput.value;
+  const password = passwordInput.value;
   checkUserCredentials(email, password);
 }
 

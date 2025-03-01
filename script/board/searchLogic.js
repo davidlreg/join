@@ -66,7 +66,7 @@ function taskMatchesSearch(task, searchTerm) {
  * @param {boolean} show - Whether to display the message.
  */
 function showNoResultsMessage(show) {
-  let message = document.getElementById("noResultsMessage");
+  const message = document.getElementById("noResultsMessage");
   if (show) {
     message.style.display = "block";
   } else {

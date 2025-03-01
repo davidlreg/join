@@ -3,7 +3,7 @@
  *
  */
 function initializeJoinAnimation() {
-  let logoContainer = document.getElementById("logoContainer");
+  const logoContainer = document.getElementById("logoContainer");
 
   if (!hasAnimationPlayed()) {
     addAnimationClasses();
@@ -29,9 +29,9 @@ function hasAnimationPlayed() {
  *
  */
 function addAnimationClasses() {
-  let logoContainer = document.getElementById("logoContainer");
-  let logo = document.getElementById("logo");
-  let logoMobile = document.getElementById("logoMobile");
+  const logoContainer = document.getElementById("logoContainer");
+  const logo = document.getElementById("logo");
+  const logoMobile = document.getElementById("logoMobile");
 
   if (logoContainer) {
     logoContainer.classList.add("animationBackground");
@@ -49,9 +49,9 @@ function addAnimationClasses() {
  *
  */
 function removeAnimationClasses() {
-  let logoContainer = document.getElementById("logoContainer");
-  let logo = document.getElementById("logo");
-  let logoMobile = document.getElementById("logoMobile");
+  const logoContainer = document.getElementById("logoContainer");
+  const logo = document.getElementById("logo");
+  const logoMobile = document.getElementById("logoMobile");
 
   if (logoContainer) {
     logoContainer.classList.remove("animationBackground");

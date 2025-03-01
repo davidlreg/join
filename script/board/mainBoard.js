@@ -6,10 +6,10 @@ let backendData = {};
  * @async
  */
 async function fetchDataJSON() {
-  let response = await fetch(
+  const response = await fetch(
     "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json"
   );
-  let responseJSON = await response.json();
+  const responseJSON = await response.json();
   backendData = responseJSON;
 }
 
@@ -143,7 +143,7 @@ async function addBoardOverlay(taskId) {
 
   if (task) {
     task.id = taskId;
-    let addBoardHtml = templateBoardOverlay(task, taskId);
+    const addBoardHtml = templateBoardOverlay(task, taskId);
     overlayBoardContent.innerHTML = addBoardHtml;
     boardOverlay.classList.remove("hideOverlay");
   } else {
@@ -156,8 +156,8 @@ async function addBoardOverlay(taskId) {
  *
  */
 function closeBoardOverlay() {
-  let boardOverlay = document.getElementById("addBoardOverlay");
-  let overlayBoardContent = document.querySelector(".boardOverlayContainer");
+  const boardOverlay = document.getElementById("addBoardOverlay");
+  const overlayBoardContent = document.querySelector(".boardOverlayContainer");
 
   if (boardOverlay && overlayBoardContent) {
     overlayBoardContent.classList.remove("animate");
@@ -189,10 +189,10 @@ function setIdToCreateTasks(boardSectionId, taskHtml) {
  *
  */
 function setRightBackgroundColorForCategory() {
-  let categoryElement = document.querySelectorAll(".boardTaskCategory");
+  const categoryElement = document.querySelectorAll(".boardTaskCategory");
 
   categoryElement.forEach((categoryElement) => {
-    let category = categoryElement.textContent.trim();
+    const category = categoryElement.textContent.trim();
 
     if (category === "User Story") {
       categoryElement.style.backgroundColor = "#0038FF";

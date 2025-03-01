@@ -14,11 +14,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-let nameInput = document.querySelector(".inputName");
-let emailInput = document.querySelector(".inputEmail");
-let passwordInput = document.querySelectorAll(".inputPassword")[0];
-let confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
-let checkbox = document.getElementById("checkboxSignUp");
+const nameInput = document.querySelector(".inputName");
+const emailInput = document.querySelector(".inputEmail");
+const passwordInput = document.querySelectorAll(".inputPassword")[0];
+const confirmPasswordInput = document.querySelectorAll(".inputPassword")[1];
+const checkbox = document.getElementById("checkboxSignUp");
 
 /**
  * Validates the email input field.
@@ -26,9 +26,9 @@ let checkbox = document.getElementById("checkboxSignUp");
  * @returns {void}
  */
 function validateEmail() {
-  let emailValue = emailInput.value;
-  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  let errorMessage = document.getElementById("errorMsgEmail");
+  const emailValue = emailInput.value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const errorMessage = document.getElementById("errorMsgEmail");
 
   if (!emailPattern.test(emailValue)) {
     emailInput.style.border = "1px solid red";
@@ -45,7 +45,7 @@ function validateEmail() {
  * @returns {void}
  */
 function validatePasswords() {
-  let errorMessage = document.getElementById("errorMsgPassword");
+  const errorMessage = document.getElementById("errorMsgPassword");
 
   if (passwordInput.value !== confirmPasswordInput.value) {
     confirmPasswordInput.style.border = "1px solid red";
@@ -62,8 +62,8 @@ function validatePasswords() {
  * @returns {void}
  */
 function validateForm() {
-  let signUpButton = document.getElementById("signUpBtn");
-  let isFormValid =
+  const signUpButton = document.getElementById("signUpBtn");
+  const isFormValid =
     nameInput.value !== "" &&
     emailInput.value !== "" &&
     emailInput.style.border !== "1px solid red" &&
@@ -89,7 +89,7 @@ function validateForm() {
  * @this {HTMLInputElement}
  */
 function updatePasswordIcon() {
-  let inputType = this.type;
+  const inputType = this.type;
 
   if (this.value.length > 0) {
     this.style.backgroundImage =
@@ -109,7 +109,7 @@ function updatePasswordIcon() {
  * @this {HTMLElement}
  */
 function toggleVisibility() {
-  let input = this.previousElementSibling;
+  const input = this.previousElementSibling;
 
   if (input.type === "password") {
     input.type = "text";

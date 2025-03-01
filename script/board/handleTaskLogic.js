@@ -270,7 +270,7 @@ async function deleteTask() {
  */
 async function editTask(taskId) {
   await fetchDataJSON();
-  let tasks = backendData.Data.Tasks;
+  const tasks = backendData.Data.Tasks;
   const { overlayBoardContent, boardOverlay } = getBoardElements();
   const boardOverlayTaskTitle = document.querySelector(
     ".boardOverlayTaskTitle"

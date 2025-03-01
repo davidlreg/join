@@ -146,6 +146,7 @@ async function addBoardOverlay(taskId) {
     const addBoardHtml = templateBoardOverlay(task, taskId);
     overlayBoardContent.innerHTML = addBoardHtml;
     boardOverlay.classList.remove("hideOverlay");
+    setRightBackgroundColorForCategoryinDetailView();
   } else {
     console.error("Task not found:", taskId);
   }
@@ -351,4 +352,24 @@ function showTooltip(event, text) {
 function hideTooltip() {
   let tooltip = document.getElementById("tooltip");
   if (tooltip) tooltip.style.display = "none";
+}
+
+/**
+ * Sets the background color for each task category based on its type.
+ *
+ */
+function setRightBackgroundColorForCategoryinDetailView() {
+  const categoryElement = document.querySelectorAll(
+    ".boardOverlayTaskCategory"
+  );
+
+  categoryElement.forEach((categoryElement) => {
+    const category = categoryElement.textContent.trim();
+
+    if (category === "User Story") {
+      categoryElement.style.backgroundColor = "#0038FF";
+    } else if (category === "Technical Task") {
+      categoryElement.style.backgroundColor = "#20D7C2";
+    }
+  });
 }

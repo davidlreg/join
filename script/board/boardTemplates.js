@@ -83,7 +83,9 @@ function templateBoardOverlay(task, taskId) {
   return `
       <div class="boardOverlayContent">
         <div class="boardOverlayHeader">
-            <p class="boardOverlayTaskCategory">${task.category}</p>
+            <p is="boardOverlayTaskCategory" class="boardOverlayTaskCategory">${
+              task.category
+            }</p>
             <div class="closeBoardOverlay" onclick="closeBoardOverlay()">
             <!-- SVG für Schließen-Button -->
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

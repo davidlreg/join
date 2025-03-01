@@ -177,7 +177,7 @@ form#taskFormOverlay {
 .requiredActionOverlay {
   margin-top: 15px;
   display: flex;
-  gap: 409px;
+  gap: 390px;
   align-items: center;
 }
 

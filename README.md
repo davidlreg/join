@@ -6,7 +6,7 @@ Willkommen zur offiziellen README von **Join**, einem Kanban-basierten Projektma
 
 ## 🚀 Was ist Join?
 
-**Join** ist ein intuitives **Kanban-Tool**, das von einer Gruppe engagierter Studenten als Teil ihres Webentwicklungs-Bootcamps an der **Developer Akademie** entwickelt wurde.
+**Join** ist ein intuitives **Kanban-Tool**, das von mir und einem Team engagierter Studenten als Teil unserer Witerbildung zum Webentwickler/-in an der **Developer Akademie** entwickelt wurde.
 
 🔹 **Kanban** ist eine Methode zur **Visualisierung von Arbeitsprozessen**, zur Begrenzung von Work-in-Progress und zur Steigerung der Effizienz. Join nutzt diese Prinzipien, um dir eine **einfache und visuelle Verwaltung deiner Aufgaben** zu ermöglichen.
 
@@ -60,21 +60,6 @@ Erledigte Aufgaben können entweder in die **"Done"**-Liste verschoben oder **da
 
 ---
 
-## 📂 Projektstruktur
-
-    📁 join/                  # Hauptverzeichnis
-    ├── 📁 assets/           # Bilder, Icons, etc.
-    ├── 📁 src/              # Quellcode
-    │   ├── 📁 components/   # UI-Komponenten
-    │   ├── 📁 services/     # API-Calls, Datenverwaltung
-    │   ├── 📁 views/        # Verschiedene Seiten des Tools
-    ├── 📄 index.html        # Einstiegspunkt
-    ├── 📄 style.css         # Stylesheet
-    ├── 📄 script.js         # Haupt-JavaScript-Datei
-    └── 📄 README.md         # Diese Datei
-
----
-
 ## 🔧 Installation & Nutzung
 
 Falls du Join lokal ausführen möchtest:
@@ -94,7 +79,6 @@ Falls du Join lokal ausführen möchtest:
 
 ## 💡 Geplante Features
 
-📌 Benutzeranmeldung und Authentifizierung  
 📌 Erweiterte Benachrichtigungen und Erinnerungen  
 📌 Team-Kollaboration mit Echtzeit-Updates
 

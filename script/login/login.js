@@ -1,5 +1,5 @@
 const databaseURL =
-  "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app";
+  "https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app";
 
 const emailInput = document.querySelector(".inputEmail");
 const passwordInput = document.querySelector(".inputPassword");

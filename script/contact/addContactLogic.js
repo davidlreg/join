@@ -126,7 +126,7 @@ function getNextId() {
  * @returns {Promise<Object>} A promise resolving to the contacts data.
  */
 function fetchContacts() {
-  const url = "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts.json";
+  const url = "https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts.json";
   return fetch(url).then((response) => response.json());
 }
 
@@ -179,7 +179,7 @@ function findSmallestAvailableId(contacts) {
  * @returns {Promise<void>} A promise that resolves once the contact is saved.
  */
 function saveContact(contactId, email, name, phone) {
-  const url = `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/contactId${contactId}.json`;
+  const url = `https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/contactId${contactId}.json`;
 
   const contactData = { email, name, phone };
 

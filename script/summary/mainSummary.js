@@ -6,7 +6,7 @@ let backendData = {};
  * @returns {Promise<void>} A promise that resolves when data is fetched.
  */
 async function fetchDataJSON() {
-  const response = await fetch("https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json");
+  const response = await fetch("https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/.json");
   backendData = await response.json();
 }
 

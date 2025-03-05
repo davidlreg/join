@@ -38,7 +38,7 @@ function updateTaskStatus(taskId, newStatus) {
  */
 async function updateBackend(data) {
   await fetch(
-    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    "https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/.json",
     {
       method: "PUT",
       body: JSON.stringify(data),

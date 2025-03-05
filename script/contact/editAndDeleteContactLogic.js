@@ -25,7 +25,11 @@ function openEditContactMobile(initials, color) {
   const overlayContainer = document.getElementById("mobileOverlayContainer");
   overlayContainer.innerHTML = showEditContactOverlayMobile(initials, color);
   editOverlayBackground(overlayContainer);
-  const inputIds = ["contactNameMobile", "contactEmailMobile", "contactPhoneMobile"];
+  const inputIds = [
+    "contactNameMobile",
+    "contactEmailMobile",
+    "contactPhoneMobile",
+  ];
   const overlay = overlayContainer.querySelector(".editContactMobileWrapper");
   inputIds.forEach((id) => {
     const inputElement = overlay.querySelector(`#${id}`);
@@ -83,9 +87,15 @@ async function updateContactData(contactId) {
  */
 function getUpdatedContactData() {
   const isMobile = window.innerWidth <= 1000;
-  const name = document.getElementById(isMobile ? "contactNameMobile" : "contactName").value.trim();
-  const email = document.getElementById(isMobile ? "contactEmailMobile" : "contactEmail").value.trim();
-  const phone = document.getElementById(isMobile ? "contactPhoneMobile" : "contactPhone").value.trim();
+  const name = document
+    .getElementById(isMobile ? "contactNameMobile" : "contactName")
+    .value.trim();
+  const email = document
+    .getElementById(isMobile ? "contactEmailMobile" : "contactEmail")
+    .value.trim();
+  const phone = document
+    .getElementById(isMobile ? "contactPhoneMobile" : "contactPhone")
+    .value.trim();
 
   return {
     name,
@@ -113,7 +123,7 @@ async function updateContactInDatabase(contactId, updatedData) {
  * @returns {string} The URL for the PATCH request.
  */
 function buildContactUrl(contactId) {
-  return `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
+  return `https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
 }
 
 /**
@@ -158,7 +168,7 @@ async function deleteContactData(contactId) {
  * @param {string} contactId - The ID of the contact to remove.
  */
 async function deleteContactInDatabase(contactId) {
-  const url = `https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
+  const url = `https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/Data/Contacts/${contactId}.json`;
 
   const response = await fetch(url, {
     method: "DELETE",

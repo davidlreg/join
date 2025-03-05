@@ -7,7 +7,7 @@ let backendData = {};
  */
 async function fetchDataJSON() {
   const response = await fetch(
-    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json"
+    "https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/.json"
   );
   const responseJSON = await response.json();
   backendData = responseJSON;

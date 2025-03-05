@@ -292,7 +292,7 @@ async function editTask(taskId) {
  */
 async function syncBackendDataWithFirebase() {
   await fetch(
-    "https://joinbackend-9bd67-default-rtdb.europe-west1.firebasedatabase.app/.json",
+    "https://join-demo-3fe50-default-rtdb.europe-west1.firebasedatabase.app/.json",
     {
       method: "PUT",
       headers: {

@@ -1,103 +1,98 @@
 # 📌 Join - Kanban Project Management Tool
 
-Willkommen zur offiziellen README von **Join**, einem Kanban-basierten Projektmanagement-Tool. Hier erfährst du, was Join ist, wie es dir helfen kann und wie du es nutzt.
+Welcome to the official README of **Join**, a Kanban-based project management tool. Here you'll learn what Join is, how it can help you, and how to use it.
 
 ---
 
-## 🚀 Was ist Join?
+## 🚀 What is Join?
 
-**Join** ist ein intuitives **Kanban-Tool**, das von mir und einem Team engagierter Studenten als Teil unserer Witerbildung zum Webentwickler/-in an der **Developer Akademie** entwickelt wurde.
+**Join** is an intuitive **Kanban tool** that was developed by me and a team of dedicated students as part of our web development training at the **Developer Akademie**.
 
-🔹 **Kanban** ist eine Methode zur **Visualisierung von Arbeitsprozessen**, zur Begrenzung von Work-in-Progress und zur Steigerung der Effizienz. Join nutzt diese Prinzipien, um dir eine **einfache und visuelle Verwaltung deiner Aufgaben** zu ermöglichen.
+🔹 **Kanban** is a method for **visualizing work processes**, limiting work-in-progress, and increasing efficiency. Join uses these principles to provide you with **simple and visual task management**.
 
-⚠️ **Hinweis:** Join wurde als **Lernprojekt** entwickelt und ist **nicht** für den produktiven Einsatz in Unternehmen vorgesehen. Es kann daher keine Gewähr für permanente Verfügbarkeit, Stabilität oder Fehlerfreiheit übernommen werden.
-
----
-
-## 🛠️ Funktionen
-
-✅ **Intuitive Kanban-Board-Oberfläche**  
-✅ **Erstellung und Verwaltung von Aufgaben (Cards)**  
-✅ **Zuweisung von Aufgaben an Kontakte**  
-✅ **Drag & Drop zum einfachen Verschieben von Tasks**  
-✅ **Visuelle Statusverwaltung von Aufgaben**
+⚠️ **Note:** Join was developed as a **learning project** and is **not** intended for productive use in companies. Therefore, no guarantee can be given for permanent availability, stability, or error-free operation.
 
 ---
 
-## 📖 Anleitung: So nutzt du Join
+## 🛠️ Features
 
-### 1️⃣ Board erkunden
-
-Nach dem Login siehst du dein **Standard-Board**, das aus vier Listen besteht:
-
-- **To Do** – Offene Aufgaben
-- **In Progress** – Aufgaben in Bearbeitung
-- **Await Feedback** – Aufgaben, die überprüft werden müssen
-- **Done** – Abgeschlossene Aufgaben
-
-### 2️⃣ Kontakte hinzufügen
-
-Du kannst **Kontakte erstellen**, um Aufgaben zu teilen und zuzuweisen:
-
-1. Navigiere zum **"Contacts"-Bereich**.
-2. Klicke auf **"New Contact"**.
-3. Fülle die erforderlichen Informationen aus.
-4. Jetzt kannst du Kontakte in deinen Aufgaben verwenden!
-
-### 3️⃣ Aufgaben erstellen (Cards)
-
-1. Klicke auf das **"+"-Symbol** unter einer Liste.
-2. Gib **Titel, Beschreibung, Fälligkeitsdatum und Verantwortliche** an.
-3. Speichere die Karte und sie erscheint auf deinem Board.
-
-### 4️⃣ Aufgaben verschieben
-
-Ziehe eine Aufgabe einfach per **Drag & Drop** von einer Liste in die andere, um den Fortschritt zu dokumentieren.
-
-### 5️⃣ Aufgaben löschen
-
-Erledigte Aufgaben können entweder in die **"Done"**-Liste verschoben oder **dauerhaft gelöscht** werden. ⚠️ **Löschen ist unwiderruflich!**
+✅ **Intuitive Kanban board interface**  
+✅ **Create and manage tasks (Cards)**  
+✅ **Assign tasks to contacts**  
+✅ **Drag & Drop for easy task movement**  
+✅ **Visual task status management**
 
 ---
 
-## 🔧 Installation & Nutzung
+## 📖 Guide: How to use Join
 
-Falls du Join lokal ausführen möchtest:
+### 1️⃣ Explore the Board
+After logging in, you'll see your **default board**, which consists of four lists:
+- **To Do** – Open tasks
+- **In Progress** – Tasks being worked on
+- **Await Feedback** – Tasks that need review
+- **Done** – Completed tasks
 
-1. **Repository klonen**
+### 2️⃣ Add Contacts
+You can **create contacts** to share and assign tasks:
+1. Navigate to the **"Contacts"** section.
+2. Click on **"New Contact"**.
+3. Fill in the required information.
+4. Now you can use contacts in your tasks!
+
+### 3️⃣ Create Tasks (Cards)
+1. Click on the **"+"** symbol under a list.
+2. Enter **title, description, due date, and assignees**.
+3. Save the card and it will appear on your board.
+
+### 4️⃣ Move Tasks
+Simply drag a task via **Drag & Drop** from one list to another to document progress.
+
+### 5️⃣ Delete Tasks
+Completed tasks can either be moved to the **"Done"** list or **permanently deleted**. ⚠️ **Deletion is irreversible!**
+
+---
+
+## 🔧 Installation & Usage
+
+If you want to run Join locally:
+
+1. **Clone the repository**
    ```sh
    git clone https://github.com/davidlreg/join.git
    ```
-2. **In das Projektverzeichnis wechseln**
+
+2. **Navigate to the project directory**
    ```sh
    cd join
    ```
-3. **Starten (einfach als statische Website öffnen)**
-   - Öffne die `index.html` im Browser.
+
+3. **Start (simply open as static website)**
+   - Open `index.html` in your browser.
 
 ---
 
-## 💡 Geplante Features
+## 💡 Planned Features
 
-📌 Erweiterte Benachrichtigungen und Erinnerungen  
-📌 Team-Kollaboration mit Echtzeit-Updates
-
----
-
-## 🤝 Mitwirken
-
-Pull-Requests sind willkommen! Wenn du Fehler findest oder Ideen zur Verbesserung hast, erstelle bitte ein **Issue** oder einen **Pull Request**.
-
-📬 **Kontakt:** [GitHub Issues](https://github.com/davidlreg/join/issues)
+📌 Advanced notifications and reminders  
+📌 Team collaboration with real-time updates
 
 ---
 
-## 📜 Lizenz
+## 🤝 Contributing
 
-Dieses Projekt steht unter der **MIT-Lizenz** – freie Nutzung, Modifikation und Verteilung sind erlaubt. Details findest du in der Datei `LICENSE`.
+Pull requests are welcome! If you find bugs or have ideas for improvement, please create an **Issue** or a **Pull Request**.
+
+📬 **Contact:** [GitHub Issues](https://github.com/davidlreg/join/issues)
 
 ---
 
-## 🎉 Viel Spaß mit Join!
+## 📜 License
 
-Falls du Fragen hast oder Hilfe brauchst, schau einfach in die [GitHub Issues](https://github.com/davidlreg/join/issues) oder erstelle eine neue Anfrage. Happy coding! 🚀
+This project is licensed under the **MIT License** – free use, modification, and distribution are permitted. Details can be found in the `LICENSE` file.
+
+---
+
+## 🎉 Have Fun with Join!
+
+If you have questions or need help, just check out the [GitHub Issues](https://github.com/davidlreg/join/issues) or create a new request. Happy coding! 🚀
